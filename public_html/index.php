@@ -8,7 +8,7 @@
  * directory elsewhere, ensure that it is added to your include path
  * or update this file path as needed.
  */
-require 'Slim/Slim.php';
+require '../libs/Slim/Slim.php';
 
 /**
  * Step 2: Instantiate the Slim application
@@ -17,7 +17,12 @@ require 'Slim/Slim.php';
  * However, we could also pass a key-value array of settings.
  * Refer to the online documentation for available settings.
  */
-$app = new Slim();
+$app = new Slim(array(
+    'log.enable' => true,
+    'log.path' => '../php_slim.log',
+    'debug' => true,
+    'templates.path' => '../templates'
+));
 
 /**
  * Step 3: Define the Slim application routes
