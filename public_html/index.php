@@ -1,44 +1,45 @@
 <?php
 
 /**
- * Twig PHP Templating Engine 1.4
+ * Twig PHP Templating Engine 1.4 (github 2011-12-18)
  * Slim PHP 5 Framework 1.5.1.2
  */
-//require '../libs/Twig/Autoloader.php';
-require '../libs/Slim/Slim.php';
-require '../libs/Views/TwigView.php';
+require '../libs/Twig/Autoloader.php';
+//require '../libs/Slim/Slim.php';
+//require '../libs/Views/TwigView.php';
 
+$templatesDir = realpath('../templates');
+$twigDirectory = realpath('../libs/Twig');
+$twigOptions = array(
+	'cache' => '../compilation_cache',
+	'debug' => true,
+	'strict_variables' => true
+);
 
 /**
  * Templating via Twig
  */
-//Twig_Autoloader::register();
-TwigView::twigDirectory = realpath('../libs/Twig');
-TwigView::twigOptions = array(
-	'cache' => '../compilation_cache',
-);
+Twig_Autoloader::register();
+$loader = new Twig_Loader_Filesystem($templatesDir);
+$twig = new Twig_Environment($loader, $twigOptions);
 
-/*
-$loader = new Twig_Loader_Filesystem(realpath('../templates'));
-$twig = new Twig_Environment($loader, array(
-  'cache' => '../compilation_cache',
-));
-*/
 
-//echo $twig->render('index.htm', array('name' => 'Fabien'));
+echo $twig->render('index.htm');
 
 
 /**
  * Instantiate the Slim application
  */
+ /*
 $app = new Slim(array(
     'view' => 'TwigView',
     'log.enable' => true,
 	'log.level' => 4,
     'log.path' => realpath('../logs'), // directory
     'debug' => true,
-    'templates.path' => realpath('../templates')
+    'templates.path' => $templatesDir
 ));
+*/
 
 /**
  * Define the Slim application routes
@@ -50,29 +51,15 @@ $app = new Slim(array(
  */
 
 //GET route
+/*
 $app->get('/', function () {
 	echo $app->render('index.htm', array());
 	echo 'Hoplaa' . '$app->getTemplatesDirectory() ' . $app->getTemplatesDirectory();
     //$template = file_get_contents($this->getTemplatesDirectory() . '/index.htm');
     //echo $template;
 });
-
-//POST route
-$app->post('/post', function () {
-    echo 'This is a POST route';
-});
-
-//PUT route
-$app->put('/put', function () {
-    echo 'This is a PUT route';
-});
-
-//DELETE route
-$app->delete('/delete', function () {
-    echo 'This is a DELETE route';
-});
-
+*/
 /**
  * Run the Slim application. Last method to be called.
  */
-$app->run();
+//$app->run();
