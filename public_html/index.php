@@ -10,6 +10,7 @@ require '../libs/Slim/Slim.php';
  */
 $app = new Slim(array(
     'log.enable' => true,
+	'log.level' => 4,
     'log.path' => '../logs', // directory
     'debug' => true,
     'templates.path' => '../templates'
