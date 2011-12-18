@@ -1,19 +1,43 @@
 <?php
 
 /**
+ * Twig PHP Templating Engine 1.4
  * Slim PHP 5 Framework 1.5.1.2
  */
+//require '../libs/Twig/Autoloader.php';
 require '../libs/Slim/Slim.php';
+require '../libs/Views/TwigView.php';
+
+
+/**
+ * Templating via Twig
+ */
+//Twig_Autoloader::register();
+TwigView::twigDirectory = realpath('../libs/Twig');
+TwigView::twigOptions = array(
+	'cache' => '../compilation_cache',
+);
+
+/*
+$loader = new Twig_Loader_Filesystem(realpath('../templates'));
+$twig = new Twig_Environment($loader, array(
+  'cache' => '../compilation_cache',
+));
+*/
+
+//echo $twig->render('index.htm', array('name' => 'Fabien'));
+
 
 /**
  * Instantiate the Slim application
  */
 $app = new Slim(array(
+    'view' => 'TwigView',
     'log.enable' => true,
 	'log.level' => 4,
-    'log.path' => '../logs', // directory
+    'log.path' => realpath('../logs'), // directory
     'debug' => true,
-    'templates.path' => '../templates'
+    'templates.path' => realpath('../templates')
 ));
 
 /**
@@ -27,7 +51,8 @@ $app = new Slim(array(
 
 //GET route
 $app->get('/', function () {
-	echo 'Hoplaa' . '$this->getTemplatesDirectory() '; // . $this->getTemplatesDirectory();
+	echo $app->render('index.htm', array());
+	echo 'Hoplaa' . '$app->getTemplatesDirectory() ' . $app->getTemplatesDirectory();
     //$template = file_get_contents($this->getTemplatesDirectory() . '/index.htm');
     //echo $template;
 });
