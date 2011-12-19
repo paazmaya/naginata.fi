@@ -1,10 +1,13 @@
 /* main.css
 http://kuler.adobe.com/#themeID/1684351
-260511 dark violet
+1851AE blue
+6D50C5
+AB26BB violet
+13BB4B green
+60C5C5 light blue
+
 1B322F grey green
 5E4F00 mustard
-0070AE light blue
-CDDE66 light yellow
 */
 * {
 	margin: 0;
@@ -14,7 +17,7 @@ CDDE66 light yellow
 	font-size: 100%;
 	vertical-align: baseline;
 	background: transparent;
-	color: #260511;
+	color: #1851AE;
 }
 address, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
 	display: block;
@@ -38,9 +41,16 @@ body {
 article, section {
 	padding: 2em;
 }
+footer {
+	float: none;
+	clear: both;
+}
+p {
+	margin: 1em 0.5em;
+}
 
 a {
-	color: #5E4F00;
+	color: #AB26BB;
 	text-decoration: none;
 }
 a:hover {
@@ -52,9 +62,11 @@ input, select {
 }
 
 nav {
-	position: relative;
 	font-variant: small-caps;
 	width: 100%;
+	border-top: 0.1em solid #1851AE;
+	border-bottom: 0.1em solid #1851AE;
+	height: 1.5em;
 }
 
 nav ul {
@@ -69,22 +81,21 @@ nav li {
 	float: left;
 }
 nav a {
-	background-color: #F4F3F2;
-	color: #260511;
+	background-color: transparent;
+	color: #1851AE;
 	width: 100%;
 	height: 100%;
-	padding: 0.2em;
 	display: block;
 	text-align: center;
 }
 nav a:hover {
-	background-color: #260511;
+	background-color: #1851AE;
 	color: #F4F3F2;
 	text-decoration: none;
 }
 
 h1, h2, h3, h4, h5, h6 {
-	color: #260511;
+	color: #1851AE;
 }
 
 
@@ -99,5 +110,23 @@ article ol {
 	list-style-type: cjk-ideographic;
 }
 
+article img {
+}
 
-
+.mediathumb {
+	border: 0.2em solid #1851AE;
+	padding: 0.6em;
+	margin: 1em;
+	text-align: center;
+	float: left;
+}
+.mediathumb:nth-child(even) {
+	float: right;
+}
+.mediathumb:nth-child(odd) {
+}
+.mediathumb span {
+	display: block;
+	font-size: 0.8em;
+	font-weight: bold;
+}
