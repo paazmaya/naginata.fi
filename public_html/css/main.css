@@ -14,6 +14,7 @@ CDDE66 light yellow
 	font-size: 100%;
 	vertical-align: baseline;
 	background: transparent;
+	color: #260511;
 }
 address, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
 	display: block;
@@ -21,11 +22,11 @@ address, article, aside, canvas, details, figcaption, figure, footer, header, hg
 
 html {
 	height: 100%;
-	background-color: #0070AE;
+	width: 100%;
+	background-color: #F4F3F2;
 }
 
 body {
-	color: #121212;
 	min-height: 100%;
 	height: 100%;
 	width: 50em;
@@ -35,7 +36,6 @@ body {
 	position: relative;
 }
 article, section {
-	width: 100%;
 	padding: 2em;
 }
 
@@ -50,28 +50,27 @@ a:hover {
 input, select {
 	vertical-align: middle;
 }
-ul, ol {
-	list-style-position: inside;
-}
-ul {
-	list-style-type: square;
-}
 
 nav {
-	position: absolute;
+	position: relative;
 	font-variant: small-caps;
+	width: 100%;
 }
 
 nav ul {
 	list-style: none;
+	width: 50em;
+	display: block;
+	text-align: center;
 }
 nav li {
-	width: 16em;
-	height: 2em;
+	width: 10em;
+	height: 1.5em;
+	float: left;
 }
 nav a {
-	background-color: black;
-	color: white;
+	background-color: #F4F3F2;
+	color: #260511;
 	width: 100%;
 	height: 100%;
 	padding: 0.2em;
@@ -79,19 +78,26 @@ nav a {
 	text-align: center;
 }
 nav a:hover {
-	background-color: white;
-	color: black;
+	background-color: #260511;
+	color: #F4F3F2;
 	text-decoration: none;
 }
 
-header {
-	text-align: center;
-}
 h1, h2, h3, h4, h5, h6 {
 	color: #260511;
 }
 
 
+article ul, article ol {
+	list-style-position: inside;
+	padding-left: 1em;
+}
+article ul {
+	list-style-type: disc;
+}
+article ol {
+	list-style-type: cjk-ideographic;
+}
 
 
 

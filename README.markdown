@@ -5,7 +5,7 @@ A web site for acient martial art from Japan.
 Technologies
 -------------
  * Apache web server with mod_rewrite (http://httpd.apache.org/)
- * PHP 5.3, using Slim Framework (http://www.slimframework.com/)
+ * PHP 5.3 (http://www.php.net/)
  * MySQL via PHP PDO, for saving data (http://www.mysql.com/)
  * HTML5 for markup (http://developers.whatwg.org/)
  * CSS3 for styling (http://www.css3.info/modules/)
@@ -23,6 +23,7 @@ Today these are still some 4...6 active style, of which most of them contain oth
 aside using just a naginata. In any case in these styles naginata is used against a sword.
 
 This website will focus on the following two:
+
  * Atarashii Naginatado (http://naginata.jp/)
  * Jikishinkageryu Naginatajutsu (http://www.jikishin-naginata.jp/)
 
