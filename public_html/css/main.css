@@ -130,3 +130,22 @@ article img {
 	font-size: 0.8em;
 	font-weight: bold;
 }
+
+
+#logo {
+	width: 50em;
+	height: 10em;
+	background-image: url(../img/logo.png);
+	background-position: center center;
+	background-repeat: no-repeat;
+}
+#logo > p {
+	margin: 0;
+	width: 100%;
+	text-align: center;
+	font-size: 3em;
+	font-variant: small-caps;
+	word-spacing: 4em;
+	padding-top: 1em;
+}
+
