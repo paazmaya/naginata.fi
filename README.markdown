@@ -6,7 +6,7 @@ Technologies
 -------------
  * Apache web server with mod_rewrite (http://httpd.apache.org/)
  * PHP 5.3 (http://www.php.net/)
- * MySQL via PHP PDO, for saving data (http://www.mysql.com/)
+ * JSON used as a data format for storage (http://www.json.org/)
  * HTML5 for markup (http://developers.whatwg.org/)
  * CSS3 for styling (http://www.css3.info/modules/)
  * Javascript via jQuery for client interaction (http://jquery.com/)
