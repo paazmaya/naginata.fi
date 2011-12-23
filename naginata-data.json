@@ -1,0 +1,13 @@
+{
+	"navigation": {
+		"fi": [
+			["/", "Ajankohtaista", "Ajankohtaista"],
+			["/naginata", "Atarashii Naginatado", "Naginata"],
+			["/koryu", "Jikishinkageryu Naginatajutsu", "Koryu"],
+			["/media", "Kuvat, Videot ja muu Media", "Media"],
+			["/yhteystiedot", "Yhteystiedot", "Yhteystiedot"]
+		],
+		"en": [],
+		"jp": []
+	}
+}
