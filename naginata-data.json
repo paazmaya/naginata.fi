@@ -9,5 +9,24 @@
 		],
 		"en": [],
 		"jp": []
+	},
+	"article": {
+		"fi": {
+			"/": [
+				""
+			],
+			"/naginata": [],
+			"/koryu": [],
+			"/media": [],
+			"/yhteystiedot": []
+		},
+		"en": {},
+		"jp": {}
+	},
+	"users": {
+		"administrators": [
+			"olavic@gmail.com"
+		],
+		"contributors": []
 	}
 }

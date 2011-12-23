@@ -1,25 +1,25 @@
 <?php
-$appJson = file_get_contents('../naginata-data.json');
-$appData = json_decode($appJson, true);
-$lang = 'fi';
-
 //etag = sha1( naginata.fi + file/page name + last modification time of the given page )
+// In case anyone would edit the json, take a backup first which is then supposed to be committed later.
 
-echo createNavigation($appData['navigation'][$lang]);
+$shio = new ShikakeOji('../naginata-data.json');
+echo $shio->createNavigation();
 
 
-/**
- * Navigation data
- */
-function createNavigation($data) 
-{
-	$out = '<nav><ul>';
-	foreach ($data as $item) 
-	{
-		$out .= '<li><a href="' . $item['0'] . '" title="' . $item['1'] . '">' . $item['2'] . '</a></li>';
-	}
-	$out .= '</ul></nav>';
-	
-	return $out;
-}
+// if there would be tidy extension available
+// http://www.php.net/manual/en/tidy.examples.php
+// http://tidy.sourceforge.net/docs/quickref.html
+$html = 'a chunk of html you created';
+$config = array(
+	'indent' => true,
+	'output-xml' => true,
+	'input-xml' => true,
+	'wrap' => '1000'
+);
+
+// Tidy
+$tidy = new tidy();
+$tidy->parseString($html, $config, 'utf8');
+$tidy->cleanRepair();
+echo tidy_get_output($tidy);
 
