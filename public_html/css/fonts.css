@@ -1,0 +1,394 @@
+/* fonts.css */
+
+
+/* http://www.fontsquirrel.com/fonts/Roman-Caps */
+@font-face {
+    font-family: 'RomanCapsRegular';
+    src: url('Roman_SD-webfont.eot');
+    src: url('Roman_SD-webfont.eot?#iefix') format('embedded-opentype'),
+         url('Roman_SD-webfont.woff') format('woff'),
+         url('Roman_SD-webfont.ttf') format('truetype'),
+         url('Roman_SD-webfont.svg#RomanCapsRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+h1.fontroman {font: 60px/68px 'RomanCapsRegular', Arial, sans-serif;letter-spacing: 0;}
+
+p.fontroman {font: 18px/27px 'RomanCapsRegular', Arial, sans-serif;}
+
+
+/* http://www.fontsquirrel.com/fonts/Florante-at-Laura */
+@font-face {
+    font-family: 'FloranteatLauraRegular';
+    src: url('FLORLRG_-webfont.eot');
+    src: url('FLORLRG_-webfont.eot?#iefix') format('embedded-opentype'),
+         url('FLORLRG_-webfont.woff') format('woff'),
+         url('FLORLRG_-webfont.ttf') format('truetype'),
+         url('FLORLRG_-webfont.svg#FloranteatLauraRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'FloranteatLauraItalic';
+    src: url('FLORLI__-webfont.eot');
+    src: url('FLORLI__-webfont.eot?#iefix') format('embedded-opentype'),
+         url('FLORLI__-webfont.woff') format('woff'),
+         url('FLORLI__-webfont.ttf') format('truetype'),
+         url('FLORLI__-webfont.svg#FloranteatLauraItalic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+h1.fontflora {font: 60px/68px 'FloranteatLauraRegular', Arial, sans-serif;letter-spacing: 0;}
+
+p.fontflora1 {font: 18px/27px 'FloranteatLauraRegular', Arial, sans-serif;}
+p.fontflora2 {font: 18px/27px 'FloranteatLauraItalic', Arial, sans-serif;}
+
+
+/* http://www.fontsquirrel.com/fonts/Helsinki */
+
+
+@font-face {
+    font-family: 'HelsinkiRegular';
+    src: url('helsinki-webfont.eot');
+    src: url('helsinki-webfont.eot?#iefix') format('embedded-opentype'),
+         url('helsinki-webfont.woff') format('woff'),
+         url('helsinki-webfont.ttf') format('truetype'),
+         url('helsinki-webfont.svg#HelsinkiRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+h1.fonthelsinki {font: 60px/68px 'HelsinkiRegular', Arial, sans-serif;letter-spacing: 0;}
+
+p.fonthelsinki {font: 18px/27px 'HelsinkiRegular', Arial, sans-serif;}
+
+
+/* http://www.fontsquirrel.com/fonts/cabin */
+
+
+@font-face {
+    font-family: 'CabinRegular';
+    src: url('Cabin-Regular-webfont.eot');
+    src: url('Cabin-Regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('Cabin-Regular-webfont.woff') format('woff'),
+         url('Cabin-Regular-webfont.ttf') format('truetype'),
+         url('Cabin-Regular-webfont.svg#CabinRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'CabinItalic';
+    src: url('Cabin-Italic-webfont.eot');
+    src: url('Cabin-Italic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('Cabin-Italic-webfont.woff') format('woff'),
+         url('Cabin-Italic-webfont.ttf') format('truetype'),
+         url('Cabin-Italic-webfont.svg#CabinItalic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'CabinMedium';
+    src: url('Cabin-Medium-webfont.eot');
+    src: url('Cabin-Medium-webfont.eot?#iefix') format('embedded-opentype'),
+         url('Cabin-Medium-webfont.woff') format('woff'),
+         url('Cabin-Medium-webfont.ttf') format('truetype'),
+         url('Cabin-Medium-webfont.svg#CabinMedium') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'CabinMediumItalic';
+    src: url('Cabin-MediumItalic-webfont.eot');
+    src: url('Cabin-MediumItalic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('Cabin-MediumItalic-webfont.woff') format('woff'),
+         url('Cabin-MediumItalic-webfont.ttf') format('truetype'),
+         url('Cabin-MediumItalic-webfont.svg#CabinMediumItalic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'CabinSemiBold';
+    src: url('Cabin-SemiBold-webfont.eot');
+    src: url('Cabin-SemiBold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('Cabin-SemiBold-webfont.woff') format('woff'),
+         url('Cabin-SemiBold-webfont.ttf') format('truetype'),
+         url('Cabin-SemiBold-webfont.svg#CabinSemiBold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'CabinSemiBoldItalic';
+    src: url('Cabin-SemiBoldItalic-webfont.eot');
+    src: url('Cabin-SemiBoldItalic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('Cabin-SemiBoldItalic-webfont.woff') format('woff'),
+         url('Cabin-SemiBoldItalic-webfont.ttf') format('truetype'),
+         url('Cabin-SemiBoldItalic-webfont.svg#CabinSemiBoldItalic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'CabinBold';
+    src: url('Cabin-Bold-webfont.eot');
+    src: url('Cabin-Bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('Cabin-Bold-webfont.woff') format('woff'),
+         url('Cabin-Bold-webfont.ttf') format('truetype'),
+         url('Cabin-Bold-webfont.svg#CabinBold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'CabinBoldItalic';
+    src: url('Cabin-BoldItalic-webfont.eot');
+    src: url('Cabin-BoldItalic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('Cabin-BoldItalic-webfont.woff') format('woff'),
+         url('Cabin-BoldItalic-webfont.ttf') format('truetype'),
+         url('Cabin-BoldItalic-webfont.svg#CabinBoldItalic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+h1.fontcabin {font: 60px/68px 'CabinRegular', Arial, sans-serif;letter-spacing: 0;}
+
+p.fontcabin1 {font: 18px/27px 'CabinRegular', Arial, sans-serif;}
+p.fontcabin2 {font: 18px/27px 'CabinItalic', Arial, sans-serif;}
+p.fontcabin3 {font: 18px/27px 'CabinMedium', Arial, sans-serif;}
+p.fontcabin4 {font: 18px/27px 'CabinMediumItalic', Arial, sans-serif;}
+p.fontcabin5 {font: 18px/27px 'CabinSemiBold', Arial, sans-serif;}
+p.fontcabin6 {font: 18px/27px 'CabinSemiBoldItalic', Arial, sans-serif;}
+p.fontcabin7 {font: 18px/27px 'CabinBold', Arial, sans-serif;}
+p.fontcabin8 {font: 18px/27px 'CabinBoldItalic', Arial, sans-serif;}
+
+
+
+
+
+/* http://www.fontsquirrel.com/fonts/DejaVu-Sans */
+
+
+
+@font-face {
+    font-family: 'DejaVuSansBook';
+    src: url('DejaVuSans-webfont.eot');
+    src: url('DejaVuSans-webfont.eot?#iefix') format('embedded-opentype'),
+         url('DejaVuSans-webfont.woff') format('woff'),
+         url('DejaVuSans-webfont.ttf') format('truetype'),
+         url('DejaVuSans-webfont.svg#DejaVuSansBook') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'DejaVuSansOblique';
+    src: url('DejaVuSans-Oblique-webfont.eot');
+    src: url('DejaVuSans-Oblique-webfont.eot?#iefix') format('embedded-opentype'),
+         url('DejaVuSans-Oblique-webfont.woff') format('woff'),
+         url('DejaVuSans-Oblique-webfont.ttf') format('truetype'),
+         url('DejaVuSans-Oblique-webfont.svg#DejaVuSansOblique') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'DejaVuSansBold';
+    src: url('DejaVuSans-Bold-webfont.eot');
+    src: url('DejaVuSans-Bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('DejaVuSans-Bold-webfont.woff') format('woff'),
+         url('DejaVuSans-Bold-webfont.ttf') format('truetype'),
+         url('DejaVuSans-Bold-webfont.svg#DejaVuSansBold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'DejaVuSansBoldOblique';
+    src: url('DejaVuSans-BoldOblique-webfont.eot');
+    src: url('DejaVuSans-BoldOblique-webfont.eot?#iefix') format('embedded-opentype'),
+         url('DejaVuSans-BoldOblique-webfont.woff') format('woff'),
+         url('DejaVuSans-BoldOblique-webfont.ttf') format('truetype'),
+         url('DejaVuSans-BoldOblique-webfont.svg#DejaVuSansBoldOblique') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'DejaVuSansCondensed';
+    src: url('DejaVuSansCondensed-webfont.eot');
+    src: url('DejaVuSansCondensed-webfont.eot?#iefix') format('embedded-opentype'),
+         url('DejaVuSansCondensed-webfont.woff') format('woff'),
+         url('DejaVuSansCondensed-webfont.ttf') format('truetype'),
+         url('DejaVuSansCondensed-webfont.svg#DejaVuSansCondensed') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'DejaVuSansCondensedOblique';
+    src: url('DejaVuSansCondensed-Oblique-webfont.eot');
+    src: url('DejaVuSansCondensed-Oblique-webfont.eot?#iefix') format('embedded-opentype'),
+         url('DejaVuSansCondensed-Oblique-webfont.woff') format('woff'),
+         url('DejaVuSansCondensed-Oblique-webfont.ttf') format('truetype'),
+         url('DejaVuSansCondensed-Oblique-webfont.svg#DejaVuSansCondensedOblique') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'DejaVuSansCondensedBold';
+    src: url('DejaVuSansCondensed-Bold-webfont.eot');
+    src: url('DejaVuSansCondensed-Bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('DejaVuSansCondensed-Bold-webfont.woff') format('woff'),
+         url('DejaVuSansCondensed-Bold-webfont.ttf') format('truetype'),
+         url('DejaVuSansCondensed-Bold-webfont.svg#DejaVuSansCondensedBold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'DejaVuSansCnBdOb';
+    src: url('DejaVuSansCondensed-BoldOblique-webfont.eot');
+    src: url('DejaVuSansCondensed-BoldOblique-webfont.eot?#iefix') format('embedded-opentype'),
+         url('DejaVuSansCondensed-BoldOblique-webfont.woff') format('woff'),
+         url('DejaVuSansCondensed-BoldOblique-webfont.ttf') format('truetype'),
+         url('DejaVuSansCondensed-BoldOblique-webfont.svg#DejaVuSansCnBdOb') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+h1.fontdejavu {font: 60px/68px 'DejaVuSansBook', Arial, sans-serif;letter-spacing: 0;}
+
+p.fontdejavu1 {font: 18px/27px 'DejaVuSansBook', Arial, sans-serif;}
+p.fontdejavu2 {font: 18px/27px 'DejaVuSansOblique', Arial, sans-serif;}
+p.fontdejavu3 {font: 18px/27px 'DejaVuSansBold', Arial, sans-serif;}
+p.fontdejavu4 {font: 18px/27px 'DejaVuSansBoldOblique', Arial, sans-serif;}
+p.fontdejavu5 {font: 18px/27px 'DejaVuSansCondensed', Arial, sans-serif;}
+p.fontdejavu6 {font: 18px/27px 'DejaVuSansCondensedOblique', Arial, sans-serif;}
+p.fontdejavu7 {font: 18px/27px 'DejaVuSansCondensedBold', Arial, sans-serif;}
+p.fontdejavu8 {font: 18px/27px 'DejaVuSansCnBdOb', Arial, sans-serif;}
+		
+
+
+
+
+
+
+/* http://www.fontsquirrel.com/fonts/pt-serif */
+
+
+
+
+@font-face {
+    font-family: 'PTSerifRegular';
+    src: url('PTF55F-webfont.eot');
+    src: url('PTF55F-webfont.eot?#iefix') format('embedded-opentype'),
+         url('PTF55F-webfont.woff') format('woff'),
+         url('PTF55F-webfont.ttf') format('truetype'),
+         url('PTF55F-webfont.svg#PTSerifRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'PTSerifItalic';
+    src: url('PTF56F-webfont.eot');
+    src: url('PTF56F-webfont.eot?#iefix') format('embedded-opentype'),
+         url('PTF56F-webfont.woff') format('woff'),
+         url('PTF56F-webfont.ttf') format('truetype'),
+         url('PTF56F-webfont.svg#PTSerifItalic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'PTSerifBold';
+    src: url('PTF75F-webfont.eot');
+    src: url('PTF75F-webfont.eot?#iefix') format('embedded-opentype'),
+         url('PTF75F-webfont.woff') format('woff'),
+         url('PTF75F-webfont.ttf') format('truetype'),
+         url('PTF75F-webfont.svg#PTSerifBold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'PTSerifBoldItalic';
+    src: url('PTF76F-webfont.eot');
+    src: url('PTF76F-webfont.eot?#iefix') format('embedded-opentype'),
+         url('PTF76F-webfont.woff') format('woff'),
+         url('PTF76F-webfont.ttf') format('truetype'),
+         url('PTF76F-webfont.svg#PTSerifBoldItalic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'PTSerifCaptionRegular';
+    src: url('PTZ55F-webfont.eot');
+    src: url('PTZ55F-webfont.eot?#iefix') format('embedded-opentype'),
+         url('PTZ55F-webfont.woff') format('woff'),
+         url('PTZ55F-webfont.ttf') format('truetype'),
+         url('PTZ55F-webfont.svg#PTSerifCaptionRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'PTSerifCaptionItalic';
+    src: url('PTZ56F-webfont.eot');
+    src: url('PTZ56F-webfont.eot?#iefix') format('embedded-opentype'),
+         url('PTZ56F-webfont.woff') format('woff'),
+         url('PTZ56F-webfont.ttf') format('truetype'),
+         url('PTZ56F-webfont.svg#PTSerifCaptionItalic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+h1.fontptserif {font: 60px/68px 'PTSerifCaptionRegular', Arial, sans-serif;letter-spacing: 0;}
+
+p.fontptserif1 {font: 18px/27px 'PTSerifRegular', Arial, sans-serif;}
+p.fontptserif2 {font: 18px/27px 'PTSerifItalic', Arial, sans-serif;}
+p.fontptserif3 {font: 18px/27px 'PTSerifBold', Arial, sans-serif;}
+p.fontptserif4 {font: 18px/27px 'PTSerifBoldItalic', Arial, sans-serif;}
+p.fontptserif5 {font: 18px/27px 'PTSerifCaptionRegular', Arial, sans-serif;}
+p.fontptserif6 {font: 18px/27px 'PTSerifCaptionItalic', Arial, sans-serif;}
+		
+
+
+
