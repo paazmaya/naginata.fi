@@ -1,4 +1,9 @@
 {
+	"title": {
+		"fi": "Naginata Suomessa",
+		"en": "Naginata Finland",
+		"jp": "なぎなた フィンランド"
+	},
 	"navigation": {
 		"fi": [
 			["/", "Ajankohtaista", "Ajankohtaista"],
@@ -22,6 +27,14 @@
 		},
 		"en": {},
 		"jp": {}
+	},
+	"footer": {
+		"fi": [
+			["http://paazmaya.com", "PAAZMAYA.com", "&copy; Jukka Paasonen"],
+			["#contribute", "Tue sivuja muokkaamalla", "Ylläpito"]
+		],
+		"en": [],
+		"jp": []
 	},
 	"users": {
 		"administrators": [

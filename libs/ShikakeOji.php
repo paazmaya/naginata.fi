@@ -17,6 +17,12 @@ class ShikakeOji
 	public $addData;
 	
 	/**
+	 * Last modification date of the data.
+	 * Does not separate per language, just the last edit of anything.
+	 */
+	public $modified;
+	
+	/**
 	 * Current page, as seen in the request url.
 	 * Needs to match the ones available in navigation.
 	 * Defaults to / as in front page.
@@ -28,22 +34,86 @@ class ShikakeOji
 	 */
 	function __construct($jsonpath)
 	{
-		$json = file_get_contents($jsonpath);
-		$this->appData = json_decode($json, true);
-		
-		$error = getJsonError();
-		if ($error != '')
+		if (file_exists($jsonpath))
 		{
-			echo $error;
+			$json = file_get_contents($jsonpath);
+			$this->appData = json_decode($json, true);
+			$this->modified = filemtime($jsonpath);
+			
+			$error = $this->getJsonError();
+			if ($error != '')
+			{
+				echo $error;
+			}
 		}
 	}
 
 	/**
+	 * Create the common head section with style sheet imports.
+	 * 
+	 * @param	array	$styles	List of source files in "css" folder
+	 * @return	string
+	 */
+	public function createHtmlHeadBody($styles)
+	{
+		$base = '/css/';
+		
+		$nav = $this->appData['navigation'][$this->language];
+		$title = '';
+		foreach($nav as $list)
+		{
+			if (in_array($this->currentPage, $list))
+			{
+				$title = $list['2'];
+			}
+		}
+		
+		$out = '<!DOCTYPE html>';
+		$out .= '<html>';
+		$out .= '<head>';
+		$out .= '<meta charset="utf-8"/>';
+		$out .= '<title>' . $title . ' - Naginata Suomessa</title>';
+		$out .= '<link rel="shortcut icon" href="img/favicon.png" type="image/png"/>';
+		
+		foreach($styles as $css)
+		{		
+			$out .= '<link rel="stylesheet" href="' . $base . $css . '" type="text/css" media="all" />';
+		}
+		
+		$out .= '<script type="text/javascript" src="js/modernizr.js"></script>';
+		
+		$out .= '</head>';
+		$out .= '<body>';
+		return $out;
+	}
+	
+	/**
+	 * Create a simple div with logo specific id and text changing per language.
+	 * 
+	 * @return	string
+	 */
+	public function createLogo()
+	{
+		if (!$this->isDataAvailable('title'))
+		{
+			return '<p class="fail">Title data missing</p>';
+		}
+	
+		$out = '<div id="logo">';
+		// should be only two words
+		$out .= '<p class="fontdejavu1">' . $this->appData['title'][$this->language] . '</p>';
+		$out .= '</div>';
+		return $out;
+	}
+	
+	/**
 	 * Navigation block for HTML5
+	 * 
+	 * @return	string
 	 */
 	public function createNavigation() 
 	{
-		if (!isDataAvailable('navigation'))
+		if (!$this->isDataAvailable('navigation'))
 		{
 			return '<p class="fail">Navigation data missing</p>';
 		}
@@ -68,10 +138,12 @@ class ShikakeOji
 	
 	/**
 	 * Article block for HTML5
+	 * 
+	 * @return	string
 	 */
 	public function createArticle()
 	{
-		if (!isDataAvailable('article'))
+		if (!$this->isDataAvailable('article'))
 		{
 			return '<p class="fail">Article data missing</p>';
 		}
@@ -95,6 +167,14 @@ class ShikakeOji
 				if (is_array($article))
 				{
 					// There might be specific sections defined...
+					/*
+					<header>
+						<h1>Ajankohtaista</h1>
+						<p>Ensimmäiset viittaukset naginataan löytyvät Kojikista, vanhimmasta säilyneestä Japanin historiasta kertovasta kirjasta, 
+						jossa sana ”naginata” esiintyy ensimmäisen kerran. Nara-kaudella sen ottivat käyttöön sōhei-soturipapit ja ensimmäiset
+						naginatan käytöstä taistelussa (naginatajutsu) kertovat tekstit löytyvät vuonna 1086 kirjoitetussa kirjassa Oshu Gosannenki (”Päiväkirja kolmesta vuodesta Oshussa”).</p>
+					</header>
+					*/
 				}
 				else
 				{
@@ -104,6 +184,57 @@ class ShikakeOji
 			}
 		}
 		
+		return $out;
+	}
+	
+	/**
+	 * Footer with copyrights, login and edit links.
+	 * 
+	 * @return	string
+	 */
+	public function createFooter()
+	{
+		if (!$this->isDataAvailable('footer'))
+		{
+			return '<p class="fail">Footer data missing</p>';
+		}
+		
+		$data = $this->appData['footer'][$this->language]; // supposed to be an array of links
+		
+		$out = '<footer>';
+		$out .= '<p>';
+		
+		foreach ($data as $item) 
+		{
+			// ["http://paazmaya.com", "PAAZMAYA.com", "&copy; Jukka Paasonen"]
+			$out .= '<a href="' . $item['0'] . '" title="' . $item['1'] . '">' . $item['2'] . '</a> | ';
+		}
+		
+		$out .= '<time datetime="' . date('c', $this->modified) . '">' . date('r', $this->modified) . '</time>';
+		$out .= '<a href="#contribute" title=""></a></p>';
+		$out .= '</footer>';
+		
+		return $out;
+	}
+	
+	/**
+	 * Close the body and html tags, including the javascript import that is combined
+	 * of all the source files and compressed if supported.
+	 * 
+	 * @param	array	$scripts	List of source files in "js" folder
+	 * @return	string
+	 */
+	public function createEndBodyJavascript($scripts)
+	{
+		$base = '/js/';
+		$out = '';
+		
+		foreach($scripts as $js)
+		{		
+			$out .= '<script type="text/javascript" src="' . $base . $js . '"></script>';	
+		}
+		$out .= '</body>';
+		$out .= '</html>';
 		return $out;
 	}
 	

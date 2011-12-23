@@ -41,10 +41,6 @@ body {
 article, section {
 	padding: 2em;
 }
-footer {
-	float: none;
-	clear: both;
-}
 p {
 	margin: 1em 0.5em;
 }
@@ -61,7 +57,11 @@ input, select {
 	vertical-align: middle;
 }
 
-nav {
+footer {
+	float: none;
+	clear: both;
+}
+nav, footer {
 	font-variant: small-caps;
 	width: 100%;
 	border-top: 0.1em solid #1851AE;
@@ -69,26 +69,33 @@ nav {
 	height: 1.5em;
 }
 
-nav ul {
+nav ul, footer p {
 	list-style: none;
 	width: 50em;
 	display: block;
 	text-align: center;
+	margin: 0;
 }
 nav li {
 	width: 10em;
 	height: 1.5em;
 	float: left;
 }
-nav a {
+nav a, footer a {
 	background-color: transparent;
 	color: #1851AE;
-	width: 100%;
-	height: 100%;
-	display: block;
 	text-align: center;
+	height: 100%;
 }
-nav a:hover {
+footer p {
+	height: 1.5em;
+}
+nav a {
+	width: 100%;
+	display: block;
+}
+
+nav a:hover, footer a:hover {
 	background-color: #1851AE;
 	color: #F4F3F2;
 	text-decoration: none;
@@ -131,6 +138,12 @@ article img {
 	font-weight: bold;
 }
 
+.fail {
+	margin: 1em;
+	border: 0.3em solid #AB26BB;
+	color: #121212;
+	background-color: #F4F3F2;
+}
 
 #logo {
 	width: 50em;

@@ -1,6 +1,6 @@
 /* naginata.js */
 
-var googleAnalytics = 'UA-XXXXXX';
+var googleAnalytics = 'UA-2643697-14';
 
 var _gaq = _gaq || [];
 _gaq.push(['_setAccount', googleAnalytics]);
@@ -22,9 +22,15 @@ $(document).ready(function() {
 	// Track ColorBox usage with Google Analytics
 	$(document).bind('cbox_complete', function(){
 		var href = $.colorbox.element().attr("href");
+		console.log('cbox_complete occurred, href: ' + href);
 		if (href) {
 			_gaq.push(['_trackPageview', href]);
 		}
+	});
+	
+	// Open modal for logging in via OAuth and edit pages.
+	$('a[href="#contribute"]').click(function() {
+		return false;
 	});
 
 });
