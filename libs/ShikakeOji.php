@@ -211,7 +211,6 @@ class ShikakeOji
 		}
 		
 		$out .= '<time datetime="' . date('c', $this->modified) . '">' . date('r', $this->modified) . '</time>';
-		$out .= '<a href="#contribute" title=""></a></p>';
 		$out .= '</footer>';
 		
 		return $out;

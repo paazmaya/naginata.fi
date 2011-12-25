@@ -13,7 +13,9 @@ _gaq.push(['_trackPageview']);
 })();
 
 $(document).ready(function() {
-	$('article a').click(function() {
+	var links = $('article a:not(.mediathumb a)').size();
+	console.log('links: ' + links);
+	$('article a:not(.mediathumb a)').click(function() {
 		console.log('something was clicked');
 		return false;
 	});
@@ -30,6 +32,12 @@ $(document).ready(function() {
 	
 	// Open modal for logging in via OAuth and edit pages.
 	$('a[href="#contribute"]').click(function() {
+		$.colorbox({
+			href: '/editor.php',
+			iframe: true,
+			width: '50%',
+			height: '25%'
+		});
 		return false;
 	});
 

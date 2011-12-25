@@ -10,9 +10,11 @@ $out = $shio->createHtmlHeadBody(array(
 	'colorbox.css',
 	'main.css'
 ));
-$out .= $shio->createLogo();
 $out .= $shio->createNavigation();
+$out .= '<div id="wrapper">';
+$out .= $shio->createLogo();
 $out .= $shio->createArticle();
+$out .= '</div>';
 $out .= $shio->createFooter();
 $out .= $shio->createEndBodyJavascript(array(
 	'jquery.js',
