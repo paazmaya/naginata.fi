@@ -16,8 +16,8 @@
    inkscape:version="0.48.2 r9819"
    sodipodi:docname="favicon.svg"
    inkscape:export-filename="D:\checkouts-external\paazmaya-github\naginata.fi\favicon.png"
-   inkscape:export-xdpi="90"
-   inkscape:export-ydpi="90">
+   inkscape:export-xdpi="742.5"
+   inkscape:export-ydpi="742.5">
   <defs
      id="defs4" />
   <sodipodi:namedview
@@ -28,7 +28,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="3.81"
-     inkscape:cx="0.58340668"
+     inkscape:cx="-42.198746"
      inkscape:cy="32.640483"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
@@ -57,13 +57,13 @@
      transform="translate(0,-1036.3622)">
     <path
        sodipodi:type="arc"
-       style="fill:#1851ae;fill-opacity:1;fill-rule:evenodd;stroke:none"
+       style="fill:#072434;fill-opacity:1;fill-rule:evenodd;stroke:none"
        id="path2985"
        sodipodi:cx="8.1364832"
        sodipodi:cy="8.1259842"
        sodipodi:rx="7.6115484"
        sodipodi:ry="7.8740158"
-       d="m 15.748032,8.1259842 a 7.6115484,7.8740158 0 1 1 -15.22309723,0 7.6115484,7.8740158 0 1 1 15.22309723,0 z"
+       d="M 15.748032,8.1259842 C 15.748032,12.474683 12.340225,16 8.1364832,16 3.9327411,16 0.52493477,12.474683 0.52493477,8.1259842 c 0,-4.3486989 3.40780633,-7.87401582 7.61154843,-7.87401582 4.2037418,0 7.6115488,3.52531692 7.6115488,7.87401582 z"
        transform="matrix(1.0510345,0,0,1.016,-0.55172456,1036.1062)" />
   </g>
 </svg>
