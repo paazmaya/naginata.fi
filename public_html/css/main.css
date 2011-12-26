@@ -1,14 +1,13 @@
-/* main.css
-http://kuler.adobe.com/#themeID/1684351
-1851AE blue
-6D50C5
-AB26BB violet
-13BB4B green
-60C5C5 light blue
-
-1B322F grey green
-5E4F00 mustard
-*/
+/**
+ * main.css
+ * 
+ * Reindeer in the Arctic, http://kuler.adobe.com/#themeID/1691184
+ * FEFEFE white
+ * 4B5535 army green
+ * 6E5728 light brown
+ * 072434 blue
+ * 989E7B greyish
+ */
 * {
 	margin: 0;
 	padding: 0;
@@ -25,7 +24,7 @@ address, article, aside, canvas, details, figcaption, figure, footer, header, hg
 
 html, body {
 	width: 100%;
-	background-color: #F4F3F2;
+	background-color: #FEFEFE;
 }
 
 article, section {
@@ -36,11 +35,11 @@ p {
 }
 
 a {
-	color: #AB26BB;
+	color: #1A1A18;
 	text-decoration: none;
 }
 a:hover {
-	color: #1B322F;
+	color: #072434;
 	text-decoration: underline;
 }
 input, select {
@@ -59,26 +58,20 @@ nav ul, footer > p {
 	left: 50%;
 	position: relative;
 }
-
-footer {
-	float: none;
-	clear: both;
-	position: relative;
-	z-index: 100;
-	margin-bottom: 1em;
-}
 nav, footer {
 	font-variant: small-caps;
 	width: 100%;
-	border-top: 0.1em solid #1851AE;
-	border-bottom: 0.1em solid #1851AE;
+	border-top: 0.1em solid #072434;
+	border-bottom: 0.1em solid #072434;
 	height: 1.5em;
+	color: #072434;
 }
 
 nav ul, footer p {
 	list-style: none;
 	display: block;
 	text-align: center;
+	color: #072434;
 }
 nav li {
 	width: 10em;
@@ -87,14 +80,25 @@ nav li {
 }
 nav a, footer a {
 	background-color: transparent;
-	color: #1851AE;
+	color: #072434;
 	text-align: center;
 	height: 100%;
+}
+
+footer {
+	float: none;
+	clear: both;
+	position: relative;
+	z-index: 100;
+	margin-bottom: 1em;
 }
 footer > p {
 	height: 1.5em;
 	margin: 0;
 	margin-left: -25em;
+}
+footer time {
+	color: #072434;
 }
 nav a {
 	width: 100%;
@@ -102,13 +106,13 @@ nav a {
 }
 
 nav a:hover, footer a:hover {
-	background-color: #1851AE;
-	color: #F4F3F2;
+	background-color: #072434;
+	color: #DFE0E4;
 	text-decoration: none;
 }
 
 h1, h2, h3, h4, h5, h6 {
-	color: #1851AE;
+	color: #49371F;
 }
 
 
@@ -131,7 +135,7 @@ form {
 }
 select, input, textarea {
 	width: 38em;
-	border: 1px solid #60C5C5;
+	border: 1px solid #1851AE;
 	margin: 1em;
 }
 textarea {
@@ -171,7 +175,7 @@ input[type="submit"] {
 	margin: 1em;
 	border: 0.3em solid #AB26BB;
 	color: #121212;
-	background-color: #F4F3F2;
+	background-color: #FEFEFE;
 }
 
 #wrapper {
@@ -181,6 +185,7 @@ input[type="submit"] {
 	margin-left: -25em;
 	left: 50%;
 	position: relative;
+	background-color: #FEFEFE;
 }
 #logo {
 	width: 50em;
@@ -198,5 +203,6 @@ input[type="submit"] {
 	font-variant: small-caps;
 	word-spacing: 4em;
 	padding-top: 1em;
+	color: #1851AE;
 }
 

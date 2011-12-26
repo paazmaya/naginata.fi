@@ -19,6 +19,7 @@ $out .= $shio->createFooter();
 $out .= $shio->createEndBodyJavascript(array(
 	'jquery.js',
 	'jquery.colorbox.js',
+	'wymeditor/jquery.wymeditor.js',
 	'naginata.js'
 ));
 
@@ -28,7 +29,6 @@ echo $out;
 // if there would be tidy extension available
 // http://www.php.net/manual/en/tidy.examples.php
 // http://tidy.sourceforge.net/docs/quickref.html
-$html = 'a chunk of html you created';
 $config = array(
 	'indent' => true,
 	'output-xml' => true,
@@ -39,7 +39,7 @@ $config = array(
 // Tidy
 /*
 $tidy = new tidy();
-$tidy->parseString($html, $config, 'utf8');
+$tidy->parseString($out, $config, 'utf8');
 $tidy->cleanRepair();
 echo tidy_get_output($tidy);
 */
