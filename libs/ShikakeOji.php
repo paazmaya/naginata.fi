@@ -10,6 +10,11 @@ class ShikakeOji
 	 * Current language, defaults to Finnish.
 	 */
     public $language = 'fi';
+	
+	/**
+	 * Should be set to the realpath of the json file where app data is stored.
+	 */
+	public $jsonpath = '';
 
 	/**
 	 * Application data, decoded from JSON string
@@ -34,18 +39,8 @@ class ShikakeOji
 	 */
 	function __construct($jsonpath)
 	{
-		if (file_exists($jsonpath))
-		{
-			$json = file_get_contents($jsonpath);
-			$this->appData = json_decode($json, true);
-			$this->modified = filemtime($jsonpath);
-			
-			$error = $this->getJsonError();
-			if ($error != '')
-			{
-				echo $error;
-			}
-		}
+		$this->jsonpath = $jsonpath;
+		$this->loadData();
 	}
 
 	/**
@@ -237,6 +232,38 @@ class ShikakeOji
 		return $out;
 	}
 	
+	private function loadData()
+	{
+		if ($this->jsonpath != '' && file_exists($this->jsonpath))
+		{
+			$json = file_get_contents($this->jsonpath);
+			$this->appData = json_decode($json, true);
+			$this->modified = filemtime($this->jsonpath);
+			
+			$error = $this->getJsonError();
+			if ($error != '')
+			{
+				echo $error;
+			}
+		}
+		
+		// $data = utf8_decode( json_decode($json) );
+	}
+	
+	/**
+	 * Save application data to the JSON file storage and update modificatiion date.
+	 */
+	private function saveData()
+	{
+		// $json = json_encode( utf8_encode($data) );
+		if ($this->jsonpath != '')
+		{
+			$jsonstring = $this->jsonPrettyPrint(json_encode($this->appData)); // PHP 5.4 onwards JSON_PRETTY_PRINT
+			file_put_contents($this->jsonpath, $jsonstring);
+			$this->modified = time();
+		}
+	}
+	
 	/**
 	 * Check to see whether a given data scope is available.
 	 * 
@@ -255,6 +282,7 @@ class ShikakeOji
 	
 	/**
 	 * http://www.php.net/manual/en/function.json-last-error.php
+	 * @return	string
 	 */
 	private function getJsonError()
 	{
@@ -283,6 +311,86 @@ class ShikakeOji
 				break;
 		}
 	}
+	
+	/**
+	 * Pretty print some JSON 
+	 * http://fi.php.net/manual/en/function.json-encode.php#80339
+	 * 
+	 * @param	string	$json	A string encoded as JSON
+	 * @return	string
+	 */
+	private function jsonPrettyPrint($json) 
+	{ 
+		$tab = "  "; 
+		$new_json = ""; 
+		$indent_level = 0; 
+		$in_string = false; 
+
+		$len = strlen($json); 
+
+		for($c = 0; $c < $len; $c++) 
+		{ 
+			$char = $json[$c]; 
+			switch($char) 
+			{ 
+				case '{': 
+				case '[': 
+					if(!$in_string) 
+					{ 
+						$new_json .= $char . "\n" . str_repeat($tab, $indent_level + 1);
+						 $indent_level++; 
+					} 
+					else 
+					{ 
+						$new_json .= $char; 
+					} 
+					break; 
+				case '}': 
+				case ']': 
+					if(!$in_string) 
+					{ 
+						$indent_level--; 
+						$new_json .= "\n" . str_repeat($tab, $indent_level) . $char;
+					 } 
+					else 
+					{ 
+						$new_json .= $char; 
+					} 
+					break; 
+				case ',': 
+					if(!$in_string) 
+					{ 
+						$new_json .= ",\n" . str_repeat($tab, $indent_level); 
+					} 
+					else 
+					{ 
+						$new_json .= $char; 
+					} 
+					break; 
+				case ':': 
+					if(!$in_string) 
+					{ 
+						$new_json .= ": "; 
+					} 
+					else 
+					{ 
+						$new_json .= $char; 
+					} 
+					break; 
+				case '"': 
+					if($c > 0 && $json[$c-1] != '\\') 
+					{ 
+						$in_string = !$in_string; 
+					} 
+				default: 
+					$new_json .= $char; 
+					break;                    
+			} 
+		} 
+
+		return $new_json; 
+	} 
+
 	
 	/**
 	 * Encode HTML entities for a block of text

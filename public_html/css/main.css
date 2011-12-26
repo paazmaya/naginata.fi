@@ -126,6 +126,29 @@ article ol {
 article img {
 }
 
+form {
+	width: 40em;
+}
+select, input, textarea {
+	width: 38em;
+	border: 1px solid #60C5C5;
+	margin: 1em;
+}
+textarea {
+	height: 40em;
+}
+input[type="submit"] {
+	width: 50%;
+	margin-left: 25%;
+	padding: 0.5em;
+	text-align: center;
+	font-weight: bold;
+}
+.wym_iframe > iframe {
+	height: 40em;
+	margin: 1em;
+}
+
 .mediathumb {
 	border: 0.2em solid #1851AE;
 	padding: 0.6em;

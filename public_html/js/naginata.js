@@ -28,17 +28,45 @@ $(document).ready(function() {
 		if (href) {
 			_gaq.push(['_trackPageview', href]);
 		}
+		
 	});
+	
 	
 	// Open modal for logging in via OAuth and edit pages.
 	$('a[href="#contribute"]').click(function() {
-		$.colorbox({
-			href: '/editor.php',
-			iframe: true,
-			width: '50%',
-			height: '25%'
+		var ops = '';
+		$('nav a').each(function() {
+			var t = $(this);
+			ops += '<option value="' + t.attr('href') +
+				'">' + t.text() + ' [' + t.attr('href') + ']</option>';
 		});
+		console.log('appending ops: ' + ops);
+		editform = $(editform).children('select').append(ops).parent().children('textarea').text($('article').html()).parent().get(0);
+		
+		$.colorbox({
+			html: editform,
+			title: $(this).attr('title'),
+			modal: true
+		});
+		
+		$('textarea').wymeditor({
+			lang: 'fi',
+			skin: 'compact'
+		});
+		return false;
+	});
+	
+	$('form').live('submit', function() {
+		console.log('submit');
 		return false;
 	});
 
 });
+
+var editform = '<form action="" method="post">' +
+	'<select name="">' +
+		'<option value=""></option>' +
+	'</select>' +
+	'<textarea name=""></textarea>' +
+	'<input type="submit" value="Send" />' +
+	'</form>';

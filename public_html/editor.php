@@ -15,11 +15,3 @@ In case the existing does not match the replacement, ask user which one to use.
 */
 ?>
 
-<form action="" method="post">
-	<select name="">
-		<option value=""></option>
-	</select>
-	<textarea name=""></textarea>
-	<input type="submit" value="" />
-</form>
-

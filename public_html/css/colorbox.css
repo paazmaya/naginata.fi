@@ -19,11 +19,11 @@
     ordered & tabbed in a way that represents the nesting of the generated HTML.
 */
 #cboxOverlay{background:#fff;}
-#colorbox{}
+#colorbox{background-color: #fff;}
 #cboxContent{margin-top:32px; overflow:visible;}
 .cboxIframe{background:#fff;}
 #cboxError{padding:50px; border:1px solid #ccc;}
-#cboxLoadedContent{background:#1851AE; padding:10px;}
+#cboxLoadedContent{background-color: #F4F3F2; padding: 4px; border: 2px solid #1851AE;}
 #cboxLoadingGraphic{background:url(../img/loading.gif) no-repeat center center;}
 #cboxLoadingOverlay{background:#000;}
 #cboxTitle{position:absolute; top:-22px; left:0; color:#121212; }
