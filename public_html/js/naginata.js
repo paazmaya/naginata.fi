@@ -22,7 +22,7 @@ $(document).ready(function() {
 	$('.mediathumb a').colorbox();
 	
 	// Track ColorBox usage with Google Analytics
-	$(document).bind('cbox_complete', function(){
+	$(document).on('cbox_complete', function(){
 		var href = $.colorbox.element().attr("href");
 		console.log('cbox_complete occurred, href: ' + href);
 		if (href) {
@@ -94,11 +94,29 @@ $(document).ready(function() {
 	})
 	.change();
 	
-	$(window).unload(function() {
-		//alert('Handler for .unload() called.');
+	$(window).on('unload', function() {
+		console.log('unload');
+		return false;
+	});
+	$(window).on('beforeunload', function() {
+		console.log('beforeunload');
 		return false;
 	});
 
+	/*
+	 * imgareaselect
+	 * 
+	 * CSS3 stuff
+	 * image-orientation: 0deg
+	 * 
+	 * transform: translate(80px, 80px) scale(1.5, 1.5) rotate(45deg);
+	 * 
+	 * h1
+{
+rotation-point:50% 50%;
+rotation:180deg;
+}
+	 */
 });
 
 var editform = '<form action="" method="post">' +

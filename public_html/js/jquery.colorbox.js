@@ -196,13 +196,13 @@
 			start = function () {
 				$slideshow
 					.text(settings.slideshowStop)
-					.unbind(click)
-					.bind(event_complete, function () {
+					.off(click)
+					.on(event_complete, function () {
 						if (settings.loop || $related[index + 1]) {
 							timeOut = setTimeout(publicMethod.next, settings.slideshowSpeed);
 						}
 					})
-					.bind(event_load, function () {
+					.on(event_load, function () {
 						clearTimeout(timeOut);
 					})
 					.one(click + ' ' + event_cleanup, stop);
@@ -214,7 +214,7 @@
 				clearTimeout(timeOut);
 				$slideshow
 					.text(settings.slideshowStart)
-					.unbind([event_complete, event_load, event_cleanup, click].join(' '))
+					.off([event_complete, event_load, event_cleanup, click].join(' '))
 					.one(click, function () {
 						publicMethod.next();
 						start();
@@ -280,7 +280,7 @@
 				publicMethod.position();
 				
 				if (isIE6) {
-					$window.bind('resize.' + event_ie6 + ' scroll.' + event_ie6, function () {
+					$window.on('resize.' + event_ie6 + ' scroll.' + event_ie6, function () {
 						$overlay.css({width: $window.width(), height: $window.height(), top: $window.scrollTop(), left: $window.scrollLeft()});
 					}).trigger('resize.' + event_ie6);
 				}
@@ -314,7 +314,7 @@
 				$current = $tag(div, "Current"),
 				$next = $tag(div, "Next"),
 				$prev = $tag(div, "Previous"),
-				$slideshow = $tag(div, "Slideshow").bind(event_open, slideshow),
+				$slideshow = $tag(div, "Slideshow").on(event_open, slideshow),
 				$close = $tag(div, "Close")
 			);
 			
@@ -378,7 +378,7 @@
 				});
 				
 				// Key Bindings
-				$(document).bind('keydown.' + prefix, function (e) {
+				$(document).on('keydown.' + prefix, function (e) {
 					var key = e.keyCode;
 					if (!settings.modal && open && settings.escKey && key === 27) {
 						e.preventDefault();
@@ -465,7 +465,7 @@
         scrollTop = $window.scrollTop(), 
         scrollLeft = $window.scrollLeft();
         
-        $window.unbind('resize.' + prefix);
+        $window.off('resize.' + prefix);
 
         // remove the modal so that it doesn't influence the document width/height        
         $box.css({top: -9e4, left: -9e4});
@@ -525,7 +525,7 @@
                 
                 if (settings.reposition) {
 	                setTimeout(function () {  // small delay before binding onresize due to an IE8 bug.
-	                    $window.bind('resize.' + prefix, publicMethod.position);
+	                    $window.on('resize.' + prefix, publicMethod.position);
 	                }, 1);
 	            }
 
@@ -858,7 +858,7 @@
 			
 			trigger(event_cleanup, settings.onCleanup);
 			
-			$window.unbind('.' + prefix + ' .' + event_ie6);
+			$window.off('.' + prefix + ' .' + event_ie6);
 			
 			$overlay.fadeTo(200, 0);
 			
