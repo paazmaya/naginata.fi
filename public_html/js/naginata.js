@@ -79,6 +79,9 @@ $(document).ready(function() {
 		
 		return false;
 	});
+	$('input[type="button"][name="close"]').live('click', function() {
+		$.colorbox.close();
+	});
 		
 	$('select').change(function() {
 		console.log('$(this).val(): ' + $(this).val());
@@ -104,4 +107,5 @@ var editform = '<form action="" method="post">' +
 	'</select>' +
 	'<textarea name=""></textarea>' +
 	'<input type="submit" value="Send" />' +
+	'<input type="button" name="close" value="Close" />' +
 	'</form>';

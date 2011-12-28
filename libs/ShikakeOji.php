@@ -77,7 +77,6 @@ class ShikakeOji
 						//$this->language = $lang;
 					}
 				}
-				echo $lang . "\n";
 			}
 		}
 		if (!$found)

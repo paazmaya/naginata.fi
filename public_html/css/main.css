@@ -39,7 +39,7 @@ a {
 	text-decoration: none;
 }
 a:hover {
-	color: #072434;
+	color: #4B5535;
 	text-decoration: underline;
 }
 input, select {
@@ -112,7 +112,7 @@ nav a:hover, footer a:hover {
 }
 
 h1, h2, h3, h4, h5, h6 {
-	color: #49371F;
+	color: #072434;
 }
 
 
@@ -135,18 +135,26 @@ form {
 }
 select, input, textarea {
 	width: 38em;
-	border: 1px solid #1851AE;
+	border: 1px solid #072434;
 	margin: 1em;
 }
 textarea {
 	height: 40em;
 }
-input[type="submit"] {
-	width: 50%;
-	margin-left: 25%;
+input[type="submit"], input[type="button"] {
+	width: 18em;
+	margin: 2em 1em;
 	padding: 0.5em;
 	text-align: center;
 	font-weight: bold;
+	background-color: #072434;
+	border-color: #DFE0E4;
+	color: #DFE0E4;
+}
+input[type="submit"]:hover, input[type="button"]:hover {
+	background-color: #4B5535;
+	border-color: #DFE0E4;
+	color: #DFE0E4;
 }
 .wym_iframe > iframe {
 	height: 40em;
@@ -154,7 +162,7 @@ input[type="submit"] {
 }
 
 .mediathumb {
-	border: 0.2em solid #1851AE;
+	border: 0.2em solid #072434;
 	padding: 0.6em;
 	margin: 1em;
 	text-align: center;
@@ -203,6 +211,6 @@ input[type="submit"] {
 	font-variant: small-caps;
 	word-spacing: 4em;
 	padding-top: 1em;
-	color: #1851AE;
+	color: #072434;
 }
 
