@@ -41,7 +41,7 @@ Other notes
 
  * Both Javascript and CSS files are combined to a single file, minified and finally compressed.
  * This reduces the amount of HTTP requests and if supported by the client, the download size.
- * The minification is done via JSMin (https://github.com/rgrove/jsmin-php)
+ * The minification is done via Minify (https://github.com/mrclay/minify)
  * Unused Javascript could be stripped out with JSlim (https://github.com/zgrossbart/jslim)
 
  
