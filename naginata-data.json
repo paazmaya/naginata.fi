@@ -18,12 +18,20 @@
 	"article": {
 		"fi": {
 			"/": [
-				""
+				"<h1>Ajankohtaista</h1>"
 			],
-			"/naginata": [],
-			"/koryu": [],
-			"/media": [],
-			"/yhteystiedot": []
+			"/naginata": [
+				"<h1>Atarashii Naginatado</h1>"
+			],
+			"/koryu": [
+				"<h1>Jikishinkageryu Naginatajutsu</h1>"
+			],
+			"/media": [
+				"<h1>Kuvat, Videot ja muu Media</h1>"
+			],
+			"/yhteystiedot": [
+				"<h1>Yhteystiedot</h1>"
+			]
 		},
 		"en": {},
 		"jp": {}

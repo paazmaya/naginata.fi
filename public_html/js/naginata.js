@@ -43,6 +43,17 @@ $(document).ready(function() {
 		console.log('appending ops: ' + ops);
 		editform = $(editform).children('select').append(ops).parent().children('textarea').text($('article').html()).parent().get(0);
 		
+		var originalClose = $.colorbox.close;
+		$.colorbox.close = function(){
+			var response;
+			if ($('#cboxLoadedContent').find('form').length > 0) {
+				response = confirm('Do you want to close this window?');
+				if (!response) {
+					return; // Do nothing.
+				}
+			}
+			originalClose();
+		};
 		$.colorbox({
 			html: editform,
 			title: $(this).attr('title'),

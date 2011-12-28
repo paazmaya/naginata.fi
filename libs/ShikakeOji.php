@@ -42,6 +42,60 @@ class ShikakeOji
 		$this->jsonpath = $jsonpath;
 		$this->loadData();
 	}
+	
+	/**
+	 * Check the $_SERVER['REQUEST_URI'] and set
+	 * the $this->currentPage variable for one that is found from navigation.
+	 * If nothing is matched, redirect to front page.
+	 */
+	public function checkRequestedPage()
+	{
+		if (!isset($_SERVER['REQUEST_URI']))
+		{
+			// How come, super variable not set?
+			return false;
+		}
+		if (!isset($this->appData['navigation']))
+		{
+			return false;
+		}
+		
+		$data = $this->appData['navigation'];
+		$found = false;
+		foreach($data as $lang => $nav)
+		{
+			foreach($nav as $item)
+			{
+				if ($_SERVER['REQUEST_URI'] == $item['0'])
+				{
+					$this->currentPage = $_SERVER['REQUEST_URI'];
+					$found = true;
+					
+					// How about language?
+					if ($item['0'] != '/')
+					{
+						//$this->language = $lang;
+					}
+				}
+				echo $lang . "\n";
+			}
+		}
+		if (!$found)
+		{
+			//header('HTTP/1.1 301 Moved Permanently');
+			//header('Location: http://' . $_SERVER['HTTP_HOST']);
+		}
+	}
+	
+	/**
+	 * Check the $_SERVER['HTTP_ACCEPT_LANGUAGE'] and set
+	 * the $this->language variable for one that is found from data.
+	 * If nothing is found, default to Finnish.
+	 */
+	public function checkRequestedLanguage()
+	{
+		$this->language = 'fi';
+	}
 
 	/**
 	 * Create the common head section with style sheet imports.
