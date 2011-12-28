@@ -14,7 +14,7 @@ class ShikakeOji
 	/**
 	 * Should be set to the realpath of the json file where app data is stored.
 	 */
-	public $jsonpath = '';
+	public $jsonpath = '../naginata-data.json';
 
 	/**
 	 * Application data, decoded from JSON string
@@ -33,6 +33,11 @@ class ShikakeOji
 	 * Defaults to / as in front page.
 	 */
 	public $currentPage = '/';
+	
+	/**
+	 * Log for minification. Entry added every time minification is needed.
+	 */
+	public $minifyLog = '../naginata-minify.log';
 	
 	/**
 	 * Constructor will load the JSON data and decode it.
@@ -472,8 +477,9 @@ class ShikakeOji
 	 * @return boolean True if the resulting file was updated
 	 */
 	private function minify($type, $files)
-	{
-		$minifyLog = realpath('../naginata_minify.log');
+	{		
+		// Where can those files be found, under type
+		$base = realpath('../public_html/' . $type) . '/';
 		
 		// Are there newer source files than the single output file?
 		$newerexists = false;
@@ -483,7 +489,7 @@ class ShikakeOji
 
 		// Keep log of what has happened and how much the filesizes were reduced.
 		$dateformat = 'Y-m-d H:i:s';
-		$log = '';
+		$log = array();
 
 		// Function failed on a mismatching parametre?
 		$fail = false;
@@ -510,7 +516,7 @@ class ShikakeOji
 			$mtime_newest = 0;
 			foreach($files as $file)
 			{
-				$src = realpath('../public_html/' . $type) . '/' . $file;
+				$src = ('../public_html/' . $type) . '/' . $file;
 				if (file_exists($src))
 				{
 					$minify = true;
@@ -532,11 +538,11 @@ class ShikakeOji
 						// Rebuild the name by including ".min" in the end
 						$p[] = 'min';
 						$p[] = $type;
-						$des = realpath('../public_html/' . $type) . '/' . implode('.', $p);
+						$des = $base . implode('.', $p);
 					}
 
 					//echo "\n" . '<!-- src: ' . $src . ', des: ' . $des . ' -->' . "\n";
-					$log .= date($dateformat) . ' src: ' . $src . ', size: ' . filesize($src) . "\n";
+					$log[] = date($dateformat) . ' src: ' . $src . ', size: ' . filesize($src);
 
 					$min = '';
 					if (file_exists($des))
@@ -563,23 +569,30 @@ class ShikakeOji
 							}
 							catch (Exception $error)
 							{
-								echo $error->getMessage() . ' while src: ' . $src;
+								$log[] = date($dateformat) . ' ERROR: ' . $error->getMessage() . ' while JS src: ' . $src;
 							}
 						}
 						else if ($type == 'css')
 						{
-							$min = Minify_CSS_Compressor::process($cont);
+							try
+							{
+								$min = Minify_CSS_Compressor::process($cont);
+							}
+							catch (Exception $error)
+							{
+								$log[] = date($dateformat) . ' ERROR: ' . $error->getMessage() . ' while CSS src: ' . $src;
+							}
 						}
 						$mtime_newest = time();
 						file_put_contents($des, $min);
-						$log .= date($dateformat) . ' des: ' . $des . ', size: ' . filesize($des) . "\n";
+						$log[] = date($dateformat) . ' des: ' . $des . ', size: ' . filesize($des);
 					}
 					$data[] = '/* ' . $file . ' */' . "\n" . $min;
 				}
 			}
 
-			$outfile = realpath('./' . $type) . '/naginata.' . $type;
-			$outfilegz = realpath('./' . $type) . '/naginata.gz.' . $type;
+			$outfile = $base . 'naginata.' . $type;
+			$outfilegz = $base . 'naginata.gz.' . $type;
 			if (file_exists($outfile))
 			{
 				$mtime_out = filemtime($outfile);
@@ -593,7 +606,7 @@ class ShikakeOji
 			{
 				$alldata = implode("\n\n", $data);
 				$bytecount = file_put_contents($outfile, $alldata);
-				$log .= date($dateformat) . ' outfile: ' . $outfile . ', size: ' . $bytecount . "\n";
+				$log[] = date($dateformat) . ' outfile: ' . $outfile . ', size: ' . $bytecount;
 
 				if ($bytecount !== false)
 				{
@@ -601,12 +614,12 @@ class ShikakeOji
 					gzwrite($gz, $alldata);
 					gzclose($gz);
 					$wrote = true;
-					$log .= date($dateformat) . ' outfilegz: ' . $outfilegz . ', size: ' . filesize($outfilegz) . "\n";
+					$log[] = date($dateformat) . ' outfilegz: ' . $outfilegz . ', size: ' . filesize($outfilegz);
 				}
 			}
 		}
 
-		file_put_contents($minifyLog, $log, FILE_APPEND);
+		file_put_contents($this->minifyLog, implode("\n", $log), FILE_APPEND);
 
 		return $wrote;
 	}
