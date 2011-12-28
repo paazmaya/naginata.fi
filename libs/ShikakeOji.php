@@ -60,21 +60,27 @@ class ShikakeOji
 			return false;
 		}
 		
-		$data = $this->appData['navigation'];
+		$uri = explode('/', $_SERVER['REQUEST_URI']);
 		$found = false;
-		foreach($data as $lang => $nav)
+		if (count($uri) == 1)
 		{
-			foreach($nav as $item)
+			$uri['0'] = '/' . $uri['0']; // Slash must be included as the first character
+			
+			$data = $this->appData['navigation'];
+			foreach($data as $lang => $nav)
 			{
-				if ($_SERVER['REQUEST_URI'] == $item['0'])
+				foreach($nav as $item)
 				{
-					$this->currentPage = $_SERVER['REQUEST_URI'];
-					$found = true;
-					
-					// How about language?
-					if ($item['0'] != '/')
+					if ($uri['0'] == $item['0'])
 					{
-						//$this->language = $lang;
+						$this->currentPage = $uri['0'];
+						$found = true;
+						
+						// How about language?
+						if ($item['0'] != '/')
+						{
+							//$this->language = $lang;
+						}
 					}
 				}
 			}
@@ -123,10 +129,15 @@ class ShikakeOji
 		$out .= '<title>' . $title . ' - Naginata Suomessa</title>';
 		$out .= '<link rel="shortcut icon" href="img/favicon.png" type="image/png"/>';
 		
+		$this->minify('css', $styles);
+		$out .= '<link rel="stylesheet" href="' . $base . 'naginata.css" type="text/css" media="all" />';
+		
+		/*
 		foreach($styles as $css)
 		{		
 			$out .= '<link rel="stylesheet" href="' . $base . $css . '" type="text/css" media="all" />';
 		}
+		*/
 		
 		$out .= '<script type="text/javascript" src="js/modernizr.js"></script>';
 		
@@ -276,15 +287,22 @@ class ShikakeOji
 		$base = '/js/';
 		$out = '';
 		
+		$this->minify('js', $scripts);
+		$out .= '<script type="text/javascript" src="' . $base . 'naginata.js"></script>';
+		/*
 		foreach($scripts as $js)
 		{		
 			$out .= '<script type="text/javascript" src="' . $base . $js . '"></script>';	
 		}
+		*/
 		$out .= '</body>';
 		$out .= '</html>';
 		return $out;
 	}
 	
+	/**
+	 * Load the JSON data if available
+	 */
 	private function loadData()
 	{
 		if ($this->jsonpath != '' && file_exists($this->jsonpath))
@@ -442,8 +460,156 @@ class ShikakeOji
 		} 
 
 		return $new_json; 
-	} 
+	}
+	
+	/**
+	 * Combines and minifies the given local files.
+	 * That is if the resulting minified file does not exist yet,
+	 * nor it is not older than any of the given files.
+	 *
+	 * @param string $type	Either js or css
+	 * @param array $files	List of files location in the public_html/[type]/ folder
+	 * @return boolean True if the resulting file was updated
+	 */
+	private function minify($type, $files)
+	{
+		$minifyLog = realpath('../naginata_minify.log');
+		
+		// Are there newer source files than the single output file?
+		$newerexists = false;
 
+		// Return value will be this
+		$wrote = false;
+
+		// Keep log of what has happened and how much the filesizes were reduced.
+		$dateformat = 'Y-m-d H:i:s';
+		$log = '';
+
+		// Function failed on a mismatching parametre?
+		$fail = false;
+		if ($type == 'js')
+		{
+			require_once './minify/Minify/JS/ClosureCompiler.php';
+		}
+		else if ($type == 'css')
+		{
+			require_once './minify/Minify/CSS/Compressor.php';
+		}
+		else
+		{
+			$fail = true;
+		}
+		if (!is_array($files) || count($files) == 0)
+		{
+			$fail = true;
+		}
+
+		if (!$fail)
+		{
+			$data = array();
+			$mtime_newest = 0;
+			foreach($files as $file)
+			{
+				$src = realpath('../public_html/' . $type) . '/' . $file;
+				if (file_exists($src))
+				{
+					$minify = true;
+					$mtime_src = filemtime($src);
+					$p = explode('.', $file);
+					// Remove suffix temporarily for the ".min" check
+					if (end($p) == $type)
+					{
+						unset($p[count($p) - 1]);
+					}
+					// If the filename has a ".min" appended in the end, its content is used as such.
+					if (end($p) == 'min')
+					{
+						$des = $src;
+						$minify = false;
+					}
+					else
+					{
+						// Rebuild the name by including ".min" in the end
+						$p[] = 'min';
+						$p[] = $type;
+						$des = realpath('../public_html/' . $type) . '/' . implode('.', $p);
+					}
+
+					//echo "\n" . '<!-- src: ' . $src . ', des: ' . $des . ' -->' . "\n";
+					$log .= date($dateformat) . ' src: ' . $src . ', size: ' . filesize($src) . "\n";
+
+					$min = '';
+					if (file_exists($des))
+					{
+						$mtime_des = filemtime($des);
+						//echo '<!-- mtime_src: ' . $mtime_src . ', mtime_des: ' . $mtime_des . ' -->' . "\n";
+						if ($mtime_src <= $mtime_des)
+						{
+							$minify = false;
+							$min = file_get_contents($des);
+							$mtime_newest = max($mtime_des, $mtime_newest);
+						}
+					}
+					//echo '<!-- minify: ' . $minify . ' -->' . "\n";
+
+					if ($minify)
+					{
+						$cont = file_get_contents($src);
+						if ($type == 'js')
+						{
+							try
+							{
+								$min = Minify_JS_ClosureCompiler::minify($cont);
+							}
+							catch (Exception $error)
+							{
+								echo $error->getMessage() . ' while src: ' . $src;
+							}
+						}
+						else if ($type == 'css')
+						{
+							$min = Minify_CSS_Compressor::process($cont);
+						}
+						$mtime_newest = time();
+						file_put_contents($des, $min);
+						$log .= date($dateformat) . ' des: ' . $des . ', size: ' . filesize($des) . "\n";
+					}
+					$data[] = '/* ' . $file . ' */' . "\n" . $min;
+				}
+			}
+
+			$outfile = realpath('./' . $type) . '/naginata.' . $type;
+			$outfilegz = realpath('./' . $type) . '/naginata.gz.' . $type;
+			if (file_exists($outfile))
+			{
+				$mtime_out = filemtime($outfile);
+			}
+			else
+			{
+				$newerexists = true;
+			}
+
+			if ($newerexists || $mtime_newest > $mtime_out)
+			{
+				$alldata = implode("\n\n", $data);
+				$bytecount = file_put_contents($outfile, $alldata);
+				$log .= date($dateformat) . ' outfile: ' . $outfile . ', size: ' . $bytecount . "\n";
+
+				if ($bytecount !== false)
+				{
+					$gz = gzopen($outfilegz, 'wb9');
+					gzwrite($gz, $alldata);
+					gzclose($gz);
+					$wrote = true;
+					$log .= date($dateformat) . ' outfilegz: ' . $outfilegz . ', size: ' . filesize($outfilegz) . "\n";
+				}
+			}
+		}
+
+		file_put_contents($minifyLog, $log, FILE_APPEND);
+
+		return $wrote;
+	}
 	
 	/**
 	 * Encode HTML entities for a block of text
