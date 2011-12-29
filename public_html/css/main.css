@@ -214,3 +214,37 @@ input[type="submit"]:hover, input[type="button"]:hover {
 	color: #072434;
 }
 
+
+/* Image area notes */
+
+.note {
+	background-color: transparent;
+	position: absolute;
+}
+.note:hover .notetext {
+	display: inline;
+}
+.note:hover .notearea {
+	opacity: 1.0;
+}
+.notearea {
+	opacity: 0.4;
+	border: 0.1em solid #6E5728;
+	border-radius: 0.6em;
+	background-color: transparent;
+	display: block;
+}
+.notetext {
+	color: #6E5728;
+	border-radius: 0.4em;
+	background-color: #FEFEFE;
+	display: none;
+	padding: 0.3em;
+	margin-top: -0.5em;
+	text-align: center;
+}
+
+
+
+
+
