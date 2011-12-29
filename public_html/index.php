@@ -10,10 +10,17 @@ if (substr($_SERVER['HTTP_HOST'], 0, 3) == 'www')
 	header('Location: ' . $go);
 	exit();
 }
+session_name('SOFI');
+session_start();
+if (!isset($_SESSION['fontcounter']))
+{
+	$_SESSION['fontcounter'] = 0;
+}
 
 require '../libs/ShikakeOji.php';
 
 $shio = new ShikakeOji(realpath('../naginata-data.json'));
+$shio->useMinification = false;
 $shio->checkRequestedLanguage();
 $shio->checkRequestedPage();
 

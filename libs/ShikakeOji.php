@@ -35,6 +35,11 @@ class ShikakeOji
 	public $currentPage = '/';
 	
 	/**
+	 * Shall the JS and CSS files minification be done?
+	 */
+	public $useMinification = true;
+	
+	/**
 	 * Log for minification. Entry added every time minification is needed.
 	 */
 	public $minifyLog = '../naginata-minify.log';
@@ -55,6 +60,7 @@ class ShikakeOji
 	 */
 	public function checkRequestedPage()
 	{
+		echo '<!-- REQUEST_URI: ' . $_SERVER['REQUEST_URI'] . ' -->';
 		if (!isset($_SERVER['REQUEST_URI']))
 		{
 			// How come, super variable not set?
@@ -65,35 +71,47 @@ class ShikakeOji
 			return false;
 		}
 		
-		$uri = explode('/', $_SERVER['REQUEST_URI']);
 		$found = false;
+		$url = $_SERVER['REQUEST_URI']; // use as such
+		/*
+		$uri = explode('/', $_SERVER['REQUEST_URI']);
+		
+		echo "\n";
+		print_r($uri);
+		echo "\n";
+		
+		// remove empty parts
+		foreach($uri as $u)
+		{
+		}
 		if (count($uri) == 1)
 		{
 			$uri['0'] = '/' . $uri['0']; // Slash must be included as the first character
 			
-			$data = $this->appData['navigation'];
-			foreach($data as $lang => $nav)
+		*/
+		$data = $this->appData['navigation'];
+		foreach($data as $lang => $nav)
+		{
+			foreach($nav as $item)
 			{
-				foreach($nav as $item)
+				if ($url == $item['0'])
 				{
-					if ($uri['0'] == $item['0'])
+					$this->currentPage = $url;
+					$found = true;
+					
+					// How about language? just stick to default for now.
+					if ($item['0'] != '/')
 					{
-						$this->currentPage = $uri['0'];
-						$found = true;
-						
-						// How about language?
-						if ($item['0'] != '/')
-						{
-							//$this->language = $lang;
-						}
+						//$this->language = $lang;
 					}
 				}
 			}
 		}
+		//}
 		if (!$found)
 		{
-			//header('HTTP/1.1 301 Moved Permanently');
-			//header('Location: http://' . $_SERVER['HTTP_HOST']);
+			header('HTTP/1.1 301 Moved Permanently');
+			header('Location: http://' . $_SERVER['HTTP_HOST']);
 		}
 	}
 	
@@ -134,15 +152,18 @@ class ShikakeOji
 		$out .= '<title>' . $title . ' - Naginata Suomessa</title>';
 		$out .= '<link rel="shortcut icon" href="img/favicon.png" type="image/png"/>';
 		
-		$this->minify('css', $styles);
-		$out .= '<link rel="stylesheet" href="' . $base . 'naginata.css" type="text/css" media="all" />';
-		
-		/*
-		foreach($styles as $css)
-		{		
-			$out .= '<link rel="stylesheet" href="' . $base . $css . '" type="text/css" media="all" />';
+		if ($this->useMinification)
+		{
+			$this->minify('css', $styles);
+			$out .= '<link rel="stylesheet" href="' . $base . 'naginata.css" type="text/css" media="all" />';
 		}
-		*/
+		else
+		{
+			foreach($styles as $css)
+			{		
+				$out .= '<link rel="stylesheet" href="' . $base . $css . '" type="text/css" media="all" />';
+			}
+		}
 		
 		$out .= '<script type="text/javascript" src="js/modernizr.js"></script>';
 		
@@ -163,9 +184,29 @@ class ShikakeOji
 			return '<p class="fail">Title data missing</p>';
 		}
 	
+		
+		$fonts = array(
+			'fontroman',
+			'fontflora1',
+			'fonthelsinki',
+			'fontcabin5',
+			'fontcabin7',
+			'fontdejavu3',
+			'fontptserif3',
+			'sansation3'
+		);
+		$len = count($fonts);
+		$_SESSION['fontcounter']++;
+		if ($_SESSION['fontcounter'] >= $len)
+		{
+			$_SESSION['fontcounter'] = 0;
+		}
+		
+		$font = $fonts[$_SESSION['fontcounter']];
+		
 		$out = '<div id="logo">';
 		// should be only two words
-		$out .= '<p class="fontdejavu1">' . $this->appData['title'][$this->language] . '</p>';
+		$out .= '<p class="' . $font . '">' . $this->appData['title'][$this->language] . '</p>';
 		$out .= '</div>';
 		return $out;
 	}
@@ -292,14 +333,18 @@ class ShikakeOji
 		$base = '/js/';
 		$out = '';
 		
-		$this->minify('js', $scripts);
-		$out .= '<script type="text/javascript" src="' . $base . 'naginata.js"></script>';
-		/*
-		foreach($scripts as $js)
-		{		
-			$out .= '<script type="text/javascript" src="' . $base . $js . '"></script>';	
+		if ($this->useMinification)
+		{
+			$this->minify('js', $scripts);
+			$out .= '<script type="text/javascript" src="' . $base . 'naginata.min.js"></script>';
 		}
-		*/
+		else
+		{
+			foreach($scripts as $js)
+			{		
+				$out .= '<script type="text/javascript" src="' . $base . $js . '"></script>';	
+			}
+		}
 		$out .= '</body>';
 		$out .= '</html>';
 		return $out;
@@ -591,8 +636,8 @@ class ShikakeOji
 				}
 			}
 
-			$outfile = $base . 'naginata.' . $type;
-			$outfilegz = $base . 'naginata.gz.' . $type;
+			$outfile = $base . 'naginata.min.' . $type;
+			$outfilegz = $base . 'naginata.min.gz.' . $type;
 			if (file_exists($outfile))
 			{
 				$mtime_out = filemtime($outfile);
