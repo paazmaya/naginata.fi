@@ -14,9 +14,9 @@
 
 }
 
-h1.fontroman {font: 60px/68px 'RomanCapsRegular', Arial, sans-serif;letter-spacing: 0;}
+.fontroman {font-family: 'RomanCapsRegular', Arial, sans-serif;letter-spacing: 0;}
 
-p.fontroman {font: 18px/27px 'RomanCapsRegular', Arial, sans-serif;}
+.fontroman {font-family: 'RomanCapsRegular', Arial, sans-serif;}
 
 
 
@@ -119,16 +119,16 @@ p.fontroman {font: 18px/27px 'RomanCapsRegular', Arial, sans-serif;}
 
 }
 
-h1.fontcabin {font: 60px/68px 'CabinRegular', Arial, sans-serif;letter-spacing: 0;}
+.fontcabin {font-family: 'CabinRegular', Arial, sans-serif;letter-spacing: 0;}
 
-p.fontcabin1 {font: 18px/27px 'CabinRegular', Arial, sans-serif;}
-p.fontcabin2 {font: 18px/27px 'CabinItalic', Arial, sans-serif;}
-p.fontcabin3 {font: 18px/27px 'CabinMedium', Arial, sans-serif;}
-p.fontcabin4 {font: 18px/27px 'CabinMediumItalic', Arial, sans-serif;}
-p.fontcabin5 {font: 18px/27px 'CabinSemiBold', Arial, sans-serif;}
-p.fontcabin6 {font: 18px/27px 'CabinSemiBoldItalic', Arial, sans-serif;}
-p.fontcabin7 {font: 18px/27px 'CabinBold', Arial, sans-serif;}
-p.fontcabin8 {font: 18px/27px 'CabinBoldItalic', Arial, sans-serif;}
+.fontcabin1 {font-family: 'CabinRegular', Arial, sans-serif;}
+.fontcabin2 {font-family: 'CabinItalic', Arial, sans-serif;}
+.fontcabin3 {font-family: 'CabinMedium', Arial, sans-serif;}
+.fontcabin4 {font-family: 'CabinMediumItalic', Arial, sans-serif;}
+.fontcabin5 {font-family: 'CabinSemiBold', Arial, sans-serif;}
+.fontcabin6 {font-family: 'CabinSemiBoldItalic', Arial, sans-serif;}
+.fontcabin7 {font-family: 'CabinBold', Arial, sans-serif;}
+.fontcabin8 {font-family: 'CabinBoldItalic', Arial, sans-serif;}
 
 
 
@@ -234,16 +234,16 @@ p.fontcabin8 {font: 18px/27px 'CabinBoldItalic', Arial, sans-serif;}
 
 }
 
-h1.fontdejavu {font: 60px/68px 'DejaVuSansBook', Arial, sans-serif;letter-spacing: 0;}
+.fontdejavu {font-family: 'DejaVuSansBook', Arial, sans-serif;letter-spacing: 0;}
 
-p.fontdejavu1 {font: 18px/27px 'DejaVuSansBook', Arial, sans-serif;}
-p.fontdejavu2 {font: 18px/27px 'DejaVuSansOblique', Arial, sans-serif;}
-p.fontdejavu3 {font: 18px/27px 'DejaVuSansBold', Arial, sans-serif;}
-p.fontdejavu4 {font: 18px/27px 'DejaVuSansBoldOblique', Arial, sans-serif;}
-p.fontdejavu5 {font: 18px/27px 'DejaVuSansCondensed', Arial, sans-serif;}
-p.fontdejavu6 {font: 18px/27px 'DejaVuSansCondensedOblique', Arial, sans-serif;}
-p.fontdejavu7 {font: 18px/27px 'DejaVuSansCondensedBold', Arial, sans-serif;}
-p.fontdejavu8 {font: 18px/27px 'DejaVuSansCnBdOb', Arial, sans-serif;}
+.fontdejavu1 {font-family: 'DejaVuSansBook', Arial, sans-serif;}
+.fontdejavu2 {font-family: 'DejaVuSansOblique', Arial, sans-serif;}
+.fontdejavu3 {font-family: 'DejaVuSansBold', Arial, sans-serif;}
+.fontdejavu4 {font-family: 'DejaVuSansBoldOblique', Arial, sans-serif;}
+.fontdejavu5 {font-family: 'DejaVuSansCondensed', Arial, sans-serif;}
+.fontdejavu6 {font-family: 'DejaVuSansCondensedOblique', Arial, sans-serif;}
+.fontdejavu7 {font-family: 'DejaVuSansCondensedBold', Arial, sans-serif;}
+.fontdejavu8 {font-family: 'DejaVuSansCnBdOb', Arial, sans-serif;}
 		
 
 
@@ -330,14 +330,14 @@ p.fontdejavu8 {font: 18px/27px 'DejaVuSansCnBdOb', Arial, sans-serif;}
 
 
 
-h1.fontptserif {font: 60px/68px 'PTSerifCaptionRegular', Arial, sans-serif;letter-spacing: 0;}
+.fontptserif {font-family: 'PTSerifCaptionRegular', Arial, sans-serif;letter-spacing: 0;}
 
-p.fontptserif1 {font: 18px/27px 'PTSerifRegular', Arial, sans-serif;}
-p.fontptserif2 {font: 18px/27px 'PTSerifItalic', Arial, sans-serif;}
-p.fontptserif3 {font: 18px/27px 'PTSerifBold', Arial, sans-serif;}
-p.fontptserif4 {font: 18px/27px 'PTSerifBoldItalic', Arial, sans-serif;}
-p.fontptserif5 {font: 18px/27px 'PTSerifCaptionRegular', Arial, sans-serif;}
-p.fontptserif6 {font: 18px/27px 'PTSerifCaptionItalic', Arial, sans-serif;}
+.fontptserif1 {font-family: 'PTSerifRegular', Arial, sans-serif;}
+.fontptserif2 {font-family: 'PTSerifItalic', Arial, sans-serif;}
+.fontptserif3 {font-family: 'PTSerifBold', Arial, sans-serif;}
+.fontptserif4 {font-family: 'PTSerifBoldItalic', Arial, sans-serif;}
+.fontptserif5 {font-family: 'PTSerifCaptionRegular', Arial, sans-serif;}
+.fontptserif6 {font-family: 'PTSerifCaptionItalic', Arial, sans-serif;}
 		
 
 
@@ -418,18 +418,18 @@ p.fontptserif6 {font: 18px/27px 'PTSerifCaptionItalic', Arial, sans-serif;}
 }
 
 
-h1.sansation {font: 60px/68px 'SansationRegular', Arial, sans-serif;letter-spacing: 0;}
+.sansation {font-family: 'SansationRegular', Arial, sans-serif;letter-spacing: 0;}
 
-p.sansation1 {font: 18px/27px 'SansationRegular', Arial, sans-serif;}
-p.sansation2 {font: 18px/27px 'SansationLight', Arial, sans-serif;}
-p.sansation3 {font: 18px/27px 'SansationBold', Arial, sans-serif;}
-p.sansation4 {font: 18px/27px 'SansationLightLightItalic', Arial, sans-serif;}
-p.sansation5 {font: 18px/27px 'SansationItalic', Arial, sans-serif;}
-p.sansation6 {font: 18px/27px 'SansationBoldItalic', Arial, sans-serif;}
+.sansation1 {font-family: 'SansationRegular', Arial, sans-serif;}
+.sansation2 {font-family: 'SansationLight', Arial, sans-serif;}
+.sansation3 {font-family: 'SansationBold', Arial, sans-serif;}
+.sansation4 {font-family: 'SansationLightLightItalic', Arial, sans-serif;}
+.sansation5 {font-family: 'SansationItalic', Arial, sans-serif;}
+.sansation6 {font-family: 'SansationBoldItalic', Arial, sans-serif;}
 
 
 /* http://www.fontsquirrel.com/fonts/inder */
-
+/* http://www.fontspring.com/blog/the-new-bulletproof-font-face-syntax */
 
 @font-face {
     font-family: 'InderRegular';
@@ -440,10 +440,9 @@ p.sansation6 {font: 18px/27px 'SansationBoldItalic', Arial, sans-serif;}
          url('../fonts/Inder-Regular-webfont.svg#InderRegular') format('svg');
     font-weight: normal;
     font-style: normal;
-
 }
-h1.fontinder {font: 60px/68px 'InderRegular', Arial, sans-serif;letter-spacing: 0;}
-p.fontinder {font: 18px/27px 'InderRegular', Arial, sans-serif;}
+.fontinder {font-family: 'InderRegular', Arial, sans-serif;letter-spacing: 0;}
+.fontinder {font-family: 'InderRegular', Arial, sans-serif;}
 
 
 
@@ -460,9 +459,9 @@ p.fontinder {font: 18px/27px 'InderRegular', Arial, sans-serif;}
     font-style: normal;
 
 }
-h1.fontarmata {font: 60px/68px 'ArmataRegular', Arial, sans-serif;letter-spacing: 0;}
+.fontarmata {font-family: 'ArmataRegular', Arial, sans-serif;letter-spacing: 0;}
 
-p.fontarmata {font: 18px/27px 'ArmataRegular', Arial, sans-serif;}
+.fontarmata {font-family: 'ArmataRegular', Arial, sans-serif;}
 		
 
 

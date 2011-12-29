@@ -168,26 +168,12 @@ class ShikakeOji
 		$out .= '<script type="text/javascript" src="js/modernizr.js"></script>';
 		
 		$out .= '</head>';
-		$out .= '<body>';
-		return $out;
-	}
-	
-	/**
-	 * Create a simple div with logo specific id and text changing per language.
-	 * 
-	 * @return	string
-	 */
-	public function createLogo()
-	{
-		if (!$this->isDataAvailable('title'))
-		{
-			return '<p class="fail">Title data missing</p>';
-		}
-	
 		
+		
+		// try out different fonts
 		$fonts = array(
 			'fontinder',
-			'fontptserif3', // marin suosikki
+			'fontptserif3',
 			'fontcabin5',
 			'fontcabin7',
 			'fontdejavu3',
@@ -203,9 +189,26 @@ class ShikakeOji
 		
 		$font = $fonts[$_SESSION['fontcounter']];
 		
+	
+		$out .= '<body class="' . $font . '">';
+		return $out;
+	}
+	
+	/**
+	 * Create a simple div with logo specific id and text changing per language.
+	 * 
+	 * @return	string
+	 */
+	public function createLogo()
+	{
+		if (!$this->isDataAvailable('title'))
+		{
+			return '<p class="fail">Title data missing</p>';
+		}
+	
 		$out = '<div id="logo">';
 		// should be only two words
-		$out .= '<p class="' . $font . '">' . $this->appData['title'][$this->language] . '</p>';
+		$out .= '<p>' . $this->appData['title'][$this->language] . '</p>';
 		$out .= '</div>';
 		return $out;
 	}
