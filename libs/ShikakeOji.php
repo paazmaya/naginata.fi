@@ -186,14 +186,12 @@ class ShikakeOji
 	
 		
 		$fonts = array(
-			'fontroman',
-			'fontflora1',
-			'fonthelsinki',
 			'fontcabin5',
 			'fontcabin7',
 			'fontdejavu3',
-			'fontptserif3',
-			'sansation3'
+			'fontptserif3', // marin suosikki
+			'sansation3',
+			'fontinder'
 		);
 		$len = count($fonts);
 		$_SESSION['fontcounter']++;

@@ -428,3 +428,22 @@ p.sansation5 {font: 18px/27px 'SansationItalic', Arial, sans-serif;}
 p.sansation6 {font: 18px/27px 'SansationBoldItalic', Arial, sans-serif;}
 
 
+/* http://www.fontsquirrel.com/fonts/inder */
+
+
+@font-face {
+    font-family: 'InderRegular';
+    src: url('Inder-Regular-webfont.eot');
+    src: url('Inder-Regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('Inder-Regular-webfont.woff') format('woff'),
+         url('Inder-Regular-webfont.ttf') format('truetype'),
+         url('Inder-Regular-webfont.svg#InderRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+h1.fontinder {font: 60px/68px 'InderRegular', Arial, sans-serif;letter-spacing: 0;}
+p.fontinder {font: 18px/27px 'InderRegular', Arial, sans-serif;}
+
+
+
