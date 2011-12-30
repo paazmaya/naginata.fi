@@ -1,9 +1,8 @@
 /* naginata.js */
 
-var googleAnalytics = 'UA-2643697-14';
 
 var _gaq = _gaq || [];
-_gaq.push(['_setAccount', googleAnalytics]);
+_gaq.push(['_setAccount', sendanmaki.analyticsId]);
 _gaq.push(['_trackPageview']);
 
 (function() {
@@ -13,96 +12,7 @@ _gaq.push(['_trackPageview']);
 })();
 
 $(document).ready(function() {
-	var links = $('article a:not(.mediathumb a)').size();
-	console.log('links: ' + links);
-	$('article a:not(.mediathumb a)').click(function() {
-		console.log('something was clicked');
-		return false;
-	});
-	$('.mediathumb a').colorbox();
-	
-	// Track ColorBox usage with Google Analytics
-	$(document).on('cbox_complete', function(){
-		var href = $.colorbox.element().attr("href");
-		console.log('cbox_complete occurred, href: ' + href);
-		if (href) {
-			_gaq.push(['_trackPageview', href]);
-		}
-		
-	});
-	
-	
-	// Open modal for logging in via OAuth and edit pages.
-	$('a[href="#contribute"]').click(function() {
-		var ops = '';
-		$('nav a').each(function() {
-			var t = $(this);
-			ops += '<option value="' + t.attr('href') +
-				'">' + t.text() + ' [' + t.attr('href') + ']</option>';
-		});
-		console.log('appending ops: ' + ops);
-		editform = $(editform).children('select').append(ops).parent().children('textarea').text($('article').html()).parent().get(0);
-		
-		var originalClose = $.colorbox.close;
-		$.colorbox.close = function(){
-			var response;
-			if ($('#cboxLoadedContent').find('form').length > 0) {
-				response = confirm('Do you want to close this window?');
-				if (!response) {
-					return; // Do nothing.
-				}
-			}
-			originalClose();
-		};
-		$.colorbox({
-			html: editform,
-			title: $(this).attr('title'),
-			modal: true
-		});
-		
-		$('textarea').wymeditor({
-			lang: 'fi',
-			skin: 'compact'
-		});
-		return false;
-	});
-	
-	$('form').live('submit', function() {
-		console.log('submit');
-		// no need to do this as ajax since the page is anyhow in modal window
-		// but feedback is easier to get in ajax way, of the success update..
-		var data = {
-			lang: 'fi',
-			page: '/',
-			article: ''
-		};
-		
-		return false;
-	});
-	$('input[type="button"][name="close"]').live('click', function() {
-		$.colorbox.close();
-	});
-		
-	$('select').change(function() {
-		console.log('$(this).val(): ' + $(this).val());
-		
-		var str = "";
-		$('select option:selected').each(function () {
-			str += $(this).text() + " ";
-		});
-		$("div").text(str);
-	})
-	.change();
-	
-	$(window).on('unload', function() {
-		console.log('unload');
-		return false;
-	});
-	$(window).on('beforeunload', function() {
-		console.log('beforeunload');
-		return false;
-	});
-
+	sendanmaki.domReady();
 	/*
 	 * imgareaselect
 	 * 
@@ -119,11 +29,132 @@ rotation:180deg;
 	 */
 });
 
-var editform = '<form action="" method="post">' +
-	'<select name="">' +
-		'<option value=""></option>' +
-	'</select>' +
-	'<textarea name=""></textarea>' +
-	'<input type="submit" value="Send" />' +
-	'<input type="button" name="close" value="Close" />' +
-	'</form>';
+
+var sendanmaki = {
+	/**
+	 * Analytics ID for naginata.fi.
+	 */
+	analyticsId: 'UA-2643697-14',
+	
+	/**
+	 * This shall be run on domReady in order to initiate
+	 * all the handlers needed.
+	 */
+	domReady: function() {
+			
+		var links = $('article a:not(.mediathumb a)').size();
+		console.log('links: ' + links);
+		
+		$('article a:not(.mediathumb a)').click(function() {
+			console.log('something was clicked');
+			return false;
+		});
+		$('.mediathumb a').colorbox();
+		
+		// Track ColorBox usage with Google Analytics
+		$(document).on('cbox_complete', function(){
+			var href = $.colorbox.element().attr("href");
+			console.log('cbox_complete occurred, href: ' + href);
+			if (href) {
+				_gaq.push(['_trackPageview', href]);
+			}
+		});
+	
+	
+		// Open modal for logging in via OAuth and edit pages.
+		$('a[href="#contribute"]').click(function() {
+			sendanmaki.contributeClick();
+			return false;
+		});
+		
+		$('form').live('submit', function() {
+			sendanmaki.submitForm();
+			return false;
+		});
+		
+		$('.colorbox input[type="button"][name="close"]').live('click', function() {
+			$.colorbox.close();
+		});
+		
+		$(window).on('unload', function() {
+			console.log('unload');
+			return false;
+		});
+		$(window).on('beforeunload', function() {
+			console.log('beforeunload');
+			return false;
+		});
+
+	},
+	
+	/**
+	 * Callback for submitting the contribution form.
+	 * TODO: Implementation...
+	 */
+	submitForm: function() {
+		console.log('submit');
+		// no need to do this as ajax since the page is anyhow in modal window
+		// but feedback is easier to get in ajax way, of the success update..
+		var data = {
+			lang: 'fi',
+			page: '/',
+			article: ''
+		};
+		
+	},
+	
+	/**
+	 * Callback for a click on the #contribute link located in the footer.
+	 * TODO: OAuth?
+	 */
+	contributeClick: function() {
+		var form = $(editForm).children('textarea').text($('article').html()).parent().get(0);
+		
+		var originalClose = $.colorbox.close;
+		$.colorbox.close = function(){
+			var response;
+			if ($('#cboxLoadedContent').find('form').length > 0) {
+				response = confirm('Do you want to close this window?');
+				if (!response) {
+					return; // Do nothing.
+				}
+			}
+			originalClose();
+		};
+		$.colorbox({
+			html: form,
+			title: $(this).attr('title'),
+			modal: true
+		});
+		
+		$('textarea').wymeditor({
+			lang: 'fi',
+			skin: 'compact'
+		});
+	},
+	
+	/**
+	 * data = {x1, x2, y1, y2, width, heigth, note, url}
+	 */
+	showNote: function(data) {
+		console.log('showNote.');
+		var parent = $('img[src="' + data.url + '"]').parent();
+		var div = $('<div class="note"></div>');
+		var tpo = parent.position();
+		div.css('left', data.x1 + tpo.left).css('top', data.y1 + tpo.top);
+		var area = $('<span class="notearea"></span>');
+		var note = $('<span class="notetext">' + data.note + '</span>');
+		area.css('width', data.width).css('height', data.height);
+		div.append(area, note);
+		parent.append(div).show(400);
+	},
+	
+	/**
+	 * A form to be shown in colorbox when editing an article content.
+	 */
+	editForm: '<form action="/update-article" method="post">' +
+		'<textarea name="content"></textarea>' +
+		'<input type="submit" value="Send" />' +
+		'<input type="button" name="close" value="Close" />' +
+		'</form>'
+};
