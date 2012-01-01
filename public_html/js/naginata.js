@@ -2,7 +2,7 @@
 
 
 var _gaq = _gaq || [];
-_gaq.push(['_setAccount', sendanmaki.analyticsId]);
+_gaq.push(['_setAccount', 'UA-2643697-14']);
 _gaq.push(['_trackPageview']);
 
 (function() {
@@ -31,10 +31,6 @@ rotation:180deg;
 
 
 var sendanmaki = {
-	/**
-	 * Analytics ID for naginata.fi.
-	 */
-	analyticsId: 'UA-2643697-14',
 	
 	/**
 	 * This shall be run on domReady in order to initiate
@@ -67,22 +63,22 @@ var sendanmaki = {
 			return false;
 		});
 		
-		$('form').live('submit', function() {
-			sendanmaki.submitForm();
+		$('#colorbox form').live('submit', function() {
+			sendanmaki.submitForm($(this));
 			return false;
 		});
 		
-		$('.colorbox input[type="button"][name="close"]').live('click', function() {
+		$('#colorbox input[type="button"][name="close"]').live('click', function() {
 			$.colorbox.close();
 		});
 		
 		$(window).on('unload', function() {
 			console.log('unload');
-			return false;
+			//return false;
 		});
 		$(window).on('beforeunload', function() {
 			console.log('beforeunload');
-			return false;
+			//return false;
 		});
 
 	},
@@ -91,16 +87,19 @@ var sendanmaki = {
 	 * Callback for submitting the contribution form.
 	 * TODO: Implementation...
 	 */
-	submitForm: function() {
+	submitForm: function($form) {
 		console.log('submit');
 		// no need to do this as ajax since the page is anyhow in modal window
 		// but feedback is easier to get in ajax way, of the success update..
 		var data = {
 			lang: 'fi',
 			page: '/',
-			article: ''
+			content: $form.children('textarea[name="content"]').text()
 		};
-		
+		$.post($form.attr('action'), data, function(received, status){
+			console.log('' + status);
+			console.dir(received);
+		}, 'json');
 	},
 	
 	/**
@@ -108,7 +107,7 @@ var sendanmaki = {
 	 * TODO: OAuth?
 	 */
 	contributeClick: function() {
-		var form = $(editForm).children('textarea').text($('article').html()).parent().get(0);
+		var form = $(sendanmaki.editForm).children('textarea').text($('article').html()).parent().get(0);
 		
 		var originalClose = $.colorbox.close;
 		$.colorbox.close = function(){

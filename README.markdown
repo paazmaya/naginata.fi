@@ -37,7 +37,7 @@ About this software project
 The main reason for this website and this github project is to learn to use the given
 technologies and to promote the martial art.
 
-The domain, `naginata.fi` is privately registered to Jukka Paasonen.
+The domain, [naginata.fi](http://naginata.fi "NAGINATA.fi") is privately registered to Jukka Paasonen.
 
 Contributors are welcome.
 

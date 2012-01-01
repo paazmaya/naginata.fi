@@ -35,6 +35,23 @@ class ShikakeOji
 	public $currentPage = '/';
 	
 	/**
+	 * The format used with "date()" while writing a log entry.
+	 */
+	public $logDateFormat = 'Y-m-d H:i:s';
+	
+	/**
+	 * Log for minification. Entry added every time minification is needed.
+	 */
+	public $redirectLog = '../naginata-redirect.log';
+	
+	/**
+	 * Use Tidy if available.
+	 * http://www.php.net/manual/en/tidy.examples.php
+	 * http://tidy.sourceforge.net/docs/quickref.html
+	 */
+	public $useTidy = false;
+	
+	/**
 	 * Shall the JS and CSS files minification be done?
 	 */
 	public $useMinification = true;
@@ -44,23 +61,65 @@ class ShikakeOji
 	 */
 	public $minifyLog = '../naginata-minify.log';
 	
+	/** 
+	 * How will JS and CSS files will be called once minified in to one file per type?
+	 * If compression is supported, the client will receive the one with gz, and
+	 * that will be appended to this variable, "gz." that is.
+	 * For example:
+	 * naginata.min --> js/naginata.min.js and naginata.min.gz.js
+	 * --> css/naginata.min.css and css/naginata.min.gz.css
+	 */
+	private $minifiedName = 'naginata.min.';
+	
 	/**
-	 * Constructor will load the JSON data and decode it.
+	 * Client supports compression?
+	 * This is checked and set in constructor.
+	 */
+	private $isCompressionSupported = false;
+	
+	/**
+	 * Is the page internal, thus only ouputting JSON?
+	 * These require user to login via OAuth.
+	 */
+	private $isInternalPage = false;
+	
+	/**
+	 * Library path, which is used to find the other libraries included.
+	 */
+	private $libPath = __DIR__;
+	
+	/**
+	 * URLs used by the application, not for showing content.
+	 * These should be human readable English with dashes.
+	 */
+	private $appUrls = array(
+		'/update-article'
+	);
+	
+	/**
+	 * Constructor will load the JSON data and decode it as well as
+	 * check for compression support of the client.
 	 */
 	function __construct($jsonpath)
 	{
 		$this->jsonpath = $jsonpath;
-		$this->loadData();
+		$this->loadData();		
+		
+		if (isset($_SERVER['HTTP_ACCEPT_ENCODING']) && strpos($_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip') !== false)
+		{
+			$this->isCompressionSupported = true;
+			//$this->minifiedName .= 'gz.'; // It might conflict with what Apache is delivering already compressed
+		}
 	}
 	
 	/**
 	 * Check the $_SERVER['REQUEST_URI'] and set
 	 * the $this->currentPage variable for one that is found from navigation.
 	 * If nothing is matched, redirect to front page.
+	 * Matching is done first against application URLs and then content URLs via "nav".
 	 */
 	public function checkRequestedPage()
 	{
-		echo '<!-- REQUEST_URI: ' . $_SERVER['REQUEST_URI'] . ' -->';
 		if (!isset($_SERVER['REQUEST_URI']))
 		{
 			// How come, super variable not set?
@@ -71,48 +130,163 @@ class ShikakeOji
 			return false;
 		}
 		
-		$found = false;
 		$url = $_SERVER['REQUEST_URI']; // use as such
-		/*
-		$uri = explode('/', $_SERVER['REQUEST_URI']);
 		
-		echo "\n";
-		print_r($uri);
-		echo "\n";
+		// URLs should only be lowercase, thus check and redirect later
+		$lowercase = strtolower($url);
 		
-		// remove empty parts
-		foreach($uri as $u)
+		if (in_array($lowercase, $this->appUrls))
 		{
+			// Application internal URLs
+			$this->currentPage = $lowercase;
+			$this->isInternalPage = true;
 		}
-		if (count($uri) == 1)
+		else
 		{
-			$uri['0'] = '/' . $uri['0']; // Slash must be included as the first character
-			
-		*/
-		$data = $this->appData['navigation'];
-		foreach($data as $lang => $nav)
-		{
-			foreach($nav as $item)
+			// Content
+			$found = false;
+			$data = $this->appData['navigation'];
+			foreach($data as $lang => $nav)
 			{
-				if ($url == $item['0'])
+				foreach($nav as $item)
 				{
-					$this->currentPage = $url;
-					$found = true;
-					
-					// How about language? just stick to default for now.
-					if ($item['0'] != '/')
+					if ($lowercase == $item['0'])
 					{
-						//$this->language = $lang;
+						$this->currentPage = $lowercase;
+						$found = true;
+						
+						// How about language? just stick to default for now.
+						if ($item['0'] != '/')
+						{
+							//$this->language = $lang;
+						}
 					}
 				}
 			}
+		
+			if (!$found)
+			{
+				$this->redirectTo('/');
+			}
+			else
+			{
+				// Was the address found in lowercase?
+				if ($this->currentPage != $url)
+				{
+					$this->redirectTo($this->currentPage);
+				}
+			}
 		}
-		//}
-		if (!$found)
+	}
+	
+	/**
+	 * Build a regular page with the content as per request.
+	 */
+	public function renderPage()
+	{
+		if ($this->isInternalPage)
 		{
-			header('HTTP/1.1 301 Moved Permanently');
-			header('Location: http://' . $_SERVER['HTTP_HOST']);
+			// TODO: add login checks, page checks and whatever...
+			$update = $this->updateArticle();
+			if ($update !== false)
+			{
+			}
+			header('Content-type: text/json');
+			return json_encode(array('diff' => $update));
 		}
+		else
+		{
+			$out = $this->createHtmlHeadBody(array(
+				'fonts.css',
+				'colorbox.css',
+				'main.css'
+			));
+			$out .= $this->createNavigation();
+			$out .= '<div id="wrapper">';
+			$out .= $this->createLogo();
+			$out .= $this->createArticle();
+			$out .= '</div>';
+			$out .= $this->createFooter();
+			$out .= $this->createEndBodyJavascript(array(
+				'jquery.js',
+				'jquery.colorbox.js',
+				'wymeditor/jquery.wymeditor.js',
+				'naginata.js'
+			));
+		}
+		
+		
+		header('Content-type: text/html');
+		if ($this->useTidy && extension_loaded('tidy'))
+		{
+			$config = array(
+				'indent' => true,
+				'output-xml' => true,
+				'input-xml' => true,
+				'wrap' => '1000'
+			);
+			
+			$tidy = new tidy();
+			$tidy->parseString($out, $config, 'utf8');
+			$tidy->cleanRepair();
+			return tidy_get_output($tidy);
+		}
+		else
+		{
+			return $out;
+		}
+	}
+	
+	/**
+	 * There seems to be a request for updating an article.
+	 * Checks required data from $_POST and creates a diff.
+	 * 
+	 * @return	string/boolean	Diff or false
+	 */
+	private function updateArticle()
+	{
+		$required = array(
+			'lang',
+			'page',
+			'content'
+		);
+		$received = array();
+		foreach($required as $r)
+		{
+			if (isset($_POST[$r]) && $_POST[$r] != '')
+			{
+				$received[$r] = $this->encodeHtml($_POST[$r]);
+			}
+		}
+		
+		if (count($required) != count($received))
+		{
+			return false;
+		}
+		
+		// In app data, under "article", object named by "lang", has object with "page" is an array.
+		// $this->appData['article'][$this->language][$this->currentPage];
+		if (isset($this->appData['article']) &&
+			isset($this->appData['article'][$received['lang']]) &&
+			isset($this->appData['article'][$received['lang']][$received['page']]) &&
+			is_array($this->appData['article'][$received['lang']][$received['page']]) &&
+			count($this->appData['article'][$received['lang']][$received['page']]) > 0)
+		{
+			// For now just using the first item in the array
+			$current = $this->appData['article'][$received['lang']][$received['page']]['0'];
+			//$received['content']
+			$a = explode("\n", $current);
+			$b = explode("\n", $received['content']);
+			
+			require_once $this->libPath . '/php-diff/Diff.php';
+			require_once $this->libPath . '/php-diff/Diff/Renderer/Text/Unified.php';
+
+			$diff = new Diff($a, $b);
+			$renderer = new Diff_Renderer_Text_Unified;
+			$out = $diff->render($renderer);
+			return $out;
+		}
+		return false;
 	}
 	
 	/**
@@ -155,7 +329,7 @@ class ShikakeOji
 		if ($this->useMinification)
 		{
 			$this->minify('css', $styles);
-			$out .= '<link rel="stylesheet" href="' . $base . 'naginata.css" type="text/css" media="all" />';
+			$out .= '<link rel="stylesheet" href="' . $base . $this->minifiedName . 'css" type="text/css" media="all" />';
 		}
 		else
 		{
@@ -338,7 +512,7 @@ class ShikakeOji
 		if ($this->useMinification)
 		{
 			$this->minify('js', $scripts);
-			$out .= '<script type="text/javascript" src="' . $base . 'naginata.min.js"></script>';
+			$out .= '<script type="text/javascript" src="' . $base . $this->minifiedName . 'js"></script>';
 		}
 		else
 		{
@@ -402,6 +576,17 @@ class ShikakeOji
 		return false;
 	}
 	
+	/** 
+	 * Redirect the client to the given URL with 301 HTTP code.
+	 * @param	string	$url	Redirect to this URL within this domain
+	 */
+	private function redirectTo($url)
+	{		
+		$log = date($this->logDateFormat) . ' ' . $_SERVER['REQUEST_URI'] . ' --> ' . $url;
+		file_put_contents($this->redirectLog, $log, FILE_APPEND);
+		header('HTTP/1.1 301 Moved Permanently');
+		header('Location: http://' . $_SERVER['HTTP_HOST']) . $url;
+	}	
 	
 	/**
 	 * http://www.php.net/manual/en/function.json-last-error.php
@@ -535,18 +720,17 @@ class ShikakeOji
 		$wrote = false;
 
 		// Keep log of what has happened and how much the filesizes were reduced.
-		$dateformat = 'Y-m-d H:i:s';
 		$log = array();
 
 		// Function failed on a mismatching parametre?
 		$fail = false;
 		if ($type == 'js')
 		{
-			require_once './minify/Minify/JS/ClosureCompiler.php';
+			require_once $this->libPath . '/minify/Minify/JS/ClosureCompiler.php';
 		}
 		else if ($type == 'css')
 		{
-			require_once './minify/Minify/CSS/Compressor.php';
+			require_once $this->libPath . '/minify/Minify/CSS/Compressor.php';
 		}
 		else
 		{
@@ -588,8 +772,7 @@ class ShikakeOji
 						$des = $base . implode('.', $p);
 					}
 
-					//echo "\n" . '<!-- src: ' . $src . ', des: ' . $des . ' -->' . "\n";
-					$log[] = date($dateformat) . ' src: ' . $src . ', size: ' . filesize($src);
+					$log[] = date($this->logDateFormat) . ' src: ' . $src . ', size: ' . filesize($src);
 
 					$min = '';
 					if (file_exists($des))
@@ -616,7 +799,7 @@ class ShikakeOji
 							}
 							catch (Exception $error)
 							{
-								$log[] = date($dateformat) . ' ERROR: ' . $error->getMessage() . ' while JS src: ' . $src;
+								$log[] = date($this->logDateFormat) . ' ERROR: ' . $error->getMessage() . ' while JS src: ' . $src;
 							}
 						}
 						else if ($type == 'css')
@@ -627,19 +810,19 @@ class ShikakeOji
 							}
 							catch (Exception $error)
 							{
-								$log[] = date($dateformat) . ' ERROR: ' . $error->getMessage() . ' while CSS src: ' . $src;
+								$log[] = date($this->logDateFormat) . ' ERROR: ' . $error->getMessage() . ' while CSS src: ' . $src;
 							}
 						}
 						$mtime_newest = time();
 						file_put_contents($des, $min);
-						$log[] = date($dateformat) . ' des: ' . $des . ', size: ' . filesize($des);
+						$log[] = date($this->logDateFormat) . ' des: ' . $des . ', size: ' . filesize($des);
 					}
 					$data[] = '/* ' . $file . ' */' . "\n" . $min;
 				}
 			}
 
-			$outfile = $base . 'naginata.min.' . $type;
-			$outfilegz = $base . 'naginata.min.gz.' . $type;
+			$outfile = $base . $this->minifiedName . $type;
+			$outfilegz = $base . $this->minifiedName . 'gz.' . $type;
 			if (file_exists($outfile))
 			{
 				$mtime_out = filemtime($outfile);
@@ -653,7 +836,7 @@ class ShikakeOji
 			{
 				$alldata = implode("\n\n", $data);
 				$bytecount = file_put_contents($outfile, $alldata);
-				$log[] = date($dateformat) . ' outfile: ' . $outfile . ', size: ' . $bytecount;
+				$log[] = date($this->logDateFormat) . ' outfile: ' . $outfile . ', size: ' . $bytecount;
 
 				if ($bytecount !== false)
 				{
@@ -661,7 +844,7 @@ class ShikakeOji
 					gzwrite($gz, $alldata);
 					gzclose($gz);
 					$wrote = true;
-					$log[] = date($dateformat) . ' outfilegz: ' . $outfilegz . ', size: ' . filesize($outfilegz);
+					$log[] = date($this->logDateFormat) . ' outfilegz: ' . $outfilegz . ', size: ' . filesize($outfilegz);
 				}
 			}
 		}
