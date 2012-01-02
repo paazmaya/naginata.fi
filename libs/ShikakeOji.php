@@ -369,7 +369,8 @@ class ShikakeOji
 		// try out different fonts
 		$fonts = array(
 			'fontptserif3',
-			'fontarmata'
+			'fontarmata',
+			'fontliber'
 		);
 		$len = count($fonts);
 		$_SESSION['fontcounter']++;
