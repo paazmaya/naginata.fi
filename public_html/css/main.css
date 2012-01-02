@@ -45,6 +45,9 @@ a:hover {
 input, select {
 	vertical-align: middle;
 }
+input:focus, select:focus, textarea:focus {
+    outline: 1px solid #6E5728;
+}
 
 nav {
 	position: absolute;
@@ -117,8 +120,8 @@ h1, h2, h3, h4, h5, h6 {
 
 
 article ul, article ol {
-	list-style-position: inside;
-	padding-left: 1em;
+	list-style-position: outside;
+	padding-left: 2em;
 }
 article ul {
 	list-style-type: disc;
@@ -128,6 +131,10 @@ article ol {
 }
 
 article img {
+}
+
+article a::after {
+    content: url(../img/link_arrow.png);
 }
 
 form {

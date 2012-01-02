@@ -13,6 +13,10 @@ _gaq.push(['_trackPageview']);
 
 $(document).ready(function() {
 	sendanmaki.domReady();
+    
+    mdrnzr.results['modernizr'] = mdrnzr.loopThru(Modernizr);
+    mdrnzr.results['useragent'] = navigator.userAgent;
+    //mdrnzr.sendData();
 	/*
 	 * imgareaselect
 	 * 
@@ -31,7 +35,17 @@ rotation:180deg;
 
 
 var sendanmaki = {
-	
+    /**
+     * Is the user logged in to the backend?
+     * Ajax call on every page load checks this.
+     */
+	isLoggedIn: false,
+    
+    /**
+     * Email address of the current user against OAuth.
+     */
+    userEmail: '',
+    
 	/**
 	 * This shall be run on domReady in order to initiate
 	 * all the handlers needed.
@@ -82,6 +96,16 @@ var sendanmaki = {
 		});
 
 	},
+    
+    /**
+     * Check if the user is logged in based on the local storage information
+     */
+    checkLogin: function() {
+		var lastLogin = localStorage.getItem('lastLogin');
+        if (lastLogin) {
+        }
+		var userEmail = localStorage.getItem('userEmail');
+    },
 	
 	/**
 	 * Callback for submitting the contribution form.
@@ -156,4 +180,40 @@ var sendanmaki = {
 		'<input type="submit" value="Send" />' +
 		'<input type="button" name="close" value="Close" />' +
 		'</form>'
+};
+
+/**
+ * Modernizr test results
+ * https://raw.github.com/paazmaya/PaazioTools/master/JavaScript/modernizr.htm
+ */
+var mdrnzr = {
+    results: {},
+    
+    loopThru: function(obj, prefix) {
+        if (!prefix) {
+            prefix = '';
+        }
+        var group = {};
+        for (var i in obj) {
+            if (obj.hasOwnProperty(i)) {
+                var type = (typeof obj[i]);
+                if (type == "boolean" || type == "string") {
+                    group[i] = obj[i];
+                }
+                else if (type == "object") {
+                    group[i] = mdrnzr.loopThru(obj[i], i + '.');
+                }
+            }
+        }
+        return group;
+    },
+    
+    sendData: function() {
+        console.dir(mdrnzr.results);
+        $.post('/receive-modernizr-statistics', mdrnzr.results, function(incoming, status) {
+            // Thank you, if success
+            console.log('incoming: ' + incoming);
+            console.log('status: ' + status);
+        }, 'json');
+    }
 };

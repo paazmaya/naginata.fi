@@ -93,6 +93,18 @@ class ShikakeOji
 	 * These require user to login via OAuth.
 	 */
 	private $isInternalPage = false;
+    
+	/**
+	 * Is the user logged in?
+     * If true, then the userEmail should be one found in the "users" section of App data.
+	 */
+	private $isLoggedIn = false;
+    
+    /**
+     * Email address of the current user, if any.
+     * Be careful, this is used with "isLoggedIn" to validate the user.
+     */
+    private $userEmail = '';
 
 	/**
 	 * Library path, which is used to find the other libraries included.
@@ -102,10 +114,15 @@ class ShikakeOji
 	/**
 	 * URLs used by the application, not for showing content.
 	 * These should be human readable English with dashes.
+     * Key is the URL, value is the name of the function to be called.
 	 */
 	private $appUrls = array(
-		'/update-article'
+		'/update-article' => 'pageUpdateArticle',
+        '/receive-modernizr-statistics' => 'pageReceiveModernizrStats',
+        '/authenticate-user' => 'pageAuthenticateUser'
 	);
+    
+    public static $VERSION = '0.5';
 
 	/**
 	 * Constructor will load the JSON data and decode it as well as
@@ -113,6 +130,8 @@ class ShikakeOji
 	 */
 	function __construct($jsonpath)
 	{
+        $this->checkSession();
+        
 		$this->jsonpath = $jsonpath;
 		$this->loadData();
 
@@ -121,6 +140,32 @@ class ShikakeOji
 			$this->isCompressionSupported = true;
 			//$this->minifiedName .= 'gz.'; // It might conflict with what Apache is delivering already compressed
 		}
+	}
+    
+    /**
+     * Check for all session variables and restart session if needed.
+     * Session should not be started elsewhere.
+     */
+    public function checkSession()
+    {
+        session_start();
+        
+        // Must match the HTTP_HOST, USER_AGENT, user ip
+        $_SESSION['id'] = '';
+        
+        // Must found from the "users" list if not empty. If empty, not logged in.
+        $_SESSION['email'] = '';
+        
+    }
+
+	/**
+	 * Check the $_SERVER['HTTP_ACCEPT_LANGUAGE'] and set
+	 * the $this->language variable for one that is found from data.
+	 * If nothing is found, default to Finnish.
+	 */
+	public function checkRequestedLanguage()
+	{
+		$this->language = 'fi';
 	}
 
 	/**
@@ -146,7 +191,7 @@ class ShikakeOji
 		// URLs should only be lowercase, thus check and redirect later
 		$lowercase = strtolower($url);
 
-		if (in_array($lowercase, $this->appUrls))
+		if (array_key_exists($lowercase, $this->appUrls))
 		{
 			// Application internal URLs
 			$this->currentPage = $lowercase;
@@ -197,13 +242,15 @@ class ShikakeOji
 	{
 		if ($this->isInternalPage)
 		{
-			// TODO: add login checks, page checks and whatever...
-			$update = $this->updateArticle();
-			if ($update !== false)
-			{
-			}
+            // These functions return a string or false on failure.
+            $out = call_user_func(array($this, $this->appUrls[$this->currentPage]));
+            
 			header('Content-type: text/json');
-			return json_encode(array('diff' => $update));
+			if ($out !== false)
+			{
+                return json_encode(array('answer' => 'failed'));
+			}
+			return json_encode(array('answer' => $out));
 		}
 		else
 		{
@@ -249,22 +296,12 @@ class ShikakeOji
 	}
 
 	/**
-	 * Check the $_SERVER['HTTP_ACCEPT_LANGUAGE'] and set
-	 * the $this->language variable for one that is found from data.
-	 * If nothing is found, default to Finnish.
-	 */
-	public function checkRequestedLanguage()
-	{
-		$this->language = 'fi';
-	}
-
-	/**
 	 * Create the common head section with style sheet imports.
 	 *
 	 * @param	array	$styles	List of source files in "css" folder
 	 * @return	string
 	 */
-	public function createHtmlHeadBody($styles)
+	private function createHtmlHeadBody($styles)
 	{
 		$base = '/css/';
 
@@ -289,6 +326,7 @@ class ShikakeOji
 		{
 			$this->minify('css', $styles);
 			$out .= '<link rel="stylesheet" href="' . $base . $this->minifiedName . 'css" type="text/css" media="all" />';
+            $out .= '<script type="text/javascript" src="/js/modernizr.min.js"></script>';
 		}
 		else
 		{
@@ -296,10 +334,8 @@ class ShikakeOji
 			{
 				$out .= '<link rel="stylesheet" href="' . $base . $css . '" type="text/css" media="all" />';
 			}
+            $out .= '<script type="text/javascript" src="/js/modernizr.js"></script>';
 		}
-
-		$out .= '<script type="text/javascript" src="js/modernizr.js"></script>';
-
 		$out .= '</head>';
 
 
@@ -332,7 +368,7 @@ class ShikakeOji
 	 *
 	 * @return	string
 	 */
-	public function createLogo()
+	private function createLogo()
 	{
 		if (!$this->isDataAvailable('title'))
 		{
@@ -351,7 +387,7 @@ class ShikakeOji
 	 *
 	 * @return	string
 	 */
-	public function createNavigation()
+	private function createNavigation()
 	{
 		if (!$this->isDataAvailable('navigation'))
 		{
@@ -381,7 +417,7 @@ class ShikakeOji
 	 *
 	 * @return	string
 	 */
-	public function createArticle()
+	private function createArticle()
 	{
 		if (!$this->isDataAvailable('article'))
 		{
@@ -432,7 +468,7 @@ class ShikakeOji
 	 *
 	 * @return	string
 	 */
-	public function createFooter()
+	private function createFooter()
 	{
 		if (!$this->isDataAvailable('footer'))
 		{
@@ -463,7 +499,7 @@ class ShikakeOji
 	 * @param	array	$scripts	List of source files in "js" folder
 	 * @return	string
 	 */
-	public function createEndBodyJavascript($scripts)
+	private function createEndBodyJavascript($scripts)
 	{
 		$base = '/js/';
 		$out = '';
@@ -512,7 +548,7 @@ class ShikakeOji
 	private function saveData()
 	{
 		// $json = json_encode( utf8_encode($data) );
-		if ($this->jsonpath != '')
+		if ($this->jsonpath != '' && $this->isLoggedIn)
 		{
 			$jsonstring = $this->jsonPrettyPrint(json_encode($this->appData)); // PHP 5.4 onwards JSON_PRETTY_PRINT
 			file_put_contents($this->jsonpath, $jsonstring);
@@ -521,42 +557,39 @@ class ShikakeOji
 	}
 
 	/**
-	 * Save JSON data for moderation
+	 * Save JSON data for moderation in the same location as the original
 	 */
 	private function saveDataModeration()
 	{
-		$path = substr($this->jsonpath, 0, strrpos($this->jsonpath, '.')) . '.' . time() . '.json';
-		$jsonstring = $this->jsonPrettyPrint(json_encode($this->appData)); // PHP 5.4 onwards JSON_PRETTY_PRINT
-		file_put_contents($path, $jsonstring);
+        if ($this->isLoggedIn)
+        {
+            $time = date('Y-m-d_H-i-s');
+            $path = substr($this->jsonpath, 0, strrpos($this->jsonpath, '.')) . '.' . $time . '.' . $this->userEmail . '.json';
+            $jsonstring = $this->jsonPrettyPrint(json_encode($this->appData)); // PHP 5.4 onwards JSON_PRETTY_PRINT
+            file_put_contents($path, $jsonstring);
+        }
 	}
 
 	/**
 	 * There seems to be a request for updating an article.
 	 * Checks required data from $_POST and creates a diff.
+     * User must be logged in to perform this.
 	 *
 	 * @return	string/boolean	Diff or false
 	 */
-	private function updateArticle()
+	private function pageUpdateArticle()
 	{
 		$required = array(
 			'lang',
 			'page',
 			'content'
 		);
-		$received = array();
-		foreach($required as $r)
-		{
-			if (isset($_POST[$r]) && $_POST[$r] != '')
-			{
-				$received[$r] = $this->encodeHtml($_POST[$r]);
-			}
-		}
-
-		if (count($required) != count($received))
-		{
-			return false;
-		}
-
+        $received = $this->checkRequiredPost($required);
+        if ($received === false || !$this->isLoggedIn)
+        {
+            return false;
+        }
+        
 		// In app data, under "article", object named by "lang", has object with "page" is an array.
 		// $this->appData['article'][$this->language][$this->currentPage];
 		if (isset($this->appData['article']) &&
@@ -576,8 +609,8 @@ class ShikakeOji
 			$a = explode("\n", $current);
 			$b = explode("\n", $received['content']);
 
-			require_once $this->libPath . '/php-diff/Diff.php';
-			require_once $this->libPath . '/php-diff/Diff/Renderer/Text/Unified.php';
+			require $this->libPath . '/php-diff/Diff.php';
+			require $this->libPath . '/php-diff/Diff/Renderer/Text/Unified.php';
 
 			$diff = new Diff($a, $b);
 			$renderer = new Diff_Renderer_Text_Unified;
@@ -586,6 +619,68 @@ class ShikakeOji
 		}
 		return false;
 	}
+    
+    /**
+     * Save Modernizr statistics
+     */
+    private function pageReceiveModernizrStats()
+    {
+        $required = array(
+			'lang',
+			'page',
+			'content'
+		);
+        $received = $this->checkRequiredPost($required);
+        if ($received === false)
+        {
+            return false;
+        }
+    }
+    
+    /**
+     * Try to authenticate the user via OAuth.
+     * The email provider should tell if the user is who she/he/it claims to be.
+     */
+    private function pageAuthenticateUser()
+    {
+        $required = array(
+			'lang',
+			'page',
+			'content'
+		);
+        $received = $this->checkRequiredPost($required);
+        if ($received === false)
+        {
+            return false;
+        }
+        
+		require $this->libPath . '/oauth2-php/OAuth2.php';
+        
+        //$this->isLoggedIn
+        //$this->userEmail
+    }
+    
+    /**
+     * Check $_POST against the given $required array.
+     * @return array/boolean    False if any of the required is missing, else escaped data
+     */
+    private function checkRequiredPost($required)
+    {
+		$received = array();
+		foreach($required as $r)
+		{
+			if (isset($_POST[$r]) && $_POST[$r] != '')
+			{
+				$received[$r] = $this->encodeHtml($_POST[$r]);
+			}
+		}
+
+		if (count($required) !== count($received))
+		{
+			return false;
+		}
+        return $received;
+    }
 
 	/**
 	 * Check to see whether a given data scope is available.
@@ -910,7 +1005,7 @@ class ShikakeOji
 
 		$mail->SetFrom($this->emailConfig['address'], $sender);
 
-		$mail->Version = $cf['version'];
+		$mail->Version = $this->VERSION;
 
 		$mail->AddAddress($toMail, $toName);
 		$mail->AddBCC($this->emailConfig['address'], $mail->FromName);
