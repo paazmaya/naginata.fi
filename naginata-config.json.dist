@@ -1,0 +1,8 @@
+{
+	"email": {
+		"address": "email@address.com",
+		"password": "****",
+		"pop3": "pop3.address.com:110",
+		"smtp": "smtp.address.com:587"
+	}
+}
