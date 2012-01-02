@@ -370,7 +370,6 @@ class ShikakeOji
 		$fonts = array(
 			'fontinder',
 			'fontptserif3',
-			'fontdejavu3',
 			'sansation3',
 			'fontarmata'
 		);

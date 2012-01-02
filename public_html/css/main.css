@@ -8,6 +8,18 @@
  * 072434 blue
  * 989E7B greyish
  */
+
+@font-face {
+    font-family: 'InderRegular';
+    src: url('../fonts/Inder-Regular-webfont.eot');
+    src: url('../fonts/Inder-Regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/Inder-Regular-webfont.woff') format('woff'),
+         url('../fonts/Inder-Regular-webfont.ttf') format('truetype'),
+         url('../fonts/Inder-Regular-webfont.svg#InderRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
 * {
 	margin: 0;
 	padding: 0;
@@ -116,6 +128,7 @@ nav a:hover, footer a:hover {
 
 h1, h2, h3, h4, h5, h6 {
 	color: #072434;
+	font-family: 'InderRegular', Verdana, sans-serif;
 }
 
 
@@ -193,16 +206,6 @@ input[type="submit"]:hover, input[type="button"]:hover {
 	background-color: #FEFEFE;
 }
 
-@font-face {
-    font-family: 'InderRegular';
-    src: url('../fonts/Inder-Regular-webfont.eot');
-    src: url('../fonts/Inder-Regular-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../fonts/Inder-Regular-webfont.woff') format('woff'),
-         url('../fonts/Inder-Regular-webfont.ttf') format('truetype'),
-         url('../fonts/Inder-Regular-webfont.svg#InderRegular') format('svg');
-    font-weight: normal;
-    font-style: normal;
-}
 
 #wrapper {
 	min-height: 100%;
@@ -231,7 +234,7 @@ input[type="submit"]:hover, input[type="button"]:hover {
 	word-spacing: 3.5em;
 	padding-top: 1em;
 	color: #072434;
-	font-family: 'InderRegular', Arial, sans-serif;
+	font-family: 'InderRegular', Verdana, sans-serif;
 }
 
 
