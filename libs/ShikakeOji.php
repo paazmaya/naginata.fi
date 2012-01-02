@@ -368,7 +368,6 @@ class ShikakeOji
 
 		// try out different fonts
 		$fonts = array(
-			'fontptserif3',
 			'fontarmata',
 			'fontliber'
 		);
