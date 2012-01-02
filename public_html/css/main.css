@@ -75,6 +75,7 @@ nav ul, footer > p {
 }
 nav, footer {
 	font-variant: small-caps;
+	font-family: 'InderRegular', Verdana, sans-serif;
 	width: 100%;
 	border-top: 0.1em solid #072434;
 	border-bottom: 0.1em solid #072434;
