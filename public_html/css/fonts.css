@@ -132,3 +132,59 @@
 .fontvollkorn4 {font-family: 'VollkornBoldItalic', Arial, sans-serif;}
 
 
+/* http://www.fontsquirrel.com/fonts/lora */
+ 
+ 
+@font-face {
+    font-family: 'LoraRegular';
+    src: url('../fonts/Lora-Regular-webfont.eot');
+    src: url('../fonts/Lora-Regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/Lora-Regular-webfont.woff') format('woff'),
+         url('../fonts/Lora-Regular-webfont.ttf') format('truetype'),
+         url('../fonts/Lora-Regular-webfont.svg#LoraRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'LoraItalic';
+    src: url('../fonts/Lora-Italic-webfont.eot');
+    src: url('../fonts/Lora-Italic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/Lora-Italic-webfont.woff') format('woff'),
+         url('../fonts/Lora-Italic-webfont.ttf') format('truetype'),
+         url('../fonts/Lora-Italic-webfont.svg#LoraItalic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'LoraBold';
+    src: url('../fonts/Lora-Bold-webfont.eot');
+    src: url('../fonts/Lora-Bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/Lora-Bold-webfont.woff') format('woff'),
+         url('../fonts/Lora-Bold-webfont.ttf') format('truetype'),
+         url('../fonts/Lora-Bold-webfont.svg#LoraBold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'LoraBoldItalic';
+    src: url('../fonts/Lora-BoldItalic-webfont.eot');
+    src: url('../fonts/Lora-BoldItalic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/Lora-BoldItalic-webfont.woff') format('woff'),
+         url('../fonts/Lora-BoldItalic-webfont.ttf') format('truetype'),
+         url('../fonts/Lora-BoldItalic-webfont.svg#LoraBoldItalic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+.fontlora {font-family: 'LoraRegular', Arial, sans-serif;}
+ 
+
+
