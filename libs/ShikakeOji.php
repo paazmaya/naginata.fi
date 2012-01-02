@@ -23,9 +23,9 @@ class ShikakeOji
 	
 	/**
 	 * Email configuration for sending via STMP.
-	 * See "public_html/config.php.dist"
+	 * See "naginata-config.json.dist"
 	 */
-	public $emailConfig;
+	public $config;
 	
 	/**
 	 * Application data, decoded from JSON string
@@ -141,6 +141,18 @@ class ShikakeOji
 			//$this->minifiedName .= 'gz.'; // It might conflict with what Apache is delivering already compressed
 		}
 	}
+	
+	/**
+	 * Load the given JSON configuration file.
+	 */
+	public function loadConfig($configPath)
+	{
+		if (!file_exists($configPath))
+		{
+			return false;
+		}
+		$this->config = json_decode(file_get_contents($configPath), true); 
+	}
     
     /**
      * Check for all session variables and restart session if needed.
@@ -148,6 +160,7 @@ class ShikakeOji
      */
     public function checkSession()
     {
+		session_name('SOFI');
         session_start();
         
         // Must match the HTTP_HOST, USER_AGENT, user ip
@@ -166,6 +179,20 @@ class ShikakeOji
 	public function checkRequestedLanguage()
 	{
 		$this->language = 'fi';
+	}
+	
+	/**
+	 * Remove "www" prefix from the URL and redirect.
+	 */
+	public function removeWwwRedirect()
+	{
+		if (substr($_SERVER['HTTP_HOST'], 0, 3) == 'www')
+		{
+			$go = 'http://' . substr($_SERVER['HTTP_HOST'], 4) . $_SERVER['REQUEST_URI'];
+			header('HTTP/1.1 301 Moved Permanently');
+			header('Location: ' . $go);
+			exit();
+		}
 	}
 
 	/**
@@ -343,8 +370,6 @@ class ShikakeOji
 		$fonts = array(
 			'fontinder',
 			'fontptserif3',
-			'fontcabin5',
-			'fontcabin7',
 			'fontdejavu3',
 			'sansation3',
 			'fontarmata'
@@ -993,22 +1018,22 @@ class ShikakeOji
 		$mail = new PHPMailer();
 		
 		$mail->IsSMTP();
-		$mail->Host = $this->emailConfig['smtp'];
+		$mail->Host = $this->config['email']['smtp'];
 		$mail->SMTPAuth = true;
-		$mail->Username = $this->emailConfig['address'];
-		$mail->Password = $this->emailConfig['password'];
+		$mail->Username = $this->config['email']['address'];
+		$mail->Password = $this->config['email']['password'];
 
 		$sender = 'NAGINATA.fi';
 		//mb_internal_encoding('UTF-8');
 		$sender = mb_encode_mimeheader($sender, 'UTF-8', 'Q');
 
 
-		$mail->SetFrom($this->emailConfig['address'], $sender);
+		$mail->SetFrom($this->config['email']['address'], $sender);
 
 		$mail->Version = $this->VERSION;
 
 		$mail->AddAddress($toMail, $toName);
-		$mail->AddBCC($this->emailConfig['address'], $mail->FromName);
+		$mail->AddBCC($this->config['email']['address'], $mail->FromName);
 		//Content-Language
 
 		$mail->WordWrap = 80;
