@@ -18,10 +18,12 @@ if (!isset($_SESSION['fontcounter']))
 }
 
 require '../libs/ShikakeOji.php';
+require './config.php';
 
 $shio = new ShikakeOji(realpath('../naginata-data.json'));
 $shio->useMinification = false;
 $shio->useTidy = true;
+$shio->emailConfig = $config['email'];
 
 $shio->checkRequestedLanguage();
 $shio->checkRequestedPage();
