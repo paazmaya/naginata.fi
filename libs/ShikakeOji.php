@@ -3,9 +3,12 @@
  * naginata.fi
  * A class for outputting HTML5 stuff.
  * Let's see how many times the buzzword HTML5 can be repeated.
+ * 
+ * http://blog.thenounproject.com/post/7310229014/how-to-properly-attribute-cc-by-a-guest-blog-post-by
  *
  * Usage:
  *  $shio = new ShikakeOji(realpath('../naginata-data.json'));
+ *  $shio->loadConfig(realpath('../naginata-config.json'));
  *  $shio->checkRequestedPage();
  *  echo $shio->renderPage();
  */
@@ -17,18 +20,20 @@ class ShikakeOji
     public $language = 'fi';
 
 	/**
-	 * Should be set to the realpath of the json file where app data is stored.
+	 * Should be set to the realpath of the JSON file where app data is stored.
+     * This location is used for storing the moderated versions of the content.
 	 */
-	public $jsonpath = '../naginata-data.json';
+	public $dataPath = '../naginata-data.json';
 	
 	/**
-	 * Email configuration for sending via STMP.
-	 * See "naginata-config.json.dist"
+	 * Configuration for Emails sending, 3rd party API keys, etc.
+	 * See "naginata-config.json.dist" for possible keys.
 	 */
 	public $config;
 	
 	/**
-	 * Application data, decoded from JSON string
+	 * Application data, decoded from JSON string which is loaded
+     * from $this->dataPath.
 	 */
 	public $addData;
 
@@ -42,6 +47,7 @@ class ShikakeOji
 	 * Current page, as seen in the request url.
 	 * Needs to match the ones available in navigation.
 	 * Defaults to / as in front page.
+     * All URLs are starting with forward slash.
 	 */
 	public $currentPage = '/';
 
@@ -122,7 +128,7 @@ class ShikakeOji
         '/authenticate-user' => 'pageAuthenticateUser'
 	);
     
-    public static $VERSION = '0.5';
+    public static $VERSION = '0.6';
 
 	/**
 	 * Constructor will load the JSON data and decode it as well as
@@ -132,7 +138,7 @@ class ShikakeOji
 	{
         $this->checkSession();
         
-		$this->jsonpath = $jsonpath;
+		$this->dataPath = $jsonpath;
 		$this->loadData();
 
 		if (isset($_SERVER['HTTP_ACCEPT_ENCODING']) && strpos($_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip') !== false)
@@ -163,11 +169,23 @@ class ShikakeOji
 		session_name('SOFI');
         session_start();
         
-        // Must match the HTTP_HOST, USER_AGENT, user ip
-        $_SESSION['id'] = '';
-        
-        // Must found from the "users" list if not empty. If empty, not logged in.
-        $_SESSION['email'] = '';
+        $id = sha1($_SERVER['REMOTE_ADDR'] . $_SERVER['HTTP_USER_AGENT'] . 
+                $_SERVER['HTTP_ACCEPT'] . $_SERVER['HTTP_ACCEPT_CHARSET'] . 
+                $_SERVER['HTTP_ACCEPT_ENCODING'] . $_SERVER['HTTP_ACCEPT_LANGUAGE']);
+                
+        if (!isset($_SESSION['id']) || $_SESSION['id'] != $id && !isset($_SESSION['id']))
+        {
+            session_regenerate_id(); // updates the cookie if there is one
+            session_destroy();
+            unset($_SESSION);
+            session_start();
+            
+            $_SESSION = array(); // not sure if this is needed
+            // Must match the REMOTE_ADDR, HTTP_USER_AGENT, ...
+            $_SESSION['id'] = $id;
+            // Must found from the "users" list if not empty. If empty, not logged in.
+            $_SESSION['email'] = '';
+        }
         
     }
 
@@ -272,7 +290,7 @@ class ShikakeOji
             // These functions return a string or false on failure.
             $out = call_user_func(array($this, $this->appUrls[$this->currentPage]));
             
-			header('Content-type: text/json');
+			header('Content-type: application/json');
 			if ($out !== false)
 			{
                 return json_encode(array('answer' => 'failed'));
@@ -348,10 +366,17 @@ class ShikakeOji
 		$out .= '<meta charset="utf-8"/>';
 		$out .= '<title>' . $title . ' - Naginata Suomessa</title>';
 		$out .= '<link rel="shortcut icon" href="img/favicon.png" type="image/png"/>';
+        /*
+        $out .= '<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>';
+        $out .= '<meta property="og:type" content="sport"/>';
+        $out .= '<link rel="author" href="http://paazmaya.com"/>';
+        $out .= '<link rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/"/>';
+        */
 
 		if ($this->useMinification)
 		{
 			$this->minify('css', $styles);
+            $this->minifyFile('js', 'modernizr.js');
 			$out .= '<link rel="stylesheet" href="' . $base . $this->minifiedName . 'css" type="text/css" media="all" />';
             $out .= '<script type="text/javascript" src="/js/modernizr.min.js"></script>';
 		}
@@ -550,11 +575,11 @@ class ShikakeOji
 	 */
 	private function loadData()
 	{
-		if ($this->jsonpath != '' && file_exists($this->jsonpath))
+		if ($this->dataPath != '' && file_exists($this->dataPath))
 		{
-			$json = file_get_contents($this->jsonpath);
+			$json = file_get_contents($this->dataPath);
 			$this->appData = json_decode($json, true);
-			$this->modified = filemtime($this->jsonpath);
+			$this->modified = filemtime($this->dataPath);
 
 			$error = $this->getJsonError();
 			if ($error != '')
@@ -572,10 +597,10 @@ class ShikakeOji
 	private function saveData()
 	{
 		// $json = json_encode( utf8_encode($data) );
-		if ($this->jsonpath != '' && $this->isLoggedIn)
+		if ($this->dataPath != '' && $this->isLoggedIn)
 		{
 			$jsonstring = $this->jsonPrettyPrint(json_encode($this->appData)); // PHP 5.4 onwards JSON_PRETTY_PRINT
-			file_put_contents($this->jsonpath, $jsonstring);
+			file_put_contents($this->dataPath, $jsonstring);
 			$this->modified = time();
 		}
 	}
@@ -588,7 +613,7 @@ class ShikakeOji
         if ($this->isLoggedIn)
         {
             $time = date('Y-m-d_H-i-s');
-            $path = substr($this->jsonpath, 0, strrpos($this->jsonpath, '.')) . '.' . $time . '.' . $this->userEmail . '.json';
+            $path = substr($this->dataPath, 0, strrpos($this->dataPath, '.')) . '.' . $time . '.' . $this->userEmail . '.json';
             $jsonstring = $this->jsonPrettyPrint(json_encode($this->appData)); // PHP 5.4 onwards JSON_PRETTY_PRINT
             file_put_contents($path, $jsonstring);
         }
@@ -851,24 +876,26 @@ class ShikakeOji
 	 *
 	 * @param string $type	Either js or css
 	 * @param array $files	List of files location in the public_html/[type]/ folder
-	 * @return boolean True if the resulting file was updated
+	 * @return boolean True if the resulting file was updated, false is anything was wrong
 	 */
 	private function minify($type, $files)
 	{
+		if (!is_array($files) || count($files) == 0)
+		{
+			return false;
+		}
 		// Where can those files be found, under type
 		$base = realpath('../public_html/' . $type) . '/';
 
 		// Are there newer source files than the single output file?
 		$newerexists = false;
 
-		// Return value will be this
+		// Return value will be this, did the minified file need an update
 		$wrote = false;
 
 		// Keep log of what has happened and how much the filesizes were reduced.
 		$log = array();
 
-		// Function failed on a mismatching parametre?
-		$fail = false;
 		if ($type == 'js')
 		{
 			require_once $this->libPath . '/minify/Minify/JS/ClosureCompiler.php';
@@ -879,125 +906,136 @@ class ShikakeOji
 		}
 		else
 		{
-			$fail = true;
-		}
-		if (!is_array($files) || count($files) == 0)
-		{
-			$fail = true;
+			return false;
 		}
 
-		if (!$fail)
-		{
-			$data = array();
-			$mtime_newest = 0;
-			foreach($files as $file)
-			{
-				$src = ('../public_html/' . $type) . '/' . $file;
-				if (file_exists($src))
-				{
-					$minify = true;
-					$mtime_src = filemtime($src);
-					$p = explode('.', $file);
-					// Remove suffix temporarily for the ".min" check
-					if (end($p) == $type)
-					{
-						unset($p[count($p) - 1]);
-					}
-					// If the filename has a ".min" appended in the end, its content is used as such.
-					if (end($p) == 'min')
-					{
-						$des = $src;
-						$minify = false;
-					}
-					else
-					{
-						// Rebuild the name by including ".min" in the end
-						$p[] = 'min';
-						$p[] = $type;
-						$des = $base . implode('.', $p);
-					}
+        $data = array();
+        foreach($files as $file)
+        {
+            $minified = $this->minifyFile($type, $file);
+            if ($minified !== false)
+            {
+                $data[] = '/* ' . $file . ' */' . "\n" . $minified;
+            }
+        }
 
-					$log[] = date($this->logDateFormat) . ' src: ' . $src . ', size: ' . filesize($src);
+        $outfile = $base . $this->minifiedName . $type;
+        $outfilegz = $base . $this->minifiedName . 'gz.' . $type;
+      
+        $alldata = implode("\n\n", $data);
+        $bytecount = file_put_contents($outfile, $alldata);
+        $log[] = date($this->logDateFormat) . ' outfile: ' . $outfile . ', size: ' . $bytecount;
 
-					$min = '';
-					if (file_exists($des))
-					{
-						$mtime_des = filemtime($des);
-						//echo '<!-- mtime_src: ' . $mtime_src . ', mtime_des: ' . $mtime_des . ' -->' . "\n";
-						if ($mtime_src <= $mtime_des)
-						{
-							$minify = false;
-							$min = file_get_contents($des);
-							$mtime_newest = max($mtime_des, $mtime_newest);
-						}
-					}
-					//echo '<!-- minify: ' . $minify . ' -->' . "\n";
-
-					if ($minify)
-					{
-						$cont = file_get_contents($src);
-						if ($type == 'js')
-						{
-							try
-							{
-								$min = Minify_JS_ClosureCompiler::minify($cont);
-							}
-							catch (Exception $error)
-							{
-								$log[] = date($this->logDateFormat) . ' ERROR: ' . $error->getMessage() . ' while JS src: ' . $src;
-							}
-						}
-						else if ($type == 'css')
-						{
-							try
-							{
-								$min = Minify_CSS_Compressor::process($cont);
-							}
-							catch (Exception $error)
-							{
-								$log[] = date($this->logDateFormat) . ' ERROR: ' . $error->getMessage() . ' while CSS src: ' . $src;
-							}
-						}
-						$mtime_newest = time();
-						file_put_contents($des, $min);
-						$log[] = date($this->logDateFormat) . ' des: ' . $des . ', size: ' . filesize($des);
-					}
-					$data[] = '/* ' . $file . ' */' . "\n" . $min;
-				}
-			}
-
-			$outfile = $base . $this->minifiedName . $type;
-			$outfilegz = $base . $this->minifiedName . 'gz.' . $type;
-			if (file_exists($outfile))
-			{
-				$mtime_out = filemtime($outfile);
-			}
-			else
-			{
-				$newerexists = true;
-			}
-
-			if ($newerexists || $mtime_newest > $mtime_out)
-			{
-				$alldata = implode("\n\n", $data);
-				$bytecount = file_put_contents($outfile, $alldata);
-				$log[] = date($this->logDateFormat) . ' outfile: ' . $outfile . ', size: ' . $bytecount;
-
-				if ($bytecount !== false)
-				{
-					$gz = gzopen($outfilegz, 'wb9');
-					gzwrite($gz, $alldata);
-					gzclose($gz);
-					$wrote = true;
-					$log[] = date($this->logDateFormat) . ' outfilegz: ' . $outfilegz . ', size: ' . filesize($outfilegz);
-				}
-			}
-		}
+        if ($bytecount !== false)
+        {
+            $gz = gzopen($outfilegz, 'wb9');
+            gzwrite($gz, $alldata);
+            gzclose($gz);
+            $wrote = true;
+            $log[] = date($this->logDateFormat) . ' outfilegz: ' . $outfilegz . ', size: ' . filesize($outfilegz);
+        }
 
 		file_put_contents($this->minifyLog, implode("\n", $log), FILE_APPEND);
 
 		return $wrote;
 	}
+    
+    /**
+     * Minify a single file. Adds ".min" to the filename before the suffix.
+     * 
+	 * @param   string  $type	Either js or css
+	 * @param   string  $file	Name of the file in public_html/[type]/ folder
+	 * @return  string/boolean  Minified output or flase if something went wrong
+     */
+    private function minifyFile($type, $file)
+    {
+		// Keep log of what has happened and how much the filesizes were reduced.
+		$log = array();
+        
+        // Absolute path of the given file
+        $source = realpath('../public_html/' . $type) . '/' . $file;
+        
+        if (file_exists($source))
+        {
+            $doMinify = true;
+            $mtime_src = filemtime($source);
+            
+            $p = explode('.', $file);
+            
+            // Remove suffix temporarily for the ".min" check
+            if (end($p) == $type)
+            {
+                unset($p[count($p) - 1]);
+            }
+            
+            // If the filename has a ".min" appended in the end, its content is used as such.
+            if (end($p) == 'min')
+            {
+                $destination = $source;
+                $doMinify = false;
+            }
+            else
+            {
+                // Rebuild the name by including ".min" in the end
+                $p[] = 'min';
+                $p[] = $type;
+                $destination = $base . implode('.', $p);
+            }
+
+            $log[] = date($this->logDateFormat) . ' source: ' . $source . ', size: ' . filesize($source);
+
+            $minified = '';
+            if (file_exists($destination))
+            {
+                $mtime_des = filemtime($destination);
+                if ($mtime_src <= $mtime_des)
+                {
+                    $doMinify = false;
+                    $minified = file_get_contents($destination);
+                }
+            }
+
+            if ($doMinify)
+            {                    
+                $content = file_get_contents($source);
+                $failed = false;
+                if ($type == 'js')
+                {
+                    try
+                    {
+                        $minified = Minify_JS_ClosureCompiler::minify($content);
+                    }
+                    catch (Exception $error)
+                    {
+                        $log[] = date($this->logDateFormat) . ' ERROR: ' . $error->getMessage() . ' while JS source: ' . $source;
+                        $failed = true;
+                    }
+                }
+                else if ($type == 'css')
+                {
+                    try
+                    {
+                        $minified = Minify_CSS_Compressor::process($content);
+                    }
+                    catch (Exception $error)
+                    {
+                        $log[] = date($this->logDateFormat) . ' ERROR: ' . $error->getMessage() . ' while CSS source: ' . $source;
+                        $failed = true;
+                    }
+                }
+                
+                if (!$failed)
+                {
+                    file_put_contents($destination, $minified);
+                    $log[] = date($this->logDateFormat) . ' destination: ' . $destination . ', size: ' . filesize($destination);
+                }
+            }
+        }
+        
+		file_put_contents($this->minifyLog, implode("\n", $log), FILE_APPEND);
+        
+        return $failed ? false : $minified;
+    }
 	
 	/**
 	 * Send email to the given address with the given content.
@@ -1026,7 +1064,6 @@ class ShikakeOji
 		//mb_internal_encoding('UTF-8');
 		$sender = mb_encode_mimeheader($sender, 'UTF-8', 'Q');
 
-
 		$mail->SetFrom($this->config['email']['address'], $sender);
 
 		$mail->Version = $this->VERSION;
@@ -1039,7 +1076,7 @@ class ShikakeOji
 		$mail->IsHTML(false);
 				
 		$mail->Subject = $subject;
-		$mail->Body = $message . $signature;
+		$mail->Body = $message;
 
 		return $mail->Send();
 		// $mail->ErrorInfo;
