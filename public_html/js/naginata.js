@@ -52,7 +52,7 @@ var sendanmaki = {
 	 */
 	domReady: function() {
 			
-		var links = $('article a:not(.mediathumb a)').size();
+		var links = $('article a:not(.mediathumb a)').length;
 		console.log('links: ' + links);
 		
 		$('article a:not(.mediathumb a)').click(function() {
