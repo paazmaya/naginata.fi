@@ -16,62 +16,6 @@
 .fontarmata {font-family: 'ArmataRegular', Arial, sans-serif;}
 		
 
-/* http://www.fontsquirrel.com/fonts/Liberation-Serif */
-
-
-
-@font-face {
-    font-family: 'LiberationSerifRegular';
-    src: url('../fonts/LiberationSerif-Regular-webfont.eot');
-    src: url('../fonts/LiberationSerif-Regular-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../fonts/LiberationSerif-Regular-webfont.woff') format('woff'),
-         url('../fonts/LiberationSerif-Regular-webfont.ttf') format('truetype'),
-         url('../fonts/LiberationSerif-Regular-webfont.svg#LiberationSerifRegular') format('svg');
-    font-weight: normal;
-    font-style: normal;
-
-}
-
-@font-face {
-    font-family: 'LiberationSerifItalic';
-    src: url('../fonts/LiberationSerif-Italic-webfont.eot');
-    src: url('../fonts/LiberationSerif-Italic-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../fonts/LiberationSerif-Italic-webfont.woff') format('woff'),
-         url('../fonts/LiberationSerif-Italic-webfont.ttf') format('truetype'),
-         url('../fonts/LiberationSerif-Italic-webfont.svg#LiberationSerifItalic') format('svg');
-    font-weight: normal;
-    font-style: normal;
-
-}
-
-@font-face {
-    font-family: 'LiberationSerifBold';
-    src: url('../fonts/LiberationSerif-Bold-webfont.eot');
-    src: url('../fonts/LiberationSerif-Bold-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../fonts/LiberationSerif-Bold-webfont.woff') format('woff'),
-         url('../fonts/LiberationSerif-Bold-webfont.ttf') format('truetype'),
-         url('../fonts/LiberationSerif-Bold-webfont.svg#LiberationSerifBold') format('svg');
-    font-weight: normal;
-    font-style: normal;
-
-}
-
-@font-face {
-    font-family: 'LiberationSerifBoldItalic';
-    src: url('../fonts/LiberationSerif-BoldItalic-webfont.eot');
-    src: url('../fonts/LiberationSerif-BoldItalic-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../fonts/LiberationSerif-BoldItalic-webfont.woff') format('woff'),
-         url('../fonts/LiberationSerif-BoldItalic-webfont.ttf') format('truetype'),
-         url('../fonts/LiberationSerif-BoldItalic-webfont.svg#LiberationSerifBoldItalic') format('svg');
-    font-weight: normal;
-    font-style: normal;
-
-}
-
-
-.fontliber {font-family: 'LiberationSerifRegular', Arial, sans-serif;}
-
-
 /* http://www.fontsquirrel.com/fonts/lora */
  
  
