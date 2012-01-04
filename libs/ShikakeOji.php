@@ -395,7 +395,6 @@ class ShikakeOji
 		$fonts = array(
 			'fontarmata',
 			'fontliber',
-			'fontvollkorn1',
 			'fontlora'
 		);
 		$len = count($fonts);

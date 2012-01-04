@@ -74,64 +74,6 @@
 .fontliber {font-family: 'LiberationSerifRegular', Arial, sans-serif;}
 
 
-/* http://www.fontsquirrel.com/fonts/Vollkorn */
-
-
-@font-face {
-    font-family: 'VollkornRegular';
-    src: url('../fonts/Vollkorn-Regular-webfont.eot');
-    src: url('../fonts/Vollkorn-Regular-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../fonts/Vollkorn-Regular-webfont.woff') format('woff'),
-         url('../fonts/Vollkorn-Regular-webfont.ttf') format('truetype'),
-         url('../fonts/Vollkorn-Regular-webfont.svg#VollkornRegular') format('svg');
-    font-weight: normal;
-    font-style: normal;
-
-}
-
-@font-face {
-    font-family: 'VollkornBold';
-    src: url('../fonts/Vollkorn-Bold-webfont.eot');
-    src: url('../fonts/Vollkorn-Bold-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../fonts/Vollkorn-Bold-webfont.woff') format('woff'),
-         url('../fonts/Vollkorn-Bold-webfont.ttf') format('truetype'),
-         url('../fonts/Vollkorn-Bold-webfont.svg#VollkornBold') format('svg');
-    font-weight: normal;
-    font-style: normal;
-
-}
-
-@font-face {
-    font-family: 'VollkornItalic';
-    src: url('../fonts/Vollkorn-Italic-webfont.eot');
-    src: url('../fonts/Vollkorn-Italic-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../fonts/Vollkorn-Italic-webfont.woff') format('woff'),
-         url('../fonts/Vollkorn-Italic-webfont.ttf') format('truetype'),
-         url('../fonts/Vollkorn-Italic-webfont.svg#VollkornItalic') format('svg');
-    font-weight: normal;
-    font-style: normal;
-
-}
-
-@font-face {
-    font-family: 'VollkornBoldItalic';
-    src: url('../fonts/Vollkorn-BoldItalic-webfont.eot');
-    src: url('../fonts/Vollkorn-BoldItalic-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../fonts/Vollkorn-BoldItalic-webfont.woff') format('woff'),
-         url('../fonts/Vollkorn-BoldItalic-webfont.ttf') format('truetype'),
-         url('../fonts/Vollkorn-BoldItalic-webfont.svg#VollkornBoldItalic') format('svg');
-    font-weight: normal;
-    font-style: normal;
-
-}
-
-
-.fontvollkorn1 {font-family: 'VollkornRegular', Arial, sans-serif;}
-.fontvollkorn2 {font-family: 'VollkornBold', Arial, sans-serif;}
-.fontvollkorn3 {font-family: 'VollkornItalic', Arial, sans-serif;}
-.fontvollkorn4 {font-family: 'VollkornBoldItalic', Arial, sans-serif;}
-
-
 /* http://www.fontsquirrel.com/fonts/lora */
  
  
