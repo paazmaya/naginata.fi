@@ -177,8 +177,8 @@ var sendanmaki = {
 	 */
 	editForm: '<form action="/update-article" method="post">' +
 		'<textarea name="content"></textarea>' +
-		'<input type="submit" value="Send" />' +
-		'<input type="button" name="close" value="Close" />' +
+		'<input type="submit" value="Lähetä" />' +
+		'<input type="button" name="close" value="Sulje" />' +
 		'</form>'
 };
 

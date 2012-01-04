@@ -363,15 +363,13 @@ class ShikakeOji
 		$out = '<!DOCTYPE html>';
 		$out .= '<html>';
 		$out .= '<head>';
-		$out .= '<meta charset="utf-8"/>';
 		$out .= '<title>' . $title . ' - Naginata Suomessa</title>';
-		$out .= '<link rel="shortcut icon" href="img/favicon.png" type="image/png"/>';
-        /*
-        $out .= '<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>';
+		$out .= '<meta charset="utf-8"/>';
         $out .= '<meta property="og:type" content="sport"/>';
         $out .= '<link rel="author" href="http://paazmaya.com"/>';
         $out .= '<link rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/"/>';
-        */
+		$out .= '<link rel="shortcut icon" href="/img/favicon.png" type="image/png"/>';
+		$out .= '<link rel="apple-touch-icon" href="/img/mobile-logo.png"/>'; // 57x57
 
 		if ($this->useMinification)
 		{
@@ -394,7 +392,6 @@ class ShikakeOji
 		// try out different fonts
 		$fonts = array(
 			'fontarmata',
-			'fontliber',
 			'fontlora'
 		);
 		$len = count($fonts);
@@ -534,7 +531,7 @@ class ShikakeOji
 			$out .= '<a href="' . $item['0'] . '" title="' . $item['1'] . '">' . $item['2'] . '</a> | ';
 		}
 
-		$out .= '<time datetime="' . date('c', $this->modified) . '">' . date('r', $this->modified) . '</time>';
+		$out .= '<time datetime="' . date('c', $this->modified) . '">' . date('j.n.Y G:i', $this->modified) . '</time>';
 		$out .= '</footer>';
 
 		return $out;
