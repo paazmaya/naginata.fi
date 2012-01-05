@@ -1,53 +1,95 @@
 {
-	"title": {
-		"fi": "Naginata Suomessa",
-		"en": "Naginata Finland",
-		"jp": "なぎなた フィンランド"
-	},
-	"navigation": {
-		"fi": [
-			["/", "Ajankohtaista", "Ajankohtaista"],
-			["/naginata", "Atarashii Naginatado", "Naginata"],
-			["/koryu", "Jikishinkageryu Naginatajutsu", "Koryu"],
-			["/media", "Kuvat, Videot ja muu Media", "Media"],
-			["/yhteystiedot", "Yhteystiedot", "Yhteystiedot"]
-		],
-		"en": [],
-		"jp": []
-	},
-	"article": {
-		"fi": {
-			"/": [
-				"<h1>Ajankohtaista</h1>"
-			],
-			"/naginata": [
-				"<h1>Atarashii Naginatado</h1><p>Atarashii Naginatado rakentuu pitkälti kahden vanhan Japanin suurimman naginatatyylin pohjalta. Nämä tyylit olivat Tendoryu ja Jikishinkageryu, jotka ovat edelleen harrastajamääriltään suurimmat jäljelle jääneistä klassisista naginatatyyleistä.</p><p>Aluksi tätä kutsuttiin nimellä Gakkou Naginata, koska sen tarkoituksena oli toimia kouluissa liikunnan opetuksena tytöille.</p><p>Myöhemmin nimi muutettiin uudeksi naginataksi, ikään kuin standarsoitu versio samaan tapaan kuten kendon, judon ja iaidon osalta tehtiin.</p><p>Nykyisen muodon laji saavutti suhteellisen myöhään, 1960 ja 1970 luvuilla.</p><h2>Shikake Oji</h2><p>Pariharjoitteluun perusteisiin kuuluu kahdeksan osainen sarja nimeltä Shikake Oji. Kummallakin pareista on bambuteräinen naginata aseenaan ja keskenään jakavat hyökkääjän (shikake) ja puolustajan (oji) roolit.</p>"
-			],
-			"/koryu": [
-				"<h1>Jikishinkageryu Naginatajutsu</h1><p>Erona Atarashii Naginatado:n takkiin, tässä tyylissä hihoihin ei kuulu kiristävää nauhaa. Muutoin asukokonaisuus vastaa standardia.</p><p>Näytösten yhteydessä pukeudutaan mustaan pukuun ja hihat sidotaan valkoisella liinalla.</p><p>Tunnusomaisia tekniikoita ovat tuuli- ja vesimyllyjen mukaan nimenyt pyörivän leikkauksen tekniikat joiden avulla ase voi olla koko ajan liikkeessä.</p>"
-			],
-			"/media": [
-				"<h1>Kuvat, Videot ja muu Media</h1>"
-			],
-			"/yhteystiedot": [
-				"<h1>Yhteystiedot</h1>"
-			]
-		},
-		"en": {},
-		"jp": {}
-	},
-	"footer": {
-		"fi": [
-			["http://paazmaya.com", "PAAZMAYA.com", "&copy; Jukka Paasonen"],
-			["#contribute", "Tue sivuja muokkaamalla", "Ylläpito"]
-		],
-		"en": [],
-		"jp": []
-	},
-	"users": {
-		"administrators": [
-			"olavic@gmail.com"
-		],
-		"contributors": []
-	}
+  "title": {
+    "fi": "Naginata Suomessa",
+    "en": "Naginata Finland",
+    "jp": "\u306a\u304e\u306a\u305f \u30d5\u30a3\u30f3\u30e9\u30f3\u30c9"
+  },
+  "navigation": {
+    "fi": [
+      [
+        "\/",
+        "Ajankohtaista",
+        "Ajankohtaista"
+      ],
+      [
+        "\/naginata",
+        "Atarashii Naginatado",
+        "Naginata"
+      ],
+      [
+        "\/koryu",
+        "Jikishinkageryu Naginatajutsu",
+        "Koryu"
+      ],
+      [
+        "\/media",
+        "Kuvat, Videot ja muu Media",
+        "Media"
+      ],
+      [
+        "\/yhteystiedot",
+        "Yhteystiedot",
+        "Yhteystiedot"
+      ]
+    ],
+    "en": [
+      
+    ],
+    "jp": [
+      
+    ]
+  },
+  "article": {
+    "fi": {
+      "\/": [
+        "<h1>Ajankohtaista<\/h1>"
+      ],
+      "\/naginata": [
+        "&lt;h1&gt;Atarashii Naginatado&lt;\/h1&gt;\n        &lt;p&gt;Atarashii Naginatado rakentuu pitk&auml;lti kahden vanhan Japanin suurimman naginatatyylin pohjalta. N&auml;m&auml; tyylit olivat Tendoryu ja Jikishinkageryu, jotka ovat edelleen harrastajam&auml;&auml;rilt&auml;&auml;n suurimmat j&auml;ljelle j&auml;&auml;neist&auml; klassisista naginatatyyleist&auml;.&lt;\/p&gt;\n        &lt;p&gt;Aluksi t&auml;t&auml; kutsuttiin nimell&auml; Gakkou Naginata, koska sen tarkoituksena oli toimia kouluissa liikunnan opetuksena tyt&ouml;ille.&lt;\/p&gt;\n        &lt;p&gt;My&ouml;hemmin nimi muutettiin uudeksi naginataksi, ik&auml;&auml;n kuin standarsoitu versio samaan tapaan kuten kendon, judon ja iaidon osalta tehtiin.&lt;\/p&gt;\n        &lt;p&gt;Nykyisen muodon laji saavutti suhteellisen my&ouml;h&auml;&auml;n, 1960 ja 1970 luvuilla.&lt;\/p&gt;\n        &lt;h2&gt;Shikake Oji&lt;\/h2&gt;\n        &lt;p&gt;Pariharjoitteluun perusteisiin kuuluu kahdeksan osainen sarja nimelt&auml; Shikake Oji. Kummallakin pareista on bambuter&auml;inen naginata aseenaan ja kesken&auml;&auml;n jakavat hy&ouml;kk&auml;&auml;j&auml;n (shikake) ja puolustajan (oji) roolit.&lt;\/p&gt;"
+      ],
+      "\/koryu": [
+        "&lt;h1&gt;Jikishinkageryu Naginatajutsu&lt;\/h1&gt;\n        &lt;p&gt;Erona Atarashii Naginatado:n takkiin, t&auml;ss&auml; tyyliss&auml; hihoihin ei kuulu kirist&auml;v&auml;&auml; nauhaa. Muutoin asukokonaisuus vastaa standardia.&lt;\/p&gt;\n        &lt;p&gt;N&auml;yt&ouml;sten yhteydess&auml; pukeudutaan mustaan pukuun ja hihat sidotaan valkoisella liinalla.&lt;\/p&gt;\n        &lt;p&gt;Tunnusomaisia tekniikoita ovat tuuli- ja vesimyllyjen mukaan nimenyt py&ouml;riv&auml;n leikkauksen tekniikat joiden avulla ase voi olla koko ajan liikkeess&auml;.&lt;\/p&gt;"
+      ],
+      "\/media": [
+        "<h1>Kuvat, Videot ja muu Media<\/h1>"
+      ],
+      "\/yhteystiedot": [
+        "<h1>Yhteystiedot<\/h1>"
+      ]
+    },
+    "en": [
+      
+    ],
+    "jp": [
+      
+    ]
+  },
+  "footer": {
+    "fi": [
+      [
+        "http:\/\/paazmaya.com",
+        "PAAZMAYA.com",
+        "&copy; Jukka Paasonen"
+      ],
+      [
+        "#contribute",
+        "Tue sivuja muokkaamalla",
+        "Yll\u00e4pito"
+      ]
+    ],
+    "en": [
+      
+    ],
+    "jp": [
+      
+    ]
+  },
+  "users": {
+    "administrators": [
+      "olavic@gmail.com"
+    ],
+    "contributors": [
+      
+    ]
+  }
 }

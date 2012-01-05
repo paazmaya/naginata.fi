@@ -13,18 +13,18 @@ _gaq.push(['_trackPageview']);
 
 $(document).ready(function() {
 	sendanmaki.domReady();
-    
+
     mdrnzr.results['modernizr'] = mdrnzr.loopThru(Modernizr);
     mdrnzr.results['useragent'] = navigator.userAgent;
     //mdrnzr.sendData();
 	/*
 	 * imgareaselect
-	 * 
+	 *
 	 * CSS3 stuff
 	 * image-orientation: 0deg
-	 * 
+	 *
 	 * transform: translate(80px, 80px) scale(1.5, 1.5) rotate(45deg);
-	 * 
+	 *
 	 * h1
 {
 rotation-point:50% 50%;
@@ -40,27 +40,37 @@ var sendanmaki = {
      * Ajax call on every page load checks this.
      */
 	isLoggedIn: false,
-    
+
     /**
      * Email address of the current user against OAuth.
      */
     userEmail: '',
-    
+
+	/**
+	 * Colors to be used as a feedback of an ongoing AJAX call.
+	 */
+	colors: {
+		green : '#39B54A',
+		blue : '#75B2F1',
+		red : '#F13A1C',
+		yellow : '#FAE534'
+	},
+
 	/**
 	 * This shall be run on domReady in order to initiate
 	 * all the handlers needed.
 	 */
 	domReady: function() {
-			
+
 		var links = $('article a:not(.mediathumb a)').length;
 		console.log('links: ' + links);
-		
+
 		$('article a:not(.mediathumb a)').click(function() {
 			console.log('something was clicked');
 			return false;
 		});
 		$('.mediathumb a').colorbox();
-		
+
 		// Track ColorBox usage with Google Analytics
 		$(document).on('cbox_complete', function(){
 			var href = $.colorbox.element().attr("href");
@@ -69,23 +79,29 @@ var sendanmaki = {
 				_gaq.push(['_trackPageview', href]);
 			}
 		});
-	
-	
+
+
 		// Open modal for logging in via OAuth and edit pages.
 		$('a[href="#contribute"]').click(function() {
 			sendanmaki.contributeClick();
 			return false;
 		});
-		
+
+		// Logged in can most likely edit content, thus AJAX.
 		$('#colorbox form').live('submit', function() {
-			sendanmaki.submitForm($(this));
+			if (sendanmaki.isLoggedIn) {
+				sendanmaki.submitEditForm($(this));
+			}
+			else {
+				sendanmaki.submitLoginForm($(this));
+			}
 			return false;
 		});
-		
+
 		$('#colorbox input[type="button"][name="close"]').live('click', function() {
 			$.colorbox.close();
 		});
-		
+
 		$(window).on('unload', function() {
 			console.log('unload');
 			//return false;
@@ -96,7 +112,7 @@ var sendanmaki = {
 		});
 
 	},
-    
+
     /**
      * Check if the user is logged in based on the local storage information
      */
@@ -106,33 +122,83 @@ var sendanmaki = {
         }
 		var userEmail = localStorage.getItem('userEmail');
     },
-	
+
 	/**
 	 * Callback for submitting the contribution form.
-	 * TODO: Implementation...
 	 */
-	submitForm: function($form) {
-		console.log('submit');
-		// no need to do this as ajax since the page is anyhow in modal window
-		// but feedback is easier to get in ajax way, of the success update..
+	submitEditForm: function($form) {
 		var data = {
 			lang: 'fi',
-			page: '/',
+			page: location.pathname,
 			content: $form.children('textarea[name="content"]').text()
 		};
+
+		var orig = $form.css('background-color');
+		$form.css('background-color', sendanmaki.colors.blue);
+
 		$.post($form.attr('action'), data, function(received, status){
-			console.log('' + status);
+			console.log('status' + status);
 			console.dir(received);
+			if (status != 'success') {
+				$form.css('background-color', sendanmaki.colors.red);
+			}
+			else if (received.answer) {
+				// 1 or true
+				$form.css('background-color', sendanmaki.colors.green);
+				setTimeout(function()
+				{
+					$form.css('background-color', orig);
+					$.colorbox.close();
+				}, 2 * 1000);
+			}
+			else {
+				$form.css('background-color', sendanmaki.colors.yellow);
+			}
 		}, 'json');
 	},
-	
+
+	/**
+	 *
+	 */
+	submitLoginForm: function($form) {
+		var data = {
+			lang: 'fi',
+			page: location.pathname,
+			identifier: $('input[name="identifier"]').val()
+		};
+		console.log('about to submit login form');
+		console.dir(data);
+
+		// This will be redirected to the OpenID provider site
+		$.post($form.attr('action'), data, function(received, status) {
+			console.log('status' + status);
+			console.dir(received);
+			if (status == 'success' && received.answer) {
+				location.href = received.answer;
+			}
+		}, 'json');
+	},
+
 	/**
 	 * Callback for a click on the #contribute link located in the footer.
-	 * TODO: OAuth?
 	 */
 	contributeClick: function() {
-		var form = $(sendanmaki.editForm).children('textarea').text($('article').html()).parent().get(0);
-		
+		var opts = {
+			title: $(this).attr('title'),
+			modal: true,
+			onLoad: function() {
+				console.log('colorbox loaded. href: ' + $(this).href);
+			}
+		};
+		var form = sendanmaki.loginForm;
+		if (sendanmaki.isLoggedIn) {
+			form = $(sendanmaki.editForm).children('textarea').text($('article').html()).parent().get(0);
+		}
+		else{
+			//
+		}
+		opts.html = form;
+		/*
 		var originalClose = $.colorbox.close;
 		$.colorbox.close = function(){
 			var response;
@@ -144,18 +210,17 @@ var sendanmaki = {
 			}
 			originalClose();
 		};
-		$.colorbox({
-			html: form,
-			title: $(this).attr('title'),
-			modal: true
-		});
-		
+		*/
+
+		// How about call back for content update?
+		$.colorbox(opts);
+
 		$('textarea').wymeditor({
 			lang: 'fi',
 			skin: 'compact'
 		});
 	},
-	
+
 	/**
 	 * data = {x1, x2, y1, y2, width, heigth, note, url}
 	 */
@@ -171,12 +236,21 @@ var sendanmaki = {
 		div.append(area, note);
 		parent.append(div).show(400);
 	},
-	
+
 	/**
 	 * A form to be shown in colorbox when editing an article content.
 	 */
 	editForm: '<form action="/update-article" method="post">' +
 		'<textarea name="content"></textarea>' +
+		'<input type="submit" value="Lähetä" />' +
+		'<input type="button" name="close" value="Sulje" />' +
+		'</form>',
+
+	/**
+	 * Login form. Please note that this uses OpenID.
+	 */
+	loginForm: '<form action="/authenticate-user" method="post">' +
+		'<label>Email (OpenID identification)<input type="email" name="identifier" /></label>' +
 		'<input type="submit" value="Lähetä" />' +
 		'<input type="button" name="close" value="Sulje" />' +
 		'</form>'
@@ -188,7 +262,7 @@ var sendanmaki = {
  */
 var mdrnzr = {
     results: {},
-    
+
     loopThru: function(obj, prefix) {
         if (!prefix) {
             prefix = '';
@@ -207,7 +281,7 @@ var mdrnzr = {
         }
         return group;
     },
-    
+
     sendData: function() {
         console.dir(mdrnzr.results);
         $.post('/receive-modernizr-statistics', mdrnzr.results, function(incoming, status) {

@@ -3,7 +3,7 @@
  * naginata.fi
  * A class for outputting HTML5 stuff.
  * Let's see how many times the buzzword HTML5 can be repeated.
- * 
+ *
  * http://blog.thenounproject.com/post/7310229014/how-to-properly-attribute-cc-by-a-guest-blog-post-by
  *
  * Usage:
@@ -14,6 +14,11 @@
  */
 class ShikakeOji
 {
+    /**
+	 * What is the version of this class?
+	 */
+    public static $VERSION = '0.6';
+
 	/**
 	 * Current language, defaults to Finnish.
 	 */
@@ -24,13 +29,13 @@ class ShikakeOji
      * This location is used for storing the moderated versions of the content.
 	 */
 	public $dataPath = '../naginata-data.json';
-	
+
 	/**
 	 * Configuration for Emails sending, 3rd party API keys, etc.
 	 * See "naginata-config.json.dist" for possible keys.
 	 */
 	public $config;
-	
+
 	/**
 	 * Application data, decoded from JSON string which is loaded
      * from $this->dataPath.
@@ -61,6 +66,11 @@ class ShikakeOji
 	 */
 	public $redirectLog = '../naginata-redirect.log';
 
+	/**
+	 * Log for the use of OpenID.
+	 */
+	public $openidLog = '../naginata-openid.log';
+	
 	/**
 	 * Use Tidy if available.
 	 * http://www.php.net/manual/en/tidy.examples.php
@@ -99,13 +109,13 @@ class ShikakeOji
 	 * These require user to login via OAuth.
 	 */
 	private $isInternalPage = false;
-    
+
 	/**
 	 * Is the user logged in?
      * If true, then the userEmail should be one found in the "users" section of App data.
 	 */
 	private $isLoggedIn = false;
-    
+
     /**
      * Email address of the current user, if any.
      * Be careful, this is used with "isLoggedIn" to validate the user.
@@ -127,8 +137,6 @@ class ShikakeOji
         '/receive-modernizr-statistics' => 'pageReceiveModernizrStats',
         '/authenticate-user' => 'pageAuthenticateUser'
 	);
-    
-    public static $VERSION = '0.6';
 
 	/**
 	 * Constructor will load the JSON data and decode it as well as
@@ -137,7 +145,7 @@ class ShikakeOji
 	function __construct($jsonpath)
 	{
         $this->checkSession();
-        
+
 		$this->dataPath = $jsonpath;
 		$this->loadData();
 
@@ -147,7 +155,7 @@ class ShikakeOji
 			//$this->minifiedName .= 'gz.'; // It might conflict with what Apache is delivering already compressed
 		}
 	}
-	
+
 	/**
 	 * Load the given JSON configuration file.
 	 */
@@ -157,9 +165,9 @@ class ShikakeOji
 		{
 			return false;
 		}
-		$this->config = json_decode(file_get_contents($configPath), true); 
+		$this->config = json_decode(file_get_contents($configPath), true);
 	}
-    
+
     /**
      * Check for all session variables and restart session if needed.
      * Session should not be started elsewhere.
@@ -168,25 +176,30 @@ class ShikakeOji
     {
 		session_name('SOFI');
         session_start();
-        
-        $id = sha1($_SERVER['REMOTE_ADDR'] . $_SERVER['HTTP_USER_AGENT'] . 
-                $_SERVER['HTTP_ACCEPT'] . $_SERVER['HTTP_ACCEPT_CHARSET'] . 
+
+        $id = sha1($_SERVER['REMOTE_ADDR'] . $_SERVER['HTTP_USER_AGENT'] .
+                $_SERVER['HTTP_ACCEPT'] . $_SERVER['HTTP_ACCEPT_CHARSET'] .
                 $_SERVER['HTTP_ACCEPT_ENCODING'] . $_SERVER['HTTP_ACCEPT_LANGUAGE']);
-                
+
         if (!isset($_SESSION['id']) || $_SESSION['id'] != $id && !isset($_SESSION['id']))
         {
             session_regenerate_id(); // updates the cookie if there is one
             session_destroy();
             unset($_SESSION);
             session_start();
-            
+
             $_SESSION = array(); // not sure if this is needed
             // Must match the REMOTE_ADDR, HTTP_USER_AGENT, ...
             $_SESSION['id'] = $id;
             // Must found from the "users" list if not empty. If empty, not logged in.
-            $_SESSION['email'] = '';
+			$_SESSION['email'] = '';
         }
-        
+		
+		if ($_SESSION['email'] != '')
+		{
+			$this->isLoggedIn = true;
+			$this->userEmail = $_SESSION['email'];
+		}
     }
 
 	/**
@@ -198,7 +211,7 @@ class ShikakeOji
 	{
 		$this->language = 'fi';
 	}
-	
+
 	/**
 	 * Remove "www" prefix from the URL and redirect.
 	 */
@@ -231,14 +244,14 @@ class ShikakeOji
 			return false;
 		}
 
-		$url = $_SERVER['REQUEST_URI']; // use as such
+		$url = parse_url($_SERVER['REQUEST_URI']); // use as such
 
 		// URLs should only be lowercase, thus check and redirect later
-		$lowercase = strtolower($url);
+		$lowercase = strtolower($url['path']);
 
 		if (array_key_exists($lowercase, $this->appUrls))
 		{
-			// Application internal URLs
+			// Application internal URLs. Allow query in the URL.
 			$this->currentPage = $lowercase;
 			$this->isInternalPage = true;
 		}
@@ -272,7 +285,7 @@ class ShikakeOji
 			else
 			{
 				// Was the address found in lowercase?
-				if ($this->currentPage != $url)
+				if (!$this->isInternalPage && $this->currentPage != $url['path'] && $url['query'] != '')
 				{
 					$this->redirectTo($this->currentPage);
 				}
@@ -287,14 +300,11 @@ class ShikakeOji
 	{
 		if ($this->isInternalPage)
 		{
-            // These functions return a string or false on failure.
+            // These functions return a string/true or false on failure.
             $out = call_user_func(array($this, $this->appUrls[$this->currentPage]));
-            
+
+			// Does not happen every time, for example when calling for OpenID provider
 			header('Content-type: application/json');
-			if ($out !== false)
-			{
-                return json_encode(array('answer' => 'failed'));
-			}
 			return json_encode(array('answer' => $out));
 		}
 		else
@@ -576,33 +586,36 @@ class ShikakeOji
 			$json = file_get_contents($this->dataPath);
 			$this->appData = json_decode($json, true);
 			$this->modified = filemtime($this->dataPath);
+			
+			//print_r($this->appData);
+			//echo "\n" . $this->decodeHtml($this->appData['title']['jp']);
 
 			$error = $this->getJsonError();
 			if ($error != '')
 			{
-				echo $error;
+				// $error;
 			}
 		}
-
-		// $data = utf8_decode( json_decode($json) );
 	}
 
 	/**
 	 * Save application data to the JSON file storage and update modificatiion date.
+	 * @return 	boolean	True if saving succeeded, else false
 	 */
 	private function saveData()
 	{
-		// $json = json_encode( utf8_encode($data) );
 		if ($this->dataPath != '' && $this->isLoggedIn)
 		{
 			$jsonstring = $this->jsonPrettyPrint(json_encode($this->appData)); // PHP 5.4 onwards JSON_PRETTY_PRINT
-			file_put_contents($this->dataPath, $jsonstring);
 			$this->modified = time();
+			return (file_put_contents($this->dataPath, $jsonstring) !== false);
 		}
+		return false;
 	}
 
 	/**
 	 * Save JSON data for moderation in the same location as the original
+	 * @return 	boolean	True if saving succeeded, else false
 	 */
 	private function saveDataModeration()
 	{
@@ -611,8 +624,9 @@ class ShikakeOji
             $time = date('Y-m-d_H-i-s');
             $path = substr($this->dataPath, 0, strrpos($this->dataPath, '.')) . '.' . $time . '.' . $this->userEmail . '.json';
             $jsonstring = $this->jsonPrettyPrint(json_encode($this->appData)); // PHP 5.4 onwards JSON_PRETTY_PRINT
-            file_put_contents($path, $jsonstring);
+            return (file_put_contents($path, $jsonstring) !== false);
         }
+		return false;
 	}
 
 	/**
@@ -620,7 +634,7 @@ class ShikakeOji
 	 * Checks required data from $_POST and creates a diff.
      * User must be logged in to perform this.
 	 *
-	 * @return	string/boolean	Diff or false
+	 * @return	boolean	If writing to a JSON file and Email sending succeeded true, else false
 	 */
 	private function pageUpdateArticle()
 	{
@@ -634,7 +648,7 @@ class ShikakeOji
         {
             return false;
         }
-        
+
 		// In app data, under "article", object named by "lang", has object with "page" is an array.
 		// $this->appData['article'][$this->language][$this->currentPage];
 		if (isset($this->appData['article']) &&
@@ -648,7 +662,7 @@ class ShikakeOji
 
 			// Save the data for later moderation
 			$this->appData['article'][$received['lang']][$received['page']]['0'] = $received['content'];
-			$this->saveDataModeration();
+			$isSaved = $this->saveDataModeration();
 
 			// Create diff for sending it via email
 			$a = explode("\n", $current);
@@ -660,11 +674,19 @@ class ShikakeOji
 			$diff = new Diff($a, $b);
 			$renderer = new Diff_Renderer_Text_Unified;
 			$out = $diff->render($renderer);
-			return $out;
+
+			// Now do the emailing
+			$isEmailed = $this->sendEmail(
+				$this->config['email']['address'],
+				$this->config['email']['name'],
+				$_SERVER['HTTP_HOST'] . ' - Päivitys tapahtuma',
+				'Terve, ' . "\n" . 'Sivustolla ' . $_SERVER['HTTP_HOST'] . ' tapahtui päivitys tapahtuma, jonka tekijänä ' . $this->userEmail . '. Alla muutokset.' . "\n\n" . $out
+			);
+			return $isSaved && $isEmailed;
 		}
 		return false;
 	}
-    
+
     /**
      * Save Modernizr statistics
      */
@@ -680,31 +702,88 @@ class ShikakeOji
         {
             return false;
         }
+		
+		// Now save the data...
     }
-    
+
     /**
      * Try to authenticate the user via OAuth.
      * The email provider should tell if the user is who she/he/it claims to be.
+	 * http://code.google.com/apis/accounts/docs/OAuth_ref.htm
+	 * @return string/boolean
      */
     private function pageAuthenticateUser()
-    {
-        $required = array(
-			'lang',
-			'page',
-			'content'
+    {		
+		// https://gitorious.org/~paazmaya/lightopenid/paazmayas-lightopenid
+		require $this->libPath . '/lightopenid/openid.php';
+		
+		$openid = new LightOpenID('naginata.fi');
+		
+		// http://svn.openid.net/repos/specifications/user_interface/1.0/trunk/openid-user-interface-extension-1_0.html
+		$openid->ui = array(
+			'openid.ns.ui'   => 'http://specs.openid.net/extensions/ui/1.0',
+			'openid.ui.mode' => 'popup',
+			'openid.ui.lang' => $this->language
 		);
-        $received = $this->checkRequiredPost($required);
-        if ($received === false)
-        {
-            return false;
-        }
-        
-		require $this->libPath . '/oauth2-php/OAuth2.php';
-        
-        //$this->isLoggedIn
-        //$this->userEmail
+		
+		if (isset($_GET['openid_mode']))
+		{
+			if ($openid->mode)
+			{
+				$attr = $openid->getAttributes();
+				
+				if ($openid->validate() &&
+					array_key_exists('contact/email', $attr) && 
+					$attr['contact/email'] != '' && 
+					(in_array($attr['contact/email'], $this->addData['users']['administrators']) ||
+					in_array($attr['contact/email'], $this->addData['users']['contributors']))
+				)
+				{
+					// TODO: add differentiation between admins and contributors
+					$this->isLoggedIn = true;
+					$this->userEmail = $attr['contact/email'];
+					$_SESSION['email'] = $attr['contact/email'];
+				}
+				
+				// page parameter was sent initially from our site, land back to that page.
+				if (isset($_GET['page']) && $_GET['page'] != '')
+				{
+					$this->redirectTo($_GET['page']);
+				}
+				return $openid->validate();
+			}
+		}
+		else if (isset($_POST['identifier']) && $_POST['identifier'] != '' && isset($_POST['page']) && $_POST['page'] != '')
+		{
+			// Initial form was posted, thus asking the OpenID provider for auth.
+			$id = filter_var($_POST['identifier'], FILTER_VALIDATE_EMAIL);
+			if ($id === false)
+			{
+				return false;
+			}
+			if (strpos($id, '@gmail.com') !== false)
+			{
+				$id = 'https://www.google.com/accounts/o8/id';
+			}
+			$openid->returnUrl = 'http://' . $_SERVER['HTTP_HOST'] . $this->currentPage . '?page=' . $_POST['page'];
+			$openid->required = array(
+				'contact/email',
+				'namePerson'
+			);
+			$openid->identity = $id;
+			
+			file_put_contents($this->openidLog, FILE_APPEND);
+			
+			return $openid->authUrl();
+			//header('Location: ' . $openid->authUrl());
+			//exit();
+		}
+		else
+		{
+			return false;
+		}		
     }
-    
+
     /**
      * Check $_POST against the given $required array.
      * @return array/boolean    False if any of the required is missing, else escaped data
@@ -746,12 +825,230 @@ class ShikakeOji
 	 * Redirect the client to the given URL with 301 HTTP code.
 	 * @param	string	$url	Redirect to this URL within this domain
 	 */
-	private function redirectTo($url)
+	private function redirectTo($url, $code = '301')
 	{
-		$log = date($this->logDateFormat) . ' ' . $_SERVER['REQUEST_URI'] . ' --> ' . $url;
+		$log = date($this->logDateFormat) . ' ' . $_SERVER['REQUEST_URI'] . ' --> ' . $url . "\n";
 		file_put_contents($this->redirectLog, $log, FILE_APPEND);
-		header('HTTP/1.1 301 Moved Permanently');
+		if ($code != '')
+		{
+			header('HTTP/1.1 ' . $code . ' Moved Permanently'); // TODO: different code has different text
+		}
 		header('Location: http://' . $_SERVER['HTTP_HOST']) . $url;
+		exit();
+	}
+
+	/**
+	 * Combines and minifies the given local files.
+	 * That is if the resulting minified file does not exist yet,
+	 * nor it is not older than any of the given files.
+	 *
+	 * @param string $type	Either js or css
+	 * @param array $files	List of files location in the public_html/[type]/ folder
+	 * @return boolean True if the resulting file was updated, false is anything was wrong
+	 */
+	private function minify($type, $files)
+	{
+		if (!is_array($files) || count($files) == 0)
+		{
+			return false;
+		}
+		// Where can those files be found, under type
+		$base = realpath('../public_html/' . $type) . '/';
+
+		// Are there newer source files than the single output file?
+		$newerexists = false;
+
+		// Return value will be this, did the minified file need an update
+		$wrote = false;
+
+		// Keep log of what has happened and how much the filesizes were reduced.
+		$log = array();
+
+		if ($type == 'js')
+		{
+			require_once $this->libPath . '/minify/Minify/JS/ClosureCompiler.php';
+		}
+		else if ($type == 'css')
+		{
+			require_once $this->libPath . '/minify/Minify/CSS/Compressor.php';
+		}
+		else
+		{
+			return false;
+		}
+
+        $data = array();
+        foreach($files as $file)
+        {
+            $minified = $this->minifyFile($type, $file);
+            if ($minified !== false)
+            {
+                $data[] = '/* ' . $file . ' */' . "\n" . $minified;
+            }
+        }
+
+        $outfile = $base . $this->minifiedName . $type;
+        $outfilegz = $base . $this->minifiedName . 'gz.' . $type;
+
+        $alldata = implode("\n\n", $data);
+        $bytecount = file_put_contents($outfile, $alldata);
+        $log[] = date($this->logDateFormat) . ' outfile: ' . $outfile . ', size: ' . $bytecount;
+
+        if ($bytecount !== false)
+        {
+            $gz = gzopen($outfilegz, 'wb9');
+            gzwrite($gz, $alldata);
+            gzclose($gz);
+            $wrote = true;
+            $log[] = date($this->logDateFormat) . ' outfilegz: ' . $outfilegz . ', size: ' . filesize($outfilegz);
+        }
+
+		file_put_contents($this->minifyLog, implode("\n", $log), FILE_APPEND);
+
+		return $wrote;
+	}
+
+    /**
+     * Minify a single file. Adds ".min" to the filename before the suffix.
+     *
+	 * @param   string  $type	Either js or css
+	 * @param   string  $file	Name of the file in public_html/[type]/ folder
+	 * @return  string/boolean  Minified output or flase if something went wrong
+     */
+    private function minifyFile($type, $file)
+    {
+		// Keep log of what has happened and how much the filesizes were reduced.
+		$log = array();
+
+        // Absolute path of the given file
+        $source = realpath('../public_html/' . $type) . '/' . $file;
+
+        if (file_exists($source))
+        {
+            $doMinify = true;
+            $mtime_src = filemtime($source);
+
+            $p = explode('.', $file);
+
+            // Remove suffix temporarily for the ".min" check
+            if (end($p) == $type)
+            {
+                unset($p[count($p) - 1]);
+            }
+
+            // If the filename has a ".min" appended in the end, its content is used as such.
+            if (end($p) == 'min')
+            {
+                $destination = $source;
+                $doMinify = false;
+            }
+            else
+            {
+                // Rebuild the name by including ".min" in the end
+                $p[] = 'min';
+                $p[] = $type;
+                $destination = $base . implode('.', $p);
+            }
+
+            $log[] = date($this->logDateFormat) . ' source: ' . $source . ', size: ' . filesize($source);
+
+            $minified = '';
+            if (file_exists($destination))
+            {
+                $mtime_des = filemtime($destination);
+                if ($mtime_src <= $mtime_des)
+                {
+                    $doMinify = false;
+                    $minified = file_get_contents($destination);
+                }
+            }
+
+            if ($doMinify)
+            {
+                $content = file_get_contents($source);
+                $failed = false;
+                if ($type == 'js')
+                {
+                    try
+                    {
+                        $minified = Minify_JS_ClosureCompiler::minify($content);
+                    }
+                    catch (Exception $error)
+                    {
+                        $log[] = date($this->logDateFormat) . ' ERROR: ' . $error->getMessage() . ' while JS source: ' . $source;
+                        $failed = true;
+                    }
+                }
+                else if ($type == 'css')
+                {
+                    try
+                    {
+                        $minified = Minify_CSS_Compressor::process($content);
+                    }
+                    catch (Exception $error)
+                    {
+                        $log[] = date($this->logDateFormat) . ' ERROR: ' . $error->getMessage() . ' while CSS source: ' . $source;
+                        $failed = true;
+                    }
+                }
+
+                if (!$failed)
+                {
+                    file_put_contents($destination, $minified);
+                    $log[] = date($this->logDateFormat) . ' destination: ' . $destination . ', size: ' . filesize($destination);
+                }
+            }
+        }
+
+		file_put_contents($this->minifyLog, implode("\n", $log), FILE_APPEND);
+
+        return $failed ? false : $minified;
+    }
+
+	/**
+	 * Send email to the given address with the given content.
+	 * Sends a blind copy to the sender address.
+	 * Uses PHPMailer - PHP email class, Version: 5.2.
+	 *
+	 * @param string $toMail	Email address of the recipient
+	 * @param string $toName	Name of the recipient
+	 * @param string $subject	Subject of the mail
+	 * @param string $message	Text format of the mail
+	 * @return boolean	True if the sending succeeded
+	 */
+	function sendEmail($toMail, $toName, $subject, $message)
+	{
+		global $cf;
+		require_once $this->libPath . '/phpmailer/class.phpmailer.php';
+
+		mb_internal_encoding('UTF-8');
+		
+		$mail = new PHPMailer();
+		$mail->SetLanguage($this->language);
+		$mail->CharSet = 'utf-8';
+		$mail->IsSMTP();
+		$mail->Host = $this->config['email']['smtp'];
+		$mail->SMTPAuth = true;
+		$mail->Username = $this->config['email']['address'];
+		$mail->Password = $this->config['email']['password'];
+
+		$sender = 'NAGINATA.fi';
+		$sender = $sender; //mb_encode_mimeheader($sender, 'UTF-8', 'Q');
+
+		$mail->SetFrom($this->config['email']['address'], $sender);
+
+		$mail->XMailer = 'NAGINATA.fi ' . self::$VERSION;
+		$mail->AddAddress($toMail, $toName);
+		$mail->AddBCC($this->config['email']['address'], $mail->FromName);
+
+		$mail->WordWrap = 120;
+		$mail->IsHTML(false);
+
+		$mail->Subject = $subject; //mb_encode_mimeheader($subject, 'UTF-8', 'Q');
+		$mail->Body = $message;
+
+		return $mail->Send();
+		// $mail->ErrorInfo;
 	}
 
 	/**
@@ -812,7 +1109,7 @@ class ShikakeOji
 					if(!$in_string)
 					{
 						$new_json .= $char . "\n" . str_repeat($tab, $indent_level + 1);
-						 $indent_level++;
+						$indent_level++;
 					}
 					else
 					{
@@ -863,219 +1160,6 @@ class ShikakeOji
 		}
 
 		return $new_json;
-	}
-
-	/**
-	 * Combines and minifies the given local files.
-	 * That is if the resulting minified file does not exist yet,
-	 * nor it is not older than any of the given files.
-	 *
-	 * @param string $type	Either js or css
-	 * @param array $files	List of files location in the public_html/[type]/ folder
-	 * @return boolean True if the resulting file was updated, false is anything was wrong
-	 */
-	private function minify($type, $files)
-	{
-		if (!is_array($files) || count($files) == 0)
-		{
-			return false;
-		}
-		// Where can those files be found, under type
-		$base = realpath('../public_html/' . $type) . '/';
-
-		// Are there newer source files than the single output file?
-		$newerexists = false;
-
-		// Return value will be this, did the minified file need an update
-		$wrote = false;
-
-		// Keep log of what has happened and how much the filesizes were reduced.
-		$log = array();
-
-		if ($type == 'js')
-		{
-			require_once $this->libPath . '/minify/Minify/JS/ClosureCompiler.php';
-		}
-		else if ($type == 'css')
-		{
-			require_once $this->libPath . '/minify/Minify/CSS/Compressor.php';
-		}
-		else
-		{
-			return false;
-		}
-
-        $data = array();
-        foreach($files as $file)
-        {
-            $minified = $this->minifyFile($type, $file);
-            if ($minified !== false)
-            {
-                $data[] = '/* ' . $file . ' */' . "\n" . $minified;
-            }
-        }
-
-        $outfile = $base . $this->minifiedName . $type;
-        $outfilegz = $base . $this->minifiedName . 'gz.' . $type;
-      
-        $alldata = implode("\n\n", $data);
-        $bytecount = file_put_contents($outfile, $alldata);
-        $log[] = date($this->logDateFormat) . ' outfile: ' . $outfile . ', size: ' . $bytecount;
-
-        if ($bytecount !== false)
-        {
-            $gz = gzopen($outfilegz, 'wb9');
-            gzwrite($gz, $alldata);
-            gzclose($gz);
-            $wrote = true;
-            $log[] = date($this->logDateFormat) . ' outfilegz: ' . $outfilegz . ', size: ' . filesize($outfilegz);
-        }
-
-		file_put_contents($this->minifyLog, implode("\n", $log), FILE_APPEND);
-
-		return $wrote;
-	}
-    
-    /**
-     * Minify a single file. Adds ".min" to the filename before the suffix.
-     * 
-	 * @param   string  $type	Either js or css
-	 * @param   string  $file	Name of the file in public_html/[type]/ folder
-	 * @return  string/boolean  Minified output or flase if something went wrong
-     */
-    private function minifyFile($type, $file)
-    {
-		// Keep log of what has happened and how much the filesizes were reduced.
-		$log = array();
-        
-        // Absolute path of the given file
-        $source = realpath('../public_html/' . $type) . '/' . $file;
-        
-        if (file_exists($source))
-        {
-            $doMinify = true;
-            $mtime_src = filemtime($source);
-            
-            $p = explode('.', $file);
-            
-            // Remove suffix temporarily for the ".min" check
-            if (end($p) == $type)
-            {
-                unset($p[count($p) - 1]);
-            }
-            
-            // If the filename has a ".min" appended in the end, its content is used as such.
-            if (end($p) == 'min')
-            {
-                $destination = $source;
-                $doMinify = false;
-            }
-            else
-            {
-                // Rebuild the name by including ".min" in the end
-                $p[] = 'min';
-                $p[] = $type;
-                $destination = $base . implode('.', $p);
-            }
-
-            $log[] = date($this->logDateFormat) . ' source: ' . $source . ', size: ' . filesize($source);
-
-            $minified = '';
-            if (file_exists($destination))
-            {
-                $mtime_des = filemtime($destination);
-                if ($mtime_src <= $mtime_des)
-                {
-                    $doMinify = false;
-                    $minified = file_get_contents($destination);
-                }
-            }
-
-            if ($doMinify)
-            {                    
-                $content = file_get_contents($source);
-                $failed = false;
-                if ($type == 'js')
-                {
-                    try
-                    {
-                        $minified = Minify_JS_ClosureCompiler::minify($content);
-                    }
-                    catch (Exception $error)
-                    {
-                        $log[] = date($this->logDateFormat) . ' ERROR: ' . $error->getMessage() . ' while JS source: ' . $source;
-                        $failed = true;
-                    }
-                }
-                else if ($type == 'css')
-                {
-                    try
-                    {
-                        $minified = Minify_CSS_Compressor::process($content);
-                    }
-                    catch (Exception $error)
-                    {
-                        $log[] = date($this->logDateFormat) . ' ERROR: ' . $error->getMessage() . ' while CSS source: ' . $source;
-                        $failed = true;
-                    }
-                }
-                
-                if (!$failed)
-                {
-                    file_put_contents($destination, $minified);
-                    $log[] = date($this->logDateFormat) . ' destination: ' . $destination . ', size: ' . filesize($destination);
-                }
-            }
-        }
-        
-		file_put_contents($this->minifyLog, implode("\n", $log), FILE_APPEND);
-        
-        return $failed ? false : $minified;
-    }
-	
-	/**
-	 * Send email to the given address with the given content.
-	 * Sends a blind copy to the sender address.
-	 *
-	 * @param string $toMail	Email address of the recipient
-	 * @param string $toName	Name of the recipient
-	 * @param string $subject	Subject of the mail
-	 * @param string $message	Text format of the mail
-	 * @return boolean	True if the sending succeeded
-	 */
-	function sendEmail($toMail, $toName, $subject, $message)
-	{
-		global $cf;
-		require_once $this->libPath . '/phpmailer/class.phpmailer.php';
-
-		$mail = new PHPMailer();
-		
-		$mail->IsSMTP();
-		$mail->Host = $this->config['email']['smtp'];
-		$mail->SMTPAuth = true;
-		$mail->Username = $this->config['email']['address'];
-		$mail->Password = $this->config['email']['password'];
-
-		$sender = 'NAGINATA.fi';
-		//mb_internal_encoding('UTF-8');
-		$sender = mb_encode_mimeheader($sender, 'UTF-8', 'Q');
-
-		$mail->SetFrom($this->config['email']['address'], $sender);
-
-		$mail->Version = $this->VERSION;
-
-		$mail->AddAddress($toMail, $toName);
-		$mail->AddBCC($this->config['email']['address'], $mail->FromName);
-		//Content-Language
-
-		$mail->WordWrap = 80;
-		$mail->IsHTML(false);
-				
-		$mail->Subject = $subject;
-		$mail->Body = $message;
-
-		return $mail->Send();
-		// $mail->ErrorInfo;
 	}
 
 	/**
