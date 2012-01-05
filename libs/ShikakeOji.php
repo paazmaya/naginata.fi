@@ -135,7 +135,8 @@ class ShikakeOji
 	private $appUrls = array(
 		'/update-article' => 'pageUpdateArticle',
         '/receive-modernizr-statistics' => 'pageReceiveModernizrStats',
-        '/authenticate-user' => 'pageAuthenticateUser'
+        '/authenticate-user' => 'pageAuthenticateUser',
+		'/keep-session-alive' => 'keepSessionAlive'
 	);
 
 	/**
@@ -193,6 +194,8 @@ class ShikakeOji
             $_SESSION['id'] = $id;
             // Must found from the "users" list if not empty. If empty, not logged in.
 			$_SESSION['email'] = '';
+			// When was the current session initiated? This is mainly intesting to see the true lifetime.
+			$_SESSION['init'] = time();
         }
 		
 		if ($_SESSION['email'] != '')
@@ -302,8 +305,8 @@ class ShikakeOji
 		{
             // These functions return a string/true or false on failure.
             $out = call_user_func(array($this, $this->appUrls[$this->currentPage]));
-
-			// Does not happen every time, for example when calling for OpenID provider
+	
+			// Front end needs to handle whatever the output is.
 			header('Content-type: application/json');
 			return json_encode(array('answer' => $out));
 		}
@@ -323,7 +326,6 @@ class ShikakeOji
 			$out .= $this->createEndBodyJavascript(array(
 				'jquery.js',
 				'jquery.colorbox.js',
-				'wymeditor/jquery.wymeditor.js',
 				'naginata.js'
 			));
 		}
@@ -532,7 +534,8 @@ class ShikakeOji
 
 		$data = $this->appData['footer'][$this->language]; // supposed to be an array of links
 
-		$out = '<footer>';
+		// Comes out as $('footer).data('isLoggedIn') == ''
+		$out = '<footer data-is-logged-in="' . $this->isLoggedIn . '" data-user-email="' . $this->userEmail . '">';
 		$out .= '<p>';
 
 		foreach ($data as $item)
@@ -569,6 +572,17 @@ class ShikakeOji
 			foreach($scripts as $js)
 			{
 				$out .= '<script type="text/javascript" src="' . $base . $js . '"></script>';
+			}
+		}
+		if ($this->isLoggedIn)
+		{
+			if ($this->useMinification)
+			{
+				$out .= '<script type="text/javascript" src="/js/wymeditor/jquery.wymeditor.min.js"></script>';
+			}
+			else
+			{
+				$out .= '<script type="text/javascript" src="/js/wymeditor/jquery.wymeditor.js"></script>';
 			}
 		}
 		$out .= '</body>';
@@ -783,6 +797,17 @@ class ShikakeOji
 			return false;
 		}		
     }
+	
+	/**
+	 * Keep session alive call via AJAX
+	 * @return	int	Session lifetime in seconds.
+	 */
+	private function keepSessionAlive()
+	{
+		// Since checkSession runs before this call, the session variables should be there.
+		$lifetime = time() - $_SESSION['init'];
+		return $lifetime;
+	}
 
     /**
      * Check $_POST against the given $required array.
@@ -864,19 +889,6 @@ class ShikakeOji
 		// Keep log of what has happened and how much the filesizes were reduced.
 		$log = array();
 
-		if ($type == 'js')
-		{
-			require_once $this->libPath . '/minify/Minify/JS/ClosureCompiler.php';
-		}
-		else if ($type == 'css')
-		{
-			require_once $this->libPath . '/minify/Minify/CSS/Compressor.php';
-		}
-		else
-		{
-			return false;
-		}
-
         $data = array();
         foreach($files as $file)
         {
@@ -903,7 +915,7 @@ class ShikakeOji
             $log[] = date($this->logDateFormat) . ' outfilegz: ' . $outfilegz . ', size: ' . filesize($outfilegz);
         }
 
-		file_put_contents($this->minifyLog, implode("\n", $log), FILE_APPEND);
+		file_put_contents($this->minifyLog, implode("\n", $log) . "\n", FILE_APPEND);
 
 		return $wrote;
 	}
@@ -912,7 +924,7 @@ class ShikakeOji
      * Minify a single file. Adds ".min" to the filename before the suffix.
      *
 	 * @param   string  $type	Either js or css
-	 * @param   string  $file	Name of the file in public_html/[type]/ folder
+	 * @param   string  $file	Name of the file in public_html/[type]/ folder or under it
 	 * @return  string/boolean  Minified output or flase if something went wrong
      */
     private function minifyFile($type, $file)
@@ -920,10 +932,26 @@ class ShikakeOji
 		// Keep log of what has happened and how much the filesizes were reduced.
 		$log = array();
 
+		if ($type == 'js')
+		{
+			require_once $this->libPath . '/minify/Minify/JS/ClosureCompiler.php';
+		}
+		else if ($type == 'css')
+		{
+			require_once $this->libPath . '/minify/Minify/CSS/Compressor.php';
+		}
+		else
+		{
+			return false;
+		}
         // Absolute path of the given file
-        $source = realpath('../public_html/' . $type) . '/' . $file;
+		$base = realpath('../public_html/' . $type) . '/';
+        $source = $base . $file;
 
-        if (file_exists($source))
+		// By default, minification has not failed, yet.
+		$failed = false;
+        
+		if (file_exists($source))
         {
             $doMinify = true;
             $mtime_src = filemtime($source);
@@ -962,11 +990,11 @@ class ShikakeOji
                     $minified = file_get_contents($destination);
                 }
             }
-
+			
             if ($doMinify)
             {
                 $content = file_get_contents($source);
-                $failed = false;
+                
                 if ($type == 'js')
                 {
                     try
@@ -1000,9 +1028,9 @@ class ShikakeOji
             }
         }
 
-		file_put_contents($this->minifyLog, implode("\n", $log), FILE_APPEND);
+		file_put_contents($this->minifyLog, implode("\n", $log) . "\n", FILE_APPEND);
 
-        return $failed ? false : $minified;
+        return ($doMinify && $failed) ? false : $minified;
     }
 
 	/**

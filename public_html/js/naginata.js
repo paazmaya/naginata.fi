@@ -37,7 +37,7 @@ rotation:180deg;
 var sendanmaki = {
     /**
      * Is the user logged in to the backend?
-     * Ajax call on every page load checks this.
+     * The initial value is in body data.
      */
 	isLoggedIn: false,
 
@@ -61,10 +61,10 @@ var sendanmaki = {
 	 * all the handlers needed.
 	 */
 	domReady: function() {
-
-		var links = $('article a:not(.mediathumb a)').length;
-		console.log('links: ' + links);
-
+		var fData = $('footer').data();
+		sendanmaki.isLoggedIn = fData.isLoggedIn;
+		sendanmaki.userEmail = fData.userEmail;
+		
 		$('article a:not(.mediathumb a)').click(function() {
 			console.log('something was clicked');
 			return false;
@@ -74,12 +74,10 @@ var sendanmaki = {
 		// Track ColorBox usage with Google Analytics
 		$(document).on('cbox_complete', function(){
 			var href = $.colorbox.element().attr("href");
-			console.log('cbox_complete occurred, href: ' + href);
 			if (href) {
 				_gaq.push(['_trackPageview', href]);
 			}
 		});
-
 
 		// Open modal for logging in via OAuth and edit pages.
 		$('a[href="#contribute"]').click(function() {
@@ -111,6 +109,12 @@ var sendanmaki = {
 			//return false;
 		});
 
+		// So sad, but in 2012 there still needs to be a keep alive call
+		setInterval(function() {
+			$.post('/keep-session-alive', {keepalive: 'hoplaa'}, function(received, status) {
+				console.log(received.answer); // seconds
+			}, 'json');
+		}, 1000 * 60 * 3); // 2 minutes
 	},
 
     /**
@@ -145,8 +149,7 @@ var sendanmaki = {
 			else if (received.answer) {
 				// 1 or true
 				$form.css('background-color', sendanmaki.colors.green);
-				setTimeout(function()
-				{
+				setTimeout(function() {
 					$form.css('background-color', orig);
 					$.colorbox.close();
 				}, 2 * 1000);
@@ -214,11 +217,12 @@ var sendanmaki = {
 
 		// How about call back for content update?
 		$.colorbox(opts);
-
-		$('textarea').wymeditor({
-			lang: 'fi',
-			skin: 'compact'
-		});
+		if (sendanmaki.isLoggedIn) {
+			$('textarea').wymeditor({
+				lang: 'fi',
+				skin: 'compact'
+			});
+		}
 	},
 
 	/**
