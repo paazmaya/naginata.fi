@@ -326,7 +326,7 @@ class ShikakeOji
 			$out .= $this->createEndBodyJavascript(array(
 				'jquery.js',
 				'jquery.colorbox.js',
-				'naginata.js'
+				'sendanmaki.js'
 			));
 		}
 

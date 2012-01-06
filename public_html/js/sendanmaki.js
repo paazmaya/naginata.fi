@@ -1,4 +1,4 @@
-/* naginata.js */
+/* sendanmaki.js */
 
 
 var _gaq = _gaq || [];
