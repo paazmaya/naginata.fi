@@ -39,10 +39,10 @@ var sendanmaki = {
      * Is the user logged in to the backend?
      * The initial value is in body data.
      */
-	isLoggedIn: false,
+	isLoggedIn: 0,
 
     /**
-     * Email address of the current user against OAuth.
+     * Email address of the current user against OpenID.
      */
     userEmail: '',
 
@@ -220,8 +220,13 @@ var sendanmaki = {
 		if (sendanmaki.isLoggedIn) {
 			$('textarea').wymeditor({
 				lang: 'fi',
-				skin: 'compact'
+				skin: 'compact',
+				updateSelector: 'input[type=submit]',
+				updateEvent: 'mousedown',
 			});
+		}
+		else {
+			$('input[name="identifier"]').focus();
 		}
 	},
 

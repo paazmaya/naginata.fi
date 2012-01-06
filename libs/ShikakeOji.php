@@ -534,8 +534,8 @@ class ShikakeOji
 
 		$data = $this->appData['footer'][$this->language]; // supposed to be an array of links
 
-		// Comes out as $('footer).data('isLoggedIn') == ''
-		$out = '<footer data-is-logged-in="' . $this->isLoggedIn . '" data-user-email="' . $this->userEmail . '">';
+		// Comes out as $('footer).data('isLoggedIn') == '1'
+		$out = '<footer data-is-logged-in="' . ($this->isLoggedIn ? 1 : 0) . '" data-user-email="' . $this->userEmail . '">';
 		$out .= '<p>';
 
 		foreach ($data as $item)
