@@ -188,19 +188,17 @@ var sendanmaki = {
 	contributeClick: function() {
 		var opts = {
 			title: $(this).attr('title'),
-			modal: true,
-			onLoad: function() {
-				console.log('colorbox loaded. href: ' + $(this).href);
-			}
+			modal: true
 		};
 		var form = sendanmaki.loginForm;
 		if (sendanmaki.isLoggedIn) {
 			form = $(sendanmaki.editForm).children('textarea').text($('article').html()).parent().get(0);
 		}
-		else{
+		else {
 			//
 		}
 		opts.html = form;
+		console.dir(opts);
 		/*
 		var originalClose = $.colorbox.close;
 		$.colorbox.close = function(){
@@ -221,8 +219,14 @@ var sendanmaki = {
 			$('textarea').wymeditor({
 				lang: 'fi',
 				skin: 'compact',
-				updateSelector: 'input[type=submit]',
+				updateSelector: 'input[type="submit"]',
 				updateEvent: 'mousedown',
+				postInit: function(wym) {
+					$('iframe').on('blur', function() {
+						console.log('iframe blur event occurred');
+						wym.update();
+					});
+				}
 			});
 		}
 		else {

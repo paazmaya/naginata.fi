@@ -42,7 +42,7 @@
   "article": {
     "fi": {
       "\/": [
-        "<h1>Ajankohtaista<\/h1>"
+        "&lt;h1&gt;Ajankohtaista&lt;\/h1&gt;"
       ],
       "\/naginata": [
         "&lt;h1&gt;Atarashii Naginatado&lt;\/h1&gt;\n        &lt;p&gt;Atarashii Naginatado rakentuu pitk&auml;lti kahden vanhan Japanin suurimman naginatatyylin pohjalta. N&auml;m&auml; tyylit olivat Tendoryu ja Jikishinkageryu, jotka ovat edelleen harrastajam&auml;&auml;rilt&auml;&auml;n suurimmat j&auml;ljelle j&auml;&auml;neist&auml; klassisista naginatatyyleist&auml;.&lt;\/p&gt;\n        &lt;p&gt;Aluksi t&auml;t&auml; kutsuttiin nimell&auml; Gakkou Naginata, koska sen tarkoituksena oli toimia kouluissa liikunnan opetuksena tyt&ouml;ille.&lt;\/p&gt;\n        &lt;p&gt;My&ouml;hemmin nimi muutettiin uudeksi naginataksi, ik&auml;&auml;n kuin standarsoitu versio samaan tapaan kuten kendon, judon ja iaidon osalta tehtiin.&lt;\/p&gt;\n        &lt;p&gt;Nykyisen muodon laji saavutti suhteellisen my&ouml;h&auml;&auml;n, 1960 ja 1970 luvuilla.&lt;\/p&gt;\n        &lt;h2&gt;Shikake Oji&lt;\/h2&gt;\n        &lt;p&gt;Pariharjoitteluun perusteisiin kuuluu kahdeksan osainen sarja nimelt&auml; Shikake Oji. Kummallakin pareista on bambuter&auml;inen naginata aseenaan ja kesken&auml;&auml;n jakavat hy&ouml;kk&auml;&auml;j&auml;n (shikake) ja puolustajan (oji) roolit.&lt;\/p&gt;"
@@ -54,7 +54,7 @@
         "<h1>Kuvat, Videot ja muu Media<\/h1>"
       ],
       "\/yhteystiedot": [
-        "<h1>Yhteystiedot<\/h1>"
+        "&lt;h1&gt;Yhteystiedot&lt;\/h1&gt;"
       ]
     },
     "en": [

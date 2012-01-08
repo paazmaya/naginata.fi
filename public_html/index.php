@@ -15,7 +15,7 @@ if (!isset($_SESSION['fontcounter']))
 	$_SESSION['fontcounter'] = 0;
 }
 
-$shio->useMinification = true;
+$shio->useMinification = false;
 $shio->useTidy = true;
 $shio->loadConfig(realpath('../naginata-config.json'));
 

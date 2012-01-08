@@ -132,8 +132,20 @@ nav a:hover, footer a:hover {
 h1, h2, h3, h4, h5, h6 {
 	color: #072434;
 	font-family: 'InderRegular', Verdana, sans-serif;
+	width: 100%;
 }
-
+h1 {
+	font-size: 1.7em;
+}
+h2 {
+	font-size: 1.5em;
+}
+h3 {
+	font-size: 1.3em;
+}
+h4 {
+	font-size: 1.1em;
+}
 
 article ul, article ol {
 	list-style-position: outside;

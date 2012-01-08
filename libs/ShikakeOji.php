@@ -377,7 +377,7 @@ class ShikakeOji
 		$out .= '<head>';
 		$out .= '<title>' . $title . ' - Naginata Suomessa</title>';
 		$out .= '<meta charset="utf-8"/>';
-        $out .= '<meta property="og:type" content="sport"/>';
+        //$out .= '<meta property="og:type" content="sport"/>';
         $out .= '<link rel="author" href="http://paazmaya.com"/>';
         $out .= '<link rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/"/>';
 		$out .= '<link rel="shortcut icon" href="/img/favicon.png" type="image/png"/>';
@@ -679,8 +679,8 @@ class ShikakeOji
 			$isSaved = $this->saveDataModeration();
 
 			// Create diff for sending it via email
-			$a = explode("\n", $current);
-			$b = explode("\n", $received['content']);
+			$a = explode("\n", $this->decodeHtml($current));
+			$b = explode("\n", $this->decodeHtml($received['content']));
 
 			require $this->libPath . '/php-diff/Diff.php';
 			require $this->libPath . '/php-diff/Diff/Renderer/Text/Unified.php';
@@ -717,7 +717,7 @@ class ShikakeOji
             return false;
         }
 		
-		// Now save the data...
+		// TODO: Now save the data...
     }
 
     /**
@@ -736,7 +736,7 @@ class ShikakeOji
 		// http://svn.openid.net/repos/specifications/user_interface/1.0/trunk/openid-user-interface-extension-1_0.html
 		$openid->ui = array(
 			'openid.ns.ui'   => 'http://specs.openid.net/extensions/ui/1.0',
-			'openid.ui.mode' => 'popup',
+			//'openid.ui.mode' => 'popup',
 			'openid.ui.lang' => $this->language
 		);
 		
@@ -785,12 +785,12 @@ class ShikakeOji
 				'namePerson'
 			);
 			$openid->identity = $id;
+			$authUrl = $openid->authUrl();
 			
-			file_put_contents($this->openidLog, FILE_APPEND);
+			$log = date($this->logDateFormat) . ' [' . $_SERVER['REMOTE_ADDR'] . '] ' . $id . ' ' . implode("\n\t\t" . '&', explode('&', $authUrl)) . "\n";
+			file_put_contents($this->openidLog, $log, FILE_APPEND);
 			
-			return $openid->authUrl();
-			//header('Location: ' . $openid->authUrl());
-			//exit();
+			return $authUrl;
 		}
 		else
 		{
@@ -852,7 +852,7 @@ class ShikakeOji
 	 */
 	private function redirectTo($url, $code = '301')
 	{
-		$log = date($this->logDateFormat) . ' ' . $_SERVER['REQUEST_URI'] . ' --> ' . $url . "\n";
+		$log = date($this->logDateFormat) . ' [' . $_SERVER['REMOTE_ADDR'] . '] ' . $_SERVER['REQUEST_URI'] . ' --> ' . $url . "\n";
 		file_put_contents($this->redirectLog, $log, FILE_APPEND);
 		if ($code != '')
 		{
