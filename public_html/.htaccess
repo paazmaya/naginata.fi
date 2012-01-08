@@ -4,7 +4,3 @@ RewriteBase /
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^(.*)$ index.php [L,QSA]
-
-php_value arg_separator.output "&amp;"
-php_flag log_errors 1
-php_flag html_errors 0
