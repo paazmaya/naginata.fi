@@ -1,6 +1,7 @@
 <?php
-/**
- * naginata.fi
+/***************
+ * NAGINATA.fi *
+ ***************
  * A class for outputting HTML5 stuff.
  * Let's see how many times the buzzword HTML5 can be repeated.
  *
@@ -217,6 +218,7 @@ class ShikakeOji
 
 	/**
 	 * Remove "www" prefix from the URL and redirect.
+	 * .htaccess should take care of this
 	 */
 	public function removeWwwRedirect()
 	{
@@ -330,8 +332,10 @@ class ShikakeOji
 			));
 		}
 
-
-		header('Content-type: text/html');
+		header('Content-type: text/html; charset=utf-8');
+		header('Content-Language: ' . $this->language);
+		header('Last-modified: ' . date('r', $this->modified));
+		
 		if ($this->useTidy && extension_loaded('tidy'))
 		{
 			$config = array(
@@ -377,7 +381,24 @@ class ShikakeOji
 		$out .= '<head>';
 		$out .= '<title>' . $title . ' - Naginata Suomessa</title>';
 		$out .= '<meta charset="utf-8"/>';
-        //$out .= '<meta property="og:type" content="sport"/>';
+		
+		// http://ogp.me/
+        $out .= '<meta property="og:title" content="Naginata Suomessa"/>';
+        $out .= '<meta property="og:type" content="sports_team"/>'; 
+		$out .= '<meta property="og:image" content="http://' . $_SERVER['HTTP_HOST'] . '/img/logo.png"/>';
+        $out .= '<meta property="og:url" content="http://' . $_SERVER['HTTP_HOST'] . $this->currentPath . '"/>';
+        $out .= '<meta property="og:site_name" content="Naginata Suomessa"/>';
+        $out .= '<meta property="og:description" content=""/>';
+        $out .= '<meta property="og:locale" content="fi_FI"/>'; // language_TERRITORY
+        $out .= '<meta property="og:locale:alternate" content="en_GB"/>';
+        $out .= '<meta property="og:locale:alternate" content="ja_JP"/>';
+        $out .= '<meta property="og:email" content="BUT-NO-SPAM-PLEASE-jukka@naginata.fi"/>';
+		$out .= '<meta property="og:country-name" content="Finland"/>';
+		
+		// https://developers.facebook.com/docs/opengraph/
+		$out .= '<meta property="fb:app_id" content="' . $this->addData['facebook']['app_id'] . '"/>'; // A Facebook Platform application ID that administers this page. 
+		$out .= '<meta property="fb:admins" content="USER_ID1,USER_ID2"/>';
+		
         $out .= '<link rel="author" href="http://paazmaya.com"/>';
         $out .= '<link rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/"/>';
 		$out .= '<link rel="shortcut icon" href="/img/favicon.png" type="image/png"/>';
@@ -399,24 +420,7 @@ class ShikakeOji
             $out .= '<script type="text/javascript" src="/js/modernizr.js"></script>';
 		}
 		$out .= '</head>';
-
-
-		// try out different fonts
-		$fonts = array(
-			'fontarmata',
-			'fontlora'
-		);
-		$len = count($fonts);
-		$_SESSION['fontcounter']++;
-		if ($_SESSION['fontcounter'] >= $len)
-		{
-			$_SESSION['fontcounter'] = 0;
-		}
-
-		$font = $fonts[$_SESSION['fontcounter']];
-
-
-		$out .= '<body class="' . $font . '">';
+		$out .= '<body>';
 		return $out;
 	}
 

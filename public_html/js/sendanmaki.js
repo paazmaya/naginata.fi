@@ -1,4 +1,8 @@
-/* sendanmaki.js */
+/***************
+ * NAGINATA.fi *
+ *************** 
+ * sendanmaki.js
+ */
 
 
 var _gaq = _gaq || [];

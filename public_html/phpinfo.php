@@ -1,4 +1,9 @@
 <?php
+/***************
+ * NAGINATA.fi *
+ ***************
+ * PHP Info
+ */
 
 ini_set('error_log', '../naginata-php.log');
 ini_set('log_errors', 1);

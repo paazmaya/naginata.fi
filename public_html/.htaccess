@@ -3,14 +3,19 @@
 # Use UTF-8 encoding for anything served text/plain or text/html
 AddDefaultCharset utf-8
 
+# Javascript is not text/plain
+AddType application/javascript js
+
 # Force UTF-8 for a number of file formats
 AddCharset utf-8 .css .js .xml .json .rss .atom
 
 RewriteEngine on
 RewriteBase /
 
+# Allow direct access to existing folders and files
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
+# Anything else goes to index.php
 RewriteRule ^(.*)$ index.php [L,QSA]
 
 # Removal of www.
@@ -20,8 +25,10 @@ RewriteRule ^ http://%1%{REQUEST_URI} [R=301,L]
   
 #ErrorDocument 404 /404.htm
 
+# ETags for existing files
 FileETag INode MTime Size
 
+# http://httpd.apache.org/docs/2.2/mod/mod_expires.html
 <IfModule mod_expires.c>
   ExpiresActive on
 
