@@ -6,31 +6,36 @@
   },
   "navigation": {
     "fi": [
-      [
-        "\/",
-        "Ajankohtaista",
-        "Ajankohtaista"
-      ],
-      [
-        "\/naginata",
-        "Atarashii Naginatado",
-        "Naginata"
-      ],
-      [
-        "\/koryu",
-        "Jikishinkageryu Naginatajutsu",
-        "Koryu"
-      ],
-      [
-        "\/media",
-        "Kuvat, Videot ja muu Media",
-        "Media"
-      ],
-      [
-        "\/yhteystiedot",
-        "Yhteystiedot",
-        "Yhteystiedot"
-      ]
+      {
+        "url": "\/",
+        "header": "Ajankohtaista",
+        "title": "Ajankohtaista",
+		"description": "Ajankohtaista ja historiallistakin tietoa Naginata-aseella harjoitteluun liittyen. Tähän kuuluvat muun muassa lajit ja tyylit kuten Atarashii Naginatado ja Jikishinkageryu Naginatajutsu"
+      },
+      {
+        "url": "\/naginata",
+        "header": "Atarashii Naginatado",
+        "title": "Naginata",
+		"description": "Uuden ja yhdenmukaisen naginatan harjoittelu perustuu kahden naginatan kohtaamiseen, joko suojavarusteiden kanssa tai ilman. Perustekniikat, ennaltamäärätyt parihajoitukset ja vapaat ottelut luovat laajan mutta yhtenäisen kokonaisuuden lajissa, jota harrastaa Japanissa pääasiassa naiset, kun Japanin ulkopuolella sekä naiset että miehet"
+      },
+      {
+        "url": "\/koryu",
+        "header": "Jikishinkageryu Naginatajutsu",
+        "title": "Koryu",
+		"description": "Koryu, vapaasti suoraan käännettynä tarkoittaa vanhaa koulua ja tässä yhteydessä nimenomaan erästä suurinta niistä, nimeltään Jikishinkageryu Naginatajutsu. Tyyli perustettiin noin 500 vuotta sitten ja on edelleen suurimpia naginatan sisältäviä kouluja Japanissa"
+      },
+      {
+        "url": "\/media",
+        "header": "Kuvat, Videot ja muu Media",
+        "title": "Media",
+		"description": ""
+      },
+      {
+        "url": "\/yhteystiedot",
+        "header": "Yhteystiedot",
+        "title": "Yhteystiedot",
+		"description": ""
+      }
     ],
     "en": [
       

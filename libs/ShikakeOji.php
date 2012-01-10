@@ -269,13 +269,13 @@ class ShikakeOji
 			{
 				foreach($nav as $item)
 				{
-					if ($lowercase == $item['0'])
+					if ($lowercase == $item['url'])
 					{
 						$this->currentPage = $lowercase;
 						$found = true;
 
 						// How about language? just stick to default for now.
-						if ($item['0'] != '/')
+						if ($item['url'] != '/')
 						{
 							//$this->language = $lang;
 						}
@@ -364,31 +364,37 @@ class ShikakeOji
 	 */
 	private function createHtmlHeadBody($styles)
 	{
+		if (!$this->isDataAvailable('navigation'))
+		{
+			return '<p class="fail">Navigation data missing</p>';
+		}
+		
 		$base = '/css/';
-
+		
 		$nav = $this->appData['navigation'][$this->language];
-		$title = '';
+		$data = '';
 		foreach($nav as $list)
 		{
-			if (in_array($this->currentPage, $list))
+			if ($this->currentPage == $list['url'])
 			{
-				$title = $list['2'];
+				$data = $list;
+				break;
 			}
 		}
 
 		$out = '<!DOCTYPE html>';
 		$out .= '<html>';
 		$out .= '<head>';
-		$out .= '<title>' . $title . ' - Naginata Suomessa</title>';
+		$out .= '<title>' . $data['header'] . ' - ' . $this->appData['title'][$this->language] . '</title>';
 		$out .= '<meta charset="utf-8"/>';
+		$out .= '<meta name="description" property="og:description" content="' . $data['description'] . '"/>';
 		
 		// http://ogp.me/
-        $out .= '<meta property="og:title" content="Naginata Suomessa"/>';
+        $out .= '<meta property="og:title" content="' . $data['title'] . '"/>';
         $out .= '<meta property="og:type" content="sports_team"/>'; 
 		$out .= '<meta property="og:image" content="http://' . $_SERVER['HTTP_HOST'] . '/img/logo.png"/>';
-        $out .= '<meta property="og:url" content="http://' . $_SERVER['HTTP_HOST'] . $this->currentPath . '"/>';
-        $out .= '<meta property="og:site_name" content="Naginata Suomessa"/>';
-        $out .= '<meta property="og:description" content=""/>';
+        $out .= '<meta property="og:url" content="http://' . $_SERVER['HTTP_HOST'] . $this->currentPage . '"/>';
+        $out .= '<meta property="og:site_name" content="' . $this->appData['title'][$this->language] . '"/>';
         $out .= '<meta property="og:locale" content="fi_FI"/>'; // language_TERRITORY
         $out .= '<meta property="og:locale:alternate" content="en_GB"/>';
         $out .= '<meta property="og:locale:alternate" content="ja_JP"/>';
@@ -397,7 +403,7 @@ class ShikakeOji
 		
 		// https://developers.facebook.com/docs/opengraph/
 		$out .= '<meta property="fb:app_id" content="' . $this->addData['facebook']['app_id'] . '"/>'; // A Facebook Platform application ID that administers this page. 
-		$out .= '<meta property="fb:admins" content="USER_ID1,USER_ID2"/>';
+		$out .= '<meta property="fb:admins" content="' . $this->addData['facebook']['admins'] . '"/>';
 		
         $out .= '<link rel="author" href="http://paazmaya.com"/>';
         $out .= '<link rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/"/>';
@@ -462,11 +468,11 @@ class ShikakeOji
 		{
 			// ["/naginata", "Atarashii Naginatado", "Naginata"],
 			$out .= '<li';
-			if ($this->currentPage == $item['0'])
+			if ($this->currentPage == $item['url'])
 			{
 				$out .= ' class="current"';
 			}
-			$out .= '><a href="' . $item['0'] . '" title="' . $item['1'] . '">' . $item['2'] . '</a></li>';
+			$out .= '><a href="' . $item['url'] . '" title="' . $item['header'] . '">' . $item['title'] . '</a></li>';
 		}
 		$out .= '</ul></nav>';
 
@@ -611,7 +617,7 @@ class ShikakeOji
 			$error = $this->getJsonError();
 			if ($error != '')
 			{
-				// $error;
+				echo $error;
 			}
 		}
 	}
