@@ -31,8 +31,8 @@ require '../libs/ShikakeOji.php';
 $shio = new ShikakeOji(realpath('../naginata-data.json'));
 
 $shio->removeWwwRedirect();
-$shio->useMinification = false;
-$shio->useTidy = true;
+$shio->output->useMinification = false;
+$shio->output->useTidy = true;
 $shio->loadConfig(realpath('../naginata-config.json'));
 
 $shio->checkRequestedLanguage();

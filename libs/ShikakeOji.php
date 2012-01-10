@@ -10,112 +10,93 @@
  * Usage:
  *  $shio = new ShikakeOji(realpath('../naginata-data.json'));
  *  $shio->loadConfig(realpath('../naginata-config.json'));
+ *  $shio->output->useMinification = true;
  *  $shio->checkRequestedPage();
  *  echo $shio->renderPage();
  */
+require 'ShikakeOjiPage.php';
+
 class ShikakeOji
 {
     /**
-	 * What is the version of this class?
-	 */
+     * What is the version of this class?
+     */
     public static $VERSION = '0.6';
 
-	/**
-	 * Current language, defaults to Finnish.
-	 */
+    /**
+     * Current language, defaults to Finnish.
+     */
     public $language = 'fi';
 
-	/**
-	 * Should be set to the realpath of the JSON file where app data is stored.
+    /**
+     * Should be set to the realpath of the JSON file where app data is stored.
      * This location is used for storing the moderated versions of the content.
-	 */
-	public $dataPath = '../naginata-data.json';
+     */
+    public $dataPath = '../naginata-data.json';
 
-	/**
-	 * Configuration for Emails sending, 3rd party API keys, etc.
-	 * See "naginata-config.json.dist" for possible keys.
-	 */
-	public $config;
+    /**
+     * Configuration for Emails sending, 3rd party API keys, etc.
+     * See "naginata-config.json.dist" for possible keys.
+     */
+    public $config;
 
-	/**
-	 * Application data, decoded from JSON string which is loaded
+    /**
+     * Application data, decoded from JSON string which is loaded
      * from $this->dataPath.
-	 */
-	public $addData;
+     */
+    public $addData;
 
-	/**
-	 * Last modification date of the data.
-	 * Does not separate per language, just the last edit of anything.
-	 */
-	public $modified;
+    /**
+     * Last modification date of the data.
+     * Does not separate per language, just the last edit of anything.
+     */
+    public $dataModified;
 
-	/**
-	 * Current page, as seen in the request url.
-	 * Needs to match the ones available in navigation.
-	 * Defaults to / as in front page.
+    /**
+     * An instance of the ShikakeOjiPage class.
+     */
+    public $output;
+
+    /**
+     * Current page, as seen in the request url.
+     * Needs to match the ones available in navigation.
+     * Defaults to / as in front page.
      * All URLs are starting with forward slash.
-	 */
-	public $currentPage = '/';
+     */
+    public $currentPage = '/';
 
-	/**
-	 * The format used with "date()" while writing a log entry.
-	 */
-	public $logDateFormat = 'Y-m-d H:i:s';
+    /**
+     * The format used with "date()" while writing a log entry.
+     */
+    public $logDateFormat = 'Y-m-d H:i:s';
 
-	/**
-	 * Log for minification. Entry added every time minification is needed.
-	 */
-	public $redirectLog = '../naginata-redirect.log';
+    /**
+     * Log for minification. Entry added every time minification is needed.
+     */
+    public $redirectLog = '../naginata-redirect.log';
 
-	/**
-	 * Log for the use of OpenID.
-	 */
-	public $openidLog = '../naginata-openid.log';
-	
-	/**
-	 * Use Tidy if available.
-	 * http://www.php.net/manual/en/tidy.examples.php
-	 * http://tidy.sourceforge.net/docs/quickref.html
-	 */
-	public $useTidy = false;
+    /**
+     * Log for the use of OpenID.
+     */
+    public $openidLog = '../naginata-openid.log';
 
-	/**
-	 * Shall the JS and CSS files minification be done?
-	 */
-	public $useMinification = true;
+    /**
+     * Client supports compression?
+     * This is checked and set in constructor.
+     */
+    private $isCompressionSupported = false;
 
-	/**
-	 * Log for minification. Entry added every time minification is needed.
-	 */
-	public $minifyLog = '../naginata-minify.log';
+    /**
+     * Is the page internal, thus only ouputting JSON?
+     * These require user to login via OAuth.
+     */
+    private $isInternalPage = false;
 
-	/**
-	 * How will JS and CSS files will be called once minified in to one file per type?
-	 * If compression is supported, the client will receive the one with gz, and
-	 * that will be appended to this variable, "gz." that is.
-	 * For example:
-	 * naginata.min --> js/naginata.min.js and naginata.min.gz.js
-	 * --> css/naginata.min.css and css/naginata.min.gz.css
-	 */
-	private $minifiedName = 'naginata.min.';
-
-	/**
-	 * Client supports compression?
-	 * This is checked and set in constructor.
-	 */
-	private $isCompressionSupported = false;
-
-	/**
-	 * Is the page internal, thus only ouputting JSON?
-	 * These require user to login via OAuth.
-	 */
-	private $isInternalPage = false;
-
-	/**
-	 * Is the user logged in?
+    /**
+     * Is the user logged in?
      * If true, then the userEmail should be one found in the "users" section of App data.
-	 */
-	private $isLoggedIn = false;
+     */
+    private $isLoggedIn = false;
 
     /**
      * Email address of the current user, if any.
@@ -123,52 +104,54 @@ class ShikakeOji
      */
     private $userEmail = '';
 
-	/**
-	 * Library path, which is used to find the other libraries included.
-	 */
-	private $libPath = __DIR__;
+    /**
+     * Library path, which is used to find the other libraries included.
+     */
+    private $libPath = __DIR__;
 
-	/**
-	 * URLs used by the application, not for showing content.
-	 * These should be human readable English with dashes.
+    /**
+     * URLs used by the application, not for showing content.
+     * These should be human readable English with dashes.
      * Key is the URL, value is the name of the function to be called.
-	 */
-	private $appUrls = array(
-		'/update-article' => 'pageUpdateArticle',
+     */
+    private $appUrls = array(
+        '/update-article' => 'pageUpdateArticle',
         '/receive-modernizr-statistics' => 'pageReceiveModernizrStats',
         '/authenticate-user' => 'pageAuthenticateUser',
-		'/keep-session-alive' => 'keepSessionAlive'
-	);
+        '/keep-session-alive' => 'keepSessionAlive'
+    );
 
-	/**
-	 * Constructor will load the JSON data and decode it as well as
-	 * check for compression support of the client.
-	 */
-	function __construct($jsonpath)
-	{
+    /**
+     * Constructor will load the JSON data and decode it as well as
+     * check for compression support of the client.
+     */
+    function __construct($jsonpath)
+    {
         $this->checkSession();
 
-		$this->dataPath = $jsonpath;
-		$this->loadData();
+        $this->output = new ShikakeOjiPage();
 
-		if (isset($_SERVER['HTTP_ACCEPT_ENCODING']) && strpos($_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip') !== false)
-		{
-			$this->isCompressionSupported = true;
-			//$this->minifiedName .= 'gz.'; // It might conflict with what Apache is delivering already compressed
-		}
-	}
+        $this->dataPath = $jsonpath;
+        $this->loadData();
 
-	/**
-	 * Load the given JSON configuration file.
-	 */
-	public function loadConfig($configPath)
-	{
-		if (!file_exists($configPath))
-		{
-			return false;
-		}
-		$this->config = json_decode(file_get_contents($configPath), true);
-	}
+        if (isset($_SERVER['HTTP_ACCEPT_ENCODING']) && strpos($_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip') !== false)
+        {
+            $this->isCompressionSupported = true;
+            //$this->minifiedName .= 'gz.'; // It might conflict with what Apache is delivering already compressed
+        }
+    }
+
+    /**
+     * Load the given JSON configuration file.
+     */
+    public function loadConfig($configPath)
+    {
+        if (!file_exists($configPath))
+        {
+            return false;
+        }
+        $this->config = json_decode(file_get_contents($configPath), true);
+    }
 
     /**
      * Check for all session variables and restart session if needed.
@@ -176,12 +159,11 @@ class ShikakeOji
      */
     public function checkSession()
     {
-		session_name('SOFI');
+        session_name('SOFI');
         session_start();
 
         $id = sha1($_SERVER['REMOTE_ADDR'] . $_SERVER['HTTP_USER_AGENT'] .
-                $_SERVER['HTTP_ACCEPT'] . $_SERVER['HTTP_ACCEPT_CHARSET'] .
-                $_SERVER['HTTP_ACCEPT_ENCODING'] . $_SERVER['HTTP_ACCEPT_LANGUAGE']);
+                $_SERVER['HTTP_ACCEPT'] . $_SERVER['HTTP_ACCEPT_ENCODING']);
 
         if (!isset($_SESSION['id']) || $_SESSION['id'] != $id && !isset($_SESSION['id']))
         {
@@ -194,455 +176,185 @@ class ShikakeOji
             // Must match the REMOTE_ADDR, HTTP_USER_AGENT, ...
             $_SESSION['id'] = $id;
             // Must found from the "users" list if not empty. If empty, not logged in.
-			$_SESSION['email'] = '';
-			// When was the current session initiated? This is mainly intesting to see the true lifetime.
-			$_SESSION['init'] = time();
+            $_SESSION['email'] = '';
+            // When was the current session initiated? This is mainly intesting to see the true lifetime.
+            $_SESSION['init'] = time();
         }
-		
-		if ($_SESSION['email'] != '')
-		{
-			$this->isLoggedIn = true;
-			$this->userEmail = $_SESSION['email'];
-		}
+
+        if ($_SESSION['email'] != '')
+        {
+            $this->isLoggedIn = true;
+            $this->userEmail = $_SESSION['email'];
+        }
     }
 
-	/**
-	 * Check the $_SERVER['HTTP_ACCEPT_LANGUAGE'] and set
-	 * the $this->language variable for one that is found from data.
-	 * If nothing is found, default to Finnish.
-	 */
-	public function checkRequestedLanguage()
-	{
-		$this->language = 'fi';
-	}
+    /**
+     * Check the $_SERVER['HTTP_ACCEPT_LANGUAGE'] and set
+     * the $this->language variable for one that is found from data.
+     * If nothing is found, default to Finnish.
+     */
+    public function checkRequestedLanguage()
+    {
+        $this->language = 'fi';
+    }
 
-	/**
-	 * Remove "www" prefix from the URL and redirect.
-	 * .htaccess should take care of this
-	 */
-	public function removeWwwRedirect()
-	{
-		if (substr($_SERVER['HTTP_HOST'], 0, 3) == 'www')
-		{
-			$go = 'http://' . substr($_SERVER['HTTP_HOST'], 4) . $_SERVER['REQUEST_URI'];
-			header('HTTP/1.1 301 Moved Permanently');
-			header('Location: ' . $go);
-			exit();
-		}
-	}
+    /**
+     * Remove "www" prefix from the URL and redirect.
+     * .htaccess should take care of this
+     */
+    public function removeWwwRedirect()
+    {
+        if (substr($_SERVER['HTTP_HOST'], 0, 3) == 'www')
+        {
+            $go = 'http://' . substr($_SERVER['HTTP_HOST'], 4) . $_SERVER['REQUEST_URI'];
+            header('HTTP/1.1 301 Moved Permanently');
+            header('Location: ' . $go);
+            exit();
+        }
+    }
 
-	/**
-	 * Check the $_SERVER['REQUEST_URI'] and set
-	 * the $this->currentPage variable for one that is found from navigation.
-	 * If nothing is matched, redirect to front page.
-	 * Matching is done first against application URLs and then content URLs via "nav".
-	 */
-	public function checkRequestedPage()
-	{
-		if (!isset($_SERVER['REQUEST_URI']))
-		{
-			// How come, super variable not set?
-			return false;
-		}
-		if (!isset($this->appData['navigation']))
-		{
-			return false;
-		}
+    /**
+     * Check the $_SERVER['REQUEST_URI'] and set
+     * the $this->currentPage variable for one that is found from navigation.
+     * If nothing is matched, redirect to front page.
+     * Matching is done first against application URLs and then content URLs via "nav".
+     */
+    public function checkRequestedPage()
+    {
+        if (!isset($_SERVER['REQUEST_URI']))
+        {
+            // How come, super variable not set?
+            return false;
+        }
+        if (!isset($this->appData['navigation']))
+        {
+            return false;
+        }
 
-		$url = parse_url($_SERVER['REQUEST_URI']); // use as such
+        $url = parse_url($_SERVER['REQUEST_URI']); // use as such
 
-		// URLs should only be lowercase, thus check and redirect later
-		$lowercase = strtolower($url['path']);
+        // URLs should only be lowercase, thus check and redirect later
+        $lowercase = strtolower($url['path']);
 
-		if (array_key_exists($lowercase, $this->appUrls))
-		{
-			// Application internal URLs. Allow query in the URL.
-			$this->currentPage = $lowercase;
-			$this->isInternalPage = true;
-		}
-		else
-		{
-			// Content
-			$found = false;
-			$data = $this->appData['navigation'];
-			foreach($data as $lang => $nav)
-			{
-				foreach($nav as $item)
-				{
-					if ($lowercase == $item['url'])
-					{
-						$this->currentPage = $lowercase;
-						$found = true;
+        if (array_key_exists($lowercase, $this->appUrls))
+        {
+            // Application internal URLs. Allow query in the URL.
+            $this->currentPage = $lowercase;
+            $this->isInternalPage = true;
+        }
+        else
+        {
+            // Content
+            $found = false;
+            $data = $this->appData['navigation'];
+            foreach($data as $lang => $nav)
+            {
+                foreach($nav as $item)
+                {
+                    if ($lowercase == $item['url'])
+                    {
+                        $this->currentPage = $lowercase;
+                        $found = true;
 
-						// How about language? just stick to default for now.
-						if ($item['url'] != '/')
-						{
-							//$this->language = $lang;
-						}
-					}
-				}
-			}
+                        // How about language? just stick to default for now.
+                        if ($item['url'] != '/')
+                        {
+                            //$this->language = $lang;
+                        }
+                    }
+                }
+            }
 
-			if (!$found)
-			{
-				$this->redirectTo('/');
-			}
-			else
-			{
-				// Was the address found in lowercase?
-				if (!$this->isInternalPage && $this->currentPage != $url['path'] && $url['query'] != '')
-				{
-					$this->redirectTo($this->currentPage);
-				}
-			}
-		}
-	}
+            if (!$found)
+            {
+                $this->redirectTo('/');
+            }
+            else
+            {
+                // Was the address found in lowercase?
+                if (!$this->isInternalPage && $this->currentPage != $url['path'] && $url['query'] != '')
+                {
+                    $this->redirectTo($this->currentPage);
+                }
+            }
+        }
+    }
 
-	/**
-	 * Build a regular page with the content as per request.
-	 */
-	public function renderPage()
-	{
-		if ($this->isInternalPage)
-		{
+    /**
+     * Build a regular page with the content as per request.
+     */
+    public function renderPage()
+    {
+        if ($this->isInternalPage)
+        {
             // These functions return a string/true or false on failure.
             $out = call_user_func(array($this, $this->appUrls[$this->currentPage]));
-	
-			// Front end needs to handle whatever the output is.
-			header('Content-type: application/json');
-			return json_encode(array('answer' => $out));
-		}
-		else
-		{
-			$out = $this->createHtmlHeadBody(array(
-				'fonts.css',
-				'colorbox.css',
-				'main.css'
-			));
-			$out .= $this->createNavigation();
-			$out .= '<div id="wrapper">';
-			$out .= $this->createLogo();
-			$out .= $this->createArticle();
-			$out .= '</div>';
-			$out .= $this->createFooter();
-			$out .= $this->createEndBodyJavascript(array(
-				'jquery.js',
-				'jquery.colorbox.js',
-				'sendanmaki.js'
-			));
-		}
 
-		header('Content-type: text/html; charset=utf-8');
-		header('Content-Language: ' . $this->language);
-		header('Last-modified: ' . date('r', $this->modified));
-		
-		if ($this->useTidy && extension_loaded('tidy'))
-		{
-			$config = array(
-				'indent' => true,
-				'output-xml' => true,
-				'input-xml' => true,
-				'wrap' => '1000'
-			);
+            // Front end needs to handle whatever the output is.
+            header('Content-type: application/json');
+            return json_encode(array('answer' => $out));
+        }
+        else
+        {
+            require $this->libPath . '/minify/Minify/JS/ClosureCompiler.php';
+            require $this->libPath . '/minify/Minify/CSS/Compressor.php';
 
-			$tidy = new tidy();
-			$tidy->parseString($out, $config, 'utf8');
-			$tidy->cleanRepair();
-			return tidy_get_output($tidy);
-		}
-		else
-		{
-			return $out;
-		}
-	}
+            // Set all the matching properties
+            $this->output->isLoggedIn = $this->isLoggedIn;
+            $this->output->userEmail = $this->userEmail;
+            $this->output->dataModified = $this->dataModified;
+            $this->output->logDateFormat = $this->logDateFormat;
 
-	/**
-	 * Create the common head section with style sheet imports.
-	 *
-	 * @param	array	$styles	List of source files in "css" folder
-	 * @return	string
-	 */
-	private function createHtmlHeadBody($styles)
-	{
-		if (!$this->isDataAvailable('navigation'))
-		{
-			return '<p class="fail">Navigation data missing</p>';
-		}
-		
-		$base = '/css/';
-		
-		$nav = $this->appData['navigation'][$this->language];
-		$data = '';
-		foreach($nav as $list)
-		{
-			if ($this->currentPage == $list['url'])
-			{
-				$data = $list;
-				break;
-			}
-		}
+            header('Content-type: text/html; charset=utf-8');
+            header('Content-Language: ' . $this->language);
+            header('Last-modified: ' . date('r', $this->dataModified));
+            return $this->output->renderHtml($this->appData, $this->currentPage, $this->language, $this->config);
+        }
+    }
 
-		$out = '<!DOCTYPE html>';
-		$out .= '<html>';
-		$out .= '<head>';
-		$out .= '<title>' . $data['header'] . ' - ' . $this->appData['title'][$this->language] . '</title>';
-		$out .= '<meta charset="utf-8"/>';
-		$out .= '<meta name="description" property="og:description" content="' . $data['description'] . '"/>';
-		
-		// http://ogp.me/
-        $out .= '<meta property="og:title" content="' . $data['title'] . '"/>';
-        $out .= '<meta property="og:type" content="sports_team"/>'; 
-		$out .= '<meta property="og:image" content="http://' . $_SERVER['HTTP_HOST'] . '/img/logo.png"/>';
-        $out .= '<meta property="og:url" content="http://' . $_SERVER['HTTP_HOST'] . $this->currentPage . '"/>';
-        $out .= '<meta property="og:site_name" content="' . $this->appData['title'][$this->language] . '"/>';
-        $out .= '<meta property="og:locale" content="fi_FI"/>'; // language_TERRITORY
-        $out .= '<meta property="og:locale:alternate" content="en_GB"/>';
-        $out .= '<meta property="og:locale:alternate" content="ja_JP"/>';
-        $out .= '<meta property="og:email" content="BUT-NO-SPAM-PLEASE-jukka@naginata.fi"/>';
-		$out .= '<meta property="og:country-name" content="Finland"/>';
-		
-		// https://developers.facebook.com/docs/opengraph/
-		$out .= '<meta property="fb:app_id" content="' . $this->addData['facebook']['app_id'] . '"/>'; // A Facebook Platform application ID that administers this page. 
-		$out .= '<meta property="fb:admins" content="' . $this->addData['facebook']['admins'] . '"/>';
-		
-        $out .= '<link rel="author" href="http://paazmaya.com"/>';
-        $out .= '<link rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/"/>';
-		$out .= '<link rel="shortcut icon" href="/img/favicon.png" type="image/png"/>';
-		$out .= '<link rel="apple-touch-icon" href="/img/mobile-logo.png"/>'; // 57x57
+    /**
+     * Load the JSON data if available
+     */
+    private function loadData()
+    {
+        if ($this->dataPath != '' && file_exists($this->dataPath))
+        {
+            $json = file_get_contents($this->dataPath);
+            $this->appData = json_decode($json, true);
+            $this->dataModified = filemtime($this->dataPath);
 
-		if ($this->useMinification)
-		{
-			$this->minify('css', $styles);
-            $this->minifyFile('js', 'modernizr.js');
-			$out .= '<link rel="stylesheet" href="' . $base . $this->minifiedName . 'css" type="text/css" media="all" />';
-            $out .= '<script type="text/javascript" src="/js/modernizr.min.js"></script>';
-		}
-		else
-		{
-			foreach($styles as $css)
-			{
-				$out .= '<link rel="stylesheet" href="' . $base . $css . '" type="text/css" media="all" />';
-			}
-            $out .= '<script type="text/javascript" src="/js/modernizr.js"></script>';
-		}
-		$out .= '</head>';
-		$out .= '<body>';
-		return $out;
-	}
+            //print_r($this->appData);
+            //echo "\n" . ShikakeOjiPage::decodeHtml($this->appData['title']['jp']);
 
-	/**
-	 * Create a simple div with logo specific id and text changing per language.
-	 *
-	 * @return	string
-	 */
-	private function createLogo()
-	{
-		if (!$this->isDataAvailable('title'))
-		{
-			return '<p class="fail">Title data missing</p>';
-		}
+            $error = $this->getJsonError();
+            if ($error != '')
+            {
+                echo $error;
+            }
+        }
+    }
 
-		$out = '<div id="logo">';
-		// should be only two words
-		$out .= '<p>' . $this->appData['title'][$this->language] . '</p>';
-		$out .= '</div>';
-		return $out;
-	}
+    /**
+     * Save application data to the JSON file storage and update modificatiion date.
+     * @return     boolean    True if saving succeeded, else false
+     */
+    private function saveData()
+    {
+        if ($this->dataPath != '' && $this->isLoggedIn)
+        {
+            $jsonstring = $this->jsonPrettyPrint(json_encode($this->appData)); // PHP 5.4 onwards JSON_PRETTY_PRINT
+            $this->dataModified = time();
+            return (file_put_contents($this->dataPath, $jsonstring) !== false);
+        }
+        return false;
+    }
 
-	/**
-	 * Navigation block for HTML5
-	 *
-	 * @return	string
-	 */
-	private function createNavigation()
-	{
-		if (!$this->isDataAvailable('navigation'))
-		{
-			return '<p class="fail">Navigation data missing</p>';
-		}
-
-		$data = $this->appData['navigation'][$this->language];
-
-		$out = '<nav><ul>';
-		foreach ($data as $item)
-		{
-			// ["/naginata", "Atarashii Naginatado", "Naginata"],
-			$out .= '<li';
-			if ($this->currentPage == $item['url'])
-			{
-				$out .= ' class="current"';
-			}
-			$out .= '><a href="' . $item['url'] . '" title="' . $item['header'] . '">' . $item['title'] . '</a></li>';
-		}
-		$out .= '</ul></nav>';
-
-		return $out;
-	}
-
-	/**
-	 * Article block for HTML5
-	 *
-	 * @return	string
-	 */
-	private function createArticle()
-	{
-		if (!$this->isDataAvailable('article'))
-		{
-			return '<p class="fail">Article data missing</p>';
-		}
-
-		$data = $this->appData['article'][$this->language];
-
-		// Now check the page
-		if (!isset($data[$this->currentPage]))
-		{
-			return '<p class="fail">Article data for this page missing</p>';
-		}
-		$data = $data[$this->currentPage]; // supposed to be an array
-
-		$out = '';
-
-		if (is_array($data))
-		{
-			foreach($data as $article)
-			{
-				$out .= '<article>';
-				if (is_array($article))
-				{
-					// There might be specific sections defined...
-					/*
-					<header>
-						<h1>Ajankohtaista</h1>
-						<p>Ensimmäiset viittaukset naginataan löytyvät Kojikista, vanhimmasta säilyneestä Japanin historiasta kertovasta kirjasta,
-						jossa sana ”naginata” esiintyy ensimmäisen kerran. Nara-kaudella sen ottivat käyttöön sōhei-soturipapit ja ensimmäiset
-						naginatan käytöstä taistelussa (naginatajutsu) kertovat tekstit löytyvät vuonna 1086 kirjoitetussa kirjassa Oshu Gosannenki (”Päiväkirja kolmesta vuodesta Oshussa”).</p>
-					</header>
-					*/
-				}
-				else
-				{
-					$out .= $this->decodeHtml($article);
-				}
-				$out .= '</article>';
-			}
-		}
-
-		return $out;
-	}
-
-	/**
-	 * Footer with copyrights, login and edit links.
-	 *
-	 * @return	string
-	 */
-	private function createFooter()
-	{
-		if (!$this->isDataAvailable('footer'))
-		{
-			return '<p class="fail">Footer data missing</p>';
-		}
-
-		$data = $this->appData['footer'][$this->language]; // supposed to be an array of links
-
-		// Comes out as $('footer).data('isLoggedIn') == '1'
-		$out = '<footer data-is-logged-in="' . ($this->isLoggedIn ? 1 : 0) . '" data-user-email="' . $this->userEmail . '">';
-		$out .= '<p>';
-
-		foreach ($data as $item)
-		{
-			// ["http://paazmaya.com", "PAAZMAYA.com", "&copy; Jukka Paasonen"]
-			$out .= '<a href="' . $item['0'] . '" title="' . $item['1'] . '">' . $item['2'] . '</a> | ';
-		}
-
-		$out .= '<time datetime="' . date('c', $this->modified) . '">' . date('j.n.Y G:i', $this->modified) . '</time>';
-		$out .= '</footer>';
-
-		return $out;
-	}
-
-	/**
-	 * Close the body and html tags, including the javascript import that is combined
-	 * of all the source files and compressed if supported.
-	 *
-	 * @param	array	$scripts	List of source files in "js" folder
-	 * @return	string
-	 */
-	private function createEndBodyJavascript($scripts)
-	{
-		$base = '/js/';
-		$out = '';
-
-		if ($this->useMinification)
-		{
-			$this->minify('js', $scripts);
-			$out .= '<script type="text/javascript" src="' . $base . $this->minifiedName . 'js"></script>';
-		}
-		else
-		{
-			foreach($scripts as $js)
-			{
-				$out .= '<script type="text/javascript" src="' . $base . $js . '"></script>';
-			}
-		}
-		if ($this->isLoggedIn)
-		{
-			if ($this->useMinification)
-			{
-				$out .= '<script type="text/javascript" src="/js/wymeditor/jquery.wymeditor.min.js"></script>';
-			}
-			else
-			{
-				$out .= '<script type="text/javascript" src="/js/wymeditor/jquery.wymeditor.js"></script>';
-			}
-		}
-		$out .= '</body>';
-		$out .= '</html>';
-		return $out;
-	}
-
-	/**
-	 * Load the JSON data if available
-	 */
-	private function loadData()
-	{
-		if ($this->dataPath != '' && file_exists($this->dataPath))
-		{
-			$json = file_get_contents($this->dataPath);
-			$this->appData = json_decode($json, true);
-			$this->modified = filemtime($this->dataPath);
-			
-			//print_r($this->appData);
-			//echo "\n" . $this->decodeHtml($this->appData['title']['jp']);
-
-			$error = $this->getJsonError();
-			if ($error != '')
-			{
-				echo $error;
-			}
-		}
-	}
-
-	/**
-	 * Save application data to the JSON file storage and update modificatiion date.
-	 * @return 	boolean	True if saving succeeded, else false
-	 */
-	private function saveData()
-	{
-		if ($this->dataPath != '' && $this->isLoggedIn)
-		{
-			$jsonstring = $this->jsonPrettyPrint(json_encode($this->appData)); // PHP 5.4 onwards JSON_PRETTY_PRINT
-			$this->modified = time();
-			return (file_put_contents($this->dataPath, $jsonstring) !== false);
-		}
-		return false;
-	}
-
-	/**
-	 * Save JSON data for moderation in the same location as the original
-	 * @return 	boolean	True if saving succeeded, else false
-	 */
-	private function saveDataModeration()
-	{
+    /**
+     * Save JSON data for moderation in the same location as the original
+     * @return     boolean    True if saving succeeded, else false
+     */
+    private function saveDataModeration()
+    {
         if ($this->isLoggedIn)
         {
             $time = date('Y-m-d_H-i-s');
@@ -650,66 +362,66 @@ class ShikakeOji
             $jsonstring = $this->jsonPrettyPrint(json_encode($this->appData)); // PHP 5.4 onwards JSON_PRETTY_PRINT
             return (file_put_contents($path, $jsonstring) !== false);
         }
-		return false;
-	}
+        return false;
+    }
 
-	/**
-	 * There seems to be a request for updating an article.
-	 * Checks required data from $_POST and creates a diff.
+    /**
+     * There seems to be a request for updating an article.
+     * Checks required data from $_POST and creates a diff.
      * User must be logged in to perform this.
-	 *
-	 * @return	boolean	If writing to a JSON file and Email sending succeeded true, else false
-	 */
-	private function pageUpdateArticle()
-	{
-		$required = array(
-			'lang',
-			'page',
-			'content'
-		);
+     *
+     * @return    boolean    If writing to a JSON file and Email sending succeeded true, else false
+     */
+    private function pageUpdateArticle()
+    {
+        $required = array(
+            'lang',
+            'page',
+            'content'
+        );
         $received = $this->checkRequiredPost($required);
         if ($received === false || !$this->isLoggedIn)
         {
             return false;
         }
 
-		// In app data, under "article", object named by "lang", has object with "page" is an array.
-		// $this->appData['article'][$this->language][$this->currentPage];
-		if (isset($this->appData['article']) &&
-			isset($this->appData['article'][$received['lang']]) &&
-			isset($this->appData['article'][$received['lang']][$received['page']]) &&
-			is_array($this->appData['article'][$received['lang']][$received['page']]) &&
-			count($this->appData['article'][$received['lang']][$received['page']]) > 0)
-		{
-			// For now just using the first item in the array
-			$current = $this->appData['article'][$received['lang']][$received['page']]['0'];
+        // In app data, under "article", object named by "lang", has object with "page" is an array.
+        // $this->appData['article'][$this->language][$this->currentPage];
+        if (isset($this->appData['article']) &&
+            isset($this->appData['article'][$received['lang']]) &&
+            isset($this->appData['article'][$received['lang']][$received['page']]) &&
+            is_array($this->appData['article'][$received['lang']][$received['page']]) &&
+            count($this->appData['article'][$received['lang']][$received['page']]) > 0)
+        {
+            // For now just using the first item in the array
+            $current = $this->appData['article'][$received['lang']][$received['page']]['0'];
 
-			// Save the data for later moderation
-			$this->appData['article'][$received['lang']][$received['page']]['0'] = $received['content'];
-			$isSaved = $this->saveDataModeration();
+            // Save the data for later moderation
+            $this->appData['article'][$received['lang']][$received['page']]['0'] = $received['content'];
+            $isSaved = $this->saveDataModeration();
 
-			// Create diff for sending it via email
-			$a = explode("\n", $this->decodeHtml($current));
-			$b = explode("\n", $this->decodeHtml($received['content']));
+            // Create diff for sending it via email
+            $a = explode("\n", ShikakeOjiPage::decodeHtml($current));
+            $b = explode("\n", ShikakeOjiPage::decodeHtml($received['content']));
 
-			require $this->libPath . '/php-diff/Diff.php';
-			require $this->libPath . '/php-diff/Diff/Renderer/Text/Unified.php';
+            require $this->libPath . '/php-diff/Diff.php';
+            require $this->libPath . '/php-diff/Diff/Renderer/Text/Unified.php';
 
-			$diff = new Diff($a, $b);
-			$renderer = new Diff_Renderer_Text_Unified;
-			$out = $diff->render($renderer);
+            $diff = new Diff($a, $b);
+            $renderer = new Diff_Renderer_Text_Unified;
+            $out = $diff->render($renderer);
 
-			// Now do the emailing
-			$isEmailed = $this->sendEmail(
-				$this->config['email']['address'],
-				$this->config['email']['name'],
-				$_SERVER['HTTP_HOST'] . ' - Päivitys tapahtuma',
-				'Terve, ' . "\n" . 'Sivustolla ' . $_SERVER['HTTP_HOST'] . ' tapahtui päivitys tapahtuma, jonka tekijänä ' . $this->userEmail . '. Alla muutokset.' . "\n\n" . $out
-			);
-			return $isSaved && $isEmailed;
-		}
-		return false;
-	}
+            // Now do the emailing
+            $isEmailed = $this->sendEmail(
+                $this->config['email']['address'],
+                $this->config['email']['name'],
+                $_SERVER['HTTP_HOST'] . ' - Päivitys tapahtuma',
+                'Terve, ' . "\n" . 'Sivustolla ' . $_SERVER['HTTP_HOST'] . ' tapahtui päivitys tapahtuma, jonka tekijänä ' . $this->userEmail . '. Alla muutokset.' . "\n\n" . $out
+            );
+            return $isSaved && $isEmailed;
+        }
+        return false;
+    }
 
     /**
      * Save Modernizr statistics
@@ -717,107 +429,111 @@ class ShikakeOji
     private function pageReceiveModernizrStats()
     {
         $required = array(
-			'lang',
-			'page',
-			'content'
-		);
+            'modernizr',
+            'useragent'
+        );
         $received = $this->checkRequiredPost($required);
         if ($received === false)
         {
             return false;
         }
+
+        // TODO: Now save the data...
+		//$_SERVER['REMOTE_ADDR']
 		
-		// TODO: Now save the data...
+		// How many times this IP address sent its Modernizr data
+		$counter = 1;
+		return $counter;
     }
 
     /**
      * Try to authenticate the user via OAuth.
      * The email provider should tell if the user is who she/he/it claims to be.
-	 * http://code.google.com/apis/accounts/docs/OAuth_ref.htm
-	 * @return string/boolean
+     * http://code.google.com/apis/accounts/docs/OAuth_ref.htm
+     * @return string/boolean
      */
     private function pageAuthenticateUser()
-    {		
-		// https://gitorious.org/~paazmaya/lightopenid/paazmayas-lightopenid
-		require $this->libPath . '/lightopenid/openid.php';
-		
-		$openid = new LightOpenID('naginata.fi');
-		
-		// http://svn.openid.net/repos/specifications/user_interface/1.0/trunk/openid-user-interface-extension-1_0.html
-		$openid->ui = array(
-			'openid.ns.ui'   => 'http://specs.openid.net/extensions/ui/1.0',
-			//'openid.ui.mode' => 'popup',
-			'openid.ui.lang' => $this->language
-		);
-		
-		if (isset($_GET['openid_mode']))
-		{
-			if ($openid->mode)
-			{
-				$attr = $openid->getAttributes();
-				
-				if ($openid->validate() &&
-					array_key_exists('contact/email', $attr) && 
-					$attr['contact/email'] != '' && 
-					(in_array($attr['contact/email'], $this->addData['users']['administrators']) ||
-					in_array($attr['contact/email'], $this->addData['users']['contributors']))
-				)
-				{
-					// TODO: add differentiation between admins and contributors
-					$this->isLoggedIn = true;
-					$this->userEmail = $attr['contact/email'];
-					$_SESSION['email'] = $attr['contact/email'];
-				}
-				
-				// page parameter was sent initially from our site, land back to that page.
-				if (isset($_GET['page']) && $_GET['page'] != '')
-				{
-					$this->redirectTo($_GET['page']);
-				}
-				return $openid->validate();
-			}
-		}
-		else if (isset($_POST['identifier']) && $_POST['identifier'] != '' && isset($_POST['page']) && $_POST['page'] != '')
-		{
-			// Initial form was posted, thus asking the OpenID provider for auth.
-			$id = filter_var($_POST['identifier'], FILTER_VALIDATE_EMAIL);
-			if ($id === false)
-			{
-				return false;
-			}
-			if (strpos($id, '@gmail.com') !== false)
-			{
-				$id = 'https://www.google.com/accounts/o8/id';
-			}
-			$openid->returnUrl = 'http://' . $_SERVER['HTTP_HOST'] . $this->currentPage . '?page=' . $_POST['page'];
-			$openid->required = array(
-				'contact/email',
-				'namePerson'
-			);
-			$openid->identity = $id;
-			$authUrl = $openid->authUrl();
-			
-			$log = date($this->logDateFormat) . ' [' . $_SERVER['REMOTE_ADDR'] . '] ' . $id . ' ' . implode("\n\t\t" . '&', explode('&', $authUrl)) . "\n";
-			file_put_contents($this->openidLog, $log, FILE_APPEND);
-			
-			return $authUrl;
-		}
-		else
-		{
-			return false;
-		}		
+    {
+        // https://gitorious.org/~paazmaya/lightopenid/paazmayas-lightopenid
+        require $this->libPath . '/lightopenid/openid.php';
+
+        $openid = new LightOpenID('naginata.fi');
+
+        // http://svn.openid.net/repos/specifications/user_interface/1.0/trunk/openid-user-interface-extension-1_0.html
+        $openid->ui = array(
+            'openid.ns.ui'   => 'http://specs.openid.net/extensions/ui/1.0',
+            //'openid.ui.mode' => 'popup',
+            'openid.ui.lang' => $this->language
+        );
+
+        if (isset($_GET['openid_mode']))
+        {
+            if ($openid->mode)
+            {
+                $attr = $openid->getAttributes();
+
+                if ($openid->validate() &&
+                    array_key_exists('contact/email', $attr) &&
+                    $attr['contact/email'] != '' &&
+                    (in_array($attr['contact/email'], $this->addData['users']['administrators']) ||
+                    in_array($attr['contact/email'], $this->addData['users']['contributors']))
+                )
+                {
+                    // TODO: add differentiation between admins and contributors
+                    $this->isLoggedIn = true;
+                    $this->userEmail = $attr['contact/email'];
+                    $_SESSION['email'] = $attr['contact/email'];
+                }
+
+                // page parameter was sent initially from our site, land back to that page.
+                if (isset($_GET['page']) && $_GET['page'] != '')
+                {
+                    $this->redirectTo($_GET['page']);
+                }
+                return $openid->validate();
+            }
+        }
+        else if (isset($_POST['identifier']) && $_POST['identifier'] != '' && isset($_POST['page']) && $_POST['page'] != '')
+        {
+            // Initial form was posted, thus asking the OpenID provider for auth.
+            $id = filter_var($_POST['identifier'], FILTER_VALIDATE_EMAIL);
+            if ($id === false)
+            {
+                return false;
+            }
+            if (strpos($id, '@gmail.com') !== false)
+            {
+                $id = 'https://www.google.com/accounts/o8/id';
+            }
+            $openid->returnUrl = 'http://' . $_SERVER['HTTP_HOST'] . $this->currentPage . '?page=' . $_POST['page'];
+            $openid->required = array(
+                'contact/email',
+                'namePerson'
+            );
+            $openid->identity = $id;
+            $authUrl = $openid->authUrl();
+
+            $log = date($this->logDateFormat) . ' [' . $_SERVER['REMOTE_ADDR'] . '] ' . $id . ' ' . implode("\n\t\t" . '&', explode('&', $authUrl)) . "\n";
+            file_put_contents($this->openidLog, $log, FILE_APPEND);
+
+            return $authUrl;
+        }
+        else
+        {
+            return false;
+        }
     }
-	
-	/**
-	 * Keep session alive call via AJAX
-	 * @return	int	Session lifetime in seconds.
-	 */
-	private function keepSessionAlive()
-	{
-		// Since checkSession runs before this call, the session variables should be there.
-		$lifetime = time() - $_SESSION['init'];
-		return $lifetime;
-	}
+
+    /**
+     * Keep session alive call via AJAX
+     * @return    int    Session lifetime in seconds.
+     */
+    private function keepSessionAlive()
+    {
+        // Since checkSession runs before this call, the session variables should be there.
+        $lifetime = time() - $_SESSION['init'];
+        return $lifetime;
+    }
 
     /**
      * Check $_POST against the given $required array.
@@ -825,401 +541,192 @@ class ShikakeOji
      */
     private function checkRequiredPost($required)
     {
-		$received = array();
-		foreach($required as $r)
-		{
-			if (isset($_POST[$r]) && $_POST[$r] != '')
-			{
-				$received[$r] = $this->encodeHtml($_POST[$r]);
-			}
-		}
+        $received = array();
+        foreach($required as $r)
+        {
+            if (isset($_POST[$r]) && $_POST[$r] != '')
+            {
+                $received[$r] = ShikakeOjiPage::encodeHtml($_POST[$r]);
+            }
+        }
 
-		if (count($required) !== count($received))
-		{
-			return false;
-		}
+        if (count($required) !== count($received))
+        {
+            return false;
+        }
         return $received;
     }
-
-	/**
-	 * Check to see whether a given data scope is available.
-	 *
-	 * @param	string	$area
-	 * @return	boolean
-	 */
-	private function isDataAvailable($area)
-	{
-		if (isset($this->appData) && isset($this->appData[$area]) && isset($this->appData[$area][$this->language]))
-		{
-			return true;
-		}
-		return false;
-	}
-
-	/**
-	 * Redirect the client to the given URL with 301 HTTP code.
-	 * @param	string	$url	Redirect to this URL within this domain
-	 */
-	private function redirectTo($url, $code = '301')
-	{
-		$log = date($this->logDateFormat) . ' [' . $_SERVER['REMOTE_ADDR'] . '] ' . $_SERVER['REQUEST_URI'] . ' --> ' . $url . "\n";
-		file_put_contents($this->redirectLog, $log, FILE_APPEND);
-		if ($code != '')
-		{
-			header('HTTP/1.1 ' . $code . ' Moved Permanently'); // TODO: different code has different text
-		}
-		header('Location: http://' . $_SERVER['HTTP_HOST']) . $url;
-		exit();
-	}
-
-	/**
-	 * Combines and minifies the given local files.
-	 * That is if the resulting minified file does not exist yet,
-	 * nor it is not older than any of the given files.
-	 *
-	 * @param string $type	Either js or css
-	 * @param array $files	List of files location in the public_html/[type]/ folder
-	 * @return boolean True if the resulting file was updated, false is anything was wrong
-	 */
-	private function minify($type, $files)
-	{
-		if (!is_array($files) || count($files) == 0)
-		{
-			return false;
-		}
-		// Where can those files be found, under type
-		$base = realpath('../public_html/' . $type) . '/';
-
-		// Are there newer source files than the single output file?
-		$newerexists = false;
-
-		// Return value will be this, did the minified file need an update
-		$wrote = false;
-
-		// Keep log of what has happened and how much the filesizes were reduced.
-		$log = array();
-
-        $data = array();
-        foreach($files as $file)
-        {
-            $minified = $this->minifyFile($type, $file);
-            if ($minified !== false)
-            {
-                $data[] = '/* ' . $file . ' */' . "\n" . $minified;
-            }
-        }
-
-        $outfile = $base . $this->minifiedName . $type;
-        $outfilegz = $base . $this->minifiedName . 'gz.' . $type;
-
-        $alldata = implode("\n\n", $data);
-        $bytecount = file_put_contents($outfile, $alldata);
-        $log[] = date($this->logDateFormat) . ' outfile: ' . $outfile . ', size: ' . $bytecount;
-
-        if ($bytecount !== false)
-        {
-            $gz = gzopen($outfilegz, 'wb9');
-            gzwrite($gz, $alldata);
-            gzclose($gz);
-            $wrote = true;
-            $log[] = date($this->logDateFormat) . ' outfilegz: ' . $outfilegz . ', size: ' . filesize($outfilegz);
-        }
-
-		file_put_contents($this->minifyLog, implode("\n", $log) . "\n", FILE_APPEND);
-
-		return $wrote;
-	}
-
+    
     /**
-     * Minify a single file. Adds ".min" to the filename before the suffix.
-     *
-	 * @param   string  $type	Either js or css
-	 * @param   string  $file	Name of the file in public_html/[type]/ folder or under it
-	 * @return  string/boolean  Minified output or flase if something went wrong
+     * Redirect the client to the given URL with 301 HTTP code.
+     * @param    string    $url    Redirect to this URL within this domain
      */
-    private function minifyFile($type, $file)
+    private function redirectTo($url, $code = '301')
     {
-		// Keep log of what has happened and how much the filesizes were reduced.
-		$log = array();
-
-		if ($type == 'js')
-		{
-			require_once $this->libPath . '/minify/Minify/JS/ClosureCompiler.php';
-		}
-		else if ($type == 'css')
-		{
-			require_once $this->libPath . '/minify/Minify/CSS/Compressor.php';
-		}
-		else
-		{
-			return false;
-		}
-        // Absolute path of the given file
-		$base = realpath('../public_html/' . $type) . '/';
-        $source = $base . $file;
-
-		// By default, minification has not failed, yet.
-		$failed = false;
-        
-		if (file_exists($source))
+        $log = date($this->logDateFormat) . ' [' . $_SERVER['REMOTE_ADDR'] . '] ' . $_SERVER['REQUEST_URI'] . ' --> ' . $url . "\n";
+        file_put_contents($this->redirectLog, $log, FILE_APPEND);
+        if ($code != '')
         {
-            $doMinify = true;
-            $mtime_src = filemtime($source);
-
-            $p = explode('.', $file);
-
-            // Remove suffix temporarily for the ".min" check
-            if (end($p) == $type)
-            {
-                unset($p[count($p) - 1]);
-            }
-
-            // If the filename has a ".min" appended in the end, its content is used as such.
-            if (end($p) == 'min')
-            {
-                $destination = $source;
-                $doMinify = false;
-            }
-            else
-            {
-                // Rebuild the name by including ".min" in the end
-                $p[] = 'min';
-                $p[] = $type;
-                $destination = $base . implode('.', $p);
-            }
-
-            $log[] = date($this->logDateFormat) . ' source: ' . $source . ', size: ' . filesize($source);
-
-            $minified = '';
-            if (file_exists($destination))
-            {
-                $mtime_des = filemtime($destination);
-                if ($mtime_src <= $mtime_des)
-                {
-                    $doMinify = false;
-                    $minified = file_get_contents($destination);
-                }
-            }
-			
-            if ($doMinify)
-            {
-                $content = file_get_contents($source);
-                
-                if ($type == 'js')
-                {
-                    try
-                    {
-                        $minified = Minify_JS_ClosureCompiler::minify($content);
-                    }
-                    catch (Exception $error)
-                    {
-                        $log[] = date($this->logDateFormat) . ' ERROR: ' . $error->getMessage() . ' while JS source: ' . $source;
-                        $failed = true;
-                    }
-                }
-                else if ($type == 'css')
-                {
-                    try
-                    {
-                        $minified = Minify_CSS_Compressor::process($content);
-                    }
-                    catch (Exception $error)
-                    {
-                        $log[] = date($this->logDateFormat) . ' ERROR: ' . $error->getMessage() . ' while CSS source: ' . $source;
-                        $failed = true;
-                    }
-                }
-
-                if (!$failed)
-                {
-                    file_put_contents($destination, $minified);
-                    $log[] = date($this->logDateFormat) . ' destination: ' . $destination . ', size: ' . filesize($destination);
-                }
-            }
+            header('HTTP/1.1 ' . $code . ' Moved Permanently'); // TODO: different code has different text
         }
-
-		file_put_contents($this->minifyLog, implode("\n", $log) . "\n", FILE_APPEND);
-
-        return ($doMinify && $failed) ? false : $minified;
+        header('Location: http://' . $_SERVER['HTTP_HOST']) . $url;
+        exit();
     }
 
-	/**
-	 * Send email to the given address with the given content.
-	 * Sends a blind copy to the sender address.
-	 * Uses PHPMailer - PHP email class, Version: 5.2.
-	 *
-	 * @param string $toMail	Email address of the recipient
-	 * @param string $toName	Name of the recipient
-	 * @param string $subject	Subject of the mail
-	 * @param string $message	Text format of the mail
-	 * @return boolean	True if the sending succeeded
-	 */
-	function sendEmail($toMail, $toName, $subject, $message)
-	{
-		global $cf;
-		require_once $this->libPath . '/phpmailer/class.phpmailer.php';
+    /**
+     * Send email to the given address with the given content.
+     * Sends a blind copy to the sender address.
+     * Uses PHPMailer - PHP email class, Version: 5.2.
+     *
+     * @param string $toMail    Email address of the recipient
+     * @param string $toName    Name of the recipient
+     * @param string $subject    Subject of the mail
+     * @param string $message    Text format of the mail
+     * @return boolean    True if the sending succeeded
+     */
+    function sendEmail($toMail, $toName, $subject, $message)
+    {
+        global $cf;
+        require_once $this->libPath . '/phpmailer/class.phpmailer.php';
 
-		mb_internal_encoding('UTF-8');
-		
-		$mail = new PHPMailer();
-		$mail->SetLanguage($this->language);
-		$mail->CharSet = 'utf-8';
-		$mail->IsSMTP();
-		$mail->Host = $this->config['email']['smtp'];
-		$mail->SMTPAuth = true;
-		$mail->Username = $this->config['email']['address'];
-		$mail->Password = $this->config['email']['password'];
+        mb_internal_encoding('UTF-8');
 
-		$sender = 'NAGINATA.fi';
-		$sender = $sender; //mb_encode_mimeheader($sender, 'UTF-8', 'Q');
+        $mail = new PHPMailer();
+        $mail->SetLanguage($this->language);
+        $mail->CharSet = 'utf-8';
+        $mail->IsSMTP();
+        $mail->Host = $this->config['email']['smtp'];
+        $mail->SMTPAuth = true;
+        $mail->Username = $this->config['email']['address'];
+        $mail->Password = $this->config['email']['password'];
 
-		$mail->SetFrom($this->config['email']['address'], $sender);
+        $sender = 'NAGINATA.fi';
+        $sender = $sender; //mb_encode_mimeheader($sender, 'UTF-8', 'Q');
 
-		$mail->XMailer = 'NAGINATA.fi ' . self::$VERSION;
-		$mail->AddAddress($toMail, $toName);
-		$mail->AddBCC($this->config['email']['address'], $mail->FromName);
+        $mail->SetFrom($this->config['email']['address'], $sender);
 
-		$mail->WordWrap = 120;
-		$mail->IsHTML(false);
+        $mail->XMailer = 'NAGINATA.fi ' . self::$VERSION;
+        $mail->AddAddress($toMail, $toName);
+        $mail->AddBCC($this->config['email']['address'], $mail->FromName);
 
-		$mail->Subject = $subject; //mb_encode_mimeheader($subject, 'UTF-8', 'Q');
-		$mail->Body = $message;
+        $mail->WordWrap = 120;
+        $mail->IsHTML(false);
 
-		return $mail->Send();
-		// $mail->ErrorInfo;
-	}
+        $mail->Subject = $subject; //mb_encode_mimeheader($subject, 'UTF-8', 'Q');
+        $mail->Body = $message;
 
-	/**
-	 * http://www.php.net/manual/en/function.json-last-error.php
-	 * @return	string
-	 */
-	private function getJsonError()
-	{
-		switch (json_last_error())
-		{
-			case JSON_ERROR_NONE:
-				return '';
-				break;
-			case JSON_ERROR_DEPTH:
-				return 'Maximum stack depth exceeded';
-				break;
-			case JSON_ERROR_STATE_MISMATCH:
-				return 'Underflow or the modes mismatch';
-				break;
-			case JSON_ERROR_CTRL_CHAR:
-				return 'Unexpected control character found';
-				break;
-			case JSON_ERROR_SYNTAX:
-				return 'Syntax error, malformed JSON';
-				break;
-			case JSON_ERROR_UTF8:
-				return 'Malformed UTF-8 characters, possibly incorrectly encoded';
-				break;
-			default:
-				return 'Unknown error';
-				break;
-		}
-	}
+        return $mail->Send();
+        // $mail->ErrorInfo;
+    }
 
-	/**
-	 * Pretty print some JSON
-	 * http://fi.php.net/manual/en/function.json-encode.php#80339
-	 *
-	 * @param	string	$json	A string encoded as JSON
-	 * @return	string
-	 */
-	private function jsonPrettyPrint($json)
-	{
-		$tab = "  ";
-		$new_json = "";
-		$indent_level = 0;
-		$in_string = false;
+    /**
+     * http://www.php.net/manual/en/function.json-last-error.php
+     * @return    string
+     */
+    private function getJsonError()
+    {
+        switch (json_last_error())
+        {
+            case JSON_ERROR_NONE:
+                return '';
+                break;
+            case JSON_ERROR_DEPTH:
+                return 'Maximum stack depth exceeded';
+                break;
+            case JSON_ERROR_STATE_MISMATCH:
+                return 'Underflow or the modes mismatch';
+                break;
+            case JSON_ERROR_CTRL_CHAR:
+                return 'Unexpected control character found';
+                break;
+            case JSON_ERROR_SYNTAX:
+                return 'Syntax error, malformed JSON';
+                break;
+            case JSON_ERROR_UTF8:
+                return 'Malformed UTF-8 characters, possibly incorrectly encoded';
+                break;
+            default:
+                return 'Unknown error';
+                break;
+        }
+    }
 
-		$len = strlen($json);
+    /**
+     * Pretty print some JSON
+     * http://fi.php.net/manual/en/function.json-encode.php#80339
+     *
+     * @param    string    $json    A string encoded as JSON
+     * @return    string
+     */
+    private function jsonPrettyPrint($json)
+    {
+        $tab = "  ";
+        $new_json = "";
+        $indent_level = 0;
+        $in_string = false;
 
-		for($c = 0; $c < $len; $c++)
-		{
-			$char = $json[$c];
-			switch($char)
-			{
-				case '{':
-				case '[':
-					if(!$in_string)
-					{
-						$new_json .= $char . "\n" . str_repeat($tab, $indent_level + 1);
-						$indent_level++;
-					}
-					else
-					{
-						$new_json .= $char;
-					}
-					break;
-				case '}':
-				case ']':
-					if(!$in_string)
-					{
-						$indent_level--;
-						$new_json .= "\n" . str_repeat($tab, $indent_level) . $char;
-					 }
-					else
-					{
-						$new_json .= $char;
-					}
-					break;
-				case ',':
-					if(!$in_string)
-					{
-						$new_json .= ",\n" . str_repeat($tab, $indent_level);
-					}
-					else
-					{
-						$new_json .= $char;
-					}
-					break;
-				case ':':
-					if(!$in_string)
-					{
-						$new_json .= ": ";
-					}
-					else
-					{
-						$new_json .= $char;
-					}
-					break;
-				case '"':
-					if($c > 0 && $json[$c-1] != '\\')
-					{
-						$in_string = !$in_string;
-					}
-				default:
-					$new_json .= $char;
-					break;
-			}
-		}
+        $len = strlen($json);
 
-		return $new_json;
-	}
+        for($c = 0; $c < $len; $c++)
+        {
+            $char = $json[$c];
+            switch($char)
+            {
+                case '{':
+                case '[':
+                    if(!$in_string)
+                    {
+                        $new_json .= $char . "\n" . str_repeat($tab, $indent_level + 1);
+                        $indent_level++;
+                    }
+                    else
+                    {
+                        $new_json .= $char;
+                    }
+                    break;
+                case '}':
+                case ']':
+                    if(!$in_string)
+                    {
+                        $indent_level--;
+                        $new_json .= "\n" . str_repeat($tab, $indent_level) . $char;
+                     }
+                    else
+                    {
+                        $new_json .= $char;
+                    }
+                    break;
+                case ',':
+                    if(!$in_string)
+                    {
+                        $new_json .= ",\n" . str_repeat($tab, $indent_level);
+                    }
+                    else
+                    {
+                        $new_json .= $char;
+                    }
+                    break;
+                case ':':
+                    if(!$in_string)
+                    {
+                        $new_json .= ": ";
+                    }
+                    else
+                    {
+                        $new_json .= $char;
+                    }
+                    break;
+                case '"':
+                    if($c > 0 && $json[$c-1] != '\\')
+                    {
+                        $in_string = !$in_string;
+                    }
+                default:
+                    $new_json .= $char;
+                    break;
+            }
+        }
 
-	/**
-	 * Encode HTML entities for a block of text
-	 *
-	 * @param	string	$str
-	 * @return	string
-	 */
-	private function encodeHtml($str)
-	{
-		return htmlentities(trim($str), ENT_QUOTES, 'UTF-8');
-	}
-
-	/**
-	 * Decode HTML entities from a block of text
-	 *
-	 * @param	string	$str
-	 * @return	string
-	 */
-	private function decodeHtml($str)
-	{
-		return html_entity_decode(trim($str), ENT_QUOTES, 'UTF-8');
-	}
-
+        return $new_json;
+    }
 }
