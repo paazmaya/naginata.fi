@@ -15,6 +15,12 @@ class ShikakeOjiPage
 {
 
     /**
+     * Configuration for Emails sending, 3rd party API keys, etc.
+     * See "naginata-config.json.dist" for possible keys.
+     */
+    public $config;
+
+    /**
      * Use Tidy if available.
      * http://www.php.net/manual/en/tidy.examples.php
      * http://tidy.sourceforge.net/docs/quickref.html
@@ -57,6 +63,22 @@ class ShikakeOjiPage
      * The format used with "date()" while writing a log entry.
      */
     public $logDateFormat = 'Y-m-d H:i:s';
+	
+	/**
+	 * Cache directory
+	 */
+	public $cacheDir = '../cache/';
+	
+	/**
+	 * Special fields to be prosessed in the content. It is always a 3rd party service.
+	 * [flickr|image id]
+	 * [youtube|video id]
+	 */
+	private $specialFields = array(
+		'flickr' => 'renderFlickr',
+		'youtube' => 'renderYoutube',
+		'vimeo' => 'renderVimeo'
+	);
 
     /**
      * Constructor will load the JSON data and decode it as well as
@@ -144,7 +166,7 @@ class ShikakeOjiPage
      * @param    array    $styles    List of source files in "css" folder
      * @return    string
      */
-    private function createHtmlPage($data, $url, $lang, $config)
+    private function createHtmlPage($data, $url, $lang)
     {
         $head = '';
         foreach($data['navigation'][$lang] as $list)
@@ -176,8 +198,8 @@ class ShikakeOjiPage
         $out .= '<meta property="og:country-name" content="Finland"/>';
         
         // https://developers.facebook.com/docs/opengraph/
-        $out .= '<meta property="fb:app_id" content="' . $config['facebook']['app_id'] . '"/>'; // A Facebook Platform application ID that administers this page. 
-        $out .= '<meta property="fb:admins" content="' . $config['facebook']['admins'] . '"/>';
+        $out .= '<meta property="fb:app_id" content="' . $this->config['facebook']['app_id'] . '"/>'; // A Facebook Platform application ID that administers this page. 
+        $out .= '<meta property="fb:admins" content="' . $this->config['facebook']['admins'] . '"/>';
         
         $out .= '<link rel="author" href="http://paazmaya.com"/>';
         $out .= '<link rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/"/>';
@@ -237,18 +259,21 @@ class ShikakeOjiPage
             return '<p class="fail">Article data for this page missing</p>';
         }
         
+        $out .= '<header>';
+		$out .= '<h1>' . $head['header'] . '</h1>';
+		$out .= '<p>' . $head['description'] . '</p>';
+        $out .= '</header>';
 
         if (is_array($data['article'][$lang][$url]))
         {
             foreach($data['article'][$lang][$url] as $article)
             {
                 $out .= '<article>';
+				
                 if (is_array($article))
                 {
                     // There might be specific sections defined...
                     /*
-                    <header>
-                        <h1>Ajankohtaista</h1>
                         <p>Ensimmäiset viittaukset naginataan löytyvät Kojikista, vanhimmasta säilyneestä Japanin historiasta kertovasta kirjasta,
                         jossa sana ”naginata” esiintyy ensimmäisen kerran. Nara-kaudella sen ottivat käyttöön sōhei-soturipapit ja ensimmäiset
                         naginatan käytöstä taistelussa (naginatajutsu) kertovat tekstit löytyvät vuonna 1086 kirjoitetussa kirjassa Oshu Gosannenki (”Päiväkirja kolmesta vuodesta Oshussa”).</p>
@@ -257,15 +282,14 @@ class ShikakeOjiPage
                 }
                 else
                 {
-                    $out .= self::decodeHtml($article);
+                    $out .= $this->findSpecialFields(self::decodeHtml($article));
                 }
                 $out .= '</article>';
             }
         }
+		
         
         $out .= '</div>';
-
-
 
 
         // Comes out as $('footer).data('isLoggedIn') == '1'
@@ -315,6 +339,97 @@ class ShikakeOjiPage
         $out .= '</html>';
         return $out;
     }
+	
+	/**
+	 * Find and replace all the special fields listed in $this->specialFields
+	 * and call then the specific method for that 3rd party service
+	 * @param	string	$str	Content to be searched
+	 * @return	string	Replaced content, if any 
+	 */
+	private function findSpecialFields($str)
+	{		
+		foreach($this->specialFields as $key => $value)
+		{
+			$search = '/' . preg_quote('[' . $key . '|') . '(.*?)' . preg_quote(']') . '/i';			
+			$str = preg_replace_callback($search, array($this, $this->specialFields[$key]), $str);
+		}
+		return $str;
+	}
+	
+	/**
+	 * Get the given Flickr data and render it as image thumbnails.
+	 * If there is just a single stinr, then it must be an image id.
+	 * If there are more parameters, separated by commas, then it should be 
+	 * a specific API call with several pictures returned.
+	 */
+	public function renderFlickr($matches)
+	{
+		if (isset($matches['1']) && $matches['1'] != '')
+		{
+			$list = explode(',', $matches['1']);
+			if (count($list) > 0)
+			{
+				// handle API
+			}
+			else
+			{
+				// single
+			}
+		}
+		
+		// http://www.flickr.com/services/api/flickr.photos.search.html
+		$params = array(
+			'api_key' => $this->config['flickr']['apikey'],
+			'format' => Flickr::JSON,
+			'method' => 'flickr.photos.search',
+			'user_id' => '14224905@N08',
+			'tags' => 'naginata',
+			'per_page' => 50,
+			'content_type' => 1
+		);
+
+		$flickr_results = Flickr::makeCall($params);
+		return $this->listFlickrPictures(json_decode($flickr_results, true));
+	}
+	
+	/**
+	 * Show a link to a Youtube video. Javascript will handle opening it to a colorbox.
+	 * http://code.google.com/apis/youtube/2.0/developers_guide_php.html
+	 */
+	private function renderYoutube($matches)
+	{
+		if (isset($matches['1']) && $matches['1'] != '')
+		{
+			$data = file_get_contents('http://gdata.youtube.com/feeds/api/videos/' . $matches['1']); // ?alt=json
+			$simple = new SimpleXMLElement($data);
+			$simple->asXML($this->cacheDir . 'youtube_' . $matches['1'] . '.xml');
+		}
+	}
+	
+	
+	private function renderVimeo($matches)
+	{
+		
+	}
+	
+	/**
+	 * List pictures from Flickr.
+	 */
+	private function listFlickrPictures($data)
+	{
+		$out = '<ul class="imagelist">';
+		foreach($data['photos']['photo'] as $photo)
+		{
+			$url = 'http://farm' . $photo['farm'] . '.static.flickr.com/' . $photo['server'] . '/' . $photo['id'] . '_' . $photo['secret'];
+			$out .= '<li>';
+			$out .= '<a href="' . $url . '_b.jpg" rel="http://www.flickr.com/photos/' . $photo['owner'] . '/' . $photo['id'] . '" title="' . $photo['title'] . '">';
+			$out .= '<img src="' . $url . '_s.jpg" alt="' . $photo['title'] . '"/>';
+			$out .= '</a>';
+			$out .= '</li>';
+		}
+		$out .= '</ul>';
+		return $out;
+	}
 
     /**
      * Combines and minifies the given local files.

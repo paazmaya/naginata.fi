@@ -54,8 +54,8 @@ html, body {
     background-color: #FEFEFE;
 }
 
-article, section {
-    padding: 2em;
+header, article, section {
+    padding: 2em 1em;
     font-family: 'LoraRegular', Verdana, sans-serif;
 }
 p {
@@ -175,7 +175,7 @@ article ol {
 article img {
 }
 
-article a::after {
+article p > a::after {
     content: url(../img/link_arrow.png);
 }
 
@@ -226,6 +226,24 @@ input[type="submit"]:hover, input[type="button"]:hover {
     display: block;
     font-size: 0.8em;
     font-weight: bold;
+}
+
+/* unordered list */
+.imagelist {
+    list-style: none;
+	clear: both;
+	padding: 0;
+}
+.imagelist li {
+	float: left;
+	padding: 0.2em;
+}
+.imagelist a {
+	border: 1px solid #072434;
+	display: block;
+}
+.imagelist a:hover {
+    border-color: #4B5535;
 }
 
 .fail {

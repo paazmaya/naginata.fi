@@ -67,11 +67,23 @@ var sendanmaki = {
         sendanmaki.isLoggedIn = fData.isLoggedIn;
         sendanmaki.userEmail = fData.userEmail;
         
-        $('article a:not(.mediathumb a)').click(function() {
+        $('article a:not(.mediathumb a, .imagelist a)').click(function() {
             console.log('something was clicked');
             return false;
         });
         $('.mediathumb a').colorbox();
+		$('.imagelist a').colorbox({
+			rel: 'flickr'
+		});
+		/*
+		$('.imagelist a').click(function() {
+			$.colorbox({
+				href: $(this).attr('rel'),
+				rel: 'flickr'
+			});
+			return false;
+		});
+		*/
 
         // Track ColorBox usage with Google Analytics
         $(document).on('cbox_complete', function(){

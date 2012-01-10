@@ -21,7 +21,7 @@ class ShikakeOji
     /**
      * What is the version of this class?
      */
-    public static $VERSION = '0.6';
+    public static $VERSION = '0.7';
 
     /**
      * Current language, defaults to Finnish.
@@ -103,6 +103,12 @@ class ShikakeOji
      * Be careful, this is used with "isLoggedIn" to validate the user.
      */
     private $userEmail = '';
+	
+	/**
+	 * PDO connected database connection, mainly for storing Modernizr stats
+	 * http://php.net/pdo
+	 */
+	private $database;
 
     /**
      * Library path, which is used to find the other libraries included.
@@ -143,6 +149,7 @@ class ShikakeOji
 
     /**
      * Load the given JSON configuration file.
+	 * If it contains database connection values, connection will be open.
      */
     public function loadConfig($configPath)
     {
@@ -151,6 +158,13 @@ class ShikakeOji
             return false;
         }
         $this->config = json_decode(file_get_contents($configPath), true);
+		
+		// SQLite 3 only for now.
+		if (isset($this->config['database']) && isset($this->config['database']['address']))
+		{
+			$dir = dirname($configPath);
+			$this->database = new PDO('sqlite:' . realpath($dir . '/' . $this->config['database']['address']));
+		}
     }
 
     /**
@@ -298,12 +312,14 @@ class ShikakeOji
         {
             require $this->libPath . '/minify/Minify/JS/ClosureCompiler.php';
             require $this->libPath . '/minify/Minify/CSS/Compressor.php';
+            require $this->libPath . '/Flickr-PHP-API/flickr.php';
 
             // Set all the matching properties
             $this->output->isLoggedIn = $this->isLoggedIn;
             $this->output->userEmail = $this->userEmail;
             $this->output->dataModified = $this->dataModified;
             $this->output->logDateFormat = $this->logDateFormat;
+            $this->output->config = $this->config;
 
             header('Content-type: text/html; charset=utf-8');
             header('Content-Language: ' . $this->language);
@@ -438,6 +454,9 @@ class ShikakeOji
             return false;
         }
 
+		if (isset($this->database))
+		{
+		}
         // TODO: Now save the data...
 		//$_SERVER['REMOTE_ADDR']
 		

@@ -1,4 +1,7 @@
 {
+	"database": {
+		"address": "naginata.fi.sqlite"
+	},
 	"email": {
 		"address": "email@address.com",
 		"name": "Some Tonttu",
@@ -27,5 +30,9 @@
 		"request_token_url": "https://api.twitter.com/oauth/request_token",
 		"authorize_url": "https://api.twitter.com/oauth/authorize",
 		"access_token_url": "https://api.twitter.com/oauth/access_token"
+	},
+	"vimeo": {
+	},
+	"youtube": {
 	}
 }

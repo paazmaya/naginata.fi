@@ -28,13 +28,13 @@
         "url": "\/media",
         "header": "Kuvat, Videot ja muu Media",
         "title": "Media",
-        "description": ""
+        "description": "Kuvia ja videoita naginatan harjoittelusta ympäri maailmaa"
       },
       {
         "url": "\/yhteystiedot",
         "header": "Yhteystiedot",
         "title": "Yhteystiedot",
-        "description": ""
+        "description": "Yhteystiedot seuroihin ja ihmisiin jotka tämän sivuston luontiin ovat vaikuttaneet, jakamalla tietoaan, opetuksellaan tai muulla tapaa"
       }
     ],
     "en": [
@@ -56,7 +56,7 @@
         "&lt;h1&gt;Jikishinkageryu Naginatajutsu&lt;\/h1&gt;\n        &lt;p&gt;Erona Atarashii Naginatado:n takkiin, t&auml;ss&auml; tyyliss&auml; hihoihin ei kuulu kirist&auml;v&auml;&auml; nauhaa. Muutoin asukokonaisuus vastaa standardia.&lt;\/p&gt;\n        &lt;p&gt;N&auml;yt&ouml;sten yhteydess&auml; pukeudutaan mustaan pukuun ja hihat sidotaan valkoisella liinalla.&lt;\/p&gt;\n        &lt;p&gt;Tunnusomaisia tekniikoita ovat tuuli- ja vesimyllyjen mukaan nimenyt py&ouml;riv&auml;n leikkauksen tekniikat joiden avulla ase voi olla koko ajan liikkeess&auml;.&lt;\/p&gt;"
       ],
       "\/media": [
-        "<h1>Kuvat, Videot ja muu Media<\/h1>"
+        "<h2>Kuvia Flickr:issä<\/h2>[flickr|user_id=14224905@N08]<h2>Videoita Youtube:ssa</h2>[youtube|64cmdEUl_jc]"
       ],
       "\/yhteystiedot": [
         "&lt;h1&gt;Yhteystiedot&lt;\/h1&gt;"

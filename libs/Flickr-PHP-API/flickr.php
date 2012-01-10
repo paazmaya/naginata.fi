@@ -150,4 +150,3 @@ class Flickr
 		return $results;
 	}
 }
-?>

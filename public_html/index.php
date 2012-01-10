@@ -24,8 +24,6 @@ ini_set('session.cache_expire', 1440); // default 180 minutes = 3 h, 1440 min = 
 ini_set('session.cookie_lifetime', 86400);
 ini_set('session.hash_function', 1); // default 0 = md5, 1 = sha1
 
-
-
 require '../libs/ShikakeOji.php';
 
 $shio = new ShikakeOji(realpath('../naginata-data.json'));
