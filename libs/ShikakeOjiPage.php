@@ -106,9 +106,10 @@ class ShikakeOjiPage
 	public $cacheDir = '../cache/';
 	
 	/**
-	 * Two weeks of seconds
+	 * How long should the 3rd party JSON files be cached?
+	 * In seconds. (60 * 60 * 24 * 7 * 2) = 2 weeks
 	 */
-	public $twoWeekSec;
+	public $cacheInterval;
 
 	/**
 	 * Special fields to be prosessed in the content. It is always a 3rd party service.
@@ -128,7 +129,7 @@ class ShikakeOjiPage
     function __construct()
     {
         // Nothing here...
-		$this->twoWeekSec = (60 * 60 * 24 * 7 * 2);
+		$this->cacheInterval = (60 * 60 * 24 * 7 * 2);
     }
 
     /**
@@ -673,7 +674,7 @@ class ShikakeOjiPage
 	
 	/**
 	 * Get the cached data if available.
-	 * Update if needed.
+	 * Update if needed as based on the cache lifetime setting.
 	 * @return	string	JSON string
 	 */
 	private function getDataCache($cache, $url)
@@ -682,7 +683,7 @@ class ShikakeOjiPage
 		if (file_exists($cache))
 		{
 			$mtime = filemtime($cache);
-			if (time() - $mtime < $this->twoWeekSec)
+			if (time() - $mtime < $this->cacheInterval)
 			{
 				$update = false;
 			}

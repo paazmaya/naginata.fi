@@ -49,6 +49,8 @@ Other notes
  * The minification is done via Minify (https://github.com/mrclay/minify)
  * Unused Javascript could be stripped out with JSlim (https://github.com/zgrossbart/jslim)
  * jQuery plugin Colorbox used for opening content in same page (http://jacklmoore.com/colorbox/) 
+ * Flash SWF files are used for playing 3rd party videos, such as Youtube and Vimeo, via jQuery.SWFObject (http://jquery.thewikies.com/swfobject/)
+ * 3rd party media service data cached locally server side in order to reduce API calls
 
  
  

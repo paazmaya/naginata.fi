@@ -2,7 +2,7 @@
 /***************
  * NAGINATA.fi *
  ***************
- * A class for outputting HTML5 stuff.
+ * A class for handling application flow.
  * Let's see how many times the buzzword HTML5 can be repeated.
  *
  * http://blog.thenounproject.com/post/7310229014/how-to-properly-attribute-cc-by-a-guest-blog-post-by
