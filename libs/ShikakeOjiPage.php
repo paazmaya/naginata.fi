@@ -9,7 +9,7 @@
  *
  * Usage:
  *  $shih = new ShikakeOjiHyper();
- *  echo $shih->renderHtml($data, $url, $lang);
+ *  echo $shih->renderHtml($data);
  */
 class ShikakeOjiPage
 {
@@ -19,6 +19,16 @@ class ShikakeOjiPage
      * See "naginata-config.json.dist" for possible keys.
      */
     public $config;
+	
+	/**
+	 * Same as ShikakeOji::currentPage for content pages
+	 */
+	public $url = '/';
+	
+	/**
+	 * Same as ShikakeOji::language
+	 */
+	public $language = 'fi';
 
 	/**
 	 * List of Cascaded Style Sheet files.
@@ -79,6 +89,11 @@ class ShikakeOjiPage
      * Log for minification. Entry added every time minification is needed.
      */
     public $minifyLog = '../naginata-minify.log';
+	
+	/**
+	 * CURL log
+	 */
+	public $curlLog = '../naginata-curl.log';
 
     /**
      * The format used with "date()" while writing a log entry.
@@ -119,9 +134,9 @@ class ShikakeOjiPage
     /**
      * Render the HTML5 markup by the given data and options.
      */
-    public function renderHtml($data, $url, $lang)
+    public function renderHtml($data)
     {
-        $out = $this->createHtmlPage($data, $url, $lang);
+        $out = $this->createHtmlPage($data);
 
         if ($this->useTidy && extension_loaded('tidy'))
         {
@@ -269,15 +284,15 @@ class ShikakeOjiPage
     /**
      * Create the common head section with style sheet imports.
      *
-     * @param    array    $styles    List of source files in "css" folder
+     * @param     array    $data    Same data as in ShikakeOji::appData
      * @return    string
      */
-    private function createHtmlPage($data, $url, $lang)
+    private function createHtmlPage($data)
     {
         $head;
-        foreach($data['navigation'][$lang] as $list)
+        foreach($data['navigation'][$this->language] as $list)
         {
-            if ($url == $list['url'])
+            if ($this->url == $list['url'])
             {
                 $head = $list;
                 break;
@@ -291,7 +306,7 @@ class ShikakeOjiPage
         $out = '<!DOCTYPE html>';
         $out .= '<html>';
         $out .= '<head>';
-        $out .= '<title>' . $head['header'] . ' - ' . $data['title'][$lang] . '</title>';
+        $out .= '<title>' . $head['header'] . ' - ' . $data['title'][$this->language] . '</title>';
         $out .= '<meta charset="utf-8"/>';
         $out .= '<meta name="description" property="og:description" content="' . $head['description'] . '"/>';
 
@@ -299,8 +314,8 @@ class ShikakeOjiPage
         $out .= '<meta property="og:title" content="' . $head['title'] . '"/>';
         $out .= '<meta property="og:type" content="sports_team"/>';
         $out .= '<meta property="og:image" content="http://' . $_SERVER['HTTP_HOST'] . '/img/logo.png"/>';
-        $out .= '<meta property="og:url" content="http://' . $_SERVER['HTTP_HOST'] . $url . '"/>';
-        $out .= '<meta property="og:site_name" content="' . $head['title'][$lang] . '"/>';
+        $out .= '<meta property="og:url" content="http://' . $_SERVER['HTTP_HOST'] . $this->url . '"/>';
+        $out .= '<meta property="og:site_name" content="' . $head['title'][$this->language] . '"/>';
         $out .= '<meta property="og:locale" content="fi_FI"/>'; // language_TERRITORY
         $out .= '<meta property="og:locale:alternate" content="en_GB"/>';
         $out .= '<meta property="og:locale:alternate" content="ja_JP"/>';
@@ -338,11 +353,11 @@ class ShikakeOjiPage
 
 
         $out .= '<nav><ul>';
-        foreach ($data['navigation'][$lang] as $item)
+        foreach ($data['navigation'][$this->language] as $item)
         {
             // ["/naginata", "Atarashii Naginatado", "Naginata"],
             $out .= '<li';
-            if ($url == $item['url'])
+            if ($this->url == $item['url'])
             {
                 $out .= ' class="current"';
             }
@@ -354,12 +369,12 @@ class ShikakeOjiPage
 
         $out .= '<div id="logo">';
         // should be only two words
-        $out .= '<p>' . $data['title'][$lang] . '</p>';
+        $out .= '<p>' . $data['title'][$this->language] . '</p>';
         $out .= '</div>';
 
 
         // Now check the page
-        if (!isset($data['article'][$lang][$url]))
+        if (!isset($data['article'][$this->language][$this->url]))
         {
             return '<p class="fail">Article data for this page missing</p>';
         }
@@ -369,9 +384,9 @@ class ShikakeOjiPage
 		$out .= '<p>' . $head['description'] . '</p>';
         $out .= '</header>';
 
-        if (is_array($data['article'][$lang][$url]))
+        if (is_array($data['article'][$this->language][$this->url]))
         {
-            foreach($data['article'][$lang][$url] as $article)
+            foreach($data['article'][$this->language][$this->url] as $article)
             {
                 $out .= '<article>';
 
@@ -401,7 +416,7 @@ class ShikakeOjiPage
         $out .= '<footer data-is-logged-in="' . ($this->isLoggedIn ? 1 : 0) . '" data-user-email="' . $this->userEmail . '">';
         $out .= '<p>';
 
-        foreach ($data['footer'][$lang] as $item)
+        foreach ($data['footer'][$this->language] as $item)
         {
             // ["http://paazmaya.com", "PAAZMAYA.com", "&copy; Jukka Paasonen"]
             $out .= '<a href="' . $item['0'] . '" title="' . $item['1'] . '">' . $item['2'] . '</a> | ';
@@ -506,7 +521,7 @@ class ShikakeOjiPage
 			}
 			
 			$params['api_key'] = $this->config['flickr']['apikey'];
-						
+			
 			// Always using JSON
 			$params['format'] = 'json';
 			$params['nojsoncallback'] = 1;
@@ -555,10 +570,10 @@ class ShikakeOjiPage
 			$thumbs = array(); // store 2 which are 120x90
 			foreach($data['entry']['media$group']['media$thumbnail'] as $thumb)
 			{
-				$img = file_get_contents($thumb['url']);
 				$name = $this->cacheDir . 'youtube_' . $matches['1'] . '_' . substr($thumb['url'], strrpos($thumb['url'], '/') + 1);
 				if (!file_exists($name))
 				{
+					$img = file_get_contents($thumb['url']);
 					file_put_contents($name, $img);
 				}
 				if ($thumb['height'] == 90)
@@ -618,6 +633,18 @@ class ShikakeOjiPage
 			{
 				$data = $data['0'];
 			}
+			
+			// Save all thumbnails, just for fun...
+			foreach(array('thumbnail_small', 'thumbnail_medium', 'thumbnail_large') as $size)
+			{
+				$name = $this->cacheDir . 'vimeo_' . $matches['1'] . '_' . substr($data[$size], strrpos($data[$size], '/') + 1);
+				
+				if (!file_exists($name))
+				{
+					$img = file_get_contents($data[$size]);
+					file_put_contents($name, $img);
+				}
+			}
 				
 			$out = '<p class="mediathumb">';
 			
@@ -630,10 +657,7 @@ class ShikakeOjiPage
 				$out .= ' data-width="' . $data['width'] . '" data-height="' . $data['height'] . '"';
 			}
 			$out .= '>';
-			
 			$out .= '<img src="' . $data['thumbnail_medium'] . '" alt="' . $data['title'] . '"/>'; // 200x150
-			
-			
 			$out .= '</a>';
 
 			$out .= '<span title="Julkaistu ' . $data['upload_date'] . '">' . 
@@ -643,7 +667,6 @@ class ShikakeOjiPage
 			$out .= '</span>';
 			
 			$out .= '</p>';
-			
 		}
 		return $out;
 	}
@@ -690,21 +713,38 @@ class ShikakeOjiPage
 	 * Get data from the given URL by using CURL.
 	 * @return	string	JSON string
 	 */
-	private function getDataCurl()
-	{		
+	private function getDataCurl($url)
+	{
+		$fh = fopen($this->curlLog, 'a');
+		
 		$ch = curl_init();
-		curl_setopt($ch, CURLOPT_URL, $url);
-		curl_setopt($ch, CURLOPT_HEADER, 0);
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-		curl_setopt($ch, CURLOPT_FAILONERROR, 1);
+		curl_setopt_array($ch, array(
+			CURLOPT_URL => $url,
+			CURLOPT_HEADER => false,
+			CURLOPT_RETURNTRANSFER => true,
+			CURLOPT_FAILONERROR => true,
+			CURLOPT_STDERR => $fh,
+			CURLOPT_VERBOSE => true,
+			CURLOPT_REFERER => 'http://naginata.fi' . $this->url
+		));
+		
+		//curl_setopt($ch, CURLOPT_ENCODING, 'gzip');
+		//curl_setopt($ch, CURLOPT_USERAGENT, '');
 
 		$results = curl_exec($ch);
 		$headers = curl_getinfo($ch);
-
+		
+        $log = date($this->logDateFormat) . ' url: ' . $headers['url'] . ', content_type: ' . 
+			$headers['content_type'] . ', size_download: ' . $headers['size_download'] . 
+			' bytes, speed_download: ' . $headers['speed_download'] . "\n";
+		fwrite($fh, $log);
+		
 		$error_number = (int) curl_errno($ch);
 		$error_message = curl_error($ch);
 
 		curl_close($ch);
+		
+		fclose($fh);
 
 		// invalid headers
 		if(!in_array($headers['http_code'], array(0, 200)))

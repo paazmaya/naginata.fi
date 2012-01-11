@@ -319,11 +319,13 @@ class ShikakeOji
             $this->output->dataModified = $this->dataModified;
             $this->output->logDateFormat = $this->logDateFormat;
             $this->output->config = $this->config;
+            $this->output->url = $this->currentPage;
+            $this->output->language = $this->language;
 
             header('Content-type: text/html; charset=utf-8');
             header('Content-Language: ' . $this->language);
             header('Last-modified: ' . date('r', $this->dataModified));
-            return $this->output->renderHtml($this->appData, $this->currentPage, $this->language);
+            return $this->output->renderHtml($this->appData);
         }
     }
 
