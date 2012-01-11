@@ -358,7 +358,7 @@ class ShikakeOji
     {
         if ($this->dataPath != '' && $this->isLoggedIn)
         {
-            $jsonstring = $this->jsonPrettyPrint(json_encode($this->appData)); // PHP 5.4 onwards JSON_PRETTY_PRINT
+            $jsonstring = ShikakeOjiPage::jsonPrettyPrint(json_encode($this->appData)); // PHP 5.4 onwards JSON_PRETTY_PRINT
             $this->dataModified = time();
             return (file_put_contents($this->dataPath, $jsonstring) !== false);
         }
@@ -375,7 +375,7 @@ class ShikakeOji
         {
             $time = date('Y-m-d_H-i-s');
             $path = substr($this->dataPath, 0, strrpos($this->dataPath, '.')) . '.' . $time . '.' . $this->userEmail . '.json';
-            $jsonstring = $this->jsonPrettyPrint(json_encode($this->appData)); // PHP 5.4 onwards JSON_PRETTY_PRINT
+            $jsonstring = ShikakeOjiPage::jsonPrettyPrint(json_encode($this->appData)); // PHP 5.4 onwards JSON_PRETTY_PRINT
             return (file_put_contents($path, $jsonstring) !== false);
         }
         return false;
@@ -446,7 +446,8 @@ class ShikakeOji
     {
         $required = array(
             'modernizr',
-            'useragent'
+            'useragent',
+			'flash'
         );
         $received = $this->checkRequiredPost($required);
         if ($received === false)
@@ -668,84 +669,5 @@ class ShikakeOji
                 return 'Unknown error';
                 break;
         }
-    }
-
-    /**
-     * Pretty print some JSON
-     * http://fi.php.net/manual/en/function.json-encode.php#80339
-     *
-     * @param    string    $json    A string encoded as JSON
-     * @return    string
-     */
-    private function jsonPrettyPrint($json)
-    {
-        $tab = "  ";
-        $new_json = "";
-        $indent_level = 0;
-        $in_string = false;
-
-        $len = strlen($json);
-
-        for($c = 0; $c < $len; $c++)
-        {
-            $char = $json[$c];
-            switch($char)
-            {
-                case '{':
-                case '[':
-                    if(!$in_string)
-                    {
-                        $new_json .= $char . "\n" . str_repeat($tab, $indent_level + 1);
-                        $indent_level++;
-                    }
-                    else
-                    {
-                        $new_json .= $char;
-                    }
-                    break;
-                case '}':
-                case ']':
-                    if(!$in_string)
-                    {
-                        $indent_level--;
-                        $new_json .= "\n" . str_repeat($tab, $indent_level) . $char;
-                     }
-                    else
-                    {
-                        $new_json .= $char;
-                    }
-                    break;
-                case ',':
-                    if(!$in_string)
-                    {
-                        $new_json .= ",\n" . str_repeat($tab, $indent_level);
-                    }
-                    else
-                    {
-                        $new_json .= $char;
-                    }
-                    break;
-                case ':':
-                    if(!$in_string)
-                    {
-                        $new_json .= ": ";
-                    }
-                    else
-                    {
-                        $new_json .= $char;
-                    }
-                    break;
-                case '"':
-                    if($c > 0 && $json[$c-1] != '\\')
-                    {
-                        $in_string = !$in_string;
-                    }
-                default:
-                    $new_json .= $char;
-                    break;
-            }
-        }
-
-        return $new_json;
     }
 }

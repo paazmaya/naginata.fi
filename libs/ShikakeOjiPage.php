@@ -63,12 +63,17 @@ class ShikakeOjiPage
      * The format used with "date()" while writing a log entry.
      */
     public $logDateFormat = 'Y-m-d H:i:s';
-	
+
 	/**
 	 * Cache directory
 	 */
 	public $cacheDir = '../cache/';
 	
+	/**
+	 * Two weeks of seconds
+	 */
+	public $twoWeekSec;
+
 	/**
 	 * Special fields to be prosessed in the content. It is always a 3rd party service.
 	 * [flickr|image id]
@@ -87,6 +92,7 @@ class ShikakeOjiPage
     function __construct()
     {
         // Nothing here...
+		$this->twoWeekSec = (60 * 60 * 24 * 7 * 2);
     }
 
     /**
@@ -115,7 +121,7 @@ class ShikakeOjiPage
             return $out;
         }
     }
-    
+
     /**
      * Encode HTML entities for a block of text
      *
@@ -132,7 +138,7 @@ class ShikakeOjiPage
 			}
 			return $str;
 		}
-		else 
+		else
 		{
 			return htmlentities(trim($str), ENT_QUOTES, 'UTF-8');
 		}
@@ -154,12 +160,91 @@ class ShikakeOjiPage
 			}
 			return $str;
 		}
-		else 
+		else
 		{
 			return html_entity_decode(trim($str), ENT_QUOTES, 'UTF-8');
 		}
     }
-    
+
+    /**
+     * Pretty print some JSON
+     * http://fi.php.net/manual/en/function.json-encode.php#80339
+     *
+     * @param    string    $json    A string encoded as JSON
+     * @return    string
+     */
+    public static function jsonPrettyPrint($json)
+    {
+        $tab = "    ";
+        $new_json = "";
+        $indent_level = 0;
+        $in_string = false;
+
+        $len = strlen($json);
+
+        for($c = 0; $c < $len; $c++)
+        {
+            $char = $json[$c];
+            switch($char)
+            {
+                case '{':
+                case '[':
+                    if(!$in_string)
+                    {
+                        $new_json .= $char . "\n" . str_repeat($tab, $indent_level + 1);
+                        $indent_level++;
+                    }
+                    else
+                    {
+                        $new_json .= $char;
+                    }
+                    break;
+                case '}':
+                case ']':
+                    if(!$in_string)
+                    {
+                        $indent_level--;
+                        $new_json .= "\n" . str_repeat($tab, $indent_level) . $char;
+                     }
+                    else
+                    {
+                        $new_json .= $char;
+                    }
+                    break;
+                case ',':
+                    if(!$in_string)
+                    {
+                        $new_json .= ",\n" . str_repeat($tab, $indent_level);
+                    }
+                    else
+                    {
+                        $new_json .= $char;
+                    }
+                    break;
+                case ':':
+                    if(!$in_string)
+                    {
+                        $new_json .= ": ";
+                    }
+                    else
+                    {
+                        $new_json .= $char;
+                    }
+                    break;
+                case '"':
+                    if($c > 0 && $json[$c-1] != '\\')
+                    {
+                        $in_string = !$in_string;
+                    }
+                default:
+                    $new_json .= $char;
+                    break;
+            }
+        }
+
+        return $new_json;
+    }
+
     /**
      * Create the common head section with style sheet imports.
      *
@@ -184,10 +269,10 @@ class ShikakeOjiPage
         $out .= '<title>' . $head['header'] . ' - ' . $data['title'][$lang] . '</title>';
         $out .= '<meta charset="utf-8"/>';
         $out .= '<meta name="description" property="og:description" content="' . $head['description'] . '"/>';
-        
+
         // http://ogp.me/
         $out .= '<meta property="og:title" content="' . $head['title'] . '"/>';
-        $out .= '<meta property="og:type" content="sports_team"/>'; 
+        $out .= '<meta property="og:type" content="sports_team"/>';
         $out .= '<meta property="og:image" content="http://' . $_SERVER['HTTP_HOST'] . '/img/logo.png"/>';
         $out .= '<meta property="og:url" content="http://' . $_SERVER['HTTP_HOST'] . $url . '"/>';
         $out .= '<meta property="og:site_name" content="' . $head['title'][$lang] . '"/>';
@@ -196,11 +281,11 @@ class ShikakeOjiPage
         $out .= '<meta property="og:locale:alternate" content="ja_JP"/>';
         $out .= '<meta property="og:email" content="BUT-NO-SPAM-PLEASE-jukka@naginata.fi"/>';
         $out .= '<meta property="og:country-name" content="Finland"/>';
-        
+
         // https://developers.facebook.com/docs/opengraph/
-        $out .= '<meta property="fb:app_id" content="' . $this->config['facebook']['app_id'] . '"/>'; // A Facebook Platform application ID that administers this page. 
+        $out .= '<meta property="fb:app_id" content="' . $this->config['facebook']['app_id'] . '"/>'; // A Facebook Platform application ID that administers this page.
         $out .= '<meta property="fb:admins" content="' . $this->config['facebook']['admins'] . '"/>';
-        
+
         $out .= '<link rel="author" href="http://paazmaya.com"/>';
         $out .= '<link rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/"/>';
         $out .= '<link rel="shortcut icon" href="/img/favicon.png" type="image/png"/>';
@@ -212,7 +297,7 @@ class ShikakeOjiPage
             'main.css'
         );
         $base = '/css/';
-        
+
         if ($this->useMinification)
         {
             $this->minify('css', $styles);
@@ -230,7 +315,7 @@ class ShikakeOjiPage
         }
         $out .= '</head>';
         $out .= '<body>';
-        
+
 
         $out .= '<nav><ul>';
         foreach ($data['navigation'][$lang] as $item)
@@ -244,21 +329,21 @@ class ShikakeOjiPage
             $out .= '><a href="' . $item['url'] . '" title="' . $item['header'] . '">' . $item['title'] . '</a></li>';
         }
         $out .= '</ul></nav>';
-        
+
         $out .= '<div id="wrapper">';
 
         $out .= '<div id="logo">';
         // should be only two words
         $out .= '<p>' . $data['title'][$lang] . '</p>';
         $out .= '</div>';
-        
+
 
         // Now check the page
         if (!isset($data['article'][$lang][$url]))
         {
             return '<p class="fail">Article data for this page missing</p>';
         }
-        
+
         $out .= '<header>';
 		$out .= '<h1>' . $head['header'] . '</h1>';
 		$out .= '<p>' . $head['description'] . '</p>';
@@ -269,7 +354,7 @@ class ShikakeOjiPage
             foreach($data['article'][$lang][$url] as $article)
             {
                 $out .= '<article>';
-				
+
                 if (is_array($article))
                 {
                     // There might be specific sections defined...
@@ -287,8 +372,8 @@ class ShikakeOjiPage
                 $out .= '</article>';
             }
         }
-		
-        
+
+
         $out .= '</div>';
 
 
@@ -306,10 +391,11 @@ class ShikakeOjiPage
         $out .= '</footer>';
 
         $base = '/js/';
-        
+
         $scripts = array(
             'jquery.js',
             'jquery.colorbox.js',
+			'jquery.swfobject.js',
             'sendanmaki.js'
         );
         if ($this->useMinification)
@@ -339,95 +425,229 @@ class ShikakeOjiPage
         $out .= '</html>';
         return $out;
     }
-	
+
 	/**
 	 * Find and replace all the special fields listed in $this->specialFields
 	 * and call then the specific method for that 3rd party service
 	 * @param	string	$str	Content to be searched
-	 * @return	string	Replaced content, if any 
+	 * @return	string	Replaced content, if any
 	 */
 	private function findSpecialFields($str)
-	{		
+	{
 		foreach($this->specialFields as $key => $value)
 		{
-			$search = '/' . preg_quote('[' . $key . '|') . '(.*?)' . preg_quote(']') . '/i';			
+			$search = '/' . preg_quote('[' . $key . '|') . '(.*?)' . preg_quote(']') . '/i';
 			$str = preg_replace_callback($search, array($this, $this->specialFields[$key]), $str);
 		}
 		return $str;
 	}
-	
+
 	/**
 	 * Get the given Flickr data and render it as image thumbnails.
 	 * If there is just a single stinr, then it must be an image id.
-	 * If there are more parameters, separated by commas, then it should be 
+	 * If there are more parameters, separated by commas, then it should be
 	 * a specific API call with several pictures returned.
 	 */
 	public function renderFlickr($matches)
 	{
-		if (isset($matches['1']) && $matches['1'] != '')
-		{
-			$list = explode(',', $matches['1']);
-			if (count($list) > 0)
-			{
-				// handle API
-			}
-			else
-			{
-				// single
-			}
-		}
+		$out = '';
 		
 		// http://www.flickr.com/services/api/flickr.photos.search.html
 		$params = array(
 			'api_key' => $this->config['flickr']['apikey'],
 			'format' => Flickr::JSON,
-			'method' => 'flickr.photos.search',
-			'user_id' => '14224905@N08',
-			'tags' => 'naginata',
-			'per_page' => 50,
-			'content_type' => 1
+			'method' => 'flickr.photos.search'
+			//'user_id' => '14224905@N08',
+			//'tags' => 'naginata',
+			//'content_type' => 1
 		);
-
-		$flickr_results = Flickr::makeCall($params);
-		return $this->listFlickrPictures(json_decode($flickr_results, true));
+		
+		if (isset($matches['1']) && $matches['1'] != '')
+		{
+			$list = explode(',', $matches['1']);
+			print_r($list);
+			
+			if (count($list) > 1)
+			{
+				$params['per_page'] = 63;
+				
+				foreach($list as $item)
+				{
+					$a = explode('=', $item);
+					if (count($a) == 2)
+					{
+						$params[$a['0']] = $a['1'];
+					}
+				}
+			}
+			else
+			{
+				$cache = $this->cacheDir . 'flickr_' . $matches['1'] . '.json';
+				$params['method'] = 'flickr.photos.getInfo';
+				$params['photo_id'] = $matches['1'];
+			}
+			
+			$feed = Flickr::makeCall($params);
+			$data = json_decode($feed, true);
+			
+			if ($data['stat'] != 'ok')
+			{
+				return '<!.-- ' . $data['stat'] . ' -->';
+			}
+			
+			if (isset($cache))
+			{
+				file_put_contents($cache, self::jsonPrettyPrint($feed));
+			}
+			if (count($list) > 1)
+			{
+				$out .= $this->listFlickrPictures($data);
+			}
+			else
+			{
+				$out .= $this->singleFlickrImage($data['photo']);
+			}
+		}
+		
+		return $out;
 	}
-	
+
 	/**
 	 * Show a link to a Youtube video. Javascript will handle opening it to a colorbox.
 	 * http://code.google.com/apis/youtube/2.0/developers_guide_php.html
 	 */
 	private function renderYoutube($matches)
 	{
+		$out = '';
 		if (isset($matches['1']) && $matches['1'] != '')
 		{
-			$data = file_get_contents('http://gdata.youtube.com/feeds/api/videos/' . $matches['1']); // ?alt=json
-			$simple = new SimpleXMLElement($data);
-			$simple->asXML($this->cacheDir . 'youtube_' . $matches['1'] . '.xml');
+			$cache = $this->cacheDir . 'youtube_' . $matches['1'] . '.json';
+			$feed = $this->getDataCache($cache, 'http://gdata.youtube.com/feeds/api/videos/' . $matches['1'] . '?alt=json');
+			$data = json_decode($feed, true);
+
+			// Get the thumbs for this video
+			
+			foreach($data['entry']['media$group']['media$thumbnail'] as $thumb)
+			{
+				// http://i.ytimg.com/vi/64cmdEUl_jc/3.jpg
+				$img = file_get_contents($thumb['url']);
+				$name = substr($thumb['url'], strrpos($thumb['url'], '/') + 1);
+
+				file_put_contents($this->cacheDir . 'youtube_' . $matches['1'] . '_' . $name, $img);
+			}
+			
+			$img = $data['entry']['media$group']['media$thumbnail']['0'];
+			$out .= '<div class="youtube">';
+
+			$out .= '<a href="http://www.youtube.com/v/' . $matches['1'] . '?version=3&f=videos&app=youtube_gdata" ';
+			$out .= 'type="application/x-shockwave-flash" title="' . $data['entry']['title']['$t'] . '">';
+			$out .= '<img src="' . $img['url'] . '" alt="' . $data['entry']['title']['$t'] . '" width="';
+			$out .= $img['width'] . '" height="' . $img['height'] . '"/>';
+			$out .= '</a>';
+
+			$out .= '<h3 data-youtube-id="' . $matches['1'] . '"><a href="http://www.youtube.com/watch?v=' .
+				$matches['1'] . '" title="Youtube: ' . $data['entry']['title']['$t'] . '">' . 
+				$data['entry']['title']['$t'] . '</a></h3>';
+			$out .= '<p>' . $data['entry']['content']['$t'] . '</p>';
+			
+			$published = DateTime::createFromFormat('Y-m-d\TH:i:s.000\Z', $data['entry']['published']['$t'], new DateTimeZone('UTC'));
+			$out .= '<p>Julkaistu <time datetime="' . date('c', $published->getTimestamp()) . '">' . 
+				date('j.n.Y G:i', $published->getTimestamp()) . '</time>, katsottu ' .
+				$data['entry']['yt$statistics']['viewCount'] . ' kertaa, julkaissut <a href="' .
+				$data['entry']['author']['0']['uri']['$t'] . '">' . $data['entry']['author']['0']['name']['$t'] . '</a></p>';
+				
+			$out .= '</div>';
 		}
+		return $out;
 	}
-	
-	
+
+	/**
+	 * Vimeo video link
+	 */
 	private function renderVimeo($matches)
 	{
-		
+		$out = '';
+		if (isset($matches['1']) && $matches['1'] != '')
+		{
+
+		}
+		return $out;
 	}
 	
+	/**
+	 * Get the cached data if available.
+	 * Update if needed.
+	 */
+	private function getDataCache($cache, $url)
+	{
+		$update = true;
+		if (file_exists($cache))
+		{
+			$mtime = filemtime($cache);
+			if (time() - $mtime < $this->twoWeekSec)
+			{
+				$update = false;
+			}
+		}
+		
+		if ($update)
+		{
+			$data = file_get_contents($url);
+			file_put_contents($cache, self::jsonPrettyPrint($data));
+		}
+		else
+		{
+			$data = file_get_contents($cache);
+		}
+		
+		return $data;
+	}
+
 	/**
 	 * List pictures from Flickr.
 	 */
 	private function listFlickrPictures($data)
 	{
+		if (!isset($data['photos']['photo']))
+		{
+			return '<!-- no pictures -->';
+		}
 		$out = '<ul class="imagelist">';
 		foreach($data['photos']['photo'] as $photo)
 		{
+			// http://flic.kr/p/{base58-photo-id}
 			$url = 'http://farm' . $photo['farm'] . '.static.flickr.com/' . $photo['server'] . '/' . $photo['id'] . '_' . $photo['secret'];
 			$out .= '<li>';
 			$out .= '<a href="' . $url . '_b.jpg" rel="http://www.flickr.com/photos/' . $photo['owner'] . '/' . $photo['id'] . '" title="' . $photo['title'] . '">';
 			$out .= '<img src="' . $url . '_s.jpg" alt="' . $photo['title'] . '"/>';
 			$out .= '</a>';
 			$out .= '</li>';
+			$img = file_get_contents($url . '_s.jpg');
+			file_put_contents($this->cacheDir . 'flickr_' . $photo['id'] . '_' . $photo['secret'] . '_s.jpg', $img);
 		}
 		$out .= '</ul>';
+		return $out;
+	}
+	
+	/**
+	 * Display a single picture from Flickr.
+	 */
+	private function singleFlickrImage($photo)
+	{
+		$url = 'http://farm' . $photo['farm'] . '.static.flickr.com/' . $photo['server'] . '/' . $photo['id'] . '_' . $photo['secret'];
+		
+		$out = '<p class="mediathumb">';
+		
+		$out .= '<a href="' . $url . '_b.jpg" title="' . $photo['title']['_content'] . '">';
+		$out .= '<img src="' . $url . '_m.jpg" alt="' . $photo['title']['_content'] . '"/>';
+		$out .= '</a>';
+		$out .= '<span title="Otettu ' . $photo['dates']['taken'] . '">' . $photo['title']['_content'] . ' / <a href="http://flickr.com/people/' .
+			$photo['owner']['nsid'] . '" title="Flickr - ' . $photo['owner']['username'] . '">' .
+			$photo['owner']['username'] . '</a></span>';
+		
+		//taken 2011-06-09 20:10:17
+		
+		$out .= '</p>';
 		return $out;
 	}
 
@@ -505,14 +725,14 @@ class ShikakeOjiPage
         {
             return false;
         }
-        
+
         // Absolute path of the given file
         $base = realpath('../public_html/' . $type) . '/';
         $source = $base . $file;
 
         // By default, minification has not failed, yet.
         $failed = false;
-        
+
         if (file_exists($source))
         {
             $doMinify = true;
@@ -552,11 +772,11 @@ class ShikakeOjiPage
                     $minified = file_get_contents($destination);
                 }
             }
-            
+
             if ($doMinify)
             {
                 $content = file_get_contents($source);
-                
+
                 if ($type == 'js')
                 {
                     try
@@ -594,5 +814,5 @@ class ShikakeOjiPage
 
         return ($doMinify && $failed) ? false : $minified;
     }
-    
+
 }

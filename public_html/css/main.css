@@ -154,8 +154,8 @@ h1 {
 h2 {
     font-size: 1.5em;
 }
-h3 {
-    font-size: 1.3em;
+h3, h3 a {
+    font-size: 1.2em;
 }
 h4 {
     font-size: 1.1em;
@@ -174,10 +174,11 @@ article ol {
 
 article img {
 }
-
+/*
 article p > a::after {
     content: url(../img/link_arrow.png);
 }
+*/
 
 form {
     width: 40em;
@@ -226,6 +227,7 @@ input[type="submit"]:hover, input[type="button"]:hover {
     display: block;
     font-size: 0.8em;
     font-weight: bold;
+	width: 250px;
 }
 
 /* unordered list */
@@ -244,6 +246,9 @@ input[type="submit"]:hover, input[type="button"]:hover {
 }
 .imagelist a:hover {
     border-color: #4B5535;
+}
+.imagelist img {
+    display: block;
 }
 
 .fail {

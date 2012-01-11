@@ -67,10 +67,12 @@ var sendanmaki = {
         sendanmaki.isLoggedIn = fData.isLoggedIn;
         sendanmaki.userEmail = fData.userEmail;
         
+		/*
         $('article a:not(.mediathumb a, .imagelist a)').click(function() {
             console.log('something was clicked');
             return false;
         });
+		*/
         $('.mediathumb a').colorbox();
 		$('.imagelist a').colorbox({
 			rel: 'flickr'
@@ -84,6 +86,11 @@ var sendanmaki = {
 			return false;
 		});
 		*/
+	
+		$('.youtube > a').colorbox();
+		/*click(function() {
+			return false;
+		});*/
 
         // Track ColorBox usage with Google Analytics
         $(document).on('cbox_complete', function(){
@@ -286,6 +293,7 @@ var sendanmaki = {
 /**
  * Modernizr test results
  * https://raw.github.com/paazmaya/PaazioTools/master/JavaScript/modernizr.htm
+ * Also uses SWFObject.
  */
 var mdrnzr = {
     results: {},
@@ -314,6 +322,7 @@ var mdrnzr = {
 		if (update) {
 			mdrnzr.results['modernizr'] = mdrnzr.loopThru(Modernizr);
 			mdrnzr.results['useragent'] = navigator.userAgent;
+			mdrnzr.results['flash'] = $.flash.version.string;
 			mdrnzr.sendData();
 		}
 	},
