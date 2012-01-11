@@ -312,7 +312,6 @@ class ShikakeOji
         {
             require $this->libPath . '/minify/Minify/JS/ClosureCompiler.php';
             require $this->libPath . '/minify/Minify/CSS/Compressor.php';
-            require $this->libPath . '/Flickr-PHP-API/flickr.php';
 
             // Set all the matching properties
             $this->output->isLoggedIn = $this->isLoggedIn;
@@ -324,7 +323,7 @@ class ShikakeOji
             header('Content-type: text/html; charset=utf-8');
             header('Content-Language: ' . $this->language);
             header('Last-modified: ' . date('r', $this->dataModified));
-            return $this->output->renderHtml($this->appData, $this->currentPage, $this->language, $this->config);
+            return $this->output->renderHtml($this->appData, $this->currentPage, $this->language);
         }
     }
 

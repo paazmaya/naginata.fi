@@ -1,2 +1,7 @@
+cache
 naginata-config.json
 public_html/img/pngcrush.exe
+naginata-php.log
+naginata-minify.log
+naginata-redirect.log
+naginata-openid.log

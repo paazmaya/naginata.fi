@@ -20,6 +20,27 @@ class ShikakeOjiPage
      */
     public $config;
 
+	/**
+	 * List of Cascaded Style Sheet files.
+	 * Should be relative to public_html/css/
+	 */
+    public $styles = array(
+		'fonts.css',
+		'colorbox.css',
+		'main.css'
+	);
+	
+	/**
+	 * List of Javascript files.
+	 * Should be relative to public_html/js/
+	 */
+    public $scripts = array(
+		'jquery.js',
+		'jquery.colorbox.js',
+		'jquery.swfobject.js',
+		'sendanmaki.js'
+	);
+	
     /**
      * Use Tidy if available.
      * http://www.php.net/manual/en/tidy.examples.php
@@ -98,9 +119,9 @@ class ShikakeOjiPage
     /**
      * Render the HTML5 markup by the given data and options.
      */
-    public function renderHtml($data, $url, $lang, $config)
+    public function renderHtml($data, $url, $lang)
     {
-        $out = $this->createHtmlPage($data, $url, $lang, $config);
+        $out = $this->createHtmlPage($data, $url, $lang);
 
         if ($this->useTidy && extension_loaded('tidy'))
         {
@@ -253,7 +274,7 @@ class ShikakeOjiPage
      */
     private function createHtmlPage($data, $url, $lang)
     {
-        $head = '';
+        $head;
         foreach($data['navigation'][$lang] as $list)
         {
             if ($url == $list['url'])
@@ -261,6 +282,10 @@ class ShikakeOjiPage
                 $head = $list;
                 break;
             }
+        }
+        if (!isset($head))
+        {
+            return '<p class="fail">Navigation data for this page missing</p>';
         }
 
         $out = '<!DOCTYPE html>';
@@ -291,23 +316,18 @@ class ShikakeOjiPage
         $out .= '<link rel="shortcut icon" href="/img/favicon.png" type="image/png"/>';
         $out .= '<link rel="apple-touch-icon" href="/img/mobile-logo.png"/>'; // 57x57
 
-        $styles = array(
-            'fonts.css',
-            'colorbox.css',
-            'main.css'
-        );
         $base = '/css/';
 
         if ($this->useMinification)
         {
-            $this->minify('css', $styles);
+            $this->minify('css', $this->styles);
             $this->minifyFile('js', 'modernizr.js');
             $out .= '<link rel="stylesheet" href="' . $base . $this->minifiedName . 'css" type="text/css" media="all" />';
             $out .= '<script type="text/javascript" src="/js/modernizr.min.js"></script>';
         }
         else
         {
-            foreach($styles as $css)
+            foreach($this->styles as $css)
             {
                 $out .= '<link rel="stylesheet" href="' . $base . $css . '" type="text/css" media="all" />';
             }
@@ -387,25 +407,19 @@ class ShikakeOjiPage
             $out .= '<a href="' . $item['0'] . '" title="' . $item['1'] . '">' . $item['2'] . '</a> | ';
         }
 
-        $out .= '<time datetime="' . date('c', $this->dataModified) . '">' . date('j.n.Y G:i', $this->dataModified) . '</time>';
+        $out .= '<time datetime="' . date('c', $this->dataModified) . '">' . date('j.n.Y', $this->dataModified) . '</time>';
         $out .= '</footer>';
 
         $base = '/js/';
 
-        $scripts = array(
-            'jquery.js',
-            'jquery.colorbox.js',
-			'jquery.swfobject.js',
-            'sendanmaki.js'
-        );
         if ($this->useMinification)
         {
-            $this->minify('js', $scripts);
+            $this->minify('js', $this->scripts);
             $out .= '<script type="text/javascript" src="' . $base . $this->minifiedName . 'js"></script>';
         }
         else
         {
-            foreach($scripts as $js)
+            foreach($this->scripts as $js)
             {
                 $out .= '<script type="text/javascript" src="' . $base . $js . '"></script>';
             }
@@ -492,9 +506,13 @@ class ShikakeOjiPage
 			}
 			
 			$params['api_key'] = $this->config['flickr']['apikey'];
-			
-			// TODO: get rid of this flickr lib and use CURL internally for all calls.
-			$feed = Flickr::makeCall($params);
+						
+			// Always using JSON
+			$params['format'] = 'json';
+			$params['nojsoncallback'] = 1;
+
+			$url = 'http://api.flickr.com/services/rest/?' . http_build_query($params, NULL, '&');
+			$feed = $this->getDataCache($cache, $url);
 			$data = json_decode($feed, true);
 			
 			if ($data['stat'] != 'ok')
@@ -633,6 +651,7 @@ class ShikakeOjiPage
 	/**
 	 * Get the cached data if available.
 	 * Update if needed.
+	 * @return	string	JSON string
 	 */
 	private function getDataCache($cache, $url)
 	{
@@ -648,8 +667,15 @@ class ShikakeOjiPage
 		
 		if ($update)
 		{
-			// TODO: use CURL
-			$data = file_get_contents($url);
+			if (extension_loaded('curl'))
+			{
+				$data = $this->getDataCurl($url);
+			}
+			else
+			{
+				// Fall back to slower version...
+				$data = file_get_contents($url);
+			}
 			file_put_contents($cache, self::jsonPrettyPrint($data));
 		}
 		else
@@ -658,6 +684,41 @@ class ShikakeOjiPage
 		}
 		
 		return $data;
+	}
+	
+	/**
+	 * Get data from the given URL by using CURL.
+	 * @return	string	JSON string
+	 */
+	private function getDataCurl()
+	{		
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_URL, $url);
+		curl_setopt($ch, CURLOPT_HEADER, 0);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+		curl_setopt($ch, CURLOPT_FAILONERROR, 1);
+
+		$results = curl_exec($ch);
+		$headers = curl_getinfo($ch);
+
+		$error_number = (int) curl_errno($ch);
+		$error_message = curl_error($ch);
+
+		curl_close($ch);
+
+		// invalid headers
+		if(!in_array($headers['http_code'], array(0, 200)))
+		{
+			throw new Exception('Bad headercode', (int) $headers['http_code']);
+		}
+
+		// are there errors?
+		if($error_number > 0)
+		{
+			throw new Exception($error_message, $error_number);
+		}
+
+		return $results;
 	}
 
 	/**
@@ -679,8 +740,12 @@ class ShikakeOjiPage
 			$out .= '<img src="' . $url . '_s.jpg" alt="' . $photo['title'] . '"/>';
 			$out .= '</a>';
 			$out .= '</li>';
-			$img = file_get_contents($url . '_s.jpg');
-			file_put_contents($this->cacheDir . 'flickr_' . $photo['id'] . '_' . $photo['secret'] . '_s.jpg', $img);
+			$filename = $this->cacheDir . 'flickr_' . $photo['id'] . '_' . $photo['secret'] . '_s.jpg';
+			if (!file_exists($filename))
+			{
+				$img = file_get_contents($url . '_s.jpg');
+				file_put_contents($filename, $img);
+			}
 		}
 		$out .= '</ul>';
 		return $out;
