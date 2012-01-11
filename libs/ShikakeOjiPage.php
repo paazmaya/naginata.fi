@@ -528,8 +528,9 @@ class ShikakeOjiPage
 		$out = '';
 		if (isset($matches['1']) && $matches['1'] != '')
 		{
+			$url = 'http://gdata.youtube.com/feeds/api/videos/' . $matches['1'] . '?alt=json&v=2';
 			$cache = $this->cacheDir . 'youtube_' . $matches['1'] . '.json';
-			$feed = $this->getDataCache($cache, 'http://gdata.youtube.com/feeds/api/videos/' . $matches['1'] . '?alt=json&v=2');
+			$feed = $this->getDataCache($cache, $url);
 			$data = json_decode($feed, true);
 
 			// Get the thumbs for this video
@@ -564,8 +565,8 @@ class ShikakeOjiPage
 				if (isset($thumbs[$i]))
 				{
 					$img = $thumbs[$i];
-					$out .= '<img src="' . $img['url'] . '" alt="' . $data['entry']['title']['$t'] . '" width="';
-					$out .= $img['width'] . '" height="' . $img['height'] . '"/>';
+					$out .= '<img src="' . $img['url'] . '" alt="' . $data['entry']['title']['$t'] . 
+						'" width="' . $img['width'] . '" height="' . $img['height'] . '"/>';
 				}
 			}
 			
@@ -591,7 +592,40 @@ class ShikakeOjiPage
 		$out = '';
 		if (isset($matches['1']) && $matches['1'] != '')
 		{
+			$url = 'http://vimeo.com/api/v2/video/' . $matches['1'] . '.json';
+			$cache = $this->cacheDir . 'vimeo_' . $matches['1'] . '.json';
+			$feed = $this->getDataCache($cache, $url);
+			$data = json_decode($feed, true);
+			if (is_array($data))
+			{
+				$data = $data['0'];
+			}
+				
+			$out = '<p class="mediathumb">';
+			
+			$out .= '<a href="http://vimeo.com/' . $matches['1'] . 
+				'" rel="http://vimeo.com/moogaloop.swf?clip_id=' . $matches['1'] .
+				'&amp;autoplay=1" type="application/x-shockwave-flash" title="' .
+				$data['title'] . '"';
+			if (isset($data['width']) && isset($data['height']))
+			{
+				$out .= ' data-width="' . $data['width'] . '" data-height="' . $data['height'] . '"';
+			}
+			$out .= '>';
+			
+			$out .= '<img src="' . $data['thumbnail_medium'] . '" alt="' . $data['title'] . '"/>'; // 200x150
+			
+			
+			$out .= '</a>';
 
+			$out .= '<span title="Julkaistu ' . $data['upload_date'] . '">' . 
+				$data['title'] . ' / ';
+			$out .= ' <a href="' . $data['user_url'] . '" title="Vimeo - ' . 
+				$data['user_name'] . '">' . $data['user_name'] . '</a>';
+			$out .= '</span>';
+			
+			$out .= '</p>';
+			
 		}
 		return $out;
 	}

@@ -76,12 +76,19 @@ var sendanmaki = {
 	
 		// href has link to actual page, rel has inline link
         $('.mediathumb a:has(img)').click(function() {
-			var rel = $(this).attr('rel');
-			var type = $(this).attr('type');
+			var $a = $(this);
+			var rel = $a.attr('rel');
+			var href = $a.attr('href');
+			var type = $a.attr('type');
+			
+			// Tell to Analytics
+            _gaq.push(['_trackPageview', href]);
 			
 			if (type && type == 'application/x-shockwave-flash')
 			{
+				// Vimeo has size data, Youtube does not
 				var w = $('#wrapper').width();
+				//$a.data('width');
 				var player = $.flash.create({
 					swf: rel,
 					height: '100%',
@@ -89,7 +96,7 @@ var sendanmaki = {
 				});
 				$.colorbox({
 					html: player,
-					title: $(this).attr('title'),
+					title: $a.attr('title'),
 					height: w * 0.75,
 					width: w,
 					scrolling: false
