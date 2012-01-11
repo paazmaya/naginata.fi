@@ -428,7 +428,7 @@ class ShikakeOjiPage
 
 	/**
 	 * Find and replace all the special fields listed in $this->specialFields
-	 * and call then the specific method for that 3rd party service
+	 * and call then the specific "render" method for that 3rd party service
 	 * @param	string	$str	Content to be searched
 	 * @return	string	Replaced content, if any
 	 */
@@ -454,8 +454,6 @@ class ShikakeOjiPage
 		
 		// http://www.flickr.com/services/api/flickr.photos.search.html
 		$params = array(
-			'api_key' => $this->config['flickr']['apikey'],
-			'format' => Flickr::JSON,
 			'method' => 'flickr.photos.search'
 			//'user_id' => '14224905@N08',
 			//'tags' => 'naginata',
@@ -465,7 +463,6 @@ class ShikakeOjiPage
 		if (isset($matches['1']) && $matches['1'] != '')
 		{
 			$list = explode(',', $matches['1']);
-			print_r($list);
 			
 			if (count($list) > 1)
 			{
@@ -479,6 +476,13 @@ class ShikakeOjiPage
 						$params[$a['0']] = $a['1'];
 					}
 				}
+				ksort($params);
+				$cache = $this->cacheDir . 'flickr'; 
+				foreach($params as $k => $v)
+				{
+					$cache .= '_' . $k . '-' . $v;
+				}
+				$cache .= '.json';
 			}
 			else
 			{
@@ -487,6 +491,9 @@ class ShikakeOjiPage
 				$params['photo_id'] = $matches['1'];
 			}
 			
+			$params['api_key'] = $this->config['flickr']['apikey'];
+			
+			// TODO: get rid of this flickr lib and use CURL internally for all calls.
 			$feed = Flickr::makeCall($params);
 			$data = json_decode($feed, true);
 			
@@ -522,41 +529,56 @@ class ShikakeOjiPage
 		if (isset($matches['1']) && $matches['1'] != '')
 		{
 			$cache = $this->cacheDir . 'youtube_' . $matches['1'] . '.json';
-			$feed = $this->getDataCache($cache, 'http://gdata.youtube.com/feeds/api/videos/' . $matches['1'] . '?alt=json');
+			$feed = $this->getDataCache($cache, 'http://gdata.youtube.com/feeds/api/videos/' . $matches['1'] . '?alt=json&v=2');
 			$data = json_decode($feed, true);
 
 			// Get the thumbs for this video
-			
+			$thumbs = array(); // store 2 which are 120x90
 			foreach($data['entry']['media$group']['media$thumbnail'] as $thumb)
 			{
-				// http://i.ytimg.com/vi/64cmdEUl_jc/3.jpg
 				$img = file_get_contents($thumb['url']);
-				$name = substr($thumb['url'], strrpos($thumb['url'], '/') + 1);
-
-				file_put_contents($this->cacheDir . 'youtube_' . $matches['1'] . '_' . $name, $img);
+				$name = $this->cacheDir . 'youtube_' . $matches['1'] . '_' . substr($thumb['url'], strrpos($thumb['url'], '/') + 1);
+				if (!file_exists($name))
+				{
+					file_put_contents($name, $img);
+				}
+				if ($thumb['height'] == 90)
+				{
+					$thumbs[] = $thumb;
+				}
 			}
 			
-			$img = $data['entry']['media$group']['media$thumbnail']['0'];
-			$out .= '<div class="youtube">';
+			// Published date
+			$published = DateTime::createFromFormat('Y-m-d\TH:i:s.000\Z', $data['entry']['published']['$t'], new DateTimeZone('UTC'));
+			
+			$out = '<p class="mediathumb">';
 
-			$out .= '<a href="http://www.youtube.com/v/' . $matches['1'] . '?version=3&f=videos&app=youtube_gdata" ';
-			$out .= 'type="application/x-shockwave-flash" title="' . $data['entry']['title']['$t'] . '">';
-			$out .= '<img src="' . $img['url'] . '" alt="' . $data['entry']['title']['$t'] . '" width="';
-			$out .= $img['width'] . '" height="' . $img['height'] . '"/>';
+			$out .= '<a href="http://www.youtube.com/watch?v=' . $matches['1'] . 
+				'" rel="http://www.youtube.com/v/' . $matches['1'] .
+				'?version=3&f=videos&app=youtube_gdata" type="application/x-shockwave-flash" title="' .
+				$data['entry']['title']['$t'] . '">';
+			
+			
+			for ($i = 0; $i < 2; $i++)
+			{
+				if (isset($thumbs[$i]))
+				{
+					$img = $thumbs[$i];
+					$out .= '<img src="' . $img['url'] . '" alt="' . $data['entry']['title']['$t'] . '" width="';
+					$out .= $img['width'] . '" height="' . $img['height'] . '"/>';
+				}
+			}
+			
 			$out .= '</a>';
 
-			$out .= '<h3 data-youtube-id="' . $matches['1'] . '"><a href="http://www.youtube.com/watch?v=' .
-				$matches['1'] . '" title="Youtube: ' . $data['entry']['title']['$t'] . '">' . 
-				$data['entry']['title']['$t'] . '</a></h3>';
-			$out .= '<p>' . $data['entry']['content']['$t'] . '</p>';
+			$out .= '<span title="Julkaistu ' . date('j.n.Y G:i', $published->getTimestamp()) . '">' . 
+				$data['entry']['title']['$t'] . ' / ';
+			$out .= ' <a href="http://youtube.com/' . $data['entry']['author']['0']['name']['$t'] . '" title="Youtube - ' . 
+				$data['entry']['author']['0']['name']['$t'] . '">' . 
+				$data['entry']['author']['0']['name']['$t'] . '</a>';
+			$out .= '</span>';
 			
-			$published = DateTime::createFromFormat('Y-m-d\TH:i:s.000\Z', $data['entry']['published']['$t'], new DateTimeZone('UTC'));
-			$out .= '<p>Julkaistu <time datetime="' . date('c', $published->getTimestamp()) . '">' . 
-				date('j.n.Y G:i', $published->getTimestamp()) . '</time>, katsottu ' .
-				$data['entry']['yt$statistics']['viewCount'] . ' kertaa, julkaissut <a href="' .
-				$data['entry']['author']['0']['uri']['$t'] . '">' . $data['entry']['author']['0']['name']['$t'] . '</a></p>';
-				
-			$out .= '</div>';
+			$out .= '</p>';
 		}
 		return $out;
 	}
@@ -592,6 +614,7 @@ class ShikakeOjiPage
 		
 		if ($update)
 		{
+			// TODO: use CURL
 			$data = file_get_contents($url);
 			file_put_contents($cache, self::jsonPrettyPrint($data));
 		}
@@ -634,14 +657,17 @@ class ShikakeOjiPage
 	 */
 	private function singleFlickrImage($photo)
 	{
-		$url = 'http://farm' . $photo['farm'] . '.static.flickr.com/' . $photo['server'] . '/' . $photo['id'] . '_' . $photo['secret'];
+		$url = 'http://farm' . $photo['farm'] . '.static.flickr.com/' . 
+			$photo['server'] . '/' . $photo['id'] . '_' . $photo['secret'];
 		
 		$out = '<p class="mediathumb">';
 		
-		$out .= '<a href="' . $url . '_b.jpg" title="' . $photo['title']['_content'] . '">';
+		$out .= '<a href="http://flickr.com/photos/' . $photo['owner']['username'] . '/' . 
+			$photo['id'] . '" rel="' . $url . '_b.jpg" title="' . $photo['title']['_content'] . '">';
 		$out .= '<img src="' . $url . '_m.jpg" alt="' . $photo['title']['_content'] . '"/>';
 		$out .= '</a>';
-		$out .= '<span title="Otettu ' . $photo['dates']['taken'] . '">' . $photo['title']['_content'] . ' / <a href="http://flickr.com/people/' .
+		$out .= '<span title="Otettu ' . $photo['dates']['taken'] . '">' . 
+			$photo['title']['_content'] . ' / <a href="http://flickr.com/people/' .
 			$photo['owner']['nsid'] . '" title="Flickr - ' . $photo['owner']['username'] . '">' .
 			$photo['owner']['username'] . '</a></span>';
 		

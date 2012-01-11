@@ -13,37 +13,6 @@
 
 class Flickr
 {
-	const JSON = 'json';
-	const XML = 'rest';
-	const PHP = 'php_serial';
-	const SOAP = 'soap';
-
-	const API_URL = 'http://api.flickr.com/services/rest/';
-
-	const VERSION = '0.6.1';
-
-	/**
-	 * The available return formats
-	 *
-	 * @var array
-	 */
-	private static $_formats = array(Flickr::JSON, Flickr::XML, Flickr::PHP, Flickr::SOAP);
-
-	/**
-	 * The default parameters-array to include with the API-call
-	 *
-	 * @var array
-	 */
-	private static $_defaults = array();
-
-	/**
-	 * The default format to include with the API-call
-	 *
-	 * @var const
-	 */
-	private static $_default_format = Flickr::JSON;
-
-
 	/**
 	 * Default constructor
 	 *
@@ -54,38 +23,6 @@ class Flickr
 		// This is a static class
 	}
 
-
-	/**
-	 * Set API-key for all requests
-	 *
-	 * @param string $apikey
-	 * @return void
-	 */
-	public static function setApikey($apikey)
-	{
-		self::$_defaults['api_key'] = (string) $apikey;
-	}
-
-	/**
-	 * Set default format for all requests
-	 *
-	 * @param const Flickr::JSON, Flickr::XML, Flickr::PHP, Flickr::SOAP $format
-	 * @return void
-	 */
-	public static function setFormat($format)
-	{
-		if(in_array($format, self::$_formats))
-		{
-			self::$_defaults['format'] = $format;
-			self::$_default_format == $format;
-		}
-		else
-		{
-			self::$_defaults['format'] = self::$_default_format;
-		}
-	}
-
-
 	/**
 	 * Makes the call to the API
 	 *
@@ -94,7 +31,6 @@ class Flickr
 	 */
 	public static function makeCall($params)
 	{
-		$params += self::$_defaults;
 
 		// check if an API-key is provided
 		if(!isset($params['api_key']))
@@ -108,18 +44,11 @@ class Flickr
 			throw new Exception("Without a method this class can't call the API");
 		}
 
-		// check if a format is provided
-		if(!isset($params['format']))
-		{
-			$params['format'] = self::$_default_format;
-		}
+		// Always using JSON
+		$params['format'] = 'json';
+		$params['nojsoncallback'] = 1;
 
-		if($params['format'] == self::JSON)
-		{
-			$params['nojsoncallback'] = 1;
-		}
-
-		$url = Flickr::API_URL.'?'.http_build_query($params, NULL, '&');
+		$url = 'http://api.flickr.com/services/rest/' . '?' . http_build_query($params, NULL, '&');
 
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL, $url);

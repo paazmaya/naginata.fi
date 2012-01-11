@@ -73,9 +73,39 @@ var sendanmaki = {
             return false;
         });
 		*/
-        $('.mediathumb a').colorbox();
+	
+		// href has link to actual page, rel has inline link
+        $('.mediathumb a:has(img)').click(function() {
+			var rel = $(this).attr('rel');
+			var type = $(this).attr('type');
+			
+			if (type && type == 'application/x-shockwave-flash')
+			{
+				var w = $('#wrapper').width();
+				var player = $.flash.create({
+					swf: rel,
+					height: '100%',
+					width: '100%'
+				});
+				$.colorbox({
+					html: player,
+					title: $(this).attr('title'),
+					height: w * 0.75,
+					width: w,
+					scrolling: false
+				});
+			}
+			else
+			{
+				$.colorbox({
+					href: rel,
+					photo: true
+				});
+			}
+			return false;
+		});
 		$('.imagelist a').colorbox({
-			rel: 'flickr'
+			rel: 'several'
 		});
 		/*
 		$('.imagelist a').click(function() {
