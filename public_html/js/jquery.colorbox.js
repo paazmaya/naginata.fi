@@ -291,6 +291,9 @@
 				if (!settings.modal) {
 					$close.html(settings.close).show();
 				}
+				else {
+					$close.remove();
+				}
 			}
 			
 			publicMethod.load(true);
@@ -635,10 +638,6 @@
                     $loaded.fadeIn(100);
                 }
             }
-			
-			if (settings.modal) {
-				$close.remove();
-			}
             
             $title.html(settings.title).add($loaded).show();
             
