@@ -163,9 +163,11 @@ h4 {
 
 header p {
 	text-align: right;
-	margin-top: -1em;
+	margin-top: -1.5em;
 	right: 0;
-	width: 20em;
+	width: 50%;
+	margin-left: 50%;
+	font-size: 0.9em;
 }
 
 article ul, article ol {

@@ -122,6 +122,15 @@ var sendanmaki = {
             console.log('beforeunload');
             //return false;
         });
+		
+		// Finally check if hash is set. It is used only for messaging
+		if (location.hash != '') {
+			var h = location.hash.split('-');
+			if (h.shift() == '#msg') {
+				location.hash = '';
+				sendanmaki.showAppMessage(h.join(''));
+			}
+		}
 
         // So sad, but in 2012 there still needs to be a keep alive call
         setInterval(function() {
@@ -136,7 +145,7 @@ var sendanmaki = {
 	 * It can be a Flickr image, Vimeo or Youtube video.
 	 */
 	mediaThumbClick: function($a) {
-		var rel = $a.attr('rel');
+		var href = $a.data('showInline');
 		var type = $a.attr('type');
 		
 		// Tell Analytics
@@ -153,7 +162,7 @@ var sendanmaki = {
 				h = $a.data('height');
 			}
 			var player = $.flash.create({
-				swf: rel,
+				swf: href,
 				height: '100%',
 				width: '100%'
 			});
@@ -167,7 +176,7 @@ var sendanmaki = {
 		}
 		else {
 			$.colorbox({
-				href: rel,
+				href: href,
 				photo: true
 			});
 		}
@@ -288,10 +297,20 @@ var sendanmaki = {
     showAppMessage: function(msg) {
         var text = $('#wrapper').data(msg);
         console.log('showAppMessage. msg: ' + msg + ', text: ' + text);
-        
-        // Show colorbox
-        
-        // Hide automatically after 4 seconds
+        if (text) {
+			// Show colorbox
+			$.colorbox({
+				html: '<h1>' + text + '</h1>',
+				modal: true,
+				scrolling: false,
+				onComplete: function() {
+					// Hide automatically after 4 seconds
+					setTimeout(function() {
+						$.colorbox.close();
+					}, 4 * 1000);
+				}
+			});
+        }
     },
 
     /**

@@ -534,15 +534,16 @@ class ShikakeOjiPage
 			$feed = $this->getDataCache($cache, $url);
 			$data = json_decode($feed, true);
 
+			if (!isset($data))
+			{
+				return '<!-- flickr failed ' . $matches['1'] . ' -->';
+			}
+			
 			if ($data['stat'] != 'ok')
 			{
 				return '<!.-- ' . $data['stat'] . ' -->';
 			}
 
-			if (isset($cache))
-			{
-				file_put_contents($cache, self::jsonPrettyPrint($feed));
-			}
 			if (count($list) > 1)
 			{
 				$out .= $this->renderFlickrList($data);
@@ -570,11 +571,15 @@ class ShikakeOjiPage
 		$out = '<p class="mediathumb">';
 
 		$out .= '<a href="http://flickr.com/photos/' . $photo['owner']['nsid'] . '/' .
-			$photo['id'] . '" rel="' . $url . '_b.jpg" title="' . $photo['title']['_content'] . '">';
+			$photo['id'] . '" data-show-inline="' . $url . '_b.jpg" title="' . $photo['title']['_content'] . '">';
 		$out .= '<img src="' . $url . '_m.jpg" alt="' . $photo['title']['_content'] . '"/>';
 		$out .= '</a>';
-		$out .= '<span title="Otettu ' . date('j.n.Y G:i', $published->getTimestamp()) . '">' .
-			$photo['title']['_content'] . ' / <a href="http://flickr.com/people/' .
+		$out .= '<span';
+		if (isset($published))
+		{
+			$out .= ' title="Otettu ' . date('j.n.Y G:i', $published->getTimestamp()) . '"';
+		}
+		$out .= '>' . $photo['title']['_content'] . ' / <a href="http://flickr.com/people/' .
 			$photo['owner']['nsid'] . '" title="Flickr - ' . $photo['owner']['username'] . '">' .
 			$photo['owner']['username'] . '</a></span>';
 
@@ -639,6 +644,11 @@ class ShikakeOjiPage
 			$feed = $this->getDataCache($cache, $url);
 			$data = json_decode($feed, true);
 
+			if (!isset($data))
+			{
+				return '<!-- youtube failed ' . $matches['1'] . ' -->';
+			}
+			
 			// Get the thumbs for this video
 			$thumbs = array(); // store 2 which are 120x90
 			foreach($data['entry']['media$group']['media$thumbnail'] as $thumb)
@@ -680,8 +690,12 @@ class ShikakeOjiPage
 
 			$out .= '</a>';
 
-			$out .= '<span title="Julkaistu ' . date('j.n.Y G:i', $published->getTimestamp()) . '">' .
-				$data['entry']['title']['$t'] . ' / ';
+			$out .= '<span';
+			if (isset($published) && is_object($published))
+			{
+				$out .= ' title="Julkaistu ' . date('j.n.Y G:i', $published->getTimestamp()) . '"';
+			}
+			$out .= '>' . $data['entry']['title']['$t'] . ' / ';
 			$out .= ' <a href="http://youtube.com/' . $data['entry']['author']['0']['name']['$t'] . '" title="Youtube - ' .
 				$data['entry']['author']['0']['name']['$t'] . '">' .
 				$data['entry']['author']['0']['name']['$t'] . '</a>';
@@ -704,6 +718,12 @@ class ShikakeOjiPage
 			$cache = $this->cacheDir . 'vimeo_' . $matches['1'] . '.json';
 			$feed = $this->getDataCache($cache, $url);
 			$data = json_decode($feed, true);
+			
+			if (!isset($data))
+			{
+				return '<!-- vimeo failed ' . $matches['1'] . ' -->';
+			}
+			
 			if (is_array($data))
 			{
 				$data = $data['0'];
@@ -740,8 +760,12 @@ class ShikakeOjiPage
 			$out .= '<img src="' . $data['thumbnail_medium'] . '" alt="' . $data['title'] . '" width="200" height="150"/>'; // 200x150
 			$out .= '</a>';
 
-			$out .= '<span title="Julkaistu ' . date('j.n.Y G:i', $published->getTimestamp()) . '">' .
-				$data['title'] . ' / ';
+			$out .= '<span';
+			if (isset($published))
+			{
+				$out .= ' title="Julkaistu ' . date('j.n.Y G:i', $published->getTimestamp()) . '"';
+			}
+			$out .= '>' . $data['title'] . ' / ';
 			$out .= ' <a href="' . $data['user_url'] . '" title="Vimeo - ' .
 				$data['user_name'] . '">' . $data['user_name'] . '</a>';
 			$out .= '</span>';
@@ -829,13 +853,13 @@ class ShikakeOjiPage
 		// invalid headers
 		if (!in_array($headers['http_code'], array(0, 200)))
 		{
-			throw new Exception('Bad headercode', (int) $headers['http_code']);
+			//throw new Exception('Bad headercode', (int) $headers['http_code']);
 		}
 
 		// are there errors?
 		if ($error_number > 0)
 		{
-			throw new Exception($error_message, $error_number);
+			//throw new Exception($error_message, $error_number);
 		}
 
 		return $results;
