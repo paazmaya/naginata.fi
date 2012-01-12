@@ -47,6 +47,12 @@ var sendanmaki = {
      * Email address of the current user against OpenID.
      */
     userEmail: '',
+	
+	/**
+	 * Keep alive interval.
+	 * 3 minutes
+	 */
+	keepAlive: (1000 * 60 * 3),
 
     /**
      * Colors to be used as a feedback of an ongoing AJAX call.
@@ -76,61 +82,15 @@ var sendanmaki = {
 	
 		// href has link to actual page, rel has inline link
         $('.mediathumb a:has(img)').click(function() {
-			var $a = $(this);
-			var rel = $a.attr('rel');
-			var href = $a.attr('href');
-			var type = $a.attr('type');
-			
-			// Tell to Analytics
-            _gaq.push(['_trackPageview', href]);
-			
-			if (type && type == 'application/x-shockwave-flash')
-			{
-				// Vimeo has size data, Youtube does not
-				var w = $('#wrapper').width();
-				//$a.data('width');
-				var player = $.flash.create({
-					swf: rel,
-					height: '100%',
-					width: '100%'
-				});
-				$.colorbox({
-					html: player,
-					title: $a.attr('title'),
-					height: w * 0.75,
-					width: w,
-					scrolling: false
-				});
-			}
-			else
-			{
-				$.colorbox({
-					href: rel,
-					photo: true
-				});
-			}
+			sendanmaki.mediaThumbClick($(this));
 			return false;
 		});
 		$('.imagelist a').colorbox({
 			rel: 'several'
 		});
-		/*
-		$('.imagelist a').click(function() {
-			$.colorbox({
-				href: $(this).attr('rel'),
-				rel: 'flickr'
-			});
-			return false;
-		});
-		*/
-	
-		$('.youtube > a').colorbox();
-		/*click(function() {
-			return false;
-		});*/
 
         // Track ColorBox usage with Google Analytics
-        $(document).on('cbox_complete', function(){
+        $(document).on('cbox_complete', function() {
             var href = $.colorbox.element().attr("href");
             if (href) {
                 _gaq.push(['_trackPageview', href]);
@@ -158,10 +118,6 @@ var sendanmaki = {
             $.colorbox.close();
         });
 
-        $(window).on('unload', function() {
-            console.log('unload');
-            //return false;
-        });
         $(window).on('beforeunload', function() {
             console.log('beforeunload');
             //return false;
@@ -169,20 +125,52 @@ var sendanmaki = {
 
         // So sad, but in 2012 there still needs to be a keep alive call
         setInterval(function() {
-            $.post('/keep-session-alive', {keepalive: 'hoplaa'}, function(received, status) {
+            $.post('/keep-session-alive', {foo: 'bar'}, function(received, status) {
                 console.log(received.answer); // seconds
             }, 'json');
-        }, 1000 * 60 * 3); // 2 minutes
+        }, sendanmaki.keepAlive);
     },
-
-    /**
-     * Check if the user is logged in based on the local storage information
-     */
-    checkLogin: function() {
-        var lastLogin = localStorage.getItem('lastLogin');
-        if (lastLogin) {
-        }
-        var userEmail = localStorage.getItem('userEmail');
+	
+	/**
+	 * Handle a click on a media thumbnail.
+	 * It can be a Flickr image, Vimeo or Youtube video.
+	 */
+	mediaThumbClick: function($a) {
+		var rel = $a.attr('rel');
+		var type = $a.attr('type');
+		
+		// Tell Analytics
+		_gaq.push(['_trackPageview', $a.attr('href')]);
+		
+		if (type && type == 'application/x-shockwave-flash') {
+			// Vimeo has size data, Youtube does not
+			var w = $('#wrapper').width();
+			var h = w * 0.75;
+			if ($a.data('width')) {
+				w = $a.data('width');
+			}
+			if ($a.data('height')) {
+				h = $a.data('height');
+			}
+			var player = $.flash.create({
+				swf: rel,
+				height: '100%',
+				width: '100%'
+			});
+			$.colorbox({
+				html: player,
+				title: $a.attr('title'),
+				height: h,
+				width: w,
+				scrolling: false
+			});
+		}
+		else {
+			$.colorbox({
+				href: rel,
+				photo: true
+			});
+		}
     },
 
     /**

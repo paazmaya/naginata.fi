@@ -19,12 +19,12 @@ class ShikakeOjiPage
      * See "naginata-config.json.dist" for possible keys.
      */
     public $config;
-	
+
 	/**
 	 * Same as ShikakeOji::currentPage for content pages
 	 */
 	public $url = '/';
-	
+
 	/**
 	 * Same as ShikakeOji::language
 	 */
@@ -39,7 +39,7 @@ class ShikakeOjiPage
 		'colorbox.css',
 		'main.css'
 	);
-	
+
 	/**
 	 * List of Javascript files.
 	 * Should be relative to public_html/js/
@@ -50,7 +50,7 @@ class ShikakeOjiPage
 		'jquery.swfobject.js',
 		'sendanmaki.js'
 	);
-	
+
     /**
      * Use Tidy if available.
      * http://www.php.net/manual/en/tidy.examples.php
@@ -89,7 +89,7 @@ class ShikakeOjiPage
      * Log for minification. Entry added every time minification is needed.
      */
     public $minifyLog = '../naginata-minify.log';
-	
+
 	/**
 	 * CURL log
 	 */
@@ -104,7 +104,7 @@ class ShikakeOjiPage
 	 * Cache directory
 	 */
 	public $cacheDir = '../cache/';
-	
+
 	/**
 	 * How long should the 3rd party JSON files be cached?
 	 * In seconds. (60 * 60 * 24 * 7 * 2) = 2 weeks
@@ -327,8 +327,10 @@ class ShikakeOjiPage
         $out .= '<meta property="fb:app_id" content="' . $this->config['facebook']['app_id'] . '"/>'; // A Facebook Platform application ID that administers this page.
         $out .= '<meta property="fb:admins" content="' . $this->config['facebook']['admins'] . '"/>';
 
-        $out .= '<link rel="author" href="http://paazmaya.com"/>';
+		// http://microformats.org/wiki/rel-license
         $out .= '<link rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/"/>';
+        $out .= '<link rel="author" href="http://paazmaya.com"/>';
+
         $out .= '<link rel="shortcut icon" href="/img/favicon.png" type="image/png"/>';
         $out .= '<link rel="apple-touch-icon" href="/img/mobile-logo.png"/>'; // 57x57
 
@@ -481,7 +483,7 @@ class ShikakeOjiPage
 	public function renderFlickr($matches)
 	{
 		$out = '';
-		
+
 		// http://www.flickr.com/services/api/flickr.photos.search.html
 		$params = array(
 			'method' => 'flickr.photos.search'
@@ -489,15 +491,15 @@ class ShikakeOjiPage
 			//'tags' => 'naginata',
 			//'content_type' => 1
 		);
-		
+
 		if (isset($matches['1']) && $matches['1'] != '')
 		{
 			$list = explode(',', $matches['1']);
-			
+
 			if (count($list) > 1)
 			{
 				$params['per_page'] = 63;
-				
+
 				foreach($list as $item)
 				{
 					$a = explode('=', $item);
@@ -507,7 +509,7 @@ class ShikakeOjiPage
 					}
 				}
 				ksort($params);
-				$cache = $this->cacheDir . 'flickr'; 
+				$cache = $this->cacheDir . 'flickr';
 				foreach($params as $k => $v)
 				{
 					$cache .= '_' . $k . '-' . $v;
@@ -520,9 +522,9 @@ class ShikakeOjiPage
 				$params['method'] = 'flickr.photos.getInfo';
 				$params['photo_id'] = $matches['1'];
 			}
-			
+
 			$params['api_key'] = $this->config['flickr']['apikey'];
-			
+
 			// Always using JSON
 			$params['format'] = 'json';
 			$params['nojsoncallback'] = 1;
@@ -530,26 +532,95 @@ class ShikakeOjiPage
 			$url = 'http://api.flickr.com/services/rest/?' . http_build_query($params, NULL, '&');
 			$feed = $this->getDataCache($cache, $url);
 			$data = json_decode($feed, true);
-			
+
 			if ($data['stat'] != 'ok')
 			{
 				return '<!.-- ' . $data['stat'] . ' -->';
 			}
-			
+
 			if (isset($cache))
 			{
 				file_put_contents($cache, self::jsonPrettyPrint($feed));
 			}
 			if (count($list) > 1)
 			{
-				$out .= $this->listFlickrPictures($data);
+				$out .= $this->renderFlickrList($data);
 			}
 			else
 			{
-				$out .= $this->singleFlickrImage($data['photo']);
+				$out .= $this->renderFlickrSingle($data['photo']);
 			}
 		}
-		
+
+		return $out;
+	}
+	
+	/**
+	 * Display a single picture from Flickr.
+	 */
+	private function renderFlickrSingle($photo)
+	{
+		$url = 'http://farm' . $photo['farm'] . '.static.flickr.com/' .
+			$photo['server'] . '/' . $photo['id'] . '_' . $photo['secret'];
+
+		//taken 2011-06-09 20:10:17
+		$published = DateTime::createFromFormat('Y-m-d H:i:s', $photo['dates']['taken'], new DateTimeZone('UTC'));
+
+		$out = '<p class="mediathumb">';
+
+		$out .= '<a href="http://flickr.com/photos/' . $photo['owner']['nsid'] . '/' .
+			$photo['id'] . '" rel="' . $url . '_b.jpg" title="' . $photo['title']['_content'] . '">';
+		$out .= '<img src="' . $url . '_m.jpg" alt="' . $photo['title']['_content'] . '"/>';
+		$out .= '</a>';
+		$out .= '<span title="Otettu ' . date('j.n.Y G:i', $published->getTimestamp()) . '">' .
+			$photo['title']['_content'] . ' / <a href="http://flickr.com/people/' .
+			$photo['owner']['nsid'] . '" title="Flickr - ' . $photo['owner']['username'] . '">' .
+			$photo['owner']['username'] . '</a></span>';
+
+
+		// http://microformats.org/wiki/geo
+		/*
+		if (isset($photo['location']) && isset($photo['location']['latitude']) &&
+			isset($photo['location']['longitude']))
+		{
+			$out .= '<span class="geo">' . $photo['location']['latitude'] 34.854133,
+			$photo['location']['longitude']  134.67163,
+		}
+		*/
+
+		$out .= '</p>';
+		return $out;
+	}
+
+	/**
+	 * List pictures from Flickr.
+	 */
+	private function renderFlickrList($data)
+	{
+		if (!isset($data['photos']['photo']))
+		{
+			return '<!-- no pictures -->';
+		}
+		$out = '<ul class="imagelist">';
+		foreach($data['photos']['photo'] as $photo)
+		{
+			// http://flic.kr/p/{base58-photo-id}
+			$url = 'http://farm' . $photo['farm'] . '.static.flickr.com/' . $photo['server'] . '/' . $photo['id'] . '_' . $photo['secret'];
+			$out .= '<li>';
+			$out .= '<a href="' . $url . '_b.jpg" rel="http://www.flickr.com/photos/' . $photo['owner'] . '/' . $photo['id'] . '" title="' . $photo['title'] . '">';
+			$out .= '<img src="' . $url . '_s.jpg" alt="' . $photo['title'] . '"/>';
+			$out .= '</a>';
+			$out .= '</li>';
+			/*
+			$filename = $this->cacheDir . 'flickr_' . $photo['id'] . '_' . $photo['secret'] . '_s.jpg';
+			if (!file_exists($filename))
+			{
+				$img = file_get_contents($url . '_s.jpg');
+				file_put_contents($filename, $img);
+			}
+			*/
+		}
+		$out .= '</ul>';
 		return $out;
 	}
 
@@ -571,48 +642,49 @@ class ShikakeOjiPage
 			$thumbs = array(); // store 2 which are 120x90
 			foreach($data['entry']['media$group']['media$thumbnail'] as $thumb)
 			{
+				/*
 				$name = $this->cacheDir . 'youtube_' . $matches['1'] . '_' . substr($thumb['url'], strrpos($thumb['url'], '/') + 1);
 				if (!file_exists($name))
 				{
 					$img = file_get_contents($thumb['url']);
 					file_put_contents($name, $img);
 				}
+				*/
 				if ($thumb['height'] == 90)
 				{
 					$thumbs[] = $thumb;
 				}
 			}
-			
+
 			// Published date
 			$published = DateTime::createFromFormat('Y-m-d\TH:i:s.000\Z', $data['entry']['published']['$t'], new DateTimeZone('UTC'));
-			
+
 			$out = '<p class="mediathumb">';
 
-			$out .= '<a href="http://www.youtube.com/watch?v=' . $matches['1'] . 
+			$out .= '<a class="youtube" href="http://www.youtube.com/watch?v=' . $matches['1'] .
 				'" rel="http://www.youtube.com/v/' . $matches['1'] .
 				'?version=3&f=videos&app=youtube_gdata" type="application/x-shockwave-flash" title="' .
 				$data['entry']['title']['$t'] . '">';
-			
-			
+
 			for ($i = 0; $i < 2; $i++)
 			{
 				if (isset($thumbs[$i]))
 				{
 					$img = $thumbs[$i];
-					$out .= '<img src="' . $img['url'] . '" alt="' . $data['entry']['title']['$t'] . 
+					$out .= '<img src="' . $img['url'] . '" alt="' . $data['entry']['title']['$t'] .
 						'" width="' . $img['width'] . '" height="' . $img['height'] . '"/>';
 				}
 			}
-			
+
 			$out .= '</a>';
 
-			$out .= '<span title="Julkaistu ' . date('j.n.Y G:i', $published->getTimestamp()) . '">' . 
+			$out .= '<span title="Julkaistu ' . date('j.n.Y G:i', $published->getTimestamp()) . '">' .
 				$data['entry']['title']['$t'] . ' / ';
-			$out .= ' <a href="http://youtube.com/' . $data['entry']['author']['0']['name']['$t'] . '" title="Youtube - ' . 
-				$data['entry']['author']['0']['name']['$t'] . '">' . 
+			$out .= ' <a href="http://youtube.com/' . $data['entry']['author']['0']['name']['$t'] . '" title="Youtube - ' .
+				$data['entry']['author']['0']['name']['$t'] . '">' .
 				$data['entry']['author']['0']['name']['$t'] . '</a>';
 			$out .= '</span>';
-			
+
 			$out .= '</p>';
 		}
 		return $out;
@@ -634,22 +706,27 @@ class ShikakeOjiPage
 			{
 				$data = $data['0'];
 			}
-			
+
 			// Save all thumbnails, just for fun...
+			/*
 			foreach(array('thumbnail_small', 'thumbnail_medium', 'thumbnail_large') as $size)
 			{
 				$name = $this->cacheDir . 'vimeo_' . $matches['1'] . '_' . substr($data[$size], strrpos($data[$size], '/') + 1);
-				
+
 				if (!file_exists($name))
 				{
 					$img = file_get_contents($data[$size]);
 					file_put_contents($name, $img);
 				}
 			}
-				
+			*/
+
+			// 2009-09-10 13:56:53, http://vimeo.com/forums/topic:47127 what timezone is it?
+			$published = DateTime::createFromFormat('Y-m-d H:i:s', $data['upload_date'], new DateTimeZone('UTC'));
+
 			$out = '<p class="mediathumb">';
-			
-			$out .= '<a href="http://vimeo.com/' . $matches['1'] . 
+
+			$out .= '<a class="vimeo" href="http://vimeo.com/' . $matches['1'] .
 				'" rel="http://vimeo.com/moogaloop.swf?clip_id=' . $matches['1'] .
 				'&amp;autoplay=1" type="application/x-shockwave-flash" title="' .
 				$data['title'] . '"';
@@ -658,20 +735,20 @@ class ShikakeOjiPage
 				$out .= ' data-width="' . $data['width'] . '" data-height="' . $data['height'] . '"';
 			}
 			$out .= '>';
-			$out .= '<img src="' . $data['thumbnail_medium'] . '" alt="' . $data['title'] . '"/>'; // 200x150
+			$out .= '<img src="' . $data['thumbnail_medium'] . '" alt="' . $data['title'] . '" width="200" height="150"/>'; // 200x150
 			$out .= '</a>';
 
-			$out .= '<span title="Julkaistu ' . $data['upload_date'] . '">' . 
+			$out .= '<span title="Julkaistu ' . date('j.n.Y G:i', $published->getTimestamp()) . '">' .
 				$data['title'] . ' / ';
-			$out .= ' <a href="' . $data['user_url'] . '" title="Vimeo - ' . 
+			$out .= ' <a href="' . $data['user_url'] . '" title="Vimeo - ' .
 				$data['user_name'] . '">' . $data['user_name'] . '</a>';
 			$out .= '</span>';
-			
+
 			$out .= '</p>';
 		}
 		return $out;
 	}
-	
+
 	/**
 	 * Get the cached data if available.
 	 * Update if needed as based on the cache lifetime setting.
@@ -688,7 +765,7 @@ class ShikakeOjiPage
 				$update = false;
 			}
 		}
-		
+
 		if ($update)
 		{
 			if (extension_loaded('curl'))
@@ -706,10 +783,10 @@ class ShikakeOjiPage
 		{
 			$data = file_get_contents($cache);
 		}
-		
+
 		return $data;
 	}
-	
+
 	/**
 	 * Get data from the given URL by using CURL.
 	 * @return	string	JSON string
@@ -717,7 +794,7 @@ class ShikakeOjiPage
 	private function getDataCurl($url)
 	{
 		$fh = fopen($this->curlLog, 'a');
-		
+
 		$ch = curl_init();
 		curl_setopt_array($ch, array(
 			CURLOPT_URL => $url,
@@ -728,93 +805,38 @@ class ShikakeOjiPage
 			CURLOPT_VERBOSE => true,
 			CURLOPT_REFERER => 'http://naginata.fi' . $this->url
 		));
-		
+
 		//curl_setopt($ch, CURLOPT_ENCODING, 'gzip');
 		//curl_setopt($ch, CURLOPT_USERAGENT, '');
 
 		$results = curl_exec($ch);
 		$headers = curl_getinfo($ch);
-		
-        $log = date($this->logDateFormat) . ' url: ' . $headers['url'] . ', content_type: ' . 
-			$headers['content_type'] . ', size_download: ' . $headers['size_download'] . 
+
+        $log = date($this->logDateFormat) . ' url: ' . $headers['url'] . ', content_type: ' .
+			$headers['content_type'] . ', size_download: ' . $headers['size_download'] .
 			' bytes, speed_download: ' . $headers['speed_download'] . "\n";
 		fwrite($fh, $log);
-		
+
 		$error_number = (int) curl_errno($ch);
 		$error_message = curl_error($ch);
 
 		curl_close($ch);
-		
+
 		fclose($fh);
 
 		// invalid headers
-		if(!in_array($headers['http_code'], array(0, 200)))
+		if (!in_array($headers['http_code'], array(0, 200)))
 		{
 			throw new Exception('Bad headercode', (int) $headers['http_code']);
 		}
 
 		// are there errors?
-		if($error_number > 0)
+		if ($error_number > 0)
 		{
 			throw new Exception($error_message, $error_number);
 		}
 
 		return $results;
-	}
-
-	/**
-	 * List pictures from Flickr.
-	 */
-	private function listFlickrPictures($data)
-	{
-		if (!isset($data['photos']['photo']))
-		{
-			return '<!-- no pictures -->';
-		}
-		$out = '<ul class="imagelist">';
-		foreach($data['photos']['photo'] as $photo)
-		{
-			// http://flic.kr/p/{base58-photo-id}
-			$url = 'http://farm' . $photo['farm'] . '.static.flickr.com/' . $photo['server'] . '/' . $photo['id'] . '_' . $photo['secret'];
-			$out .= '<li>';
-			$out .= '<a href="' . $url . '_b.jpg" rel="http://www.flickr.com/photos/' . $photo['owner'] . '/' . $photo['id'] . '" title="' . $photo['title'] . '">';
-			$out .= '<img src="' . $url . '_s.jpg" alt="' . $photo['title'] . '"/>';
-			$out .= '</a>';
-			$out .= '</li>';
-			$filename = $this->cacheDir . 'flickr_' . $photo['id'] . '_' . $photo['secret'] . '_s.jpg';
-			if (!file_exists($filename))
-			{
-				$img = file_get_contents($url . '_s.jpg');
-				file_put_contents($filename, $img);
-			}
-		}
-		$out .= '</ul>';
-		return $out;
-	}
-	
-	/**
-	 * Display a single picture from Flickr.
-	 */
-	private function singleFlickrImage($photo)
-	{
-		$url = 'http://farm' . $photo['farm'] . '.static.flickr.com/' . 
-			$photo['server'] . '/' . $photo['id'] . '_' . $photo['secret'];
-		
-		$out = '<p class="mediathumb">';
-		
-		$out .= '<a href="http://flickr.com/photos/' . $photo['owner']['username'] . '/' . 
-			$photo['id'] . '" rel="' . $url . '_b.jpg" title="' . $photo['title']['_content'] . '">';
-		$out .= '<img src="' . $url . '_m.jpg" alt="' . $photo['title']['_content'] . '"/>';
-		$out .= '</a>';
-		$out .= '<span title="Otettu ' . $photo['dates']['taken'] . '">' . 
-			$photo['title']['_content'] . ' / <a href="http://flickr.com/people/' .
-			$photo['owner']['nsid'] . '" title="Flickr - ' . $photo['owner']['username'] . '">' .
-			$photo['owner']['username'] . '</a></span>';
-		
-		//taken 2011-06-09 20:10:17
-		
-		$out .= '</p>';
-		return $out;
 	}
 
     /**
