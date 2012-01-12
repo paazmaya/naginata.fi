@@ -279,11 +279,25 @@ var sendanmaki = {
             $('input[name="identifier"]').focus();
         }
     },
+    
+    /**
+     * Show a message that was set via location.hash
+     * div#wrapper shall contain all the message data
+     * @param   msg    location.hash without prepending #msg-
+     */
+    showAppMessage: function(msg) {
+        var text = $('#wrapper').data(msg);
+        console.log('showAppMessage. msg: ' + msg + ', text: ' + text);
+        
+        // Show colorbox
+        
+        // Hide automatically after 4 seconds
+    },
 
     /**
      * data = {x1, x2, y1, y2, width, heigth, note, url}
      */
-    showNote: function(data) {
+    showImgNote: function(data) {
         console.log('showNote.');
         var parent = $('img[src="' + data.url + '"]').parent();
         var div = $('<div class="note"></div>');

@@ -314,6 +314,7 @@ class ShikakeOji
             require $this->libPath . '/minify/Minify/CSS/Compressor.php';
 
             // Set all the matching properties
+            // TODO: Clean, better way?
             $this->output->isLoggedIn = $this->isLoggedIn;
             $this->output->userEmail = $this->userEmail;
             $this->output->dataModified = $this->dataModified;
@@ -505,11 +506,32 @@ class ShikakeOji
                     $this->userEmail = $attr['contact/email'];
                     $_SESSION['email'] = $attr['contact/email'];
                 }
+                
+                $mailBody = '';
+                $mailBody .= 'Attributes:' . "\n";
+                foreach($attr as $k => $v)
+                {
+                    $mailBody .= '  ' . $k . "\t" . $v . "\n";
+                }
+                
+                $this->sendEmail(
+                    $this->config['email']['address'],
+                    $this->config['email']['name'],
+                    $_SERVER['HTTP_HOST'] . ' - Kirjautumis tapahtuma',
+                    'Terve, ' . "\n" . 'Sivustolla ' . $_SERVER['HTTP_HOST'] . ' tapahtui OpenID kirjautumis tapahtuma.' . "\n\n" . $mailBody
+                );
+                
+                // Show a message of the login state
+                $hashMsg = '#msg-loginSuccess';
+                if (!$this->isLoggedIn)
+                {
+                    $hashMsg = '#msg-loginFailure';
+                }
 
                 // page parameter was sent initially from our site, land back to that page.
                 if (isset($_GET['page']) && $_GET['page'] != '')
                 {
-                    $this->redirectTo($_GET['page']);
+                    $this->redirectTo($_GET['page'] . $hashMsg);
                 }
                 return $openid->validate();
             }
