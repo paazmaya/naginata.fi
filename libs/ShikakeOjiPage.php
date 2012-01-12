@@ -145,7 +145,7 @@ class ShikakeOjiPage
                 'indent' => true,
                 'output-xml' => true,
                 'input-xml' => true,
-                'wrap' => '1000'
+                'wrap' => '200'
             );
 
             $tidy = new tidy();
@@ -368,7 +368,8 @@ class ShikakeOjiPage
         }
         $out .= '</ul></nav>';
 
-        $out .= '<div id="wrapper">';
+        // Wrapper shall contain all the message data
+        $out .= '<div id="wrapper" data-login-success="Olet kirjautunut, nyt on hauskaa." data-login-failure="Kirjautuminen meni pieleen, voi pahus.">';
 
         $out .= '<div id="logo">';
         // should be only two words
@@ -661,8 +662,9 @@ class ShikakeOjiPage
 
 			$out = '<p class="mediathumb">';
 
-			$out .= '<a class="youtube" href="http://www.youtube.com/watch?v=' . $matches['1'] .
-				'" rel="http://www.youtube.com/v/' . $matches['1'] .
+
+			$out .= '<a class="youtube" href="http://www.youtube.com/watch?v=' . $matches['1'] . 
+				'" data-show-inline="http://www.youtube.com/v/' . $matches['1'] .
 				'?version=3&f=videos&app=youtube_gdata" type="application/x-shockwave-flash" title="' .
 				$data['entry']['title']['$t'] . '">';
 
@@ -725,9 +727,9 @@ class ShikakeOjiPage
 			$published = DateTime::createFromFormat('Y-m-d H:i:s', $data['upload_date'], new DateTimeZone('UTC'));
 
 			$out = '<p class="mediathumb">';
-
+			
 			$out .= '<a class="vimeo" href="http://vimeo.com/' . $matches['1'] .
-				'" rel="http://vimeo.com/moogaloop.swf?clip_id=' . $matches['1'] .
+				'" data-show-inline="http://vimeo.com/moogaloop.swf?clip_id=' . $matches['1'] .
 				'&amp;autoplay=1" type="application/x-shockwave-flash" title="' .
 				$data['title'] . '"';
 			if (isset($data['width']) && isset($data['height']))
