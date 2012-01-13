@@ -287,6 +287,7 @@ var sendanmaki = {
         }
         else {
             $('input[name="identifier"]').focus();
+			// TODO: send button should be disabled until a valid OpenID is entered
         }
     },
     

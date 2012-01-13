@@ -34,5 +34,13 @@
 	"vimeo": {
 	},
 	"youtube": {
+	},
+	"users": {
+		"administrators": [
+			"olavic@gmail.com"
+		],
+		"contributors": [
+
+		]
 	}
 }
