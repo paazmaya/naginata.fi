@@ -1,0 +1,296 @@
+{
+    "photo": {
+        "id": "6025334076",
+         "secret": "bfeb0aa7a6",
+         "server": "6089",
+         "farm": 7,
+         "dateuploaded": "1312882160",
+         "isfavorite": 0,
+         "license": "1",
+         "safety_level": "0",
+         "rotation": 0,
+         "originalsecret": "2487a1ed10",
+         "originalformat": "jpg",
+         "owner": {
+            "nsid": "14224905@N08",
+             "username": "paazio",
+             "realname": "",
+             "location": "Helsinki, Finland",
+             "iconserver": "1350",
+             "iconfarm": 2
+        },
+         "title": {
+            "_content": "Naginata in Himeji Sports Center 2011-06-09"
+        },
+         "description": {
+            "_content": ""
+        },
+         "visibility": {
+            "ispublic": 1,
+             "isfriend": 0,
+             "isfamily": 0
+        },
+         "dates": {
+            "posted": "1312882160",
+             "taken": "2011-06-09 20:10:17",
+             "takengranularity": "0",
+             "lastupdate": "1312882885"
+        },
+         "views": "72",
+         "editability": {
+            "cancomment": 0,
+             "canaddmeta": 0
+        },
+         "publiceditability": {
+            "cancomment": 1,
+             "canaddmeta": 0
+        },
+         "usage": {
+            "candownload": 1,
+             "canblog": 0,
+             "canprint": 0,
+             "canshare": 1
+        },
+         "comments": {
+            "_content": "0"
+        },
+         "notes": {
+            "note": [
+                
+            ]
+        },
+         "people": {
+            "haspeople": 0
+        },
+         "tags": {
+            "tag": [
+                {
+                    "id": "14132092-6025334076-1038",
+                     "author": "14224905@N08",
+                     "raw": "japan",
+                     "_content": "japan",
+                     "machine_tag": 0
+                },
+                 {
+                    "id": "14132092-6025334076-18964",
+                     "author": "14224905@N08",
+                     "raw": "\u65e5\u672c",
+                     "_content": "\u65e5\u672c",
+                     "machine_tag": 0
+                },
+                 {
+                    "id": "14132092-6025334076-290",
+                     "author": "14224905@N08",
+                     "raw": "people",
+                     "_content": "people",
+                     "machine_tag": 0
+                },
+                 {
+                    "id": "14132092-6025334076-357489",
+                     "author": "14224905@N08",
+                     "raw": "budo",
+                     "_content": "budo",
+                     "machine_tag": 0
+                },
+                 {
+                    "id": "14132092-6025334076-1970",
+                     "author": "14224905@N08",
+                     "raw": "japanese",
+                     "_content": "japanese",
+                     "machine_tag": 0
+                },
+                 {
+                    "id": "14132092-6025334076-4711",
+                     "author": "14224905@N08",
+                     "raw": "martialart",
+                     "_content": "martialart",
+                     "machine_tag": 0
+                },
+                 {
+                    "id": "14132092-6025334076-4942608",
+                     "author": "14224905@N08",
+                     "raw": "\u6b66\u9053",
+                     "_content": "\u6b66\u9053",
+                     "machine_tag": 0
+                },
+                 {
+                    "id": "14132092-6025334076-1641557",
+                     "author": "14224905@N08",
+                     "raw": "\u6b66\u8853",
+                     "_content": "\u6b66\u8853",
+                     "machine_tag": 0
+                },
+                 {
+                    "id": "14132092-6025334076-6595506",
+                     "author": "14224905@N08",
+                     "raw": "keikogi",
+                     "_content": "keikogi",
+                     "machine_tag": 0
+                },
+                 {
+                    "id": "14132092-6025334076-1762507",
+                     "author": "14224905@N08",
+                     "raw": "\u8599\u5200",
+                     "_content": "\u8599\u5200",
+                     "machine_tag": 0
+                },
+                 {
+                    "id": "14132092-6025334076-8264459",
+                     "author": "14224905@N08",
+                     "raw": "\u8599\u5200\u8853",
+                     "_content": "\u8599\u5200\u8853",
+                     "machine_tag": 0
+                },
+                 {
+                    "id": "14132092-6025334076-72815823",
+                     "author": "14224905@N08",
+                     "raw": "\u76f4\u5fc3\u5f71\u6d41\u8599\u5200\u8853",
+                     "_content": "\u76f4\u5fc3\u5f71\u6d41\u8599\u5200\u8853",
+                     "machine_tag": 0
+                },
+                 {
+                    "id": "14132092-6025334076-19273084",
+                     "author": "14224905@N08",
+                     "raw": "\u76f4\u5fc3\u5f71\u6d41",
+                     "_content": "\u76f4\u5fc3\u5f71\u6d41",
+                     "machine_tag": 0
+                },
+                 {
+                    "id": "14132092-6025334076-52052684",
+                     "author": "14224905@N08",
+                     "raw": "\u65b0\u3057\u3044\u8599\u5200\u9053",
+                     "_content": "\u65b0\u3057\u3044\u8599\u5200\u9053",
+                     "machine_tag": 0
+                },
+                 {
+                    "id": "14132092-6025334076-650692",
+                     "author": "14224905@N08",
+                     "raw": "\u59eb\u8def",
+                     "_content": "\u59eb\u8def",
+                     "machine_tag": 0
+                },
+                 {
+                    "id": "14132092-6025334076-11340961",
+                     "author": "14224905@N08",
+                     "raw": "\u53e4\u6b66\u9053",
+                     "_content": "\u53e4\u6b66\u9053",
+                     "machine_tag": 0
+                },
+                 {
+                    "id": "14132092-6025334076-9323763",
+                     "author": "14224905@N08",
+                     "raw": "\u53e4\u6d41",
+                     "_content": "\u53e4\u6d41",
+                     "machine_tag": 0
+                },
+                 {
+                    "id": "14132092-6025334076-1762505",
+                     "author": "14224905@N08",
+                     "raw": "\u306a\u304e\u306a\u305f",
+                     "_content": "\u306a\u304e\u306a\u305f",
+                     "machine_tag": 0
+                },
+                 {
+                    "id": "14132092-6025334076-117865",
+                     "author": "14224905@N08",
+                     "raw": "naginata",
+                     "_content": "naginata",
+                     "machine_tag": 0
+                },
+                 {
+                    "id": "14132092-6025334076-16008",
+                     "author": "14224905@N08",
+                     "raw": "hakama",
+                     "_content": "hakama",
+                     "machine_tag": 0
+                },
+                 {
+                    "id": "14132092-6025334076-32472872",
+                     "author": "14224905@N08",
+                     "raw": "jikishinkageryu",
+                     "_content": "jikishinkageryu",
+                     "machine_tag": 0
+                },
+                 {
+                    "id": "14132092-6025334076-7733183",
+                     "author": "14224905@N08",
+                     "raw": "japanesemartialart",
+                     "_content": "japanesemartialart",
+                     "machine_tag": 0
+                },
+                 {
+                    "id": "14132092-6025334076-213",
+                     "author": "14224905@N08",
+                     "raw": "girls",
+                     "_content": "girls",
+                     "machine_tag": 0
+                },
+                 {
+                    "id": "14132092-6025334076-19202",
+                     "author": "14224905@N08",
+                     "raw": "himeji",
+                     "_content": "himeji",
+                     "machine_tag": 0
+                },
+                 {
+                    "id": "14132092-6025334076-51979427",
+                     "author": "14224905@N08",
+                     "raw": "atarashiinaginatado",
+                     "_content": "atarashiinaginatado",
+                     "machine_tag": 0
+                },
+                 {
+                    "id": "14132092-6025334076-36682148",
+                     "author": "14224905@N08",
+                     "raw": "budohall",
+                     "_content": "budohall",
+                     "machine_tag": 0
+                }
+            ]
+        },
+         "location": {
+            "latitude": 34.820341,
+             "longitude": 134.66693,
+             "accuracy": "16",
+             "context": "0",
+             "neighbourhood": {
+                "_content": "\uff08\u4e01\u76ee\u306a\u3057\uff09",
+                 "place_id": "ic0kRfBYUrrEs07Myg",
+                 "woeid": "90010602"
+            },
+             "locality": {
+                "_content": "Himeji-shi",
+                 "place_id": "MHk2eJhQU7tyC3ZD",
+                 "woeid": "1117200"
+            },
+             "region": {
+                "_content": "Hyogo Prefecture",
+                 "place_id": "XDT_4xlTUb4cpc40",
+                 "woeid": "2345862"
+            },
+             "country": {
+                "_content": "Japan",
+                 "place_id": "W3QedCZTUb5Ez.rF.Q",
+                 "woeid": "23424856"
+            },
+             "place_id": "ic0kRfBYUrrEs07Myg",
+             "woeid": "90010602"
+        },
+         "geoperms": {
+            "ispublic": 1,
+             "iscontact": 0,
+             "isfriend": 0,
+             "isfamily": 0
+        },
+         "urls": {
+            "url": [
+                {
+                    "type": "photopage",
+                     "_content": "http:\/\/www.flickr.com\/photos\/paazio\/6025334076\/"
+                }
+            ]
+        },
+         "media": "photo"
+    },
+     "stat": "ok"
+}

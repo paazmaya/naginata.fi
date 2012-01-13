@@ -1,0 +1,265 @@
+{
+    "version": "1.0",
+    "encoding": "UTF-8",
+    "entry": {
+        "xmlns": "http://www.w3.org/2005/Atom",
+        "xmlns$media": "http://search.yahoo.com/mrss/",
+        "xmlns$gd": "http://schemas.google.com/g/2005",
+        "xmlns$yt": "http://gdata.youtube.com/schemas/2007",
+        "gd$etag": "W/\"Ck8HSX47eCp7I2A9Wx5aFkw.\"",
+        "id": {
+            "$t": "tag:youtube.com,2008:video:v696WandAw8"
+        },
+        "published": {
+            "$t": "2009-09-22T13:42:50.000Z"
+        },
+        "updated": {
+            "$t": "2010-11-13T01:13:58.000Z"
+        },
+        "category": [
+            {
+                "scheme": "http://schemas.google.com/g/2005#kind",
+                "term": "http://gdata.youtube.com/schemas/2007#video"
+            },
+            {
+                "scheme": "http://gdata.youtube.com/schemas/2007/categories.cat",
+                "term": "Sports",
+                "label": "Sports"
+            },
+            {
+                "scheme": "http://gdata.youtube.com/schemas/2007/keywords.cat",
+                "term": "調布市"
+            },
+            {
+                "scheme": "http://gdata.youtube.com/schemas/2007/keywords.cat",
+                "term": "なぎなた"
+            },
+            {
+                "scheme": "http://gdata.youtube.com/schemas/2007/keywords.cat",
+                "term": "団体基本"
+            },
+            {
+                "scheme": "http://gdata.youtube.com/schemas/2007/keywords.cat",
+                "term": "全日本なぎなたの形"
+            },
+            {
+                "scheme": "http://gdata.youtube.com/schemas/2007/keywords.cat",
+                "term": "直心影流薙刀術"
+            },
+            {
+                "scheme": "http://gdata.youtube.com/schemas/2007/keywords.cat",
+                "term": "直猶心流鎖鎌"
+            }
+        ],
+        "title": {
+            "$t": "結成40周年記念調布市なぎなた大会"
+        },
+        "content": {
+            "type": "application/x-shockwave-flash",
+            "src": "http://www.youtube.com/v/v696WandAw8?version=3&f=videos&app=youtube_gdata"
+        },
+        "link": [
+            {
+                "rel": "alternate",
+                "type": "text/html",
+                "href": "http://www.youtube.com/watch?v=v696WandAw8&feature=youtube_gdata"
+            },
+            {
+                "rel": "http://gdata.youtube.com/schemas/2007#video.responses",
+                "type": "application/atom+xml",
+                "href": "http://gdata.youtube.com/feeds/api/videos/v696WandAw8/responses?v=2"
+            },
+            {
+                "rel": "http://gdata.youtube.com/schemas/2007#video.related",
+                "type": "application/atom+xml",
+                "href": "http://gdata.youtube.com/feeds/api/videos/v696WandAw8/related?v=2"
+            },
+            {
+                "rel": "http://gdata.youtube.com/schemas/2007#mobile",
+                "type": "text/html",
+                "href": "http://m.youtube.com/details?v=v696WandAw8"
+            },
+            {
+                "rel": "self",
+                "type": "application/atom+xml",
+                "href": "http://gdata.youtube.com/feeds/api/videos/v696WandAw8?v=2"
+            }
+        ],
+        "author": [
+            {
+                "name": {
+                    "$t": "osuga01"
+                },
+                "uri": {
+                    "$t": "http://gdata.youtube.com/feeds/api/users/osuga01"
+                }
+            }
+        ],
+        "yt$accessControl": [
+            {
+                "action": "comment",
+                "permission": "allowed"
+            },
+            {
+                "action": "commentVote",
+                "permission": "allowed"
+            },
+            {
+                "action": "videoRespond",
+                "permission": "moderated"
+            },
+            {
+                "action": "rate",
+                "permission": "allowed"
+            },
+            {
+                "action": "embed",
+                "permission": "allowed"
+            },
+            {
+                "action": "list",
+                "permission": "allowed"
+            },
+            {
+                "action": "autoPlay",
+                "permission": "allowed"
+            },
+            {
+                "action": "syndicate",
+                "permission": "allowed"
+            }
+        ],
+        "gd$comments": {
+            "gd$feedLink": {
+                "rel": "http://gdata.youtube.com/schemas/2007#comments",
+                "href": "http://gdata.youtube.com/feeds/api/videos/v696WandAw8/comments?v=2",
+                "countHint": 1
+            }
+        },
+        "media$group": {
+            "media$category": [
+                {
+                    "$t": "Sports",
+                    "label": "Sports",
+                    "scheme": "http://gdata.youtube.com/schemas/2007/categories.cat"
+                }
+            ],
+            "media$content": [
+                {
+                    "url": "http://www.youtube.com/v/v696WandAw8?version=3&f=videos&app=youtube_gdata",
+                    "type": "application/x-shockwave-flash",
+                    "medium": "video",
+                    "isDefault": "true",
+                    "expression": "full",
+                    "duration": 97,
+                    "yt$format": 5
+                },
+                {
+                    "url": "rtsp://v2.cache4.c.youtube.com/CiILENy73wIaGQkPA92pWXqvvxMYDSANFEgGUgZ2aWRlb3MM/0/0/0/video.3gp",
+                    "type": "video/3gpp",
+                    "medium": "video",
+                    "expression": "full",
+                    "duration": 97,
+                    "yt$format": 1
+                },
+                {
+                    "url": "rtsp://v7.cache5.c.youtube.com/CiILENy73wIaGQkPA92pWXqvvxMYESARFEgGUgZ2aWRlb3MM/0/0/0/video.3gp",
+                    "type": "video/3gpp",
+                    "medium": "video",
+                    "expression": "full",
+                    "duration": 97,
+                    "yt$format": 6
+                }
+            ],
+            "media$credit": [
+                {
+                    "$t": "osuga01",
+                    "role": "uploader",
+                    "scheme": "urn:youtube"
+                }
+            ],
+            "media$description": {
+                "$t": "2009年９月20日、西調布体育館で結成40周年記念調布市なぎなた大会が開かれました。開会式に続き、団体基本・全日本なぎなたの形・直心影流薙刀術の公開演技、直猶心流鎖鎌の特別演武、招待試合がありました。",
+                "type": "plain"
+            },
+            "media$keywords": {
+                "$t": "調布市, なぎなた, 団体基本, 全日本なぎなたの形, 直心影流薙刀術, 直猶心流鎖鎌"
+            },
+            "media$license": {
+                "$t": "youtube",
+                "type": "text/html",
+                "href": "http://www.youtube.com/t/terms"
+            },
+            "media$player": {
+                "url": "http://www.youtube.com/watch?v=v696WandAw8&feature=youtube_gdata_player"
+            },
+            "media$thumbnail": [
+                {
+                    "url": "http://i.ytimg.com/vi/v696WandAw8/default.jpg",
+                    "height": 90,
+                    "width": 120,
+                    "time": "00:00:48.500",
+                    "yt$name": "default"
+                },
+                {
+                    "url": "http://i.ytimg.com/vi/v696WandAw8/hqdefault.jpg",
+                    "height": 360,
+                    "width": 480,
+                    "yt$name": "hqdefault"
+                },
+                {
+                    "url": "http://i.ytimg.com/vi/v696WandAw8/1.jpg",
+                    "height": 90,
+                    "width": 120,
+                    "time": "00:00:24.250",
+                    "yt$name": "start"
+                },
+                {
+                    "url": "http://i.ytimg.com/vi/v696WandAw8/2.jpg",
+                    "height": 90,
+                    "width": 120,
+                    "time": "00:00:48.500",
+                    "yt$name": "middle"
+                },
+                {
+                    "url": "http://i.ytimg.com/vi/v696WandAw8/3.jpg",
+                    "height": 90,
+                    "width": 120,
+                    "time": "00:01:12.750",
+                    "yt$name": "end"
+                }
+            ],
+            "media$title": {
+                "$t": "結成40周年記念調布市なぎなた大会",
+                "type": "plain"
+            },
+            "yt$aspectRatio": {
+                "$t": "widescreen"
+            },
+            "yt$duration": {
+                "seconds": "97"
+            },
+            "yt$uploaded": {
+                "$t": "2009-09-22T13:42:50.000Z"
+            },
+            "yt$videoid": {
+                "$t": "v696WandAw8"
+            }
+        },
+        "gd$rating": {
+            "average": 5.0,
+            "max": 5,
+            "min": 1,
+            "numRaters": 4,
+            "rel": "http://schemas.google.com/g/2005#overall"
+        },
+        "yt$statistics": {
+            "favoriteCount": "9",
+            "viewCount": "4586"
+        },
+        "yt$rating": {
+            "numDislikes": "0",
+            "numLikes": "4"
+        }
+    }
+}

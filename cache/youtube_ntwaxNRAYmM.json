@@ -1,0 +1,267 @@
+{
+    "version": "1.0",
+    "encoding": "UTF-8",
+    "entry": {
+        "xmlns": "http://www.w3.org/2005/Atom",
+        "xmlns$media": "http://search.yahoo.com/mrss/",
+        "xmlns$gd": "http://schemas.google.com/g/2005",
+        "xmlns$yt": "http://gdata.youtube.com/schemas/2007",
+        "gd$etag": "W/\"CkYHQ347eCp7I2A9Wx9WEUk.\"",
+        "id": {
+            "$t": "tag:youtube.com,2008:video:ntwaxNRAYmM"
+        },
+        "published": {
+            "$t": "2010-05-08T07:03:59.000Z"
+        },
+        "updated": {
+            "$t": "2011-01-16T01:08:52.000Z"
+        },
+        "category": [
+            {
+                "scheme": "http://schemas.google.com/g/2005#kind",
+                "term": "http://gdata.youtube.com/schemas/2007#video"
+            },
+            {
+                "scheme": "http://gdata.youtube.com/schemas/2007/categories.cat",
+                "term": "Sports",
+                "label": "Sports"
+            },
+            {
+                "scheme": "http://gdata.youtube.com/schemas/2007/keywords.cat",
+                "term": "Jikishinkage"
+            },
+            {
+                "scheme": "http://gdata.youtube.com/schemas/2007/keywords.cat",
+                "term": "Ryu"
+            },
+            {
+                "scheme": "http://gdata.youtube.com/schemas/2007/keywords.cat",
+                "term": "Naginata"
+            },
+            {
+                "scheme": "http://gdata.youtube.com/schemas/2007/keywords.cat",
+                "term": "Shimogamo"
+            },
+            {
+                "scheme": "http://gdata.youtube.com/schemas/2007/keywords.cat",
+                "term": "Jinja"
+            },
+            {
+                "scheme": "http://gdata.youtube.com/schemas/2007/keywords.cat",
+                "term": "Kyoto"
+            }
+        ],
+        "title": {
+            "$t": "Jikishinkage Ryu Naginata 5-4-2010 Shimogamo Jinja, Kyoto"
+        },
+        "content": {
+            "type": "application/x-shockwave-flash",
+            "src": "http://www.youtube.com/v/ntwaxNRAYmM?version=3&f=videos&app=youtube_gdata"
+        },
+        "link": [
+            {
+                "rel": "alternate",
+                "type": "text/html",
+                "href": "http://www.youtube.com/watch?v=ntwaxNRAYmM&feature=youtube_gdata"
+            },
+            {
+                "rel": "http://gdata.youtube.com/schemas/2007#video.responses",
+                "type": "application/atom+xml",
+                "href": "http://gdata.youtube.com/feeds/api/videos/ntwaxNRAYmM/responses?v=2"
+            },
+            {
+                "rel": "http://gdata.youtube.com/schemas/2007#video.related",
+                "type": "application/atom+xml",
+                "href": "http://gdata.youtube.com/feeds/api/videos/ntwaxNRAYmM/related?v=2"
+            },
+            {
+                "rel": "http://gdata.youtube.com/schemas/2007#mobile",
+                "type": "text/html",
+                "href": "http://m.youtube.com/details?v=ntwaxNRAYmM"
+            },
+            {
+                "rel": "self",
+                "type": "application/atom+xml",
+                "href": "http://gdata.youtube.com/feeds/api/videos/ntwaxNRAYmM?v=2"
+            }
+        ],
+        "author": [
+            {
+                "name": {
+                    "$t": "mekugi"
+                },
+                "uri": {
+                    "$t": "http://gdata.youtube.com/feeds/api/users/mekugi"
+                }
+            }
+        ],
+        "yt$accessControl": [
+            {
+                "action": "comment",
+                "permission": "denied"
+            },
+            {
+                "action": "commentVote",
+                "permission": "allowed"
+            },
+            {
+                "action": "videoRespond",
+                "permission": "moderated"
+            },
+            {
+                "action": "rate",
+                "permission": "allowed"
+            },
+            {
+                "action": "embed",
+                "permission": "allowed"
+            },
+            {
+                "action": "list",
+                "permission": "allowed"
+            },
+            {
+                "action": "autoPlay",
+                "permission": "allowed"
+            },
+            {
+                "action": "syndicate",
+                "permission": "allowed"
+            }
+        ],
+        "yt$hd": {
+            
+        },
+        "yt$location": {
+            "$t": "Shimogamo Jinja, Kyoto"
+        },
+        "media$group": {
+            "media$category": [
+                {
+                    "$t": "Sports",
+                    "label": "Sports",
+                    "scheme": "http://gdata.youtube.com/schemas/2007/categories.cat"
+                }
+            ],
+            "media$content": [
+                {
+                    "url": "http://www.youtube.com/v/ntwaxNRAYmM?version=3&f=videos&app=youtube_gdata",
+                    "type": "application/x-shockwave-flash",
+                    "medium": "video",
+                    "isDefault": "true",
+                    "expression": "full",
+                    "duration": 228,
+                    "yt$format": 5
+                },
+                {
+                    "url": "rtsp://v4.cache6.c.youtube.com/CiILENy73wIaGQljYkDUxBrcnhMYDSANFEgGUgZ2aWRlb3MM/0/0/0/video.3gp",
+                    "type": "video/3gpp",
+                    "medium": "video",
+                    "expression": "full",
+                    "duration": 228,
+                    "yt$format": 1
+                },
+                {
+                    "url": "rtsp://v4.cache8.c.youtube.com/CiILENy73wIaGQljYkDUxBrcnhMYESARFEgGUgZ2aWRlb3MM/0/0/0/video.3gp",
+                    "type": "video/3gpp",
+                    "medium": "video",
+                    "expression": "full",
+                    "duration": 228,
+                    "yt$format": 6
+                }
+            ],
+            "media$credit": [
+                {
+                    "$t": "mekugi",
+                    "role": "uploader",
+                    "scheme": "urn:youtube"
+                }
+            ],
+            "media$description": {
+                "$t": "Jikishinkage Ryu Naginata -Jutsu May 4th, 2010 Shimogamo Jinja, Kyoto\r\n\r\nWant to comment?\r\nGo here:\r\nhttp://www.budoseek.net/vbulletin/showthread.php?27674-Jikishinkage-Ryu-Naginatajutsu",
+                "type": "plain"
+            },
+            "media$keywords": {
+                "$t": "Jikishinkage, Ryu, Naginata, Shimogamo, Jinja, Kyoto"
+            },
+            "media$license": {
+                "$t": "youtube",
+                "type": "text/html",
+                "href": "http://www.youtube.com/t/terms"
+            },
+            "media$player": {
+                "url": "http://www.youtube.com/watch?v=ntwaxNRAYmM&feature=youtube_gdata_player"
+            },
+            "media$thumbnail": [
+                {
+                    "url": "http://i.ytimg.com/vi/ntwaxNRAYmM/default.jpg",
+                    "height": 90,
+                    "width": 120,
+                    "time": "00:01:54",
+                    "yt$name": "default"
+                },
+                {
+                    "url": "http://i.ytimg.com/vi/ntwaxNRAYmM/hqdefault.jpg",
+                    "height": 360,
+                    "width": 480,
+                    "yt$name": "hqdefault"
+                },
+                {
+                    "url": "http://i.ytimg.com/vi/ntwaxNRAYmM/1.jpg",
+                    "height": 90,
+                    "width": 120,
+                    "time": "00:00:57",
+                    "yt$name": "start"
+                },
+                {
+                    "url": "http://i.ytimg.com/vi/ntwaxNRAYmM/2.jpg",
+                    "height": 90,
+                    "width": 120,
+                    "time": "00:01:54",
+                    "yt$name": "middle"
+                },
+                {
+                    "url": "http://i.ytimg.com/vi/ntwaxNRAYmM/3.jpg",
+                    "height": 90,
+                    "width": 120,
+                    "time": "00:02:51",
+                    "yt$name": "end"
+                }
+            ],
+            "media$title": {
+                "$t": "Jikishinkage Ryu Naginata 5-4-2010 Shimogamo Jinja, Kyoto",
+                "type": "plain"
+            },
+            "yt$aspectRatio": {
+                "$t": "widescreen"
+            },
+            "yt$duration": {
+                "seconds": "228"
+            },
+            "yt$uploaded": {
+                "$t": "2010-05-08T07:03:59.000Z"
+            },
+            "yt$videoid": {
+                "$t": "ntwaxNRAYmM"
+            }
+        },
+        "gd$rating": {
+            "average": 5.0,
+            "max": 5,
+            "min": 1,
+            "numRaters": 4,
+            "rel": "http://schemas.google.com/g/2005#overall"
+        },
+        "yt$recorded": {
+            "$t": "2010-05-04"
+        },
+        "yt$statistics": {
+            "favoriteCount": "5",
+            "viewCount": "921"
+        },
+        "yt$rating": {
+            "numDislikes": "0",
+            "numLikes": "4"
+        }
+    }
+}

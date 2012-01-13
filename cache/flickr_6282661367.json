@@ -1,0 +1,162 @@
+{
+    "photo": {
+        "id": "6282661367",
+         "secret": "12b51920c4",
+         "server": "6231",
+         "farm": 7,
+         "dateuploaded": "1319635009",
+         "isfavorite": 0,
+         "license": "0",
+         "safety_level": "0",
+         "rotation": 0,
+         "owner": {
+            "nsid": "96248369@N00",
+             "username": "ethics_gradient",
+             "realname": "Chad Cullen",
+             "location": "Tampa, Florida",
+             "iconserver": "112",
+             "iconfarm": 1
+        },
+         "title": {
+            "_content": "Naginata Competition"
+        },
+         "description": {
+            "_content": "Naginata Competition in Kanzaki"
+        },
+         "visibility": {
+            "ispublic": 1,
+             "isfriend": 0,
+             "isfamily": 0
+        },
+         "dates": {
+            "posted": "1319635009",
+             "taken": "2011-10-15 09:47:26",
+             "takengranularity": "0",
+             "lastupdate": "1319635012"
+        },
+         "views": "11",
+         "editability": {
+            "cancomment": 0,
+             "canaddmeta": 0
+        },
+         "publiceditability": {
+            "cancomment": 1,
+             "canaddmeta": 0
+        },
+         "usage": {
+            "candownload": 0,
+             "canblog": 0,
+             "canprint": 0,
+             "canshare": 1
+        },
+         "comments": {
+            "_content": "0"
+        },
+         "notes": {
+            "note": [
+                
+            ]
+        },
+         "people": {
+            "haspeople": 0
+        },
+         "tags": {
+            "tag": [
+                {
+                    "id": "4570909-6282661367-1038",
+                     "author": "96248369@N00",
+                     "raw": "japan",
+                     "_content": "japan",
+                     "machine_tag": 0
+                },
+                 {
+                    "id": "4570909-6282661367-55783441",
+                     "author": "96248369@N00",
+                     "raw": "NEX-3",
+                     "_content": "nex3",
+                     "machine_tag": 0
+                },
+                 {
+                    "id": "4570909-6282661367-56030682",
+                     "author": "96248369@N00",
+                     "raw": "sony nex-3",
+                     "_content": "sonynex3",
+                     "machine_tag": 0
+                },
+                 {
+                    "id": "4570909-6282661367-403009",
+                     "author": "96248369@N00",
+                     "raw": "nex",
+                     "_content": "nex",
+                     "machine_tag": 0
+                },
+                 {
+                    "id": "4570909-6282661367-37299",
+                     "author": "96248369@N00",
+                     "raw": "saga",
+                     "_content": "saga",
+                     "machine_tag": 0
+                },
+                 {
+                    "id": "4570909-6282661367-68478080",
+                     "author": "96248369@N00",
+                     "raw": "\u795e\u57fc\u5e02",
+                     "_content": "\u795e\u57fc\u5e02",
+                     "machine_tag": 0
+                },
+                 {
+                    "id": "4570909-6282661367-1248846",
+                     "author": "96248369@N00",
+                     "raw": "\u4f50\u8cc0\u770c",
+                     "_content": "\u4f50\u8cc0\u770c",
+                     "machine_tag": 0
+                },
+                 {
+                    "id": "4570909-6282661367-1762506",
+                     "author": "96248369@N00",
+                     "raw": "\u9577\u5200",
+                     "_content": "\u9577\u5200",
+                     "machine_tag": 0
+                },
+                 {
+                    "id": "4570909-6282661367-77427940",
+                     "author": "96248369@N00",
+                     "raw": "\u9577\u5200\u8853",
+                     "_content": "\u9577\u5200\u8853",
+                     "machine_tag": 0
+                },
+                 {
+                    "id": "4570909-6282661367-5093489",
+                     "author": "96248369@N00",
+                     "raw": "kanzaki",
+                     "_content": "kanzaki",
+                     "machine_tag": 0
+                },
+                 {
+                    "id": "4570909-6282661367-77427942",
+                     "author": "96248369@N00",
+                     "raw": "naginata competition",
+                     "_content": "naginatacompetition",
+                     "machine_tag": 0
+                },
+                 {
+                    "id": "4570909-6282661367-117865",
+                     "author": "96248369@N00",
+                     "raw": "naginata",
+                     "_content": "naginata",
+                     "machine_tag": 0
+                }
+            ]
+        },
+         "urls": {
+            "url": [
+                {
+                    "type": "photopage",
+                     "_content": "http:\/\/www.flickr.com\/photos\/chadcullen\/6282661367\/"
+                }
+            ]
+        },
+         "media": "photo"
+    },
+     "stat": "ok"
+}
