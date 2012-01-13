@@ -278,8 +278,8 @@ var sendanmaki = {
                 updateSelector: 'input[type="submit"]',
                 updateEvent: 'mousedown',
                 postInit: function(wym) {
-                    $('iframe').on('blur', function() {
-                        console.log('iframe blur event occurred');
+                    $('iframe').on('keyup', function() {
+                        console.log('iframe keyup event occurred');
                         wym.update();
                     });
                 }

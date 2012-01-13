@@ -1,0 +1,66 @@
+{
+    "sizes": {
+        "canblog": 0,
+         "canprint": 0,
+         "candownload": 1,
+         "size": [
+            {
+                "label": "Square",
+                 "width": 75,
+                 "height": 75,
+                 "source": "http:\/\/farm3.staticflickr.com\/2514\/5763043905_5a542834cf_s.jpg",
+                 "url": "http:\/\/www.flickr.com\/photos\/paazio\/5763043905\/sizes\/sq\/",
+                 "media": "photo"
+            },
+             {
+                "label": "Thumbnail",
+                 "width": "76",
+                 "height": "100",
+                 "source": "http:\/\/farm3.staticflickr.com\/2514\/5763043905_5a542834cf_t.jpg",
+                 "url": "http:\/\/www.flickr.com\/photos\/paazio\/5763043905\/sizes\/t\/",
+                 "media": "photo"
+            },
+             {
+                "label": "Small",
+                 "width": "182",
+                 "height": "240",
+                 "source": "http:\/\/farm3.staticflickr.com\/2514\/5763043905_5a542834cf_m.jpg",
+                 "url": "http:\/\/www.flickr.com\/photos\/paazio\/5763043905\/sizes\/s\/",
+                 "media": "photo"
+            },
+             {
+                "label": "Medium",
+                 "width": "380",
+                 "height": "500",
+                 "source": "http:\/\/farm3.staticflickr.com\/2514\/5763043905_5a542834cf.jpg",
+                 "url": "http:\/\/www.flickr.com\/photos\/paazio\/5763043905\/sizes\/m\/",
+                 "media": "photo"
+            },
+             {
+                "label": "Medium 640",
+                 "width": "486",
+                 "height": "640",
+                 "source": "http:\/\/farm3.staticflickr.com\/2514\/5763043905_5a542834cf_z.jpg",
+                 "url": "http:\/\/www.flickr.com\/photos\/paazio\/5763043905\/sizes\/z\/",
+                 "media": "photo"
+            },
+             {
+                "label": "Large",
+                 "width": "778",
+                 "height": "1024",
+                 "source": "http:\/\/farm3.staticflickr.com\/2514\/5763043905_5a542834cf_b.jpg",
+                 "url": "http:\/\/www.flickr.com\/photos\/paazio\/5763043905\/sizes\/l\/",
+                 "media": "photo"
+            },
+             {
+                "label": "Original",
+                 "width": "1519",
+                 "height": "2000",
+                 "source": "http:\/\/farm3.staticflickr.com\/2514\/5763043905_ea79ed1d6f_o.jpg",
+                 "url": "http:\/\/www.flickr.com\/photos\/paazio\/5763043905\/sizes\/o\/",
+                 "media": "photo"
+            }
+        ]
+    },
+     "stat": "ok"
+}

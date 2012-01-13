@@ -1,0 +1,58 @@
+{
+    "sizes": {
+        "canblog": 0,
+         "canprint": 0,
+         "candownload": 0,
+         "size": [
+            {
+                "label": "Square",
+                 "width": 75,
+                 "height": 75,
+                 "source": "http:\/\/farm7.staticflickr.com\/6231\/6282661367_12b51920c4_s.jpg",
+                 "url": "http:\/\/www.flickr.com\/photos\/chadcullen\/6282661367\/sizes\/sq\/",
+                 "media": "photo"
+            },
+             {
+                "label": "Thumbnail",
+                 "width": "67",
+                 "height": "100",
+                 "source": "http:\/\/farm7.staticflickr.com\/6231\/6282661367_12b51920c4_t.jpg",
+                 "url": "http:\/\/www.flickr.com\/photos\/chadcullen\/6282661367\/sizes\/t\/",
+                 "media": "photo"
+            },
+             {
+                "label": "Small",
+                 "width": "160",
+                 "height": "240",
+                 "source": "http:\/\/farm7.staticflickr.com\/6231\/6282661367_12b51920c4_m.jpg",
+                 "url": "http:\/\/www.flickr.com\/photos\/chadcullen\/6282661367\/sizes\/s\/",
+                 "media": "photo"
+            },
+             {
+                "label": "Medium",
+                 "width": "333",
+                 "height": "500",
+                 "source": "http:\/\/farm7.staticflickr.com\/6231\/6282661367_12b51920c4.jpg",
+                 "url": "http:\/\/www.flickr.com\/photos\/chadcullen\/6282661367\/sizes\/m\/",
+                 "media": "photo"
+            },
+             {
+                "label": "Medium 640",
+                 "width": "426",
+                 "height": "640",
+                 "source": "http:\/\/farm7.staticflickr.com\/6231\/6282661367_12b51920c4_z.jpg",
+                 "url": "http:\/\/www.flickr.com\/photos\/chadcullen\/6282661367\/sizes\/z\/",
+                 "media": "photo"
+            },
+             {
+                "label": "Large",
+                 "width": "681",
+                 "height": "1024",
+                 "source": "http:\/\/farm7.staticflickr.com\/6231\/6282661367_12b51920c4_b.jpg",
+                 "url": "http:\/\/www.flickr.com\/photos\/chadcullen\/6282661367\/sizes\/l\/",
+                 "media": "photo"
+            }
+        ]
+    },
+     "stat": "ok"
+}
