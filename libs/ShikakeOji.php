@@ -27,6 +27,11 @@ class ShikakeOji
      * Current language, defaults to Finnish.
      */
     public $language = 'fi';
+	
+	/**
+	 * As in fi_FI or en_GB, the latter part of that is the territory.
+	 */
+	public $territory = 'FI';
 
     /**
      * Should be set to the realpath of the JSON file where app data is stored.
@@ -471,7 +476,7 @@ class ShikakeOji
     /**
      * Try to authenticate the user via OAuth.
      * The email provider should tell if the user is who she/he/it claims to be.
-     * http://code.google.com/apis/accounts/docs/OAuth_ref.htm
+     * http://code.google.com/apis/accounts/docs/OpenID.html
      * @return string/boolean
      */
     private function pageAuthenticateUser()
@@ -484,8 +489,8 @@ class ShikakeOji
         // http://svn.openid.net/repos/specifications/user_interface/1.0/trunk/openid-user-interface-extension-1_0.html
         $openid->ui = array(
             'openid.ns.ui'   => 'http://specs.openid.net/extensions/ui/1.0',
-            //'openid.ui.mode' => 'popup',
-            'openid.ui.lang' => $this->language
+            //'openid.ui.mode' => 'popup', // Google can use x-has-session but not useful for this app
+            'openid.ui.lang' => $this->language . '_' . $this->territory
         );
 
         if (isset($_GET['openid_mode']))

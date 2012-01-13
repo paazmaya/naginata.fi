@@ -127,11 +127,7 @@ var sendanmaki = {
 		if (location.hash && location.hash != '') {
 			var h = location.hash.split('-');
 			if (h.shift() == '#msg') {
-                
-                // TODO: clear also the # character
-				//location.hash = '';
-                history.pushState('', document.title, location.pathname); // back button behaviour?
-                
+                history.pushState('', document.title, location.pathname);                
 				sendanmaki.showAppMessage(h.join('-'));
 			}
 		}
@@ -149,24 +145,23 @@ var sendanmaki = {
 	 * It can be a Flickr image, Vimeo or Youtube video.
 	 */
 	mediaThumbClick: function($a) {
-		var href = $a.data('showInline');
-		var type = $a.attr('type');
+		var data = $a.data();
 		
 		// Tell Analytics
 		_gaq.push(['_trackPageview', $a.attr('href')]);
 		
-		if (type && type == 'application/x-shockwave-flash') {
+		if (data.type && data.type == 'flash') {
 			// Vimeo has size data, Youtube does not
 			var w = $('#wrapper').width();
 			var h = w * 0.75;
-			if ($a.data('width')) {
+			if (data.width) {
 				w = $a.data('width');
 			}
-			if ($a.data('height')) {
+			if (data.height) {
 				h = $a.data('height');
 			}
 			var player = $.flash.create({
-				swf: href,
+				swf: data.url,
 				height: '100%',
 				width: '100%'
 			});
@@ -180,7 +175,7 @@ var sendanmaki = {
 		}
 		else {
 			$.colorbox({
-				href: href,
+				href: data.url,
 				photo: true
 			});
 		}

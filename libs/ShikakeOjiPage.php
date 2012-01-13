@@ -770,15 +770,16 @@ class ShikakeOjiPage
     {
 		$out = '<p class="mediathumb">';
     
-		$out .= '<a class="' . $service . '" href="' . $data['href'] . '" data-show-inline="' . 
-        $data['inline'] . '" type="application/x-shockwave-flash" title="' . $data['title'] . '"';
+		$out .= '<a class="' . $service . '" href="' . $data['href'] . '" data-url="' . 
+			$data['inline'] . '" title="' . $data['title'] . '"';
+			
         if (isset($data['inlinewidth']) && isset($data['inlineheight']))
         {
             $out .= ' data-width="' . $data['inlinewidth'] . '" data-height="' . $data['inlineheight'] . '"';
         }
         if (isset($data['inlineflash']) && $data['inlineflash'] === true)
         {
-            $out .= ' type="application/x-shockwave-flash"';
+            $out .= ' data-type="flash"';
         }
         $out .= '>';
     
