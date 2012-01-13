@@ -124,11 +124,15 @@ var sendanmaki = {
         });
 		
 		// Finally check if hash is set. It is used only for messaging
-		if (location.hash != '') {
+		if (location.hash && location.hash != '') {
 			var h = location.hash.split('-');
 			if (h.shift() == '#msg') {
-				location.hash = '';
-				sendanmaki.showAppMessage(h.join(''));
+                
+                // TODO: clear also the # character
+				//location.hash = '';
+                history.pushState('', document.title, location.pathname); // back button behaviour?
+                
+				sendanmaki.showAppMessage(h.join('-'));
 			}
 		}
 
@@ -216,7 +220,8 @@ var sendanmaki = {
     },
 
     /**
-     *
+     * Submit the OpenID login form to our backend that will redirect to the 
+     * OpenID providers web site.
      */
     submitLoginForm: function($form) {
         var data = {
@@ -239,6 +244,7 @@ var sendanmaki = {
 
     /**
      * Callback for a click on the #contribute link located in the footer.
+     * This should open login form or edit form, depending of the login status.
      */
     contributeClick: function() {
         var opts = {
@@ -300,7 +306,7 @@ var sendanmaki = {
         if (text) {
 			// Show colorbox
 			$.colorbox({
-				html: '<h1>' + text + '</h1>',
+				html: '<h1 class="appmessage">' + text + '</h1>',
 				modal: true,
 				scrolling: false,
 				onComplete: function() {
