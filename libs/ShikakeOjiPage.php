@@ -565,25 +565,6 @@ class ShikakeOjiPage
 		$url = 'http://farm' . $photo['farm'] . '.static.flickr.com/' .
 			$photo['server'] . '/' . $photo['id'] . '_' . $photo['secret'];
 
-		//taken 2011-06-09 20:10:17
-		$published = DateTime::createFromFormat('Y-m-d H:i:s', $photo['dates']['taken'], new DateTimeZone('UTC'));
-
-		$out = '<p class="mediathumb">';
-
-		$out .= '<a href="http://flickr.com/photos/' . $photo['owner']['nsid'] . '/' .
-			$photo['id'] . '" data-show-inline="' . $url . '_b.jpg" title="' . $photo['title']['_content'] . '">';
-		$out .= '<img src="' . $url . '_m.jpg" alt="' . $photo['title']['_content'] . '"/>';
-		$out .= '</a>';
-		$out .= '<span';
-		if (isset($published))
-		{
-			$out .= ' title="Otettu ' . date('j.n.Y G:i', $published->getTimestamp()) . '"';
-		}
-		$out .= '>' . $photo['title']['_content'] . ' / <a href="http://flickr.com/people/' .
-			$photo['owner']['nsid'] . '" title="Flickr - ' . $photo['owner']['username'] . '">' .
-			$photo['owner']['username'] . '</a></span>';
-
-
 		// http://microformats.org/wiki/geo
 		/*
 		if (isset($photo['location']) && isset($photo['location']['latitude']) &&
@@ -593,9 +574,27 @@ class ShikakeOjiPage
 			$photo['location']['longitude']  134.67163,
 		}
 		*/
+   
+        $collected = array(
+            'thumbs' => array(array(
+                'url' => $url . '_m.jpg',
+                'width' => 200,
+                'height' => 150
+            )),
+            'title' => $photo['title']['_content'],
+            'description' => '',
+            //taken 2011-06-09 20:10:17
+            'published' => DateTime::createFromFormat('Y-m-d H:i:s', $photo['dates']['taken'], new DateTimeZone('UTC')),
+            'href' => 'http://flickr.com/photos/' . $photo['owner']['nsid'] . '/' . $photo['id'],
+            'inline' => $url . '_b.jpg',
+            //'inlinewidth' => ,
+            //'inlineheight' => ,
+            'inlineflash' => false,
+            'owner' => $photo['owner']['username'],
+            'ownerlink' => 'http://flickr.com/people/' . $photo['owner']['nsid']
+        );
 
-		$out .= '</p>';
-		return $out;
+        return $this->createMediathumb($collected, 'flickr');
 	}
 
 	/**
@@ -636,7 +635,6 @@ class ShikakeOjiPage
 	 */
 	private function renderYoutube($matches)
 	{
-		$out = '';
 		if (isset($matches['1']) && $matches['1'] != '')
 		{
 			$url = 'http://gdata.youtube.com/feeds/api/videos/' . $matches['1'] . '?alt=json&v=2';
@@ -661,49 +659,28 @@ class ShikakeOjiPage
 					file_put_contents($name, $img);
 				}
 				*/
-				if ($thumb['height'] == 90)
+               // Want two thumbs that are 120x90
+				if ($thumb['height'] == 90 && count($thumbs) > 1)
 				{
 					$thumbs[] = $thumb;
 				}
 			}
-
-			// Published date
-			$published = DateTime::createFromFormat('Y-m-d\TH:i:s.000\Z', $data['entry']['published']['$t'], new DateTimeZone('UTC'));
-
-			$out = '<p class="mediathumb">';
-
-
-			$out .= '<a class="youtube" href="http://www.youtube.com/watch?v=' . $matches['1'] . 
-				'" data-show-inline="http://www.youtube.com/v/' . $matches['1'] .
-				'?version=3&f=videos&app=youtube_gdata" type="application/x-shockwave-flash" title="' .
-				$data['entry']['title']['$t'] . '">';
-
-			for ($i = 0; $i < 2; $i++)
-			{
-				if (isset($thumbs[$i]))
-				{
-					$img = $thumbs[$i];
-					$out .= '<img src="' . $img['url'] . '" alt="' . $data['entry']['title']['$t'] .
-						'" width="' . $img['width'] . '" height="' . $img['height'] . '"/>';
-				}
-			}
-
-			$out .= '</a>';
-
-			$out .= '<span';
-			if (isset($published) && is_object($published))
-			{
-				$out .= ' title="Julkaistu ' . date('j.n.Y G:i', $published->getTimestamp()) . '"';
-			}
-			$out .= '>' . $data['entry']['title']['$t'] . ' / ';
-			$out .= ' <a href="http://youtube.com/' . $data['entry']['author']['0']['name']['$t'] . '" title="Youtube - ' .
-				$data['entry']['author']['0']['name']['$t'] . '">' .
-				$data['entry']['author']['0']['name']['$t'] . '</a>';
-			$out .= '</span>';
-
-			$out .= '</p>';
+            
+            $collected = array(
+            	'thumbs' => $thumbs,
+            	'title' => $data['entry']['title']['$t'],
+            	'description' => '',
+            	'published' => DateTime::createFromFormat('Y-m-d\TH:i:s.000\Z', $data['entry']['published']['$t'], new DateTimeZone('UTC')),
+            	'href' => 'http://www.youtube.com/watch?v=' . $matches['1'],
+            	'inline' => 'http://www.youtube.com/v/' . $matches['1'] . '?version=3&f=videos&app=youtube_gdata',
+                'inlineflash' => true,
+            	'owner' => $data['entry']['author']['0']['name']['$t'],
+            	'ownerlink' => 'http://youtube.com/' . $data['entry']['author']['0']['name']['$t']
+            );
+            
+            return $this->createMediathumb($collected, 'youtube');
 		}
-		return $out;
+		return '';
 	}
 
 	/**
@@ -711,7 +688,6 @@ class ShikakeOjiPage
 	 */
 	private function renderVimeo($matches)
 	{
-		$out = '';
 		if (isset($matches['1']) && $matches['1'] != '')
 		{
 			$url = 'http://vimeo.com/api/v2/video/' . $matches['1'] . '.json';
@@ -742,38 +718,110 @@ class ShikakeOjiPage
 				}
 			}
 			*/
-
-			// 2009-09-10 13:56:53, http://vimeo.com/forums/topic:47127 what timezone is it?
-			$published = DateTime::createFromFormat('Y-m-d H:i:s', $data['upload_date'], new DateTimeZone('UTC'));
-
-			$out = '<p class="mediathumb">';
-			
-			$out .= '<a class="vimeo" href="http://vimeo.com/' . $matches['1'] .
-				'" data-show-inline="http://vimeo.com/moogaloop.swf?clip_id=' . $matches['1'] .
-				'&amp;autoplay=1" type="application/x-shockwave-flash" title="' .
-				$data['title'] . '"';
-			if (isset($data['width']) && isset($data['height']))
-			{
-				$out .= ' data-width="' . $data['width'] . '" data-height="' . $data['height'] . '"';
-			}
-			$out .= '>';
-			$out .= '<img src="' . $data['thumbnail_medium'] . '" alt="' . $data['title'] . '" width="200" height="150"/>'; // 200x150
-			$out .= '</a>';
-
-			$out .= '<span';
-			if (isset($published))
-			{
-				$out .= ' title="Julkaistu ' . date('j.n.Y G:i', $published->getTimestamp()) . '"';
-			}
-			$out .= '>' . $data['title'] . ' / ';
-			$out .= ' <a href="' . $data['user_url'] . '" title="Vimeo - ' .
-				$data['user_name'] . '">' . $data['user_name'] . '</a>';
-			$out .= '</span>';
-
-			$out .= '</p>';
+            
+            $collected = array(
+            	'thumbs' => array(array(
+                    'url' => $data['thumbnail_medium'],
+                    'width' => 200,
+                    'height' => 150
+                )),
+            	'title' => $data['title'],
+            	'description' => '',
+                // 2009-09-10 13:56:53, http://vimeo.com/forums/topic:47127 what timezone is it?
+            	'published' => DateTime::createFromFormat('Y-m-d H:i:s', $data['upload_date'], new DateTimeZone('UTC')),
+            	'href' => 'http://vimeo.com/' . $matches['1'],
+            	'inline' => 'http://vimeo.com/moogaloop.swf?clip_id=' . $matches['1'] . '&amp;autoplay=1',
+                'inlinewidth' => $data['width'],
+                'inlineheight' => $data['height'],
+                'inlineflash' => true,
+            	'owner' => $data['user_name'],
+            	'ownerlink' => $data['user_url']
+            );
+            
+            return $this->createMediathumb($collected, 'vimeo');
 		}
-		return $out;
+		return '';
 	}
+    
+    /**
+     * Create the "mediathumb" paragraph with the given data.
+     * $data = array(
+     *   'thumbs' => array(
+     *     array(
+     *       'url' => $data['thumbnail_medium'],
+     *       'width' => 200,
+     *       'height' => 150
+     *     )
+     *   ),
+     *   'title' => $data['title'],
+     *   'description' => '',
+     *   'published' => DateTime::createFromFormat('Y-m-d H:i:s', $data['upload_date'], new DateTimeZone('UTC')),
+     *   'href' => 'http://vimeo.com/' . $matches['1'],
+     *   'inline' => 'http://vimeo.com/moogaloop.swf?clip_id=' . $matches['1'] . '&amp;autoplay=1',
+     *   'inlinewidth' => $data['width'],
+     *   'inlineheight' => $data['height'],
+     *   'inlineflash' => true,
+     *   'owner' => $data['user_name'],
+     *   'ownerlink' => $data['user_url']
+     * );
+     * $service = 'vimeo'
+     */
+    private function createMediathumb($data, $service)
+    {
+		$out = '<p class="mediathumb">';
+    
+		$out .= '<a class="' . $service . '" href="' . $data['href'] . '" data-show-inline="' . 
+        $data['inline'] . '" type="application/x-shockwave-flash" title="' . $data['title'] . '"';
+        if (isset($data['inlinewidth']) && isset($data['inlineheight']))
+        {
+            $out .= ' data-width="' . $data['inlinewidth'] . '" data-height="' . $data['inlineheight'] . '"';
+        }
+        if (isset($data['inlineflash']) && $data['inlineflash'] === true)
+        {
+            $out .= ' type="application/x-shockwave-flash"';
+        }
+        $out .= '>';
+    
+        // playicon will be shown when the link is hovered. hidden by default.
+        $out .= '<span class="playicon"></span>';
+        
+        if (isset($data['thumbs']))
+        {
+            if (is_array($data['thumbs']))
+            {
+                foreach($data['thumbs'] as $img)
+                {
+					$out .= '<img src="' . $img['url'] . '" alt="' . $data['title'] . '"';
+                    
+                    if (isset($img['width']))
+                    {
+						$out .= ' width="' . $img['width'] . '"';
+                    }
+                    if (isset($img['height']))
+                    {
+                        $out .= ' height="' . $img['height'] . '"';
+                    }
+                    $out .= '/>';
+                }
+            }
+        }
+        
+		$out .= '</a>';
+            
+        $out .= '<span';
+        if (isset($data['published']) && is_object($data['published']))
+        {
+            $out .= ' title="Julkaistu ' . date('j.n.Y G:i', $data['published']->getTimestamp()) . '"';
+        }
+        $out .= '>' . $data['title'] . ' / ';
+        $out .= '<a href="' . $data['ownerlink'] . '" title="' . ucfirst($service) . ' - ' .
+            $data['owner'] . '">' . $data['owner'] . '</a>';
+        $out .= '</span>';
+            
+        $out .= '</p>';
+        
+        return $out;
+    }
 
 	/**
 	 * Get the cached data if available.

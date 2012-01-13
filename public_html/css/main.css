@@ -53,6 +53,9 @@ html, body {
     width: 100%;
     background-color: #FEFEFE;
 }
+body {
+    background: linear-gradient(65deg, #EEFEFE, #FEFEFE);
+}
 
 header, article, section {
     padding: 2em 1em;
@@ -161,6 +164,23 @@ h4 {
     font-size: 1.1em;
 }
 
+/* http://leaverou.github.com/animatable/#text-shadow/3 */
+/* https://developer.mozilla.org/en/CSS/@keyframes */
+@keyframes header1anim {
+    from {
+        text-shadow: 0 0 white;
+    },
+    to {
+        text-shadow: 0 0 rgba(255,255,255,0), -45px -45px 0 red, -30px -30px 0 orange, -15px -15px 0 yellow, 0 0 0 green, 15px 15px 0 blue, 30px 30px 0 indigo, 45px 45px 0 violet;
+    }
+}
+header h1:hover {
+    /* animation: name duration iteration-count direction */
+    animation: header1anim 1s infinite alternate;
+    text-shadow: 0 0 white;
+}
+
+
 header p {
 	text-align: right;
 	margin-top: -1.5em;
@@ -220,6 +240,7 @@ input[type="submit"]:hover, input[type="button"]:hover {
     margin: 1em;
 }
 
+/* paragraph containing a link that contains image(s) */
 .mediathumb {
     border: 0.2em solid #072434;
     padding: 0.6em;
@@ -238,6 +259,27 @@ input[type="submit"]:hover, input[type="button"]:hover {
     font-weight: bold;
 	width: 250px;
 }
+/* under mediathumb there is span that on hover should show play video icon */
+.playicon {
+    visibility: hidden;
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+.vimeo .playicon {
+    background: url();
+}
+.youtube .playicon {
+    background: url();
+}
+.flickr .playicon {
+    background: url();
+}
+.vimeo:hover .playicon, .youtube:hover .playicon , .flickr:hover .playicon  {
+    visibility: visible;
+}
+
 
 /* unordered list */
 .imagelist {
@@ -269,11 +311,13 @@ input[type="submit"]:hover, input[type="button"]:hover {
     background-color: #FEFEFE;
 }
 
-/* under mediathumb there is a that on hover should show play video icon */
-.vimeo {
+
+/* content shown in a colorbox */
+.appmessage {
+    margin: 3em;
 }
-.youtube {
-}
+
+
 
 
 #wrapper {
