@@ -502,8 +502,8 @@ class ShikakeOji
                 if ($openid->validate() &&
                     array_key_exists('contact/email', $attr) &&
                     $attr['contact/email'] != '' &&
-                    (in_array($attr['contact/email'], $this->addData['users']['administrators']) ||
-                    in_array($attr['contact/email'], $this->addData['users']['contributors']))
+                    (in_array($attr['contact/email'], $this->config['users']['administrators']) ||
+                    in_array($attr['contact/email'], $this->config['users']['contributors']))
                 )
                 {
                     // TODO: add differentiation between admins and contributors
