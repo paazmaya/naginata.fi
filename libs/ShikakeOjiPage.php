@@ -485,12 +485,11 @@ class ShikakeOjiPage
 	{
 		$out = '';
 
-		// http://www.flickr.com/services/api/flickr.photos.search.html
 		$params = array(
+			'api_key' => $this->config['flickr']['apikey'],
+			'format' => 'json', // Always using JSON
+			'nojsoncallback' => 1,
 			'method' => 'flickr.photos.search'
-			//'user_id' => '14224905@N08',
-			//'tags' => 'naginata',
-			//'content_type' => 1
 		);
 
 		if (isset($matches['1']) && $matches['1'] != '')
@@ -516,19 +515,18 @@ class ShikakeOjiPage
 					$cache .= '_' . $k . '-' . $v;
 				}
 				$cache .= '.json';
+
+				//'user_id' => '14224905@N08',
+				//'tags' => 'naginata',
+				//'content_type' => 1
 			}
 			else
 			{
 				$cache = $this->cacheDir . 'flickr_' . $matches['1'] . '.json';
 				$params['method'] = 'flickr.photos.getInfo';
 				$params['photo_id'] = $matches['1'];
+
 			}
-
-			$params['api_key'] = $this->config['flickr']['apikey'];
-
-			// Always using JSON
-			$params['format'] = 'json';
-			$params['nojsoncallback'] = 1;
 
 			$url = 'http://api.flickr.com/services/rest/?' . http_build_query($params, NULL, '&');
 			$feed = $this->getDataCache($cache, $url);
@@ -538,7 +536,7 @@ class ShikakeOjiPage
 			{
 				return '<!-- flickr failed ' . $matches['1'] . ' -->';
 			}
-			
+
 			if ($data['stat'] != 'ok')
 			{
 				return '<!.-- ' . $data['stat'] . ' -->';
@@ -550,21 +548,33 @@ class ShikakeOjiPage
 			}
 			else
 			{
-				$out .= $this->renderFlickrSingle($data['photo']);
+				// and flickr.photos.getSizes
+				$cache = $this->cacheDir . 'flickr_' . $matches['1'] . '_sizes.json';
+				$params['method'] = 'flickr.photos.getSizes';
+				$url = 'http://api.flickr.com/services/rest/?' . http_build_query($params, NULL, '&');
+				$feed = $this->getDataCache($cache, $url);
+				$sizes = json_decode($feed, true);
+				
+				if (!isset($sizes))
+				{
+					return '<!-- flickr sizes failed ' . $matches['1'] . ' -->';
+				}
+
+
+				$out .= $this->renderFlickrSingle($data['photo'], $sizes['sizes']['size']);
 			}
 		}
 
 		return $out;
 	}
-	
+
 	/**
 	 * Display a single picture from Flickr.
+	 * http://www.flickr.com/services/api/flickr.photos.getInfo.html
+	 * http://www.flickr.com/services/api/flickr.photos.getSizes.html
 	 */
-	private function renderFlickrSingle($photo)
+	private function renderFlickrSingle($photo, $sizes)
 	{
-		$url = 'http://farm' . $photo['farm'] . '.static.flickr.com/' .
-			$photo['server'] . '/' . $photo['id'] . '_' . $photo['secret'];
-
 		// http://microformats.org/wiki/geo
 		/*
 		if (isset($photo['location']) && isset($photo['location']['latitude']) &&
@@ -574,31 +584,45 @@ class ShikakeOjiPage
 			$photo['location']['longitude']  134.67163,
 		}
 		*/
-   
+	
         $collected = array(
-            'thumbs' => array(array(
-                'url' => $url . '_m.jpg',
-                'width' => 200,
-                'height' => 150
-            )),
             'title' => $photo['title']['_content'],
             'description' => '',
             //taken 2011-06-09 20:10:17
             'published' => DateTime::createFromFormat('Y-m-d H:i:s', $photo['dates']['taken'], new DateTimeZone('UTC')),
             'href' => 'http://flickr.com/photos/' . $photo['owner']['nsid'] . '/' . $photo['id'],
-            'inline' => $url . '_b.jpg',
-            //'inlinewidth' => ,
-            //'inlineheight' => ,
-            'inlineflash' => false,
             'owner' => $photo['owner']['username'],
             'ownerlink' => 'http://flickr.com/people/' . $photo['owner']['nsid']
         );
+		
+		$thumbs = array();
+		
+		foreach($sizes as $size)
+		{
+			if ($size['label'] == 'Small')
+			{
+				$thumbs[] = array(
+					'width' => $size['width'],
+					'height' => $size['height'],
+					'url' => $size['source']
+				);
+			}
+			else if ($size['label'] == 'Large')
+			{
+				$collected['inline'] = $size['source'];
+				$collected['inlinewidth'] = $size['width'];
+				$collected['inlineheight'] = $size['height'];
+			}
+		}
+        $collected['thumbs'] = $thumbs;
+
 
         return $this->createMediathumb($collected, 'flickr');
 	}
 
 	/**
 	 * List pictures from Flickr.
+	 * http://www.flickr.com/services/api/flickr.photos.search.html
 	 */
 	private function renderFlickrList($data)
 	{
@@ -646,7 +670,7 @@ class ShikakeOjiPage
 			{
 				return '<!-- youtube failed ' . $matches['1'] . ' -->';
 			}
-			
+
 			// Get the thumbs for this video
 			$thumbs = array(); // store 2 which are 120x90
 			foreach($data['entry']['media$group']['media$thumbnail'] as $thumb)
@@ -660,12 +684,12 @@ class ShikakeOjiPage
 				}
 				*/
                // Want two thumbs that are 120x90
-				if ($thumb['height'] == 90 && count($thumbs) > 1)
+				if ($thumb['height'] == 90 && count($thumbs) < 2)
 				{
 					$thumbs[] = $thumb;
 				}
 			}
-            
+
             $collected = array(
             	'thumbs' => $thumbs,
             	'title' => $data['entry']['title']['$t'],
@@ -677,7 +701,8 @@ class ShikakeOjiPage
             	'owner' => $data['entry']['author']['0']['name']['$t'],
             	'ownerlink' => 'http://youtube.com/' . $data['entry']['author']['0']['name']['$t']
             );
-            
+			
+
             return $this->createMediathumb($collected, 'youtube');
 		}
 		return '';
@@ -694,12 +719,12 @@ class ShikakeOjiPage
 			$cache = $this->cacheDir . 'vimeo_' . $matches['1'] . '.json';
 			$feed = $this->getDataCache($cache, $url);
 			$data = json_decode($feed, true);
-			
+
 			if (!isset($data))
 			{
 				return '<!-- vimeo failed ' . $matches['1'] . ' -->';
 			}
-			
+
 			if (is_array($data))
 			{
 				$data = $data['0'];
@@ -718,7 +743,7 @@ class ShikakeOjiPage
 				}
 			}
 			*/
-            
+
             $collected = array(
             	'thumbs' => array(array(
                     'url' => $data['thumbnail_medium'],
@@ -737,12 +762,12 @@ class ShikakeOjiPage
             	'owner' => $data['user_name'],
             	'ownerlink' => $data['user_url']
             );
-            
+
             return $this->createMediathumb($collected, 'vimeo');
 		}
 		return '';
 	}
-    
+
     /**
      * Create the "mediathumb" paragraph with the given data.
      * $data = array(
@@ -769,10 +794,10 @@ class ShikakeOjiPage
     private function createMediathumb($data, $service)
     {
 		$out = '<p class="mediathumb">';
-    
-		$out .= '<a class="' . $service . '" href="' . $data['href'] . '" data-url="' . 
+
+		$out .= '<a class="' . $service . '" href="' . $data['href'] . '" data-url="' .
 			$data['inline'] . '" title="' . $data['title'] . '"';
-			
+
         if (isset($data['inlinewidth']) && isset($data['inlineheight']))
         {
             $out .= ' data-width="' . $data['inlinewidth'] . '" data-height="' . $data['inlineheight'] . '"';
@@ -782,10 +807,10 @@ class ShikakeOjiPage
             $out .= ' data-type="flash"';
         }
         $out .= '>';
-    
+
         // playicon will be shown when the link is hovered. hidden by default.
         $out .= '<span class="playicon"></span>';
-        
+
         if (isset($data['thumbs']))
         {
             if (is_array($data['thumbs']))
@@ -793,7 +818,7 @@ class ShikakeOjiPage
                 foreach($data['thumbs'] as $img)
                 {
 					$out .= '<img src="' . $img['url'] . '" alt="' . $data['title'] . '"';
-                    
+
                     if (isset($img['width']))
                     {
 						$out .= ' width="' . $img['width'] . '"';
@@ -806,9 +831,9 @@ class ShikakeOjiPage
                 }
             }
         }
-        
+
 		$out .= '</a>';
-            
+
         $out .= '<span';
         if (isset($data['published']) && is_object($data['published']))
         {
@@ -818,9 +843,9 @@ class ShikakeOjiPage
         $out .= '<a href="' . $data['ownerlink'] . '" title="' . ucfirst($service) . ' - ' .
             $data['owner'] . '">' . $data['owner'] . '</a>';
         $out .= '</span>';
-            
+
         $out .= '</p>';
-        
+
         return $out;
     }
 
