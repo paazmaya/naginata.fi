@@ -27,7 +27,7 @@ class ShikakeOji
      * Current language, defaults to Finnish.
      */
     public $language = 'fi';
-	
+
 	/**
 	 * As in fi_FI or en_GB, the latter part of that is the territory.
 	 */
@@ -108,7 +108,7 @@ class ShikakeOji
      * Be careful, this is used with "isLoggedIn" to validate the user.
      */
     private $userEmail = '';
-	
+
 	/**
 	 * PDO connected database connection, mainly for storing Modernizr stats
 	 * http://php.net/pdo
@@ -163,12 +163,31 @@ class ShikakeOji
             return false;
         }
         $this->config = json_decode(file_get_contents($configPath), true);
-		
-		// SQLite 3 only for now.
-		if (isset($this->config['database']) && isset($this->config['database']['address']))
+
+		// PDO database connection if the settings are set.
+		if (isset($this->config['database']) && isset($this->config['database']['type']) &&
+			in_array($this->config['database']['type'], PDO::getAvailableDrivers()))
 		{
-			$dir = dirname($configPath);
-			$this->database = new PDO('sqlite:' . realpath($dir . '/' . $this->config['database']['address']));
+			$attr = array();
+			$dsn = $this->config['database']['type'] . ':';
+			if ($this->config['database']['type'] != 'sqlite')
+			{
+				$dsn .= 'dbname=' . $this->config['database']['database'] . ';host=' . $this->config['database']['address'];
+				$attr[PDO::MYSQL_ATTR_INIT_COMMAND] = 'SET NAMES \'UTF8\'';
+			}
+			else
+			{
+				$dir = dirname($configPath);
+				$dsn .= realpath($dir . '/' . $this->config['database']['address']);
+			}
+
+
+			$this->database = new PDO($dsn, $this->config['database']['username'],
+				$this->config['database']['password'], $attr);
+
+			$this->database->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
+			$this->database->setAttribute(PDO::ATTR_ORACLE_NULLS, PDO::NULL_TO_STRING);
+			$this->database->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
 		}
     }
 
@@ -187,8 +206,11 @@ class ShikakeOji
         if (!isset($_SESSION['id']) || $_SESSION['id'] != $id && !isset($_SESSION['id']))
         {
             session_regenerate_id(); // updates the cookie if there is one
+			session_unset();
             session_destroy();
-            unset($_SESSION);
+			// Do NOT unset the whole $_SESSION with unset($_SESSION) as this will disable the registering of session variables through the $_SESSION superglobal.
+            // unset($_SESSION);
+
             session_start();
 
             $_SESSION = array(); // not sure if this is needed
@@ -346,13 +368,10 @@ class ShikakeOji
             $this->appData = json_decode($json, true);
             $this->dataModified = filemtime($this->dataPath);
 
-            //print_r($this->appData);
-            //echo "\n" . ShikakeOjiPage::decodeHtml($this->appData['title']['jp']);
-
             $error = $this->getJsonError();
             if ($error != '')
             {
-                echo $error;
+                file_put_contents(ini_get('error_log'), $error, FILE_APPEND);
             }
         }
     }
@@ -462,14 +481,50 @@ class ShikakeOji
             return false;
         }
 
+		$counter = 0;
+		/*
+		'mdrnzr_client' id, useragent, flash, created, address, note
+		'mdrnzr_key' id, title
+		'mdrnzr_value' id, key_id, client_id, hasthis
+		*/
 		if (isset($this->database))
 		{
+			$sql = 'INSERT INTO mdrnzr_client (useragent, flash, created, address) ' .
+				'VALUES (\'' . $received['useragent'] . '\', \'' . $received['flash'] .
+				'\', \'' . time() . '\', \'' . $_SERVER['REMOTE_ADDR'] . '\')';
+			$this->database->query($sql);
+			$client_id = $this->database->lastInsertId();
+
+			// Check that there is no key that would not be saved in the mdrnzr_key table.
+			$keys = array();
+			$values = array();
+			foreach ($received['modernizr'] as $k => $v)
+			{
+				// There should be no arrays, checked client side...
+				if (is_string($v))
+				{
+					$values[] = array($k, $v, $client_id); // optimize by moving $client_id to prepare...
+					$keys[] = '(\'' . $k . '\')';
+				}
+			}
+			$sql = 'INSERT IGNORE INTO mdrnzr_key (title) VALUES ' . implode(', ', $keys);
+			$this->database->query($sql);
+
+			// Insert the values of this client to mdrnzr_value table.
+			$prep = $this->database->prepare('INSERT INTO mdrnzr_value (hasthis, key_id, client_id) VALUES(' .
+				'(SELECT id FROM mdrnzr_key WHERE title = ? LIMIT 1), ?, ? )');
+			foreach ($values as $row)
+			{
+				$prep->execute($row);
+			}
+			
+			$stat = $this->database->query('SELECT COUNT(id) AS total FROM mdrnzr_client WHERE address = \'' .
+				$_SERVER['REMOTE_ADDR'] . '\' GROUP BY address');
+			$res = $stat->fetch(PDO::FETCH_ASSOC);
+
+			$counter = $res['total'];
 		}
-        // TODO: Now save the data...
-		//$_SERVER['REMOTE_ADDR']
-		
 		// How many times this IP address sent its Modernizr data
-		$counter = 1;
 		return $counter;
     }
 
@@ -511,32 +566,29 @@ class ShikakeOji
                     $this->userEmail = $attr['contact/email'];
                     $_SESSION['email'] = $attr['contact/email'];
                 }
-                
+
                 $mailBody = '';
                 $mailBody .= 'Attributes:' . "\n";
                 foreach($attr as $k => $v)
                 {
                     $mailBody .= '  ' . $k . "\t" . $v . "\n";
                 }
-                
+
                 $this->sendEmail(
                     $this->config['email']['address'],
                     $this->config['email']['name'],
                     $_SERVER['HTTP_HOST'] . ' - Kirjautumis tapahtuma',
                     'Terve, ' . "\n" . 'Sivustolla ' . $_SERVER['HTTP_HOST'] . ' tapahtui OpenID kirjautumis tapahtuma.' . "\n\n" . $mailBody
                 );
-                
+
                 // Show a message of the login state
-                $hashMsg = '#msg-loginSuccess';
-                if (!$this->isLoggedIn)
-                {
-                    $hashMsg = '#msg-loginFailure';
-                }
+				// Set a temporary session variable. Once it is found, it will be removed
+				$_SESSION['msg-login-success'] = $this->isLoggedIn;
 
                 // page parameter was sent initially from our site, land back to that page.
                 if (isset($_GET['page']) && $_GET['page'] != '')
                 {
-                    $this->redirectTo($_GET['page'] . $hashMsg);
+                    $this->redirectTo($_GET['page']);
                 }
                 return $openid->validate();
             }
@@ -604,7 +656,7 @@ class ShikakeOji
         }
         return $received;
     }
-    
+
     /**
      * Redirect the client to the given URL with 301 HTTP code.
      * @param    string    $url    Redirect to this URL within this domain

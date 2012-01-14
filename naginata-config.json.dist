@@ -1,6 +1,10 @@
 {
 	"database": {
-		"address": "naginata.fi.sqlite"
+		"type": "sqlite",
+		"address": "naginata.fi.sqlite",
+		"database": "",
+		"username": "",
+		"password": ""
 	},
 	"email": {
 		"address": "email@address.com",

@@ -57,5 +57,60 @@ Other notes
  * Edited content is saved for moderation and diff generated with PHP-Diff (https://github.com/chrisboulton/php-diff) is sent via email (http://phpmailer.worxware.com/)
  
 
- 
+Configuration file structure
+----------------------------
+@naginata-config.json@ is for configuring all API keys, database access, etc. Since PHP @json_decode@ does not supported
+JSON string that contains comments, the file contained in this repository do not provide documentation. Thus the documentation for this file is below.
+
+```js
+"database": {
+	"type": "sqlite", // PDO driver name, http://php.net/manual/en/pdo.getavailabledrivers.php
+	"address": "naginata.fi.sqlite", // server address, or file path for SQLite, or 
+	"database": "", // name of the database, if not SQLite
+	"username": "",
+	"password": ""
+},
+"email": {
+	"address": "email@address.com",
+	"name": "Some Tonttu",
+	"password": "",
+	"pop3": "pop3.address.com:110",
+	"smtp": "smtp.address.com:587"
+},
+"facebook": {
+	"app_id": "",
+	"secret": "",
+	"admins": ""
+},
+"flickr": {
+	"apikey": "",
+	"secret": ""
+},
+"google": {
+	"consumer_key": "",
+	"consumer_secret": ""
+},
+"twitter": {
+	"consumer_key": "",
+	"consumer_secret": "",
+	"access_token": "",
+	"access_token_secret": "",
+	"request_token_url": "https://api.twitter.com/oauth/request_token",
+	"authorize_url": "https://api.twitter.com/oauth/authorize",
+	"access_token_url": "https://api.twitter.com/oauth/access_token"
+},
+"vimeo": {
+},
+"youtube": {
+},
+"users": { // Users that can login via OpenID, only email is used
+	"administrators": [
+		"olavic@gmail.com"
+	],
+	"contributors": [
+
+	]
+}
+```
+
  

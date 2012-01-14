@@ -8,8 +8,8 @@
  * http://blog.thenounproject.com/post/7310229014/how-to-properly-attribute-cc-by-a-guest-blog-post-by
  *
  * Usage:
- *  $shih = new ShikakeOjiHyper();
- *  echo $shih->renderHtml($data);
+ *  $shih = new ShikakeOjiPage();
+ *  echo $shih->renderHtml($applicationData);
  */
 class ShikakeOjiPage
 {
@@ -352,8 +352,16 @@ class ShikakeOjiPage
             $out .= '<script type="text/javascript" src="/js/modernizr.js"></script>';
         }
         $out .= '</head>';
-        $out .= '<body>';
-
+		
+        // Body tag shall contain all the message data, if needed
+        $out .= '<body data-login-success="Olet kirjautunut, nyt on hauskaa." data-login-failure="Kirjautuminen meni pieleen, voi pahus."';
+		// Check for possible OpenID login try out.
+		if (isset($_SESSION['msg-login-success']))
+		{
+			$out .= ' data-msg-login-success="' . ($_SESSION['msg-login-success'] ? 1 : 0) . '"';
+			unset($_SESSION['msg-login-success']);
+		}
+		$out .= '>';
 
         $out .= '<nav><ul>';
         foreach ($data['navigation'][$this->language] as $item)
@@ -368,8 +376,7 @@ class ShikakeOjiPage
         }
         $out .= '</ul></nav>';
 
-        // Wrapper shall contain all the message data
-        $out .= '<div id="wrapper" data-login-success="Olet kirjautunut, nyt on hauskaa." data-login-failure="Kirjautuminen meni pieleen, voi pahus.">';
+        $out .= '<div id="wrapper">';
 
         $out .= '<div id="logo">';
         // should be only two words

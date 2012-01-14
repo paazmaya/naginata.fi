@@ -123,13 +123,10 @@ var sendanmaki = {
             //return false;
         });
 		
-		// Finally check if hash is set. It is used only for messaging
-		if (location.hash && location.hash != '') {
-			var h = location.hash.split('-');
-			if (h.shift() == '#msg') {
-                history.pushState('', document.title, location.pathname);                
-				sendanmaki.showAppMessage(h.join('-'));
-			}
+		// Finally check if body data is set. It is used only for messaging
+		var msg = $('body').data('msgLoginSuccess'); // 1 or 0
+		if (typeof msg !== 'undefined') {          
+			sendanmaki.showAppMessage(msg ? 'loginSuccess' : 'loginFailure');
 		}
 
         // So sad, but in 2012 there still needs to be a keep alive call
@@ -292,14 +289,14 @@ var sendanmaki = {
     },
     
     /**
-     * Show a message that was set via location.hash
-     * div#wrapper shall contain all the message data
-     * @param   msg    location.hash without prepending #msg-
+     * Show a message that was set via temporary session variable
+     * body shall contain all the message data
+     * @param   msg    Data item to be used
      */
     showAppMessage: function(msg) {
-        var text = $('#wrapper').data(msg);
+        var text = $('body').data(msg);
         console.log('showAppMessage. msg: ' + msg + ', text: ' + text);
-        if (text) {
+        if (typeof text !== 'undefined') {
 			// Show colorbox
 			$.colorbox({
 				html: '<h1 class="appmessage">' + text + '</h1>',
@@ -320,6 +317,7 @@ var sendanmaki = {
      */
     showImgNote: function(data) {
         console.log('showNote.');
+		console.dir(data);
         var parent = $('img[src="' + data.url + '"]').parent();
         var div = $('<div class="note"></div>');
         var tpo = parent.position();
@@ -370,7 +368,7 @@ var mdrnzr = {
 		var update = false;
 		if (localStorage) {
 			var previous = localStorage.getItem(mdrnzr.key);
-			console.log('previous: ' + previous + ', mdrnzr.interval: ' + mdrnzr.interval);
+			console.log('previous: ' + previous + ', mdrnzr.interval: ' + mdrnzr.interval + ', previous < $.now() + mdrnzr.interval: ' + (previous < $.now() + mdrnzr.interval));
 			if ((previous && previous < $.now() + mdrnzr.interval) || !previous) {
 				update = true;
 			}
@@ -380,7 +378,9 @@ var mdrnzr = {
 		}
 		
 		if (update) {
-			mdrnzr.results['modernizr'] = mdrnzr.loopThru(Modernizr);
+			mdrnzr.loopThru(Modernizr);
+			mdrnzr.results['modernizr'] = mdrnzr.results;
+			console.dir(mdrnzr.results['modernizr']);
 			mdrnzr.results['useragent'] = navigator.userAgent;
 			mdrnzr.results['flash'] = $.flash.version.string;
 			mdrnzr.sendData();
@@ -391,19 +391,17 @@ var mdrnzr = {
         if (!prefix) {
             prefix = '';
         }
-        var group = {};
         for (var i in obj) {
             if (obj.hasOwnProperty(i)) {
                 var type = (typeof obj[i]);
                 if (type == "boolean" || type == "string") {
-                    group[i] = obj[i];
+                    mdrnzr.results[prefix + i] = obj[i];
                 }
                 else if (type == "object") {
-                    group[i] = mdrnzr.loopThru(obj[i], i + '.');
+                    mdrnzr.loopThru(obj[i], i + '.');
                 }
             }
         }
-        return group;
     },
 
     sendData: function() {
@@ -412,8 +410,6 @@ var mdrnzr = {
 			if (localStorage && status == 'success') {
 				localStorage.setItem(mdrnzr.key, $.now());
 			}
-            console.log('mdrnzr. status: ' + status);
-            console.dir(incoming);
         }, 'json');
     }
 };
