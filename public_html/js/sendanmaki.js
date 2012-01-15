@@ -18,21 +18,11 @@ _gaq.push(['_trackPageview']);
 
 $(document).ready(function() {
     sendanmaki.domReady();
-	mdrnzr.domReady();
-    /*
-     * imgareaselect
-     *
-     * CSS3 stuff
-     * image-orientation: 0deg
-     *
-     * transform: translate(80px, 80px) scale(1.5, 1.5) rotate(45deg);
-     *
-     * h1
-{
-rotation-point:50% 50%;
-rotation:180deg;
-}
-     */
+	
+	// Do not run the Modernizr stats immediately.
+    mdrnzr.once = setInterval(function() {
+		mdrnzr.checkUpdate();
+    }, 800);
 });
 
 
@@ -172,6 +162,7 @@ var sendanmaki = {
 		}
 		else {
 			$.colorbox({
+				title: $a.attr('title'),
 				href: data.url,
 				photo: true
 			});
@@ -284,6 +275,7 @@ var sendanmaki = {
         }
         else {
             $('input[name="identifier"]').focus();
+			$('input[type="submit"]').attr('disabled', 'disabled');
 			// TODO: send button should be disabled until a valid OpenID is entered
         }
     },
@@ -357,6 +349,7 @@ var mdrnzr = {
     results: {},
 	interval: 60 * 60 * 24 * 7 * 2, // 2 weeks
 	key: 'last-modernizr',
+	once: null, // setInterval id
 	
     /**
      * This shall be run on domReady in order to check against localStorage
@@ -364,7 +357,10 @@ var mdrnzr = {
 	 * In case localStorage is not available, not supported or two weeks old,
 	 * it will be send again.
      */
-    domReady: function() {
+    checkUpdate: function() {
+		// Running this one is enought
+		clearInterval(mdrnzr.once);
+		
 		var update = false;
 		if (localStorage) {
 			var previous = localStorage.getItem(mdrnzr.key);
@@ -378,13 +374,9 @@ var mdrnzr = {
 		}
 		
 		if (update) {
-			mdrnzr.loopThru(Modernizr);
-			mdrnzr.results['modernizr'] = mdrnzr.results;
-			console.dir(mdrnzr.results['modernizr']);
-			mdrnzr.results['useragent'] = navigator.userAgent;
-			mdrnzr.results['flash'] = $.flash.version.string;
 			mdrnzr.sendData();
 		}
+		
 	},
 
     loopThru: function(obj, prefix) {
@@ -392,12 +384,12 @@ var mdrnzr = {
             prefix = '';
         }
         for (var i in obj) {
-            if (obj.hasOwnProperty(i)) {
+            if (obj.hasOwnProperty(i) && i.substring(0, 1) != '_') {
                 var type = (typeof obj[i]);
-                if (type == "boolean" || type == "string") {
+                if (type == 'boolean' || type == 'string') {
                     mdrnzr.results[prefix + i] = obj[i];
                 }
-                else if (type == "object") {
+                else if (type == 'object') {
                     mdrnzr.loopThru(obj[i], i + '.');
                 }
             }
@@ -405,11 +397,19 @@ var mdrnzr = {
     },
 
     sendData: function() {
+		mdrnzr.loopThru(Modernizr);
+		mdrnzr.results['modernizr'] = mdrnzr.results;
+		
+		mdrnzr.results['version'] = Modernizr._version;
+		mdrnzr.results['useragent'] = navigator.userAgent;
+		mdrnzr.results['flash'] = $.flash.version.string;
+		
         $.post('/receive-modernizr-statistics', mdrnzr.results, function(incoming, status) {
             // Thank you, if success
 			if (localStorage && status == 'success') {
 				localStorage.setItem(mdrnzr.key, $.now());
 			}
+			console.dir(incoming);
         }, 'json');
     }
 };

@@ -173,7 +173,7 @@ class ShikakeOji
 			if ($this->config['database']['type'] != 'sqlite')
 			{
 				$dsn .= 'dbname=' . $this->config['database']['database'] . ';host=' . $this->config['database']['address'];
-				$attr[PDO::MYSQL_ATTR_INIT_COMMAND] = 'SET NAMES \'UTF8\'';
+				$attr[PDO::MYSQL_ATTR_INIT_COMMAND] = 'SET NAMES utf8';
 			}
 			else
 			{
@@ -473,7 +473,8 @@ class ShikakeOji
         $required = array(
             'modernizr',
             'useragent',
-			'flash'
+			'flash',
+			'version'
         );
         $received = $this->checkRequiredPost($required);
         if ($received === false)
@@ -483,15 +484,15 @@ class ShikakeOji
 
 		$counter = 0;
 		/*
-		'mdrnzr_client' id, useragent, flash, created, address, note
+		'mdrnzr_client' id, useragent, flash, created, address, modernizr
 		'mdrnzr_key' id, title
 		'mdrnzr_value' id, key_id, client_id, hasthis
 		*/
 		if (isset($this->database))
 		{
-			$sql = 'INSERT INTO mdrnzr_client (useragent, flash, created, address) ' .
+			$sql = 'INSERT INTO mdrnzr_client (useragent, flash, created, address, modernizr) ' .
 				'VALUES (\'' . $received['useragent'] . '\', \'' . $received['flash'] .
-				'\', \'' . time() . '\', \'' . $_SERVER['REMOTE_ADDR'] . '\')';
+				'\', \'' . time() . '\', \'' . $_SERVER['REMOTE_ADDR'] . '\', \'' . $received['version'] . '\')';
 			$this->database->query($sql);
 			$client_id = $this->database->lastInsertId();
 
