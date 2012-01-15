@@ -59,7 +59,7 @@ Other notes
 
 Configuration file structure
 ----------------------------
-@naginata-config.json@ is for configuring all API keys, database access, etc. Since PHP @json_decode@ does not supported
+'naginata-config.json' is for configuring all API keys, database access, etc. Since PHP '[json_decode](http://php.net/manual/en/function.json-decode.php json_decode)' does not supported
 JSON string that contains comments, the file contained in this repository do not provide documentation. Thus the documentation for this file is below.
 
 ```js

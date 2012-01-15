@@ -353,15 +353,7 @@ class ShikakeOjiPage
         }
         $out .= '</head>';
 		
-        // Body tag shall contain all the message data, if needed
-        $out .= '<body data-login-success="Olet kirjautunut, nyt on hauskaa." data-login-failure="Kirjautuminen meni pieleen, voi pahus."';
-		// Check for possible OpenID login try out.
-		if (isset($_SESSION['msg-login-success']))
-		{
-			$out .= ' data-msg-login-success="' . ($_SESSION['msg-login-success'] ? 1 : 0) . '"';
-			unset($_SESSION['msg-login-success']);
-		}
-		$out .= '>';
+        $out .= '<body>';
 
         $out .= '<nav><ul>';
         foreach ($data['navigation'][$this->language] as $item)
@@ -378,7 +370,17 @@ class ShikakeOjiPage
 
         $out .= '<div id="wrapper">';
 
-        $out .= '<div id="logo">';
+		// div#logo tag shall contain all the message data, if needed
+        $out .= '<div id="logo"';
+        $out .= ' data-login-success="Olet kirjautunut, nyt on hauskaa." data-login-failure="Kirjautuminen meni pieleen, voi pahus."';
+		// Check for possible OpenID login try out.
+		if (isset($_SESSION['msg-login-success']))
+		{
+			$out .= ' data-msg-login-success="' . ($_SESSION['msg-login-success'] ? 1 : 0) . '"';
+			unset($_SESSION['msg-login-success']);
+		}
+		$out .= '>';
+		
         // should be only two words
         $out .= '<p>' . $data['title'][$this->language] . '</p>';
         $out .= '</div>';

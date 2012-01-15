@@ -113,8 +113,8 @@ var sendanmaki = {
             //return false;
         });
 		
-		// Finally check if body data is set. It is used only for messaging
-		var msg = $('body').data('msgLoginSuccess'); // 1 or 0
+		// Finally check if div#logo data is set. It is used only for messaging
+		var msg = $('#logo').data('msgLoginSuccess'); // 1 or 0
 		if (typeof msg !== 'undefined') {          
 			sendanmaki.showAppMessage(msg ? 'loginSuccess' : 'loginFailure');
 		}
@@ -282,11 +282,11 @@ var sendanmaki = {
     
     /**
      * Show a message that was set via temporary session variable
-     * body shall contain all the message data
+     * div#logo shall contain all the message data
      * @param   msg    Data item to be used
      */
     showAppMessage: function(msg) {
-        var text = $('body').data(msg);
+        var text = $('#logo').data(msg);
         console.log('showAppMessage. msg: ' + msg + ', text: ' + text);
         if (typeof text !== 'undefined') {
 			// Show colorbox
@@ -361,18 +361,19 @@ var mdrnzr = {
 		// Running this one is enought
 		clearInterval(mdrnzr.once);
 		
+		var now = $.now();
 		var update = false;
 		if (localStorage) {
 			var previous = localStorage.getItem(mdrnzr.key);
-			console.log('previous: ' + previous + ', mdrnzr.interval: ' + mdrnzr.interval + ', previous < $.now() + mdrnzr.interval: ' + (previous < $.now() + mdrnzr.interval));
-			if ((previous && previous < $.now() + mdrnzr.interval) || !previous) {
+			console.log('previous: ' + previous + ', mdrnzr.interval: ' + mdrnzr.interval + ', previous < now + mdrnzr.interval: ' + (previous < now + mdrnzr.interval));
+			if ((previous && previous < now + mdrnzr.interval) || !previous) {
 				update = true;
 			}
 		}
 		else {
 			update = true;
 		}
-		
+		console.log('update: ' + update);
 		if (update) {
 			mdrnzr.sendData();
 		}
@@ -384,7 +385,7 @@ var mdrnzr = {
             prefix = '';
         }
         for (var i in obj) {
-            if (obj.hasOwnProperty(i) && i.substring(0, 1) != '_') {
+            if (obj.hasOwnProperty(i) && i.substring(0, 1) != '_' && obj != obj[i]) {
                 var type = (typeof obj[i]);
                 if (type == 'boolean' || type == 'string') {
                     mdrnzr.results[prefix + i] = obj[i];
@@ -397,18 +398,22 @@ var mdrnzr = {
     },
 
     sendData: function() {
-		mdrnzr.loopThru(Modernizr);
-		mdrnzr.results['modernizr'] = mdrnzr.results;
+		mdrnzr.loopThru(Modernizr); // fill mdrnzr.results
+		var data = {
+			modernizr: mdrnzr.results,
+			version: Modernizr._version,
+			useragent: navigator.userAgent,
+			flash: $.flash.version.string
+		};
+		console.log('sendData.');
+		console.dir(data);
 		
-		mdrnzr.results['version'] = Modernizr._version;
-		mdrnzr.results['useragent'] = navigator.userAgent;
-		mdrnzr.results['flash'] = $.flash.version.string;
-		
-        $.post('/receive-modernizr-statistics', mdrnzr.results, function(incoming, status) {
+        $.post('/receive-modernizr-statistics', data, function(incoming, status) {
             // Thank you, if success
 			if (localStorage && status == 'success') {
 				localStorage.setItem(mdrnzr.key, $.now());
 			}
+			console.log('mdrnzr. status: ' + status);
 			console.dir(incoming);
         }, 'json');
     }
