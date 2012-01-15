@@ -361,19 +361,16 @@ var mdrnzr = {
 		// Running this one is enought
 		clearInterval(mdrnzr.once);
 		
-		var now = $.now();
 		var update = false;
 		if (localStorage) {
 			var previous = localStorage.getItem(mdrnzr.key);
-			console.log('previous: ' + previous + ', mdrnzr.interval: ' + mdrnzr.interval + ', previous < now + mdrnzr.interval: ' + (previous < now + mdrnzr.interval));
-			if ((previous && previous < now + mdrnzr.interval) || !previous) {
+			if ((previous && ($.now() - previous >  mdrnzr.interval)) || !previous) {
 				update = true;
 			}
 		}
 		else {
 			update = true;
 		}
-		console.log('update: ' + update);
 		if (update) {
 			mdrnzr.sendData();
 		}
@@ -405,16 +402,12 @@ var mdrnzr = {
 			useragent: navigator.userAgent,
 			flash: $.flash.version.string
 		};
-		console.log('sendData.');
-		console.dir(data);
 		
         $.post('/receive-modernizr-statistics', data, function(incoming, status) {
             // Thank you, if success
 			if (localStorage && status == 'success') {
 				localStorage.setItem(mdrnzr.key, $.now());
 			}
-			console.log('mdrnzr. status: ' + status);
-			console.dir(incoming);
         }, 'json');
     }
 };

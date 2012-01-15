@@ -508,7 +508,10 @@ class ShikakeOji
 					$keys[] = '(\'' . $k . '\')';
 				}
 			}
-			$sql = 'INSERT IGNORE INTO mdrnzr_key (title) VALUES ' . implode(', ', $keys);
+			
+			// TODO: how about other database types?
+			// http://dev.mysql.com/doc/refman/5.1/en/insert.html
+			$sql = 'INSERT IGNORE INTO mdrnzr_key (title) VALUES ' . implode(', ', $keys); // title must be unique indexed
 			$this->database->query($sql);
 
 			// Insert the values of this client to mdrnzr_value table.
