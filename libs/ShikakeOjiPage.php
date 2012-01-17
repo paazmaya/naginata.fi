@@ -43,6 +43,7 @@ class ShikakeOjiPage
 	/**
 	 * List of Javascript files.
 	 * Should be relative to public_html/js/
+	 * MarkItUp editor is hard coded in the method.
 	 */
     public $scripts = array(
 		'jquery.js',
@@ -316,7 +317,7 @@ class ShikakeOjiPage
         $out .= '<meta property="og:type" content="sports_team"/>';
         $out .= '<meta property="og:image" content="http://' . $_SERVER['HTTP_HOST'] . '/img/logo.png"/>';
         $out .= '<meta property="og:url" content="http://' . $_SERVER['HTTP_HOST'] . $this->url . '"/>';
-        $out .= '<meta property="og:site_name" content="' . $head['title'][$this->language] . '"/>';
+        $out .= '<meta property="og:site_name" content="' . $head['title'] . '"/>';
         $out .= '<meta property="og:locale" content="fi_FI"/>'; // language_TERRITORY
         $out .= '<meta property="og:locale:alternate" content="en_GB"/>';
         $out .= '<meta property="og:locale:alternate" content="ja_JP"/>';
@@ -339,8 +340,15 @@ class ShikakeOjiPage
         if ($this->useMinification)
         {
             $this->minify('css', $this->styles);
-            $this->minifyFile('js', 'modernizr.js');
             $out .= '<link rel="stylesheet" href="' . $base . $this->minifiedName . 'css" type="text/css" media="all" />';
+			
+			if ($this->isLoggedIn)
+			{
+				$this->minifyFile('css', 'markitup/markitup-simple.css');
+				$out .= '<link rel="stylesheet" href="/js/markitup/markitup-simple.min.css" type="text/css" media="all" />';
+			}
+			
+            $this->minifyFile('js', 'modernizr.js');
             $out .= '<script type="text/javascript" src="/js/modernizr.min.js"></script>';
         }
         else
@@ -349,6 +357,10 @@ class ShikakeOjiPage
             {
                 $out .= '<link rel="stylesheet" href="' . $base . $css . '" type="text/css" media="all" />';
             }
+			if ($this->isLoggedIn)
+			{
+				$out .= '<link rel="stylesheet" href="/js/markitup/markitup-simple.css" type="text/css" media="all" />';
+			}
             $out .= '<script type="text/javascript" src="/js/modernizr.js"></script>';
         }
         $out .= '</head>';
@@ -456,11 +468,12 @@ class ShikakeOjiPage
         {
             if ($this->useMinification)
             {
-                $out .= '<script type="text/javascript" src="/js/wymeditor/jquery.wymeditor.min.js"></script>';
+				$this->minifyFile('js', 'markitup/jquery.markitup.js');
+                $out .= '<script type="text/javascript" src="/js/markitup/jquery.markitup.min.js"></script>';
             }
             else
             {
-                $out .= '<script type="text/javascript" src="/js/wymeditor/jquery.wymeditor.js"></script>';
+                $out .= '<script type="text/javascript" src="/js/markitup/jquery.markitup.js"></script>';
             }
         }
         $out .= '</body>';

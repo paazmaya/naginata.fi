@@ -238,6 +238,9 @@ input[type="submit"]:hover, input[type="button"]:hover {
     border-color: #DFE0E4;
     color: #DFE0E4;
 }
+input[disabled], input[disabled]:hover {
+	background-color: #989E7B;
+}
 .wym_iframe > iframe {
     height: 40em;
     margin: 1em;
@@ -383,6 +386,34 @@ input[type="submit"]:hover, input[type="button"]:hover {
 }
 
 
+/* jeip - jQuery Edit In Place */
 
+.jeip-saving {
+	background-image: url(../img/loading.gif);
+	background-repeat: no-repeat;
+	background-position: left;
+	background-color: #903;
+	color: #fff;
+	padding: 0 2px 0 20px;
+}
 
+.jeip-mouseover {
+	background: #989E7B;
+	background: linear-gradient(99deg, #989E7B, #FEFEFE);
+}
+
+.jeip-editfield {
+	background-color: #FEFEFE;
+	height: auto;
+}
+
+.jeip-savebutton {
+	background-color: #36f;
+	color: #fff;
+}
+
+.jeip-cancelbutton {
+	background-color: #000;
+	color: #fff;
+}
 

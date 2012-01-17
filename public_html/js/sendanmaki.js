@@ -87,7 +87,7 @@ var sendanmaki = {
             }
         });
 
-        // Open modal for logging in via OAuth and edit pages.
+        // Open modal form for logging in via OpenID
         $('a[href="#contribute"]').click(function() {
             sendanmaki.contributeClick();
             return false;
@@ -117,6 +117,13 @@ var sendanmaki = {
 		var msg = $('#logo').data('msgLoginSuccess'); // 1 or 0
 		if (typeof msg !== 'undefined') {          
 			sendanmaki.showAppMessage(msg ? 'loginSuccess' : 'loginFailure');
+		}
+		
+		// Inline edit links
+		if (sendanmaki.isLoggedIn) {
+			$('article > *').not('.mediathumb, .imagelist').eip('/update-article', { 
+				form_type: "textarea"
+			});
 		}
 
         // So sad, but in 2012 there still needs to be a keep alive call
@@ -224,6 +231,15 @@ var sendanmaki = {
             }
         }, 'json');
     },
+	
+	/**
+	 * Click on the inline edit button.
+	 * Edit a paragraph at a time.
+	 */
+	editClick: function(elem) {
+		var p = elem.content();
+		console.log('p: ' + p);
+	},
 
     /**
      * Callback for a click on the #contribute link located in the footer.
@@ -274,9 +290,13 @@ var sendanmaki = {
             });
         }
         else {
-            $('input[name="identifier"]').focus();
 			$('input[type="submit"]').attr('disabled', 'disabled');
-			// TODO: send button should be disabled until a valid OpenID is entered
+            $('input[name="identifier"]').focus().on('keyup', function() {
+				var openid = $(this).val();
+				if (openid.search('@') !== -1) { // TODO: fix search regex to valid OpenID
+					$('input[type="submit"]').attr('disabled', null);
+				}
+			});
         }
     },
     

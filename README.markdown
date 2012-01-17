@@ -48,7 +48,8 @@ Other notes
  * This reduces the amount of HTTP requests and if supported by the client, the download size.
  * The minification is done via Minify (https://github.com/mrclay/minify)
  * Unused Javascript could be stripped out with JSlim (https://github.com/zgrossbart/jslim)
- * jQuery plugin Colorbox used for opening content in same page (http://jacklmoore.com/colorbox/) 
+ * jQuery plugin "Colorbox" used for opening content in same page (http://jacklmoore.com/colorbox/) 
+ * jQuery plugin "Edit In Place" used for editing content inline (http://code.google.com/p/jeip/)
  * Flash SWF files are used for playing 3rd party videos, such as Youtube and Vimeo, via jQuery.SWFObject (http://jquery.thewikies.com/swfobject/)
  * 3rd party media service data cached locally server side in order to reduce API calls. cURL is optimal for fetching updates (http://curl.haxx.se/)
  * Microformats add meaning to what is already semantically correct markup (http://microformats.org/)
