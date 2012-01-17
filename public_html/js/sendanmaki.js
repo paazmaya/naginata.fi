@@ -49,6 +49,12 @@ var sendanmaki = {
     editMode: 0,
 	
 	/**
+	 * Current page language.
+	 * Fetched from html lang attribute.
+	 */
+	lang: 'fi',
+	
+	/**
 	 * Keep alive interval.
 	 * 1000 * 60 * 3 ms = 3 minutes
 	 */
@@ -72,6 +78,8 @@ var sendanmaki = {
         var fData = $('footer').data();
         sendanmaki.isLoggedIn = fData.isLoggedIn;
         sendanmaki.userEmail = fData.userEmail;
+		
+		sendanmaki.lang = $('html').attr('lang');
         
 		// external urls shall open in a new window
         $('article a[href~="http://"]:not(.mediathumb a, .imagelist a)').click(function() {
@@ -185,16 +193,13 @@ var sendanmaki = {
             html: form,
             modal: true,
             onComplete: function() {
-                var originalClose = $.colorbox.close;
-                $.colorbox.close = function(){
-                    var response;
-                    if ($('#cboxLoadedContent').find('form').length > 0) {
-                        response = confirm('Do you want to close this window?');
-                        if (!response) {
-                            return; // Do nothing.
-                        }
-                    }
-                    originalClose();
+                var origClose = $.colorbox.close;
+                $.colorbox.close = function() {
+                    var response = confirm('Haluatko varmasti sulkea tämän mahdollisesti muokatun tekstin?');
+					if (!response) {
+						return false;
+					}
+                    origClose();
                 };
             }
         });
@@ -246,12 +251,14 @@ var sendanmaki = {
      * Callback for submitting the contribution form.
      */
     submitEditForm: function($form) {
+		// TODO: this is sending the small porting while backend expects the whole page...
         var data = {
-            lang: 'fi',
+            lang: sendanmaki.lang,
             page: location.pathname,
             content: $form.children('textarea[name="content"]').text()
         };
 
+		// TODO: use $.color to animate these
         var orig = $form.css('background-color');
         $form.css('background-color', sendanmaki.colors.blue);
 
