@@ -701,7 +701,7 @@ class ShikakeOji
         $mail->IsSMTP();
         $mail->Host = $this->config['email']['smtp'];
         $mail->SMTPAuth = true;
-        $mail->Username = $this->config['email']['address'];
+        $mail->Username = $this->config['email']['username'];
         $mail->Password = $this->config['email']['password'];
 
         $sender = 'NAGINATA.fi';

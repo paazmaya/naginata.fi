@@ -37,7 +37,7 @@ About this software project
 The main reason for this website and this github project is to learn to use the given
 technologies and to promote the martial art.
 
-The domain, [naginata.fi](http://naginata.fi "NAGINATA.fi") is privately registered to Jukka Paasonen.
+The domain, `[naginata.fi](http://naginata.fi "NAGINATA.fi")` is privately registered to Jukka Paasonen.
 
 Contributors are welcome.
 
@@ -48,8 +48,7 @@ Other notes
  * This reduces the amount of HTTP requests and if supported by the client, the download size.
  * The minification is done via Minify (https://github.com/mrclay/minify)
  * Unused Javascript could be stripped out with JSlim (https://github.com/zgrossbart/jslim)
- * jQuery plugin "Colorbox" used for opening content in same page (http://jacklmoore.com/colorbox/) 
- * jQuery plugin "Edit In Place" used for editing content inline (http://code.google.com/p/jeip/)
+ * jQuery plugin "Colorbox" used for opening content in same page (http://jacklmoore.com/colorbox/)
  * Flash SWF files are used for playing 3rd party videos, such as Youtube and Vimeo, via jQuery.SWFObject (http://jquery.thewikies.com/swfobject/)
  * 3rd party media service data cached locally server side in order to reduce API calls. cURL is optimal for fetching updates (http://curl.haxx.se/)
  * Microformats add meaning to what is already semantically correct markup (http://microformats.org/)
@@ -60,8 +59,10 @@ Other notes
 
 Configuration file structure
 ----------------------------
-'naginata-config.json' is for configuring all API keys, database access, etc. Since PHP '[json_decode](http://php.net/manual/en/function.json-decode.php json_decode)' does not supported
-JSON string that contains comments, the file contained in this repository do not provide documentation. Thus the documentation for this file is below.
+The `naginata-config.json` file is for configuring all API keys, database access, etc. 
+Since PHP `[json_decode](http://php.net/manual/en/function.json-decode.php json_decode)` does not supported
+JSON string that contains comments, the file contained in this repository do not provide documentation. 
+Thus the documentation for this file is below.
 
 ```js
 "database": {
@@ -71,27 +72,28 @@ JSON string that contains comments, the file contained in this repository do not
 	"username": "",
 	"password": ""
 },
-"email": {
-	"address": "email@address.com",
-	"name": "Some Tonttu",
-	"password": "",
+"email": { // Email server settings. SMTP is used for sending emails
+	"address": "email@address.com", // address of the sender and who will get all copies
+	"name": "Some Tonttu", // name of the owner of the address abowe
+    "username": "", // username for the servers listed below
+	"password": "", // password for the servers listed below
 	"pop3": "pop3.address.com:110",
 	"smtp": "smtp.address.com:587"
 },
-"facebook": {
+"facebook": { // Facebook API keys if needed
 	"app_id": "",
 	"secret": "",
 	"admins": ""
 },
-"flickr": {
+"flickr": { // Flickr API keys if needed
 	"apikey": "",
 	"secret": ""
 },
-"google": {
+"google": { // Google API keys if needed
 	"consumer_key": "",
 	"consumer_secret": ""
 },
-"twitter": {
+"twitter": { // Twitter API keys if needed
 	"consumer_key": "",
 	"consumer_secret": "",
 	"access_token": "",
@@ -100,9 +102,9 @@ JSON string that contains comments, the file contained in this repository do not
 	"authorize_url": "https://api.twitter.com/oauth/authorize",
 	"access_token_url": "https://api.twitter.com/oauth/access_token"
 },
-"vimeo": {
+"vimeo": { // Vimeo API keys if needed
 },
-"youtube": {
+"youtube": { // Youtube API keys if needed
 },
 "users": { // Users that can login via OpenID, only email is used
 	"administrators": [
@@ -114,4 +116,10 @@ JSON string that contains comments, the file contained in this repository do not
 }
 ```
 
+TODO
+----
+
+ * Translations for application strings
+ * Configuration of language_TERRITORY
+ * Separate handling per page type, not all are simple articles
  

@@ -4,7 +4,7 @@
  * sendanmaki.js
  */
 
-// Google Analytics for naginata.fi
+// -- Google Analytics for naginata.fi --
 var _gaq = _gaq || [];
 _gaq.push(['_setAccount', 'UA-2643697-14']);
 _gaq.push(['_trackPageview']);
@@ -14,22 +14,24 @@ _gaq.push(['_trackPageview']);
     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 })();
-// Enought about Google Analytics
+// -- Enought about Google Analytics --
 
+
+// Run all client side preparation once DOM is ready.
 $(document).ready(function() {
     sendanmaki.domReady();
 	
 	// Do not run the Modernizr stats immediately.
     mdrnzr.once = setInterval(function() {
 		mdrnzr.checkUpdate();
-    }, 800);
+    }, 1200);
 });
 
 
 var sendanmaki = {
     /**
      * Is the user logged in to the backend?
-     * The initial value is in body data.
+     * The initial value is in footer data.
      */
     isLoggedIn: 0,
 
@@ -37,12 +39,20 @@ var sendanmaki = {
      * Email address of the current user against OpenID.
      */
     userEmail: '',
+    
+    /**
+     * Edit mode can be triggered once logged in.
+     * If it is on, clicking the children of article will open 
+     * edit form in colorbox for that element.
+     * Initial value is fetched from localStorage.
+     */
+    editMode: 0,
 	
 	/**
 	 * Keep alive interval.
-	 * 3 minutes
+	 * 1000 * 60 * 3 ms = 3 minutes
 	 */
-	keepAlive: (1000 * 60 * 3),
+	keepAlive: (60000 * 3),
 
     /**
      * Colors to be used as a feedback of an ongoing AJAX call.
@@ -63,12 +73,12 @@ var sendanmaki = {
         sendanmaki.isLoggedIn = fData.isLoggedIn;
         sendanmaki.userEmail = fData.userEmail;
         
-		/*
-        $('article a:not(.mediathumb a, .imagelist a)').click(function() {
-            console.log('something was clicked');
+		// external urls shall open in a new window
+        $('article a[href~="http://"]:not(.mediathumb a, .imagelist a)').click(function() {
+            var href = $(this).attr('href');
+            window.open(href, $.now());
             return false;
         });
-		*/
 	
 		// href has link to actual page, rel has inline link
         $('.mediathumb a:has(img)').click(function() {
@@ -89,7 +99,14 @@ var sendanmaki = {
 
         // Open modal form for logging in via OpenID
         $('a[href="#contribute"]').click(function() {
-            sendanmaki.contributeClick();
+            if (sendanmaki.isLoggedIn) {
+                // toggle edit mode
+                sendanmaki.editModeToggle();
+            }
+            else {
+                // open login form
+                sendanmaki.openLoginForm();
+            }
             return false;
         });
 
@@ -121,9 +138,15 @@ var sendanmaki = {
 		
 		// Inline edit links
 		if (sendanmaki.isLoggedIn) {
-			$('article > *').not('.mediathumb, .imagelist').eip('/update-article', { 
-				form_type: "textarea"
-			});
+            // Initial value once page is loaded
+            sendanmaki.editMode = (localStorage.getItem('editMode') === 1) ? 1 : 0;
+            if (sendanmaki.editMode) {
+                // handle hover via css...
+                $('article').addClass('editmode');
+            }
+            $('.editmode > *').not('.mediathumb, .imagelist').live('click', function() {
+                sendanmaki.editModeClick($(this));
+            });
 		}
 
         // So sad, but in 2012 there still needs to be a keep alive call
@@ -132,6 +155,49 @@ var sendanmaki = {
                 console.log(received.answer); // seconds
             }, 'json');
         }, sendanmaki.keepAlive);
+    },
+    
+    /**
+     * Edit mode toggle. Shall be called only when logged in.
+     */
+    editModeToggle: function() {
+        var elemName = 'article';
+        var className = 'editmode';
+        if (sendanmaki.editMode) {
+            $(elemName).addClass(className);
+            sendanmaki.editMode = 1;
+        }
+        else {
+            $(elemName).removeClass(className);
+            sendanmaki.editMode = 0;
+        }
+        localStorage.setItem('editMode', sendanmaki.editMode);
+    },
+    
+    /**
+     * Click handler for the elements that can be edited.
+     */
+    editModeClick: function($e) {
+        var html = $e.outerHtml();
+        var form = $(sendanmaki.editForm).clone();
+        form.children('textarea').text(html);
+        $.colorbox({
+            html: form,
+            modal: true,
+            onComplete: function() {
+                var originalClose = $.colorbox.close;
+                $.colorbox.close = function(){
+                    var response;
+                    if ($('#cboxLoadedContent').find('form').length > 0) {
+                        response = confirm('Do you want to close this window?');
+                        if (!response) {
+                            return; // Do nothing.
+                        }
+                    }
+                    originalClose();
+                };
+            }
+        });
     },
 	
 	/**
@@ -231,73 +297,26 @@ var sendanmaki = {
             }
         }, 'json');
     },
-	
-	/**
-	 * Click on the inline edit button.
-	 * Edit a paragraph at a time.
-	 */
-	editClick: function(elem) {
-		var p = elem.content();
-		console.log('p: ' + p);
-	},
 
     /**
      * Callback for a click on the #contribute link located in the footer.
-     * This should open login form or edit form, depending of the login status.
+     * This should be only called if not logged in.
      */
-    contributeClick: function() {
-        var opts = {
-            title: $(this).attr('title'),
-            modal: true
-        };
-        var form = sendanmaki.loginForm;
-        if (sendanmaki.isLoggedIn) {
-            form = $(sendanmaki.editForm).children('textarea').text($('article').html()).parent().get(0);
-        }
-        else {
-            //
-        }
-        opts.html = form;
-        console.dir(opts);
-        /*
-        var originalClose = $.colorbox.close;
-        $.colorbox.close = function(){
-            var response;
-            if ($('#cboxLoadedContent').find('form').length > 0) {
-                response = confirm('Do you want to close this window?');
-                if (!response) {
-                    return; // Do nothing.
-                }
+    openLoginForm: function() {
+        $.colorbox({
+            title: $('#contribute').attr('title'),
+            modal: true,
+            html: sendanmaki.loginForm,
+            onComplete: function() {
+                $('input[type="submit"]').attr('disabled', 'disabled');
+                $('input[name="identifier"]').focus().on('keyup', function() {
+                    var openid = $(this).val();
+                    if (openid.search('@') !== -1) { // TODO: fix search regex to valid OpenID
+                        $('input[type="submit"]').attr('disabled', null);
+                    }
+                });
             }
-            originalClose();
-        };
-        */
-
-        // How about call back for content update?
-        $.colorbox(opts);
-        if (sendanmaki.isLoggedIn) {
-            $('textarea').wymeditor({
-                lang: 'fi',
-                skin: 'compact',
-                updateSelector: 'input[type="submit"]',
-                updateEvent: 'mousedown',
-                postInit: function(wym) {
-                    $('iframe').on('keyup', function() {
-                        console.log('iframe keyup event occurred');
-                        wym.update();
-                    });
-                }
-            });
-        }
-        else {
-			$('input[type="submit"]').attr('disabled', 'disabled');
-            $('input[name="identifier"]').focus().on('keyup', function() {
-				var openid = $(this).val();
-				if (openid.search('@') !== -1) { // TODO: fix search regex to valid OpenID
-					$('input[type="submit"]').attr('disabled', null);
-				}
-			});
-        }
+        });
     },
     
     /**

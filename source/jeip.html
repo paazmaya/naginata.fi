@@ -4,6 +4,7 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
 	<title>jQuery Edit In Place</title>
+	<link rel="stylesheet" href="css/colorbox.css" type="text/css" media="all" />
 	<link rel="stylesheet" href="css/main.css" type="text/css" media="all" />
 </head>
 <body>
@@ -115,11 +116,17 @@ Yleensä varren ja terän välissä on tsuba eli väistin.</p>
 </article>
 </div>
 
-<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="js/jquery.outerhtml.js"></script>
+<script type="text/javascript" src="js/jquery.colorbox.js"></script>
 <script type="text/javascript" src="js/jeip.js"></script>
 <script type="text/javascript">
 var editMode = true;
+var editForm = '<form action="/update-article" method="post">' +
+        '<textarea name="content"></textarea>' +
+        '<input type="submit" value="Lähetä" />' +
+        '<input type="button" name="close" value="Sulje" />' +
+        '</form>';
 
 $(document).ready(function() {
 	
@@ -142,16 +149,15 @@ $(document).ready(function() {
 		// handle hover via css...
 		$('article').addClass('editmode');
 	}
-	
-	$('article > *').not('.mediathumb, .imagelist')
-	.on('mouseenter', function() {
-		$(this).addClass('jeip-mouseover');
-	}).on('mouseleave',function() {
-		$(this).removeClass('jeip-mouseover');
-	}).on('click', function() {
+    	
+	$('.editmode > *').not('.mediathumb, .imagelist').on('click', function() {
 		// replace with textarea and buttons below
 		var html = $(this).outerHtml();
-		console.log(html);
+        var form = $(editForm).clone();
+        form.children('textarea').text(html);
+        $.colorbox({
+            html: form
+        });
 	});
 	
 	$('input[type="submit"]').live('click', function() {

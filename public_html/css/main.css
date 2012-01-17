@@ -216,16 +216,18 @@ form {
     width: 40em;
 }
 select, input, textarea {
-    width: 38em;
+    width: 38rem;
     border: 1px solid #072434;
     margin: 1em;
 }
 textarea {
-    height: 40em;
+    height: 24rem;
+    padding: 0.5em;
+    margin: 0.5em;
 }
 input[type="submit"], input[type="button"] {
-    width: 18em;
-    margin: 2em 1em;
+    width: 12em;
+    margin: 1em 4em;
     padding: 0.5em;
     text-align: center;
     font-weight: bold;
@@ -386,34 +388,12 @@ input[disabled], input[disabled]:hover {
 }
 
 
-/* jeip - jQuery Edit In Place */
-
-.jeip-saving {
-	background-image: url(../img/loading.gif);
-	background-repeat: no-repeat;
-	background-position: left;
-	background-color: #903;
-	color: #fff;
-	padding: 0 2px 0 20px;
-}
-
-.jeip-mouseover {
-	background: #989E7B;
+/* edit mode hover effects. article will have this class. */
+.editmode > *:not(.mediathumb, .imagelist):hover {
+	background-color: #989E7B;
+    background-color: rgba(98,9E,7B,0.1);
+	-moz-background: linear-gradient(99deg, #989E7B, #FEFEFE);
 	background: linear-gradient(99deg, #989E7B, #FEFEFE);
-}
+} 
 
-.jeip-editfield {
-	background-color: #FEFEFE;
-	height: auto;
-}
-
-.jeip-savebutton {
-	background-color: #36f;
-	color: #fff;
-}
-
-.jeip-cancelbutton {
-	background-color: #000;
-	color: #fff;
-}
 

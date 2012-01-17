@@ -306,10 +306,10 @@ class ShikakeOjiPage
         }
 
         $out = '<!DOCTYPE html>';
-        $out .= '<html>';
+        $out .= '<html lang="' . $this->language . '" prefix="og: http://ogp.me/ns#">'; // http://dev.w3.org/html5/rdfa/
         $out .= '<head>';
-        $out .= '<title>' . $head['header'] . ' - ' . $data['title'][$this->language] . '</title>';
         $out .= '<meta charset="utf-8"/>';
+        $out .= '<title>' . $head['header'] . ' - ' . $data['title'][$this->language] . '</title>';
         $out .= '<meta name="description" property="og:description" content="' . $head['description'] . '"/>';
 
         // http://ogp.me/
@@ -446,6 +446,8 @@ class ShikakeOjiPage
             // ["http://paazmaya.com", "PAAZMAYA.com", "&copy; Jukka Paasonen"]
             $out .= '<a href="' . $item['0'] . '" title="' . $item['1'] . '">' . $item['2'] . '</a> | ';
         }
+        
+        // TODO: #contribute text change per login status
 
         $out .= '<time datetime="' . date('c', $this->dataModified) . '">' . date('j.n.Y', $this->dataModified) . '</time>';
         $out .= '</footer>';
