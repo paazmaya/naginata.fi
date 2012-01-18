@@ -1,6 +1,9 @@
 /***************
  * NAGINATA.fi *
  ***************
+ * Juga Paazmaya <olavic@gmail.com>
+ * http://creativecommons.org/licenses/by-sa/3.0/
+ * 
  * main.css
  * 
  * Reindeer in the Arctic, http://kuler.adobe.com/#themeID/1691184
@@ -243,9 +246,12 @@ input[type="submit"]:hover, input[type="button"]:hover {
 input[disabled], input[disabled]:hover {
 	background-color: #989E7B;
 }
-.wym_iframe > iframe {
-    height: 40em;
+label {
+    width: 38rem;
     margin: 1em;
+}
+label::after {
+    content: ":";
 }
 
 /* paragraph containing a link that contains image(s) */
@@ -320,7 +326,7 @@ input[disabled], input[disabled]:hover {
 }
 
 
-/* content shown in a colorbox */
+/* content shown in a colorbox after login */
 .appmessage {
     margin: 3em;
 }

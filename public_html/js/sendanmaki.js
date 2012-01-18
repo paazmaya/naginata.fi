@@ -1,7 +1,15 @@
 /***************
  * NAGINATA.fi *
  *************** 
+ * Juga Paazmaya <olavic@gmail.com>
+ * http://creativecommons.org/licenses/by-sa/3.0/
+ * 
  * sendanmaki.js
+ * 
+ * Contains:
+ *   Google Analytics
+ *   Sendanmaki
+ *   Modernizr statistics
  */
 
 // -- Google Analytics for naginata.fi --
@@ -37,6 +45,7 @@ var sendanmaki = {
 
     /**
      * Email address of the current user against OpenID.
+     * Initial value from footer data.
      */
     userEmail: '',
     
@@ -129,19 +138,23 @@ var sendanmaki = {
             return false;
         });
 
+        // Close colorbox if opened as modal
         $('#colorbox input[type="button"][name="close"]').live('click', function() {
             $.colorbox.close();
         });
 
-        $(window).on('beforeunload', function() {
-            console.log('beforeunload');
-            //return false;
-        });
+        // Might want to check that the editor is not open...
+        if (sendanmaki.editMode) {
+            $(window).on('beforeunload', function() {
+                //console.log('beforeunload');
+                //return false;
+            });
+        }
 		
 		// Finally check if div#logo data is set. It is used only for messaging
-		var msg = $('#logo').data('msgLoginSuccess'); // 1 or 0
-		if (typeof msg !== 'undefined') {          
-			sendanmaki.showAppMessage(msg ? 'loginSuccess' : 'loginFailure');
+		var success = $('#logo').data('msgLoginSuccess'); // 1 or 0
+		if (typeof success !== 'undefined') {          
+			sendanmaki.showAppMessage(success ? 'loginSuccess' : 'loginFailure');
 		}
 		
 		// Inline edit links
@@ -188,7 +201,7 @@ var sendanmaki = {
     editModeClick: function($e) {
         var html = $e.outerHtml();
         var form = $(sendanmaki.editForm).clone();
-        form.children('textarea').text(html);
+        form.children('textarea').attr('lang', sendanmaki.lang).text(html);
         $.colorbox({
             html: form,
             modal: true,
@@ -220,10 +233,10 @@ var sendanmaki = {
 			var w = $('#wrapper').width();
 			var h = w * 0.75;
 			if (data.width) {
-				w = $a.data('width');
+				w = data.width;
 			}
 			if (data.height) {
-				h = $a.data('height');
+				h = data.height;
 			}
 			var player = $.flash.create({
 				swf: data.url,
@@ -258,26 +271,53 @@ var sendanmaki = {
             content: $form.children('textarea[name="content"]').text()
         };
 
-		// TODO: use $.color to animate these
+		// Animate background color
         var orig = $form.css('background-color');
-        $form.css('background-color', sendanmaki.colors.blue);
-
+        if ($.Color) {
+            $form.animate({
+                backgroundColor: sendanmaki.colors.blue
+            }, 200);
+        }
+        else {
+            $form.css('background-color', sendanmaki.colors.blue);
+        }
+        
         $.post($form.attr('action'), data, function(received, status){
             console.log('status' + status);
             console.dir(received);
+            var color;
             if (status != 'success') {
-                $form.css('background-color', sendanmaki.colors.red);
+                color = sendanmaki.colors.red;
             }
             else if (received.answer) {
                 // 1 or true
-                $form.css('background-color', sendanmaki.colors.green);
+                color = sendanmaki.colors.green;
+                
+                // Success, thus return original later
                 setTimeout(function() {
-                    $form.css('background-color', orig);
-                    $.colorbox.close();
+                    if ($.Color) {
+                        $form.animate({
+                            backgroundColor: orig
+                        }, 600);
+                    }
+                    else {
+                        $form.css('background-color', orig);
+                    }
+                    //$.colorbox.close();
                 }, 2 * 1000);
             }
             else {
-                $form.css('background-color', sendanmaki.colors.yellow);
+                color = sendanmaki.colors.yellow;
+            }
+            
+            // Animate or just set.
+            if ($.Color) {
+                $form.animate({
+                    backgroundColor: color
+                }, 600);
+            }
+            else {
+                $form.css('background-color', color);
             }
         }, 'json');
     },
@@ -294,6 +334,8 @@ var sendanmaki = {
         };
         console.log('about to submit login form');
         console.dir(data);
+        
+        $form.css('background-color', sendanmaki.colors.blue);
 
         // This will be redirected to the OpenID provider site
         $.post($form.attr('action'), data, function(received, status) {
@@ -342,15 +384,19 @@ var sendanmaki = {
 				scrolling: false,
 				onComplete: function() {
 					// Hide automatically after 4 seconds
+                    /*
+                     * commented out for testing
 					setTimeout(function() {
 						$.colorbox.close();
 					}, 4 * 1000);
+                    */
 				}
 			});
         }
     },
 
     /**
+     * Show a note on a image that has src == data.url
      * data = {x1, x2, y1, y2, width, heigth, note, url}
      */
     showImgNote: function(data) {
@@ -371,7 +417,7 @@ var sendanmaki = {
      * A form to be shown in colorbox when editing an article content.
      */
     editForm: '<form action="/update-article" method="post">' +
-        '<textarea name="content"></textarea>' +
+        '<textarea name="content" spellcheck="true"></textarea>' +
         '<input type="submit" value="Lähetä" />' +
         '<input type="button" name="close" value="Sulje" />' +
         '</form>',
@@ -395,6 +441,7 @@ var mdrnzr = {
     results: {},
 	interval: 60 * 60 * 24 * 7 * 2, // 2 weeks
 	key: 'last-modernizr',
+    url: '/receive-modernizr-statistics',
 	once: null, // setInterval id
 	
     /**
@@ -404,7 +451,7 @@ var mdrnzr = {
 	 * it will be send again.
      */
     checkUpdate: function() {
-		// Running this one is enought
+		// Running this once is enought
 		clearInterval(mdrnzr.once);
 		
 		var update = false;
@@ -420,7 +467,6 @@ var mdrnzr = {
 		if (update) {
 			mdrnzr.sendData();
 		}
-		
 	},
 
     loopThru: function(obj, prefix) {
@@ -449,7 +495,7 @@ var mdrnzr = {
 			flash: $.flash.version.string
 		};
 		
-        $.post('/receive-modernizr-statistics', data, function(incoming, status) {
+        $.post(mdrnzr.url, data, function(incoming, status) {
             // Thank you, if success
 			if (localStorage && status == 'success') {
 				localStorage.setItem(mdrnzr.key, $.now());

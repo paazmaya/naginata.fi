@@ -2,6 +2,9 @@
 /***************
  * NAGINATA.fi *
  ***************
+ * Juga Paazmaya <olavic@gmail.com>
+ * http://creativecommons.org/licenses/by-sa/3.0/
+ * 
  * A class for handling application flow.
  * Let's see how many times the buzzword HTML5 can be repeated.
  *
@@ -21,17 +24,17 @@ class ShikakeOji
     /**
      * What is the version of this class?
      */
-    public static $VERSION = '0.7';
+    public static $VERSION = '0.8';
 
     /**
      * Current language, defaults to Finnish.
      */
     public $language = 'fi';
 
-	/**
-	 * As in fi_FI or en_GB, the latter part of that is the territory.
-	 */
-	public $territory = 'FI';
+    /**
+     * As in fi_FI or en_GB, the latter part of that is the territory.
+     */
+    public $territory = 'FI';
 
     /**
      * Should be set to the realpath of the JSON file where app data is stored.
@@ -109,11 +112,11 @@ class ShikakeOji
      */
     private $userEmail = '';
 
-	/**
-	 * PDO connected database connection, mainly for storing Modernizr stats
-	 * http://php.net/pdo
-	 */
-	private $database;
+    /**
+     * PDO connected database connection, mainly for storing Modernizr stats
+     * http://php.net/pdo
+     */
+    private $database;
 
     /**
      * Library path, which is used to find the other libraries included.
@@ -154,7 +157,7 @@ class ShikakeOji
 
     /**
      * Load the given JSON configuration file.
-	 * If it contains database connection values, connection will be open.
+     * If it contains database connection values, connection will be open.
      */
     public function loadConfig($configPath)
     {
@@ -164,31 +167,31 @@ class ShikakeOji
         }
         $this->config = json_decode(file_get_contents($configPath), true);
 
-		// PDO database connection if the settings are set.
-		if (isset($this->config['database']) && isset($this->config['database']['type']) &&
-			in_array($this->config['database']['type'], PDO::getAvailableDrivers()))
-		{
-			$attr = array();
-			$dsn = $this->config['database']['type'] . ':';
-			if ($this->config['database']['type'] != 'sqlite')
-			{
-				$dsn .= 'dbname=' . $this->config['database']['database'] . ';host=' . $this->config['database']['address'];
-				$attr[PDO::MYSQL_ATTR_INIT_COMMAND] = 'SET NAMES utf8';
-			}
-			else
-			{
-				$dir = dirname($configPath);
-				$dsn .= realpath($dir . '/' . $this->config['database']['address']);
-			}
+        // PDO database connection if the settings are set.
+        if (isset($this->config['database']) && isset($this->config['database']['type']) &&
+            in_array($this->config['database']['type'], PDO::getAvailableDrivers()))
+        {
+            $attr = array();
+            $dsn = $this->config['database']['type'] . ':';
+            if ($this->config['database']['type'] != 'sqlite')
+            {
+                $dsn .= 'dbname=' . $this->config['database']['database'] . ';host=' . $this->config['database']['address'];
+                $attr[PDO::MYSQL_ATTR_INIT_COMMAND] = 'SET NAMES utf8';
+            }
+            else
+            {
+                $dir = dirname($configPath);
+                $dsn .= realpath($dir . '/' . $this->config['database']['address']);
+            }
 
 
-			$this->database = new PDO($dsn, $this->config['database']['username'],
-				$this->config['database']['password'], $attr);
+            $this->database = new PDO($dsn, $this->config['database']['username'],
+                $this->config['database']['password'], $attr);
 
-			$this->database->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
-			$this->database->setAttribute(PDO::ATTR_ORACLE_NULLS, PDO::NULL_TO_STRING);
-			$this->database->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
-		}
+            $this->database->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
+            $this->database->setAttribute(PDO::ATTR_ORACLE_NULLS, PDO::NULL_TO_STRING);
+            $this->database->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+        }
     }
 
     /**
@@ -206,9 +209,9 @@ class ShikakeOji
         if (!isset($_SESSION['id']) || $_SESSION['id'] != $id && !isset($_SESSION['id']))
         {
             session_regenerate_id(); // updates the cookie if there is one
-			session_unset();
+            session_unset();
             session_destroy();
-			// Do NOT unset the whole $_SESSION with unset($_SESSION) as this will disable the registering of session variables through the $_SESSION superglobal.
+            // Do NOT unset the whole $_SESSION with unset($_SESSION) as this will disable the registering of session variables through the $_SESSION superglobal.
             // unset($_SESSION);
 
             session_start();
@@ -222,7 +225,9 @@ class ShikakeOji
             $_SESSION['init'] = time();
         }
 
-        if ($_SESSION['email'] != '')
+        if ($_SESSION['email'] != '' && 
+            ($this->isEmailAdministrator($attr['contact/email']) || $this->isEmailContributor($attr['contact/email']))
+        )
         {
             $this->isLoggedIn = true;
             $this->userEmail = $_SESSION['email'];
@@ -473,8 +478,8 @@ class ShikakeOji
         $required = array(
             'modernizr',
             'useragent',
-			'flash',
-			'version'
+            'flash',
+            'version'
         );
         $received = $this->checkRequiredPost($required);
         if ($received === false)
@@ -482,54 +487,54 @@ class ShikakeOji
             return false;
         }
 
-		$counter = 0;
-		/*
-		'mdrnzr_client' id, useragent, flash, created, address, modernizr
-		'mdrnzr_key' id, title
-		'mdrnzr_value' id, key_id, client_id, hasthis
-		*/
-		if (isset($this->database))
-		{
-			$sql = 'INSERT INTO mdrnzr_client (useragent, flash, created, address, modernizr) ' .
-				'VALUES (\'' . $received['useragent'] . '\', \'' . $received['flash'] .
-				'\', \'' . time() . '\', \'' . $_SERVER['REMOTE_ADDR'] . '\', \'' . $received['version'] . '\')';
-			$this->database->query($sql);
-			$client_id = $this->database->lastInsertId();
+        $counter = 0;
+        /*
+        'mdrnzr_client' id, useragent, flash, created, address, modernizr
+        'mdrnzr_key' id, title
+        'mdrnzr_value' id, key_id, client_id, hasthis
+        */
+        if (isset($this->database))
+        {
+            $sql = 'INSERT INTO mdrnzr_client (useragent, flash, created, address, modernizr) ' .
+                'VALUES (\'' . $received['useragent'] . '\', \'' . $received['flash'] .
+                '\', \'' . time() . '\', \'' . $_SERVER['REMOTE_ADDR'] . '\', \'' . $received['version'] . '\')';
+            $this->database->query($sql);
+            $client_id = $this->database->lastInsertId();
 
-			// Check that there is no key that would not be saved in the mdrnzr_key table.
-			$keys = array();
-			$values = array();
-			foreach ($received['modernizr'] as $k => $v)
-			{
-				// There should be no arrays, checked client side...
-				if (is_string($v))
-				{
-					$values[] = array($k, $v, $client_id); // optimize by moving $client_id to prepare...
-					$keys[] = '(\'' . $k . '\')';
-				}
-			}
-			
-			// TODO: how about other database types?
-			// http://dev.mysql.com/doc/refman/5.1/en/insert.html
-			$sql = 'INSERT IGNORE INTO mdrnzr_key (title) VALUES ' . implode(', ', $keys); // title must be unique indexed
-			$this->database->query($sql);
+            // Check that there is no key that would not be saved in the mdrnzr_key table.
+            $keys = array();
+            $values = array();
+            foreach ($received['modernizr'] as $k => $v)
+            {
+                // There should be no arrays, checked client side...
+                if (is_string($v))
+                {
+                    $values[] = array($k, $v, $client_id); // optimize by moving $client_id to prepare...
+                    $keys[] = '(\'' . $k . '\')';
+                }
+            }
+            
+            // TODO: how about other database types?
+            // http://dev.mysql.com/doc/refman/5.1/en/insert.html
+            $sql = 'INSERT IGNORE INTO mdrnzr_key (title) VALUES ' . implode(', ', $keys); // title must be unique indexed
+            $this->database->query($sql);
 
-			// Insert the values of this client to mdrnzr_value table.
-			$prep = $this->database->prepare('INSERT INTO mdrnzr_value (hasthis, key_id, client_id) VALUES(' .
-				'(SELECT id FROM mdrnzr_key WHERE title = ? LIMIT 1), ?, ? )');
-			foreach ($values as $row)
-			{
-				$prep->execute($row);
-			}
-			
-			$stat = $this->database->query('SELECT COUNT(id) AS total FROM mdrnzr_client WHERE address = \'' .
-				$_SERVER['REMOTE_ADDR'] . '\' GROUP BY address');
-			$res = $stat->fetch(PDO::FETCH_ASSOC);
+            // Insert the values of this client to mdrnzr_value table.
+            $prep = $this->database->prepare('INSERT INTO mdrnzr_value (hasthis, key_id, client_id) VALUES(' .
+                '(SELECT id FROM mdrnzr_key WHERE title = ? LIMIT 1), ?, ? )');
+            foreach ($values as $row)
+            {
+                $prep->execute($row);
+            }
+            
+            $stat = $this->database->query('SELECT COUNT(id) AS total FROM mdrnzr_client WHERE address = \'' .
+                $_SERVER['REMOTE_ADDR'] . '\' GROUP BY address');
+            $res = $stat->fetch(PDO::FETCH_ASSOC);
 
-			$counter = $res['total'];
-		}
-		// How many times this IP address sent its Modernizr data
-		return $counter;
+            $counter = $res['total'];
+        }
+        // How many times this IP address sent its Modernizr data
+        return $counter;
     }
 
     /**
@@ -560,9 +565,8 @@ class ShikakeOji
 
                 if ($openid->validate() &&
                     array_key_exists('contact/email', $attr) &&
-                    $attr['contact/email'] != '' &&
-                    (in_array($attr['contact/email'], $this->config['users']['administrators']) ||
-                    in_array($attr['contact/email'], $this->config['users']['contributors']))
+                    ($this->isEmailAdministrator($attr['contact/email']) ||
+                    $this->isEmailContributor($attr['contact/email']))
                 )
                 {
                     // TODO: add differentiation between admins and contributors
@@ -586,8 +590,8 @@ class ShikakeOji
                 );
 
                 // Show a message of the login state
-				// Set a temporary session variable. Once it is found, it will be removed
-				$_SESSION['msg-login-success'] = $this->isLoggedIn;
+                // Set a temporary session variable. Once it is found, it will be removed
+                $_SESSION['msg-login-success'] = $this->isLoggedIn;
 
                 // page parameter was sent initially from our site, land back to that page.
                 if (isset($_GET['page']) && $_GET['page'] != '')
@@ -675,6 +679,34 @@ class ShikakeOji
         }
         header('Location: http://' . $_SERVER['HTTP_HOST']) . $url;
         exit();
+    }
+    
+    /**
+     * Is the given email found in the administrators list.
+     * @param   string  $email
+     * @return  boolean
+     */
+    private function isEmailAdministrator($email)
+    {
+        if (empty($email) || filter_var($email, FILTER_VALIDATE_EMAIL) === false)
+        {
+            return false;
+        }
+        return in_array($email, $this->config['users']['administrators']);
+    }
+    
+    /**
+     * Is the given email found in the contributors list.
+     * @param   string  $email
+     * @return  boolean
+     */
+    private function isEmailContributor($email)
+    {
+        if (empty($email) || filter_var($email, FILTER_VALIDATE_EMAIL) === false)
+        {
+            return false;
+        }
+        return in_array($email, $this->config['users']['contributors']); //
     }
 
     /**

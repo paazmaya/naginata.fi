@@ -2,6 +2,9 @@
 /***************
  * NAGINATA.fi *
  ***************
+ * Juga Paazmaya <olavic@gmail.com>
+ * http://creativecommons.org/licenses/by-sa/3.0/
+ * 
  * PHP Info
  */
 

@@ -2,7 +2,8 @@ naginata.fi
 ===========
 A web site in Finland for an ancient martial art from Japan.
 
-All the code is under Creative Commons License - Attribution & Share Alike (http://creativecommons.org/licenses/by-sa/3.0/).
+All the code is under Creative Commons License - Attribution & Share Alike (http://creativecommons.org/licenses/by-sa/3.0/). 
+Full legal text available in `license.txt`.
 
 Technologies
 -------------
@@ -12,6 +13,7 @@ Technologies
  * HTML5 for markup (http://developers.whatwg.org/)
  * CSS3 for styling (http://www.css3.info/modules/)
  * Javascript via jQuery for client interaction (http://jquery.com/)
+ * Local Storage replacing browser cookies (http://www.w3.org/TR/webstorage/)
  
 About the martial art
 ---------------------
@@ -66,53 +68,53 @@ Thus the documentation for this file is below.
 
 ```js
 "database": {
-	"type": "sqlite", // PDO driver name, http://php.net/manual/en/pdo.getavailabledrivers.php
-	"address": "naginata.fi.sqlite", // server address, or file path for SQLite, or 
-	"database": "", // name of the database, if not SQLite
-	"username": "",
-	"password": ""
+    "type": "sqlite", // PDO driver name, http://php.net/manual/en/pdo.getavailabledrivers.php
+    "address": "naginata.fi.sqlite", // server address, or file path for SQLite, or 
+    "database": "", // name of the database, if not SQLite
+    "username": "",
+    "password": ""
 },
 "email": { // Email server settings. SMTP is used for sending emails
-	"address": "email@address.com", // address of the sender and who will get all copies
-	"name": "Some Tonttu", // name of the owner of the address abowe
+    "address": "email@address.com", // address of the sender and who will get all copies
+    "name": "Some Tonttu", // name of the owner of the address abowe
     "username": "", // username for the servers listed below
-	"password": "", // password for the servers listed below
-	"pop3": "pop3.address.com:110",
-	"smtp": "smtp.address.com:587"
+    "password": "", // password for the servers listed below
+    "pop3": "pop3.address.com:110",
+    "smtp": "smtp.address.com:587"
 },
 "facebook": { // Facebook API keys if needed
-	"app_id": "",
-	"secret": "",
-	"admins": ""
+    "app_id": "",
+    "secret": "",
+    "admins": ""
 },
 "flickr": { // Flickr API keys if needed
-	"apikey": "",
-	"secret": ""
+    "apikey": "",
+    "secret": ""
 },
 "google": { // Google API keys if needed
-	"consumer_key": "",
-	"consumer_secret": ""
+    "consumer_key": "",
+    "consumer_secret": ""
 },
 "twitter": { // Twitter API keys if needed
-	"consumer_key": "",
-	"consumer_secret": "",
-	"access_token": "",
-	"access_token_secret": "",
-	"request_token_url": "https://api.twitter.com/oauth/request_token",
-	"authorize_url": "https://api.twitter.com/oauth/authorize",
-	"access_token_url": "https://api.twitter.com/oauth/access_token"
+    "consumer_key": "",
+    "consumer_secret": "",
+    "access_token": "",
+    "access_token_secret": "",
+    "request_token_url": "https://api.twitter.com/oauth/request_token",
+    "authorize_url": "https://api.twitter.com/oauth/authorize",
+    "access_token_url": "https://api.twitter.com/oauth/access_token"
 },
 "vimeo": { // Vimeo API keys if needed
 },
 "youtube": { // Youtube API keys if needed
 },
 "users": { // Users that can login via OpenID, only email is used
-	"administrators": [
-		"olavic@gmail.com"
-	],
-	"contributors": [
+    "administrators": [
+        "olavic@gmail.com"
+    ],
+    "contributors": [
 
-	]
+    ]
 }
 ```
 
