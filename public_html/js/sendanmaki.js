@@ -358,7 +358,7 @@ var sendanmaki = {
             html: sendanmaki.loginForm,
             onComplete: function() {
                 $('input[type="submit"]').attr('disabled', 'disabled');
-                $('input[name="identifier"]').focus().on('keyup', function() {
+                $('input[name="identifier"]').focus().on('change', function() {
                     var openid = $(this).val();
                     if (openid.search('@') !== -1) { // TODO: fix search regex to valid OpenID
                         $('input[type="submit"]').attr('disabled', null);
@@ -426,7 +426,7 @@ var sendanmaki = {
      * Login form. Please note that this uses OpenID.
      */
     loginForm: '<form action="/authenticate-user" method="post">' +
-        '<label>Email (OpenID identification)<input type="email" name="identifier" /></label>' +
+        '<label>Sähköpostiosoite (OpenID kirjautumista varten)<input type="email" name="identifier" /></label>' +
         '<input type="submit" value="Lähetä" />' +
         '<input type="button" name="close" value="Sulje" />' +
         '</form>'

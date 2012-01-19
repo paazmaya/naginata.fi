@@ -248,10 +248,8 @@ input[disabled], input[disabled]:hover {
 }
 label {
     width: 38rem;
-    margin: 1em;
-}
-label::after {
-    content: ":";
+    margin-left: 1em;
+	font-weight: bold;
 }
 
 /* paragraph containing a link that contains image(s) */

@@ -49,6 +49,7 @@ class ShikakeOjiPage
      */
     public $scripts = array(
         'jquery.js',
+        'jquery.color.js',
         'jquery.colorbox.js',
         'jquery.swfobject.js',
         'sendanmaki.js'
@@ -126,12 +127,11 @@ class ShikakeOjiPage
     );
 
     /**
-     * Constructor will load the JSON data and decode it as well as
-     * check for compression support of the client.
+     * Constructor does not do much.
      */
     function __construct()
     {
-        // Nothing here...
+        // Calculate interval time for 2 week of seconds.
         $this->cacheInterval = (60 * 60 * 24 * 7 * 2);
     }
 

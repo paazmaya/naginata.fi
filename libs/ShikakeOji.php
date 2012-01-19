@@ -138,6 +138,7 @@ class ShikakeOji
     /**
      * Constructor will load the JSON data and decode it as well as
      * check for compression support of the client.
+	 * If loading fails, the process is not continued.
      */
     function __construct($jsonpath)
     {
@@ -204,9 +205,18 @@ class ShikakeOji
         session_start();
 
         $id = sha1($_SERVER['REMOTE_ADDR'] . $_SERVER['HTTP_USER_AGENT'] .
-                $_SERVER['HTTP_ACCEPT'] . $_SERVER['HTTP_ACCEPT_ENCODING']);
+                $_SERVER['HTTP_ACCEPT_ENCODING']);
+				
+		$log = date('Y-m-d H:i:s') . ' REMOTE_ADDR: ' . $_SERVER['REMOTE_ADDR'] . "\n\t" .
+				'REQUEST_URI : ' . $_SERVER['REQUEST_URI'] . "\n\t" .
+				'HTTP_USER_AGENT: ' . $_SERVER['HTTP_USER_AGENT'] . "\n\t" .
+				'HTTP_ACCEPT_ENCODING: ' . $_SERVER['HTTP_ACCEPT_ENCODING'] . "\n\t" .
+				'$id: ' . $id . "\n\t" .
+				'$_SESSION[id]: ' . $_SESSION['id'] . "\n";
+				
+		file_put_contents('../session-checker.log', $log, FILE_APPEND);
 
-        if (!isset($_SESSION['id']) || $_SESSION['id'] != $id && !isset($_SESSION['id']))
+        if (!isset($_SESSION['id']) || $_SESSION['id'] != $id)
         {
             session_regenerate_id(); // updates the cookie if there is one
             session_unset();
@@ -216,8 +226,8 @@ class ShikakeOji
 
             session_start();
 
-            $_SESSION = array(); // not sure if this is needed
-            // Must match the REMOTE_ADDR, HTTP_USER_AGENT, ...
+            //$_SESSION = array(); // not sure if this is needed
+            // Must match the sha1 of REMOTE_ADDR and HTTP_USER_AGENT
             $_SESSION['id'] = $id;
             // Must found from the "users" list if not empty. If empty, not logged in.
             $_SESSION['email'] = '';
@@ -226,7 +236,7 @@ class ShikakeOji
         }
 
         if ($_SESSION['email'] != '' && 
-            ($this->isEmailAdministrator($attr['contact/email']) || $this->isEmailContributor($attr['contact/email']))
+            ($this->isEmailAdministrator($_SESSION['email']) || $this->isEmailContributor($_SESSION['email']))
         )
         {
             $this->isLoggedIn = true;
@@ -376,7 +386,9 @@ class ShikakeOji
             $error = $this->getJsonError();
             if ($error != '')
             {
-                file_put_contents(ini_get('error_log'), $error, FILE_APPEND);
+				header('Content-type: text/plain');
+                echo $error;
+				exit();
             }
         }
     }
@@ -575,12 +587,23 @@ class ShikakeOji
                     $_SESSION['email'] = $attr['contact/email'];
                 }
 
+                // Show a message of the login state
+                // Set a temporary session variable. Once it is found, it will be removed
+                $_SESSION['msg-login-success'] = $this->isLoggedIn;
+				
+				// Build the mail message for site owner
                 $mailBody = '';
                 $mailBody .= 'Attributes:' . "\n";
                 foreach($attr as $k => $v)
                 {
                     $mailBody .= '  ' . $k . "\t" . $v . "\n";
                 }
+                $mailBody .= "\n" . 'Session values:' . "\n";
+                foreach($_SESSION as $k => $v)
+                {
+                    $mailBody .= '  ' . $k . "\t" . $v . "\n";
+                }
+				$mailBody .= "\n" . 'Page: ' . (isset($_GET['page']) ? $_GET['page'] : 'not set...') . "\n";
 
                 $this->sendEmail(
                     $this->config['email']['address'],
@@ -589,14 +612,12 @@ class ShikakeOji
                     'Terve, ' . "\n" . 'Sivustolla ' . $_SERVER['HTTP_HOST'] . ' tapahtui OpenID kirjautumis tapahtuma.' . "\n\n" . $mailBody
                 );
 
-                // Show a message of the login state
-                // Set a temporary session variable. Once it is found, it will be removed
-                $_SESSION['msg-login-success'] = $this->isLoggedIn;
 
                 // page parameter was sent initially from our site, land back to that page.
                 if (isset($_GET['page']) && $_GET['page'] != '')
                 {
-                    $this->redirectTo($_GET['page']);
+					// Since this is called, the execution stops. It does not seem to redirect to anywhere else except / ...
+                    $this->redirectTo($_GET['page'], '');
                 }
                 return $openid->validate();
             }
@@ -692,6 +713,10 @@ class ShikakeOji
         {
             return false;
         }
+		if (!isset($this->config['users']['administrators']) || !is_array($this->config['users']['administrators']))
+		{
+			return false;
+		}
         return in_array($email, $this->config['users']['administrators']);
     }
     
@@ -706,7 +731,11 @@ class ShikakeOji
         {
             return false;
         }
-        return in_array($email, $this->config['users']['contributors']); //
+		if (!isset($this->config['users']['contributors']) || !is_array($this->config['users']['contributors']))
+		{
+			return false;
+		}
+        return in_array($email, $this->config['users']['contributors']);
     }
 
     /**

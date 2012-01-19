@@ -124,4 +124,5 @@ TODO
  * Translations for application strings
  * Configuration of language_TERRITORY
  * Separate handling per page type, not all are simple articles
+ * OpenID login redirects to wrong page. It is always / when it should be something more.
  
