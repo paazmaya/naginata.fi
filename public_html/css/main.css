@@ -250,6 +250,7 @@ label {
     width: 38rem;
     margin-left: 1em;
 	font-weight: bold;
+    background: url(../img/openid-icon-100x100.png) no-repeat left middle;
 }
 
 /* paragraph containing a link that contains image(s) */

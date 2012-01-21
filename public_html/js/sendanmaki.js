@@ -56,6 +56,13 @@ var sendanmaki = {
      * Initial value is fetched from localStorage.
      */
     editMode: 0,
+    
+    /**
+     * Unix time stamp of the moment when the content shown
+     * on the site was last modified. This infrmation is 
+     * available in footer data.
+     */      
+    dataModified: 0,
 	
 	/**
 	 * Current page language.
@@ -87,6 +94,7 @@ var sendanmaki = {
         var fData = $('footer').data();
         sendanmaki.isLoggedIn = fData.isLoggedIn;
         sendanmaki.userEmail = fData.userEmail;
+        sendanmaki.dataModified = fData.dataModified;
 		
 		sendanmaki.lang = $('html').attr('lang');
         
@@ -193,6 +201,7 @@ var sendanmaki = {
             sendanmaki.editMode = 0;
         }
         localStorage.setItem('editMode', sendanmaki.editMode);
+        //$('a[href="#contribute"]').
     },
     
     /**
@@ -201,6 +210,7 @@ var sendanmaki = {
     editModeClick: function($e) {
         var html = $e.outerHtml();
         var form = $(sendanmaki.editForm).clone();
+        form.data('original', html);
         form.children('textarea').attr('lang', sendanmaki.lang).text(html);
         $.colorbox({
             html: form,
@@ -268,7 +278,9 @@ var sendanmaki = {
         var data = {
             lang: sendanmaki.lang,
             page: location.pathname,
-            content: $form.children('textarea[name="content"]').text()
+            content: $form.children('textarea[name="content"]').text(),
+            original: $form.data('original'),
+            modified: sendanmaki.dataModified
         };
 
 		// Animate background color

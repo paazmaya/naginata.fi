@@ -434,18 +434,21 @@ class ShikakeOjiPage
 
 
         // Comes out as $('footer).data('isLoggedIn') == '1'
-        $out .= '<footer data-is-logged-in="' . ($this->isLoggedIn ? 1 : 0) . '" data-user-email="' . $this->userEmail . '">';
+        $out .= '<footer data-is-logged-in="' . ($this->isLoggedIn ? 1 : 0) . '" data-user-email="' . $this->userEmail . '" data-data-modified="' . $this->dataModified . '">';
         $out .= '<p>';
-
+    
+        $links = array();
         foreach ($data['footer'][$this->language] as $item)
         {
             // ["http://paazmaya.com", "PAAZMAYA.com", "&copy; Jukka Paasonen"]
-            $out .= '<a href="' . $item['0'] . '" title="' . $item['1'] . '">' . $item['2'] . '</a> | ';
+            $links[] = '<a href="' . $item['0'] . '" title="' . $item['1'] . '">' . $item['2'] . '</a> | ';
         }
+        
+        $out .= implode('|', $links);
         
         // TODO: #contribute text change per login status
 
-        $out .= '<time datetime="' . date('c', $this->dataModified) . '">' . date('j.n.Y', $this->dataModified) . '</time>';
+        //$out .= '<time datetime="' . date('c', $this->dataModified) . '">' . date('j.n.Y', $this->dataModified) . '</time>';
         $out .= '</footer>';
 
         $base = '/js/';

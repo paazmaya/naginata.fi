@@ -168,6 +168,15 @@ class ShikakeOji
         }
         $this->config = json_decode(file_get_contents($configPath), true);
 
+        $error = $this->getJsonError();
+        if ($error != '')
+        {
+            header('Content-type: text/plain');
+            header('X-Failure-type: config');
+            echo $error;
+            exit();
+        }
+        
         // PDO database connection if the settings are set.
         if (isset($this->config['database']) && isset($this->config['database']['type']) &&
             in_array($this->config['database']['type'], PDO::getAvailableDrivers()))
@@ -219,14 +228,7 @@ class ShikakeOji
         if (!isset($_SESSION['id']) || $_SESSION['id'] != $id)
         {
             session_regenerate_id(); // updates the cookie if there is one
-            session_unset();
-            session_destroy();
-            // Do NOT unset the whole $_SESSION with unset($_SESSION) as this will disable the registering of session variables through the $_SESSION superglobal.
-            // unset($_SESSION);
-
-            session_start();
-
-            //$_SESSION = array(); // not sure if this is needed
+			
             // Must match the sha1 of REMOTE_ADDR and HTTP_USER_AGENT
             $_SESSION['id'] = $id;
             // Must found from the "users" list if not empty. If empty, not logged in.
@@ -387,6 +389,7 @@ class ShikakeOji
             if ($error != '')
             {
 				header('Content-type: text/plain');
+                header('X-Failure-type: data');
                 echo $error;
 				exit();
             }
@@ -434,12 +437,14 @@ class ShikakeOji
     private function pageUpdateArticle()
     {
         $required = array(
-            'lang',
-            'page',
-            'content'
+            'lang', // language: fi
+            'page', // page url: /koryu
+            'original', // original element, cannot be empty. New elements should be written after or before existing
+            'content', // modified element
+            'modified' // unix time stamp which should be the same as $this->dataModified
         );
         $received = $this->checkRequiredPost($required);
-        if ($received === false || !$this->isLoggedIn)
+        if ($received === false || !$this->isLoggedIn || $received['original'] == '')
         {
             return false;
         }
@@ -455,12 +460,13 @@ class ShikakeOji
             // For now just using the first item in the array
             $current = $this->appData['article'][$received['lang']][$received['page']]['0'];
 
-            // Save the data for later moderation
-            $this->appData['article'][$received['lang']][$received['page']]['0'] = $received['content'];
-            $isSaved = $this->saveDataModeration();
+            // Save the data in disk for later moderation
+            // TODO: this will need to the refactored as complete content is not received.
+            //$this->appData['article'][$received['lang']][$received['page']]['0'] = $received['content'];
+            $isSaved = false; //$this->saveDataModeration();
 
             // Create diff for sending it via email
-            $a = explode("\n", ShikakeOjiPage::decodeHtml($current));
+            $a = explode("\n", ShikakeOjiPage::decodeHtml($received['original']));
             $b = explode("\n", ShikakeOjiPage::decodeHtml($received['content']));
 
             require $this->libPath . '/php-diff/Diff.php';
@@ -474,8 +480,11 @@ class ShikakeOji
             $isEmailed = $this->sendEmail(
                 $this->config['email']['address'],
                 $this->config['email']['name'],
-                $_SERVER['HTTP_HOST'] . ' - Päivitys tapahtuma',
-                'Terve, ' . "\n" . 'Sivustolla ' . $_SERVER['HTTP_HOST'] . ' tapahtui päivitys tapahtuma, jonka tekijänä ' . $this->userEmail . '. Alla muutokset.' . "\n\n" . $out
+                $_SERVER['HTTP_HOST'] . ' - Muokkaus tapahtuma, tekijänä ' . $this->userEmail,
+                'Terve, ' . "\n" . 'Sivustolla ' . $_SERVER['HTTP_HOST'] .
+                    ' tapahtui sisällön muokkaus tapahtuma, jonka tekijänä ' . $this->userEmail . '.' . "\n" .
+                    'Alkuperäisen sisällön päiväys: ' . date($this->logDateFormat, $received['modified']) . "\n" .
+                    'Sivun ' . $received['page'] . ' muutokset esitetty alla.' . "\n\n" . $out
             );
             return $isSaved && $isEmailed;
         }
