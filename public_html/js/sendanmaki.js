@@ -152,12 +152,12 @@ var sendanmaki = {
         });
 
         // Might want to check that the editor is not open...
-        if (sendanmaki.editMode) {
-            $(window).on('beforeunload', function() {
+		$(window).on('beforeunload', function() {
+			if (sendanmaki.editMode) {
                 //console.log('beforeunload');
                 //return false;
-            });
-        }
+			}
+		});
 		
 		// Finally check if div#logo data is set. It is used only for messaging
 		var success = $('#logo').data('msgLoginSuccess'); // 1 or 0
@@ -168,7 +168,7 @@ var sendanmaki = {
 		// Inline edit links
 		if (sendanmaki.isLoggedIn) {
             // Initial value once page is loaded
-            sendanmaki.editMode = (localStorage.getItem('editMode') === 1) ? 1 : 0;
+            sendanmaki.editMode = (localStorage.getItem('editMode') == 1) ? 1 : 0;
             if (sendanmaki.editMode) {
                 // handle hover via css...
                 $('article').addClass('editmode');
@@ -193,12 +193,12 @@ var sendanmaki = {
         var elemName = 'article';
         var className = 'editmode';
         if (sendanmaki.editMode) {
-            $(elemName).addClass(className);
-            sendanmaki.editMode = 1;
-        }
-        else {
             $(elemName).removeClass(className);
             sendanmaki.editMode = 0;
+        }
+        else {
+            $(elemName).addClass(className);
+            sendanmaki.editMode = 1;
         }
         localStorage.setItem('editMode', sendanmaki.editMode);
         //$('a[href="#contribute"]').
@@ -391,17 +391,14 @@ var sendanmaki = {
         if (typeof text !== 'undefined') {
 			// Show colorbox
 			$.colorbox({
-				html: '<h1 class="appmessage">' + text + '</h1>',
+				html: '<h1 class="appmessage ' + msg.toLowerCase() + '">' + text + '</h1>',
 				modal: true,
 				scrolling: false,
 				onComplete: function() {
 					// Hide automatically after 4 seconds
-                    /*
-                     * commented out for testing
 					setTimeout(function() {
 						$.colorbox.close();
-					}, 4 * 1000);
-                    */
+					}, 2 * 1000);
 				}
 			});
         }
@@ -428,7 +425,7 @@ var sendanmaki = {
     /**
      * A form to be shown in colorbox when editing an article content.
      */
-    editForm: '<form action="/update-article" method="post">' +
+    editForm: '<form action="/update-article" method="post" class="edit">' +
         '<textarea name="content" spellcheck="true"></textarea>' +
         '<input type="submit" value="Lähetä" />' +
         '<input type="button" name="close" value="Sulje" />' +
@@ -437,7 +434,7 @@ var sendanmaki = {
     /**
      * Login form. Please note that this uses OpenID.
      */
-    loginForm: '<form action="/authenticate-user" method="post">' +
+    loginForm: '<form action="/authenticate-user" method="post" class="login">' +
         '<label>Sähköpostiosoite (OpenID kirjautumista varten)<input type="email" name="identifier" /></label>' +
         '<input type="submit" value="Lähetä" />' +
         '<input type="button" name="close" value="Sulje" />' +

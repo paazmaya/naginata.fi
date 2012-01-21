@@ -130,6 +130,10 @@ footer {
     z-index: 100;
     margin-bottom: 1em;
 }
+footer a {
+	padding: 0 1em;
+	display: inline-block;
+}
 footer > p {
     height: 1.5em;
     margin: 0;
@@ -218,6 +222,14 @@ article p > a::after:not(img) {
 form {
     width: 40em;
 }
+form.login {
+    background-image: url(../img/openid-icon-100x100.png);
+    background-position: center bottom;
+    background-repeat: no-repeat;
+	/*height: 10em;*/
+}
+form.edit {
+}
 select, input, textarea {
     width: 38rem;
     border: 1px solid #072434;
@@ -250,7 +262,6 @@ label {
     width: 38rem;
     margin-left: 1em;
 	font-weight: bold;
-    background: url(../img/openid-icon-100x100.png) no-repeat left middle;
 }
 
 /* paragraph containing a link that contains image(s) */
@@ -327,9 +338,19 @@ label {
 
 /* content shown in a colorbox after login */
 .appmessage {
-    margin: 3em;
+    padding: 2em;
+	padding-left: 4em;
+    background-position: 1em center;
+    background-repeat: no-repeat;
+    background-image: url(../img/mobile-logo.png);
+	overflow: visible;
 }
-
+.loginfailure {
+    background-image: url(../img/mobile-logo.png);
+}
+.loginsuccess {
+    background-image: url(../img/mobile-logo.png);
+}
 
 
 

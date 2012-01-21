@@ -315,7 +315,7 @@ class ShikakeOjiPage
         $out .= '<html lang="' . $this->language . '" prefix="og:http://ogp.me/ns#">'; // http://dev.w3.org/html5/rdfa/
         $out .= '<head>';
         $out .= '<meta charset="utf-8"/>';
-        $out .= '<title>' . $head['header'] . ' - ' . $data['title'][$this->language] . '</title>';
+        $out .= '<title>' . $head['header'] . ' | ' . $data['title'][$this->language] . '</title>';
         $out .= '<meta name="description" property="og:description" content="' . $head['description'] . '"/>';
 
         // http://ogp.me/
@@ -441,7 +441,7 @@ class ShikakeOjiPage
         foreach ($data['footer'][$this->language] as $item)
         {
             // ["http://paazmaya.com", "PAAZMAYA.com", "&copy; Jukka Paasonen"]
-            $links[] = '<a href="' . $item['0'] . '" title="' . $item['1'] . '">' . $item['2'] . '</a> | ';
+            $links[] = '<a href="' . $item['0'] . '" title="' . $item['1'] . '">' . $item['2'] . '</a>';
         }
         
         $out .= implode('|', $links);
