@@ -49,9 +49,9 @@ class ShikakeOjiPage
      */
     public $scripts = array(
         'jquery.js',
-        'jquery.color.js',
         'jquery.colorbox.js',
         'jquery.swfobject.js',
+        'jquery.outerhtml.js',
         'sendanmaki.js'
     );
 

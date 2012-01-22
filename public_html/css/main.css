@@ -230,6 +230,20 @@ form.login {
 }
 form.edit {
 }
+/* AJAX feedback on form submit */
+form.ajax-ongoing {
+	background-color: #75B2F1;
+}
+form.ajax-failure {
+	background-color: #F13A1C;
+}
+form.ajax-success {
+	background-color: #39B54A;
+}
+form.ajax-unsure {
+	background-color: #FAE534;
+}
+
 select, input, textarea {
     width: 38rem;
     border: 1px solid #072434;
@@ -415,11 +429,12 @@ label {
 
 
 /* edit mode hover effects. article will have this class. */
-.editmode > *:not(.mediathumb, .imagelist):hover {
+
+.edithover {
 	background-color: #989E7B;
     background-color: rgba(98,9E,7B,0.1);
 	-moz-background: linear-gradient(99deg, #989E7B, #FEFEFE);
 	background: linear-gradient(99deg, #989E7B, #FEFEFE);
-} 
+}
 
 

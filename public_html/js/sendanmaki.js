@@ -75,17 +75,7 @@ var sendanmaki = {
 	 * 1000 * 60 * 3 ms = 3 minutes
 	 */
 	keepAlive: (60000 * 3),
-
-    /**
-     * Colors to be used as a feedback of an ongoing AJAX call.
-     */
-    colors: {
-        green : '#39B54A',
-        blue : '#75B2F1',
-        red : '#F13A1C',
-        yellow : '#FAE534'
-    },
-
+	
     /**
      * This shall be run on domReady in order to initiate
      * all the handlers needed.
@@ -173,7 +163,15 @@ var sendanmaki = {
                 // handle hover via css...
                 $('article').addClass('editmode');
             }
-            $('.editmode > *').not('.mediathumb, .imagelist').live('click', function() {
+			/*
+            $('.editmode > *:not(.mediathumb, .imagelist)').live('mouseover', function() {
+				$(this).addClass('edithover');
+            }).live('mouseout', function() {
+				$(this).removeClass('edithover');
+            });
+			*/
+			$('.editmode > *:not(.mediathumb, .imagelist)').live('click', function() {
+				$(this).removeClass('edithover');
                 sendanmaki.editModeClick($(this));
             });
 		}
@@ -274,7 +272,6 @@ var sendanmaki = {
      * Callback for submitting the contribution form.
      */
     submitEditForm: function($form) {
-		// TODO: this is sending the small porting while backend expects the whole page...
         var data = {
             lang: sendanmaki.lang,
             page: location.pathname,
@@ -282,55 +279,39 @@ var sendanmaki = {
             original: $form.data('original'),
             modified: sendanmaki.dataModified
         };
+		console.dir(data);
+		
+		// disable send button
+		$('input[type="submit"]').attr('disabled', 'disabled');
 
-		// Animate background color
-        var orig = $form.css('background-color');
-        if ($.Color) {
-            $form.animate({
-                backgroundColor: sendanmaki.colors.blue
-            }, 200);
-        }
-        else {
-            $form.css('background-color', sendanmaki.colors.blue);
-        }
+		// Feedback of the ajax submit on background color
+        $form.addClass('ajax-ongoing');
         
         $.post($form.attr('action'), data, function(received, status){
             console.log('status' + status);
             console.dir(received);
-            var color;
+			$form.removeClass('ajax-ongoing');
+			
+            var style;
             if (status != 'success') {
-                color = sendanmaki.colors.red;
+                style = 'ajax-failure';
             }
             else if (received.answer) {
                 // 1 or true
-                color = sendanmaki.colors.green;
+                style = 'ajax-success';
                 
                 // Success, thus return original later
                 setTimeout(function() {
-                    if ($.Color) {
-                        $form.animate({
-                            backgroundColor: orig
-                        }, 600);
-                    }
-                    else {
-                        $form.css('background-color', orig);
-                    }
+                    $form.removeClass(style);
                     //$.colorbox.close();
                 }, 2 * 1000);
             }
             else {
-                color = sendanmaki.colors.yellow;
+                style = 'unsure';
             }
             
             // Animate or just set.
-            if ($.Color) {
-                $form.animate({
-                    backgroundColor: color
-                }, 600);
-            }
-            else {
-                $form.css('background-color', color);
-            }
+            $form.addClass(style);
         }, 'json');
     },
 
@@ -347,7 +328,7 @@ var sendanmaki = {
         console.log('about to submit login form');
         console.dir(data);
         
-        $form.css('background-color', sendanmaki.colors.blue);
+        $form.addClass('ajax-ongoing');
 
         // This will be redirected to the OpenID provider site
         $.post($form.attr('action'), data, function(received, status) {
