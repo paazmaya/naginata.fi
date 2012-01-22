@@ -213,17 +213,7 @@ class ShikakeOji
         session_name('SOFI');
         session_start();
 
-        $id = sha1($_SERVER['REMOTE_ADDR'] . $_SERVER['HTTP_USER_AGENT'] .
-                $_SERVER['HTTP_ACCEPT_ENCODING']);
-				
-		$log = date('Y-m-d H:i:s') . ' REMOTE_ADDR: ' . $_SERVER['REMOTE_ADDR'] . "\n\t" .
-				'REQUEST_URI : ' . $_SERVER['REQUEST_URI'] . "\n\t" .
-				'HTTP_USER_AGENT: ' . $_SERVER['HTTP_USER_AGENT'] . "\n\t" .
-				'HTTP_ACCEPT_ENCODING: ' . $_SERVER['HTTP_ACCEPT_ENCODING'] . "\n\t" .
-				'$id: ' . $id . "\n\t" .
-				'$_SESSION[id]: ' . $_SESSION['id'] . "\n";
-				
-		file_put_contents('../session-checker.log', $log, FILE_APPEND);
+        $id = sha1($_SERVER['REMOTE_ADDR'] . $_SERVER['HTTP_USER_AGENT']);
 
         if (!isset($_SESSION['id']) || $_SESSION['id'] != $id)
         {
@@ -244,6 +234,15 @@ class ShikakeOji
             $this->isLoggedIn = true;
             $this->userEmail = $_SESSION['email'];
         }
+		
+		$log = date('Y-m-d H:i:s') . ' REMOTE_ADDR: ' . $_SERVER['REMOTE_ADDR'] . "\n\t" .
+				'REQUEST_URI : ' . $_SERVER['REQUEST_URI'] . "\n\t" .
+				'HTTP_USER_AGENT: ' . $_SERVER['HTTP_USER_AGENT'] . "\n\t" .
+				'$id: ' . $id . "\n\t" .
+				'$_SESSION[email]: ' . $_SESSION['email'] . "\n\t" .
+				'$_SESSION[id]: ' . $_SESSION['id'] . "\n";
+				
+		file_put_contents('../session-checker.log', $log, FILE_APPEND);
     }
 
     /**
