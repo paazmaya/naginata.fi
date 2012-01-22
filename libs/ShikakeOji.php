@@ -244,9 +244,6 @@ class ShikakeOji
             $this->isLoggedIn = true;
             $this->userEmail = $_SESSION['email'];
         }
-		
-		$this->isLoggedIn = true;
-        $this->userEmail = 'olavic@gmail.com';
     }
 
     /**
