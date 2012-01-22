@@ -173,13 +173,13 @@ h4 {
 
 /* http://leaverou.github.com/animatable/#text-shadow/3 */
 /* https://developer.mozilla.org/en/CSS/@keyframes */
-@keyframes header1anim {
+@-moz-keyframes header1anim {
     from {
         text-shadow: 0 0 white;
     }
     to {
 		/* <offset-x> <offset-y> <blur-radius>? <color>? */
-        text-shadow: 0 0 rgba(255,255,255,0), -45px -45px 0 red, -30px -30px 0 orange, -15px -15px 0 yellow, 0 0 0 green, 15px 15px 0 blue, 30px 30px 0 indigo, 45px 45px 0 violet;
+        text-shadow: 0 0 rgba(255,255,255,0), -20px -20px 0 red, -20px 20px 0 orange, 20px -10px 0 yellow, 0 0 0 green, 20px 10px 0 indigo;
     }
 }
 header h1:hover {
@@ -188,7 +188,7 @@ header h1:hover {
 	-webkit-animation: header1anim 1s infinite alternate;
 	-moz-animation: header1anim 1s infinite alternate;
 	animation: header1anim 1s infinite alternate;
-    text-shadow: 0 0 white;
+    text-shadow: 4px 4px green;
 }
 
 header p {
@@ -232,16 +232,16 @@ form.edit {
 }
 /* AJAX feedback on form submit */
 form.ajax-ongoing {
-	background-color: #75B2F1;
+	background-color: #95D2F1;
 }
 form.ajax-failure {
-	background-color: #F13A1C;
+	background-color: #F15A3C;
 }
 form.ajax-success {
-	background-color: #39B54A;
+	background-color: #59D56A;
 }
 form.ajax-unsure {
-	background-color: #FAE534;
+	background-color: #FAF554;
 }
 
 select, input, textarea {
@@ -429,12 +429,15 @@ label {
 
 
 /* edit mode hover effects. article will have this class. */
-
-.edithover {
-	background-color: #989E7B;
-    background-color: rgba(98,9E,7B,0.1);
-	-moz-background: linear-gradient(99deg, #989E7B, #FEFEFE);
-	background: linear-gradient(99deg, #989E7B, #FEFEFE);
+/* https://developer.mozilla.org/en/CSS/linear-gradient */
+/* edit mode #contribute link */
+.edithover, .editmode > *:not(.mediathumb):hover, a.editmode {
+	background-color: #A4B5C6;
+	background-image: -ms-linear-gradient(-99deg, #A4B5C6, #FEFEFE);
+	background-image: -webkit-linear-gradient(-99deg, #A4B5C6, #FEFEFE);
+	background-image: -moz-linear-gradient(-99deg, #A4B5C6, #FEFEFE);
+	background-image: -o-linear-gradient(-99deg, #A4B5C6, #FEFEFE);
+	background-image: linear-gradient(-99deg, #A4B5C6, #FEFEFE);
 }
 
 

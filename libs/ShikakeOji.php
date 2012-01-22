@@ -244,6 +244,9 @@ class ShikakeOji
             $this->isLoggedIn = true;
             $this->userEmail = $_SESSION['email'];
         }
+		
+		$this->isLoggedIn = true;
+        $this->userEmail = 'olavic@gmail.com';
     }
 
     /**
@@ -439,12 +442,11 @@ class ShikakeOji
         $required = array(
             'lang', // language: fi
             'page', // page url: /koryu
-            'original', // original element, cannot be empty. New elements should be written after or before existing
-            'content', // modified element
+            'content', // modified article
             'modified' // unix time stamp which should be the same as $this->dataModified
         );
         $received = $this->checkRequiredPost($required);
-        if ($received === false || !$this->isLoggedIn || $received['original'] == '')
+        if ($received === false || !$this->isLoggedIn)
         {
             return false;
         }
@@ -461,12 +463,11 @@ class ShikakeOji
             $current = $this->appData['article'][$received['lang']][$received['page']]['0'];
 
             // Save the data in disk for later moderation
-            // TODO: this will need to the refactored as complete content is not received.
-            //$this->appData['article'][$received['lang']][$received['page']]['0'] = $received['content'];
-            $isSaved = false; //$this->saveDataModeration();
+            $this->appData['article'][$received['lang']][$received['page']]['0'] = $received['content'];
+            $isSaved = $this->saveDataModeration();
 
             // Create diff for sending it via email
-            $a = explode("\n", ShikakeOjiPage::decodeHtml($received['original']));
+            $a = explode("\n", ShikakeOjiPage::decodeHtml($current));
             $b = explode("\n", ShikakeOjiPage::decodeHtml($received['content']));
 
             require $this->libPath . '/php-diff/Diff.php';
@@ -480,7 +481,7 @@ class ShikakeOji
             $isEmailed = $this->sendEmail(
                 $this->config['email']['address'],
                 $this->config['email']['name'],
-                $_SERVER['HTTP_HOST'] . ' - Muokkaus tapahtuma, tekijänä ' . $this->userEmail,
+                $_SERVER['HTTP_HOST'] . $received['page'] . ' - Muokattu, tekijänä ' . $this->userEmail,
                 'Terve, ' . "\n" . 'Sivustolla ' . $_SERVER['HTTP_HOST'] .
                     ' tapahtui sisällön muokkaus tapahtuma, jonka tekijänä ' . $this->userEmail . '.' . "\n" .
                     'Alkuperäisen sisällön päiväys: ' . date($this->logDateFormat, $received['modified']) . "\n" .

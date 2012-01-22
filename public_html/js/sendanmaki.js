@@ -162,6 +162,7 @@ var sendanmaki = {
             if (sendanmaki.editMode) {
                 // handle hover via css...
                 $('article').addClass('editmode');
+                $('a[href="#contribute"]').addClass('editmode');
             }
 			/*
             $('.editmode > *:not(.mediathumb, .imagelist)').live('mouseover', function() {
@@ -188,18 +189,20 @@ var sendanmaki = {
      * Edit mode toggle. Shall be called only when logged in.
      */
     editModeToggle: function() {
-        var elemName = 'article';
+        var $e = $('article');
+		var $a = $('a[href="#contribute"]');
         var className = 'editmode';
         if (sendanmaki.editMode) {
-            $(elemName).removeClass(className);
+            $e.removeClass(className);
+            $a.removeClass(className);
             sendanmaki.editMode = 0;
         }
         else {
-            $(elemName).addClass(className);
+            $e.addClass(className);
+            $a.addClass(className);
             sendanmaki.editMode = 1;
         }
         localStorage.setItem('editMode', sendanmaki.editMode);
-        //$('a[href="#contribute"]').
     },
     
     /**
@@ -216,6 +219,7 @@ var sendanmaki = {
             onComplete: function() {
                 var origClose = $.colorbox.close;
                 $.colorbox.close = function() {
+					// TODO: check for content modification
                     var response = confirm('Haluatko varmasti sulkea tämän mahdollisesti muokatun tekstin?');
 					if (!response) {
 						return false;
@@ -270,16 +274,28 @@ var sendanmaki = {
 
     /**
      * Callback for submitting the contribution form.
+	 * It will insert the edited content to article.
      */
     submitEditForm: function($form) {
+		var $a = $('article').clone();
+		// replace .mediathumb parts by [|]
+		$a.children('.mediathumb').replaceWith(function() {
+			return '[' + $(this).data('key') + ']';
+		});
+		var orig = $a.html(); // string
+		// https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String/replace
+		var edited = orig.replace($form.data('original'), $form.children('textarea[name="content"]').val());  
         var data = {
             lang: sendanmaki.lang,
             page: location.pathname,
-            content: $form.children('textarea[name="content"]').text(),
-            original: $form.data('original'),
+            content: edited,
             modified: sendanmaki.dataModified
         };
 		console.dir(data);
+		
+		// Update the page
+		var article = $('article').html();
+		$('article').html(article.replace($form.data('original'), $form.children('textarea[name="content"]').val()));
 		
 		// disable send button
 		$('input[type="submit"]').attr('disabled', 'disabled');
@@ -288,8 +304,6 @@ var sendanmaki = {
         $form.addClass('ajax-ongoing');
         
         $.post($form.attr('action'), data, function(received, status){
-            console.log('status' + status);
-            console.dir(received);
 			$form.removeClass('ajax-ongoing');
 			
             var style;
@@ -307,11 +321,11 @@ var sendanmaki = {
                 }, 2 * 1000);
             }
             else {
-                style = 'unsure';
+                style = 'ajax-unsure';
             }
             
-            // Animate or just set.
             $form.addClass(style);
+			$('input[type="submit"]').attr('disabled', null);
         }, 'json');
     },
 
@@ -325,14 +339,11 @@ var sendanmaki = {
             page: location.pathname,
             identifier: $('input[name="identifier"]').val()
         };
-        console.log('about to submit login form');
-        console.dir(data);
         
         $form.addClass('ajax-ongoing');
 
         // This will be redirected to the OpenID provider site
         $.post($form.attr('action'), data, function(received, status) {
-            console.log('status' + status);
             console.dir(received);
             if (status == 'success' && received.answer) {
                 location.href = received.answer;
@@ -368,7 +379,6 @@ var sendanmaki = {
      */
     showAppMessage: function(msg) {
         var text = $('#logo').data(msg);
-        console.log('showAppMessage. msg: ' + msg + ', text: ' + text);
         if (typeof text !== 'undefined') {
 			// Show colorbox
 			$.colorbox({

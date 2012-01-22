@@ -599,6 +599,7 @@ class ShikakeOjiPage
         */
     
         $collected = array(
+			'id' => $photo['id'],
             'title' => $photo['title']['_content'],
             'description' => '',
             //taken 2011-06-09 20:10:17
@@ -705,6 +706,7 @@ class ShikakeOjiPage
             
             // Z in the date-time stands for Coordinated Universal Time (UTC)
             $collected = array(
+				'id' => $matches['1'],
                 'thumbs' => $thumbs,
                 'title' => $data['entry']['title']['$t'],
                 'description' => '',
@@ -759,6 +761,7 @@ class ShikakeOjiPage
             */
 
             $collected = array(
+				'id' => $matches['1'],
                 'thumbs' => array(array(
                     'url' => $data['thumbnail_medium'],
                     'width' => 200,
@@ -785,6 +788,7 @@ class ShikakeOjiPage
     /**
      * Create the "mediathumb" paragraph with the given data.
      * $data = array(
+	 *   'id' => '2352525252',
      *   'thumbs' => array(
      *     array(
      *       'url' => $data['thumbnail_medium'],
@@ -807,7 +811,7 @@ class ShikakeOjiPage
      */
     private function createMediathumb($data, $service)
     {
-        $out = '<p class="mediathumb">';
+        $out = '<p class="mediathumb" data-key="' . $service . '|' . $data['id'] . '">';
 
         $out .= '<a class="' . $service . '" href="' . $data['href'] . '" data-url="' .
             $data['inline'] . '" title="' . $data['title'] . '"';
