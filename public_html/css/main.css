@@ -235,10 +235,10 @@ form.ajax-ongoing {
 	background-color: #95D2F1;
 }
 form.ajax-failure {
-	background-color: #F15A3C;
+	background-color: #f01854;
 }
 form.ajax-success {
-	background-color: #59D56A;
+	background-color: #1fbd33;
 }
 form.ajax-unsure {
 	background-color: #FAF554;
@@ -360,10 +360,10 @@ label {
 	overflow: visible;
 }
 .loginfailure {
-    background-image: url(../img/mobile-logo.png);
+    background-image: url(../img/logo-red-57x57.png);
 }
 .loginsuccess {
-    background-image: url(../img/mobile-logo.png);
+    background-image: url(../img/logo-green-57x57.png);
 }
 
 
