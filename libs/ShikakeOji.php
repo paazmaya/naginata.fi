@@ -140,11 +140,13 @@ class ShikakeOji
      * check for compression support of the client.
 	 * If loading fails, the process is not continued.
      */
-    function __construct($jsonpath)
+    function __construct($dataPath, $configPath)
     {
+		$this->loadConfig($configPath);
+		
         $this->checkSession();
 
-        $this->dataPath = $jsonpath;
+        $this->dataPath = $dataPath;
         $this->loadData();
 
         if (isset($_SERVER['HTTP_ACCEPT_ENCODING']) && strpos($_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip') !== false)
@@ -154,95 +156,6 @@ class ShikakeOji
         }
 		
 		$this->output = new ShikakeOjiPage($this);
-    }
-
-    /**
-     * Load the given JSON configuration file.
-     * If it contains database connection values, connection will be open.
-     */
-    public function loadConfig($configPath)
-    {
-        if (!file_exists($configPath))
-        {
-            return false;
-        }
-        $this->config = json_decode(file_get_contents($configPath), true);
-
-        $error = $this->getJsonError();
-        if ($error != '')
-        {
-            header('Content-type: text/plain');
-            header('X-Failure-type: config');
-            echo $error;
-            exit();
-        }
-        
-        // PDO database connection if the settings are set.
-        if (isset($this->config['database']) && isset($this->config['database']['type']) &&
-            in_array($this->config['database']['type'], PDO::getAvailableDrivers()))
-        {
-            $attr = array();
-            $dsn = $this->config['database']['type'] . ':';
-            if ($this->config['database']['type'] != 'sqlite')
-            {
-                $dsn .= 'dbname=' . $this->config['database']['database'] . ';host=' . $this->config['database']['address'];
-                $attr[PDO::MYSQL_ATTR_INIT_COMMAND] = 'SET NAMES utf8';
-            }
-            else
-            {
-                $dir = dirname($configPath);
-                $dsn .= realpath($dir . '/' . $this->config['database']['address']);
-            }
-
-
-            $this->database = new PDO($dsn, $this->config['database']['username'],
-                $this->config['database']['password'], $attr);
-
-            $this->database->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
-            $this->database->setAttribute(PDO::ATTR_ORACLE_NULLS, PDO::NULL_TO_STRING);
-            $this->database->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
-        }
-    }
-
-    /**
-     * Check for all session variables and restart session if needed.
-     * Session should not be started elsewhere.
-     */
-    public function checkSession()
-    {
-        session_name('SOFI');
-        session_start();
-
-        $id = sha1($_SERVER['REMOTE_ADDR'] . $_SERVER['HTTP_USER_AGENT']);
-
-        if (!isset($_SESSION['id']) || $_SESSION['id'] != $id)
-        {
-            session_regenerate_id(); // updates the cookie if there is one
-			
-            // Must match the sha1 of REMOTE_ADDR and HTTP_USER_AGENT
-            $_SESSION['id'] = $id;
-            // Must found from the "users" list if not empty. If empty, not logged in.
-            $_SESSION['email'] = '';
-            // When was the current session initiated? This is mainly intesting to see the true lifetime.
-            $_SESSION['init'] = time();
-        }
-
-        if ($_SESSION['email'] != '' && 
-            ($this->isEmailAdministrator($_SESSION['email']) || $this->isEmailContributor($_SESSION['email']))
-        )
-        {
-            $this->isLoggedIn = true;
-            $this->userEmail = $_SESSION['email'];
-        }
-		
-		$log = date('Y-m-d H:i:s') . ' REMOTE_ADDR: ' . $_SERVER['REMOTE_ADDR'] . "\n\t" .
-				'REQUEST_URI : ' . $_SERVER['REQUEST_URI'] . "\n\t" .
-				'HTTP_USER_AGENT: ' . $_SERVER['HTTP_USER_AGENT'] . "\n\t" .
-				'$id: ' . $id . "\n\t" .
-				'$_SESSION[email]: ' . $_SESSION['email'] . "\n\t" .
-				'$_SESSION[id]: ' . $_SESSION['id'] . "\n";
-				
-		file_put_contents('../session-checker.log', $log, FILE_APPEND);
     }
 
     /**
@@ -357,6 +270,96 @@ class ShikakeOji
             header('Content-Language: ' . $this->language);
             header('Last-modified: ' . date('r', $this->dataModified));
             return $this->output->renderHtml($this->appData);
+        }
+    }
+
+    /**
+     * Check for all session variables and restart session if needed.
+     * Session should not be started elsewhere.
+     */
+    private function checkSession()
+    {
+        session_name('SOFI');
+        session_start();
+
+        $sid = sha1($_SERVER['REMOTE_ADDR'] . $_SERVER['HTTP_USER_AGENT']);
+
+        if (!isset($_SESSION['sid']) || $_SESSION['sid'] != $sid || !isset($_SESSION['email']) || !isset($_SESSION['init']))
+        {
+            session_regenerate_id(); // updates the cookie if there is one
+			
+            // Must match the sha1 of REMOTE_ADDR and HTTP_USER_AGENT
+            $_SESSION['sid'] = $sid;
+            // Must found from the "users" list if not empty. If empty, not logged in.
+            $_SESSION['email'] = '';
+            // When was the current session initiated? This is mainly intesting to see the true lifetime.
+            $_SESSION['init'] = time();
+        }
+
+        if ($_SESSION['email'] != '' //&& 
+            //($this->isEmailAdministrator($_SESSION['email']) || $this->isEmailContributor($_SESSION['email']))
+        )
+        {
+            $this->isLoggedIn = true;
+            $this->userEmail = $_SESSION['email'];
+        }
+		/*
+		$log = date('Y-m-d H:i:s') . ' REMOTE_ADDR: ' . $_SERVER['REMOTE_ADDR'] . "\n\t" .
+				'REQUEST_URI : ' . $_SERVER['REQUEST_URI'] . "\n\t" .
+				'HTTP_USER_AGENT: ' . $_SERVER['HTTP_USER_AGENT'] . "\n\t" .
+				'$sid: ' . $sid . "\n\t" .
+				'$_SESSION[email]: ' . $_SESSION['email'] . "\n\t" .
+				'$_SESSION[sid]: ' . $_SESSION['sid'] . "\n";
+				
+		file_put_contents('../session-checker.log', $log, FILE_APPEND);
+		*/
+    }
+
+    /**
+     * Load the given JSON configuration file.
+     * If it contains database connection values, connection will be open.
+     */
+    private function loadConfig($configPath)
+    {
+        if (!file_exists($configPath))
+        {
+            return false;
+        }
+        $this->config = json_decode(file_get_contents($configPath), true);
+
+        $error = $this->getJsonError();
+        if ($error != '')
+        {
+            header('Content-type: text/plain');
+            header('X-Failure-type: config');
+            echo $error;
+            exit();
+        }
+        
+        // PDO database connection if the settings are set.
+        if (isset($this->config['database']) && isset($this->config['database']['type']) &&
+            in_array($this->config['database']['type'], PDO::getAvailableDrivers()))
+        {
+            $attr = array();
+            $dsn = $this->config['database']['type'] . ':';
+            if ($this->config['database']['type'] != 'sqlite')
+            {
+                $dsn .= 'dbname=' . $this->config['database']['database'] . ';host=' . $this->config['database']['address'];
+                $attr[PDO::MYSQL_ATTR_INIT_COMMAND] = 'SET NAMES utf8';
+            }
+            else
+            {
+                $dir = dirname($configPath);
+                $dsn .= realpath($dir . '/' . $this->config['database']['address']);
+            }
+
+
+            $this->database = new PDO($dsn, $this->config['database']['username'],
+                $this->config['database']['password'], $attr);
+
+            $this->database->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
+            $this->database->setAttribute(PDO::ATTR_ORACLE_NULLS, PDO::NULL_TO_STRING);
+            $this->database->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
         }
     }
 
@@ -582,10 +585,10 @@ class ShikakeOji
 
                 // Show a message of the login state
                 // Set a temporary session variable. Once it is found, it will be removed
-                $_SESSION['msg-login-success'] = $this->isLoggedIn;
+                $_SESSION['msg-login-success'] = (bool) $this->isLoggedIn;
 				
 				// Build the mail message for site owner
-                $mailBody = '';
+                $mailBody = 'OpenID was validated: ' . $openid->validate() . "\n\n";
                 $mailBody .= 'Attributes:' . "\n";
                 foreach($attr as $k => $v)
                 {
@@ -601,7 +604,7 @@ class ShikakeOji
                 $this->sendEmail(
                     $this->config['email']['address'],
                     $this->config['email']['name'],
-                    $_SERVER['HTTP_HOST'] . ' - Kirjautumis tapahtuma',
+                    $_SERVER['HTTP_HOST'] . ' - Kirjautumis tapahtuma, käyttäjä ' . $attr['contact/email'],
                     'Terve, ' . "\n" . 'Sivustolla ' . $_SERVER['HTTP_HOST'] . ' tapahtui OpenID kirjautumis tapahtuma.' . "\n\n" . $mailBody
                 );
 

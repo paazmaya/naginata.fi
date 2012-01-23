@@ -8,8 +8,6 @@
  * A class for outputting HTML5 stuff.
  * Let's see how many times the buzzword HTML5 can be repeated.
  *
- * http://blog.thenounproject.com/post/7310229014/how-to-properly-attribute-cc-by-a-guest-blog-post-by
- *
  * Usage:
  *  $shih = new ShikakeOjiPage();
  *  echo $shih->renderHtml($applicationData);
@@ -395,13 +393,7 @@ class ShikakeOjiPage
 
                 if (is_array($article))
                 {
-                    // There might be specific sections defined...
-                    /*
-                        <p>Ensimmäiset viittaukset naginataan löytyvät Kojikista, vanhimmasta säilyneestä Japanin historiasta kertovasta kirjasta,
-                        jossa sana ”naginata” esiintyy ensimmäisen kerran. Nara-kaudella sen ottivat käyttöön sōhei-soturipapit ja ensimmäiset
-                        naginatan käytöstä taistelussa (naginatajutsu) kertovat tekstit löytyvät vuonna 1086 kirjoitetussa kirjassa Oshu Gosannenki (”Päiväkirja kolmesta vuodesta Oshussa”).</p>
-                    </header>
-                    */
+                    // TODO: There might be specific sections defined...
                 }
                 else
                 {

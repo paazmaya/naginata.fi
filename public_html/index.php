@@ -29,12 +29,14 @@ ini_set('session.hash_function', 1); // default 0 = md5, 1 = sha1
 
 require '../libs/ShikakeOji.php';
 
-$shio = new ShikakeOji(realpath('../naginata-data.json'));
+$shio = new ShikakeOji(
+	realpath('../naginata-data.json'),
+	realpath('../naginata-config.json')
+);
 
 $shio->removeWwwRedirect();
 $shio->output->useMinification = true;
 $shio->output->useTidy = false;
-$shio->loadConfig(realpath('../naginata-config.json'));
 
 $shio->checkRequestedLanguage();
 $shio->checkRequestedPage();

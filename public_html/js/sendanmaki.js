@@ -126,17 +126,11 @@ var sendanmaki = {
         });
 
         // Logged in can most likely edit content, thus AJAX.
-        $('#colorbox form').live('submit', function() {
+        $('#colorbox form.edit').live('submit', function() {
             if (sendanmaki.isLoggedIn) {
                 sendanmaki.submitEditForm($(this));
                 return false;
             }
-			$(this).submit();
-            /*
-            else {
-                sendanmaki.submitLoginForm($(this));
-            }
-            */
         });
 
         // Close colorbox if opened as modal
@@ -335,32 +329,6 @@ var sendanmaki = {
 			$('input[type="submit"]').attr('disabled', null);
         }, 'json');
     },
-
-    /**
-     * Submit the OpenID login form to our backend that will redirect to the 
-     * OpenID providers web site.
-     */
-    /*
-    submitLoginForm: function($form) {
-        var data = {
-            lang: 'fi',
-            page: location.pathname,
-            identifier: $('input[name="identifier"]').val()
-        };
-        
-        // TODO: pehaps this would work faster if not AJAX
-        
-        $form.addClass('ajax-ongoing');
-
-        // This will be redirected to the OpenID provider site
-        $.post($form.attr('action'), data, function(received, status) {
-            console.dir(received);
-            if (status == 'success' && received.answer) {
-                location.href = received.answer;
-            }
-        }, 'json');
-    },
-    */
 
     /**
      * Callback for a click on the #contribute link located in the footer.
