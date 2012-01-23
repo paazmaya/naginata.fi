@@ -186,13 +186,16 @@ header p {
 
 article ul, article ol {
     list-style-position: outside;
-    padding-left: 2em;
+    padding-left: 3em;
 }
 article ul {
     list-style-type: disc;
 }
 article ol {
-    list-style-type: cjk-ideographic;
+    list-style-type: decimal;
+}
+article li {
+    padding-left: 0.3em;
 }
 
 article img {
@@ -272,8 +275,10 @@ label {
 }
 .mediathumb:nth-child(even) {
     float: right;
+    margin-left: 2em;
 }
 .mediathumb:nth-child(odd) {
+    margin-right: 2em;
 }
 .mediathumb span {
     display: block;
