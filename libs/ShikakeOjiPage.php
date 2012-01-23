@@ -16,23 +16,6 @@
  */
 class ShikakeOjiPage
 {
-
-    /**
-     * Configuration for Emails sending, 3rd party API keys, etc.
-     * See "naginata-config.json.dist" for possible keys.
-     */
-    public $config;
-
-    /**
-     * Same as ShikakeOji::currentPage for content pages
-     */
-    public $url = '/';
-
-    /**
-     * Same as ShikakeOji::language
-     */
-    public $language = 'fi';
-
     /**
      * List of Cascaded Style Sheet files.
      * Should be relative to public_html/css/
@@ -63,18 +46,6 @@ class ShikakeOjiPage
     public $useTidy = false;
 
     /**
-     * Is the user logged in?
-     * If true, then the userEmail should be one found in the "users" section of App data.
-     */
-    public $isLoggedIn = false;
-
-    /**
-     * Email address of the current user, if any.
-     * Be careful, this is used with "isLoggedIn" to validate the user.
-     */
-    public $userEmail = '';
-
-    /**
      * Shall the JS and CSS files minification be done?
      */
     public $useMinification = true;
@@ -100,11 +71,6 @@ class ShikakeOjiPage
     public $curlLog = '../naginata-curl.log';
 
     /**
-     * The format used with "date()" while writing a log entry.
-     */
-    public $logDateFormat = 'Y-m-d H:i:s';
-
-    /**
      * Cache directory
      */
     public $cacheDir = '../cache/';
@@ -125,12 +91,25 @@ class ShikakeOjiPage
         'youtube' => 'renderYoutube',
         'vimeo' => 'renderVimeo'
     );
+	
+	/**
+	 * Instance of a ShikakeOji class.
+	 */
+	private $shikakeOji;
 
     /**
      * Constructor does not do much.
      */
-    function __construct()
+    function __construct($shikakeOji)
     {
+		if (!isset($shikakeOji) || !is_object($shikakeOji))
+		{
+			return false;
+		}
+		
+		// Must be defined in order to access data and config.
+		$this->shikakeOji = $shikakeOji;
+		
         // Calculate interval time for 2 week of seconds.
         $this->cacheInterval = (60 * 60 * 24 * 7 * 2);
     }
@@ -140,6 +119,9 @@ class ShikakeOjiPage
      */
     public function renderHtml($data)
     {
+		require $this->shikakeOji->libPath . '/minify/Minify/JS/ClosureCompiler.php';
+		require $this->shikakeOji->libPath . '/minify/Minify/CSS/Compressor.php';
+		
         $out = $this->createHtmlPage($data);
 
         if ($this->useTidy && extension_loaded('tidy'))
@@ -297,9 +279,9 @@ class ShikakeOjiPage
     private function createHtmlPage($data)
     {
         $head;
-        foreach($data['navigation'][$this->language] as $list)
+        foreach($data['navigation'][$this->shikakeOji->language] as $list)
         {
-            if ($this->url == $list['url'])
+            if ($this->shikakeOji->currentPage == $list['url'])
             {
                 $head = $list;
                 break;
@@ -312,17 +294,17 @@ class ShikakeOjiPage
 
         // None of the OGP items validate, as well as using prefix in html element...
         $out = '<!DOCTYPE html>';
-        $out .= '<html lang="' . $this->language . '" prefix="og:http://ogp.me/ns#">'; // http://dev.w3.org/html5/rdfa/
+        $out .= '<html lang="' . $this->shikakeOji->language . '" prefix="og:http://ogp.me/ns#">'; // http://dev.w3.org/html5/rdfa/
         $out .= '<head>';
         $out .= '<meta charset="utf-8"/>';
-        $out .= '<title>' . $head['header'] . ' | ' . $data['title'][$this->language] . '</title>';
+        $out .= '<title>' . $head['header'] . ' | ' . $data['title'][$this->shikakeOji->language] . '</title>';
         $out .= '<meta name="description" property="og:description" content="' . $head['description'] . '"/>';
 
         // http://ogp.me/
         $out .= '<meta property="og:title" content="' . $head['title'] . '"/>';
         $out .= '<meta property="og:type" content="sports_team"/>';
         $out .= '<meta property="og:image" content="http://' . $_SERVER['HTTP_HOST'] . '/img/logo.png"/>';
-        $out .= '<meta property="og:url" content="http://' . $_SERVER['HTTP_HOST'] . $this->url . '"/>';
+        $out .= '<meta property="og:url" content="http://' . $_SERVER['HTTP_HOST'] . $this->shikakeOji->currentPage . '"/>';
         $out .= '<meta property="og:site_name" content="' . $head['title'] . '"/>';
         $out .= '<meta property="og:locale" content="fi_FI"/>'; // language_TERRITORY
         $out .= '<meta property="og:locale:alternate" content="en_GB"/>';
@@ -331,8 +313,8 @@ class ShikakeOjiPage
         $out .= '<meta property="og:country-name" content="Finland"/>';
 
         // https://developers.facebook.com/docs/opengraph/
-        $out .= '<meta property="fb:app_id" content="' . $this->config['facebook']['app_id'] . '"/>'; // A Facebook Platform application ID that administers this page.
-        $out .= '<meta property="fb:admins" content="' . $this->config['facebook']['admins'] . '"/>';
+        $out .= '<meta property="fb:app_id" content="' . $this->shikakeOji->config['facebook']['app_id'] . '"/>'; // A Facebook Platform application ID that administers this page.
+        $out .= '<meta property="fb:admins" content="' . $this->shikakeOji->config['facebook']['admins'] . '"/>';
 
         // http://microformats.org/wiki/rel-license
         $out .= '<link rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/"/>';
@@ -364,11 +346,11 @@ class ShikakeOjiPage
         $out .= '<body>';
 
         $out .= '<nav><ul>';
-        foreach ($data['navigation'][$this->language] as $item)
+        foreach ($data['navigation'][$this->shikakeOji->language] as $item)
         {
             // ["/naginata", "Atarashii Naginatado", "Naginata"],
             $out .= '<li';
-            if ($this->url == $item['url'])
+            if ($this->shikakeOji->currentPage == $item['url'])
             {
                 $out .= ' class="current"';
             }
@@ -390,12 +372,12 @@ class ShikakeOjiPage
         $out .= '>';
         
         // should be only two words
-        $out .= '<p>' . $data['title'][$this->language] . '</p>';
+        $out .= '<p>' . $data['title'][$this->shikakeOji->language] . '</p>';
         $out .= '</div>';
 
 
         // Now check the page
-        if (!isset($data['article'][$this->language][$this->url]))
+        if (!isset($data['article'][$this->shikakeOji->language][$this->shikakeOji->currentPage]))
         {
             return '<p class="fail">Article data for this page missing</p>';
         }
@@ -405,9 +387,9 @@ class ShikakeOjiPage
         $out .= '<p rel="description">' . $head['description'] . '</p>';
         $out .= '</header>';
 
-        if (is_array($data['article'][$this->language][$this->url]))
+        if (is_array($data['article'][$this->shikakeOji->language][$this->shikakeOji->currentPage]))
         {
-            foreach($data['article'][$this->language][$this->url] as $article)
+            foreach($data['article'][$this->shikakeOji->language][$this->shikakeOji->currentPage] as $article)
             {
                 $out .= '<article>';
 
@@ -434,11 +416,13 @@ class ShikakeOjiPage
 
 
         // Comes out as $('footer).data('isLoggedIn') == '1'
-        $out .= '<footer data-is-logged-in="' . ($this->isLoggedIn ? 1 : 0) . '" data-user-email="' . $this->userEmail . '" data-data-modified="' . $this->dataModified . '">';
+        $out .= '<footer data-is-logged-in="' . ($this->shikakeOji->isLoggedIn ? 1 : 0) .
+			'" data-user-email="' . $this->shikakeOji->userEmail . '" data-data-modified="' .
+			$this->shikakeOji->dataModified . '">';
         $out .= '<p>';
     
         $links = array();
-        foreach ($data['footer'][$this->language] as $item)
+        foreach ($data['footer'][$this->shikakeOji->language] as $item)
         {
             // ["http://paazmaya.com", "PAAZMAYA.com", "&copy; Jukka Paasonen"]
             $links[] = '<a href="' . $item['0'] . '" title="' . $item['1'] . '">' . $item['2'] . '</a>';
@@ -499,7 +483,7 @@ class ShikakeOjiPage
         $out = '';
 
         $params = array(
-            'api_key' => $this->config['flickr']['apikey'],
+            'api_key' => $this->shikakeOji->config['flickr']['apikey'],
             'format' => 'json', // Always using JSON
             'nojsoncallback' => 1,
             'method' => 'flickr.photos.search'
@@ -921,7 +905,7 @@ class ShikakeOjiPage
             CURLOPT_FAILONERROR => true,
             CURLOPT_STDERR => $fh,
             CURLOPT_VERBOSE => true,
-            CURLOPT_REFERER => 'http://naginata.fi' . $this->url
+            CURLOPT_REFERER => 'http://naginata.fi' . $this->shikakeOji->currentPage
         ));
 
         //curl_setopt($ch, CURLOPT_ENCODING, 'gzip');
@@ -930,7 +914,7 @@ class ShikakeOjiPage
         $results = curl_exec($ch);
         $headers = curl_getinfo($ch);
 
-        $log = date($this->logDateFormat) . ' url: ' . $headers['url'] . ', content_type: ' .
+        $log = date($this->shikakeOji->logDateFormat) . ' url: ' . $headers['url'] . ', content_type: ' .
             $headers['content_type'] . ', size_download: ' . $headers['size_download'] .
             ' bytes, speed_download: ' . $headers['speed_download'] . "\n";
         fwrite($fh, $log);
@@ -999,7 +983,7 @@ class ShikakeOjiPage
 
         $alldata = implode("\n\n", $data);
         $bytecount = file_put_contents($outfile, $alldata);
-        $log[] = date($this->logDateFormat) . ' outfile: ' . $outfile . ', size: ' . $bytecount;
+        $log[] = date($this->shikakeOji->logDateFormat) . ' outfile: ' . $outfile . ', size: ' . $bytecount;
 
         if ($bytecount !== false)
         {
@@ -1007,7 +991,7 @@ class ShikakeOjiPage
             gzwrite($gz, $alldata);
             gzclose($gz);
             $wrote = true;
-            $log[] = date($this->logDateFormat) . ' outfilegz: ' . $outfilegz . ', size: ' . filesize($outfilegz);
+            $log[] = date($this->shikakeOji->logDateFormat) . ' outfilegz: ' . $outfilegz . ', size: ' . filesize($outfilegz);
         }
 
         file_put_contents($this->minifyLog, implode("\n", $log) . "\n", FILE_APPEND);
@@ -1066,7 +1050,7 @@ class ShikakeOjiPage
                 $destination = $base . implode('.', $p);
             }
 
-            $log[] = date($this->logDateFormat) . ' source: ' . $source . ', size: ' . filesize($source);
+            $log[] = date($this->shikakeOji->logDateFormat) . ' source: ' . $source . ', size: ' . filesize($source);
 
             $minified = '';
             if (file_exists($destination))
@@ -1091,7 +1075,7 @@ class ShikakeOjiPage
                     }
                     catch (Exception $error)
                     {
-                        $log[] = date($this->logDateFormat) . ' ERROR: ' . $error->getMessage() . ' while JS source: ' . $source;
+                        $log[] = date($this->shikakeOji->logDateFormat) . ' ERROR: ' . $error->getMessage() . ' while JS source: ' . $source;
                         $failed = true;
                     }
                 }
@@ -1103,7 +1087,7 @@ class ShikakeOjiPage
                     }
                     catch (Exception $error)
                     {
-                        $log[] = date($this->logDateFormat) . ' ERROR: ' . $error->getMessage() . ' while CSS source: ' . $source;
+                        $log[] = date($this->shikakeOji->logDateFormat) . ' ERROR: ' . $error->getMessage() . ' while CSS source: ' . $source;
                         $failed = true;
                     }
                 }
@@ -1111,7 +1095,7 @@ class ShikakeOjiPage
                 if (!$failed)
                 {
                     file_put_contents($destination, $minified);
-                    $log[] = date($this->logDateFormat) . ' destination: ' . $destination . ', size: ' . filesize($destination);
+                    $log[] = date($this->shikakeOji->logDateFormat) . ' destination: ' . $destination . ', size: ' . filesize($destination);
                 }
             }
         }

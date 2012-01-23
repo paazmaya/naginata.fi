@@ -89,6 +89,23 @@ class ShikakeOji
     public $openidLog = '../naginata-openid.log';
 
     /**
+     * Is the user logged in?
+     * If true, then the userEmail should be one found in the "users" section of App data.
+     */
+    public $isLoggedIn = false;
+
+    /**
+     * Email address of the current user, if any.
+     * Be careful, this is used with "isLoggedIn" to validate the user.
+     */
+    public $userEmail = '';
+
+    /**
+     * Library path, which is used to find the other libraries included.
+     */
+    public $libPath = __DIR__;
+
+    /**
      * Client supports compression?
      * This is checked and set in constructor.
      */
@@ -101,27 +118,10 @@ class ShikakeOji
     private $isInternalPage = false;
 
     /**
-     * Is the user logged in?
-     * If true, then the userEmail should be one found in the "users" section of App data.
-     */
-    private $isLoggedIn = false;
-
-    /**
-     * Email address of the current user, if any.
-     * Be careful, this is used with "isLoggedIn" to validate the user.
-     */
-    private $userEmail = '';
-
-    /**
      * PDO connected database connection, mainly for storing Modernizr stats
      * http://php.net/pdo
      */
     private $database;
-
-    /**
-     * Library path, which is used to find the other libraries included.
-     */
-    private $libPath = __DIR__;
 
     /**
      * URLs used by the application, not for showing content.
@@ -144,8 +144,6 @@ class ShikakeOji
     {
         $this->checkSession();
 
-        $this->output = new ShikakeOjiPage();
-
         $this->dataPath = $jsonpath;
         $this->loadData();
 
@@ -154,6 +152,8 @@ class ShikakeOji
             $this->isCompressionSupported = true;
             //$this->minifiedName .= 'gz.'; // It might conflict with what Apache is delivering already compressed
         }
+		
+		$this->output = new ShikakeOjiPage($this);
     }
 
     /**
@@ -353,19 +353,6 @@ class ShikakeOji
         }
         else
         {
-            require $this->libPath . '/minify/Minify/JS/ClosureCompiler.php';
-            require $this->libPath . '/minify/Minify/CSS/Compressor.php';
-
-            // Set all the matching properties
-            // TODO: Clean, better way?
-            $this->output->isLoggedIn = $this->isLoggedIn;
-            $this->output->userEmail = $this->userEmail;
-            $this->output->dataModified = $this->dataModified;
-            $this->output->logDateFormat = $this->logDateFormat;
-            $this->output->config = $this->config;
-            $this->output->url = $this->currentPage;
-            $this->output->language = $this->language;
-
             header('Content-type: text/html; charset=utf-8');
             header('Content-Language: ' . $this->language);
             header('Last-modified: ' . date('r', $this->dataModified));
