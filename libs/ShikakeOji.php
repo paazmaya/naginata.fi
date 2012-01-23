@@ -605,7 +605,7 @@ class ShikakeOji
                     'Terve, ' . "\n" . 'Sivustolla ' . $_SERVER['HTTP_HOST'] . ' tapahtui OpenID kirjautumis tapahtuma.' . "\n\n" . $mailBody
                 );
 
-
+                // TODO: check that this is valid page url
                 // page parameter was sent initially from our site, land back to that page.
                 if (isset($_GET['page']) && $_GET['page'] != '')
                 {
@@ -623,6 +623,9 @@ class ShikakeOji
             {
                 return false;
             }
+            
+            // TODO: Check that this email address is in the list of users.
+            
             if (strpos($id, '@gmail.com') !== false)
             {
                 $id = 'https://www.google.com/accounts/o8/id';
@@ -638,7 +641,9 @@ class ShikakeOji
             $log = date($this->logDateFormat) . ' [' . $_SERVER['REMOTE_ADDR'] . '] ' . $id . ' ' . implode("\n\t\t" . '&', explode('&', $authUrl)) . "\n";
             file_put_contents($this->openidLog, $log, FILE_APPEND);
 
-            return $authUrl;
+            //return $authUrl; 
+            header('Location: ' . $authUrl); // no longer AJAX for this submission.
+            exit();
         }
         else
         {

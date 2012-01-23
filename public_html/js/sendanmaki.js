@@ -129,11 +129,14 @@ var sendanmaki = {
         $('#colorbox form').live('submit', function() {
             if (sendanmaki.isLoggedIn) {
                 sendanmaki.submitEditForm($(this));
+                return false;
             }
+			$(this).submit();
+            /*
             else {
                 sendanmaki.submitLoginForm($(this));
             }
-            return false;
+            */
         });
 
         // Close colorbox if opened as modal
@@ -212,18 +215,21 @@ var sendanmaki = {
         var html = $e.outerHtml();
         var form = $(sendanmaki.editForm).clone();
         form.data('original', html);
-        form.children('textarea').attr('lang', sendanmaki.lang).text(html);
+        form.children('textarea').attr('lang', sendanmaki.lang).val(html);
         $.colorbox({
             html: form,
             modal: true,
             onComplete: function() {
                 var origClose = $.colorbox.close;
                 $.colorbox.close = function() {
-					// TODO: check for content modification
-                    var response = confirm('Haluatko varmasti sulkea tämän mahdollisesti muokatun tekstin?');
-					if (!response) {
-						return false;
-					}
+                    // but this check now anyhow the initial values...
+                    if (form.data('original') != form.children('textarea').val())
+                    {
+                        var response = confirm('Haluatko varmasti sulkea tämän mahdollisesti muokatun tekstin?');
+                        if (!response) {
+                            return false;
+                        }
+                    }
                     origClose();
                 };
             }
@@ -277,12 +283,13 @@ var sendanmaki = {
 	 * It will insert the edited content to article.
      */
     submitEditForm: function($form) {
-		var $a = $('article').clone();
+		var $a = $('article');
+        var $c = $a.clone();
 		// replace .mediathumb parts by [|]
-		$a.children('.mediathumb').replaceWith(function() {
-			return '[' + $(this).data('key') + ']';
+		$c.children('.mediathumb').replaceWith(function() {
+			return "\n" + '[' + $(this).data('key') + ']' + "\n";
 		});
-		var orig = $a.html(); // string
+		var orig = $c.html(); // string
 		// https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String/replace
 		var edited = orig.replace($form.data('original'), $form.children('textarea[name="content"]').val());  
         var data = {
@@ -294,7 +301,7 @@ var sendanmaki = {
 		console.dir(data);
 		
 		// Update the page
-		var article = $('article').html();
+		var article = $a.html();
 		$('article').html(article.replace($form.data('original'), $form.children('textarea[name="content"]').val()));
 		
 		// disable send button
@@ -333,12 +340,15 @@ var sendanmaki = {
      * Submit the OpenID login form to our backend that will redirect to the 
      * OpenID providers web site.
      */
+    /*
     submitLoginForm: function($form) {
         var data = {
             lang: 'fi',
             page: location.pathname,
             identifier: $('input[name="identifier"]').val()
         };
+        
+        // TODO: pehaps this would work faster if not AJAX
         
         $form.addClass('ajax-ongoing');
 
@@ -350,6 +360,7 @@ var sendanmaki = {
             }
         }, 'json');
     },
+    */
 
     /**
      * Callback for a click on the #contribute link located in the footer.
@@ -362,7 +373,9 @@ var sendanmaki = {
             html: sendanmaki.loginForm,
             onComplete: function() {
                 $('input[type="submit"]').attr('disabled', 'disabled');
-                $('input[name="identifier"]').focus().on('change', function() {
+                $('input[type="hidden"][name="lang"]').attr('lang', 'fi');
+                $('input[type="hidden"][name="page"]').attr('page', location.pathname);
+                $('input[name="identifier"]').focus().on('change keyup', function() {
                     var openid = $(this).val();
                     if (openid.search('@') !== -1) { // TODO: fix search regex to valid OpenID
                         $('input[type="submit"]').attr('disabled', null);
@@ -428,6 +441,8 @@ var sendanmaki = {
     loginForm: '<form action="/authenticate-user" method="post" class="login">' +
         '<label>Sähköpostiosoite (OpenID kirjautumista varten)<input type="email" name="identifier" /></label>' +
         '<input type="submit" value="Lähetä" />' +
+        '<input type="hidden" name="lang" value="fi" />' +
+        '<input type="hidden" name="page" value="/" />' +
         '<input type="button" name="close" value="Sulje" />' +
         '</form>'
 };
