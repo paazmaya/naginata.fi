@@ -463,6 +463,10 @@ class ShikakeOjiPage
 
         $out .= '<header>';
         $out .= '<h1>' . $head['header'] . '</h1>';
+		
+		//$json = json_decode('{"hoplaa": "' . $head['description'] . '"}', true);
+        //$out .= '<p rel="description">' . "\n\n" . self::decodeHtml($json['hoplaa']) . "\n\n" . '</p>';
+		
         $out .= '<p rel="description">' . $head['description'] . '</p>';
         $out .= '</header>';
 

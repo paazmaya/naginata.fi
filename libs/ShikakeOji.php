@@ -196,10 +196,6 @@ class ShikakeOji
             // How come, super variable not set?
             return false;
         }
-        if (!isset($this->appData['navigation']))
-        {
-            return false;
-        }
 
         $url = parse_url($_SERVER['REQUEST_URI']); // use as such
 
@@ -216,24 +212,26 @@ class ShikakeOji
         {
             // Content
             $found = false;
-            $data = $this->appData['navigation'];
-            foreach($data as $lang => $nav)
-            {
-                foreach($nav as $item)
-                {
-                    if ($lowercase == $item['url'])
+			
+			$sql = 'SELECT * FROM naginata_page WHERE url = \'' . $lowercase . '\' AND lang = \'' . $this->language . '\'';
+			$run = $this->database->query($sql);
+			if ($run)
+			{
+				while ($res = $run->fetch(PDO::FETCH_ASSOC))
+				{
+                    if ($lowercase == $res['url']) // TODO: this it is of course but later add more logic
                     {
                         $this->currentPage = $lowercase;
                         $found = true;
 
-                        // How about language? just stick to default for now.
-                        if ($item['url'] != '/')
+                        // TODO: How about language? just stick to default for now.
+                        if ($res['url'] != '/')
                         {
                             //$this->language = $lang;
                         }
                     }
-                }
-            }
+				}
+			}
 
             if (!$found)
             {
