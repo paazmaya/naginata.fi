@@ -15,7 +15,10 @@
 // -- Google Analytics for naginata.fi --
 var _gaq = _gaq || [];
 _gaq.push(['_setAccount', 'UA-2643697-14']);
+_gaq.push(['_setSiteSpeedSampleRate', 10]);
 _gaq.push(['_trackPageview']);
+
+// http://code.google.com/apis/analytics/docs/gaJS/gaJSApiBasicConfiguration.html
 
 (function() {
     var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;

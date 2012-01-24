@@ -24,7 +24,7 @@ class ShikakeOji
     /**
      * What is the version of this class?
      */
-    public static $VERSION = '0.8';
+    public static $VERSION = '0.9';
 
     /**
      * Current language, defaults to Finnish.
@@ -38,7 +38,6 @@ class ShikakeOji
 
     /**
      * Should be set to the realpath of the JSON file where app data is stored.
-     * This location is used for storing the moderated versions of the content.
      */
     public $dataPath = '../naginata-data.json';
 
@@ -53,6 +52,13 @@ class ShikakeOji
      * from $this->dataPath.
      */
     public $addData;
+
+    /**
+     * PDO connected database connection.
+     * Page content, moderated content and Modernizr statistics are stored here.
+     * http://php.net/pdo
+     */
+    public $database;
 
     /**
      * Last modification date of the data.
@@ -116,12 +122,6 @@ class ShikakeOji
      * These require user to login via OAuth.
      */
     private $isInternalPage = false;
-
-    /**
-     * PDO connected database connection, mainly for storing Modernizr stats
-     * http://php.net/pdo
-     */
-    private $database;
 
     /**
      * URLs used by the application, not for showing content.
@@ -401,22 +401,6 @@ class ShikakeOji
     }
 
     /**
-     * Save JSON data for moderation in the same location as the original
-     * @return     boolean    True if saving succeeded, else false
-     */
-    private function saveDataModeration()
-    {
-        if ($this->isLoggedIn)
-        {
-            $time = date('Y-m-d_H-i-s');
-            $path = substr($this->dataPath, 0, strrpos($this->dataPath, '.')) . '.' . $time . '.' . $this->userEmail . '.json';
-            $jsonstring = ShikakeOjiPage::jsonPrettyPrint(json_encode($this->appData)); // PHP 5.4 onwards JSON_PRETTY_PRINT
-            return (file_put_contents($path, $jsonstring) !== false);
-        }
-        return false;
-    }
-
-    /**
      * There seems to be a request for updating an article.
      * Checks required data from $_POST and creates a diff.
      * User must be logged in to perform this.
@@ -436,24 +420,28 @@ class ShikakeOji
         {
             return false;
         }
-
-        // In app data, under "article", object named by "lang", has object with "page" is an array.
-        // $this->appData['article'][$this->language][$this->currentPage];
-        if (isset($this->appData['article']) &&
-            isset($this->appData['article'][$received['lang']]) &&
-            isset($this->appData['article'][$received['lang']][$received['page']]) &&
-            is_array($this->appData['article'][$received['lang']][$received['page']]) &&
-            count($this->appData['article'][$received['lang']][$received['page']]) > 0)
+        
+        // Get the id of the page
+        $sql = 'SELECT P.id, A.content FROM naginata_page P LEFT JOIN naginata_article A ' .
+            'ON P.id = A.page_id WHERE P.lang = \'' . $received['lang'] . '\' AND P.url = \'' . 
+            $received['page'] . '\' AND A.published = 1 ORDER BY A.modified DESC LIMIT 1';
+        $run = $this->database->query($sql);
+        if ($run) 
         {
-            // For now just using the first item in the array
-            $current = $this->appData['article'][$received['lang']][$received['page']]['0'];
+            $res = $run->fetch(PDO::FETCH_ASSOC);
 
-            // Save the data in disk for later moderation
-            $this->appData['article'][$received['lang']][$received['page']]['0'] = $received['content'];
-            $isSaved = $this->saveDataModeration();
+            
+            // Insert new revision for moderation
+            $sql = 'INSERT INTO naginata_article (page_id, content, modified, email) VALUES (\'' .
+                $res['id'] . '\', \'' . ShikakeOjiPage::encodeHtml($received['content']) . '\', \'' .
+                time() . '\', \'' . $this->userEmail . '\')';
+            $this->database->query($sql);
+            
+            // $isSaved = affected rows?
+            
 
             // Create diff for sending it via email
-            $a = explode("\n", ShikakeOjiPage::decodeHtml($current));
+            $a = explode("\n", ShikakeOjiPage::decodeHtml($res['content']));
             $b = explode("\n", ShikakeOjiPage::decodeHtml($received['content']));
 
             require $this->libPath . '/php-diff/Diff.php';

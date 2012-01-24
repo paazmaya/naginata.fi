@@ -9,7 +9,8 @@ Technologies
 -------------
  * Apache web server with mod_rewrite (http://httpd.apache.org/)
  * PHP 5.3 (http://www.php.net/)
- * JSON used as a data format for storage (http://www.json.org/)
+ * MySQL database as content storage (http://www.mysql.com/)
+ * JSON used as a data format for configuration (http://www.json.org/)
  * HTML5 for markup (http://developers.whatwg.org/)
  * CSS3 for styling (http://www.css3.info/modules/)
  * Javascript via jQuery for client interaction (http://jquery.com/)
@@ -57,8 +58,8 @@ Other notes
  * Open Graph Protocol, mainly used by Facebook makes "liking" more trackable (http://ogp.me/)
  * Possible contributors and administrators can login via OpenID (https://openid.net/) which is supported via LightOpenID (https://gitorious.org/~paazmaya/lightopenid/paazmayas-lightopenid)
  * Edited content is saved for moderation and diff generated with PHP-Diff (https://github.com/chrisboulton/php-diff) is sent via email (http://phpmailer.worxware.com/)
+ * Speed study (http://blog.chromium.org/2010/07/do-you-know-how-slow-your-web-page-is.html)
  
-
 Configuration file structure
 ----------------------------
 The `naginata-config.json` file is for configuring all API keys, database access, etc. 

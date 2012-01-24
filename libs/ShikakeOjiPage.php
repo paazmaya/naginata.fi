@@ -4,7 +4,7 @@
  ***************
  * Juga Paazmaya <olavic@gmail.com>
  * http://creativecommons.org/licenses/by-sa/3.0/
- * 
+ *
  * A class for outputting HTML5 stuff.
  * Let's see how many times the buzzword HTML5 can be repeated.
  *
@@ -89,7 +89,7 @@ class ShikakeOjiPage
         'youtube' => 'renderYoutube',
         'vimeo' => 'renderVimeo'
     );
-	
+
 	/**
 	 * Instance of a ShikakeOji class.
 	 */
@@ -104,10 +104,10 @@ class ShikakeOjiPage
 		{
 			return false;
 		}
-		
+
 		// Must be defined in order to access data and config.
 		$this->shikakeOji = $shikakeOji;
-		
+
         // Calculate interval time for 2 week of seconds.
         $this->cacheInterval = (60 * 60 * 24 * 7 * 2);
     }
@@ -119,7 +119,7 @@ class ShikakeOjiPage
     {
 		require $this->shikakeOji->libPath . '/minify/Minify/JS/ClosureCompiler.php';
 		require $this->shikakeOji->libPath . '/minify/Minify/CSS/Compressor.php';
-		
+
         $out = $this->createHtmlPage($data);
 
         if ($this->useTidy && extension_loaded('tidy'))
@@ -140,6 +140,87 @@ class ShikakeOjiPage
         {
             return $out;
         }
+    }
+
+    /**
+     * Render the Modernizr statistics table.
+     * http://html5doctor.com/element-index/
+     */
+    public function renderModernizrTable()
+    {
+
+        // list numbers of same answers for a key
+
+        // cache keys, some 70 maybe...
+        $sql = 'SELECT * FROM mdrnzr_key ORDER BY id ASC';
+        $run = $this->shikakeOji->database->query($sql);
+        $keys = $run->fetchAll(PDO::FETCH_ASSOC);
+        
+
+        $keyList = array();
+    
+        $head = '<table>';
+        $head .= '<caption></caption>';
+
+        $head .= '<thead>';
+        $head .= '<tr>';
+        foreach ($keys as $key)
+        {
+            $head .= '<th data-key-id="' . $key['id'] . '">' . $key['title'] . '</th>';
+            $keyList[] = $key['id'];
+        }
+        $head .= '</tr>';
+        $head .= '</thead>';
+
+        // get all clients. only the latest for same address and useragent
+        $sql = 'SELECT DISTINCT useragent FROM mdrnzr_client ORDER BY created DESC';
+        $run = $this->shikakeOji->database->query($sql);
+
+        if ($run)
+        {
+            $body = '<tbody>';
+            
+            $sql = 'SELECT * FROM mdrnzr_value WHERE client_id = ? ORDER BY key_id ASC';
+            $pre = $this->shikakeOji->database->prepare($sql);
+            
+            while($res = $run->fetch(PDO::FETCH_ASSOC))
+            {
+                $body .= '<tr>';
+                
+                $index = 0;
+                $client = $pre->exec(array($res['id']));
+                    
+                while($row = $client->fetch(PDO::FETCH_ASSOC))
+                {
+                    while($row['key_id'] != $keyList[$index])
+                    {
+                        $index++;
+                        $body .= '<td></td>';
+                    }
+                    
+                    if ($row['key_id'] == $keyList[$index])
+                    {
+                        $body .= '<td>' . $row['hasthis'] . '</td>';
+                    }
+                }   
+                $body .= '</tr>';
+            }
+            
+            $body .= '</tbody>';
+        }
+
+        // totals
+        $foot = '<tfoot>';
+        $foot .= '<tr>';
+        $foot .= '<td></td>';
+        $foot .= '<td></td>';
+        $foot .= '</tr>';
+        $foot .= '</tfoot>';
+
+
+        $body .= '</table>';
+
+        return $head . $foot . $body;
     }
 
     /**
@@ -268,7 +349,7 @@ class ShikakeOjiPage
     /**
      * Create the whole HTML5 markup with content specific to this page and login status.
      * http://html5doctor.com/element-index/
-     * 
+     *
      * Remember to validate http://validator.w3.org/
      *
      * @param     array     $data   Same data as in ShikakeOji::appData
@@ -276,15 +357,28 @@ class ShikakeOjiPage
      */
     private function createHtmlPage($data)
     {
+        $pdo = $this->shikakeOji->database; // used only twice but anyhow for speed...
+        $page_id = '-1';
+        $navigation = '';
         $head;
-        foreach($data['navigation'][$this->shikakeOji->language] as $list)
+
+        $sql = 'SELECT * FROM naginata_page WHERE lang = \'' . $this->shikakeOji->language . '\' ORDER BY weight ASC';
+        $run = $pdo->query($sql);
+        if ($run)
         {
-            if ($this->shikakeOji->currentPage == $list['url'])
+            while ($res = $run->fetch(PDO::FETCH_ASSOC))
             {
-                $head = $list;
-                break;
+				$navigation .= '<li';
+				if ($this->shikakeOji->currentPage == $res['url'])
+				{
+					$navigation .= ' class="current"';
+					$head = $res; // head section data
+					$page_id = $res['id']; // page_id for naginata_article
+				}
+				$navigation .= '><a href="' . $res['url'] . '" title="' . $res['header'] . '">' . $res['title'] . '</a></li>';
             }
         }
+
         if (!isset($head))
         {
             return '<p class="fail">Navigation data for this page missing</p>';
@@ -292,7 +386,10 @@ class ShikakeOjiPage
 
         // None of the OGP items validate, as well as using prefix in html element...
         $out = '<!DOCTYPE html>';
-        $out .= '<html lang="' . $this->shikakeOji->language . '" prefix="og:http://ogp.me/ns#">'; // http://dev.w3.org/html5/rdfa/
+        $out .= '<html lang="' . $this->shikakeOji->language . '"';
+		$out .= ' prefix="og:http://ogp.me/ns#"'; // http://dev.w3.org/html5/rdfa/
+		//$out .= ' manifest="naginata.appcache"';
+		$out .= '>';
         $out .= '<head>';
         $out .= '<meta charset="utf-8"/>';
         $out .= '<title>' . $head['header'] . ' | ' . $data['title'][$this->shikakeOji->language] . '</title>';
@@ -327,34 +424,24 @@ class ShikakeOjiPage
         {
             $this->minify('css', $this->styles);
             $out .= '<link rel="stylesheet" href="' . $base . $this->minifiedName . 'css" type="text/css" media="all" />';
-                
+
             $this->minifyFile('js', 'modernizr.js');
             $out .= '<script type="text/javascript" src="/js/modernizr.min.js"></script>';
         }
         else
         {
-            foreach($this->styles as $css)
+            foreach ($this->styles as $css)
             {
                 $out .= '<link rel="stylesheet" href="' . $base . $css . '" type="text/css" media="all" />';
             }
             $out .= '<script type="text/javascript" src="/js/modernizr.js"></script>';
         }
         $out .= '</head>';
-        
+
         $out .= '<body>';
 
-        $out .= '<nav><ul>';
-        foreach ($data['navigation'][$this->shikakeOji->language] as $item)
-        {
-            // ["/naginata", "Atarashii Naginatado", "Naginata"],
-            $out .= '<li';
-            if ($this->shikakeOji->currentPage == $item['url'])
-            {
-                $out .= ' class="current"';
-            }
-            $out .= '><a href="' . $item['url'] . '" title="' . $item['header'] . '">' . $item['title'] . '</a></li>';
-        }
-        $out .= '</ul></nav>';
+
+        $out .= '<nav><ul>' . $navigation . '</ul></nav>';
 
         $out .= '<div id="wrapper">';
 
@@ -368,39 +455,32 @@ class ShikakeOjiPage
             unset($_SESSION['msg-login-success']);
         }
         $out .= '>';
-        
+
         // should be only two words
         $out .= '<p>' . $data['title'][$this->shikakeOji->language] . '</p>';
         $out .= '</div>';
 
-
-        // Now check the page
-        if (!isset($data['article'][$this->shikakeOji->language][$this->shikakeOji->currentPage]))
-        {
-            return '<p class="fail">Article data for this page missing</p>';
-        }
 
         $out .= '<header>';
         $out .= '<h1>' . $head['header'] . '</h1>';
         $out .= '<p rel="description">' . $head['description'] . '</p>';
         $out .= '</header>';
 
-        if (is_array($data['article'][$this->shikakeOji->language][$this->shikakeOji->currentPage]))
-        {
-            foreach($data['article'][$this->shikakeOji->language][$this->shikakeOji->currentPage] as $article)
-            {
-                $out .= '<article>';
 
-                if (is_array($article))
-                {
-                    // TODO: There might be specific sections defined...
-                }
-                else
-                {
-                    $out .= $this->findSpecialFields(self::decodeHtml($article));
-                }
-                $out .= '</article>';
-            }
+        $sql = 'SELECT content FROM naginata_article WHERE page_id = \'' . $page_id . '\' AND published = 1 ORDER BY modified DESC LIMIT 1';
+        $run = $pdo->query($sql);
+        if ($run)
+        {
+            while ($res = $run->fetch(PDO::FETCH_ASSOC))
+			{
+				$out .= '<article>';
+				$out .= $this->findSpecialFields(self::decodeHtml($res['content']));
+				$out .= '</article>';
+			}
+        }
+        else
+        {
+            return '<p class="fail">Article data for this page missing</p>';
         }
 
 
@@ -412,16 +492,16 @@ class ShikakeOjiPage
 			'" data-user-email="' . $this->shikakeOji->userEmail . '" data-data-modified="' .
 			$this->shikakeOji->dataModified . '">';
         $out .= '<p>';
-    
+
         $links = array();
         foreach ($data['footer'][$this->shikakeOji->language] as $item)
         {
             // ["http://paazmaya.com", "PAAZMAYA.com", "&copy; Jukka Paasonen"]
             $links[] = '<a href="' . $item['0'] . '" title="' . $item['1'] . '">' . $item['2'] . '</a>';
         }
-        
+
         $out .= implode('|', $links);
-        
+
         // TODO: #contribute text change per login status
 
         //$out .= '<time datetime="' . date('c', $this->dataModified) . '">' . date('j.n.Y', $this->dataModified) . '</time>';
@@ -441,10 +521,10 @@ class ShikakeOjiPage
                 $out .= '<script type="text/javascript" src="' . $base . $js . '"></script>';
             }
         }
-        
+
         $out .= '</body>';
         $out .= '</html>';
-        
+
         return $out;
     }
 
@@ -543,7 +623,7 @@ class ShikakeOjiPage
                 $url = 'http://api.flickr.com/services/rest/?' . http_build_query($params, NULL, '&');
                 $feed = $this->getDataCache($cache, $url);
                 $sizes = json_decode($feed, true);
-                
+
                 if (!isset($sizes))
                 {
                     return '<!-- flickr sizes failed ' . $matches['1'] . ' -->';
@@ -573,7 +653,7 @@ class ShikakeOjiPage
             $photo['location']['longitude']  134.67163,
         }
         */
-    
+
         $collected = array(
 			'id' => $photo['id'],
             'title' => $photo['title']['_content'],
@@ -584,9 +664,9 @@ class ShikakeOjiPage
             'owner' => $photo['owner']['username'],
             'ownerlink' => 'http://flickr.com/people/' . $photo['owner']['nsid']
         );
-        
+
         $thumbs = array();
-        
+
         foreach($sizes as $size)
         {
             if ($size['label'] == 'Small')
@@ -679,7 +759,7 @@ class ShikakeOjiPage
                     $thumbs[] = $thumb;
                 }
             }
-            
+
             // Z in the date-time stands for Coordinated Universal Time (UTC)
             $collected = array(
 				'id' => $matches['1'],
@@ -693,7 +773,7 @@ class ShikakeOjiPage
                 'owner' => $data['entry']['author']['0']['name']['$t'],
                 'ownerlink' => 'http://youtube.com/' . $data['entry']['author']['0']['name']['$t']
             );
-            
+
 
             return $this->createMediathumb($collected, 'youtube');
         }
