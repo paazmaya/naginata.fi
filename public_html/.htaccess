@@ -8,6 +8,9 @@ AddDefaultCharset utf-8
 # Javascript is not text/plain
 AddType application/javascript js
 
+# Application cache as in HTML5
+AddType text/cache-manifest .appcache
+
 # Force UTF-8 for a number of file formats
 AddCharset utf-8 .css .js .xml .json .rss .atom
 

@@ -15,7 +15,7 @@
 class ShikakeOjiPage
 {
     /**
-     * List of Cascaded Style Sheet files.
+     * List of Cascaded Style Sheet files that are minified into one
      * Should be relative to public_html/css/
      */
     public $styles = array(
@@ -25,7 +25,7 @@ class ShikakeOjiPage
     );
 
     /**
-     * List of Javascript files.
+     * List of Javascript files that are minified into one.
      * Should be relative to public_html/js/
      */
     public $scripts = array(
@@ -388,7 +388,7 @@ class ShikakeOjiPage
         $out = '<!DOCTYPE html>';
         $out .= '<html lang="' . $this->shikakeOji->language . '"';
 		$out .= ' prefix="og:http://ogp.me/ns#"'; // http://dev.w3.org/html5/rdfa/
-		//$out .= ' manifest="naginata.appcache"';
+		$out .= ' manifest="naginata.appcache"'; // http://www.html5rocks.com/en/tutorials/appcache/beginner/
 		$out .= '>';
         $out .= '<head>';
         $out .= '<meta charset="utf-8"/>';

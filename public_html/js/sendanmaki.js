@@ -1,11 +1,11 @@
 /***************
  * NAGINATA.fi *
- *************** 
+ ***************
  * Juga Paazmaya <olavic@gmail.com>
  * http://creativecommons.org/licenses/by-sa/3.0/
- * 
+ *
  * sendanmaki.js
- * 
+ *
  * Contains:
  *   Google Analytics
  *   Sendanmaki
@@ -31,7 +31,7 @@ _gaq.push(['_trackPageview']);
 // Run all client side preparation once DOM is ready.
 $(document).ready(function() {
     sendanmaki.domReady();
-	
+
 	// Do not run the Modernizr stats immediately.
     mdrnzr.once = setInterval(function() {
 		mdrnzr.checkUpdate();
@@ -51,34 +51,34 @@ var sendanmaki = {
      * Initial value from footer data.
      */
     userEmail: '',
-    
+
     /**
      * Edit mode can be triggered once logged in.
-     * If it is on, clicking the children of article will open 
+     * If it is on, clicking the children of article will open
      * edit form in colorbox for that element.
      * Initial value is fetched from localStorage.
      */
     editMode: 0,
-    
+
     /**
      * Unix time stamp of the moment when the content shown
-     * on the site was last modified. This infrmation is 
+     * on the site was last modified. This infrmation is
      * available in footer data.
-     */      
+     */
     dataModified: 0,
-	
+
 	/**
 	 * Current page language.
 	 * Fetched from html lang attribute.
 	 */
 	lang: 'fi',
-	
+
 	/**
 	 * Keep alive interval.
 	 * 1000 * 60 * 3 ms = 3 minutes
 	 */
 	keepAlive: (60000 * 3),
-	
+
     /**
      * This shall be run on domReady in order to initiate
      * all the handlers needed.
@@ -88,16 +88,32 @@ var sendanmaki = {
         sendanmaki.isLoggedIn = fData.isLoggedIn;
         sendanmaki.userEmail = fData.userEmail;
         sendanmaki.dataModified = fData.dataModified;
-		
+
 		sendanmaki.lang = $('html').attr('lang');
-        
+		
+		console.log('applicationCache.status: ' + sendanmaki.appCacheStat());
+		
+		applicationCache.addEventListener('updateready', function(e) {
+			if (applicationCache.status == applicationCache.UPDATEREADY) {
+				// Browser downloaded a new app cache.
+				// Swap it in and reload the page to get the new hotness.
+				applicationCache.swapCache();
+				if (confirm('A new version of this site is available. Load it?')) {
+					location.reload();
+				}
+			}
+			else {
+				// Manifest didn't changed. Nothing new to server.
+			}
+		}, false);
+
 		// external urls shall open in a new window
         $('article a[href~="http://"]:not(.mediathumb a, .imagelist a)').click(function() {
             var href = $(this).attr('href');
             window.open(href, $.now());
             return false;
         });
-	
+
 		// href has link to actual page, rel has inline link
         $('.mediathumb a:has(img)').click(function() {
 			sendanmaki.mediaThumbClick($(this));
@@ -148,13 +164,13 @@ var sendanmaki = {
                 //return false;
 			}
 		});
-		
+
 		// Finally check if div#logo data is set. It is used only for messaging
 		var success = $('#logo').data('msgLoginSuccess'); // 1 or 0
-		if (typeof success !== 'undefined') {          
+		if (typeof success !== 'undefined') {
 			sendanmaki.showAppMessage(success ? 'loginSuccess' : 'loginFailure');
 		}
-		
+
 		// Inline edit links
 		if (sendanmaki.isLoggedIn) {
             // Initial value once page is loaded
@@ -184,7 +200,38 @@ var sendanmaki = {
             }, 'json');
         }, sendanmaki.keepAlive);
     },
-    
+
+	/**
+	 * http://www.html5rocks.com/en/tutorials/appcache/beginner/
+	 */
+	appCacheStat: function() {
+		var ac = window.applicationCache;
+
+		switch (ac.status) {
+			case ac.UNCACHED: // UNCACHED == 0
+				return 'UNCACHED';
+				break;
+			case ac.IDLE: // IDLE == 1
+				return 'IDLE';
+				break;
+			case ac.CHECKING: // CHECKING == 2
+				return 'CHECKING';
+				break;
+			case ac.DOWNLOADING: // DOWNLOADING == 3
+				return 'DOWNLOADING';
+				break;
+			case ac.UPDATEREADY:  // UPDATEREADY == 4
+				return 'UPDATEREADY';
+				break;
+			case ac.OBSOLETE: // OBSOLETE == 5
+				return 'OBSOLETE';
+				break;
+			default:
+				return 'UKNOWN CACHE STATUS';
+				break;
+		};
+	},
+
     /**
      * Edit mode toggle. Shall be called only when logged in.
      */
@@ -204,7 +251,7 @@ var sendanmaki = {
         }
         localStorage.setItem('editMode', sendanmaki.editMode);
     },
-    
+
     /**
      * Click handler for the elements that can be edited.
      */
@@ -232,17 +279,17 @@ var sendanmaki = {
             }
         });
     },
-	
+
 	/**
 	 * Handle a click on a media thumbnail.
 	 * It can be a Flickr image, Vimeo or Youtube video.
 	 */
 	mediaThumbClick: function($a) {
 		var data = $a.data();
-		
+
 		// Tell Analytics
 		_gaq.push(['_trackPageview', $a.attr('href')]);
-		
+
 		if (data.type && data.type == 'flash') {
 			// Vimeo has size data, Youtube does not
 			var w = $('#wrapper').width();
@@ -288,7 +335,7 @@ var sendanmaki = {
 		});
 		var orig = $c.html(); // string
 		// https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String/replace
-		var edited = orig.replace($form.data('original'), $form.children('textarea[name="content"]').val());  
+		var edited = orig.replace($form.data('original'), $form.children('textarea[name="content"]').val());
         var data = {
             lang: sendanmaki.lang,
             page: location.pathname,
@@ -296,20 +343,20 @@ var sendanmaki = {
             modified: sendanmaki.dataModified
         };
 		console.dir(data);
-		
+
 		// Update the page
 		var article = $a.html();
 		$('article').html(article.replace($form.data('original'), $form.children('textarea[name="content"]').val()));
-		
+
 		// disable send button
 		$('input[type="submit"]').attr('disabled', 'disabled');
 
 		// Feedback of the ajax submit on background color
         $form.addClass('ajax-ongoing');
-        
+
         $.post($form.attr('action'), data, function(received, status){
 			$form.removeClass('ajax-ongoing');
-			
+
             var style;
             if (status != 'success') {
                 style = 'ajax-failure';
@@ -317,7 +364,7 @@ var sendanmaki = {
             else if (received.answer) {
                 // 1 or true
                 style = 'ajax-success';
-                
+
                 // Success, thus return original later
                 setTimeout(function() {
                     $form.removeClass(style);
@@ -327,7 +374,7 @@ var sendanmaki = {
             else {
                 style = 'ajax-unsure';
             }
-            
+
             $form.addClass(style);
 			$('input[type="submit"]').attr('disabled', null);
         }, 'json');
@@ -355,7 +402,7 @@ var sendanmaki = {
             }
         });
     },
-    
+
     /**
      * Show a message that was set via temporary session variable
      * div#logo shall contain all the message data
@@ -429,7 +476,7 @@ var mdrnzr = {
 	key: 'last-modernizr',
     url: '/receive-modernizr-statistics',
 	once: null, // setInterval id
-	
+
     /**
      * This shall be run on domReady in order to check against localStorage
      * when was the last time the results were sent, if any.
@@ -439,7 +486,7 @@ var mdrnzr = {
     checkUpdate: function() {
 		// Running this once is enought
 		clearInterval(mdrnzr.once);
-		
+
 		var update = false;
 		if (localStorage) {
 			var previous = localStorage.getItem(mdrnzr.key);
@@ -480,7 +527,7 @@ var mdrnzr = {
 			useragent: navigator.userAgent,
 			flash: $.flash.version.string
 		};
-		
+
         $.post(mdrnzr.url, data, function(incoming, status) {
             // Thank you, if success
 			if (localStorage && status == 'success') {

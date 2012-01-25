@@ -1,0 +1,26 @@
+CACHE MANIFEST
+# 2012-01-25
+
+# Explicitly cached 'master entries'.
+CACHE:
+/css/naginata.min.css
+/favicon.ico
+/img/controls.png
+/img/favicon.png
+/img/link-arrow.png
+/img/loading.gif
+/img/logo-green-57x57.png
+/img/logo-red-57x57.png
+/img/logo.png
+/img/mobile-logo.png
+/img/openid-icon-100x100.png
+/js/modernizr.min.js
+/js/naginata.min.js
+
+# Resources that require the user to be online.
+NETWORK:
+/update-article
+/receive-modernizr-statistics
+/authenticate-user
+/keep-session-alive
+
