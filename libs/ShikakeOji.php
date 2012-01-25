@@ -431,11 +431,11 @@ class ShikakeOji
             
             // Insert new revision for moderation
             $sql = 'INSERT INTO naginata_article (page_id, content, modified, email) VALUES (\'' .
-                $res['id'] . '\', \'' . ShikakeOjiPage::encodeHtml($received['content']) . '\', \'' .
+                $res['id'] . '\', \'' . $received['content'] . '\', \'' .
                 time() . '\', \'' . $this->userEmail . '\')';
-            $this->database->query($sql);
-            
-            // $isSaved = affected rows?
+            $run = $this->database->query($sql);
+			
+            $isSaved = ($run->rowCount() > 0);
             
 
             // Create diff for sending it via email

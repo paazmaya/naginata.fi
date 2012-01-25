@@ -104,6 +104,7 @@ var sendanmaki = {
 			}
 			else {
 				// Manifest didn't changed. Nothing new to server.
+				console.log('applicationCache.status when updateready event occurred: ' + sendanmaki.appCacheStat());
 			}
 		}, false);
 
@@ -202,10 +203,11 @@ var sendanmaki = {
     },
 
 	/**
+	 * Application cache status.
 	 * http://www.html5rocks.com/en/tutorials/appcache/beginner/
 	 */
 	appCacheStat: function() {
-		var ac = window.applicationCache;
+		var ac = applicationCache;
 
 		switch (ac.status) {
 			case ac.UNCACHED: // UNCACHED == 0

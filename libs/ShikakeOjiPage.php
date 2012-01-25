@@ -873,8 +873,8 @@ class ShikakeOjiPage
     {
         $out = '<p class="mediathumb" data-key="' . $service . '|' . $data['id'] . '">';
 
-        $out .= '<a class="' . $service . '" href="' . $data['href'] . '" data-url="' .
-            $data['inline'] . '" title="' . $data['title'] . '"';
+        $out .= '<a class="' . $service . '" href="' . self::encodeHtml($data['href']) . '" data-url="' .
+            self::encodeHtml($data['inline']) . '" title="' . $data['title'] . '"';
 
         if (isset($data['inlinewidth']) && isset($data['inlineheight']))
         {
@@ -895,7 +895,7 @@ class ShikakeOjiPage
             {
                 foreach($data['thumbs'] as $img)
                 {
-                    $out .= '<img src="' . $img['url'] . '" alt="' . $data['title'] . '"';
+                    $out .= '<img src="' . self::encodeHtml($img['url']) . '" alt="' . $data['title'] . '"';
 
                     if (isset($img['width']))
                     {
@@ -918,7 +918,7 @@ class ShikakeOjiPage
             $out .= ' title="Julkaistu ' . date('j.n.Y G:i', $data['published']->getTimestamp()) . '"';
         }
         $out .= '>' . $data['title'] . ' / ';
-        $out .= '<a href="' . $data['ownerlink'] . '" title="' . ucfirst($service) . ' - ' .
+        $out .= '<a href="' . self::encodeHtml($data['ownerlink']) . '" title="' . ucfirst($service) . ' - ' .
             $data['owner'] . '">' . $data['owner'] . '</a>';
         $out .= '</span>';
 
