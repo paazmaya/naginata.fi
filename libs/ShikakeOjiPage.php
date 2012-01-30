@@ -388,7 +388,7 @@ class ShikakeOjiPage
         $out = '<!DOCTYPE html>';
         $out .= '<html lang="' . $this->shikakeOji->language . '"';
 		$out .= ' prefix="og:http://ogp.me/ns#"'; // http://dev.w3.org/html5/rdfa/
-		//$out .= ' manifest="applicaton.cache"'; // http://www.html5rocks.com/en/tutorials/appcache/beginner/
+		$out .= ' manifest="applicaton.cache"'; // http://www.html5rocks.com/en/tutorials/appcache/beginner/
 		$out .= '>';
         $out .= '<head>';
         $out .= '<meta charset="utf-8"/>';

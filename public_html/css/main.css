@@ -57,7 +57,7 @@ html, body {
     background-color: #FEFEFE;
 }
 body {
-    background: linear-gradient(65deg, #EEFEFE, #FEFEFE);
+    background-image: linear-gradient(65deg, #EEFEFE, #FEFEFE);
 }
 
 header, article, section {
@@ -201,7 +201,7 @@ article li {
 article img {
 }
 
-article p > a::after:not(img) {
+article p > a:not(img)::after {
     content: url(../img/link-arrow.png);
 }
 

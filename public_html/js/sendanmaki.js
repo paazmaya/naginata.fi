@@ -101,7 +101,7 @@ var sendanmaki = {
 		}, false);
 
 		// external urls shall open in a new window
-        $('article a[href~="http://"]:not(.mediathumb a, .imagelist a)').click(function() {
+        $('a[href|="http://"]:not(.mediathumb a, .imagelist a)').click(function() {
             var href = $(this).attr('href');
             window.open(href, $.now());
             return false;
@@ -164,28 +164,6 @@ var sendanmaki = {
 			sendanmaki.showAppMessage(success ? 'loginSuccess' : 'loginFailure');
 		}
 
-		// Inline edit links
-		if (sendanmaki.isLoggedIn) {
-            // Initial value once page is loaded
-            sendanmaki.editMode = (localStorage.getItem('editMode') == '1') ? 1 : 0;
-            if (sendanmaki.editMode) {
-                // handle hover via css...
-                $('article').addClass('editmode');
-                $('a[href="#contribute"]').addClass('editmode');
-            }
-			/*
-            $('.editmode > *:not(.mediathumb, .imagelist)').live('mouseover', function() {
-				$(this).addClass('edithover');
-            }).live('mouseout', function() {
-				$(this).removeClass('edithover');
-            });
-			*/
-			$('.editmode > *:not(.mediathumb, .imagelist)').live('click', function() {
-				$(this).removeClass('edithover');
-                sendanmaki.editModeClick($(this));
-            });
-		}
-
         // Keep session alive and update login status
         setInterval(function() {
 			sendanmaki.keepAlive();
@@ -203,6 +181,29 @@ var sendanmaki = {
 				sendanmaki.isLoggedIn = received.login;
 				sendanmaki.userEmail = received.email;
 			}
+			
+			// Inline edit links
+			if (sendanmaki.isLoggedIn) {
+				// Initial value once page is loaded
+				sendanmaki.editMode = (localStorage.getItem('editMode') == '1') ? 1 : 0;
+				if (sendanmaki.editMode) {
+					// handle hover via css...
+					$('article').addClass('editmode');
+					$('a[href="#contribute"]').addClass('editmode');
+				}
+				/*
+				$('.editmode > *:not(.mediathumb, .imagelist)').live('mouseover', function() {
+					$(this).addClass('edithover');
+				}).live('mouseout', function() {
+					$(this).removeClass('edithover');
+				});
+				*/
+				$('.editmode > *:not(.mediathumb, .imagelist)').live('click', function() {
+					$(this).removeClass('edithover');
+					sendanmaki.editModeClick($(this));
+				});
+			}
+
 		}, 'json');
 	},
 
@@ -270,6 +271,8 @@ var sendanmaki = {
             html: form,
             modal: true,
             onComplete: function() {
+				/*
+				// Mentokusai!
                 var origClose = $.colorbox.close;
                 $.colorbox.close = function() {
                     // but this check now anyhow the initial values...
@@ -281,6 +284,7 @@ var sendanmaki = {
                     }
                     origClose();
                 };
+				*/
             }
         });
     },
