@@ -15,6 +15,7 @@ Technologies
  * CSS3 for styling (http://www.css3.info/modules/)
  * Javascript via jQuery for client interaction (http://jquery.com/)
  * Local Storage replacing browser cookies (http://www.w3.org/TR/webstorage/)
+ * Application Cache for faster loading and possible offline browsing (http://www.html5rocks.com/en/tutorials/appcache/beginner/)
  
 About the martial art
 ---------------------
@@ -40,7 +41,7 @@ About this software project
 The main reason for this website and this github project is to learn to use the given
 technologies and to promote the martial art.
 
-The domain, `[naginata.fi](http://naginata.fi "NAGINATA.fi")` is privately registered to Jukka Paasonen.
+The domain, `naginata.fi` is privately registered to Jukka Paasonen.
 
 Contributors are welcome.
 

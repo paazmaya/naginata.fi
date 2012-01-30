@@ -63,12 +63,6 @@ class ShikakeOji
     public $database;
 
     /**
-     * Last modification date of the data.
-     * Does not separate per language, just the last edit of anything.
-     */
-    public $dataModified;
-
-    /**
      * An instance of the ShikakeOjiPage class.
      */
     public $output;
@@ -263,13 +257,18 @@ class ShikakeOji
 
             // Front end needs to handle whatever the output is.
             header('Content-type: application/json');
-            return json_encode(array('answer' => $out));
+			$json = array(
+				'answer' => $out,
+				'login' => intval($this->isLoggedIn),
+				'email' => $this->userEmail
+			);
+            return json_encode($json);
         }
         else
         {
             header('Content-type: text/html; charset=utf-8');
             header('Content-Language: ' . $this->language);
-            header('Last-modified: ' . date('r', $this->dataModified));
+            //header('Last-modified: ' . date('r', $this->dataModified));
             return $this->output->renderHtml($this->appData);
         }
     }
@@ -373,7 +372,6 @@ class ShikakeOji
         {
             $json = file_get_contents($this->dataPath);
             $this->appData = json_decode($json, true);
-            $this->dataModified = filemtime($this->dataPath);
 
             $error = $this->getJsonError();
             if ($error != '')
@@ -395,7 +393,6 @@ class ShikakeOji
         if ($this->dataPath != '' && $this->isLoggedIn)
         {
             $jsonstring = ShikakeOjiPage::jsonPrettyPrint(json_encode($this->appData)); // PHP 5.4 onwards JSON_PRETTY_PRINT
-            $this->dataModified = time();
             return (file_put_contents($this->dataPath, $jsonstring) !== false);
         }
         return false;
@@ -413,8 +410,7 @@ class ShikakeOji
         $required = array(
             'lang', // language: fi
             'page', // page url: /koryu
-            'content', // modified article
-            'modified' // unix time stamp which should be the same as $this->dataModified
+            'content' // modified article
         );
         $received = $this->checkRequiredPost($required);
         if ($received === false || !$this->isLoggedIn)
@@ -644,12 +640,18 @@ class ShikakeOji
     }
 
     /**
-     * Keep session alive call via AJAX
+     * Keep session alive call via AJAX.
+	 * Since checkSession runs before this call, the session variables should be there.
      * @return    int    Session lifetime in seconds.
      */
     private function keepSessionAlive()
     {
-        // Since checkSession runs before this call, the session variables should be there.
+        // We should have received "emode" = editMode
+		if (isset($_POST['emode']))
+		{
+			$_SESSION['editMode'] = intval($_POST['emode']);
+		}
+		
         $lifetime = time() - $_SESSION['init'];
         return $lifetime;
     }

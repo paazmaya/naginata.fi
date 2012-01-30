@@ -42,13 +42,13 @@ $(document).ready(function() {
 var sendanmaki = {
     /**
      * Is the user logged in to the backend?
-     * The initial value is in footer data.
+     * Value updated on every keep alive call.
      */
     isLoggedIn: 0,
 
     /**
      * Email address of the current user against OpenID.
-     * Initial value from footer data.
+     * Value updated on every keep alive call.
      */
     userEmail: '',
 
@@ -60,13 +60,6 @@ var sendanmaki = {
      */
     editMode: 0,
 
-    /**
-     * Unix time stamp of the moment when the content shown
-     * on the site was last modified. This infrmation is
-     * available in footer data.
-     */
-    dataModified: 0,
-
 	/**
 	 * Current page language.
 	 * Fetched from html lang attribute.
@@ -77,21 +70,17 @@ var sendanmaki = {
 	 * Keep alive interval.
 	 * 1000 * 60 * 3 ms = 3 minutes
 	 */
-	keepAlive: (60000 * 3),
+	keepAliveInt: (60000 * 3),
 
     /**
      * This shall be run on domReady in order to initiate
      * all the handlers needed.
      */
     domReady: function() {
-        var fData = $('footer').data();
-        sendanmaki.isLoggedIn = fData.isLoggedIn;
-        sendanmaki.userEmail = fData.userEmail;
-        sendanmaki.dataModified = fData.dataModified;
+		// When was the current page content last modified
+        var modified = $('article').data('dataModified');
 
 		sendanmaki.lang = $('html').attr('lang');
-		
-		console.log('applicationCache.status: ' + sendanmaki.appCacheStat());
 		
 		applicationCache.addEventListener('updateready', function(e) {
 			if (applicationCache.status == applicationCache.UPDATEREADY) {
@@ -194,13 +183,23 @@ var sendanmaki = {
             });
 		}
 
-        // So sad, but in 2012 there still needs to be a keep alive call
+        // Keep session alive and update login status
         setInterval(function() {
-            $.post('/keep-session-alive', {foo: 'bar'}, function(received, status) {
-                console.log(received.answer); // seconds
-            }, 'json');
-        }, sendanmaki.keepAlive);
+			sendanmaki.keepAlive();
+        }, sendanmaki.keepAliveInt);
+		sendanmaki.keepAlive();
     },
+	
+	/**
+	 * Keep PHP session alive and get the current login status
+	 */
+	keepAlive: function() {
+		var data = {emode: sendanmaki.editMode};
+		$.post('/keep-session-alive', data, function(received, status) {
+			sendanmaki.isLoggedIn = received.login;
+			sendanmaki.userEmail = received.email;
+		}, 'json');
+	},
 
 	/**
 	 * Application cache status.
@@ -341,8 +340,7 @@ var sendanmaki = {
         var data = {
             lang: sendanmaki.lang,
             page: location.pathname,
-            content: edited,
-            modified: sendanmaki.dataModified
+            content: edited
         };
 		console.dir(data);
 

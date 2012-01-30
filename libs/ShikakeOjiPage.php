@@ -388,7 +388,7 @@ class ShikakeOjiPage
         $out = '<!DOCTYPE html>';
         $out .= '<html lang="' . $this->shikakeOji->language . '"';
 		$out .= ' prefix="og:http://ogp.me/ns#"'; // http://dev.w3.org/html5/rdfa/
-		$out .= ' manifest="applicaton.cache"'; // http://www.html5rocks.com/en/tutorials/appcache/beginner/
+		//$out .= ' manifest="applicaton.cache"'; // http://www.html5rocks.com/en/tutorials/appcache/beginner/
 		$out .= '>';
         $out .= '<head>';
         $out .= '<meta charset="utf-8"/>';
@@ -470,14 +470,14 @@ class ShikakeOjiPage
         $out .= '<p rel="description">' . $head['description'] . '</p>';
         $out .= '</header>';
 
-
-        $sql = 'SELECT content FROM naginata_article WHERE page_id = \'' . $page_id . '\' AND published = 1 ORDER BY modified DESC LIMIT 1';
+		$latest = 0;
+        $sql = 'SELECT content, modified FROM naginata_article WHERE page_id = \'' . $page_id . '\' AND published = 1 ORDER BY modified DESC LIMIT 1';
         $run = $pdo->query($sql);
         if ($run)
         {
             while ($res = $run->fetch(PDO::FETCH_ASSOC))
 			{
-				$out .= '<article>';
+				$out .= '<article data-data-modified="' . $res['modified'] . '">';
 				$out .= $this->findSpecialFields(self::decodeHtml($res['content']));
 				$out .= '</article>';
 			}
@@ -491,10 +491,7 @@ class ShikakeOjiPage
         $out .= '</div>';
 
 
-        // Comes out as $('footer).data('isLoggedIn') == '1'
-        $out .= '<footer data-is-logged-in="' . ($this->shikakeOji->isLoggedIn ? 1 : 0) .
-			'" data-user-email="' . $this->shikakeOji->userEmail . '" data-data-modified="' .
-			$this->shikakeOji->dataModified . '">';
+        $out .= '<footer>';
         $out .= '<p>';
 
         $links = array();
@@ -507,8 +504,6 @@ class ShikakeOjiPage
         $out .= implode('|', $links);
 
         // TODO: #contribute text change per login status
-
-        //$out .= '<time datetime="' . date('c', $this->dataModified) . '">' . date('j.n.Y', $this->dataModified) . '</time>';
         $out .= '</footer>';
 
         $base = '/js/';
