@@ -6,16 +6,17 @@
     },
     "footer": {
         "fi": [
-            [
-                "http:\/\/paazmaya.com",
-                "PAAZMAYA.com",
-                "&copy; Jukka Paasonen"
-            ],
-            [
-                "#contribute",
-                "Tue sivuja muokkaamalla",
-                "Yll\u00e4pito"
-            ]
+            {
+                "url": "http:\/\/paazmaya.com",
+                "alt": "PAAZMAYA.com",
+                "text": "&copy; Jukka Paasonen"
+            },
+            {
+                "url": "#contribute",
+                "alt": "Kirjaudu sähköpostilla muokkaamaan sivuja",
+                "text": "Kirjaudu",
+				"data": "Muokkaa"
+            }
         ],
         "en": [
             

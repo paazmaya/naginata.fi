@@ -16,6 +16,7 @@
 var _gaq = _gaq || [];
 _gaq.push(['_setAccount', 'UA-2643697-14']);
 _gaq.push(['_setSiteSpeedSampleRate', 10]);
+_gaq.push(['_setDomainName', 'naginata.fi']);
 _gaq.push(['_trackPageview']);
 
 // http://code.google.com/apis/analytics/docs/gaJS/gaJSApiBasicConfiguration.html
@@ -33,9 +34,11 @@ $(document).ready(function() {
     sendanmaki.domReady();
 
 	// Do not run the Modernizr stats immediately.
-    mdrnzr.once = setInterval(function() {
-		mdrnzr.checkUpdate();
-    }, 1200);
+	if (typeof Modernizr !== 'undefined') {
+		mdrnzr.once = setInterval(function() {
+			mdrnzr.checkUpdate();
+		}, 1200);
+	}
 });
 
 
@@ -78,7 +81,7 @@ var sendanmaki = {
      */
     domReady: function() {
 		// When was the current page content last modified
-        var modified = $('article').data('dataModified');
+        //var modified = $('article').data('dataModified');
 
 		sendanmaki.lang = $('html').attr('lang');
 		
@@ -164,7 +167,7 @@ var sendanmaki = {
 		// Inline edit links
 		if (sendanmaki.isLoggedIn) {
             // Initial value once page is loaded
-            sendanmaki.editMode = (localStorage.getItem('editMode') == 1) ? 1 : 0;
+            sendanmaki.editMode = (localStorage.getItem('editMode') == '1') ? 1 : 0;
             if (sendanmaki.editMode) {
                 // handle hover via css...
                 $('article').addClass('editmode');
@@ -268,8 +271,7 @@ var sendanmaki = {
                 var origClose = $.colorbox.close;
                 $.colorbox.close = function() {
                     // but this check now anyhow the initial values...
-                    if (form.data('original') != form.children('textarea').val())
-                    {
+                    if (form.data('original') != form.children('textarea').val()) {
                         var response = confirm('Haluatko varmasti sulkea tämän mahdollisesti muokatun tekstin?');
                         if (!response) {
                             return false;

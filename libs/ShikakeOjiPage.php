@@ -497,8 +497,14 @@ class ShikakeOjiPage
         $links = array();
         foreach ($data['footer'][$this->shikakeOji->language] as $item)
         {
-            // ["http://paazmaya.com", "PAAZMAYA.com", "&copy; Jukka Paasonen"]
-            $links[] = '<a href="' . $item['0'] . '" title="' . $item['1'] . '">' . $item['2'] . '</a>';
+			$a = '<a href="' . $item['url'] . '" title="' . $item['alt'] . '"';
+			if (isset($item['data']))
+			{
+				// $(this).data('hover')
+				$a .= ' data-hover="' . $item['data'] . '"';
+			}
+			$a .= '>' . $item['text'] . '</a>';
+            $links[] = $a;
         }
 
         $out .= implode('|', $links);

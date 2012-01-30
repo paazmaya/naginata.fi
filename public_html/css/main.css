@@ -116,7 +116,7 @@ nav li {
     height: 1.5em;
     float: left;
 }
-nav a, footer a {
+nav a, footer a, .current a:hover {
     background-color: transparent;
     color: #072434;
     text-align: center;
@@ -147,7 +147,7 @@ nav a {
     display: block;
 }
 
-nav a:hover, footer a:hover {
+nav a:hover, footer a:hover, .current a {
     background-color: #072434;
     color: #DFE0E4;
     text-decoration: none;
@@ -160,6 +160,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 h1 {
     font-size: 1.7em;
+	width: 60%;
 }
 h2 {
     font-size: 1.5em;
@@ -177,10 +178,9 @@ header h1:hover {
 
 header p {
 	text-align: right;
-	margin-top: -1.5em;
-	right: 0;
-	width: 50%;
-	margin-left: 50%;
+	margin-top: -2.5em;
+	float: right;
+	width: 40%;
 	font-size: 0.9em;
 }
 
