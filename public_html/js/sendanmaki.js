@@ -199,8 +199,10 @@ var sendanmaki = {
 	keepAlive: function() {
 		var data = {emode: sendanmaki.editMode};
 		$.post('/keep-session-alive', data, function(received, status) {
-			sendanmaki.isLoggedIn = received.login;
-			sendanmaki.userEmail = received.email;
+			if (received.answer != 'offline') {
+				sendanmaki.isLoggedIn = received.login;
+				sendanmaki.userEmail = received.email;
+			}
 		}, 'json');
 	},
 

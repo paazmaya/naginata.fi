@@ -280,11 +280,14 @@ label {
 .mediathumb:nth-child(odd) {
     margin-right: 2em;
 }
-.mediathumb span {
-    display: block;
+.mediathumb figcaption {
     font-size: 0.8em;
     font-weight: bold;
 	width: 250px;
+	color: #072434;
+}
+.mediathumb a {
+	color: #072434;
 }
 /* under mediathumb there is span that on hover should show play video icon */
 .playicon {

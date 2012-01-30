@@ -847,7 +847,7 @@ class ShikakeOjiPage
     }
 
     /**
-     * Create the "mediathumb" paragraph with the given data.
+     * Create the "mediathumb" figure with the given data.
      * $data = array(
 	 *   'id' => '2352525252',
      *   'thumbs' => array(
@@ -872,7 +872,7 @@ class ShikakeOjiPage
      */
     private function createMediathumb($data, $service)
     {
-        $out = '<p class="mediathumb" data-key="' . $service . '|' . $data['id'] . '">';
+        $out = '<figure class="mediathumb" data-key="' . $service . '|' . $data['id'] . '">';
 
         $out .= '<a class="' . $service . '" href="' . self::encodeHtml($data['href']) . '" data-url="' .
             self::encodeHtml($data['inline']) . '" title="' . $data['title'] . '"';
@@ -913,7 +913,7 @@ class ShikakeOjiPage
 
         $out .= '</a>';
 
-        $out .= '<span';
+        $out .= '<figcaption';
         if (isset($data['published']) && is_object($data['published']))
         {
             $out .= ' title="Julkaistu ' . date('j.n.Y G:i', $data['published']->getTimestamp()) . '"';
@@ -921,9 +921,9 @@ class ShikakeOjiPage
         $out .= '>' . $data['title'] . ' / ';
         $out .= '<a href="' . self::encodeHtml($data['ownerlink']) . '" title="' . ucfirst($service) . ' - ' .
             $data['owner'] . '">' . $data['owner'] . '</a>';
-        $out .= '</span>';
+        $out .= '</figcaption>';
 
-        $out .= '</p>';
+        $out .= '</figure>';
 
         return $out;
     }
