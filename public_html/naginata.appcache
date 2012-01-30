@@ -20,3 +20,6 @@ CACHE:
 # Resources that require the user to be online.
 NETWORK:
 *
+
+OFFLINE:
+/keep-session-alive /offline.json

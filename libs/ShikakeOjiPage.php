@@ -388,7 +388,7 @@ class ShikakeOjiPage
         $out = '<!DOCTYPE html>';
         $out .= '<html lang="' . $this->shikakeOji->language . '"';
 		$out .= ' prefix="og:http://ogp.me/ns#"'; // http://dev.w3.org/html5/rdfa/
-		$out .= ' manifest="naginata.appcache"'; // http://www.html5rocks.com/en/tutorials/appcache/beginner/
+		$out .= ' manifest="applicaton.cache"'; // http://www.html5rocks.com/en/tutorials/appcache/beginner/
 		$out .= '>';
         $out .= '<head>';
         $out .= '<meta charset="utf-8"/>';
@@ -757,7 +757,7 @@ class ShikakeOjiPage
                     file_put_contents($name, $img);
                 }
                 */
-               // Want two thumbs that are 120x90
+                // Want two thumbs that are 120x90
                 if ($thumb['height'] == 90 && count($thumbs) < 2)
                 {
                     $thumbs[] = $thumb;

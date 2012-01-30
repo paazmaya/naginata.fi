@@ -7,6 +7,7 @@ AddDefaultCharset utf-8
 
 # Javascript is not text/plain
 AddType application/javascript js
+AddType application/json json
 
 # Application cache as in HTML5
 AddType text/cache-manifest .appcache

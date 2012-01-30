@@ -11,8 +11,10 @@
  * http://blog.thenounproject.com/post/7310229014/how-to-properly-attribute-cc-by-a-guest-blog-post-by
  *
  * Usage:
- *  $shio = new ShikakeOji(realpath('../naginata-data.json'));
- *  $shio->loadConfig(realpath('../naginata-config.json'));
+ *  $shio = new ShikakeOji(
+ *    realpath('../naginata-data.json'), 
+ *    realpath('../naginata-config.json')
+ *  );
  *  $shio->output->useMinification = true;
  *  $shio->checkRequestedPage();
  *  echo $shio->renderPage();
@@ -132,7 +134,8 @@ class ShikakeOji
         '/update-article' => 'pageUpdateArticle',
         '/receive-modernizr-statistics' => 'pageReceiveModernizrStats',
         '/authenticate-user' => 'pageAuthenticateUser',
-        '/keep-session-alive' => 'keepSessionAlive'
+        '/keep-session-alive' => 'keepSessionAlive',
+		'/application.cache' => 'renderAppCache'
     );
 
     /**
@@ -650,6 +653,130 @@ class ShikakeOji
         $lifetime = time() - $_SESSION['init'];
         return $lifetime;
     }
+	
+	/**
+	 * Render a manifest file for applicationCache
+	 * Does return something only on error.
+	 */
+	private function renderAppCache()
+	{		
+		// date of the latest changed file
+		$highestDate = 0;
+		
+		$out = 'CACHE MANIFEST' . "\n";
+		$out .= "\n";
+		$out .= 'CACHE:' . "\n";
+		
+		$sql = 'SELECT P.url, A.modified FROM naginata_page P' .
+			' LEFT JOIN naginata_article A ON P.id = A.page_id WHERE P.lang = \'' . 
+			$this->language . '\' ORDER BY P.weight ASC, A.modified DESC';
+		$run = $this->database->query($sql);
+		if ($run) 
+		{
+			while ($res = $run->fetch(PDO::FETCH_ASSOC))
+			{
+				$out .= $res['url'] . "\n";
+				$highestDate = max($highestDate, $res['modified']);
+			}
+		}
+		
+		$images = glob('../public_html/img/*');
+		foreach($images as $img)
+		{
+			$highestDate = max($highestDate, filemtime($img));
+			$out .= '/img/' . basename($img) . "\n";
+		}
+		
+		
+		if (!$this->output->useMinification)
+		{
+			foreach($this->output->styles as $css)
+			{
+				$out .= '/css/' . $css . "\n";
+				$highestDate = max($highestDate, filemtime('../public_html/css/' . $css));
+			}
+		}
+		else
+		{
+			$out .= '/css/' . $this->output->minifiedName . 'css' . "\n";
+			$highestDate = max($highestDate, filemtime('../public_html/css/' . $this->output->minifiedName . 'css'));
+		}
+		if (!$this->output->useMinification)
+		{
+			foreach($this->output->scripts as $js)
+			{
+				$out .= '/js/' . $js . "\n";
+				$highestDate = max($highestDate, filemtime('../public_html/js/' . $js));
+			}
+		}
+		else
+		{
+			$out .= '/js/' . $this->output->minifiedName . 'js' . "\n";
+			$highestDate = max($highestDate, filemtime('../public_html/js/' . $this->output->minifiedName . 'js'));
+		}
+		
+		$flickr = glob('../cache/flickr_*_sizes.json');
+		foreach($flickr as $fl)
+		{
+			$fc = file_get_contents($fl);
+			$json = json_decode($fc, true);
+			$out .= $json['sizes']['size']['2']['source'] . "\n";
+		}
+		
+		$flickr = glob('../cache/flickr_*_sizes.json');
+		foreach($flickr as $fl)
+		{
+			$fc = file_get_contents($fl);
+			$json = json_decode($fc, true);
+			$out .= $json['sizes']['size']['2']['source'] . "\n";
+		}
+		
+		$youtube = glob('../cache/youtube_*.json');
+		foreach($youtube as $yo)
+		{
+			$ys = file_get_contents($yo);
+			$json = json_decode($ys, true);
+			foreach($json['entry']['media$group']['media$thumbnail'] as $thumb)
+			{
+				if ($thumb['height'] == 90)
+				{
+					$out .= $thumb['url'] . "\n";
+				}
+			}
+		}
+		
+		$vimeo = glob('../cache/vimeo_*.json');
+		foreach($vimeo as $vi)
+		{
+			$vs = file_get_contents($vi);
+			$json = json_decode($vs, true);
+			$out .= $json['0']['thumbnail_medium'] . "\n";
+		}
+		
+		
+		/*
+		/favicon.ico
+		/js/modernizr.min.js
+		*/
+		$out .= "\n";
+	
+		// Resources that require the user to be online.
+		$out .= 'NETWORK:' . "\n";
+		$out .= '*' . "\n";
+		
+		$out .= "\n";
+		
+		$out .= 'OFFLINE:' . "\n";
+		$out .= '/keep-session-alive /offline.json' . "\n";
+		
+		$out .= "\n";
+		
+		$out .= '# ' . date('Y-m-d', $highestDate) . "\n";
+		
+		header('Content-type: text/cache-manifest');
+		echo $out;
+		exit();
+	}
 
     /**
      * Check $_POST against the given $required array.
