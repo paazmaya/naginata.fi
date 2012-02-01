@@ -89,7 +89,7 @@ var sendanmaki = {
 		$('.hasnotes').each(function() {
 			var data = $(this).data();
 			if (typeof data !== 'undefined') {
-				createImgNote(data);
+				sendanmaki.createImgNote(data);
 			}
 		});
 		
