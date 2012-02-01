@@ -85,6 +85,14 @@ var sendanmaki = {
 
 		sendanmaki.lang = $('html').attr('lang');
 		
+		// Add notes to a chudan kamae bogu image, if available
+		$('.hasnotes').each(function() {
+			var data = $(this).data();
+			if (typeof data !== 'undefined') {
+				createImgNote(data);
+			}
+		});
+		
 		applicationCache.addEventListener('updateready', function(e) {
 			if (applicationCache.status == applicationCache.UPDATEREADY) {
 				// Browser downloaded a new app cache.
@@ -183,6 +191,7 @@ var sendanmaki = {
 			}
 			
 			// Inline edit links
+			// TODO: check for singular event settin...
 			if (sendanmaki.isLoggedIn) {
 				// Initial value once page is loaded
 				sendanmaki.editMode = (localStorage.getItem('editMode') == '1') ? 1 : 0;
@@ -202,6 +211,8 @@ var sendanmaki = {
 					$(this).removeClass('edithover');
 					sendanmaki.editModeClick($(this));
 				});
+				
+				$('a[href="#contribute"]').text('Muokkaa');
 			}
 
 		}, 'json');
@@ -238,56 +249,6 @@ var sendanmaki = {
 				break;
 		};
 	},
-
-    /**
-     * Edit mode toggle. Shall be called only when logged in.
-     */
-    editModeToggle: function() {
-        var $e = $('article');
-		var $a = $('a[href="#contribute"]');
-        var className = 'editmode';
-        if (sendanmaki.editMode) {
-            $e.removeClass(className);
-            $a.removeClass(className);
-            sendanmaki.editMode = 0;
-        }
-        else {
-            $e.addClass(className);
-            $a.addClass(className);
-            sendanmaki.editMode = 1;
-        }
-        localStorage.setItem('editMode', sendanmaki.editMode);
-    },
-
-    /**
-     * Click handler for the elements that can be edited.
-     */
-    editModeClick: function($e) {
-        var html = $e.outerHtml();
-        var form = $(sendanmaki.editForm).clone();
-        form.data('original', html);
-        form.children('textarea').attr('lang', sendanmaki.lang).val(html);
-        $.colorbox({
-            html: form,
-            modal: true,
-            onComplete: function() {
-				/*
-				// Mentokusai!
-                var origClose = $.colorbox.close;
-                $.colorbox.close = function() {
-                    // but this check now anyhow the initial values...
-                    if (form.data('original') != form.children('textarea').val()) {
-                        var response = confirm('Haluatko varmasti sulkea tämän mahdollisesti muokatun tekstin?');
-                        if (!response) {
-                            return false;
-                        }
-                    }
-                    origClose();
-                };
-				*/
-            }
-        });
-    },
 
 	/**
 	 * Handle a click on a media thumbnail.
@@ -329,63 +290,6 @@ var sendanmaki = {
 				photo: true
 			});
 		}
-    },
-
-    /**
-     * Callback for submitting the contribution form.
-	 * It will insert the edited content to article.
-     */
-    submitEditForm: function($form) {
-		var $a = $('article');
-        var $c = $a.clone();
-		// replace .mediathumb parts by [|]
-		$c.children('.mediathumb').replaceWith(function() {
-			return "\n" + '[' + $(this).data('key') + ']' + "\n";
-		});
-		var orig = $c.html(); // string
-		// https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String/replace
-		var edited = orig.replace($form.data('original'), $form.children('textarea[name="content"]').val());
-        var data = {
-            lang: sendanmaki.lang,
-            page: location.pathname,
-            content: edited
-        };
-		console.dir(data);
-
-		// Update the page
-		var article = $a.html();
-		$('article').html(article.replace($form.data('original'), $form.children('textarea[name="content"]').val()));
-
-		// disable send button
-		$('input[type="submit"]').attr('disabled', 'disabled');
-
-		// Feedback of the ajax submit on background color
-        $form.addClass('ajax-ongoing');
-
-        $.post($form.attr('action'), data, function(received, status){
-			$form.removeClass('ajax-ongoing');
-
-            var style;
-            if (status != 'success') {
-                style = 'ajax-failure';
-            }
-            else if (received.answer) {
-                // 1 or true
-                style = 'ajax-success';
-
-                // Success, thus return original later
-                setTimeout(function() {
-                    $form.removeClass(style);
-                    //$.colorbox.close();
-                }, 2 * 1000);
-            }
-            else {
-                style = 'ajax-unsure';
-            }
-
-            $form.addClass(style);
-			$('input[type="submit"]').attr('disabled', null);
-        }, 'json');
     },
 
     /**
@@ -435,28 +339,145 @@ var sendanmaki = {
     },
 
     /**
-     * Show a note on a image that has src == data.url
-     * data = {x1, x2, y1, y2, width, heigth, note, url}
+     * Edit mode toggle. Shall be called only when logged in.
      */
-    showImgNote: function(data) {
-        console.log('showNote.');
+    editModeToggle: function() {
+        var $e = $('article');
+		var $a = $('a[href="#contribute"]');
+        var className = 'editmode';
+        if (sendanmaki.editMode) {
+            $e.removeClass(className);
+            $a.removeClass(className);
+            sendanmaki.editMode = 0;
+        }
+        else {
+            $e.addClass(className);
+            $a.addClass(className);
+            sendanmaki.editMode = 1;
+        }
+        localStorage.setItem('editMode', sendanmaki.editMode);
+    },
+
+    /**
+     * Click handler for the elements that can be edited.
+     */
+    editModeClick: function($e) {
+        var html = $e.outerHtml();
+        var form = $(sendanmaki.editForm).clone();
+        form.data('original', html);
+        $.colorbox({
+            html: form,
+            modal: true,
+            onComplete: function() {
+				$('textarea[name="content"]').attr('lang', sendanmaki.lang).val(html);
+				/*
+				// Mentokusai!
+                var origClose = $.colorbox.close;
+                $.colorbox.close = function() {
+                    // but this check now anyhow the initial values...
+                    if (form.data('original') != form.children('textarea').val()) {
+                        var response = confirm('Haluatko varmasti sulkea tämän mahdollisesti muokatun tekstin?');
+                        if (!response) {
+                            return false;
+                        }
+                    }
+                    origClose();
+                };
+				*/
+            }
+        });
+    },
+
+    /**
+     * Callback for submitting the contribution form.
+	 * It will insert the edited content to article.
+     */
+    submitEditForm: function($form) {
+		var content = $('textarea[name="content"]').val();
+		var original = $form.data('original');
+		var $a = $('article');
+        var $c = $a.clone();
+		// replace .mediathumb parts by [|]
+		$c.children('.mediathumb').replaceWith(function() {
+			return "\n" + '[' + $(this).data('key') + ']' + "\n";
+		});
+		var orig = $c.html().replace("\n\n", "\n"); // remove duplicate new lines
+		// https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String/replace
+		var edited = orig.replace(original, content);
+        var data = {
+            lang: sendanmaki.lang,
+            page: location.pathname,
+            content: edited
+        };
+		console.dir(data);
+
+		// Update the page
+		var article = $a.html();
+		$('article').html(article.replace(original, content));
+
+		// disable send button
+		$('input[type="submit"]').attr('disabled', 'disabled');
+		
+		// feedback for the user
+		$('label span').text('Muokauksesi lähti koti palvelinta');
+
+		// Feedback of the ajax submit on background color
+        $form.addClass('ajax-ongoing');
+
+        $.post($form.attr('action'), data, function(received, status){
+			$form.removeClass('ajax-ongoing');
+
+            var style;
+            if (status != 'success') {
+                style = 'ajax-failure';
+            }
+            else if (received.answer) {
+                // 1 or true
+                style = 'ajax-success';
+
+                // Success, thus return original later
+                setTimeout(function() {
+                    $form.removeClass(style);
+                    //$.colorbox.close();
+                }, 2 * 1000);
+            }
+            else {
+                style = 'ajax-unsure';
+            }
+
+            $form.addClass(style);
+			$('input[type="submit"]').attr('disabled', null);
+			
+			var now = new Date();
+			$('label span').text('Muokkauksesi lähetetty ' + now.toLocaleString());
+        }, 'json');
+    },
+
+    /**
+     * Create a note element on a image that has src == data.url
+     * data = {x, y, width, heigth, note, url}
+     */
+    createImgNote: function(data) {
 		console.dir(data);
         var parent = $('img[src="' + data.url + '"]').parent();
-        var div = $('<div class="note"></div>');
-        var tpo = parent.position();
-        div.css('left', data.x1 + tpo.left).css('top', data.y1 + tpo.top);
-        var area = $('<span class="notearea"></span>');
-        var note = $('<span class="notetext">' + data.note + '</span>');
-        area.css('width', data.width).css('height', data.height);
-        div.append(area, note);
-        parent.append(div).show(400);
+		if (parent.size() > 0) {
+			var div = $('<div class="note" rel="' + data.url + '"></div>');
+			var tpo = parent.position();
+			div.css('left', data.x + tpo.left).css('top', data.y + tpo.top);
+			var area = $('<span class="notearea"></span>');
+			var note = $('<span class="notetext">' + data.note + '</span>');
+			area.css('width', data.width).css('height', data.height);
+			div.append(area, note);
+			parent.append(div).show(400);
+		}
     },
 
     /**
      * A form to be shown in colorbox when editing an article content.
      */
     editForm: '<form action="/update-article" method="post" class="edit">' +
-        '<textarea name="content" spellcheck="true"></textarea>' +
+		'<label>HTML5 sallittu<span></span>' +
+        '<textarea name="content" spellcheck="true"></textarea></label>' +
         '<input type="submit" value="Lähetä" />' +
         '<input type="button" name="close" value="Sulje" />' +
         '</form>',
@@ -465,7 +486,8 @@ var sendanmaki = {
      * Login form. Please note that this uses OpenID.
      */
     loginForm: '<form action="/authenticate-user" method="post" class="login">' +
-        '<label>Sähköpostiosoite (OpenID kirjautumista varten)<input type="email" name="identifier" /></label>' +
+        '<label>Sähköpostiosoite (OpenID kirjautumista varten)' +
+		'<input type="email" name="identifier" /></label>' +
         '<input type="submit" value="Lähetä" />' +
         '<input type="hidden" name="lang" value="fi" />' +
         '<input type="hidden" name="page" value="/" />' +

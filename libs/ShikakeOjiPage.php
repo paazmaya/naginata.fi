@@ -14,6 +14,12 @@
  */
 class ShikakeOjiPage
 {
+	/**
+	 * Unix timestamp of the last modification of the given page.
+	 * ...assuming there is a page set.
+	 */
+	public $pageModified = 0;
+	
     /**
      * List of Cascaded Style Sheet files that are minified into one
      * Should be relative to public_html/css/
@@ -395,22 +401,24 @@ class ShikakeOjiPage
         $out .= '<title>' . $head['header'] . ' | ' . $data['title'][$this->shikakeOji->language] . '</title>';
         $out .= '<meta name="description" property="og:description" content="' . $head['description'] . '"/>';
 
-        // http://ogp.me/
-        $out .= '<meta property="og:title" content="' . $head['title'] . '"/>';
-        $out .= '<meta property="og:type" content="sports_team"/>';
-        $out .= '<meta property="og:image" content="http://' . $_SERVER['HTTP_HOST'] . '/img/logo.png"/>';
-        $out .= '<meta property="og:url" content="http://' . $_SERVER['HTTP_HOST'] . $this->shikakeOji->currentPage . '"/>';
-        $out .= '<meta property="og:site_name" content="' . $head['title'] . '"/>';
-        $out .= '<meta property="og:locale" content="fi_FI"/>'; // language_TERRITORY
-        $out .= '<meta property="og:locale:alternate" content="en_GB"/>';
-        $out .= '<meta property="og:locale:alternate" content="ja_JP"/>';
-        $out .= '<meta property="og:email" content="BUT-NO-SPAM-PLEASE-jukka@naginata.fi"/>';
-        $out .= '<meta property="og:country-name" content="Finland"/>';
+		if (strpos($_SERVER['HTTP_USER_AGENT'], 'facebookexternalhit') !== false)
+		{
+			// http://ogp.me/
+			$out .= '<meta property="og:title" content="' . $head['title'] . '"/>';
+			$out .= '<meta property="og:type" content="sports_team"/>';
+			$out .= '<meta property="og:image" content="http://' . $_SERVER['HTTP_HOST'] . '/img/logo.png"/>';
+			$out .= '<meta property="og:url" content="http://' . $_SERVER['HTTP_HOST'] . $this->shikakeOji->currentPage . '"/>';
+			$out .= '<meta property="og:site_name" content="' . $head['title'] . '"/>';
+			$out .= '<meta property="og:locale" content="fi_FI"/>'; // language_TERRITORY
+			$out .= '<meta property="og:locale:alternate" content="en_GB"/>';
+			$out .= '<meta property="og:locale:alternate" content="ja_JP"/>';
+			$out .= '<meta property="og:country-name" content="Finland"/>';
 
-        // https://developers.facebook.com/docs/opengraph/
-        $out .= '<meta property="fb:app_id" content="' . $this->shikakeOji->config['facebook']['app_id'] . '"/>'; // A Facebook Platform application ID that administers this page.
-        $out .= '<meta property="fb:admins" content="' . $this->shikakeOji->config['facebook']['admins'] . '"/>';
-
+			// https://developers.facebook.com/docs/opengraph/
+			$out .= '<meta property="fb:app_id" content="' . $this->shikakeOji->config['facebook']['app_id'] . '"/>'; // A Facebook Platform application ID that administers this page.
+			$out .= '<meta property="fb:admins" content="' . $this->shikakeOji->config['facebook']['admins'] . '"/>';
+		}
+		
         // http://microformats.org/wiki/rel-license
         $out .= '<link rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/"/>';
         $out .= '<link rel="author" href="http://paazmaya.com"/>';
@@ -471,7 +479,8 @@ class ShikakeOjiPage
         $out .= '</header>';
 
 		$latest = 0;
-        $sql = 'SELECT content, modified FROM naginata_article WHERE page_id = \'' . $page_id . '\' AND published = 1 ORDER BY modified DESC LIMIT 1';
+        $sql = 'SELECT content, modified FROM naginata_article WHERE page_id = \'' . 
+			$page_id . '\' AND published = 1 ORDER BY modified DESC LIMIT 1';
         $run = $pdo->query($sql);
         if ($run)
         {
@@ -480,6 +489,8 @@ class ShikakeOjiPage
 				$out .= '<article data-data-modified="' . $res['modified'] . '">';
 				$out .= $this->findSpecialFields(self::decodeHtml($res['content']));
 				$out .= '</article>';
+				
+				$latest = max($latest, $res['modified']);
 			}
         }
         else
@@ -487,6 +498,8 @@ class ShikakeOjiPage
             return '<p class="fail">Article data for this page missing</p>';
         }
 
+		// Set the latest modification time for header info
+		$this->pageModified = $latest;
 
         $out .= '</div>';
 
@@ -833,7 +846,7 @@ class ShikakeOjiPage
                 // 2009-09-10 13:56:53, http://vimeo.com/forums/topic:47127 what timezone is it?
                 'published' => DateTime::createFromFormat('Y-m-d H:i:s', $data['upload_date'], new DateTimeZone('UTC')),
                 'href' => 'http://vimeo.com/' . $matches['1'],
-                'inline' => 'http://vimeo.com/moogaloop.swf?clip_id=' . $matches['1'] . '&amp;autoplay=1',
+                'inline' => 'http://vimeo.com/moogaloop.swf?clip_id=' . $matches['1'],
                 'inlinewidth' => $data['width'],
                 'inlineheight' => $data['height'],
                 'inlineflash' => true,

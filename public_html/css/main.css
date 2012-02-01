@@ -207,7 +207,7 @@ article p > a:not(img)::after {
 
 
 form {
-    width: 40em;
+    width: 50em;
 }
 form.login {
     background-image: url(../img/openid-icon-100x100.png);
@@ -232,7 +232,7 @@ form.ajax-unsure {
 }
 
 select, input, textarea {
-    width: 38rem;
+    width: 48rem;
     border: 1px solid #072434;
     margin: 1em;
 }
@@ -242,8 +242,8 @@ textarea {
     margin: 0.5em;
 }
 input[type="submit"], input[type="button"] {
-    width: 12em;
-    margin: 1em 4em;
+    width: 15em;
+    margin: 1em 5em;
     padding: 0.5em;
     text-align: center;
     font-weight: bold;
@@ -263,6 +263,10 @@ label {
     width: 38rem;
     margin-left: 1em;
 	font-weight: bold;
+}
+label span {
+	position: absolute;
+	right: 1.5em;
 }
 
 /* paragraph containing a link that contains image(s) */
@@ -288,6 +292,10 @@ label {
 }
 .mediathumb a {
 	color: #072434;
+}
+/* first-child would be span so it will not work */
+.mediathumb img:not(:first-of-type) {
+	margin-left: 0.5em;
 }
 /* under mediathumb there is span that on hover should show play video icon */
 .playicon {

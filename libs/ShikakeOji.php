@@ -257,6 +257,8 @@ class ShikakeOji
 
             // Front end needs to handle whatever the output is.
             header('Content-type: application/json');
+            header('Content-Language: ' . $this->language);
+            header('Last-modified: ' . date('r', time()));
 			$json = array(
 				'answer' => $out,
 				'login' => intval($this->isLoggedIn),
@@ -266,10 +268,12 @@ class ShikakeOji
         }
         else
         {
+			$out = $this->output->renderHtml($this->appData);
             header('Content-type: text/html; charset=utf-8');
             header('Content-Language: ' . $this->language);
-            //header('Last-modified: ' . date('r', $this->dataModified));
-            return $this->output->renderHtml($this->appData);
+            header('Last-modified: ' . date('r', $this->output->pageModified));
+            header('X-Hoplaa: ' . date('r', $this->output->pageModified));
+            return $out;
         }
     }
 
@@ -419,7 +423,7 @@ class ShikakeOji
         }
         
         // Get the id of the page
-        $sql = 'SELECT P.id, A.content FROM naginata_page P LEFT JOIN naginata_article A ' .
+        $sql = 'SELECT P.id, A.content, A.modified FROM naginata_page P LEFT JOIN naginata_article A ' .
             'ON P.id = A.page_id WHERE P.lang = \'' . $received['lang'] . '\' AND P.url = \'' . 
             $received['page'] . '\' AND A.published = 1 ORDER BY A.modified DESC LIMIT 1';
         $run = $this->database->query($sql);
@@ -427,10 +431,11 @@ class ShikakeOji
         {
             $res = $run->fetch(PDO::FETCH_ASSOC);
 
+			$content = str_replace("\n\n", "\n", $received['content']); // remove duplicate new lines
             
             // Insert new revision for moderation
             $sql = 'INSERT INTO naginata_article (page_id, content, modified, email) VALUES (\'' .
-                $res['id'] . '\', \'' . $received['content'] . '\', \'' .
+                $res['id'] . '\', \'' . $content . '\', \'' .
                 time() . '\', \'' . $this->userEmail . '\')';
             $run = $this->database->query($sql);
 			
@@ -439,14 +444,14 @@ class ShikakeOji
 
             // Create diff for sending it via email
             $a = explode("\n", ShikakeOjiPage::decodeHtml($res['content']));
-            $b = explode("\n", ShikakeOjiPage::decodeHtml($received['content']));
+            $b = explode("\n", ShikakeOjiPage::decodeHtml($content));
 
             require $this->libPath . '/php-diff/Diff.php';
             require $this->libPath . '/php-diff/Diff/Renderer/Text/Unified.php';
 
             $diff = new Diff($a, $b);
             $renderer = new Diff_Renderer_Text_Unified;
-            $out = $diff->render($renderer);
+            $diffUnified = $diff->render($renderer);
 
             // Now do the emailing
             $isEmailed = $this->sendEmail(
@@ -455,8 +460,8 @@ class ShikakeOji
                 $_SERVER['HTTP_HOST'] . $received['page'] . ' - Muokattu, tekijänä ' . $this->userEmail,
                 'Terve, ' . "\n" . 'Sivustolla ' . $_SERVER['HTTP_HOST'] .
                     ' tapahtui sisällön muokkaus tapahtuma, jonka tekijänä ' . $this->userEmail . '.' . "\n" .
-                    'Alkuperäisen sisällön päiväys: ' . date($this->logDateFormat, $received['modified']) . "\n" .
-                    'Sivun ' . $received['page'] . ' muutokset esitetty alla.' . "\n\n" . $out
+                    'Aiemman version päiväys: ' . date($this->logDateFormat, $res['modified']) . "\n" .
+                    'Sivun ' . $received['page'] . ' muutokset esitetty alla:' . "\n\n" . $diffUnified
             );
             return $isSaved && $isEmailed;
         }
@@ -870,8 +875,6 @@ class ShikakeOji
         global $cf;
         require_once $this->libPath . '/phpmailer/class.phpmailer.php';
 
-        mb_internal_encoding('UTF-8');
-
         $mail = new PHPMailer();
         $mail->SetLanguage($this->language);
         $mail->CharSet = 'utf-8';
@@ -890,7 +893,7 @@ class ShikakeOji
         $mail->AddAddress($toMail, $toName);
         $mail->AddBCC($this->config['email']['address'], $mail->FromName);
 
-        $mail->WordWrap = 120;
+        $mail->WordWrap = 180;
         $mail->IsHTML(false);
 
         $mail->Subject = $subject; //mb_encode_mimeheader($subject, 'UTF-8', 'Q');
