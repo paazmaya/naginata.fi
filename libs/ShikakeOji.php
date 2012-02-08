@@ -4,7 +4,7 @@
  ***************
  * Juga Paazmaya <olavic@gmail.com>
  * http://creativecommons.org/licenses/by-sa/3.0/
- * 
+ *
  * A class for handling application flow.
  * Let's see how many times the buzzword HTML5 can be repeated.
  *
@@ -12,7 +12,7 @@
  *
  * Usage:
  *  $shio = new ShikakeOji(
- *    realpath('../naginata-data.json'), 
+ *    realpath('../naginata-data.json'),
  *    realpath('../naginata-config.json')
  *  );
  *  $shio->output->useMinification = true;
@@ -129,7 +129,8 @@ class ShikakeOji
         '/receive-modernizr-statistics' => 'pageReceiveModernizrStats',
         '/authenticate-user' => 'pageAuthenticateUser',
         '/keep-session-alive' => 'keepSessionAlive',
-		'/application.cache' => 'renderAppCache'
+		'/application.cache' => 'renderAppCache',
+		'/modernizr-statistics' => 'showModernizrStats'
     );
 
     /**
@@ -140,7 +141,7 @@ class ShikakeOji
     function __construct($dataPath, $configPath)
     {
 		$this->loadConfig($configPath);
-		
+
         $this->checkSession();
 
         $this->dataPath = $dataPath;
@@ -151,7 +152,7 @@ class ShikakeOji
             $this->isCompressionSupported = true;
             //$this->minifiedName .= 'gz.'; // It might conflict with what Apache is delivering already compressed
         }
-		
+
 		$this->output = new ShikakeOjiPage($this);
     }
 
@@ -209,7 +210,7 @@ class ShikakeOji
         {
             // Content
             $found = false;
-			
+
 			$sql = 'SELECT * FROM naginata_page WHERE url = \'' . $lowercase . '\' AND lang = \'' . $this->language . '\'';
 			$run = $this->database->query($sql);
 			if ($run)
@@ -254,25 +255,18 @@ class ShikakeOji
         {
             // These functions return a string/true or false on failure.
             $out = call_user_func(array($this, $this->appUrls[$this->currentPage]));
-
-            // Front end needs to handle whatever the output is.
-            header('Content-type: application/json');
+			
+			// Other headers sent from the function above
             header('Content-Language: ' . $this->language);
-            header('Last-modified: ' . date('r', time()));
-			$json = array(
-				'answer' => $out,
-				'login' => intval($this->isLoggedIn),
-				'email' => $this->userEmail
-			);
-            return json_encode($json);
+			header('Last-modified: ' . date('r', time()));
+            return $out;
         }
         else
         {
-			$out = $this->output->renderHtml($this->appData);
+			$out = $this->output->renderHtml();
             header('Content-type: text/html; charset=utf-8');
             header('Content-Language: ' . $this->language);
             header('Last-modified: ' . date('r', $this->output->pageModified));
-            header('X-Hoplaa: ' . date('r', $this->output->pageModified));
             return $out;
         }
     }
@@ -291,7 +285,7 @@ class ShikakeOji
         if (!isset($_SESSION['sid']) || $_SESSION['sid'] != $sid || !isset($_SESSION['email']) || !isset($_SESSION['init']))
         {
             session_regenerate_id(); // updates the cookie if there is one
-			
+
             // Must match the sha1 of REMOTE_ADDR and HTTP_USER_AGENT
             $_SESSION['sid'] = $sid;
             // Must found from the "users" list if not empty. If empty, not logged in.
@@ -300,7 +294,7 @@ class ShikakeOji
             $_SESSION['init'] = time();
         }
 
-        if ($_SESSION['email'] != '' //&& 
+        if ($_SESSION['email'] != '' //&&
             //($this->isEmailAdministrator($_SESSION['email']) || $this->isEmailContributor($_SESSION['email']))
         )
         {
@@ -314,7 +308,7 @@ class ShikakeOji
 				'$sid: ' . $sid . "\n\t" .
 				'$_SESSION[email]: ' . $_SESSION['email'] . "\n\t" .
 				'$_SESSION[sid]: ' . $_SESSION['sid'] . "\n";
-				
+
 		file_put_contents('../session-checker.log', $log, FILE_APPEND);
 		*/
     }
@@ -339,7 +333,7 @@ class ShikakeOji
             echo $error;
             exit();
         }
-        
+
         // PDO database connection if the settings are set.
         if (isset($this->config['database']) && isset($this->config['database']['type']) &&
             in_array($this->config['database']['type'], PDO::getAvailableDrivers()))
@@ -411,6 +405,8 @@ class ShikakeOji
      */
     private function pageUpdateArticle()
     {
+		header('Content-type: application/json');
+		
         $required = array(
             'lang', // language: fi
             'page', // page url: /koryu
@@ -419,28 +415,30 @@ class ShikakeOji
         $received = $this->checkRequiredPost($required);
         if ($received === false || !$this->isLoggedIn)
         {
-            return false;
+            return json_encode(array('answer' => '0'));
         }
-        
+		
+		$success = false;
+
         // Get the id of the page
         $sql = 'SELECT P.id, A.content, A.modified FROM naginata_page P LEFT JOIN naginata_article A ' .
-            'ON P.id = A.page_id WHERE P.lang = \'' . $received['lang'] . '\' AND P.url = \'' . 
+            'ON P.id = A.page_id WHERE P.lang = \'' . $received['lang'] . '\' AND P.url = \'' .
             $received['page'] . '\' AND A.published = 1 ORDER BY A.modified DESC LIMIT 1';
         $run = $this->database->query($sql);
-        if ($run) 
+        if ($run)
         {
             $res = $run->fetch(PDO::FETCH_ASSOC);
 
 			$content = str_replace("\n\n", "\n", $received['content']); // remove duplicate new lines
-            
+
             // Insert new revision for moderation
             $sql = 'INSERT INTO naginata_article (page_id, content, modified, email) VALUES (\'' .
                 $res['id'] . '\', \'' . $content . '\', \'' .
                 time() . '\', \'' . $this->userEmail . '\')';
             $run = $this->database->query($sql);
-			
+
             $isSaved = ($run->rowCount() > 0);
-            
+
 
             // Create diff for sending it via email
             $a = explode("\n", ShikakeOjiPage::decodeHtml($res['content']));
@@ -463,9 +461,15 @@ class ShikakeOji
                     'Aiemman version päiväys: ' . date($this->logDateFormat, $res['modified']) . "\n" .
                     'Sivun ' . $received['page'] . ' muutokset esitetty alla:' . "\n\n" . $diffUnified
             );
-            return $isSaved && $isEmailed;
+            $success = $isSaved && $isEmailed;
         }
-        return false;
+		
+		$json = array(
+			'answer' => $success,
+			'login' => intval($this->isLoggedIn),
+			'email' => $this->userEmail
+		);
+		return json_encode($json);
     }
 
     /**
@@ -473,6 +477,8 @@ class ShikakeOji
      */
     private function pageReceiveModernizrStats()
     {
+		header('Content-type: application/json');
+		
         $required = array(
             'modernizr',
             'useragent',
@@ -482,7 +488,7 @@ class ShikakeOji
         $received = $this->checkRequiredPost($required);
         if ($received === false)
         {
-            return false;
+            return json_encode(array('answer' => '0'));
         }
 
         $counter = 0;
@@ -511,28 +517,31 @@ class ShikakeOji
                     $keys[] = '(\'' . $k . '\')';
                 }
             }
-            
+
             // TODO: how about other database types?
             // http://dev.mysql.com/doc/refman/5.1/en/insert.html
             $sql = 'INSERT IGNORE INTO mdrnzr_key (title) VALUES ' . implode(', ', $keys); // title must be unique indexed
             $this->database->query($sql);
 
             // Insert the values of this client to mdrnzr_value table.
-            $prep = $this->database->prepare('INSERT INTO mdrnzr_value (hasthis, key_id, client_id) VALUES(' .
+            $prep = $this->database->prepare('INSERT INTO mdrnzr_value (key_id, hasthis, client_id) VALUES(' .
                 '(SELECT id FROM mdrnzr_key WHERE title = ? LIMIT 1), ?, ? )');
             foreach ($values as $row)
             {
                 $prep->execute($row);
             }
-            
+
             $stat = $this->database->query('SELECT COUNT(id) AS total FROM mdrnzr_client WHERE address = \'' .
                 $_SERVER['REMOTE_ADDR'] . '\' GROUP BY address');
             $res = $stat->fetch(PDO::FETCH_ASSOC);
 
             $counter = $res['total'];
         }
-        // How many times this IP address sent its Modernizr data
-        return $counter;
+        // How many times this IP address sent its Modernizr data		
+		$json = array(
+			'answer' => $counter
+		);
+		return json_encode($json);
     }
 
     /**
@@ -543,6 +552,8 @@ class ShikakeOji
      */
     private function pageAuthenticateUser()
     {
+		header('Content-type: application/json');
+		
         // https://gitorious.org/~paazmaya/lightopenid/paazmayas-lightopenid
         require $this->libPath . '/lightopenid/openid.php';
 
@@ -576,7 +587,7 @@ class ShikakeOji
                 // Show a message of the login state
                 // Set a temporary session variable. Once it is found, it will be removed
                 $_SESSION['msg-login-success'] = (bool) $this->isLoggedIn;
-				
+
 				// Build the mail message for site owner
                 $mailBody = 'OpenID was validated: ' . $openid->validate() . "\n\n";
                 $mailBody .= 'Attributes:' . "\n";
@@ -605,7 +616,7 @@ class ShikakeOji
 					// Since this is called, the execution stops. It does not seem to redirect to anywhere else except / ...
                     $this->redirectTo($_GET['page'], '');
                 }
-                return $openid->validate();
+                return json_encode(array('answer' => $openid->validate()));
             }
         }
         else if (isset($_POST['identifier']) && $_POST['identifier'] != '' && isset($_POST['page']) && $_POST['page'] != '')
@@ -614,11 +625,11 @@ class ShikakeOji
             $id = filter_var($_POST['identifier'], FILTER_VALIDATE_EMAIL);
             if ($id === false)
             {
-                return false;
+                return json_encode(array('answer' => '0'));
             }
-            
+
             // TODO: Check that this email address is in the list of users.
-            
+
             if (strpos($id, '@gmail.com') !== false)
             {
                 $id = 'https://www.google.com/accounts/o8/id';
@@ -634,13 +645,13 @@ class ShikakeOji
             $log = date($this->logDateFormat) . ' [' . $_SERVER['REMOTE_ADDR'] . '] ' . $id . ' ' . implode("\n\t\t" . '&', explode('&', $authUrl)) . "\n";
             file_put_contents($this->openidLog, $log, FILE_APPEND);
 
-            //return $authUrl; 
+            //return $authUrl;
             header('Location: ' . $authUrl); // no longer AJAX for this submission.
             exit();
         }
         else
         {
-            return false;
+            return json_encode(array('answer' => '0'));
         }
     }
 
@@ -651,34 +662,44 @@ class ShikakeOji
      */
     private function keepSessionAlive()
     {
+		header('Content-type: application/json');
+		
         // We should have received "emode" = editMode
 		if (isset($_POST['emode']))
 		{
 			$_SESSION['editMode'] = intval($_POST['emode']);
 		}
-		
+
         $lifetime = time() - $_SESSION['init'];
-        return $lifetime;
+		
+		$json = array(
+			'answer' => $lifetime,
+			'login' => intval($this->isLoggedIn),
+			'email' => $this->userEmail
+		);
+		return json_encode($json);
     }
-	
+
 	/**
 	 * Render a manifest file for applicationCache
 	 * Does return something only on error.
 	 */
 	private function renderAppCache()
-	{		
+	{
+		header('Content-type: text/cache-manifest');
+		
 		// date of the latest changed file
 		$highestDate = 0;
-		
+
 		$out = 'CACHE MANIFEST' . "\n";
 		$out .= "\n";
 		$out .= 'CACHE:' . "\n";
-		
+
 		$sql = 'SELECT P.url, A.modified FROM naginata_page P' .
-			' LEFT JOIN naginata_article A ON P.id = A.page_id WHERE P.lang = \'' . 
+			' LEFT JOIN naginata_article A ON P.id = A.page_id WHERE P.lang = \'' .
 			$this->language . '\' ORDER BY P.weight ASC, A.modified DESC';
 		$run = $this->database->query($sql);
-		if ($run) 
+		if ($run)
 		{
 			while ($res = $run->fetch(PDO::FETCH_ASSOC))
 			{
@@ -686,15 +707,15 @@ class ShikakeOji
 				$highestDate = max($highestDate, $res['modified']);
 			}
 		}
-		
+
 		$images = glob('../public_html/img/*');
 		foreach($images as $img)
 		{
 			$highestDate = max($highestDate, filemtime($img));
 			$out .= '/img/' . basename($img) . "\n";
 		}
-		
-		
+
+
 		if (!$this->output->useMinification)
 		{
 			foreach($this->output->styles as $css)
@@ -721,7 +742,7 @@ class ShikakeOji
 			$out .= '/js/' . $this->output->minifiedName . 'js' . "\n";
 			$highestDate = max($highestDate, filemtime('../public_html/js/' . $this->output->minifiedName . 'js'));
 		}
-		
+
 		$flickr = glob('../cache/flickr_*_sizes.json');
 		foreach($flickr as $fl)
 		{
@@ -729,7 +750,7 @@ class ShikakeOji
 			$json = json_decode($fc, true);
 			$out .= $json['sizes']['size']['2']['source'] . "\n";
 		}
-		
+
 		$flickr = glob('../cache/flickr_*_sizes.json');
 		foreach($flickr as $fl)
 		{
@@ -737,7 +758,7 @@ class ShikakeOji
 			$json = json_decode($fc, true);
 			$out .= $json['sizes']['size']['2']['source'] . "\n";
 		}
-		
+
 		$youtube = glob('../cache/youtube_*.json');
 		foreach($youtube as $yo)
 		{
@@ -751,7 +772,7 @@ class ShikakeOji
 				}
 			}
 		}
-		
+
 		$vimeo = glob('../cache/vimeo_*.json');
 		foreach($vimeo as $vi)
 		{
@@ -759,30 +780,37 @@ class ShikakeOji
 			$json = json_decode($vs, true);
 			$out .= $json['0']['thumbnail_medium'] . "\n";
 		}
-		
-		
+
+
 		/*
 		/favicon.ico
 		/js/modernizr.min.js
 		*/
 		$out .= "\n";
-	
+
 		// Resources that require the user to be online.
 		$out .= 'NETWORK:' . "\n";
 		$out .= '*' . "\n";
-		
+
 		$out .= "\n";
-		
+
 		$out .= 'OFFLINE:' . "\n";
 		$out .= '/keep-session-alive /offline.json' . "\n";
-		
+
 		$out .= "\n";
-		
+
 		$out .= '# ' . date('Y-m-d', $highestDate) . "\n";
-		
-		header('Content-type: text/cache-manifest');
-		echo $out;
-		exit();
+
+		return $out;
+	}
+	
+	/**
+	 * Show Modernizr statistics
+	 */
+	private function showModernizrStats()
+	{
+		header('Content-type: text/html');
+		return $this->output->renderModernizrTable();
 	}
 
     /**
@@ -822,7 +850,7 @@ class ShikakeOji
         header('Location: http://' . $_SERVER['HTTP_HOST']) . $url;
         exit();
     }
-    
+
     /**
      * Is the given email found in the administrators list.
      * @param   string  $email
@@ -840,7 +868,7 @@ class ShikakeOji
 		}
         return in_array($email, $this->config['users']['administrators']);
     }
-    
+
     /**
      * Is the given email found in the contributors list.
      * @param   string  $email

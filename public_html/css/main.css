@@ -440,4 +440,9 @@ label span {
 	background-image: linear-gradient(-99deg, #A4B5C6, #FEFEFE);
 }
 
+/* modernizr stats table */
+.stats td {
+	padding: 2px;
+	border: 1px solid lightgrey;
+}
 

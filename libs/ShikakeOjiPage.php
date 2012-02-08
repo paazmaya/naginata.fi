@@ -10,7 +10,7 @@
  *
  * Usage:
  *  $shih = new ShikakeOjiPage();
- *  echo $shih->renderHtml($applicationData);
+ *  echo $shih->renderHtml();
  */
 class ShikakeOjiPage
 {
@@ -19,7 +19,7 @@ class ShikakeOjiPage
 	 * ...assuming there is a page set.
 	 */
 	public $pageModified = 0;
-	
+
     /**
      * List of Cascaded Style Sheet files that are minified into one
      * Should be relative to public_html/css/
@@ -100,6 +100,21 @@ class ShikakeOjiPage
 	 * Instance of a ShikakeOji class.
 	 */
 	private $shikakeOji;
+	
+	/**
+	 * Markup for navigation
+	 */
+	private $navigation;
+	
+	/**
+	 * Data used for the head section
+	 */
+	private $head;
+	
+	/**
+	 * Id of this page in table naginata_page if any.
+	 */
+	private $pageId = -1;
 
     /**
      * Constructor does not do much.
@@ -116,17 +131,37 @@ class ShikakeOjiPage
 
         // Calculate interval time for 2 week of seconds.
         $this->cacheInterval = (60 * 60 * 24 * 7 * 2);
+		
+		// Create navigation for later use
+        $navigation = '';
+        $sql = 'SELECT * FROM naginata_page WHERE lang = \'' . $this->shikakeOji->language . '\' ORDER BY weight ASC';
+        $run = $this->shikakeOji->database->query($sql);
+        if ($run)
+        {
+            while ($res = $run->fetch(PDO::FETCH_ASSOC))
+            {
+				$navigation .= '<li';
+				if ($this->shikakeOji->currentPage == $res['url'])
+				{
+					$navigation .= ' class="current"';
+					$this->head = $res; // head section data
+					$this->pageId = $res['id']; // page_id for naginata_article
+				}
+				$navigation .= '><a href="' . $res['url'] . '" title="' . $res['header'] . '">' . $res['title'] . '</a></li>';
+            }
+        }
+		$this->navigation = $navigation;
     }
 
     /**
-     * Render the HTML5 markup by the given data and options.
+     * Render the HTML5 markup by the appData and options.
      */
-    public function renderHtml($data)
+    public function renderHtml()
     {
 		require $this->shikakeOji->libPath . '/minify/Minify/JS/ClosureCompiler.php';
 		require $this->shikakeOji->libPath . '/minify/Minify/CSS/Compressor.php';
 
-        $out = $this->createHtmlPage($data);
+        $out = $this->createHtmlPage();
 
         if ($this->useTidy && extension_loaded('tidy'))
         {
@@ -154,79 +189,63 @@ class ShikakeOjiPage
      */
     public function renderModernizrTable()
     {
-
-        // list numbers of same answers for a key
+		$data = $this->shikakeOji->appData;
+		
+		$this->head = array(
+			'title' => 'Modernizr Statistics',
+			'header' => 'Modernizr Statistics',
+			'description' => 'Modernizr Statistics'
+		);
+		
+		$out = $this->createHtmlHead($data['title'][$this->shikakeOji->language]);
 
         // cache keys, some 70 maybe...
-        $sql = 'SELECT * FROM mdrnzr_key ORDER BY id ASC';
+        $sql = 'SELECT * FROM mdrnzr_key ORDER BY title ASC';
         $run = $this->shikakeOji->database->query($sql);
         $keys = $run->fetchAll(PDO::FETCH_ASSOC);
-        
 
-        $keyList = array();
-    
-        $head = '<table>';
-        $head .= '<caption></caption>';
+        $out .= '<table class="stats">';
+        $out .= '<caption>Total of Modernizr tests: ' . count($keys) . '</caption>';
 
-        $head .= '<thead>';
-        $head .= '<tr>';
+		$sql = 'SELECT hasthis, COUNT(id) AS total FROM mdrnzr_value WHERE key_id = ? GROUP BY hasthis ORDER BY client_id ASC';
+		$pre = $this->shikakeOji->database->prepare($sql);
+		
         foreach ($keys as $key)
         {
-            $head .= '<th data-key-id="' . $key['id'] . '">' . $key['title'] . '</th>';
-            $keyList[] = $key['id'];
+			$out .= '<tr>';
+            $out .= '<th data-key-id="' . $key['id'] . '">' . $key['title'] . '</th>';
+			$out .= '<td>';
+			$item = $pre->execute(array($key['id']));
+			if ($item)
+			{
+				$rows = $pre->fetchAll(PDO::FETCH_ASSOC);
+				$list = array();
+				foreach ($rows as $row)
+				{
+					$list[] = $row['hasthis'] . ' (' . $row['total'] . ')';
+				}
+				$out .= implode(', ', $list);
+			}
+			$out .= '</td>';
+			$out .= '</tr>';
         }
-        $head .= '</tr>';
-        $head .= '</thead>';
-
+        $out .= '</table>';
+		
         // get all clients. only the latest for same address and useragent
-        $sql = 'SELECT DISTINCT useragent FROM mdrnzr_client ORDER BY created DESC';
+        $sql = 'SELECT COUNT(id) AS counter, useragent FROM mdrnzr_client GROUP BY useragent ORDER BY counter DESC';
         $run = $this->shikakeOji->database->query($sql);
+        $agents = $run->fetchAll(PDO::FETCH_ASSOC);
+		
+		$out .= '<ol>';
+		foreach ($agents as $row) 
+		{
+			$out .= '<li>' . $row['useragent'] . ' (' . $row['counter'] . ')</li>';
+		}
+		$out .= '</ol>';
+		
+		$out .= $this->createHtmlFooter($data['footer'][$this->shikakeOji->language]);
 
-        if ($run)
-        {
-            $body = '<tbody>';
-            
-            $sql = 'SELECT * FROM mdrnzr_value WHERE client_id = ? ORDER BY key_id ASC';
-            $pre = $this->shikakeOji->database->prepare($sql);
-            
-            while($res = $run->fetch(PDO::FETCH_ASSOC))
-            {
-                $body .= '<tr>';
-                
-                $index = 0;
-                $client = $pre->exec(array($res['id']));
-                    
-                while($row = $client->fetch(PDO::FETCH_ASSOC))
-                {
-                    while($row['key_id'] != $keyList[$index])
-                    {
-                        $index++;
-                        $body .= '<td></td>';
-                    }
-                    
-                    if ($row['key_id'] == $keyList[$index])
-                    {
-                        $body .= '<td>' . $row['hasthis'] . '</td>';
-                    }
-                }   
-                $body .= '</tr>';
-            }
-            
-            $body .= '</tbody>';
-        }
-
-        // totals
-        $foot = '<tfoot>';
-        $foot .= '<tr>';
-        $foot .= '<td></td>';
-        $foot .= '<td></td>';
-        $foot .= '</tr>';
-        $foot .= '</tfoot>';
-
-
-        $body .= '</table>';
-
-        return $head . $foot . $body;
+        return $out;
     }
 
     /**
@@ -358,39 +377,58 @@ class ShikakeOjiPage
      *
      * Remember to validate http://validator.w3.org/
      *
-     * @param     array     $data   Same data as in ShikakeOji::appData
      * @return    string    HTML5 markup
      */
-    private function createHtmlPage($data)
+    private function createHtmlPage()
     {
+        if (!isset($this->head))
+        {
+            return '<p class="fail">Navigation data for this page missing</p>';
+        }
+		
+		$data = $this->shikakeOji->appData;
+		
         $pdo = $this->shikakeOji->database; // used only twice but anyhow for speed...
-        $page_id = '-1';
-        $navigation = '';
-        $head;
 
-        $sql = 'SELECT * FROM naginata_page WHERE lang = \'' . $this->shikakeOji->language . '\' ORDER BY weight ASC';
+		$out = $this->createHtmlHead($data['title'][$this->shikakeOji->language]);
+
+
+		$latest = 0;
+        $sql = 'SELECT content, modified FROM naginata_article WHERE page_id = \'' .
+			$this->pageId . '\' AND published = 1 ORDER BY modified DESC LIMIT 1';
         $run = $pdo->query($sql);
         if ($run)
         {
             while ($res = $run->fetch(PDO::FETCH_ASSOC))
-            {
-				$navigation .= '<li';
-				if ($this->shikakeOji->currentPage == $res['url'])
-				{
-					$navigation .= ' class="current"';
-					$head = $res; // head section data
-					$page_id = $res['id']; // page_id for naginata_article
-				}
-				$navigation .= '><a href="' . $res['url'] . '" title="' . $res['header'] . '">' . $res['title'] . '</a></li>';
-            }
-        }
+			{
+				$out .= '<article data-data-modified="' . $res['modified'] . '">';
+				$out .= $this->findSpecialFields(self::decodeHtml($res['content']));
+				$out .= '</article>';
 
-        if (!isset($head))
+				$latest = max($latest, $res['modified']);
+			}
+        }
+        else
         {
-            return '<p class="fail">Navigation data for this page missing</p>';
+            return '<p class="fail">Article data for this page missing</p>';
         }
 
-        // None of the OGP items validate, as well as using prefix in html element...
+		// Set the latest modification time for header info
+		$this->pageModified = $latest;
+
+
+		$out .= $this->createHtmlFooter($data['footer'][$this->shikakeOji->language]);
+
+        return $out;
+    }
+	
+	/**
+	 * Create HTML5 head
+	 * $title = $data['title'][$this->shikakeOji->language]
+	 */
+	private function createHtmlHead($title)
+	{
+		// None of the OGP items validate, as well as using prefix in html element...
         $out = '<!DOCTYPE html>';
         $out .= '<html lang="' . $this->shikakeOji->language . '"';
 		$out .= ' prefix="og:http://ogp.me/ns#"'; // http://dev.w3.org/html5/rdfa/
@@ -398,17 +436,17 @@ class ShikakeOjiPage
 		$out .= '>';
         $out .= '<head>';
         $out .= '<meta charset="utf-8"/>';
-        $out .= '<title>' . $head['header'] . ' | ' . $data['title'][$this->shikakeOji->language] . '</title>';
-        $out .= '<meta name="description" property="og:description" content="' . $head['description'] . '"/>';
+        $out .= '<title>' . $this->head['header'] . ' | ' . $title . '</title>';
+        $out .= '<meta name="description" property="og:description" content="' . $this->head['description'] . '"/>';
 
 		if (strpos($_SERVER['HTTP_USER_AGENT'], 'facebookexternalhit') !== false)
 		{
 			// http://ogp.me/
-			$out .= '<meta property="og:title" content="' . $head['title'] . '"/>';
+			$out .= '<meta property="og:title" content="' . $this->head['title'] . '"/>';
 			$out .= '<meta property="og:type" content="sports_team"/>';
 			$out .= '<meta property="og:image" content="http://' . $_SERVER['HTTP_HOST'] . '/img/logo.png"/>';
 			$out .= '<meta property="og:url" content="http://' . $_SERVER['HTTP_HOST'] . $this->shikakeOji->currentPage . '"/>';
-			$out .= '<meta property="og:site_name" content="' . $head['title'] . '"/>';
+			$out .= '<meta property="og:site_name" content="' . $this->head['title'] . '"/>';
 			$out .= '<meta property="og:locale" content="fi_FI"/>'; // language_TERRITORY
 			$out .= '<meta property="og:locale:alternate" content="en_GB"/>';
 			$out .= '<meta property="og:locale:alternate" content="ja_JP"/>';
@@ -418,7 +456,7 @@ class ShikakeOjiPage
 			$out .= '<meta property="fb:app_id" content="' . $this->shikakeOji->config['facebook']['app_id'] . '"/>'; // A Facebook Platform application ID that administers this page.
 			$out .= '<meta property="fb:admins" content="' . $this->shikakeOji->config['facebook']['admins'] . '"/>';
 		}
-		
+
         // http://microformats.org/wiki/rel-license
         $out .= '<link rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/"/>';
         $out .= '<link rel="author" href="http://paazmaya.com"/>';
@@ -447,9 +485,9 @@ class ShikakeOjiPage
         $out .= '</head>';
 
         $out .= '<body>';
-
-
-        $out .= '<nav><ul>' . $navigation . '</ul></nav>';
+		
+		
+        $out .= '<nav><ul>' . $this->navigation . '</ul></nav>';
 
         $out .= '<div id="wrapper">';
 
@@ -465,50 +503,30 @@ class ShikakeOjiPage
         $out .= '>';
 
         // should be only two words
-        $out .= '<p>' . $data['title'][$this->shikakeOji->language] . '</p>';
+        $out .= '<p>' . $title . '</p>';
         $out .= '</div>';
-
 
         $out .= '<header>';
-        $out .= '<h1>' . $head['header'] . '</h1>';
-		
-		//$json = json_decode('{"hoplaa": "' . $head['description'] . '"}', true);
-        //$out .= '<p rel="description">' . "\n\n" . self::decodeHtml($json['hoplaa']) . "\n\n" . '</p>';
-		
-        $out .= '<p rel="description">' . $head['description'] . '</p>';
+        $out .= '<h1>' . $this->head['header'] . '</h1>';
+        $out .= '<p rel="description">' . $this->head['description'] . '</p>';
         $out .= '</header>';
-
-		$latest = 0;
-        $sql = 'SELECT content, modified FROM naginata_article WHERE page_id = \'' . 
-			$page_id . '\' AND published = 1 ORDER BY modified DESC LIMIT 1';
-        $run = $pdo->query($sql);
-        if ($run)
-        {
-            while ($res = $run->fetch(PDO::FETCH_ASSOC))
-			{
-				$out .= '<article data-data-modified="' . $res['modified'] . '">';
-				$out .= $this->findSpecialFields(self::decodeHtml($res['content']));
-				$out .= '</article>';
-				
-				$latest = max($latest, $res['modified']);
-			}
-        }
-        else
-        {
-            return '<p class="fail">Article data for this page missing</p>';
-        }
-
-		// Set the latest modification time for header info
-		$this->pageModified = $latest;
-
-        $out .= '</div>';
-
-
+		
+		return $out;
+	}
+	
+	/**
+	 * Create HTML5 footer.
+	 * $data = $data['footer'][$this->shikakeOji->language]
+	 */
+	private function createHtmlFooter($data)
+	{
+        $out = '</div>';
+		
         $out .= '<footer>';
         $out .= '<p>';
 
         $links = array();
-        foreach ($data['footer'][$this->shikakeOji->language] as $item)
+        foreach ($data as $item)
         {
 			$a = '<a href="' . $item['url'] . '" title="' . $item['alt'] . '"';
 			if (isset($item['data']))
@@ -542,9 +560,9 @@ class ShikakeOjiPage
 
         $out .= '</body>';
         $out .= '</html>';
-
-        return $out;
-    }
+		
+		return $out;
+	}
 
     /**
      * Find and replace all the special fields listed in $this->specialFields

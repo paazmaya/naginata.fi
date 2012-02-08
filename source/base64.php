@@ -1,23 +1,34 @@
 <?php
-header('Content-type: text/html');
+header('Content-type: text/plain');
 
 $images = glob('img/*.png');
 
 foreach($images as $img) 
 {
-	echo '<p>' . $img . '</p>' . "\n";
+	echo $img . "\n";
+	
+	// Original
 	$data = file_get_contents($img);
-	$base64n = chunk_split(base64_encode($data), 64, "\n");
+	$gzip = gzcompress($data, 9);
+	echo 'Original: ' . strlen($data) . 
+		', compressed: ' . strlen($gzip) . "\n";
+	
+	// One line Base64
 	$base64 = base64_encode($data);
 	$gzip64 = gzcompress($base64, 9);
-	$gzip = gzcompress($data, 9);
-	echo '<p>binary: ' . filesize($img) . ', data: ' . strlen($data) . ', base64: ' . strlen($base64) . '. 64 Increase: ' . round(strlen($base64) / strlen($data), 2) . '</p>' . "\n";
-	echo '<p>base64n: ' . strlen($base64n) . ', gzip: ' . strlen($gzip) . ', gzip64: ' . strlen($gzip64) . '. GZ Increase: ' . round(strlen($gzip64) / strlen($gzip), 2) . '</p>' . "\n";
-	echo '<img src="data:image/png;base64,' . $base64 . '" />' . "\n";
-	echo '<img src="' . $img . '" />' . "\n";
-	echo '<p>' . nl2br($base64n) . '</p>' . "\n";
+	echo 'Base64 oneline: ' . strlen($base64) . 
+		', compressed: ' . strlen($gzip64) . "\n";
+	
+	// Multiline Base64
+	$base64n = chunk_split(base64_encode($data), 64, "\n");
+	$gzip64n = gzcompress($base64n, 9);
+	echo 'Base64 multiline: ' . strlen($base64n) . 
+		', compressed: ' . strlen($gzip64n) . "\n";
+	
+	echo "\n";
 }
 
+// <img src="data:image/png;base64,' . $base64 . '" />
 
 // http://php.net/manual/en/function.base64-encode.php
 //
