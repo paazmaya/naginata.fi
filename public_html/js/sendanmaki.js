@@ -477,17 +477,18 @@ var sendanmaki = {
      */
     editForm: '<form action="/update-article" method="post" class="edit">' +
 		'<label>HTML5 sallittu<span></span>' +
-        '<textarea name="content" spellcheck="true"></textarea></label>' +
+        '<textarea name="content" spellcheck="true" autofocus="autofocus"></textarea></label>' +
         '<input type="submit" value="Lähetä" />' +
         '<input type="button" name="close" value="Sulje" />' +
         '</form>',
 
     /**
      * Login form. Please note that this uses OpenID.
+	 * http://www.whatwg.org/specs/web-apps/current-work/multipage/forms.html
      */
     loginForm: '<form action="/authenticate-user" method="post" class="login">' +
         '<label>Sähköpostiosoite (OpenID kirjautumista varten)' +
-		'<input type="email" name="identifier" /></label>' +
+		'<input type="email" name="identifier" autocomplete="on" autofocus="autofocus" /></label>' +
         '<input type="submit" value="Lähetä" />' +
         '<input type="hidden" name="lang" value="fi" />' +
         '<input type="hidden" name="page" value="/" />' +

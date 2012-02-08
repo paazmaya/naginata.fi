@@ -129,7 +129,7 @@ class ShikakeOji
         '/receive-modernizr-statistics' => 'pageReceiveModernizrStats',
         '/authenticate-user' => 'pageAuthenticateUser',
         '/keep-session-alive' => 'keepSessionAlive',
-		'/application.cache' => 'renderAppCache',
+		//'/application.cache' => 'renderAppCache',
 		'/modernizr-statistics' => 'showModernizrStats'
     );
 
@@ -644,6 +644,7 @@ class ShikakeOji
 
             $log = date($this->logDateFormat) . ' [' . $_SERVER['REMOTE_ADDR'] . '] ' . $id . ' ' . implode("\n\t\t" . '&', explode('&', $authUrl)) . "\n";
             file_put_contents($this->openidLog, $log, FILE_APPEND);
+			chmod($this->openidLog, 0755);
 
             //return $authUrl;
             header('Location: ' . $authUrl); // no longer AJAX for this submission.
@@ -843,6 +844,7 @@ class ShikakeOji
     {
         $log = date($this->logDateFormat) . ' [' . $_SERVER['REMOTE_ADDR'] . '] ' . $_SERVER['REQUEST_URI'] . ' --> ' . $url . "\n";
         file_put_contents($this->redirectLog, $log, FILE_APPEND);
+		chmod($this->redirectLog, 0755);
         if ($code != '')
         {
             header('HTTP/1.1 ' . $code . ' Moved Permanently'); // TODO: different code has different text

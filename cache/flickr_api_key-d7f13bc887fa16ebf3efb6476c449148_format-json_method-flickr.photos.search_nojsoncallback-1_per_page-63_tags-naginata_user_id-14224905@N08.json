@@ -127,17 +127,6 @@
                  "isfamily": 0
             },
              {
-                "id": "5763589730",
-                 "owner": "14224905@N08",
-                 "secret": "ae7116f625",
-                 "server": "2291",
-                 "farm": 3,
-                 "title": "Kyoto 2011-05-02 107th Embu Taikai, Jikishinkageryu Naginatajutsu",
-                 "ispublic": 1,
-                 "isfriend": 0,
-                 "isfamily": 0
-            },
-             {
                 "id": "4632519379",
                  "owner": "14224905@N08",
                  "secret": "88b217df5e",
@@ -155,6 +144,39 @@
                  "server": "4070",
                  "farm": 5,
                  "title": "Himeji, Japan 2010-04-15",
+                 "ispublic": 1,
+                 "isfriend": 0,
+                 "isfamily": 0
+            },
+             {
+                "id": "4338424327",
+                 "owner": "14224905@N08",
+                 "secret": "287da4b287",
+                 "server": "2729",
+                 "farm": 3,
+                 "title": "Naginata Helsinki 2010-02-07 09",
+                 "ispublic": 1,
+                 "isfriend": 0,
+                 "isfamily": 0
+            },
+             {
+                "id": "4339157766",
+                 "owner": "14224905@N08",
+                 "secret": "f36d0c1be9",
+                 "server": "4022",
+                 "farm": 5,
+                 "title": "Naginata Helsinki 2010-02-07 05",
+                 "ispublic": 1,
+                 "isfriend": 0,
+                 "isfamily": 0
+            },
+             {
+                "id": "5763589730",
+                 "owner": "14224905@N08",
+                 "secret": "ae7116f625",
+                 "server": "2291",
+                 "farm": 3,
+                 "title": "Kyoto 2011-05-02 107th Embu Taikai, Jikishinkageryu Naginatajutsu",
                  "ispublic": 1,
                  "isfriend": 0,
                  "isfamily": 0
@@ -199,17 +221,6 @@
                  "server": "4036",
                  "farm": 5,
                  "title": "Naginata Helsinki 2010-02-07 13",
-                 "ispublic": 1,
-                 "isfriend": 0,
-                 "isfamily": 0
-            },
-             {
-                "id": "4338424327",
-                 "owner": "14224905@N08",
-                 "secret": "287da4b287",
-                 "server": "2729",
-                 "farm": 3,
-                 "title": "Naginata Helsinki 2010-02-07 09",
                  "ispublic": 1,
                  "isfriend": 0,
                  "isfamily": 0
@@ -331,17 +342,6 @@
                  "server": "2678",
                  "farm": 3,
                  "title": "Naginata Helsinki 2010-02-07 02",
-                 "ispublic": 1,
-                 "isfriend": 0,
-                 "isfamily": 0
-            },
-             {
-                "id": "4339157766",
-                 "owner": "14224905@N08",
-                 "secret": "f36d0c1be9",
-                 "server": "4022",
-                 "farm": 5,
-                 "title": "Naginata Helsinki 2010-02-07 05",
                  "ispublic": 1,
                  "isfriend": 0,
                  "isfamily": 0
