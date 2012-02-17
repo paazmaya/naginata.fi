@@ -39,7 +39,6 @@ $shio->output->useMinification = false;
 $shio->output->useTidy = false;
 
 $shio->checkRequestedLanguage();
-$shio->checkRequestedPage();
 
 echo $shio->renderPage();
 

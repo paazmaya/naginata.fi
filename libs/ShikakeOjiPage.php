@@ -989,7 +989,6 @@ class ShikakeOjiPage
                 $data = file_get_contents($url);
             }
             file_put_contents($cache, self::jsonPrettyPrint($data));
-			chmod($cache, 0755);
         }
         else
         {
@@ -1097,17 +1096,15 @@ class ShikakeOjiPage
 
         if ($bytecount !== false)
         {
-			chmod($outfile, 0755);
             $gz = gzopen($outfilegz, 'wb9');
             gzwrite($gz, $alldata);
             gzclose($gz);
-			chmod($outfilegz, 0755);
+			
             $wrote = true;
             $log[] = date($this->shikakeOji->logDateFormat) . ' outfilegz: ' . $outfilegz . ', size: ' . filesize($outfilegz);
         }
 
         file_put_contents($this->minifyLog, implode("\n", $log) . "\n", FILE_APPEND);
-		chmod($this->minifyLog, 0755);
 
         return $wrote;
     }
@@ -1208,7 +1205,7 @@ class ShikakeOjiPage
                 if (!$failed)
                 {
                     file_put_contents($destination, $minified);
-					chmod($destination, 0755);
+					
                     $log[] = date($this->shikakeOji->logDateFormat) . ' destination: ' . $destination . ', size: ' . filesize($destination);
                 }
             }
