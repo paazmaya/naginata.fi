@@ -845,7 +845,6 @@ class ShikakeOji
 		return $out;
 	}
 
-
     /**
      * Check $_POST against the given $required array.
      * @return array/boolean    False if any of the required is missing, else escaped data

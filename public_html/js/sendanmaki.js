@@ -255,6 +255,7 @@ var sendanmaki = {
 	 * It can be a Flickr image, Vimeo or Youtube video.
 	 */
 	mediaThumbClick: function($a) {
+		var minFlashVer = 9;
 		var data = $a.data();
 
 		// Tell Analytics
@@ -270,11 +271,23 @@ var sendanmaki = {
 			if (data.height) {
 				h = data.height;
 			}
-			var player = $.flash.create({
-				swf: data.url,
-				height: '100%',
-				width: '100%'
-			});
+			
+			var player;
+			if ($.flash.version.major >= minFlashVer) {
+				// 9 should be upgradable in most of the PC cases
+				player = $.flash.create({
+					swf: data.url,
+					height: '100%',
+					width: '100%',
+					hasVersion: minFlashVer
+				});
+			}
+			else {
+				player = '<p><strong>Vaikuttaa siltä että Flash lisäke ei ole käytettävissä.</strong> Siksi ei tätä sisältöäkään voida tarkistella.</p>' +
+					'<p>Viimeisimmän version Flash lisäkkeestä voi ladata osoitteesta ' +
+					'<a href="http://get.adobe.com/flashplayer/" title="Get Flash Player">http://get.adobe.com/flashplayer/</a></p>';
+			}
+			
 			$.colorbox({
 				html: player,
 				title: $a.attr('title'),
