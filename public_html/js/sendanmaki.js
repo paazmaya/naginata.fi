@@ -285,7 +285,8 @@ var sendanmaki = {
 			else {
 				player = '<p><strong>Vaikuttaa siltä että Flash lisäke ei ole käytettävissä.</strong> Siksi ei tätä sisältöäkään voida tarkistella.</p>' +
 					'<p>Viimeisimmän version Flash lisäkkeestä voi ladata osoitteesta ' +
-					'<a href="http://get.adobe.com/flashplayer/" title="Get Flash Player">http://get.adobe.com/flashplayer/</a></p>';
+					'<a href="http://get.adobe.com/flashplayer/" title="Get Flash Player">http://get.adobe.com/flashplayer/</a></p>' +
+					'<p>Nykyinen versiosi on ' + $.flash.version.string + '</p>';
 			}
 			
 			$.colorbox({
