@@ -82,6 +82,9 @@ input, select {
 input:focus, select:focus, textarea:focus {
     outline: 1px solid #6E5728;
 }
+li {
+	padding: 0.2em 0;
+}
 
 nav {
     position: absolute;
@@ -115,6 +118,7 @@ nav li {
     width: 10em;
     height: 1.5em;
     float: left;
+	padding: 0;
 }
 nav a, footer a, .current a:hover {
     background-color: transparent;

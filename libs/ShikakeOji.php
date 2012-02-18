@@ -129,7 +129,8 @@ class ShikakeOji
         '/authenticate-user' => 'pageAuthenticateUser',
         '/keep-session-alive' => 'keepSessionAlive',
 		//'/application.cache' => 'renderAppCache',
-		'/modernizr-statistics' => 'showModernizrStats'
+		'/modernizr-statistics' => 'showModernizrStats',
+		'/sitemap' => 'showSiteMap'
     );
 
     /**
@@ -255,7 +256,7 @@ class ShikakeOji
         {
             // These functions return a string/true or false on failure.
             $out = call_user_func(array($this, $this->appUrls[$this->currentPage]));
-			
+
 			// Other headers sent from the function above
             header('Content-Language: ' . $this->language);
 			header('Last-modified: ' . date('r', time()));
@@ -406,7 +407,7 @@ class ShikakeOji
     private function pageUpdateArticle()
     {
 		header('Content-type: application/json');
-		
+
         $required = array(
             'lang', // language: fi
             'page', // page url: /koryu
@@ -417,7 +418,7 @@ class ShikakeOji
         {
             return json_encode(array('answer' => '0'));
         }
-		
+
 		$success = false;
 
         // Get the id of the page
@@ -463,7 +464,7 @@ class ShikakeOji
             );
             $success = $isSaved && $isEmailed;
         }
-		
+
 		$json = array(
 			'answer' => $success,
 			'login' => intval($this->isLoggedIn),
@@ -478,7 +479,7 @@ class ShikakeOji
     private function pageReceiveModernizrStats()
     {
 		header('Content-type: application/json');
-		
+
         $required = array(
             'modernizr',
             'useragent',
@@ -537,7 +538,7 @@ class ShikakeOji
 
             $counter = $res['total'];
         }
-        // How many times this IP address sent its Modernizr data		
+        // How many times this IP address sent its Modernizr data
 		$json = array(
 			'answer' => $counter
 		);
@@ -553,7 +554,7 @@ class ShikakeOji
     private function pageAuthenticateUser()
     {
 		header('Content-type: application/json');
-		
+
         // https://gitorious.org/~paazmaya/lightopenid/paazmayas-lightopenid
         require $this->libPath . '/lightopenid/openid.php';
 
@@ -663,7 +664,7 @@ class ShikakeOji
     private function keepSessionAlive()
     {
 		header('Content-type: application/json');
-		
+
         // We should have received "emode" = editMode
 		if (isset($_POST['emode']))
 		{
@@ -671,7 +672,7 @@ class ShikakeOji
 		}
 
         $lifetime = time() - $_SESSION['init'];
-		
+
 		$json = array(
 			'answer' => $lifetime,
 			'login' => intval($this->isLoggedIn),
@@ -687,7 +688,7 @@ class ShikakeOji
 	private function renderAppCache()
 	{
 		header('Content-type: text/cache-manifest');
-		
+
 		// date of the latest changed file
 		$highestDate = 0;
 
@@ -803,7 +804,7 @@ class ShikakeOji
 
 		return $out;
 	}
-	
+
 	/**
 	 * Show Modernizr statistics
 	 */
@@ -812,6 +813,38 @@ class ShikakeOji
 		header('Content-type: text/html');
 		return $this->output->renderModernizrTable();
 	}
+
+	/**
+	 * Show Modernizr statistics
+	 */
+	private function showSiteMap()
+	{
+		header('Content-type: text/xml');
+
+		$out = '<?xml version="1.0" encoding="utf-8"?>';
+		$out .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
+		
+		$lang = 'fi';
+		$sql = 'SELECT P.url, MAX(A.modified) AS lastmod FROM naginata_page P' .
+			' LEFT JOIN naginata_article A ON P.id = A.page_id WHERE P.lang = \'' .
+			$lang . '\' AND A.published = 1 GROUP BY A.page_id';
+		$run = $this->database->query($sql);
+		if ($run)
+		{
+			while ($res = $run->fetch(PDO::FETCH_ASSOC))
+			{
+				$out .= '<url>';
+				$out .= '<loc>http://' . $_SERVER['HTTP_HOST'] . $res['url'] . '</loc>';
+				$out .= '<lastmod>' . date('Y-m-d', $res['lastmod']) . '</lastmod>';
+				$out .= '<changefreq>monthly</changefreq>';
+				$out .= '</url>';
+			}
+		}
+		$out .= '</urlset>';
+
+		return $out;
+	}
+
 
     /**
      * Check $_POST against the given $required array.
@@ -847,7 +880,7 @@ class ShikakeOji
         {
             header('HTTP/1.1 ' . $code . ' Moved Permanently'); // TODO: different code has different text
         }
-        header('Location: http://' . $_SERVER['HTTP_HOST']) . $url;
+        header('Location: http://' . $_SERVER['HTTP_HOST'] . $url);
         exit();
     }
 
