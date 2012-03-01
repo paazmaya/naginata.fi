@@ -22,9 +22,11 @@ _gaq.push(['_trackPageview']);
 // http://code.google.com/apis/analytics/docs/gaJS/gaJSApiBasicConfiguration.html
 
 (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	if (location.port != 7775) { // that is my development server...
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	}
 })();
 // -- Enought about Google Analytics --
 
@@ -93,20 +95,23 @@ var sendanmaki = {
 			}
 		});
 		
-		applicationCache.addEventListener('updateready', function(e) {
-			if (applicationCache.status == applicationCache.UPDATEREADY) {
-				// Browser downloaded a new app cache.
-				// Swap it in and reload the page to get the new hotness.
-				applicationCache.swapCache();
-				if (confirm('A new version of this site is available. Load it?')) {
-					location.reload();
+		// Nokia E7 browser fails on this...
+		if (typeof applicationCache !== 'undefined') {
+			applicationCache.addEventListener('updateready', function(e) {
+				if (applicationCache.status == applicationCache.UPDATEREADY) {
+					// Browser downloaded a new app cache.
+					// Swap it in and reload the page to get the new hotness.
+					applicationCache.swapCache();
+					if (confirm('A new version of this site is available. Load it?')) {
+						location.reload();
+					}
 				}
-			}
-			else {
-				// Manifest didn't changed. Nothing new to server.
-				console.log('applicationCache.status when updateready event occurred: ' + sendanmaki.appCacheStat());
-			}
-		}, false);
+				else {
+					// Manifest didn't changed. Nothing new to server.
+					console.log('applicationCache.status when updateready event occurred: ' + sendanmaki.appCacheStat());
+				}
+			}, false);
+		}
 
 		// external urls shall open in a new window
         $('a[href|="http://"]:not(.mediathumb a, .imagelist a)').click(function() {

@@ -407,6 +407,7 @@ label span {
 .note {
     background-color: transparent;
     position: absolute;
+	text-align: center;
 }
 .note:hover .notetext {
     display: inline;
@@ -426,7 +427,7 @@ label span {
     border-radius: 0.4em;
     background-color: #FEFEFE;
     display: none;
-    padding: 0.3em;
+    padding: 0.2em 0.4em;
     margin-top: -0.5em;
     text-align: center;
 }

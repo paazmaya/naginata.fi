@@ -89,11 +89,13 @@ class ShikakeOjiPage
      * Special fields to be prosessed in the content. It is always a 3rd party service.
      * [flickr|image id]
      * [youtube|video id]
+	 * [local|image name in public_html/img/]
      */
     private $specialFields = array(
         'flickr' => 'renderFlickr',
         'youtube' => 'renderYoutube',
-        'vimeo' => 'renderVimeo'
+        'vimeo' => 'renderVimeo',
+		'local' => 'renderLocalImage'
     );
 
 	/**
@@ -433,7 +435,7 @@ class ShikakeOjiPage
         $out = '<!DOCTYPE html>';
         $out .= '<html lang="' . $this->shikakeOji->language . '"';
 		$out .= ' prefix="og:http://ogp.me/ns#"'; // http://dev.w3.org/html5/rdfa/
-		$out .= ' manifest="applicaton.cache"'; // http://www.html5rocks.com/en/tutorials/appcache/beginner/
+		//$out .= ' manifest="applicaton.cache"'; // http://www.html5rocks.com/en/tutorials/appcache/beginner/
 		$out .= '>';
         $out .= '<head>';
         $out .= '<meta charset="utf-8"/>';
@@ -580,6 +582,32 @@ class ShikakeOjiPage
         }
         return $str;
     }
+	
+	/**
+	 * The most simple image rendering option as the image in question
+	 * is stored locally at the server.
+	 * Also the image is shown as is, no linking to a higher resolution exists.
+	 * Hope that the file name is descriptive as it is used for alternative text.
+	 */
+	private function renderLocalImage($matches)
+	{
+		$imgDir = '../public_html/img/';
+		
+        $out = '';
+		
+		if (isset($matches['1']) && $matches['1'] != '')
+        {
+			if (file_exists($imgDir . $matches['1']))
+			{
+				$alt = ucwords(str_replace('-', ' ', $matches['1']));
+				$size = getimagesize($imgDir . $matches['1']);
+				$out .= '<img src="/img/' . $matches['1'] . '" alt="' . 
+					$alt . '" width="' . $size['0'] . '" height="' . $size['1'] . '" />';
+			}
+		}
+		
+		return $out;
+	}
 
     /**
      * Get the given Flickr data and render it as image thumbnails.

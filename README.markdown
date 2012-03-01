@@ -43,6 +43,9 @@ technologies and to promote the martial art.
 
 The domain, `naginata.fi` is privately registered to Jukka Paasonen.
 
+Leena Lecklin was kind enough to draw the `naginata-bogu-chudan-artwork-lecklin.png` picture used in 
+Atarashii Naginatado page.
+
 Contributors are welcome.
 
 Other notes
