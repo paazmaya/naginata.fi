@@ -444,7 +444,7 @@ class ShikakeOji
 
             // Create diff for sending it via email
             $a = explode("\n", ShikakeOjiPage::decodeHtml($res['content']));
-            $b = explode("\n", ShikakeOjiPage::decodeHtml($content));
+            $b = explode("\n", ShikakeOjiPage::decodeHtml(stripcslashes($content)));
 
             require $this->libPath . '/php-diff/Diff.php';
             require $this->libPath . '/php-diff/Diff/Renderer/Text/Unified.php';

@@ -606,7 +606,7 @@ class ShikakeOjiPage
 			{
 				$alt = ucwords(str_replace('-', ' ', $matches['1']));
 				$size = getimagesize($imgDir . $matches['1']);
-				$out .= '<div class="local" data-key="local|' . $matches['1'] . '"><img src="/img/' . $matches['1'] . '" alt="' . 
+				$out .= '<div class="medialocal" data-key="local|' . $matches['1'] . '"><img src="/img/' . $matches['1'] . '" alt="' . 
 					$alt . '" width="' . $size['0'] . '" height="' . $size['1'] . '" /></div>';
 			}
 		}

@@ -399,7 +399,10 @@ var sendanmaki = {
 		var $a = $('article');
         var $c = $a.clone();
 		// replace .mediathumb parts by [|]
-		$c.children('.mediathumb, .local').replaceWith(function() {
+		$c.children('.mediathumb').replaceWith(function() {
+			return "\n" + '[' + $(this).data('key') + ']' + "\n";
+		});
+		$c.children('.medialocal').replaceWith(function() {
 			return "\n" + '[' + $(this).data('key') + ']' + "\n";
 		});
 		var orig = $c.html().replace("\n\n", "\n"); // remove duplicate new lines
