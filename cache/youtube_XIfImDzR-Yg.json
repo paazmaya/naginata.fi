@@ -87,7 +87,7 @@
                     "$t": "koukenK3"
                 },
                 "uri": {
-                    "$t": "http://gdata.youtube.com/feeds/api/users/koukenk3"
+                    "$t": "http://gdata.youtube.com/feeds/api/users/koukenK3"
                 }
             }
         ],
@@ -169,9 +169,10 @@
             ],
             "media$credit": [
                 {
-                    "$t": "koukenK3",
+                    "$t": "koukenk3",
                     "role": "uploader",
-                    "scheme": "urn:youtube"
+                    "scheme": "urn:youtube",
+                    "yt$display": "koukenK3"
                 }
             ],
             "media$description": {
@@ -248,7 +249,7 @@
         },
         "yt$statistics": {
             "favoriteCount": "2",
-            "viewCount": "194"
+            "viewCount": "221"
         },
         "yt$rating": {
             "numDislikes": "0",

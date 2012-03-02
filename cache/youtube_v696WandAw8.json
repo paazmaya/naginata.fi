@@ -175,7 +175,8 @@
                 {
                     "$t": "osuga01",
                     "role": "uploader",
-                    "scheme": "urn:youtube"
+                    "scheme": "urn:youtube",
+                    "yt$display": "osuga01"
                 }
             ],
             "media$description": {
@@ -255,7 +256,7 @@
         },
         "yt$statistics": {
             "favoriteCount": "9",
-            "viewCount": "4637"
+            "viewCount": "4707"
         },
         "yt$rating": {
             "numDislikes": "0",

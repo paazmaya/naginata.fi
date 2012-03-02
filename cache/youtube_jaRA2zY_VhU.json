@@ -171,7 +171,8 @@
                 {
                     "$t": "lolinternetslol",
                     "role": "uploader",
-                    "scheme": "urn:youtube"
+                    "scheme": "urn:youtube",
+                    "yt$display": "lolinternetslol"
                 }
             ],
             "media$description": {
@@ -241,7 +242,7 @@
         },
         "yt$statistics": {
             "favoriteCount": "21",
-            "viewCount": "6605"
+            "viewCount": "6646"
         }
     }
 }

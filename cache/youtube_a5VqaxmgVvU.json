@@ -71,7 +71,7 @@
                     "$t": "BudoExport"
                 },
                 "uri": {
-                    "$t": "http://gdata.youtube.com/feeds/api/users/budoexport"
+                    "$t": "http://gdata.youtube.com/feeds/api/users/BudoExport"
                 }
             }
         ],
@@ -156,9 +156,10 @@
             ],
             "media$credit": [
                 {
-                    "$t": "BudoExport",
+                    "$t": "budoexport",
                     "role": "uploader",
-                    "scheme": "urn:youtube"
+                    "scheme": "urn:youtube",
+                    "yt$display": "BudoExport"
                 }
             ],
             "media$description": {
@@ -238,7 +239,7 @@
         },
         "yt$statistics": {
             "favoriteCount": "1",
-            "viewCount": "711"
+            "viewCount": "855"
         },
         "yt$rating": {
             "numDislikes": "1",

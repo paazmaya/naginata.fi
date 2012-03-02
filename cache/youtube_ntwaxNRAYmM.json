@@ -174,7 +174,8 @@
                 {
                     "$t": "mekugi",
                     "role": "uploader",
-                    "scheme": "urn:youtube"
+                    "scheme": "urn:youtube",
+                    "yt$display": "mekugi"
                 }
             ],
             "media$description": {
@@ -257,7 +258,7 @@
         },
         "yt$statistics": {
             "favoriteCount": "5",
-            "viewCount": "949"
+            "viewCount": "975"
         },
         "yt$rating": {
             "numDislikes": "0",

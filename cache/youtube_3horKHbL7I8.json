@@ -158,7 +158,8 @@
                 {
                     "$t": "kanedino",
                     "role": "uploader",
-                    "scheme": "urn:youtube"
+                    "scheme": "urn:youtube",
+                    "yt$display": "kanedino"
                 }
             ],
             "media$description": {
@@ -231,7 +232,7 @@
         },
         "yt$statistics": {
             "favoriteCount": "1",
-            "viewCount": "59"
+            "viewCount": "65"
         }
     }
 }

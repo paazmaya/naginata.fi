@@ -72,34 +72,12 @@
                  "isfamily": 0
             },
              {
-                "id": "5973529225",
-                 "owner": "14224905@N08",
-                 "secret": "c13bf69915",
-                 "server": "6149",
-                 "farm": 7,
-                 "title": "Naginata in Himeji Sports Center 2011-06-04",
-                 "ispublic": 1,
-                 "isfriend": 0,
-                 "isfamily": 0
-            },
-             {
                 "id": "5896930485",
                  "owner": "14224905@N08",
                  "secret": "bc7a7e2b6c",
                  "server": "5191",
                  "farm": 6,
                  "title": "Naginata in Himeji 2011-06-11",
-                 "ispublic": 1,
-                 "isfriend": 0,
-                 "isfamily": 0
-            },
-             {
-                "id": "5892262839",
-                 "owner": "14224905@N08",
-                 "secret": "89ba17ac87",
-                 "server": "5103",
-                 "farm": 6,
-                 "title": "Jikishinkageryu Naginata seminar in Himeji 2011-06-22",
                  "ispublic": 1,
                  "isfriend": 0,
                  "isfamily": 0
@@ -116,67 +94,12 @@
                  "isfamily": 0
             },
              {
-                "id": "5763043699",
-                 "owner": "14224905@N08",
-                 "secret": "fcda29747e",
-                 "server": "5185",
-                 "farm": 6,
-                 "title": "Kyoto 2011-05-04 Shimogamo Jinja, Jikishinkageryu Naginatajutsu",
-                 "ispublic": 1,
-                 "isfriend": 0,
-                 "isfamily": 0
-            },
-             {
-                "id": "4632519379",
-                 "owner": "14224905@N08",
-                 "secret": "88b217df5e",
-                 "server": "3371",
-                 "farm": 4,
-                 "title": "Himeji, Japan 2010-04-15",
-                 "ispublic": 1,
-                 "isfriend": 0,
-                 "isfamily": 0
-            },
-             {
                 "id": "4632520539",
                  "owner": "14224905@N08",
                  "secret": "aaba8e61fa",
                  "server": "4070",
                  "farm": 5,
                  "title": "Himeji, Japan 2010-04-15",
-                 "ispublic": 1,
-                 "isfriend": 0,
-                 "isfamily": 0
-            },
-             {
-                "id": "4338424327",
-                 "owner": "14224905@N08",
-                 "secret": "287da4b287",
-                 "server": "2729",
-                 "farm": 3,
-                 "title": "Naginata Helsinki 2010-02-07 09",
-                 "ispublic": 1,
-                 "isfriend": 0,
-                 "isfamily": 0
-            },
-             {
-                "id": "4339157766",
-                 "owner": "14224905@N08",
-                 "secret": "f36d0c1be9",
-                 "server": "4022",
-                 "farm": 5,
-                 "title": "Naginata Helsinki 2010-02-07 05",
-                 "ispublic": 1,
-                 "isfriend": 0,
-                 "isfamily": 0
-            },
-             {
-                "id": "5763589730",
-                 "owner": "14224905@N08",
-                 "secret": "ae7116f625",
-                 "server": "2291",
-                 "farm": 3,
-                 "title": "Kyoto 2011-05-02 107th Embu Taikai, Jikishinkageryu Naginatajutsu",
                  "ispublic": 1,
                  "isfriend": 0,
                  "isfamily": 0
@@ -210,6 +133,94 @@
                  "server": "1116",
                  "farm": 2,
                  "title": "Kobe, Japan 2010-04-17",
+                 "ispublic": 1,
+                 "isfriend": 0,
+                 "isfamily": 0
+            },
+             {
+                "id": "4338424327",
+                 "owner": "14224905@N08",
+                 "secret": "287da4b287",
+                 "server": "2729",
+                 "farm": 3,
+                 "title": "Naginata Helsinki 2010-02-07 09",
+                 "ispublic": 1,
+                 "isfriend": 0,
+                 "isfamily": 0
+            },
+             {
+                "id": "4338414899",
+                 "owner": "14224905@N08",
+                 "secret": "68e32c86c9",
+                 "server": "4023",
+                 "farm": 5,
+                 "title": "Naginata Helsinki 2010-02-07 04",
+                 "ispublic": 1,
+                 "isfriend": 0,
+                 "isfamily": 0
+            },
+             {
+                "id": "4025534344",
+                 "owner": "14224905@N08",
+                 "secret": "47ec05a0e5",
+                 "server": "2679",
+                 "farm": 3,
+                 "title": "Atarashii Naginatado at the Helsinki Kendo Club",
+                 "ispublic": 1,
+                 "isfriend": 0,
+                 "isfamily": 0
+            },
+             {
+                "id": "5973529225",
+                 "owner": "14224905@N08",
+                 "secret": "c13bf69915",
+                 "server": "6149",
+                 "farm": 7,
+                 "title": "Naginata in Himeji Sports Center 2011-06-04",
+                 "ispublic": 1,
+                 "isfriend": 0,
+                 "isfamily": 0
+            },
+             {
+                "id": "5892262839",
+                 "owner": "14224905@N08",
+                 "secret": "89ba17ac87",
+                 "server": "5103",
+                 "farm": 6,
+                 "title": "Jikishinkageryu Naginata seminar in Himeji 2011-06-22",
+                 "ispublic": 1,
+                 "isfriend": 0,
+                 "isfamily": 0
+            },
+             {
+                "id": "5763043699",
+                 "owner": "14224905@N08",
+                 "secret": "fcda29747e",
+                 "server": "5185",
+                 "farm": 6,
+                 "title": "Kyoto 2011-05-04 Shimogamo Jinja, Jikishinkageryu Naginatajutsu",
+                 "ispublic": 1,
+                 "isfriend": 0,
+                 "isfamily": 0
+            },
+             {
+                "id": "5763589730",
+                 "owner": "14224905@N08",
+                 "secret": "ae7116f625",
+                 "server": "2291",
+                 "farm": 3,
+                 "title": "Kyoto 2011-05-02 107th Embu Taikai, Jikishinkageryu Naginatajutsu",
+                 "ispublic": 1,
+                 "isfriend": 0,
+                 "isfamily": 0
+            },
+             {
+                "id": "4632519379",
+                 "owner": "14224905@N08",
+                 "secret": "88b217df5e",
+                 "server": "3371",
+                 "farm": 4,
+                 "title": "Himeji, Japan 2010-04-15",
                  "ispublic": 1,
                  "isfriend": 0,
                  "isfamily": 0
@@ -303,17 +314,6 @@
                  "isfamily": 0
             },
              {
-                "id": "4338414899",
-                 "owner": "14224905@N08",
-                 "secret": "68e32c86c9",
-                 "server": "4023",
-                 "farm": 5,
-                 "title": "Naginata Helsinki 2010-02-07 04",
-                 "ispublic": 1,
-                 "isfriend": 0,
-                 "isfamily": 0
-            },
-             {
                 "id": "4339156198",
                  "owner": "14224905@N08",
                  "secret": "714481beb3",
@@ -347,12 +347,12 @@
                  "isfamily": 0
             },
              {
-                "id": "4025534344",
+                "id": "4339157766",
                  "owner": "14224905@N08",
-                 "secret": "47ec05a0e5",
-                 "server": "2679",
-                 "farm": 3,
-                 "title": "Atarashii Naginatado at the Helsinki Kendo Club",
+                 "secret": "f36d0c1be9",
+                 "server": "4022",
+                 "farm": 5,
+                 "title": "Naginata Helsinki 2010-02-07 05",
                  "ispublic": 1,
                  "isfriend": 0,
                  "isfamily": 0
