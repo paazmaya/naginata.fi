@@ -149,7 +149,7 @@ class ShikakeOjiPage
 					$this->head = $res; // head section data
 					$this->pageId = $res['id']; // page_id for naginata_article
 				}
-				$navigation .= '><a href="' . $res['url'] . '" title="' . $res['header'] . '">' . $res['title'] . '</a></li>';
+				$navigation .= '><a href="' . $res['url'] . '" title="' . $res['header'] . '" rel="prefetch">' . $res['title'] . '</a></li>';
             }
         }
 		$this->navigation = $navigation;
@@ -434,18 +434,23 @@ class ShikakeOjiPage
 		// None of the OGP items validate, as well as using prefix in html element...
         $out = '<!DOCTYPE html>';
         $out .= '<html lang="' . $this->shikakeOji->language . '"';
-		$out .= ' prefix="og:http://ogp.me/ns#"'; // http://dev.w3.org/html5/rdfa/
 		//$out .= ' manifest="applicaton.cache"'; // http://www.html5rocks.com/en/tutorials/appcache/beginner/
+		if (strpos($_SERVER['HTTP_USER_AGENT'], 'facebookexternalhit') !== false)
+		{
+			$out .= ' prefix="og:http://ogp.me/ns#"'; // http://dev.w3.org/html5/rdfa/
+		}
 		$out .= '>';
         $out .= '<head>';
         $out .= '<meta charset="utf-8"/>';
         $out .= '<title>' . $this->head['header'] . ' | ' . $title . '</title>';
-        $out .= '<meta name="description" property="og:description" content="' . $this->head['description'] . '"/>';
+        $out .= '<meta name="description" content="' . $this->head['description'] . '"/>';
+        $out .= '<link rel="shortcut icon" href="/img/favicon.png" type="image/png"/>';
 
 		if (strpos($_SERVER['HTTP_USER_AGENT'], 'facebookexternalhit') !== false)
 		{
 			// http://ogp.me/
 			$out .= '<meta property="og:title" content="' . $this->head['title'] . '"/>';
+			$out .= '<meta property="og:description" content="' . $this->head['description'] . '"/>';
 			$out .= '<meta property="og:type" content="sports_team"/>';
 			$out .= '<meta property="og:image" content="http://' . $_SERVER['HTTP_HOST'] . '/img/logo.png"/>';
 			$out .= '<meta property="og:url" content="http://' . $_SERVER['HTTP_HOST'] . $this->shikakeOji->currentPage . '"/>';
@@ -464,7 +469,7 @@ class ShikakeOjiPage
         $out .= '<link rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/"/>';
         $out .= '<link rel="author" href="http://paazmaya.com"/>';
 
-        $out .= '<link rel="shortcut icon" href="/img/favicon.png" type="image/png"/>';
+		// https://developer.apple.com/library/safari/#documentation/appleapplications/reference/safariwebcontent/configuringwebapplications/configuringwebapplications.html
         $out .= '<link rel="apple-touch-icon" href="/img/mobile-logo.png"/>'; // 57x57
 
         $base = '/css/';
@@ -511,7 +516,7 @@ class ShikakeOjiPage
 
         $out .= '<header>';
         $out .= '<h1>' . $this->head['header'] . '</h1>';
-        $out .= '<p rel="description">' . $this->head['description'] . '</p>';
+        $out .= '<p>' . $this->head['description'] . '</p>';
         $out .= '</header>';
 		
 		return $out;
@@ -601,8 +606,8 @@ class ShikakeOjiPage
 			{
 				$alt = ucwords(str_replace('-', ' ', $matches['1']));
 				$size = getimagesize($imgDir . $matches['1']);
-				$out .= '<img src="/img/' . $matches['1'] . '" alt="' . 
-					$alt . '" width="' . $size['0'] . '" height="' . $size['1'] . '" />';
+				$out .= '<div class="local" data-key="local|' . $matches['1'] . '"><img src="/img/' . $matches['1'] . '" alt="' . 
+					$alt . '" width="' . $size['0'] . '" height="' . $size['1'] . '" /></div>';
 			}
 		}
 		
@@ -769,9 +774,11 @@ class ShikakeOjiPage
         foreach($data['photos']['photo'] as $photo)
         {
             // http://flic.kr/p/{base58-photo-id}
-            $url = 'http://farm' . $photo['farm'] . '.static.flickr.com/' . $photo['server'] . '/' . $photo['id'] . '_' . $photo['secret'];
+            $url = 'http://farm' . $photo['farm'] . '.static.flickr.com/' . $photo['server'] . '/' . 
+				$photo['id'] . '_' . $photo['secret'];
             $out .= '<li>';
-            $out .= '<a href="' . $url . '_b.jpg" rel="http://www.flickr.com/photos/' . $photo['owner'] . '/' . $photo['id'] . '" title="' . $photo['title'] . '">';
+            $out .= '<a href="' . $url . '_b.jpg" data-photo-page="http://www.flickr.com/photos/' . 
+				$photo['owner'] . '/' . $photo['id'] . '" title="' . $photo['title'] . '">';
             $out .= '<img src="' . $url . '_s.jpg" alt="' . $photo['title'] . '"/>';
             $out .= '</a>';
             $out .= '</li>';

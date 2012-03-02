@@ -189,8 +189,9 @@ header p {
 }
 
 article ul, article ol {
-    list-style-position: outside;
-    padding-left: 3em;
+    list-style-position: inside;
+    padding-left: 1em;
+	display: inline-block;
 }
 article ul {
     list-style-type: disc;
@@ -322,6 +323,10 @@ label span {
     visibility: visible;
 }
 
+/* local image in an article */
+.local {
+	float: left;
+}
 
 /* unordered list */
 .imagelist {
@@ -409,15 +414,16 @@ label span {
     position: absolute;
 	text-align: center;
 }
-.note:hover .notetext {
+.note:hover .notetext, .notehover .notetext {
     display: inline;
 }
-.note:hover .notearea {
+.note:hover .notearea , .notehover .notearea{
     opacity: 1.0;
+    border: 2px solid #6E5728;
 }
 .notearea {
-    opacity: 0.4;
-    border: 0.1em solid #6E5728;
+    opacity: 0.3;
+    border: 1px solid #6E5728;
     border-radius: 0.6em;
     background-color: transparent;
     display: block;
@@ -425,6 +431,7 @@ label span {
 .notetext {
     color: #6E5728;
     border-radius: 0.4em;
+	border: 1px solid #6E5728;
     background-color: #FEFEFE;
     display: none;
     padding: 0.2em 0.4em;

@@ -431,11 +431,12 @@ class ShikakeOji
             $res = $run->fetch(PDO::FETCH_ASSOC);
 
 			$content = str_replace("\n\n", "\n", $received['content']); // remove duplicate new lines
+			$published = $this->isEmailAdministrator($this->userEmail) ? 1 : 0;
 
             // Insert new revision for moderation
-            $sql = 'INSERT INTO naginata_article (page_id, content, modified, email) VALUES (\'' .
+            $sql = 'INSERT INTO naginata_article (page_id, content, modified, email, published) VALUES (\'' .
                 $res['id'] . '\', \'' . $content . '\', \'' .
-                time() . '\', \'' . $this->userEmail . '\')';
+                time() . '\', \'' . $this->userEmail . '\', ' . $published . ')';
             $run = $this->database->query($sql);
 
             $isSaved = ($run->rowCount() > 0);

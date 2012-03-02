@@ -88,10 +88,22 @@ var sendanmaki = {
 		sendanmaki.lang = $('html').attr('lang');
 		
 		// Add notes to a chudan kamae bogu image, if available
-		$('.hasnotes').each(function() {
+		$('.hasnotes li').each(function() {
 			var data = $(this).data();
 			if (typeof data !== 'undefined') {
 				sendanmaki.createImgNote(data);
+			}
+		}).on('mouseover mouseout', function(event) {
+			var data = $(this).data();
+			
+			if (data.url && data.note) {
+				var div =  $('img[src="' + data.url + '"]').parent().children('div.note:contains("' + data.note + '")');
+				if (event.type == 'mouseover') {
+					div.addClass('notehover');
+				}
+				else {
+					div.removeClass('notehover');
+				}
 			}
 		});
 		
@@ -108,7 +120,7 @@ var sendanmaki = {
 				}
 				else {
 					// Manifest didn't changed. Nothing new to server.
-					console.log('applicationCache.status when updateready event occurred: ' + sendanmaki.appCacheStat());
+					console.log('applicationCache.status when updateready event occurred: ' + applicationCache.status);
 				}
 			}, false);
 		}
@@ -125,6 +137,8 @@ var sendanmaki = {
 			sendanmaki.mediaThumbClick($(this));
 			return false;
 		});
+		
+		// data-photo-page ...
 		$('.imagelist a').colorbox({
 			rel: 'several'
 		});
@@ -221,38 +235,6 @@ var sendanmaki = {
 			}
 
 		}, 'json');
-	},
-
-	/**
-	 * Application cache status.
-	 * http://www.html5rocks.com/en/tutorials/appcache/beginner/
-	 */
-	appCacheStat: function() {
-		var ac = applicationCache;
-
-		switch (ac.status) {
-			case ac.UNCACHED: // UNCACHED == 0
-				return 'UNCACHED';
-				break;
-			case ac.IDLE: // IDLE == 1
-				return 'IDLE';
-				break;
-			case ac.CHECKING: // CHECKING == 2
-				return 'CHECKING';
-				break;
-			case ac.DOWNLOADING: // DOWNLOADING == 3
-				return 'DOWNLOADING';
-				break;
-			case ac.UPDATEREADY:  // UPDATEREADY == 4
-				return 'UPDATEREADY';
-				break;
-			case ac.OBSOLETE: // OBSOLETE == 5
-				return 'OBSOLETE';
-				break;
-			default:
-				return 'UKNOWN CACHE STATUS';
-				break;
-		};
 	},
 
 	/**
@@ -417,7 +399,7 @@ var sendanmaki = {
 		var $a = $('article');
         var $c = $a.clone();
 		// replace .mediathumb parts by [|]
-		$c.children('.mediathumb').replaceWith(function() {
+		$c.children('.mediathumb, .local').replaceWith(function() {
 			return "\n" + '[' + $(this).data('key') + ']' + "\n";
 		});
 		var orig = $c.html().replace("\n\n", "\n"); // remove duplicate new lines
@@ -477,17 +459,17 @@ var sendanmaki = {
      * data = {x, y, width, heigth, note, url}
      */
     createImgNote: function(data) {
-		console.dir(data);
         var parent = $('img[src="' + data.url + '"]').parent();
-		if (parent.size() > 0) {
-			var div = $('<div class="note" rel="' + data.url + '"></div>');
+		var existing = $('div.note[rel="' + data.note + '"').size();
+		if (parent.size() > 0 && existing == 0) {
+			var div = $('<div class="note" rel="' + data.note + '"></div>');
 			var tpo = parent.position();
 			div.css('left', data.x + tpo.left).css('top', data.y + tpo.top);
 			var area = $('<span class="notearea"></span>');
 			var note = $('<span class="notetext">' + data.note + '</span>');
 			area.css('width', data.width).css('height', data.height);
 			div.append(area, note);
-			parent.append(div).show(400);
+			parent.append(div).show();
 		}
     },
 
