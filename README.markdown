@@ -63,6 +63,7 @@ Other notes
  * Possible contributors and administrators can login via OpenID (https://openid.net/) which is supported via LightOpenID (https://gitorious.org/~paazmaya/lightopenid/paazmayas-lightopenid)
  * Edited content is saved for moderation and diff generated with PHP-Diff (https://github.com/chrisboulton/php-diff) is sent via email (http://phpmailer.worxware.com/)
  * Speed study (http://blog.chromium.org/2010/07/do-you-know-how-slow-your-web-page-is.html)
+ * $.data() is somewhat faster that $(selector).data() (http://jsperf.com/jquery-data-vs-jqueryselection-data)
  
 Configuration file structure
 ----------------------------

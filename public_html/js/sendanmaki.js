@@ -186,7 +186,7 @@ var sendanmaki = {
 		});
 
 		// Finally check if div#logo data is set. It is used only for messaging
-		var success = $('#logo').data('msgLoginSuccess'); // 1 or 0
+		var success = $.data('#logo', 'msgLoginSuccess'); // 1 or 0
 		if (typeof success !== 'undefined') {
 			sendanmaki.showAppMessage(success ? 'loginSuccess' : 'loginFailure');
 		}
@@ -322,7 +322,7 @@ var sendanmaki = {
      * @param   msg    Data item to be used
      */
     showAppMessage: function(msg) {
-        var text = $('#logo').data(msg);
+        var text = $.data('#logo', msg);
         if (typeof text !== 'undefined') {
 			// Show colorbox
 			$.colorbox({
