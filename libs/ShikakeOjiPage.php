@@ -452,13 +452,16 @@ class ShikakeOjiPage
 			$out .= '<meta property="og:title" content="' . $this->head['title'] . '"/>';
 			$out .= '<meta property="og:description" content="' . $this->head['description'] . '"/>';
 			$out .= '<meta property="og:type" content="sports_team"/>';
-			$out .= '<meta property="og:image" content="http://' . $_SERVER['HTTP_HOST'] . '/img/logo.png"/>';
+			
+			// All the images referenced by og:image must be at least 200px in both dimensions.
+			$out .= '<meta property="og:image" content="http://' . $_SERVER['HTTP_HOST'] . '/img/logo-200x200.png"/>';
+			
 			$out .= '<meta property="og:url" content="http://' . $_SERVER['HTTP_HOST'] . $this->shikakeOji->currentPage . '"/>';
 			$out .= '<meta property="og:site_name" content="' . $this->head['title'] . '"/>';
 			$out .= '<meta property="og:locale" content="fi_FI"/>'; // language_TERRITORY
 			$out .= '<meta property="og:locale:alternate" content="en_GB"/>';
 			$out .= '<meta property="og:locale:alternate" content="ja_JP"/>';
-			$out .= '<meta property="og:country-name" content="Finland"/>';
+			//$out .= '<meta property="og:country-name" content="Finland"/>';
 
 			// https://developers.facebook.com/docs/opengraph/
 			$out .= '<meta property="fb:app_id" content="' . $this->shikakeOji->config['facebook']['app_id'] . '"/>'; // A Facebook Platform application ID that administers this page.
