@@ -209,6 +209,7 @@ article img {
 /* a that has no direct child img */
 article p > a:not(a > img)::after, article li > a:not(a > img)::after {
     content: url(../img/link-arrow.png);
+    margin-left: 4px;
 }
 
 
@@ -307,9 +308,11 @@ label span {
 .playicon {
     visibility: hidden;
     display: block;
-    position: relative;
-    width: 100%;
-    height: 100%;
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    margin-top: -10px;
+    margin-left: -10px;
 	background-repeat: no-repeat;
 	background-position: center center;
 }
@@ -447,14 +450,15 @@ label span {
 /* https://developer.mozilla.org/en/CSS/linear-gradient */
 /* edit mode #contribute link */
 .edithover, .editmode > *:not(.mediathumb):hover, a.editmode {
-	background-color: #A4B5C6;
+	background-color: #FF66CC;
+	/*
 	background-image: -ms-linear-gradient(-99deg, #A4B5C6, #FEFEFE);
 	background-image: -webkit-linear-gradient(-99deg, #A4B5C6, #FEFEFE);
 	background-image: -moz-linear-gradient(-99deg, #A4B5C6, #FEFEFE);
 	background-image: -o-linear-gradient(-99deg, #A4B5C6, #FEFEFE);
 	background-image: linear-gradient(-99deg, #A4B5C6, #FEFEFE);
+	*/
 }
-
 /* modernizr stats table */
 .stats td {
 	padding: 2px;

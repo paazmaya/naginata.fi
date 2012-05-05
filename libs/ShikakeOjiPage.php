@@ -35,10 +35,10 @@ class ShikakeOjiPage
      * Should be relative to public_html/js/
      */
     public $scripts = array(
-        'jquery.js',
-        'jquery.colorbox.js',
-        'jquery.swfobject.js',
-        'jquery.outerhtml.js',
+        'jquery.js', // 1.7.2
+        'jquery.colorbox.js', // 1.3.19
+        'jquery.swfobject.js', // 1.1.1
+        'jquery.outerhtml.js', //
         'sendanmaki.js'
     );
 
@@ -482,7 +482,7 @@ class ShikakeOjiPage
             $this->minify('css', $this->styles);
             $out .= '<link rel="stylesheet" href="' . $base . $this->minifiedName . 'css" type="text/css" media="all" />';
 
-            $this->minifyFile('js', 'modernizr.js');
+            $this->minifyFile('js', 'modernizr.js'); // 2.5.3
             $out .= '<script type="text/javascript" src="/js/modernizr.min.js"></script>';
         }
         else

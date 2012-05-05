@@ -361,6 +361,7 @@ var sendanmaki = {
 
     /**
      * Click handler for the elements that can be edited.
+	 * $e is the element, wrapped in jQuery, that was clicked.
      */
     editModeClick: function($e) {
         var html = $e.outerHtml();
