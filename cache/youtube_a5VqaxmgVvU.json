@@ -72,6 +72,9 @@
                 },
                 "uri": {
                     "$t": "http://gdata.youtube.com/feeds/api/users/BudoExport"
+                },
+                "yt$userId": {
+                    "$t": "aFF4Q8RlfNq45cPDUwE8QA"
                 }
             }
         ],
@@ -186,6 +189,12 @@
                     "yt$name": "default"
                 },
                 {
+                    "url": "http://i.ytimg.com/vi/a5VqaxmgVvU/mqdefault.jpg",
+                    "height": 180,
+                    "width": 320,
+                    "yt$name": "mqdefault"
+                },
+                {
                     "url": "http://i.ytimg.com/vi/a5VqaxmgVvU/hqdefault.jpg",
                     "height": 360,
                     "width": 480,
@@ -239,7 +248,7 @@
         },
         "yt$statistics": {
             "favoriteCount": "1",
-            "viewCount": "855"
+            "viewCount": "1213"
         },
         "yt$rating": {
             "numDislikes": "1",

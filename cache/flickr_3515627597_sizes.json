@@ -13,6 +13,14 @@
                  "media": "photo"
             },
              {
+                "label": "Large Square",
+                 "width": "150",
+                 "height": "150",
+                 "source": "http:\/\/farm4.staticflickr.com\/3651\/3515627597_5f95caa55a_q.jpg",
+                 "url": "http:\/\/www.flickr.com\/photos\/attig\/3515627597\/sizes\/q\/",
+                 "media": "photo"
+            },
+             {
                 "label": "Thumbnail",
                  "width": "67",
                  "height": "100",
@@ -26,6 +34,14 @@
                  "height": "240",
                  "source": "http:\/\/farm4.staticflickr.com\/3651\/3515627597_5f95caa55a_m.jpg",
                  "url": "http:\/\/www.flickr.com\/photos\/attig\/3515627597\/sizes\/s\/",
+                 "media": "photo"
+            },
+             {
+                "label": "Small 320",
+                 "width": 213,
+                 "height": "320",
+                 "source": "http:\/\/farm4.staticflickr.com\/3651\/3515627597_5f95caa55a_n.jpg",
+                 "url": "http:\/\/www.flickr.com\/photos\/attig\/3515627597\/sizes\/n\/",
                  "media": "photo"
             },
              {

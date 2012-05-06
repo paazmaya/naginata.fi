@@ -92,6 +92,9 @@
                 },
                 "uri": {
                     "$t": "http://gdata.youtube.com/feeds/api/users/osuga01"
+                },
+                "yt$userId": {
+                    "$t": "c31Cv3pUvUjAHx9VdH3rNQ"
                 }
             }
         ],
@@ -203,6 +206,12 @@
                     "yt$name": "default"
                 },
                 {
+                    "url": "http://i.ytimg.com/vi/v696WandAw8/mqdefault.jpg",
+                    "height": 180,
+                    "width": 320,
+                    "yt$name": "mqdefault"
+                },
+                {
                     "url": "http://i.ytimg.com/vi/v696WandAw8/hqdefault.jpg",
                     "height": 360,
                     "width": 480,
@@ -256,7 +265,7 @@
         },
         "yt$statistics": {
             "favoriteCount": "9",
-            "viewCount": "4707"
+            "viewCount": "4916"
         },
         "yt$rating": {
             "numDislikes": "0",

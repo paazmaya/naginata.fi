@@ -6,7 +6,7 @@
         "xmlns$media": "http://search.yahoo.com/mrss/",
         "xmlns$gd": "http://schemas.google.com/g/2005",
         "xmlns$yt": "http://gdata.youtube.com/schemas/2007",
-        "gd$etag": "W/\"CE8ESH47eCp7I2A9WhRaEk0.\"",
+        "gd$etag": "W/\"DEACSX47eCp7I2A9WhVQF0U.\"",
         "id": {
             "$t": "tag:youtube.com,2008:video:DiCwRBds458"
         },
@@ -14,7 +14,7 @@
             "$t": "2011-05-08T01:54:07.000Z"
         },
         "updated": {
-            "$t": "2012-02-14T07:00:09.000Z"
+            "$t": "2012-04-07T08:19:28.000Z"
         },
         "category": [
             {
@@ -88,6 +88,9 @@
                 },
                 "uri": {
                     "$t": "http://gdata.youtube.com/feeds/api/users/kuniedasagami2008"
+                },
+                "yt$userId": {
+                    "$t": "8T7lIiUBcfWWT8a1GT4EZg"
                 }
             }
         ],
@@ -199,6 +202,12 @@
                     "yt$name": "default"
                 },
                 {
+                    "url": "http://i.ytimg.com/vi/DiCwRBds458/mqdefault.jpg",
+                    "height": 180,
+                    "width": 320,
+                    "yt$name": "mqdefault"
+                },
+                {
                     "url": "http://i.ytimg.com/vi/DiCwRBds458/hqdefault.jpg",
                     "height": 360,
                     "width": 480,
@@ -244,16 +253,16 @@
             "average": 5.0,
             "max": 5,
             "min": 1,
-            "numRaters": 5,
+            "numRaters": 6,
             "rel": "http://schemas.google.com/g/2005#overall"
         },
         "yt$statistics": {
-            "favoriteCount": "7",
-            "viewCount": "1279"
+            "favoriteCount": "9",
+            "viewCount": "1826"
         },
         "yt$rating": {
             "numDislikes": "0",
-            "numLikes": "5"
+            "numLikes": "6"
         }
     }
 }
