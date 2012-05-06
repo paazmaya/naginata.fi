@@ -270,6 +270,8 @@ var sendanmaki = {
 				});
 			}
 			else {
+				w = '300px';
+				h = '140px';
 				player = '<p><strong>Vaikuttaa siltä että Flash lisäke ei ole käytettävissä.</strong> Siksi ei tätä sisältöäkään voida tarkistella.</p>' +
 					'<p>Viimeisimmän version Flash lisäkkeestä voi ladata osoitteesta ' +
 					'<a href="http://get.adobe.com/flashplayer/" title="Get Flash Player">http://get.adobe.com/flashplayer/</a></p>' +
@@ -364,11 +366,24 @@ var sendanmaki = {
 	 * $e is the element, wrapped in jQuery, that was clicked.
      */
     editModeClick: function($e) {
-        var html = $e.outerHtml();
-        var form = $(sendanmaki.editForm).clone();
-        form.data('original', html);
+		// http://api.jquery.com/next/
+        var html = $e.prev().outerHtml() + "\n" + $e.outerHtml() + "\n" + $e.next().outerHtml();
+		var $h = $('<div id="contain">' + html + '</div>');
+		
+		// replace .mediathumb parts by [|]
+		$h.children('.mediathumb').replaceWith(function() {
+			return "\n" + '[' + $(this).data('key') + ']' + "\n";
+		});
+		$h.children('.medialocal').replaceWith(function() {
+			return "\n" + '[' + $(this).data('key') + ']' + "\n";
+		});
+		
+		html = $h.html();
+		
+        var $form = $(sendanmaki.editForm).clone();
+        $form.data('original', html); // what is currently on the page
         $.colorbox({
-            html: form,
+            html: $form,
             modal: true,
             onComplete: function() {
 				$('textarea[name="content"]').attr('lang', sendanmaki.lang).val(html);
@@ -377,7 +392,7 @@ var sendanmaki = {
                 var origClose = $.colorbox.close;
                 $.colorbox.close = function() {
                     // but this check now anyhow the initial values...
-                    if (form.data('original') != form.children('textarea').val()) {
+                    if ($form.data('original') != $form.children('textarea').val()) {
                         var response = confirm('Haluatko varmasti sulkea tämän mahdollisesti muokatun tekstin?');
                         if (!response) {
                             return false;
@@ -389,6 +404,8 @@ var sendanmaki = {
             }
         });
     },
+	
+	
 
     /**
      * Callback for submitting the contribution form.
@@ -406,9 +423,15 @@ var sendanmaki = {
 		$c.children('.medialocal').replaceWith(function() {
 			return "\n" + '[' + $(this).data('key') + ']' + "\n";
 		});
-		var orig = $c.html().replace("\n\n", "\n"); // remove duplicate new lines
+		var orig = $c.html();
+		console.log("orig.indexOf(original): " + orig.indexOf(original));
 		// https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String/replace
 		var edited = orig.replace(original, content);
+		
+		// TODO
+		// After ever closing p, ul, li, div, ... there needs to be \n
+		
+		edited = edited.replace("\n\n", "\n"); // remove duplicate new lines
         var data = {
             lang: sendanmaki.lang,
             page: location.pathname,

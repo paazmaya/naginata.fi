@@ -207,7 +207,7 @@ article li {
 article img {
 }
 /* a that has no direct child img */
-article p > a:not(a > img)::after, article li > a:not(a > img)::after {
+article p > a:not(img)::after, article li > a:not(img)::after {
     content: url(../img/link-arrow.png);
     margin-left: 4px;
 }
