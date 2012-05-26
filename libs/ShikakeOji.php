@@ -549,7 +549,7 @@ class ShikakeOji
     /**
      * Try to authenticate the user via OAuth.
      * The email provider should tell if the user is who she/he/it claims to be.
-     * http://code.google.com/apis/accounts/docs/OpenID.html
+     * https://developers.google.com/accounts/docs/OpenID
      * @return string/boolean
      */
     private function pageAuthenticateUser()
@@ -567,8 +567,8 @@ class ShikakeOji
             //'openid.ui.mode' => 'popup', // Google can use x-has-session but not useful for this app
             'openid.ui.lang' => $this->language . '_' . $this->territory
         );
-
-        if (isset($_GET['openid_mode']))
+		
+        if (isset($_GET['openid.mode']))
         {
             if ($openid->mode)
             {
@@ -612,7 +612,7 @@ class ShikakeOji
                     'Terve, ' . "\n" . 'Sivustolla ' . $_SERVER['HTTP_HOST'] . ' tapahtui OpenID kirjautumis tapahtuma.' . "\n\n" . $mailBody
                 );
 
-                return json_encode(array('answer' => $openid->validate()));
+                $this->redirectTo('/', '');
             }
         }
         else if (isset($_GET['identifier']) && $_GET['identifier'] != '')

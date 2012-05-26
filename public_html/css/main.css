@@ -177,8 +177,8 @@ header p {
 	font-size: 0.9em;
 }
 article ul, article ol {
-	list-style-position: inside;
-	padding-left: 1em;
+	list-style-position: outside;
+	padding-left: 2em;
 	display: inline-block;
 }
 article ul {
