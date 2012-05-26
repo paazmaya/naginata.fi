@@ -573,8 +573,9 @@ class ShikakeOji
             if ($openid->mode)
             {
                 $attr = $openid->getAttributes();
+				$validate = $openid->validate();
 
-                if ($openid->validate() &&
+                if ($validate &&
                     array_key_exists('contact/email', $attr) &&
                     ($this->isEmailAdministrator($attr['contact/email']) ||
                     $this->isEmailContributor($attr['contact/email']))
@@ -591,7 +592,7 @@ class ShikakeOji
                 $_SESSION['msg-login-success'] = (bool) $this->isLoggedIn;
 
 				// Build the mail message for site owner
-                $mailBody = 'OpenID was validated: ' . $openid->validate() . "\n\n";
+                $mailBody = 'OpenID was validated: ' . $validate . "\n\n";
                 $mailBody .= 'Attributes:' . "\n";
                 foreach($attr as $k => $v)
                 {
@@ -647,8 +648,7 @@ class ShikakeOji
             $log = date($this->logDateFormat) . ' [' . $_SERVER['REMOTE_ADDR'] . '] ' . $id . ' ' . implode("\n\t\t" . '&', explode('&', $authUrl)) . "\n";
             file_put_contents($this->openidLog, $log, FILE_APPEND);
 
-            //return $authUrl;
-            header('Location: ' . $authUrl); // no longer AJAX for this submission.
+            header('Location: ' . $authUrl);
             exit();
         }
         else
@@ -665,12 +665,6 @@ class ShikakeOji
     private function keepSessionAlive()
     {
 		header('Content-type: application/json');
-
-        // We should have received "emode" = editMode
-		if (isset($_POST['emode']))
-		{
-			$_SESSION['editMode'] = intval($_POST['emode']);
-		}
 
         $lifetime = time() - $_SESSION['init'];
 

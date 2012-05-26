@@ -57,14 +57,6 @@ var sendanmaki = {
      */
     userEmail: '',
 
-    /**
-     * Edit mode can be triggered once logged in.
-     * If it is on, clicking the children of article will open
-     * edit form in colorbox for that element.
-     * Initial value is fetched from localStorage.
-     */
-    editMode: 0,
-
 	/**
 	 * Current page language.
 	 * Fetched from html lang attribute.
@@ -154,8 +146,8 @@ var sendanmaki = {
         // Open modal form for logging in via OpenID
         $('a[href="#contribute"]').click(function() {
             if (sendanmaki.isLoggedIn) {
-                // toggle edit mode
-                sendanmaki.editModeToggle();
+                // Edit the current page
+                sendanmaki.editModeClick();
             }
             else {
                 // open login form
@@ -179,10 +171,10 @@ var sendanmaki = {
 
         // Might want to check that the editor is not open...
 		$(window).on('beforeunload', function() {
-			if (sendanmaki.editMode) {
-                //console.log('beforeunload');
-                //return false;
-			}
+			
+			//console.log('beforeunload');
+			//return false;
+			
 		});
 
 		// Finally check if div#logo data is set. It is used only for messaging
@@ -202,35 +194,14 @@ var sendanmaki = {
 	 * Keep PHP session alive and get the current login status
 	 */
 	keepAlive: function() {
-		var data = {emode: sendanmaki.editMode};
+		var data = {};
 		$.post('/keep-session-alive', data, function(received, status) {
 			if (received.answer != 'offline') {
 				sendanmaki.isLoggedIn = received.login;
 				sendanmaki.userEmail = received.email;
 			}
 			
-			// Inline edit links
-			// TODO: check for singular event settin...
 			if (sendanmaki.isLoggedIn) {
-				// Initial value once page is loaded
-				sendanmaki.editMode = (localStorage.getItem('editMode') == '1') ? 1 : 0;
-				if (sendanmaki.editMode) {
-					// handle hover via css...
-					$('article').addClass('editmode');
-					$('a[href="#contribute"]').addClass('editmode');
-				}
-				/*
-				$('.editmode > *:not(.mediathumb, .imagelist)').live('mouseover', function() {
-					$(this).addClass('edithover');
-				}).live('mouseout', function() {
-					$(this).removeClass('edithover');
-				});
-				*/
-				$('.editmode > *:not(.mediathumb, .imagelist)').live('click', function() {
-					$(this).removeClass('edithover');
-					sendanmaki.editModeClick($(this));
-				});
-				
 				$('a[href="#contribute"]').text('Muokkaa');
 			}
 
@@ -324,7 +295,7 @@ var sendanmaki = {
      * @param   msg    Data item to be used
      */
     showAppMessage: function(msg) {
-        var text = $.data('#logo', msg);
+        var text = $('#logo').data(msg);
         if (typeof text !== 'undefined') {
 			// Show colorbox
 			$.colorbox({
@@ -342,32 +313,12 @@ var sendanmaki = {
     },
 
     /**
-     * Edit mode toggle. Shall be called only when logged in.
-     */
-    editModeToggle: function() {
-        var $e = $('article');
-		var $a = $('a[href="#contribute"]');
-        var className = 'editmode';
-        if (sendanmaki.editMode) {
-            $e.removeClass(className);
-            $a.removeClass(className);
-            sendanmaki.editMode = 0;
-        }
-        else {
-            $e.addClass(className);
-            $a.addClass(className);
-            sendanmaki.editMode = 1;
-        }
-        localStorage.setItem('editMode', sendanmaki.editMode);
-    },
-
-    /**
      * Click handler for the elements that can be edited.
 	 * $e is the element, wrapped in jQuery, that was clicked.
      */
-    editModeClick: function($e) {
+    editModeClick: function() {
 		// http://api.jquery.com/next/
-        var html = $e.prev().outerHtml() + "\n" + $e.outerHtml() + "\n" + $e.next().outerHtml();
+        var html = $('article').html();
 		var $h = $('<div id="contain">' + html + '</div>');
 		
 		// replace .mediathumb parts by [|]
@@ -387,20 +338,25 @@ var sendanmaki = {
             modal: true,
             onComplete: function() {
 				$('textarea[name="content"]').attr('lang', sendanmaki.lang).val(html);
-				/*
-				// Mentokusai!
-                var origClose = $.colorbox.close;
-                $.colorbox.close = function() {
-                    // but this check now anyhow the initial values...
-                    if ($form.data('original') != $form.children('textarea').val()) {
-                        var response = confirm('Haluatko varmasti sulkea tämän mahdollisesti muokatun tekstin?');
-                        if (!response) {
-                            return false;
-                        }
-                    }
-                    origClose();
-                };
-				*/
+				
+				var editor = CodeMirror.fromTextArea($('textarea[name="content"]').get(0), {
+					mode: 'text/html',
+					indentUnit: 1,
+					tabSize: 2,
+					autoClearEmptyLines: true,
+					lineWrapping: true,
+					lineNumbers: true,
+					theme: 'default',
+					autofocus: true,
+					
+					extraKeys: {
+						"'>'": function(cm) { cm.closeTag(cm, '>'); },
+						"'/'": function(cm) { cm.closeTag(cm, '/'); }
+					},
+					onChange : function (editor) {
+						editor.save();
+					}
+				});
             }
         });
     },
@@ -413,41 +369,22 @@ var sendanmaki = {
      */
     submitEditForm: function($form) {
 		var content = $('textarea[name="content"]').val();
-		var original = $form.data('original');
-		var $a = $('article');
-        var $c = $a.clone();
-		// replace .mediathumb parts by [|]
-		$c.children('.mediathumb').replaceWith(function() {
-			return "\n" + '[' + $(this).data('key') + ']' + "\n";
-		});
-		$c.children('.medialocal').replaceWith(function() {
-			return "\n" + '[' + $(this).data('key') + ']' + "\n";
-		});
-		var orig = $c.html();
-		console.log("orig.indexOf(original): " + orig.indexOf(original));
-		// https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String/replace
-		var edited = orig.replace(original, content);
 		
-		// TODO
-		// After ever closing p, ul, li, div, ... there needs to be \n
-		
-		edited = edited.replace("\n\n", "\n"); // remove duplicate new lines
         var data = {
             lang: sendanmaki.lang,
             page: location.pathname,
-            content: edited
+            content: content
         };
 		console.dir(data);
 
 		// Update the page
-		var article = $a.html();
-		$('article').html(article.replace(original, content));
+		$('article').html(content);
 
 		// disable send button
 		$('input[type="submit"]').attr('disabled', 'disabled');
 		
 		// feedback for the user
-		$('label span').text('Muokauksesi lähti koti palvelinta');
+		$('label span').text('Muokkauksesi lähti koti palvelinta');
 
 		// Feedback of the ajax submit on background color
         $form.addClass('ajax-ongoing');
@@ -504,8 +441,8 @@ var sendanmaki = {
      * A form to be shown in colorbox when editing an article content.
      */
     editForm: '<form action="/update-article" method="post" class="edit">' +
-		'<label>HTML5 sallittu<span></span>' +
-        '<textarea name="content" spellcheck="true" autofocus="autofocus"></textarea></label>' +
+		'<label>HTML5 sallittu<span></span></label>' +
+        '<textarea name="content" spellcheck="true" autofocus="autofocus"></textarea>' +
         '<input type="submit" value="Lähetä" />' +
         '<input type="button" name="close" value="Sulje" />' +
         '</form>',

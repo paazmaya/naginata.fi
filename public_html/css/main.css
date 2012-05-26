@@ -13,7 +13,6 @@
  * 072434 blue
  * 989E7B greyish
  */
-
 /* http://www.fontsquirrel.com/fonts/inder */
 /* http://www.fontspring.com/blog/the-new-bulletproof-font-face-syntax */
 @font-face {
@@ -37,150 +36,139 @@
     font-weight: normal;
     font-style: normal;
 }
-
 * {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    outline: 0;
-    font-size: 100%;
-    vertical-align: baseline;
-    background: transparent;
-    color: #121212;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+	background: transparent;
+	color: #121212;
 }
 address, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
-    display: block;
+	display: block;
 }
-
 html, body {
-    width: 100%;
-    background-color: #FEFEFE;
+	width: 100%;
+	background-color: #FEFEFE;
 }
 body {
-    background-image: linear-gradient(65deg, #EEFEFE, #FEFEFE);
+	background-image: linear-gradient(65deg, #EEFEFE, #FEFEFE);
 }
-
 header, article, section {
-    padding: 2em 1em;
-    font-family: 'LoraRegular', Verdana, sans-serif;
+	padding: 2em 1em;
+	font-family: 'LoraRegular', Verdana, sans-serif;
 }
 p {
-    margin: 1em 0.5em;
+	margin: 1em 0.5em;
 }
-
 a {
-    color: #1A1A18;
-    text-decoration: none;
+	color: #1A1A18;
+	text-decoration: none;
 }
 a:hover {
-    color: #4B5535;
-    text-decoration: underline;
+	color: #4B5535;
+	text-decoration: underline;
 }
 input, select {
-    vertical-align: middle;
+	vertical-align: middle;
 }
 input:focus, select:focus, textarea:focus {
-    outline: 1px solid #6E5728;
+	outline: 1px solid #6E5728;
 }
 li {
 	padding: 0.2em 0;
 }
-
 nav {
-    position: absolute;
-    top: 10em;
-    left: 0;
-    z-index: 101;
+	position: absolute;
+	top: 10em;
+	left: 0;
+	z-index: 101;
 }
 nav ul, footer > p {
-    width: 50em;
-    margin-left: -25em;
-    left: 50%;
-    position: relative;
+	width: 50em;
+	margin-left: -25em;
+	left: 50%;
+	position: relative;
 }
 nav, footer {
-    font-variant: small-caps;
-    font-family: 'InderRegular', Verdana, sans-serif;
-    width: 100%;
-    border-top: 0.1em solid #072434;
-    border-bottom: 0.1em solid #072434;
-    height: 1.5em;
-    color: #072434;
+	font-variant: small-caps;
+	font-family: 'InderRegular', Verdana, sans-serif;
+	width: 100%;
+	border-top: 0.1em solid #072434;
+	border-bottom: 0.1em solid #072434;
+	height: 1.5em;
+	color: #072434;
 }
-
 nav ul, footer p {
-    list-style: none;
-    display: block;
-    text-align: center;
-    color: #072434;
+	list-style: none;
+	display: block;
+	text-align: center;
+	color: #072434;
 }
 nav li {
-    width: 10em;
-    height: 1.5em;
-    float: left;
+	width: 10em;
+	height: 1.5em;
+	float: left;
 	padding: 0;
 }
 nav a, footer a, .current a:hover {
-    background-color: transparent;
-    color: #072434;
-    text-align: center;
-    height: 100%;
+	background-color: transparent;
+	color: #072434;
+	text-align: center;
+	height: 100%;
 }
-
 footer {
-    float: none;
-    clear: both;
-    position: relative;
-    z-index: 100;
-    margin-bottom: 1em;
+	float: none;
+	clear: both;
+	position: relative;
+	z-index: 100;
+	margin-bottom: 1em;
 }
 footer a {
 	padding: 0 1em;
 	display: inline-block;
 }
 footer > p {
-    height: 1.5em;
-    margin: 0;
-    margin-left: -25em;
+	height: 1.5em;
+	margin: 0;
+	margin-left: -25em;
 }
 footer time {
-    color: #072434;
+	color: #072434;
 }
 nav a {
-    width: 100%;
-    display: block;
+	width: 100%;
+	display: block;
 }
-
 nav a:hover, footer a:hover, .current a {
-    background-color: #072434;
-    color: #DFE0E4;
-    text-decoration: none;
+	background-color: #072434;
+	color: #DFE0E4;
+	text-decoration: none;
 }
-
 h1, h2, h3, h4, h5, h6 {
-    color: #072434;
-    font-family: 'InderRegular', Verdana, sans-serif;
-    width: 100%;
+	color: #072434;
+	font-family: 'InderRegular', Verdana, sans-serif;
+	width: 100%;
 }
 h1 {
-    font-size: 1.7em;
+	font-size: 1.7em;
 	width: 60%;
 }
 h2 {
-    font-size: 1.5em;
+	font-size: 1.5em;
 	clear: both;
 }
 h3, h3 a {
-    font-size: 1.2em;
+	font-size: 1.2em;
 }
 h4 {
-    font-size: 1.1em;
+	font-size: 1.1em;
 }
-
 header h1:hover {
-    text-shadow: 0.5em 0.5em 6px #072434;
+	text-shadow: 0.5em 0.5em 6px #072434;
 }
-
 header p {
 	text-align: right;
 	margin-top: -2.5em;
@@ -188,22 +176,20 @@ header p {
 	width: 40%;
 	font-size: 0.9em;
 }
-
 article ul, article ol {
-    list-style-position: inside;
-    padding-left: 1em;
+	list-style-position: inside;
+	padding-left: 1em;
 	display: inline-block;
 }
 article ul {
-    list-style-type: disc;
+	list-style-type: disc;
 }
 article ol {
-    list-style-type: decimal;
+	list-style-type: decimal;
 }
 article li {
-    padding-left: 0.3em;
+	padding-left: 0.3em;
 }
-
 article img {
 }
 /* a that has no direct child img */
@@ -211,15 +197,13 @@ article p > a:not(img)::after, article li > a:not(img)::after {
     content: url(../img/link-arrow.png);
     margin-left: 4px;
 }
-
-
 form {
-    width: 50em;
+	width: 50em;
 }
 form.login {
-    background-image: url(../img/openid-icon-100x100.png);
-    background-position: center bottom;
-    background-repeat: no-repeat;
+	background-image: url(../img/openid-icon-100x100.png);
+	background-position: center bottom;
+	background-repeat: no-repeat;
 	/*height: 10em;*/
 }
 form.edit {
@@ -237,52 +221,50 @@ form.ajax-success {
 form.ajax-unsure {
 	background-color: #FAF554;
 }
-
 select, input, textarea {
-    width: 48rem;
-    border: 1px solid #072434;
-    margin: 1em;
+	width: 48rem;
+	border: 1px solid #072434;
+	margin: 1em;
 }
 textarea {
-    height: 24rem;
-    padding: 0.5em;
-    margin: 0.5em;
+	height: 24rem;
+	padding: 0.5em;
+	margin: 0.5em;
 }
 input[type=submit], input[type=button] {
-    width: 15em;
-    margin: 1em 5em;
-    padding: 0.5em;
-    text-align: center;
-    font-weight: bold;
-    background-color: #072434;
-    border-color: #DFE0E4;
-    color: #DFE0E4;
+	width: 15em;
+	margin: 1em 5em;
+	padding: 0.5em;
+	text-align: center;
+	font-weight: bold;
+	background-color: #072434;
+	border-color: #DFE0E4;
+	color: #DFE0E4;
 }
 input[type=submit]:hover, input[type=button]:hover {
-    background-color: #4B5535;
-    border-color: #DFE0E4;
-    color: #DFE0E4;
+	background-color: #4B5535;
+	border-color: #DFE0E4;
+	color: #DFE0E4;
 }
 input[disabled], input[disabled]:hover {
 	background-color: #989E7B;
 }
 label {
-    width: 38rem;
-    margin-left: 1em;
+	width: 38rem;
+	margin-left: 1em;
 	font-weight: bold;
 }
 label span {
 	position: absolute;
 	right: 1.5em;
 }
-
 /* paragraph containing a link that contains image(s) */
 .mediathumb {
-    border: 0.2em solid #072434;
-    padding: 0.6em;
-    margin: 1em;
-    text-align: center;
-    float: left;
+	border: 0.2em solid #072434;
+	padding: 0.6em;
+	margin: 1em;
+	text-align: center;
+	float: left;
 }
 .mediathumb:nth-child(even) {
     float: right;
@@ -292,8 +274,8 @@ label span {
     margin-right: 2em;
 }
 .mediathumb figcaption {
-    font-size: 0.8em;
-    font-weight: bold;
+	font-size: 0.8em;
+	font-weight: bold;
 	width: 250px;
 	color: #072434;
 }
@@ -306,13 +288,13 @@ label span {
 }
 /* under mediathumb there is span that on hover should show play video icon */
 .playicon {
-    visibility: hidden;
-    display: block;
-    position: absolute;
-    width: 50px;
-    height: 50px;
-    margin-top: -10px;
-    margin-left: -10px;
+	visibility: hidden;
+	display: block;
+	position: absolute;
+	width: 50px;
+	height: 50px;
+	margin-top: -10px;
+	margin-left: -10px;
 	background-repeat: no-repeat;
 	background-position: center center;
 }
@@ -323,20 +305,18 @@ label span {
 	background-image: url('../img/youtube_48.png');
 }
 .flickr .playicon {
-    background-image: url('../img/flickr_48.png');
+	background-image: url('../img/flickr_48.png');
 }
-.vimeo:hover .playicon, .youtube:hover .playicon , .flickr:hover .playicon  {
-    visibility: visible;
+.vimeo:hover .playicon, .youtube:hover .playicon, .flickr:hover .playicon {
+	visibility: visible;
 }
-
 /* local image in an article */
 .medialocal {
 	float: left;
 }
-
 /* unordered list */
 .imagelist {
-    list-style: none;
+	list-style: none;
 	clear: both;
 	padding: 0;
 }
@@ -349,119 +329,96 @@ label span {
 	display: block;
 }
 .imagelist a:hover {
-    border-color: #4B5535;
+	border-color: #4B5535;
 }
 .imagelist img {
-    display: block;
+	display: block;
 	width: 75px;
 	height: 75px;
 }
-
 .fail {
-    margin: 1em;
-    border: 0.3em solid #AB26BB;
-    color: #121212;
-    background-color: #FEFEFE;
+	margin: 1em;
+	border: 0.3em solid #AB26BB;
+	color: #121212;
+	background-color: #FEFEFE;
 }
-
-
 /* content shown in a colorbox after login */
 .appmessage {
-    padding: 2em;
+	padding: 2em;
 	padding-left: 4em;
-    background-position: 1em center;
-    background-repeat: no-repeat;
-    background-image: url(../img/mobile-logo.png);
+	background-position: 1em center;
+	background-repeat: no-repeat;
+	background-image: url(../img/mobile-logo.png);
 	overflow: visible;
 }
 .loginfailure {
-    background-image: url(../img/logo-red-57x57.png);
+	background-image: url(../img/logo-red-57x57.png);
 }
 .loginsuccess {
-    background-image: url(../img/logo-green-57x57.png);
+	background-image: url(../img/logo-green-57x57.png);
 }
-
-
-
+.CodeMirror {
+	border: 1px solid #121212;
+}
 #wrapper {
-    min-height: 100%;
-    width: 50em;
-    margin-left: -25em;
-    left: 50%;
-    position: relative;
-    background-color: #FEFEFE;
+	min-height: 100%;
+	width: 50em;
+	margin-left: -25em;
+	left: 50%;
+	position: relative;
+	background-color: #FEFEFE;
 }
 #logo {
-    width: 50em;
-    height: 10em;
-    margin-bottom: 1.5em;
-    background-image: url(../img/logo.png);
-    background-position: center center;
-    background-repeat: no-repeat;
+	width: 50em;
+	height: 10em;
+	margin-bottom: 1.5em;
+	background-image: url(../img/logo.png);
+	background-position: center center;
+	background-repeat: no-repeat;
 }
 #logo > p {
-    margin: 0;
-    width: 100%;
-    text-align: center;
-    font-size: 3.5em;
-    line-height: 100%;
-    /*font-variant: small-caps;*/
-    word-spacing: 3.5em;
-    padding-top: 1em;
-    color: #072434;
-    font-family: 'InderRegular', Verdana, sans-serif;
+	margin: 0;
+	width: 100%;
+	text-align: center;
+	font-size: 3.5em;
+	line-height: 100%; /*font-variant: small-caps;*/;
+	word-spacing: 3.5em;
+	padding-top: 1em;
+	color: #072434;
+	font-family: 'InderRegular', Verdana, sans-serif;
 }
-
-
 /* Image area notes */
-
 .note {
-    background-color: transparent;
-    position: absolute;
+	background-color: transparent;
+	position: absolute;
 	text-align: center;
 }
 .note:hover .notetext, .notehover .notetext {
-    display: inline;
+	display: inline;
 }
-.note:hover .notearea , .notehover .notearea{
-    opacity: 1.0;
-    border: 2px solid #6E5728;
+.note:hover .notearea, .notehover .notearea {
+	opacity: 1.0;
+	border: 2px solid #6E5728;
 }
 .notearea {
-    opacity: 0.3;
-    border: 1px solid #6E5728;
-    border-radius: 0.6em;
-    background-color: rgba(255, 255, 255, 0.1); /* transparent would work in all other except IE */
-    display: block;
+	opacity: 0.3;
+	border: 1px solid #6E5728;
+	border-radius: 0.6em;
+	background-color: rgba(255, 255, 255, 0.1); /* transparent would work in all other except IE */;
+	display: block;
 }
 .notetext {
-    color: #6E5728;
-    border-radius: 0.4em;
+	color: #6E5728;
+	border-radius: 0.4em;
 	border: 1px solid #6E5728;
-    background-color: #FEFEFE;
-    display: none;
-    padding: 0.2em 0.4em;
-    margin-top: -0.5em;
-    text-align: center;
-}
-
-
-/* edit mode hover effects. article will have this class. */
-/* https://developer.mozilla.org/en/CSS/linear-gradient */
-/* edit mode #contribute link */
-.edithover, .editmode > *:not(.mediathumb):hover, a.editmode {
-	background-color: #FF66CC;
-	/*
-	background-image: -ms-linear-gradient(-99deg, #A4B5C6, #FEFEFE);
-	background-image: -webkit-linear-gradient(-99deg, #A4B5C6, #FEFEFE);
-	background-image: -moz-linear-gradient(-99deg, #A4B5C6, #FEFEFE);
-	background-image: -o-linear-gradient(-99deg, #A4B5C6, #FEFEFE);
-	background-image: linear-gradient(-99deg, #A4B5C6, #FEFEFE);
-	*/
+	background-color: #FEFEFE;
+	display: none;
+	padding: 0.2em 0.4em;
+	margin-top: -0.5em;
+	text-align: center;
 }
 /* modernizr stats table */
 .stats td {
 	padding: 2px;
 	border: 1px solid lightgrey;
 }
-

@@ -35,7 +35,7 @@ $shio = new ShikakeOji(
 );
 
 $shio->removeWwwRedirect();
-$shio->output->useMinification = false;
+$shio->output->useMinification = true;
 $shio->output->useTidy = false;
 
 $shio->checkRequestedLanguage();

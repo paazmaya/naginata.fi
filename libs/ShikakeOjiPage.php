@@ -477,13 +477,26 @@ class ShikakeOjiPage
 
         $base = '/css/';
 
+		// CodeMirror only if logged in
+		if ($this->shikakeOji->isLoggedIn)
+		{
+			$out .= '<link rel="stylesheet" href="/js/codemirror/codemirror.';
+			if ($this->useMinification)
+			{
+				$this->minifyFile('css', 'js/codemirror/codemirror.css'); // 2.25
+				$out .= 'min.';
+			}
+			$out .= 'css" type="text/css" media="all" />';
+		}
+		
         if ($this->useMinification)
         {
             $this->minify('css', $this->styles);
             $out .= '<link rel="stylesheet" href="' . $base . $this->minifiedName . 'css" type="text/css" media="all" />';
 
-            $this->minifyFile('js', 'modernizr.js'); // 2.5.3
+            $this->minifyFile('js', 'js/modernizr.js'); // 2.5.3
             $out .= '<script type="text/javascript" src="/js/modernizr.min.js"></script>';
+			
         }
         else
         {
@@ -555,6 +568,55 @@ class ShikakeOjiPage
         $out .= '</footer>';
 
         $base = '/js/';
+		
+		// Include CodeMirror if user logged in
+		if ($this->shikakeOji->isLoggedIn)
+		{
+			$codemirror = array(
+				'codemirror.js',
+				'util/closetag.js',
+				'mode/xml/xml.js',
+				'mode/javascript/javascript.js',
+				'mode/htmlmixed/htmlmixed.js'
+			);
+			$combinedName = 'codemirror-set.min.js';
+			
+			$data = '';
+			$mtime = 0;
+			if (file_exists('js/' . $combinedName))
+			{
+				$mtime = filemtime('js/' . $combinedName);
+			}
+			$rebuild = false;
+			
+			foreach ($codemirror as $code)
+			{
+				if ($this->useMinification)
+				{
+					if ($mtime < filemtime('js/codemirror/' . $code))
+					{
+						$rebuild  = true;
+					}
+					$data .= file_get_contents('js/codemirror/' . $code);
+				}
+				else
+				{
+					$out .= '<script src="/js/codemirror/' . $code . '"></script>';
+				}
+			}
+			
+			if ($this->useMinification)
+			{
+				if ($rebuild)
+				{
+					file_put_contents('js/' . $combinedName, $data);
+					$this->minifyFile('js', 'js/' . $combinedName);
+				}
+				$out .= '<script src="/js/' . $combinedName . '"></script>';
+			}
+			
+			
+		}
 
         if ($this->useMinification)
         {
@@ -568,6 +630,7 @@ class ShikakeOjiPage
                 $out .= '<script type="text/javascript" src="' . $base . $js . '"></script>';
             }
         }
+		
 
         $out .= '</body>';
         $out .= '</html>';
@@ -1118,7 +1181,7 @@ class ShikakeOjiPage
         $data = array();
         foreach($files as $file)
         {
-            $minified = $this->minifyFile($type, $file);
+            $minified = $this->minifyFile($type, $type . '/' . $file);
             if ($minified !== false)
             {
                 $data[] = '/* ' . $file . ' */' . "\n" . $minified;
@@ -1151,7 +1214,7 @@ class ShikakeOjiPage
      * Minify a single file. Adds ".min" to the filename before the suffix.
      *
      * @param   string  $type    Either js or css
-     * @param   string  $file    Name of the file in public_html/[type]/ folder or under it
+     * @param   string  $file    Name of the file in public_html/ folder or under it
      * @return  string/boolean  Minified output or flase if something went wrong
      */
     private function minifyFile($type, $file)
@@ -1165,8 +1228,9 @@ class ShikakeOjiPage
         }
 
         // Absolute path of the given file
-        $base = realpath('../public_html/' . $type) . '/';
+        $base = realpath('../public_html') . '/';
         $source = $base . $file;
+		$info = pathinfo($source);
 
         // By default, minification has not failed, yet.
         $failed = false;
@@ -1176,16 +1240,8 @@ class ShikakeOjiPage
             $doMinify = true;
             $mtime_src = filemtime($source);
 
-            $p = explode('.', $file);
-
-            // Remove suffix temporarily for the ".min" check
-            if (end($p) == $type)
-            {
-                unset($p[count($p) - 1]);
-            }
-
             // If the filename has a ".min" appended in the end, its content is used as such.
-            if (end($p) == 'min')
+            if (substr($info['filename'], -4) == '.min')
             {
                 $destination = $source;
                 $doMinify = false;
@@ -1193,9 +1249,7 @@ class ShikakeOjiPage
             else
             {
                 // Rebuild the name by including ".min" in the end
-                $p[] = 'min';
-                $p[] = $type;
-                $destination = $base . implode('.', $p);
+                $destination = $info['dirname'] . '/' . $info['filename'] . '.min.' . $info['extension'];
             }
 
             $log[] = date($this->shikakeOji->logDateFormat) . ' source: ' . $source . ', size: ' . filesize($source);
