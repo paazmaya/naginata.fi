@@ -612,32 +612,17 @@ class ShikakeOji
                     'Terve, ' . "\n" . 'Sivustolla ' . $_SERVER['HTTP_HOST'] . ' tapahtui OpenID kirjautumis tapahtuma.' . "\n\n" . $mailBody
                 );
 
-                // TODO: check that this is valid page url
-                // page parameter was sent initially from our site, land back to that page.
-                if (isset($_GET['page']) && $_GET['page'] != '')
-                {
-					// Since this is called, the execution stops. It does not seem to redirect to anywhere else except / ...
-                    $this->redirectTo($_GET['page'], '');
-                }
                 return json_encode(array('answer' => $openid->validate()));
             }
         }
-        else if (isset($_POST['identifier']) && $_POST['identifier'] != '' && isset($_POST['page']) && $_POST['page'] != '')
+        else if (isset($_GET['identifier']) && $_GET['identifier'] != '')
         {
-            // Initial form was posted, thus asking the OpenID provider for auth.
-            $id = filter_var($_POST['identifier'], FILTER_VALIDATE_EMAIL);
-            if ($id === false)
-            {
-                return json_encode(array('answer' => '0'));
-            }
-
-            // TODO: Check that this email address is in the list of users.
-
-            if (strpos($id, '@gmail.com') !== false)
-            {
-                $id = 'https://www.google.com/accounts/o8/id';
-            }
-            $openid->returnUrl = 'http://' . $_SERVER['HTTP_HOST'] . $this->currentPage . '?page=' . $_POST['page'];
+			// Assuming $_GET['identifier'] == 'google', thus the following
+		    $id = 'https://www.google.com/accounts/o8/id';
+			
+			// TODO: add other indentifiers...
+            
+            $openid->returnUrl = 'http://' . $_SERVER['HTTP_HOST'] . $this->currentPage;
             $openid->required = array(
                 'contact/email',
                 'namePerson'
@@ -645,7 +630,8 @@ class ShikakeOji
             $openid->identity = $id;
             $authUrl = $openid->authUrl();
 
-            $log = date($this->logDateFormat) . ' [' . $_SERVER['REMOTE_ADDR'] . '] ' . $id . ' ' . implode("\n\t\t" . '&', explode('&', $authUrl)) . "\n";
+            $log = date($this->logDateFormat) . ' [' . $_SERVER['REMOTE_ADDR'] . '] ' . 
+				$id . ' ' . implode("\n\t\t" . '&', explode('&', $authUrl)) . "\n";
             file_put_contents($this->openidLog, $log, FILE_APPEND);
 
             header('Location: ' . $authUrl);

@@ -273,19 +273,8 @@ var sendanmaki = {
     openLoginForm: function() {
         $.colorbox({
             title: $('#contribute').attr('title'),
-            modal: true,
-            html: sendanmaki.loginForm,
-            onComplete: function() {
-                $('input[type="submit"]').attr('disabled', 'disabled');
-                $('input[type="hidden"][name="lang"]').attr('lang', 'fi');
-                $('input[type="hidden"][name="page"]').attr('page', location.pathname);
-                $('input[name="identifier"]').focus().on('change keyup', function() {
-                    var openid = $(this).val();
-                    if (openid.search('@') !== -1) { // TODO: fix search regex to valid OpenID
-                        $('input[type="submit"]').attr('disabled', null);
-                    }
-                });
-            }
+            modal: false,
+            html: sendanmaki.loginForm
         });
     },
 
@@ -451,14 +440,7 @@ var sendanmaki = {
      * Login form. Please note that this uses OpenID.
 	 * http://www.whatwg.org/specs/web-apps/current-work/multipage/forms.html
      */
-    loginForm: '<form action="/authenticate-user" method="post" class="login">' +
-        '<label>Sähköpostiosoite (OpenID kirjautumista varten)' +
-		'<input type="email" name="identifier" autocomplete="on" autofocus="autofocus" /></label>' +
-        '<input type="submit" value="Lähetä" />' +
-        '<input type="hidden" name="lang" value="fi" />' +
-        '<input type="hidden" name="page" value="/" />' +
-        '<input type="button" name="close" value="Sulje" />' +
-        '</form>'
+    loginForm: '<ul class="login-list"><li><a href="/authenticate-user?identifier=google" title="Google"><img src="/img/google_100.png" alt="Google" /><br />Google</a></li></ul>'
 };
 
 /**

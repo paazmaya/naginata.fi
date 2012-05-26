@@ -342,6 +342,21 @@ label span {
 	color: #121212;
 	background-color: #FEFEFE;
 }
+/* login form is replaced with a ul of OpenID providers */
+
+.login-list {
+	list-style: none;
+}
+.login-list li {
+	display: inline-block;
+	padding: 0.5em;
+}
+.login-list a {
+	display: block;
+	text-align: center;
+}
+
+
 /* content shown in a colorbox after login */
 .appmessage {
 	padding: 2em;
