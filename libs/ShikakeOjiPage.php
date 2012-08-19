@@ -35,7 +35,7 @@ class ShikakeOjiPage
      * Should be relative to public_html/js/
      */
     public $scripts = array(
-        'jquery.js', // 1.7.2
+        'jquery.js', // 1.8.0
         'jquery.colorbox.js', // 1.3.19
         'jquery.swfobject.js', // 1.1.1
         'jquery.outerhtml.js', //
@@ -548,6 +548,13 @@ class ShikakeOjiPage
 		
         $out .= '<footer>';
         $out .= '<p>';
+		
+		// Last modification date
+		$data[] = array(
+			'url' => 'http://github.com/paazmaya/naginata.fi',
+			'alt' => 'Tällä sivulla olevaa sisältöä on muokattu viimeksi ' . date('j.n.Y G:i', $this->pageModified),
+			'text' => 'Muokattu viimeksi ' . date('j.n.Y G:i', $this->pageModified)
+		);
 
         $links = array();
         foreach ($data as $item)
@@ -581,7 +588,7 @@ class ShikakeOjiPage
 			);
 			$combinedName = 'codemirror-set.min.js';
 			
-			$data = '';
+			$cmData = '';
 			$mtime = 0;
 			if (file_exists('js/' . $combinedName))
 			{
@@ -597,7 +604,7 @@ class ShikakeOjiPage
 					{
 						$rebuild  = true;
 					}
-					$data .= file_get_contents('js/codemirror/' . $code);
+					$cmData .= file_get_contents('js/codemirror/' . $code);
 				}
 				else
 				{
@@ -609,7 +616,7 @@ class ShikakeOjiPage
 			{
 				if ($rebuild)
 				{
-					file_put_contents('js/' . $combinedName, $data);
+					file_put_contents('js/' . $combinedName, $cmData);
 					$this->minifyFile('js', 'js/' . $combinedName);
 				}
 				$out .= '<script src="/js/' . $combinedName . '"></script>';

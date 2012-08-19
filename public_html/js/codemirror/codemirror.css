@@ -50,6 +50,7 @@
   word-wrap: break-word;
   white-space: pre-wrap;
   word-break: normal;
+  line-height: 1.4em;
 }
 .CodeMirror-wrap .CodeMirror-scroll {
   overflow-x: hidden;
