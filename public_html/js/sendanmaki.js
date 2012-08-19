@@ -116,10 +116,11 @@ var sendanmaki = {
 				}
 			}, false);
 		}
-
+		
 		// external urls shall open in a new window
-        $('a[href|="http://"]:not(.mediathumb a, .imagelist a)').click(function() {
+        $('a[href^="http://"],a[href^="https://"]').not('.mediathumb a, .imagelist a').click(function() {
             var href = $(this).attr('href');
+			console.log("how come not coming here? href: " + href);
             window.open(href, $.now());
             return false;
         });
@@ -274,7 +275,8 @@ var sendanmaki = {
         $.colorbox({
             title: $('#contribute').attr('title'),
             modal: false,
-            html: sendanmaki.loginForm
+            html: sendanmaki.loginForm,
+			
         });
     },
 
@@ -318,6 +320,8 @@ var sendanmaki = {
 			return "\n" + '[' + $(this).data('key') + ']' + "\n";
 		});
 		
+		// imagelist ?
+		
 		html = $h.html();
 		
         var $form = $(sendanmaki.editForm).clone();
@@ -330,6 +334,7 @@ var sendanmaki = {
 				
 				var editor = CodeMirror.fromTextArea($('textarea[name="content"]').get(0), {
 					mode: 'text/html',
+					matchBrackets: true,
 					indentUnit: 1,
 					tabSize: 2,
 					autoClearEmptyLines: true,
@@ -344,6 +349,8 @@ var sendanmaki = {
 					},
 					onChange : function (editor) {
 						editor.save();
+						var now = new Date();
+						$('label span').text('Viimeisin muokkaus ' + now.toLocaleTimeString());
 					}
 				});
             }
@@ -359,6 +366,9 @@ var sendanmaki = {
     submitEditForm: function($form) {
 		var content = $('textarea[name="content"]').val();
 		
+		// https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Date
+		var now = new Date();
+			
         var data = {
             lang: sendanmaki.lang,
             page: location.pathname,
@@ -373,7 +383,7 @@ var sendanmaki = {
 		$('input[type="submit"]').attr('disabled', 'disabled');
 		
 		// feedback for the user
-		$('label span').text('Muokkauksesi lähti koti palvelinta');
+		$('label span').text('Muokkauksesi lähti koti palvelinta ' + now.toLocaleTimeString());
 
 		// Feedback of the ajax submit on background color
         $form.addClass('ajax-ongoing');
@@ -381,6 +391,9 @@ var sendanmaki = {
         $.post($form.attr('action'), data, function(received, status){
 			$form.removeClass('ajax-ongoing');
 
+			now = new Date();
+			$('label span').text('Muokkauksesi lähetetty ' + now.toLocaleTimeString());
+			
             var style;
             if (status != 'success') {
                 style = 'ajax-failure';
@@ -402,8 +415,6 @@ var sendanmaki = {
             $form.addClass(style);
 			$('input[type="submit"]').attr('disabled', null);
 			
-			var now = new Date();
-			$('label span').text('Muokkauksesi lähetetty ' + now.toLocaleString());
         }, 'json');
     },
 
@@ -413,7 +424,7 @@ var sendanmaki = {
      */
     createImgNote: function(data) {
         var parent = $('img[src="' + data.url + '"]').parent();
-		var existing = $('div.note[rel="' + data.note + '"').size();
+		var existing = $('div.note[rel="' + data.note + '"]').size();
 		if (parent.size() > 0 && existing == 0) {
 			var div = $('<div class="note" rel="' + data.note + '"></div>');
 			var tpo = parent.position();
@@ -430,7 +441,7 @@ var sendanmaki = {
      * A form to be shown in colorbox when editing an article content.
      */
     editForm: '<form action="/update-article" method="post" class="edit">' +
-		'<label>HTML5 sallittu<span></span></label>' +
+		'<label>HTML5 sallittu<span>Muokkausta ei vielä lähetetty...</span></label>' +
         '<textarea name="content" spellcheck="true" autofocus="autofocus"></textarea>' +
         '<input type="submit" value="Lähetä" />' +
         '<input type="button" name="close" value="Sulje" />' +
@@ -440,7 +451,8 @@ var sendanmaki = {
      * Login form. Please note that this uses OpenID.
 	 * http://www.whatwg.org/specs/web-apps/current-work/multipage/forms.html
      */
-    loginForm: '<ul class="login-list"><li><a href="/authenticate-user?identifier=google" title="Google"><img src="/img/google_100.png" alt="Google" /><br />Google</a></li></ul>'
+    loginForm: '<ul class="login-list"><li><a href="/authenticate-user?identifier=google" title="Google">' +
+		'<img src="/img/google_100.png" alt="Google" /><br />Google</a></li></ul>'
 };
 
 /**

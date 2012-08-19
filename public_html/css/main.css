@@ -197,8 +197,12 @@ article p > a:not(img)::after, article li > a:not(img)::after {
     content: url(../img/link-arrow.png);
     margin-left: 4px;
 }
+.imagelist a::after {
+	content: '';
+	margin-left: 0;
+}
 form {
-	width: 50em;
+	width: 60em;
 }
 form.login {
 	background-image: url(../img/openid-icon-100x100.png);
@@ -207,6 +211,10 @@ form.login {
 	/*height: 10em;*/
 }
 form.edit {
+	height: 100%;
+}
+.CodeMirror-scroll {
+	height: 390px;
 }
 /* AJAX feedback on form submit */
 form.ajax-ongoing {
@@ -355,7 +363,10 @@ label span {
 	display: block;
 	text-align: center;
 }
-
+.login-list img {
+	width: 100px;
+	height: 100px;
+}
 
 /* content shown in a colorbox after login */
 .appmessage {
