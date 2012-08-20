@@ -565,24 +565,6 @@ class ShikakeOji
             //'openid.ui.mode' => 'popup', // Google can use x-has-session but not useful for this app
             'openid.ui.lang' => $this->language . '_' . $this->territory
         );
-		
-		/*
-		http://naginata.fi/authenticate-user
-			?openid.ns=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0
-			&openid.mode=id_res
-			&openid.op_endpoint=https%3A%2F%2Fwww.google.com%2Faccounts%2Fo8%2Fud
-			&openid.response_nonce=2012-08-20T20%3A21%3A22ZL0oCmuAkDUimZw
-			&openid.return_to=http%3A%2F%2Fnaginata.fi%2Fauthenticate-user
-			&openid.assoc_handle=AMlYA9XRSIDUfU-QYv4-_dxVGlE0vOJtxkkD_QA851UhZjfKe4KtiNNN
-			&openid.signed=op_endpoint%2Cclaimed_id%2Cidentity%2Creturn_to%2Cresponse_nonce%2Cassoc_handle%2Cns.ext1%2Cext1.mode%2Cext1.type.contact_email%2Cext1.value.contact_email
-			&openid.sig=nnMv0R%2BwTNEMMhe6i47Tqi7bhQs%3D
-			&openid.identity=https%3A%2F%2Fwww.google.com%2Faccounts%2Fo8%2Fid%3Fid%3DAItOawlu8DlYwncCcTNX9RhGHVtkLcnAlS3ge-4
-			&openid.claimed_id=https%3A%2F%2Fwww.google.com%2Faccounts%2Fo8%2Fid%3Fid%3DAItOawlu8DlYwncCcTNX9RhGHVtkLcnAlS3ge-4
-			&openid.ns.ext1=http%3A%2F%2Fopenid.net%2Fsrv%2Fax%2F1.0
-			&openid.ext1.mode=fetch_response
-			&openid.ext1.type.contact_email=http%3A%2F%2Faxschema.org%2Fcontact%2Femail
-			&openid.ext1.value.contact_email=olavic%40gmail.com
-		*/
 	
         if (isset($_GET['openid_mode']))
         {
