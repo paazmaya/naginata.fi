@@ -275,8 +275,7 @@ var sendanmaki = {
         $.colorbox({
             title: $('#contribute').attr('title'),
             modal: false,
-            html: sendanmaki.loginForm,
-			
+            html: sendanmaki.loginForm			
         });
     },
 
