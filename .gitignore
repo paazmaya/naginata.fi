@@ -8,3 +8,4 @@ public_html/css/*.min.css
 public_html/img/pngcrush.exe
 public_html/js/*.min.js
 session-checker.log
+stuff/*
