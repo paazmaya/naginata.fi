@@ -710,6 +710,7 @@ class ShikakeOjiPage
 
             if (count($list) > 1)
             {
+				// Multiple items, thus 'ul.imagelist'
                 $params['per_page'] = 63;
 
                 foreach($list as $item)
@@ -756,7 +757,7 @@ class ShikakeOjiPage
 
             if (count($list) > 1)
             {
-                $out .= $this->renderFlickrList($data);
+                $out .= $this->renderFlickrList($data, $matches['1']);
             }
             else
             {
@@ -837,13 +838,13 @@ class ShikakeOjiPage
      * List pictures from Flickr.
      * http://www.flickr.com/services/api/flickr.photos.search.html
      */
-    private function renderFlickrList($data)
+    private function renderFlickrList($data, $key)
     {
         if (!isset($data['photos']['photo']))
         {
             return '<!-- no pictures -->';
         }
-        $out = '<ul class="imagelist">';
+        $out = '<ul class="imagelist" data-key="flickr|' . $key . '">';
         foreach($data['photos']['photo'] as $photo)
         {
             // http://flic.kr/p/{base58-photo-id}

@@ -318,8 +318,9 @@ var sendanmaki = {
 		$h.children('.medialocal').replaceWith(function() {
 			return "\n" + '[' + $(this).data('key') + ']' + "\n";
 		});
-		
-		// imagelist ?
+		$h.children('ul.imagelist').replaceWith(function() {
+			return "\n" + '[' + $(this).data('key') + ']' + "\n";
+		});
 		
 		html = $h.html();
 		
