@@ -60,6 +60,11 @@
                 "href": "http://m.youtube.com/details?v=a5VqaxmgVvU"
             },
             {
+                "rel": "http://gdata.youtube.com/schemas/2007#uploader",
+                "type": "application/atom+xml",
+                "href": "http://gdata.youtube.com/feeds/api/users/aFF4Q8RlfNq45cPDUwE8QA?v=2"
+            },
+            {
                 "rel": "self",
                 "type": "application/atom+xml",
                 "href": "http://gdata.youtube.com/feeds/api/videos/a5VqaxmgVvU?v=2"
@@ -235,6 +240,9 @@
             "yt$uploaded": {
                 "$t": "2011-06-05T10:07:24.000Z"
             },
+            "yt$uploaderId": {
+                "$t": "UCaFF4Q8RlfNq45cPDUwE8QA"
+            },
             "yt$videoid": {
                 "$t": "a5VqaxmgVvU"
             }
@@ -248,7 +256,7 @@
         },
         "yt$statistics": {
             "favoriteCount": "1",
-            "viewCount": "1213"
+            "viewCount": "1377"
         },
         "yt$rating": {
             "numDislikes": "1",

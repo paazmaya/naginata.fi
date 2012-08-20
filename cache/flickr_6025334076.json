@@ -36,7 +36,7 @@
              "takengranularity": "0",
              "lastupdate": "1312882885"
         },
-         "views": "90",
+         "views": "108",
          "editability": {
             "cancomment": 0,
              "canaddmeta": 0
@@ -90,7 +90,7 @@
                      "author": "14224905@N08",
                      "raw": "budo",
                      "_content": "budo",
-                     "machine_tag": 0
+                     "machine_tag": false
                 },
                  {
                     "id": "14132092-6025334076-1970",
@@ -111,7 +111,7 @@
                      "author": "14224905@N08",
                      "raw": "\u6b66\u9053",
                      "_content": "\u6b66\u9053",
-                     "machine_tag": 0
+                     "machine_tag": false
                 },
                  {
                     "id": "14132092-6025334076-1641557",
@@ -125,7 +125,7 @@
                      "author": "14224905@N08",
                      "raw": "keikogi",
                      "_content": "keikogi",
-                     "machine_tag": 0
+                     "machine_tag": false
                 },
                  {
                     "id": "14132092-6025334076-1762507",
@@ -216,7 +216,7 @@
                      "author": "14224905@N08",
                      "raw": "japanesemartialart",
                      "_content": "japanesemartialart",
-                     "machine_tag": 0
+                     "machine_tag": false
                 },
                  {
                     "id": "14132092-6025334076-213",
@@ -244,7 +244,7 @@
                      "author": "14224905@N08",
                      "raw": "budohall",
                      "_content": "budohall",
-                     "machine_tag": 0
+                     "machine_tag": false
                 }
             ]
         },

@@ -13,7 +13,7 @@
          "originalformat": "jpg",
          "owner": {
             "nsid": "31676563@N05",
-             "username": "Teruhide Tomori",
+             "username": "Teruhide Tomori (very busy)",
              "realname": "Teruhide Tomori",
              "location": "Kyoto, JAPAN",
              "iconserver": "3033",
@@ -34,9 +34,9 @@
             "posted": "1333427239",
              "taken": "2012-03-25 12:09:43",
              "takengranularity": "0",
-             "lastupdate": "1334916660"
+             "lastupdate": "1344229603"
         },
-         "views": "213",
+         "views": "310",
          "editability": {
             "cancomment": 0,
              "canaddmeta": 0
@@ -69,84 +69,84 @@
                      "author": "31676563@N05",
                      "raw": "Naginata",
                      "_content": "naginata",
-                     "machine_tag": false
+                     "machine_tag": 0
                 },
                  {
                     "id": "31671223-7040969153-1038",
                      "author": "31676563@N05",
                      "raw": "Japan",
                      "_content": "japan",
-                     "machine_tag": false
+                     "machine_tag": 0
                 },
                  {
                     "id": "31671223-7040969153-4942608",
                      "author": "31676563@N05",
                      "raw": "\u6b66\u9053",
                      "_content": "\u6b66\u9053",
-                     "machine_tag": false
+                     "machine_tag": 0
                 },
                  {
                     "id": "31671223-7040969153-1762506",
                      "author": "31676563@N05",
                      "raw": "\u9577\u5200",
                      "_content": "\u9577\u5200",
-                     "machine_tag": false
+                     "machine_tag": 0
                 },
                  {
                     "id": "31671223-7040969153-4711",
                      "author": "31676563@N05",
                      "raw": "martial art",
                      "_content": "martialart",
-                     "machine_tag": false
+                     "machine_tag": 0
                 },
                  {
                     "id": "31671223-7040969153-18964",
                      "author": "31676563@N05",
                      "raw": "\u65e5\u672c",
                      "_content": "\u65e5\u672c",
-                     "machine_tag": false
+                     "machine_tag": 0
                 },
                  {
                     "id": "31671223-7040969153-415104",
                      "author": "31676563@N05",
                      "raw": "\u4f1d\u7d71",
                      "_content": "\u4f1d\u7d71",
-                     "machine_tag": false
+                     "machine_tag": 0
                 },
                  {
                     "id": "31671223-7040969153-6126",
                      "author": "31676563@N05",
                      "raw": "traditional",
                      "_content": "traditional",
-                     "machine_tag": false
+                     "machine_tag": 0
                 },
                  {
                     "id": "31671223-7040969153-1762507",
                      "author": "31676563@N05",
                      "raw": "\u8599\u5200",
                      "_content": "\u8599\u5200",
-                     "machine_tag": false
+                     "machine_tag": 0
                 },
                  {
                     "id": "31671223-7040969153-786",
                      "author": "31676563@N05",
                      "raw": "sports",
                      "_content": "sports",
-                     "machine_tag": false
+                     "machine_tag": 0
                 },
                  {
                     "id": "31671223-7040969153-4714",
                      "author": "31676563@N05",
                      "raw": "action",
                      "_content": "action",
-                     "machine_tag": false
+                     "machine_tag": 0
                 },
                  {
                     "id": "31671223-7040969153-1762505",
                      "author": "31676563@N05",
                      "raw": "\u306a\u304e\u306a\u305f",
                      "_content": "\u306a\u304e\u306a\u305f",
-                     "machine_tag": false
+                     "machine_tag": 0
                 }
             ]
         },

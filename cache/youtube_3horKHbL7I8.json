@@ -60,6 +60,11 @@
                 "href": "http://m.youtube.com/details?v=3horKHbL7I8"
             },
             {
+                "rel": "http://gdata.youtube.com/schemas/2007#uploader",
+                "type": "application/atom+xml",
+                "href": "http://gdata.youtube.com/feeds/api/users/qqDg9dsUdPEX8N-qxF214A?v=2"
+            },
+            {
                 "rel": "self",
                 "type": "application/atom+xml",
                 "href": "http://gdata.youtube.com/feeds/api/videos/3horKHbL7I8?v=2"
@@ -235,13 +240,16 @@
             "yt$uploaded": {
                 "$t": "2010-11-21T16:42:28.000Z"
             },
+            "yt$uploaderId": {
+                "$t": "UCqqDg9dsUdPEX8N-qxF214A"
+            },
             "yt$videoid": {
                 "$t": "3horKHbL7I8"
             }
         },
         "yt$statistics": {
             "favoriteCount": "1",
-            "viewCount": "73"
+            "viewCount": "82"
         }
     }
 }

@@ -77,6 +77,22 @@
                  "media": "photo"
             },
              {
+                "label": "Large 1600",
+                 "width": 1200,
+                 "height": "1600",
+                 "source": "http:\/\/farm8.staticflickr.com\/7036\/7040969153_be9199f3ad_h.jpg",
+                 "url": "http:\/\/www.flickr.com\/photos\/kamomebird\/7040969153\/sizes\/h\/",
+                 "media": "photo"
+            },
+             {
+                "label": "Large 2048",
+                 "width": 1536,
+                 "height": "2048",
+                 "source": "http:\/\/farm8.staticflickr.com\/7036\/7040969153_333ec1079a_k.jpg",
+                 "url": "http:\/\/www.flickr.com\/photos\/kamomebird\/7040969153\/sizes\/k\/",
+                 "media": "photo"
+            },
+             {
                 "label": "Original",
                  "width": "1724",
                  "height": "2299",

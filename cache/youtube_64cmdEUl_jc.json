@@ -6,7 +6,7 @@
         "xmlns$media": "http://search.yahoo.com/mrss/",
         "xmlns$gd": "http://schemas.google.com/g/2005",
         "xmlns$yt": "http://gdata.youtube.com/schemas/2007",
-        "gd$etag": "W/\"D0QGRH47eCp7I2A9WhVWEUo.\"",
+        "gd$etag": "W/\"DkcMRX47eCp7I2A9WhJXGE8.\"",
         "id": {
             "$t": "tag:youtube.com,2008:video:64cmdEUl_jc"
         },
@@ -14,7 +14,7 @@
             "$t": "2010-08-26T08:16:36.000Z"
         },
         "updated": {
-            "$t": "2012-04-23T10:02:05.000Z"
+            "$t": "2012-08-13T02:14:44.000Z"
         },
         "category": [
             {
@@ -62,6 +62,11 @@
                 "rel": "http://gdata.youtube.com/schemas/2007#mobile",
                 "type": "text/html",
                 "href": "http://m.youtube.com/details?v=64cmdEUl_jc"
+            },
+            {
+                "rel": "http://gdata.youtube.com/schemas/2007#uploader",
+                "type": "application/atom+xml",
+                "href": "http://gdata.youtube.com/feeds/api/users/uEFJrxMVIzIix3QVD5mkUA?v=2"
             },
             {
                 "rel": "self",
@@ -120,7 +125,7 @@
             "gd$feedLink": {
                 "rel": "http://gdata.youtube.com/schemas/2007#comments",
                 "href": "http://gdata.youtube.com/feeds/api/videos/64cmdEUl_jc/comments?v=2",
-                "countHint": 17
+                "countHint": 28
             }
         },
         "yt$hd": {
@@ -240,24 +245,27 @@
             "yt$uploaded": {
                 "$t": "2010-08-26T08:16:36.000Z"
             },
+            "yt$uploaderId": {
+                "$t": "UCuEFJrxMVIzIix3QVD5mkUA"
+            },
             "yt$videoid": {
                 "$t": "64cmdEUl_jc"
             }
         },
         "gd$rating": {
-            "average": 5.0,
+            "average": 4.909091,
             "max": 5,
             "min": 1,
-            "numRaters": 68,
+            "numRaters": 88,
             "rel": "http://schemas.google.com/g/2005#overall"
         },
         "yt$statistics": {
-            "favoriteCount": "47",
-            "viewCount": "12686"
+            "favoriteCount": "56",
+            "viewCount": "19647"
         },
         "yt$rating": {
-            "numDislikes": "0",
-            "numLikes": "68"
+            "numDislikes": "2",
+            "numLikes": "86"
         }
     }
 }

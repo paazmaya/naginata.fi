@@ -6,7 +6,7 @@
         "xmlns$media": "http://search.yahoo.com/mrss/",
         "xmlns$gd": "http://schemas.google.com/g/2005",
         "xmlns$yt": "http://gdata.youtube.com/schemas/2007",
-        "gd$etag": "W/\"DEACSX47eCp7I2A9WhVQF0U.\"",
+        "gd$etag": "W/\"A0IDR347eCp7I2A9WhJXEk4.\"",
         "id": {
             "$t": "tag:youtube.com,2008:video:DiCwRBds458"
         },
@@ -14,7 +14,7 @@
             "$t": "2011-05-08T01:54:07.000Z"
         },
         "updated": {
-            "$t": "2012-04-07T08:19:28.000Z"
+            "$t": "2012-08-06T07:52:56.000Z"
         },
         "category": [
             {
@@ -74,6 +74,11 @@
                 "rel": "http://gdata.youtube.com/schemas/2007#mobile",
                 "type": "text/html",
                 "href": "http://m.youtube.com/details?v=DiCwRBds458"
+            },
+            {
+                "rel": "http://gdata.youtube.com/schemas/2007#uploader",
+                "type": "application/atom+xml",
+                "href": "http://gdata.youtube.com/feeds/api/users/8T7lIiUBcfWWT8a1GT4EZg?v=2"
             },
             {
                 "rel": "self",
@@ -245,6 +250,9 @@
             "yt$uploaded": {
                 "$t": "2011-05-08T01:54:07.000Z"
             },
+            "yt$uploaderId": {
+                "$t": "UC8T7lIiUBcfWWT8a1GT4EZg"
+            },
             "yt$videoid": {
                 "$t": "DiCwRBds458"
             }
@@ -257,8 +265,8 @@
             "rel": "http://schemas.google.com/g/2005#overall"
         },
         "yt$statistics": {
-            "favoriteCount": "9",
-            "viewCount": "1826"
+            "favoriteCount": "10",
+            "viewCount": "2867"
         },
         "yt$rating": {
             "numDislikes": "0",
