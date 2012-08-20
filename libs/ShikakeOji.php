@@ -199,7 +199,7 @@ class ShikakeOji
         $url = parse_url($_SERVER['REQUEST_URI']); // use as such
 
         // URLs should only be lowercase, thus check and redirect later
-        $lowercase = strtolower($url['path']);
+        $lowercase = isset($url['path']) ? strtolower($url['path']) : '/';
 
         if (array_key_exists($lowercase, $this->appUrls))
         {
