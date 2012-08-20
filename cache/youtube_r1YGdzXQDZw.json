@@ -1,0 +1,307 @@
+{
+    "version": "1.0",
+    "encoding": "UTF-8",
+    "entry": {
+        "xmlns": "http://www.w3.org/2005/Atom",
+        "xmlns$media": "http://search.yahoo.com/mrss/",
+        "xmlns$gd": "http://schemas.google.com/g/2005",
+        "xmlns$gml": "http://www.opengis.net/gml",
+        "xmlns$yt": "http://gdata.youtube.com/schemas/2007",
+        "xmlns$georss": "http://www.georss.org/georss",
+        "gd$etag": "W/\"D0QDQH47eCp7I2A9WhJWE0U.\"",
+        "id": {
+            "$t": "tag:youtube.com,2008:video:r1YGdzXQDZw"
+        },
+        "published": {
+            "$t": "2012-08-16T13:05:05.000Z"
+        },
+        "updated": {
+            "$t": "2012-08-19T14:09:31.000Z"
+        },
+        "category": [
+            {
+                "scheme": "http://schemas.google.com/g/2005#kind",
+                "term": "http://gdata.youtube.com/schemas/2007#video"
+            },
+            {
+                "scheme": "http://gdata.youtube.com/schemas/2007/categories.cat",
+                "term": "Sports",
+                "label": "Sports"
+            },
+            {
+                "scheme": "http://gdata.youtube.com/schemas/2007/keywords.cat",
+                "term": "Tokyo Budokan"
+            },
+            {
+                "scheme": "http://gdata.youtube.com/schemas/2007/keywords.cat",
+                "term": "tokyo"
+            },
+            {
+                "scheme": "http://gdata.youtube.com/schemas/2007/keywords.cat",
+                "term": "budokan"
+            },
+            {
+                "scheme": "http://gdata.youtube.com/schemas/2007/keywords.cat",
+                "term": "Naginata"
+            },
+            {
+                "scheme": "http://gdata.youtube.com/schemas/2007/keywords.cat",
+                "term": "tokyo naginata federation"
+            },
+            {
+                "scheme": "http://gdata.youtube.com/schemas/2007/keywords.cat",
+                "term": "martial"
+            },
+            {
+                "scheme": "http://gdata.youtube.com/schemas/2007/keywords.cat",
+                "term": "arts"
+            }
+        ],
+        "title": {
+            "$t": "Naginata - Tokyo Budokan Reopening Events August 2012"
+        },
+        "content": {
+            "type": "application/x-shockwave-flash",
+            "src": "http://www.youtube.com/v/r1YGdzXQDZw?version=3&f=videos&app=youtube_gdata"
+        },
+        "link": [
+            {
+                "rel": "http://gdata.youtube.com/schemas/2007#video.in-response-to",
+                "type": "application/atom+xml",
+                "href": "http://gdata.youtube.com/feeds/api/videos/T8J_IkuUbak?v=2"
+            },
+            {
+                "rel": "alternate",
+                "type": "text/html",
+                "href": "http://www.youtube.com/watch?v=r1YGdzXQDZw&feature=youtube_gdata"
+            },
+            {
+                "rel": "http://gdata.youtube.com/schemas/2007#video.responses",
+                "type": "application/atom+xml",
+                "href": "http://gdata.youtube.com/feeds/api/videos/r1YGdzXQDZw/responses?v=2"
+            },
+            {
+                "rel": "http://gdata.youtube.com/schemas/2007#video.related",
+                "type": "application/atom+xml",
+                "href": "http://gdata.youtube.com/feeds/api/videos/r1YGdzXQDZw/related?v=2"
+            },
+            {
+                "rel": "http://gdata.youtube.com/schemas/2007#mobile",
+                "type": "text/html",
+                "href": "http://m.youtube.com/details?v=r1YGdzXQDZw"
+            },
+            {
+                "rel": "http://gdata.youtube.com/schemas/2007#uploader",
+                "type": "application/atom+xml",
+                "href": "http://gdata.youtube.com/feeds/api/users/_FEA412O-SgKP7QRlShVTg?v=2"
+            },
+            {
+                "rel": "self",
+                "type": "application/atom+xml",
+                "href": "http://gdata.youtube.com/feeds/api/videos/r1YGdzXQDZw?v=2"
+            }
+        ],
+        "author": [
+            {
+                "name": {
+                    "$t": "Guillaume Erard"
+                },
+                "uri": {
+                    "$t": "http://gdata.youtube.com/feeds/api/users/SenNoSenProject"
+                },
+                "yt$userId": {
+                    "$t": "_FEA412O-SgKP7QRlShVTg"
+                }
+            }
+        ],
+        "yt$accessControl": [
+            {
+                "action": "comment",
+                "permission": "allowed"
+            },
+            {
+                "action": "commentVote",
+                "permission": "allowed"
+            },
+            {
+                "action": "videoRespond",
+                "permission": "moderated"
+            },
+            {
+                "action": "rate",
+                "permission": "allowed"
+            },
+            {
+                "action": "embed",
+                "permission": "allowed"
+            },
+            {
+                "action": "list",
+                "permission": "allowed"
+            },
+            {
+                "action": "autoPlay",
+                "permission": "allowed"
+            },
+            {
+                "action": "syndicate",
+                "permission": "allowed"
+            }
+        ],
+        "gd$comments": {
+            "gd$feedLink": {
+                "rel": "http://gdata.youtube.com/schemas/2007#comments",
+                "href": "http://gdata.youtube.com/feeds/api/videos/r1YGdzXQDZw/comments?v=2",
+                "countHint": 1
+            }
+        },
+        "georss$where": {
+            "gml$Point": {
+                "gml$pos": {
+                    "$t": "35.76221 139.82491"
+                }
+            }
+        },
+        "yt$hd": {
+            
+        },
+        "media$group": {
+            "media$category": [
+                {
+                    "$t": "Sports",
+                    "label": "Sports",
+                    "scheme": "http://gdata.youtube.com/schemas/2007/categories.cat"
+                }
+            ],
+            "media$content": [
+                {
+                    "url": "http://www.youtube.com/v/r1YGdzXQDZw?version=3&f=videos&app=youtube_gdata",
+                    "type": "application/x-shockwave-flash",
+                    "medium": "video",
+                    "isDefault": "true",
+                    "expression": "full",
+                    "duration": 378,
+                    "yt$format": 5
+                },
+                {
+                    "url": "rtsp://v8.cache7.c.youtube.com/CiILENy73wIaGQmcDdA1dwZWrxMYDSANFEgGUgZ2aWRlb3MM/0/0/0/video.3gp",
+                    "type": "video/3gpp",
+                    "medium": "video",
+                    "expression": "full",
+                    "duration": 378,
+                    "yt$format": 1
+                },
+                {
+                    "url": "rtsp://v2.cache3.c.youtube.com/CiILENy73wIaGQmcDdA1dwZWrxMYESARFEgGUgZ2aWRlb3MM/0/0/0/video.3gp",
+                    "type": "video/3gpp",
+                    "medium": "video",
+                    "expression": "full",
+                    "duration": 378,
+                    "yt$format": 6
+                }
+            ],
+            "media$credit": [
+                {
+                    "$t": "sennosenproject",
+                    "role": "uploader",
+                    "scheme": "urn:youtube",
+                    "yt$display": "Guillaume Erard"
+                }
+            ],
+            "media$description": {
+                "$t": "Naginata under the direction of Yoshii Kazuyo Renshi.  Japanese Budo Demonstration for the Tokyo Budokan on August 11, 2012.\nRead the article on: http://www.guillaumeerard.com/aikido/events/99-japanese-budo-demonstration-for-the-reopening-of-the-tokyo-budokan\nPlus de videos sur: http://www.blog.budoexport.com/artsmartiaux/aikido/demonstrations-au-tokyo-budokan\nLisez l'article sur: http://www.guillaumeerard.fr/aikido/evenements/98-demonstrations-de-budo-pour-la-reouverture-du-tokyo-budokan",
+                "type": "plain"
+            },
+            "media$keywords": {
+                "$t": "Tokyo Budokan, tokyo, budokan, Naginata, tokyo naginata federation, martial, arts"
+            },
+            "media$license": {
+                "$t": "youtube",
+                "type": "text/html",
+                "href": "http://www.youtube.com/t/terms"
+            },
+            "media$player": {
+                "url": "http://www.youtube.com/watch?v=r1YGdzXQDZw&feature=youtube_gdata_player"
+            },
+            "media$thumbnail": [
+                {
+                    "url": "http://i.ytimg.com/vi/r1YGdzXQDZw/default.jpg",
+                    "height": 90,
+                    "width": 120,
+                    "time": "00:03:09",
+                    "yt$name": "default"
+                },
+                {
+                    "url": "http://i.ytimg.com/vi/r1YGdzXQDZw/mqdefault.jpg",
+                    "height": 180,
+                    "width": 320,
+                    "yt$name": "mqdefault"
+                },
+                {
+                    "url": "http://i.ytimg.com/vi/r1YGdzXQDZw/hqdefault.jpg",
+                    "height": 360,
+                    "width": 480,
+                    "yt$name": "hqdefault"
+                },
+                {
+                    "url": "http://i.ytimg.com/vi/r1YGdzXQDZw/1.jpg",
+                    "height": 90,
+                    "width": 120,
+                    "time": "00:01:34.500",
+                    "yt$name": "start"
+                },
+                {
+                    "url": "http://i.ytimg.com/vi/r1YGdzXQDZw/2.jpg",
+                    "height": 90,
+                    "width": 120,
+                    "time": "00:03:09",
+                    "yt$name": "middle"
+                },
+                {
+                    "url": "http://i.ytimg.com/vi/r1YGdzXQDZw/3.jpg",
+                    "height": 90,
+                    "width": 120,
+                    "time": "00:04:43.500",
+                    "yt$name": "end"
+                }
+            ],
+            "media$title": {
+                "$t": "Naginata - Tokyo Budokan Reopening Events August 2012",
+                "type": "plain"
+            },
+            "yt$aspectRatio": {
+                "$t": "widescreen"
+            },
+            "yt$duration": {
+                "seconds": "378"
+            },
+            "yt$uploaded": {
+                "$t": "2012-08-16T13:05:05.000Z"
+            },
+            "yt$uploaderId": {
+                "$t": "UC_FEA412O-SgKP7QRlShVTg"
+            },
+            "yt$videoid": {
+                "$t": "r1YGdzXQDZw"
+            }
+        },
+        "gd$rating": {
+            "average": 5.0,
+            "max": 5,
+            "min": 1,
+            "numRaters": 5,
+            "rel": "http://schemas.google.com/g/2005#overall"
+        },
+        "yt$recorded": {
+            "$t": "2012-08-11"
+        },
+        "yt$statistics": {
+            "favoriteCount": "0",
+            "viewCount": "308"
+        },
+        "yt$rating": {
+            "numDislikes": "0",
+            "numLikes": "5"
+        }
+    }
+}
