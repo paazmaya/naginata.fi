@@ -483,7 +483,7 @@ class ShikakeOjiPage
 			$out .= '<link rel="stylesheet" href="/js/codemirror/codemirror.';
 			if ($this->useMinification)
 			{
-				$this->minifyFile('css', 'js/codemirror/codemirror.css'); // 2.25
+				$this->minifyFile('css', 'js/codemirror/codemirror.css'); // 2.32
 				$out .= 'min.';
 			}
 			$out .= 'css" type="text/css" media="all" />';
@@ -494,7 +494,7 @@ class ShikakeOjiPage
             $this->minify('css', $this->styles);
             $out .= '<link rel="stylesheet" href="' . $base . $this->minifiedName . 'css" type="text/css" media="all" />';
 
-            $this->minifyFile('js', 'js/modernizr.js'); // 2.5.3
+            $this->minifyFile('js', 'js/modernizr.js'); // 2.6.1
             $out .= '<script type="text/javascript" src="/js/modernizr.min.js"></script>';
 			
         }
@@ -1223,7 +1223,7 @@ class ShikakeOjiPage
      *
      * @param   string  $type    Either js or css
      * @param   string  $file    Name of the file in public_html/ folder or under it
-     * @return  string/boolean  Minified output or flase if something went wrong
+     * @return  string/boolean  Minified output or false if something went wrong
      */
     private function minifyFile($type, $file)
     {
@@ -1259,9 +1259,7 @@ class ShikakeOjiPage
                 // Rebuild the name by including ".min" in the end
                 $destination = $info['dirname'] . '/' . $info['filename'] . '.min.' . $info['extension'];
             }
-
-            $log[] = date($this->shikakeOji->logDateFormat) . ' source: ' . $source . ', size: ' . filesize($source);
-
+			
             $minified = '';
             if (file_exists($destination))
             {
@@ -1275,6 +1273,8 @@ class ShikakeOjiPage
 
             if ($doMinify)
             {
+				$log[] = date($this->shikakeOji->logDateFormat) . ' source: ' . $source . ', size: ' . filesize($source);
+				
                 $content = file_get_contents($source);
 
                 if ($type == 'js')
@@ -1309,9 +1309,8 @@ class ShikakeOjiPage
                     $log[] = date($this->shikakeOji->logDateFormat) . ' destination: ' . $destination . ', size: ' . filesize($destination);
                 }
             }
+			file_put_contents($this->minifyLog, implode("\n", $log) . "\n", FILE_APPEND);
         }
-
-        file_put_contents($this->minifyLog, implode("\n", $log) . "\n", FILE_APPEND);
 
         return ($doMinify && $failed) ? false : $minified;
     }
