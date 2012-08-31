@@ -970,7 +970,6 @@ class ShikakeOjiPage
                 'published' => DateTime::createFromFormat('Y-m-d H:i:s', $data['upload_date'], new DateTimeZone('EST')),
                 'href' => 'http://vimeo.com/' . $matches['1'],
                 'inline' => 'http://vimeo.com/moogaloop.swf?clip_id=' . $matches['1'],
-                //'inline' => 'http://player.vimeo.com/video/' . $matches['1'],
                 'inlinewidth' => $data['width'],
                 'inlineheight' => $data['height'],
                 'inlineflash' => true,

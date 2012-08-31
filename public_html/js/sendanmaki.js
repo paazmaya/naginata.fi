@@ -256,7 +256,6 @@ var sendanmaki = {
 				height: h,
 				width: w,
 				scrolling: false
-				//iframe: true // for fullscreen to be possible
 			});
 		}
 		else {
