@@ -36,7 +36,7 @@
              "takengranularity": "0",
              "lastupdate": "1318503604"
         },
-         "views": "378",
+         "views": "393",
          "editability": {
             "cancomment": 0,
              "canaddmeta": 0
@@ -76,14 +76,14 @@
                      "author": "14224905@N08",
                      "raw": "naginata",
                      "_content": "naginata",
-                     "machine_tag": false
+                     "machine_tag": 0
                 },
                  {
                     "id": "14132092-5763043905-1038",
                      "author": "14224905@N08",
                      "raw": "japan",
                      "_content": "japan",
-                     "machine_tag": false
+                     "machine_tag": 0
                 },
                  {
                     "id": "14132092-5763043905-19202",
@@ -118,49 +118,49 @@
                      "author": "14224905@N08",
                      "raw": "\u306a\u304e\u306a\u305f",
                      "_content": "\u306a\u304e\u306a\u305f",
-                     "machine_tag": false
+                     "machine_tag": 0
                 },
                  {
                     "id": "14132092-5763043905-19273084",
                      "author": "14224905@N08",
                      "raw": "\u76f4\u5fc3\u5f71\u6d41",
                      "_content": "\u76f4\u5fc3\u5f71\u6d41",
-                     "machine_tag": false
+                     "machine_tag": 0
                 },
                  {
                     "id": "14132092-5763043905-8264459",
                      "author": "14224905@N08",
                      "raw": "\u8599\u5200\u8853",
                      "_content": "\u8599\u5200\u8853",
-                     "machine_tag": false
+                     "machine_tag": 0
                 },
                  {
                     "id": "14132092-5763043905-18964",
                      "author": "14224905@N08",
                      "raw": "\u65e5\u672c",
                      "_content": "\u65e5\u672c",
-                     "machine_tag": false
+                     "machine_tag": 0
                 },
                  {
                     "id": "14132092-5763043905-290",
                      "author": "14224905@N08",
                      "raw": "people",
                      "_content": "people",
-                     "machine_tag": false
+                     "machine_tag": 0
                 },
                  {
                     "id": "14132092-5763043905-357489",
                      "author": "14224905@N08",
                      "raw": "budo",
                      "_content": "budo",
-                     "machine_tag": false
+                     "machine_tag": 0
                 },
                  {
                     "id": "14132092-5763043905-1970",
                      "author": "14224905@N08",
                      "raw": "japanese",
                      "_content": "japanese",
-                     "machine_tag": false
+                     "machine_tag": 0
                 },
                  {
                     "id": "14132092-5763043905-4711",
@@ -174,14 +174,14 @@
                      "author": "14224905@N08",
                      "raw": "\u6b66\u9053",
                      "_content": "\u6b66\u9053",
-                     "machine_tag": false
+                     "machine_tag": 0
                 },
                  {
                     "id": "14132092-5763043905-1641557",
                      "author": "14224905@N08",
                      "raw": "\u6b66\u8853",
                      "_content": "\u6b66\u8853",
-                     "machine_tag": false
+                     "machine_tag": 0
                 },
                  {
                     "id": "14132092-5763043905-6595506",
