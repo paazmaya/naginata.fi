@@ -120,7 +120,6 @@ var sendanmaki = {
 		// external urls shall open in a new window
         $('a[href^="http://"],a[href^="https://"]').not('.mediathumb a, .imagelist a').click(function() {
             var href = $(this).attr('href');
-			console.log("how come not coming here? href: " + href);
             window.open(href, $.now());
             return false;
         });
@@ -138,7 +137,8 @@ var sendanmaki = {
 
         // Track ColorBox usage with Google Analytics
         $(document).on('cbox_complete', function() {
-            var href = $.colorbox.element().attr("href");
+            var href = $.colorbox.element().attr('href');
+            console.log('cbox_complete occurred. href: ' + href);
             if (href) {
                 _gaq.push(['_trackPageview', href]);
             }
@@ -255,7 +255,8 @@ var sendanmaki = {
 				title: $a.attr('title'),
 				height: h,
 				width: w,
-				scrolling: false
+				scrolling: false,
+				iframe: true // for fullscreen to be possible
 			});
 		}
 		else {
