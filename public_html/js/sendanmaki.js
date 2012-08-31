@@ -255,8 +255,8 @@ var sendanmaki = {
 				title: $a.attr('title'),
 				height: h,
 				width: w,
-				scrolling: false,
-				iframe: true // for fullscreen to be possible
+				scrolling: false
+				//iframe: true // for fullscreen to be possible
 			});
 		}
 		else {

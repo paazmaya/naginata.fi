@@ -712,6 +712,9 @@ class ShikakeOjiPage
             {
 				// Multiple items, thus 'ul.imagelist'
                 $params['per_page'] = 63;
+				
+				// Cache file name
+                $cache = $this->cacheDir . 'flickr';
 
                 foreach($list as $item)
                 {
@@ -719,19 +722,11 @@ class ShikakeOjiPage
                     if (count($a) == 2)
                     {
                         $params[$a['0']] = $a['1'];
+						$cache .= '_' . $a['0'] . '-' . $a['1'];
                     }
                 }
-                ksort($params);
-                $cache = $this->cacheDir . 'flickr';
-                foreach($params as $k => $v)
-                {
-                    $cache .= '_' . $k . '-' . $v;
-                }
+				
                 $cache .= '.json';
-
-                //'user_id' => '14224905@N08',
-                //'tags' => 'naginata',
-                //'content_type' => 1
             }
             else
             {
@@ -802,7 +797,6 @@ class ShikakeOjiPage
 			'id' => $photo['id'],
             'title' => $photo['title']['_content'],
             'description' => '',
-            //taken 2011-06-09 20:10:17
             'published' => DateTime::createFromFormat('Y-m-d H:i:s', $photo['dates']['taken'], new DateTimeZone('UTC')),
             'href' => 'http://flickr.com/photos/' . $photo['owner']['nsid'] . '/' . $photo['id'],
             'owner' => $photo['owner']['username'],
@@ -975,8 +969,8 @@ class ShikakeOjiPage
                 'description' => '',
                 'published' => DateTime::createFromFormat('Y-m-d H:i:s', $data['upload_date'], new DateTimeZone('EST')),
                 'href' => 'http://vimeo.com/' . $matches['1'],
-                //'inline' => 'http://vimeo.com/moogaloop.swf?clip_id=' . $matches['1'],
-                'inline' => 'http://player.vimeo.com/video/' . $matches['1'],
+                'inline' => 'http://vimeo.com/moogaloop.swf?clip_id=' . $matches['1'],
+                //'inline' => 'http://player.vimeo.com/video/' . $matches['1'],
                 'inlinewidth' => $data['width'],
                 'inlineheight' => $data['height'],
                 'inlineflash' => true,
