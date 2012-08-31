@@ -35,8 +35,8 @@ class ShikakeOjiPage
      * Should be relative to public_html/js/
      */
     public $scripts = array(
-        'jquery.js', // 1.8.0
-        'jquery.colorbox.js', // 1.3.19
+        'jquery.js', // 1.8.1
+        'jquery.colorbox.js', // 1.3.20
         'jquery.swfobject.js', // 1.1.1
         'jquery.outerhtml.js', //
         'sendanmaki.js'
@@ -928,6 +928,8 @@ class ShikakeOjiPage
 
     /**
      * Vimeo video link
+     * According to http://vimeo.com/forums/topic:47127,
+     * Vimeo time is measured at Eastern Timezone.
      */
     private function renderVimeo($matches)
     {
@@ -971,10 +973,10 @@ class ShikakeOjiPage
                 )),
                 'title' => $data['title'],
                 'description' => '',
-                // 2009-09-10 13:56:53, http://vimeo.com/forums/topic:47127 what timezone is it?
-                'published' => DateTime::createFromFormat('Y-m-d H:i:s', $data['upload_date'], new DateTimeZone('UTC')),
+                'published' => DateTime::createFromFormat('Y-m-d H:i:s', $data['upload_date'], new DateTimeZone('EST')),
                 'href' => 'http://vimeo.com/' . $matches['1'],
-                'inline' => 'http://vimeo.com/moogaloop.swf?clip_id=' . $matches['1'],
+                //'inline' => 'http://vimeo.com/moogaloop.swf?clip_id=' . $matches['1'],
+                'inline' => 'http://player.vimeo.com/video/' . $matches['1'],
                 'inlinewidth' => $data['width'],
                 'inlineheight' => $data['height'],
                 'inlineflash' => true,
@@ -1000,7 +1002,7 @@ class ShikakeOjiPage
      *   ),
      *   'title' => $data['title'],
      *   'description' => '',
-     *   'published' => DateTime::createFromFormat('Y-m-d H:i:s', $data['upload_date'], new DateTimeZone('UTC')),
+     *   'published' => DateTime::createFromFormat('Y-m-d H:i:s', $data['upload_date'], new DateTimeZone('EST')),
      *   'href' => 'http://vimeo.com/' . $matches['1'],
      *   'inline' => 'http://vimeo.com/moogaloop.swf?clip_id=' . $matches['1'] . '&amp;autoplay=1',
      *   'inlinewidth' => $data['width'],
