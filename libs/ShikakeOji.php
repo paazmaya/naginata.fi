@@ -25,7 +25,7 @@ class ShikakeOji
     /**
      * What is the version of this class?
      */
-    public static $VERSION = '0.9';
+    public static $VERSION = '0.10';
 
     /**
      * Current language, defaults to Finnish.

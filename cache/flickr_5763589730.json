@@ -36,7 +36,7 @@
              "takengranularity": "0",
              "lastupdate": "1312882567"
         },
-         "views": "139",
+         "views": "143",
          "editability": {
             "cancomment": 0,
              "canaddmeta": 0
@@ -69,7 +69,7 @@
                      "author": "14224905@N08",
                      "raw": "kyoto",
                      "_content": "kyoto",
-                     "machine_tag": false
+                     "machine_tag": 0
                 },
                  {
                     "id": "14132092-5763589730-104364",
@@ -104,7 +104,7 @@
                      "author": "14224905@N08",
                      "raw": "\u8599\u5200",
                      "_content": "\u8599\u5200",
-                     "machine_tag": false
+                     "machine_tag": 0
                 },
                  {
                     "id": "14132092-5763589730-1762505",
