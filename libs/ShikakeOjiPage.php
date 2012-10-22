@@ -468,6 +468,10 @@ class ShikakeOjiPage
 			$out .= '<meta property="fb:admins" content="' . $this->shikakeOji->config['facebook']['admins'] . '"/>';
 		}
 
+		// Developer guidance for websites with content for Adobe Flash Player in Windows 8
+		// http://msdn.microsoft.com/en-us/library/ie/jj193557%28v=vs.85%29.aspx
+		$out .= '<meta http-equiv="X-UA-Compatible" content="requiresActiveX=true" />';
+		
         // http://microformats.org/wiki/rel-license
         $out .= '<link rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/"/>';
         $out .= '<link rel="author" href="http://paazmaya.com"/>';

@@ -11,7 +11,7 @@
  *   Sendanmaki
  *   Modernizr statistics
  */
-
+ 
 // -- Google Analytics for naginata.fi --
 var _gaq = _gaq || [];
 _gaq.push(['_setAccount', 'UA-2643697-14']);
