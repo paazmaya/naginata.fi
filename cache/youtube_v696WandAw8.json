@@ -25,30 +25,6 @@
                 "scheme": "http://gdata.youtube.com/schemas/2007/categories.cat",
                 "term": "Sports",
                 "label": "Sports"
-            },
-            {
-                "scheme": "http://gdata.youtube.com/schemas/2007/keywords.cat",
-                "term": "調布市"
-            },
-            {
-                "scheme": "http://gdata.youtube.com/schemas/2007/keywords.cat",
-                "term": "なぎなた"
-            },
-            {
-                "scheme": "http://gdata.youtube.com/schemas/2007/keywords.cat",
-                "term": "団体基本"
-            },
-            {
-                "scheme": "http://gdata.youtube.com/schemas/2007/keywords.cat",
-                "term": "全日本なぎなたの形"
-            },
-            {
-                "scheme": "http://gdata.youtube.com/schemas/2007/keywords.cat",
-                "term": "直心影流薙刀術"
-            },
-            {
-                "scheme": "http://gdata.youtube.com/schemas/2007/keywords.cat",
-                "term": "直猶心流鎖鎌"
             }
         ],
         "title": {
@@ -192,7 +168,7 @@
                 "type": "plain"
             },
             "media$keywords": {
-                "$t": "調布市, なぎなた, 団体基本, 全日本なぎなたの形, 直心影流薙刀術, 直猶心流鎖鎌"
+                
             },
             "media$license": {
                 "$t": "youtube",
@@ -272,8 +248,8 @@
             "rel": "http://schemas.google.com/g/2005#overall"
         },
         "yt$statistics": {
-            "favoriteCount": "8",
-            "viewCount": "5197"
+            "favoriteCount": "0",
+            "viewCount": "5324"
         },
         "yt$rating": {
             "numDislikes": "0",

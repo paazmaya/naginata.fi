@@ -36,7 +36,7 @@
              "takengranularity": "0",
              "lastupdate": "1312882567"
         },
-         "views": "262",
+         "views": "276",
          "editability": {
             "cancomment": 0,
              "canaddmeta": 0
@@ -132,7 +132,7 @@
                      "author": "14224905@N08",
                      "raw": "japan",
                      "_content": "japan",
-                     "machine_tag": false
+                     "machine_tag": 0
                 },
                  {
                     "id": "14132092-5763043699-680155",
@@ -160,7 +160,7 @@
                      "author": "14224905@N08",
                      "raw": "\u65e5\u672c",
                      "_content": "\u65e5\u672c",
-                     "machine_tag": false
+                     "machine_tag": 0
                 },
                  {
                     "id": "14132092-5763043699-290",
@@ -181,28 +181,28 @@
                      "author": "14224905@N08",
                      "raw": "japanese",
                      "_content": "japanese",
-                     "machine_tag": false
+                     "machine_tag": 0
                 },
                  {
                     "id": "14132092-5763043699-4711",
                      "author": "14224905@N08",
                      "raw": "martialart",
                      "_content": "martialart",
-                     "machine_tag": false
+                     "machine_tag": 0
                 },
                  {
                     "id": "14132092-5763043699-4942608",
                      "author": "14224905@N08",
                      "raw": "\u6b66\u9053",
                      "_content": "\u6b66\u9053",
-                     "machine_tag": false
+                     "machine_tag": 0
                 },
                  {
                     "id": "14132092-5763043699-1641557",
                      "author": "14224905@N08",
                      "raw": "\u6b66\u8853",
                      "_content": "\u6b66\u8853",
-                     "machine_tag": false
+                     "machine_tag": 0
                 },
                  {
                     "id": "14132092-5763043699-6595506",

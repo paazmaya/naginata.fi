@@ -27,42 +27,6 @@
                 "scheme": "http://gdata.youtube.com/schemas/2007/categories.cat",
                 "term": "Sports",
                 "label": "Sports"
-            },
-            {
-                "scheme": "http://gdata.youtube.com/schemas/2007/keywords.cat",
-                "term": "jikishin"
-            },
-            {
-                "scheme": "http://gdata.youtube.com/schemas/2007/keywords.cat",
-                "term": "jikishinkage"
-            },
-            {
-                "scheme": "http://gdata.youtube.com/schemas/2007/keywords.cat",
-                "term": "jikishinkageryu"
-            },
-            {
-                "scheme": "http://gdata.youtube.com/schemas/2007/keywords.cat",
-                "term": "martial"
-            },
-            {
-                "scheme": "http://gdata.youtube.com/schemas/2007/keywords.cat",
-                "term": "arts"
-            },
-            {
-                "scheme": "http://gdata.youtube.com/schemas/2007/keywords.cat",
-                "term": "naginata"
-            },
-            {
-                "scheme": "http://gdata.youtube.com/schemas/2007/keywords.cat",
-                "term": "naginatajutsu"
-            },
-            {
-                "scheme": "http://gdata.youtube.com/schemas/2007/keywords.cat",
-                "term": "lolwut"
-            },
-            {
-                "scheme": "http://gdata.youtube.com/schemas/2007/keywords.cat",
-                "term": "koryu"
             }
         ],
         "title": {
@@ -201,7 +165,7 @@
                 "type": "plain"
             },
             "media$keywords": {
-                "$t": "jikishin, jikishinkage, jikishinkageryu, martial, arts, naginata, naginatajutsu, lolwut, koryu"
+                
             },
             "media$license": {
                 "$t": "youtube",
@@ -271,8 +235,8 @@
             }
         },
         "yt$statistics": {
-            "favoriteCount": "17",
-            "viewCount": "6892"
+            "favoriteCount": "0",
+            "viewCount": "6950"
         }
     }
 }

@@ -27,38 +27,6 @@
                 "scheme": "http://gdata.youtube.com/schemas/2007/categories.cat",
                 "term": "Sports",
                 "label": "Sports"
-            },
-            {
-                "scheme": "http://gdata.youtube.com/schemas/2007/keywords.cat",
-                "term": "Naginata"
-            },
-            {
-                "scheme": "http://gdata.youtube.com/schemas/2007/keywords.cat",
-                "term": "jikishin"
-            },
-            {
-                "scheme": "http://gdata.youtube.com/schemas/2007/keywords.cat",
-                "term": "jikishinkage"
-            },
-            {
-                "scheme": "http://gdata.youtube.com/schemas/2007/keywords.cat",
-                "term": "furikaeshi"
-            },
-            {
-                "scheme": "http://gdata.youtube.com/schemas/2007/keywords.cat",
-                "term": "kazeguruma"
-            },
-            {
-                "scheme": "http://gdata.youtube.com/schemas/2007/keywords.cat",
-                "term": "budo"
-            },
-            {
-                "scheme": "http://gdata.youtube.com/schemas/2007/keywords.cat",
-                "term": "martial"
-            },
-            {
-                "scheme": "http://gdata.youtube.com/schemas/2007/keywords.cat",
-                "term": "arts"
             }
         ],
         "title": {
@@ -197,7 +165,7 @@
                 "type": "plain"
             },
             "media$keywords": {
-                "$t": "Naginata, jikishin, jikishinkage, furikaeshi, kazeguruma, budo, martial, arts"
+                
             },
             "media$license": {
                 "$t": "youtube",
@@ -267,8 +235,8 @@
             }
         },
         "yt$statistics": {
-            "favoriteCount": "5",
-            "viewCount": "2370"
+            "favoriteCount": "0",
+            "viewCount": "2412"
         }
     }
 }

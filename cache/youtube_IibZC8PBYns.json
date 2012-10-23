@@ -27,30 +27,6 @@
                 "scheme": "http://gdata.youtube.com/schemas/2007/categories.cat",
                 "term": "Sports",
                 "label": "Sports"
-            },
-            {
-                "scheme": "http://gdata.youtube.com/schemas/2007/keywords.cat",
-                "term": "naginata"
-            },
-            {
-                "scheme": "http://gdata.youtube.com/schemas/2007/keywords.cat",
-                "term": "jikishinkage"
-            },
-            {
-                "scheme": "http://gdata.youtube.com/schemas/2007/keywords.cat",
-                "term": "jikishin"
-            },
-            {
-                "scheme": "http://gdata.youtube.com/schemas/2007/keywords.cat",
-                "term": "martial"
-            },
-            {
-                "scheme": "http://gdata.youtube.com/schemas/2007/keywords.cat",
-                "term": "arts"
-            },
-            {
-                "scheme": "http://gdata.youtube.com/schemas/2007/keywords.cat",
-                "term": "koryu"
             }
         ],
         "title": {
@@ -189,7 +165,7 @@
                 "type": "plain"
             },
             "media$keywords": {
-                "$t": "naginata, jikishinkage, jikishin, martial, arts, koryu"
+                
             },
             "media$license": {
                 "$t": "youtube",
@@ -259,8 +235,8 @@
             }
         },
         "yt$statistics": {
-            "favoriteCount": "8",
-            "viewCount": "7303"
+            "favoriteCount": "0",
+            "viewCount": "7385"
         }
     }
 }

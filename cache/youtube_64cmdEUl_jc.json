@@ -6,7 +6,7 @@
         "xmlns$media": "http://search.yahoo.com/mrss/",
         "xmlns$gd": "http://schemas.google.com/g/2005",
         "xmlns$yt": "http://gdata.youtube.com/schemas/2007",
-        "gd$etag": "W/\"Ak4DRX47eCp7I2A9WhJVE0g.\"",
+        "gd$etag": "W/\"CUENSX47eCp7I2A9WhNTEUg.\"",
         "id": {
             "$t": "tag:youtube.com,2008:video:64cmdEUl_jc"
         },
@@ -14,7 +14,7 @@
             "$t": "2010-08-26T08:16:36.000Z"
         },
         "updated": {
-            "$t": "2012-08-30T20:36:14.000Z"
+            "$t": "2012-10-13T18:41:38.000Z"
         },
         "category": [
             {
@@ -25,14 +25,6 @@
                 "scheme": "http://gdata.youtube.com/schemas/2007/categories.cat",
                 "term": "Sports",
                 "label": "Sports"
-            },
-            {
-                "scheme": "http://gdata.youtube.com/schemas/2007/keywords.cat",
-                "term": "kobudo"
-            },
-            {
-                "scheme": "http://gdata.youtube.com/schemas/2007/keywords.cat",
-                "term": "naginata"
             }
         ],
         "title": {
@@ -125,7 +117,7 @@
             "gd$feedLink": {
                 "rel": "http://gdata.youtube.com/schemas/2007#comments",
                 "href": "http://gdata.youtube.com/feeds/api/videos/64cmdEUl_jc/comments?v=2",
-                "countHint": 29
+                "countHint": 31
             }
         },
         "yt$hd": {
@@ -180,7 +172,7 @@
                 "type": "plain"
             },
             "media$keywords": {
-                "$t": "kobudo, naginata"
+                
             },
             "media$license": {
                 "$t": "youtube",
@@ -253,19 +245,19 @@
             }
         },
         "gd$rating": {
-            "average": 4.870968,
+            "average": 4.890909,
             "max": 5,
             "min": 1,
-            "numRaters": 93,
+            "numRaters": 110,
             "rel": "http://schemas.google.com/g/2005#overall"
         },
         "yt$statistics": {
-            "favoriteCount": "60",
-            "viewCount": "20428"
+            "favoriteCount": "0",
+            "viewCount": "23542"
         },
         "yt$rating": {
             "numDislikes": "3",
-            "numLikes": "90"
+            "numLikes": "107"
         }
     }
 }

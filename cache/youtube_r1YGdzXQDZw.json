@@ -8,7 +8,7 @@
         "xmlns$gml": "http://www.opengis.net/gml",
         "xmlns$yt": "http://gdata.youtube.com/schemas/2007",
         "xmlns$georss": "http://www.georss.org/georss",
-        "gd$etag": "W/\"D0QDQH47eCp7I2A9WhJWE0U.\"",
+        "gd$etag": "W/\"D0EGQ347eCp7I2A9WhJbFEQ.\"",
         "id": {
             "$t": "tag:youtube.com,2008:video:r1YGdzXQDZw"
         },
@@ -16,7 +16,7 @@
             "$t": "2012-08-16T13:05:05.000Z"
         },
         "updated": {
-            "$t": "2012-08-19T14:09:31.000Z"
+            "$t": "2012-09-24T14:07:02.000Z"
         },
         "category": [
             {
@@ -27,34 +27,6 @@
                 "scheme": "http://gdata.youtube.com/schemas/2007/categories.cat",
                 "term": "Sports",
                 "label": "Sports"
-            },
-            {
-                "scheme": "http://gdata.youtube.com/schemas/2007/keywords.cat",
-                "term": "Tokyo Budokan"
-            },
-            {
-                "scheme": "http://gdata.youtube.com/schemas/2007/keywords.cat",
-                "term": "tokyo"
-            },
-            {
-                "scheme": "http://gdata.youtube.com/schemas/2007/keywords.cat",
-                "term": "budokan"
-            },
-            {
-                "scheme": "http://gdata.youtube.com/schemas/2007/keywords.cat",
-                "term": "Naginata"
-            },
-            {
-                "scheme": "http://gdata.youtube.com/schemas/2007/keywords.cat",
-                "term": "tokyo naginata federation"
-            },
-            {
-                "scheme": "http://gdata.youtube.com/schemas/2007/keywords.cat",
-                "term": "martial"
-            },
-            {
-                "scheme": "http://gdata.youtube.com/schemas/2007/keywords.cat",
-                "term": "arts"
             }
         ],
         "title": {
@@ -213,7 +185,7 @@
                 "type": "plain"
             },
             "media$keywords": {
-                "$t": "Tokyo Budokan, tokyo, budokan, Naginata, tokyo naginata federation, martial, arts"
+                
             },
             "media$license": {
                 "$t": "youtube",
@@ -289,7 +261,7 @@
             "average": 5.0,
             "max": 5,
             "min": 1,
-            "numRaters": 5,
+            "numRaters": 9,
             "rel": "http://schemas.google.com/g/2005#overall"
         },
         "yt$recorded": {
@@ -297,11 +269,11 @@
         },
         "yt$statistics": {
             "favoriteCount": "0",
-            "viewCount": "308"
+            "viewCount": "1360"
         },
         "yt$rating": {
             "numDislikes": "0",
-            "numLikes": "5"
+            "numLikes": "9"
         }
     }
 }

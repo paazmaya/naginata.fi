@@ -25,10 +25,6 @@
                 "scheme": "http://gdata.youtube.com/schemas/2007/categories.cat",
                 "term": "Travel",
                 "label": "Travel & Events"
-            },
-            {
-                "scheme": "http://gdata.youtube.com/schemas/2007/keywords.cat",
-                "term": "00043"
             }
         ],
         "title": {
@@ -175,7 +171,7 @@
                 "type": "plain"
             },
             "media$keywords": {
-                "$t": "00043"
+                
             },
             "media$license": {
                 "$t": "youtube",
@@ -248,8 +244,8 @@
             }
         },
         "yt$statistics": {
-            "favoriteCount": "1",
-            "viewCount": "90"
+            "favoriteCount": "0",
+            "viewCount": "100"
         }
     }
 }

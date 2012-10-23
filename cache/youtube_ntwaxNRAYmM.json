@@ -25,30 +25,6 @@
                 "scheme": "http://gdata.youtube.com/schemas/2007/categories.cat",
                 "term": "Sports",
                 "label": "Sports"
-            },
-            {
-                "scheme": "http://gdata.youtube.com/schemas/2007/keywords.cat",
-                "term": "Jikishinkage"
-            },
-            {
-                "scheme": "http://gdata.youtube.com/schemas/2007/keywords.cat",
-                "term": "Ryu"
-            },
-            {
-                "scheme": "http://gdata.youtube.com/schemas/2007/keywords.cat",
-                "term": "Naginata"
-            },
-            {
-                "scheme": "http://gdata.youtube.com/schemas/2007/keywords.cat",
-                "term": "Shimogamo"
-            },
-            {
-                "scheme": "http://gdata.youtube.com/schemas/2007/keywords.cat",
-                "term": "Jinja"
-            },
-            {
-                "scheme": "http://gdata.youtube.com/schemas/2007/keywords.cat",
-                "term": "Kyoto"
             }
         ],
         "title": {
@@ -191,7 +167,7 @@
                 "type": "plain"
             },
             "media$keywords": {
-                "$t": "Jikishinkage, Ryu, Naginata, Shimogamo, Jinja, Kyoto"
+                
             },
             "media$license": {
                 "$t": "youtube",
@@ -274,8 +250,8 @@
             "$t": "2010-05-04"
         },
         "yt$statistics": {
-            "favoriteCount": "5",
-            "viewCount": "1171"
+            "favoriteCount": "0",
+            "viewCount": "1198"
         },
         "yt$rating": {
             "numDislikes": "0",
