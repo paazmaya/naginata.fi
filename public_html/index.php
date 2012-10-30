@@ -38,8 +38,5 @@ $shio->removeWwwRedirect();
 $shio->output->useMinification = true;
 $shio->output->useTidy = false;
 
-$shio->checkRequestedLanguage();
-
 echo $shio->renderPage();
-
 

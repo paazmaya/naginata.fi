@@ -25,15 +25,16 @@ class ShikakeOji
     /**
      * What is the version of this class?
      */
-    public static $VERSION = '0.10';
+    public static $VERSION = '0.11';
 
     /**
-     * Current language, defaults to Finnish.
+     * Current language, defaults to Finnish. Available languages are fi/en/ja.
+	 * @see http://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
      */
     public $language = 'fi';
 
     /**
-     * As in fi_FI or en_GB, the latter part of that is the territory.
+     * As in fi_FI or en_GB, the latter part of that is the territory. FI/GB/JP
      */
     public $territory = 'FI';
 
@@ -152,19 +153,29 @@ class ShikakeOji
             $this->isCompressionSupported = true;
             //$this->minifiedName .= 'gz.'; // It might conflict with what Apache is delivering already compressed
         }
+		
+		// Language setting based on browser values
+		// If url empty, using browser, then default to fi
+		if (isset($_SERVER['REQUEST_URI']))
+		{
+			if (!$this->checkLanguage(substr($_SERVER['REQUEST_URI'], 1, 2)))
+			{
+				if (isset($_SERVER['HTTP_ACCEPT_LANGUAGE']))
+				{
+					$candidates = explode(',', $_SERVER['HTTP_ACCEPT_LANGUAGE']);
+					foreach ($candidates as $candidate)
+					{
+						if ($this->checkLanguage(substr($candidate, 0, 2)))
+						{
+							break; // Assume we have found a match
+						}
+					}
+				}
+			}
+		}
 
 		$this->checkRequestedPage();
 		$this->output = new ShikakeOjiPage($this);
-    }
-
-    /**
-     * Check the $_SERVER['HTTP_ACCEPT_LANGUAGE'] and set
-     * the $this->language variable for one that is found from data.
-     * If nothing is found, default to Finnish.
-     */
-    public function checkRequestedLanguage()
-    {
-        $this->language = 'fi';
     }
 
     /**
@@ -201,6 +212,7 @@ class ShikakeOji
         // URLs should only be lowercase, thus check and redirect later
         $lowercase = isset($url['path']) ? strtolower($url['path']) : '/';
 
+		// App urls shall be without language
         if (array_key_exists($lowercase, $this->appUrls))
         {
             // Application internal URLs. Allow query in the URL.
@@ -209,6 +221,13 @@ class ShikakeOji
         }
         else
         {
+			// Remove language
+			$lowercase = substr($lowercase, 3);
+			if ($lowercase === false)
+			{
+				$lowercase = '/';
+			}
+			
             // Content
             $found = false;
 
@@ -222,24 +241,19 @@ class ShikakeOji
                     {
                         $this->currentPage = $lowercase;
                         $found = true;
-
-                        // TODO: How about language? just stick to default for now.
-                        if ($res['url'] != '/')
-                        {
-                            //$this->language = $lang;
-                        }
                     }
 				}
 			}
 
             if (!$found)
             {
-                $this->redirectTo('/');
+				// Not found
+                $this->redirectTo('/', 404);
             }
             else
             {
                 // Was the address found in lowercase?
-                if (!$this->isInternalPage && $this->currentPage != $url['path'] && $url['query'] != '')
+                if (!$this->isInternalPage && $this->currentPage != $lowercase && $url['query'] != '')
                 {
                     $this->redirectTo($this->currentPage);
                 }
@@ -315,6 +329,27 @@ class ShikakeOji
     }
 
     /**
+	 * Sets the langauge according to the order of language checking:
+	 * 1. Default fi, since site is in Finland 
+	 * 2. First two characters of url followed by nothing or /
+	 * 3. Browser setting via $_SERVER['HTTP_ACCEPT_LANGUAGE'], which is first matching
+	 * 
+	 * @param $candidate string Possible language ISO code from URL, if not false
+	 * @return boolean True in case candidate matched
+     */
+    private function checkLanguage($candidate)
+    {		
+		if ($candidate !== false && 
+			array_key_exists($candidate, $this->config['language']) && 
+			$this->config['language'][$candidate])
+		{
+			$this->language = $candidate;
+			return true;
+		}
+		return false;
+    }
+
+    /**
      * Load the given JSON configuration file.
      * If it contains database connection values, connection will be open.
      */
@@ -351,7 +386,6 @@ class ShikakeOji
                 $dir = dirname($configPath);
                 $dsn .= realpath($dir . '/' . $this->config['database']['address']);
             }
-
 
             $this->database = new PDO($dsn, $this->config['database']['username'],
                 $this->config['database']['password'], $attr);
@@ -853,11 +887,18 @@ class ShikakeOji
      */
     private function redirectTo($url, $code = '301')
     {
+		$url = '/' . $this->language . $url;
         $log = date($this->logDateFormat) . ' [' . $_SERVER['REMOTE_ADDR'] . '] ' . $_SERVER['REQUEST_URI'] . ' --> ' . $url . "\n";
         file_put_contents($this->redirectLog, $log, FILE_APPEND);
         if ($code != '')
         {
-            header('HTTP/1.1 ' . $code . ' Moved Permanently'); // TODO: different code has different text
+			$text = 'Moved Permanently';
+			switch($code)
+			{
+				case '404': $text = 'Not Found'; break;
+				//case '': $text = ''; break;
+			}
+            header('HTTP/1.1 ' . $code . ' ' . $text);
         }
         header('Location: http://' . $_SERVER['HTTP_HOST'] . $url);
         exit();

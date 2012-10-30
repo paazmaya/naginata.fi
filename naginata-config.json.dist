@@ -6,6 +6,11 @@
 		"username": "",
 		"password": ""
 	},
+	"language": {
+		"fi": true,
+		"en": true,
+		"ja": true
+	},
 	"email": {
 		"address": "email@address.com",
 		"name": "Some Tonttu",

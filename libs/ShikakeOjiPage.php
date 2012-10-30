@@ -35,8 +35,8 @@ class ShikakeOjiPage
      * Should be relative to public_html/js/
      */
     public $scripts = array(
-        'jquery.js', // 1.8.1
-        'jquery.colorbox.js', // 1.3.20
+        'jquery.js', // 1.8.2
+        'jquery.colorbox.js', // 1.3.20.1, https://github.com/paazmaya/colorbox/commits/modal
         'jquery.swfobject.js', // 1.1.1
         'jquery.outerhtml.js', //
         'sendanmaki.js'
@@ -149,7 +149,7 @@ class ShikakeOjiPage
 					$this->head = $res; // head section data
 					$this->pageId = $res['id']; // page_id for naginata_article
 				}
-				$navigation .= '><a href="' . $res['url'] . '" title="' . $res['header'] . '" rel="prefetch">' . $res['title'] . '</a></li>';
+				$navigation .= '><a href="/' . $this->shikakeOji->language . $res['url'] . '" title="' . $res['header'] . '" rel="prefetch">' . $res['title'] . '</a></li>';
             }
         }
 		$this->navigation = $navigation;

@@ -78,6 +78,7 @@ var sendanmaki = {
         //var modified = $('article').data('dataModified');
 
 		sendanmaki.lang = $('html').attr('lang');
+		console.log('sendanmaki.lang: ' + sendanmaki.lang);
 		
 		// Add notes to a chudan kamae bogu image, if available
 		$('.hasnotes li').each(function() {

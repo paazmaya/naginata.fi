@@ -51,10 +51,7 @@ address, article, aside, canvas, details, figcaption, figure, footer, header, hg
 }
 html, body {
 	width: 100%;
-	background-color: #FEFEFE;
-}
-body {
-	background-image: linear-gradient(65deg, #EEFEFE, #FEFEFE);
+	background-color: white;
 }
 header, article, section {
 	padding: 2em 1em;
