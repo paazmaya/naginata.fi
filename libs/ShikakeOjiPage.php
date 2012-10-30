@@ -487,7 +487,7 @@ class ShikakeOjiPage
 			$out .= '<link rel="stylesheet" href="/js/codemirror/codemirror.';
 			if ($this->useMinification)
 			{
-				$this->minifyFile('css', 'js/codemirror/codemirror.css'); // 2.32
+				$this->minifyFile('css', 'js/codemirror/codemirror.css'); // 2.35
 				$out .= 'min.';
 			}
 			$out .= 'css" type="text/css" media="all" />';

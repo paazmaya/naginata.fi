@@ -253,7 +253,7 @@ class ShikakeOji
             else
             {
                 // Was the address found in lowercase?
-                if (!$this->isInternalPage && $this->currentPage != $lowercase && $url['query'] != '')
+                if ('/' . $this->language . $this->currentPage != $url['path'] || (isset($url['query']) && $url['query'] != ''))
                 {
                     $this->redirectTo($this->currentPage);
                 }
@@ -829,7 +829,7 @@ class ShikakeOji
 	}
 
 	/**
-	 * Show Modernizr statistics
+	 * Show sitemap.xml
 	 */
 	private function showSiteMap()
 	{
