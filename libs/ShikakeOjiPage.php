@@ -536,7 +536,7 @@ class ShikakeOjiPage
 
         $out .= '<header>';
         $out .= '<h1>' . $this->head['header'] . '</h1>';
-        $out .= '<p>' . $this->head['description'] . '</p>';
+        $out .= '<p class="desc-transform">' . $this->head['description'] . '</p>';
         $out .= '</header>';
 		
 		return $out;

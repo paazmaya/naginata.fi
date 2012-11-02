@@ -176,6 +176,11 @@ header p {
 	width: 40%;
 	font-size: 0.9em;
 }
+.desc-transform {
+	backface-visibility: visible;
+	transform-origin: 50% 50%;
+	transform: perspective(500px) rotateY(-15deg);
+}
 article ul, article ol {
 	list-style-position: outside;
 	padding-left: 2em;
