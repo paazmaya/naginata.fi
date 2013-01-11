@@ -25,7 +25,7 @@ class ShikakeOji
     /**
      * What is the version of this class?
      */
-    public static $VERSION = '0.11';
+    public static $VERSION = '0.12';
 
     /**
      * Current language, defaults to Finnish. Available languages are fi/en/ja.
@@ -221,25 +221,28 @@ class ShikakeOji
         }
         else
         {
-			// Remove language
-			$lowercase = substr($lowercase, 3);
-			if ($lowercase === false)
+			// Plain page related url
+			$pageurl = substr($lowercase, 3);
+			if ($pageurl === false)
 			{
-				$lowercase = '/';
+				$pageurl = '/';
 			}
+			
+			// Remove all extra slashes
+			$pageurl = '/' . str_replace('/', '', $pageurl);
 			
             // Content
             $found = false;
 
-			$sql = 'SELECT * FROM naginata_page WHERE url = \'' . $lowercase . '\' AND lang = \'' . $this->language . '\'';
+			$sql = 'SELECT * FROM naginata_page WHERE url = \'' . $pageurl . '\' AND lang = \'' . $this->language . '\'';
 			$run = $this->database->query($sql);
 			if ($run)
 			{
 				while ($res = $run->fetch(PDO::FETCH_ASSOC))
 				{
-                    if ($lowercase == $res['url']) // TODO: this it is of course but later add more logic
+                    if ($pageurl == $res['url']) // TODO: this it is of course but later add more logic
                     {
-                        $this->currentPage = $lowercase;
+                        $this->currentPage = $pageurl;
                         $found = true;
                     }
 				}
@@ -882,7 +885,7 @@ class ShikakeOji
     }
 
     /**
-     * Redirect the client to the given URL with 301 HTTP code.
+     * Redirect the client to the given URL with 301 (moved permanently) HTTP code.
      * @param    string    $url    Redirect to this URL within this domain
      */
     private function redirectTo($url, $code = '301')

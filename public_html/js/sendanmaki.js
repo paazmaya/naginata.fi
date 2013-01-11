@@ -11,7 +11,7 @@
  *   Sendanmaki
  *   Modernizr statistics
  */
- 
+
 // -- Google Analytics for naginata.fi --
 var _gaq = _gaq || [];
 _gaq.push(['_setAccount', 'UA-2643697-14']);
@@ -78,7 +78,7 @@ var sendanmaki = {
         //var modified = $('article').data('dataModified');
 
 		sendanmaki.lang = $('html').attr('lang');
-		
+
 		// Add notes to a chudan kamae bogu image, if available
 		$('.hasnotes li').each(function() {
 			var data = $(this).data();
@@ -87,7 +87,7 @@ var sendanmaki = {
 			}
 		}).on('mouseover mouseout', function(event) {
 			var data = $(this).data();
-			
+
 			if (data.url && data.note) {
 				var div =  $('img[src="' + data.url + '"]').parent().children('div.note:contains("' + data.note + '")');
 				if (event.type == 'mouseover') {
@@ -98,7 +98,7 @@ var sendanmaki = {
 				}
 			}
 		});
-		
+
 		// Nokia E7 browser fails on this...
 		if (typeof applicationCache !== 'undefined') {
 			applicationCache.addEventListener('updateready', function(e) {
@@ -116,7 +116,7 @@ var sendanmaki = {
 				}
 			}, false);
 		}
-		
+
 		// external urls shall open in a new window
         $('a[href^="http://"],a[href^="https://"]').not('.mediathumb a, .imagelist a').click(function() {
             var href = $(this).attr('href');
@@ -129,7 +129,7 @@ var sendanmaki = {
 			sendanmaki.mediaThumbClick($(this));
 			return false;
 		});
-		
+
 		// data-photo-page ...
 		$('.imagelist a').colorbox({
 			rel: 'several'
@@ -172,10 +172,10 @@ var sendanmaki = {
 
         // Might want to check that the editor is not open...
 		$(window).on('beforeunload', function() {
-			
+
 			//console.log('beforeunload');
 			//return false;
-			
+
 		});
 
 		// Finally check if div#logo data is set. It is used only for messaging
@@ -190,7 +190,7 @@ var sendanmaki = {
         }, sendanmaki.keepAliveInt);
 		sendanmaki.keepAlive();
     },
-	
+
 	/**
 	 * Keep PHP session alive and get the current login status
 	 */
@@ -201,7 +201,7 @@ var sendanmaki = {
 				sendanmaki.isLoggedIn = received.login;
 				sendanmaki.userEmail = received.email;
 			}
-			
+
 			if (sendanmaki.isLoggedIn) {
 				$('a[href="#contribute"]').text('Muokkaa');
 			}
@@ -230,7 +230,7 @@ var sendanmaki = {
 			if (data.height) {
 				h = data.height;
 			}
-			
+
 			var player;
 			if ($.flash.version.major >= minFlashVer) {
 				// 9 should be upgradable in most of the PC cases
@@ -242,14 +242,14 @@ var sendanmaki = {
 				});
 			}
 			else {
-				w = '300px';
-				h = '140px';
+				w = '400px';
+				h = '300px';
 				player = '<p><strong>Vaikuttaa siltä että Flash lisäke ei ole käytettävissä.</strong> Siksi ei tätä sisältöäkään voida tarkistella.</p>' +
 					'<p>Viimeisimmän version Flash lisäkkeestä voi ladata osoitteesta ' +
 					'<a href="http://get.adobe.com/flashplayer/" title="Get Flash Player">http://get.adobe.com/flashplayer/</a></p>' +
 					'<p>Nykyinen versiosi on ' + $.flash.version.string + '</p>';
 			}
-			
+
 			$.colorbox({
 				html: player,
 				title: $a.attr('title'),
@@ -275,7 +275,7 @@ var sendanmaki = {
         $.colorbox({
             title: $('#contribute').attr('title'),
             modal: false,
-            html: sendanmaki.loginForm			
+            html: sendanmaki.loginForm
         });
     },
 
@@ -303,14 +303,13 @@ var sendanmaki = {
     },
 
     /**
-     * Click handler for the elements that can be edited.
-	 * $e is the element, wrapped in jQuery, that was clicked.
+     * Click handler for showing the content editor in case user logged in.
      */
     editModeClick: function() {
 		// http://api.jquery.com/next/
         var html = $('article').html();
 		var $h = $('<div id="contain">' + html + '</div>');
-		
+
 		// replace .mediathumb parts by [|]
 		$h.children('.mediathumb').replaceWith(function() {
 			return "\n" + '[' + $(this).data('key') + ']' + "\n";
@@ -321,9 +320,9 @@ var sendanmaki = {
 		$h.children('ul.imagelist').replaceWith(function() {
 			return "\n" + '[' + $(this).data('key') + ']' + "\n";
 		});
-		
+
 		html = $h.html();
-		
+
         var $form = $(sendanmaki.editForm).clone();
         $form.data('original', html); // what is currently on the page
         $.colorbox({
@@ -331,7 +330,8 @@ var sendanmaki = {
             modal: true,
             onComplete: function() {
 				$('textarea[name="content"]').attr('lang', sendanmaki.lang).val(html);
-				
+
+				// 3.00
 				var editor = CodeMirror.fromTextArea($('textarea[name="content"]').get(0), {
 					mode: 'text/html',
 					matchBrackets: true,
@@ -340,24 +340,24 @@ var sendanmaki = {
 					autoClearEmptyLines: true,
 					lineWrapping: true,
 					lineNumbers: true,
-					theme: 'default',
+					theme: 'solarized light',
 					autofocus: true,
-					
+
 					extraKeys: {
 						"'>'": function(cm) { cm.closeTag(cm, '>'); },
 						"'/'": function(cm) { cm.closeTag(cm, '/'); }
-					},
-					onChange : function (editor) {
-						editor.save();
-						var now = new Date();
-						$('label span').text('Viimeisin muokkaus ' + now.toLocaleTimeString());
 					}
+				});
+				editor.on('change', function (editor) {
+					editor.save();
+					var now = new Date();
+					$('label span').text('Viimeisin muokkaus ' + now.toLocaleTimeString());
 				});
             }
         });
     },
-	
-	
+
+
 
     /**
      * Callback for submitting the contribution form.
@@ -365,13 +365,13 @@ var sendanmaki = {
      */
     submitEditForm: function($form) {
 		var content = $('textarea[name="content"]').val();
-		
+
 		// https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Date
 		var now = new Date();
-			
+
         var data = {
             lang: sendanmaki.lang,
-            page: location.pathname,
+            page: location.pathname.substr(3),
             content: content
         };
 		console.dir(data);
@@ -381,7 +381,7 @@ var sendanmaki = {
 
 		// disable send button
 		$('input[type="submit"]').attr('disabled', 'disabled');
-		
+
 		// feedback for the user
 		$('label span').text('Muokkauksesi lähti koti palvelinta ' + now.toLocaleTimeString());
 
@@ -393,7 +393,7 @@ var sendanmaki = {
 
 			now = new Date();
 			$('label span').text('Muokkauksesi lähetetty ' + now.toLocaleTimeString());
-			
+
             var style;
             if (status != 'success') {
                 style = 'ajax-failure';
@@ -414,7 +414,7 @@ var sendanmaki = {
 
             $form.addClass(style);
 			$('input[type="submit"]').attr('disabled', null);
-			
+
         }, 'json');
     },
 

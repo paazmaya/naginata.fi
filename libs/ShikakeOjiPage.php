@@ -35,7 +35,7 @@ class ShikakeOjiPage
      * Should be relative to public_html/js/
      */
     public $scripts = array(
-        'jquery.js', // 1.8.2
+        'jquery.js', // 1.8.3
         'jquery.colorbox.js', // 1.3.20.1, https://github.com/paazmaya/colorbox/commits/modal
         'jquery.swfobject.js', // 1.1.1
         'jquery.outerhtml.js', //
