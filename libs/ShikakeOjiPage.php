@@ -487,7 +487,15 @@ class ShikakeOjiPage
 			$out .= '<link rel="stylesheet" href="/js/codemirror/codemirror.';
 			if ($this->useMinification)
 			{
-				$this->minifyFile('css', 'js/codemirror/codemirror.css'); // 2.35
+				$this->minifyFile('css', 'js/codemirror/codemirror.css'); // 3.0
+				$out .= 'min.';
+			}
+			$out .= 'css" type="text/css" media="all" />';
+			
+			$out .= '<link rel="stylesheet" href="/js/codemirror/theme/solarized.';
+			if ($this->useMinification)
+			{
+				$this->minifyFile('css', 'js/codemirror/theme/solarized.css');
 				$out .= 'min.';
 			}
 			$out .= 'css" type="text/css" media="all" />';
@@ -588,6 +596,7 @@ class ShikakeOjiPage
 				'util/closetag.js',
 				'mode/xml/xml.js',
 				'mode/javascript/javascript.js',
+				'mode/css/css.js',
 				'mode/htmlmixed/htmlmixed.js'
 			);
 			$combinedName = 'codemirror-set.min.js';
