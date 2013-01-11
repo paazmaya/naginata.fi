@@ -164,7 +164,7 @@ var sendanmaki = {
                 return false;
             }
         });
-
+		
         // Close colorbox if opened as modal
         $('#colorbox input[type="button"][name="close"]').live('click', function() {
             $.colorbox.close();
@@ -342,11 +342,7 @@ var sendanmaki = {
 					lineNumbers: true,
 					theme: 'solarized light',
 					autofocus: true,
-
-					extraKeys: {
-						"'>'": function(cm) { cm.closeTag(cm, '>'); },
-						"'/'": function(cm) { cm.closeTag(cm, '/'); }
-					}
+					autoCloseTags: true
 				});
 				editor.on('change', function (editor) {
 					editor.save();
