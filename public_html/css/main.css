@@ -218,12 +218,6 @@ form.login {
 form.edit {
 	height: 100%;
 }
-.CodeMirror-scroll {
-	height: 390px;
-}
-.CodeMirror-wrap pre {
-	line-height: 1.4em;
-}
 /* AJAX feedback on form submit */
 form.ajax-ongoing {
 	background-color: #95D2F1;
