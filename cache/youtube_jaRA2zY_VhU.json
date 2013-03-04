@@ -136,7 +136,7 @@
                     "yt$format": 5
                 },
                 {
-                    "url": "rtsp://v8.cache3.c.youtube.com/CiILENy73wIaGQkVVj8220CkjRMYDSANFEgGUgZ2aWRlb3MM/0/0/0/video.3gp",
+                    "url": "rtsp://v3.cache4.c.youtube.com/CiILENy73wIaGQkVVj8220CkjRMYDSANFEgGUgZ2aWRlb3MM/0/0/0/video.3gp",
                     "type": "video/3gpp",
                     "medium": "video",
                     "expression": "full",
@@ -144,7 +144,7 @@
                     "yt$format": 1
                 },
                 {
-                    "url": "rtsp://v7.cache4.c.youtube.com/CiILENy73wIaGQkVVj8220CkjRMYESARFEgGUgZ2aWRlb3MM/0/0/0/video.3gp",
+                    "url": "rtsp://v3.cache4.c.youtube.com/CiILENy73wIaGQkVVj8220CkjRMYESARFEgGUgZ2aWRlb3MM/0/0/0/video.3gp",
                     "type": "video/3gpp",
                     "medium": "video",
                     "expression": "full",
@@ -236,7 +236,7 @@
         },
         "yt$statistics": {
             "favoriteCount": "0",
-            "viewCount": "6950"
+            "viewCount": "7107"
         }
     }
 }

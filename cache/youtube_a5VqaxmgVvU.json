@@ -6,7 +6,7 @@
         "xmlns$media": "http://search.yahoo.com/mrss/",
         "xmlns$gd": "http://schemas.google.com/g/2005",
         "xmlns$yt": "http://gdata.youtube.com/schemas/2007",
-        "gd$etag": "W/\"DEEBRn47eCp7I2A9WhJWFEQ.\"",
+        "gd$etag": "W/\"DkUFSX47eCp7I2A9WhNWGE8.\"",
         "id": {
             "$t": "tag:youtube.com,2008:video:a5VqaxmgVvU"
         },
@@ -14,7 +14,7 @@
             "$t": "2011-06-05T10:07:24.000Z"
         },
         "updated": {
-            "$t": "2012-08-20T21:04:17.000Z"
+            "$t": "2012-12-18T09:50:18.000Z"
         },
         "category": [
             {
@@ -142,7 +142,7 @@
                     "yt$format": 5
                 },
                 {
-                    "url": "rtsp://v2.cache6.c.youtube.com/CiILENy73wIaGQn1VqAZa2qVaxMYDSANFEgGUgZ2aWRlb3MM/0/0/0/video.3gp",
+                    "url": "rtsp://v1.cache3.c.youtube.com/CiILENy73wIaGQn1VqAZa2qVaxMYDSANFEgGUgZ2aWRlb3MM/0/0/0/video.3gp",
                     "type": "video/3gpp",
                     "medium": "video",
                     "expression": "full",
@@ -150,7 +150,7 @@
                     "yt$format": 1
                 },
                 {
-                    "url": "rtsp://v5.cache3.c.youtube.com/CiILENy73wIaGQn1VqAZa2qVaxMYESARFEgGUgZ2aWRlb3MM/0/0/0/video.3gp",
+                    "url": "rtsp://v1.cache3.c.youtube.com/CiILENy73wIaGQn1VqAZa2qVaxMYESARFEgGUgZ2aWRlb3MM/0/0/0/video.3gp",
                     "type": "video/3gpp",
                     "medium": "video",
                     "expression": "full",
@@ -202,6 +202,12 @@
                     "yt$name": "hqdefault"
                 },
                 {
+                    "url": "http://i.ytimg.com/vi/a5VqaxmgVvU/sddefault.jpg",
+                    "height": 480,
+                    "width": 640,
+                    "yt$name": "sddefault"
+                },
+                {
                     "url": "http://i.ytimg.com/vi/a5VqaxmgVvU/1.jpg",
                     "height": 90,
                     "width": 120,
@@ -244,19 +250,19 @@
             }
         },
         "gd$rating": {
-            "average": 4.6,
+            "average": 4.6363635,
             "max": 5,
             "min": 1,
-            "numRaters": 10,
+            "numRaters": 11,
             "rel": "http://schemas.google.com/g/2005#overall"
         },
         "yt$statistics": {
             "favoriteCount": "0",
-            "viewCount": "1452"
+            "viewCount": "1612"
         },
         "yt$rating": {
             "numDislikes": "1",
-            "numLikes": "9"
+            "numLikes": "10"
         }
     }
 }

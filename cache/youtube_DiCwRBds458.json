@@ -6,7 +6,7 @@
         "xmlns$media": "http://search.yahoo.com/mrss/",
         "xmlns$gd": "http://schemas.google.com/g/2005",
         "xmlns$yt": "http://gdata.youtube.com/schemas/2007",
-        "gd$etag": "W/\"A0IDR347eCp7I2A9WhJXEk4.\"",
+        "gd$etag": "W/\"AkUNRX47eCp7I2A9WhNaEkw.\"",
         "id": {
             "$t": "tag:youtube.com,2008:video:DiCwRBds458"
         },
@@ -14,7 +14,7 @@
             "$t": "2011-05-08T01:54:07.000Z"
         },
         "updated": {
-            "$t": "2012-08-06T07:52:56.000Z"
+            "$t": "2013-01-26T16:38:14.000Z"
         },
         "category": [
             {
@@ -139,7 +139,7 @@
                     "yt$format": 5
                 },
                 {
-                    "url": "rtsp://v4.cache1.c.youtube.com/CiILENy73wIaGQmf42wXRLAgDhMYDSANFEgGUgZ2aWRlb3MM/0/0/0/video.3gp",
+                    "url": "rtsp://v2.cache7.c.youtube.com/CiILENy73wIaGQmf42wXRLAgDhMYDSANFEgGUgZ2aWRlb3MM/0/0/0/video.3gp",
                     "type": "video/3gpp",
                     "medium": "video",
                     "expression": "full",
@@ -147,7 +147,7 @@
                     "yt$format": 1
                 },
                 {
-                    "url": "rtsp://v8.cache8.c.youtube.com/CiILENy73wIaGQmf42wXRLAgDhMYESARFEgGUgZ2aWRlb3MM/0/0/0/video.3gp",
+                    "url": "rtsp://v2.cache7.c.youtube.com/CiILENy73wIaGQmf42wXRLAgDhMYESARFEgGUgZ2aWRlb3MM/0/0/0/video.3gp",
                     "type": "video/3gpp",
                     "medium": "video",
                     "expression": "full",
@@ -241,16 +241,16 @@
             "average": 5.0,
             "max": 5,
             "min": 1,
-            "numRaters": 6,
+            "numRaters": 8,
             "rel": "http://schemas.google.com/g/2005#overall"
         },
         "yt$statistics": {
             "favoriteCount": "0",
-            "viewCount": "3394"
+            "viewCount": "4554"
         },
         "yt$rating": {
             "numDislikes": "0",
-            "numLikes": "6"
+            "numLikes": "8"
         }
     }
 }

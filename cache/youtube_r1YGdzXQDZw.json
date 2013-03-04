@@ -8,7 +8,7 @@
         "xmlns$gml": "http://www.opengis.net/gml",
         "xmlns$yt": "http://gdata.youtube.com/schemas/2007",
         "xmlns$georss": "http://www.georss.org/georss",
-        "gd$etag": "W/\"D0EGQ347eCp7I2A9WhJbFEQ.\"",
+        "gd$etag": "W/\"A08EQH47eCp7I2A9WhBSEEg.\"",
         "id": {
             "$t": "tag:youtube.com,2008:video:r1YGdzXQDZw"
         },
@@ -16,7 +16,7 @@
             "$t": "2012-08-16T13:05:05.000Z"
         },
         "updated": {
-            "$t": "2012-09-24T14:07:02.000Z"
+            "$t": "2013-02-17T00:10:01.000Z"
         },
         "category": [
             {
@@ -124,7 +124,7 @@
             "gd$feedLink": {
                 "rel": "http://gdata.youtube.com/schemas/2007#comments",
                 "href": "http://gdata.youtube.com/feeds/api/videos/r1YGdzXQDZw/comments?v=2",
-                "countHint": 1
+                "countHint": 4
             }
         },
         "georss$where": {
@@ -156,7 +156,7 @@
                     "yt$format": 5
                 },
                 {
-                    "url": "rtsp://v8.cache7.c.youtube.com/CiILENy73wIaGQmcDdA1dwZWrxMYDSANFEgGUgZ2aWRlb3MM/0/0/0/video.3gp",
+                    "url": "rtsp://v1.cache4.c.youtube.com/CiILENy73wIaGQmcDdA1dwZWrxMYDSANFEgGUgZ2aWRlb3MM/0/0/0/video.3gp",
                     "type": "video/3gpp",
                     "medium": "video",
                     "expression": "full",
@@ -164,7 +164,7 @@
                     "yt$format": 1
                 },
                 {
-                    "url": "rtsp://v2.cache3.c.youtube.com/CiILENy73wIaGQmcDdA1dwZWrxMYESARFEgGUgZ2aWRlb3MM/0/0/0/video.3gp",
+                    "url": "rtsp://v1.cache4.c.youtube.com/CiILENy73wIaGQmcDdA1dwZWrxMYESARFEgGUgZ2aWRlb3MM/0/0/0/video.3gp",
                     "type": "video/3gpp",
                     "medium": "video",
                     "expression": "full",
@@ -216,6 +216,12 @@
                     "yt$name": "hqdefault"
                 },
                 {
+                    "url": "http://i.ytimg.com/vi/r1YGdzXQDZw/sddefault.jpg",
+                    "height": 480,
+                    "width": 640,
+                    "yt$name": "sddefault"
+                },
+                {
                     "url": "http://i.ytimg.com/vi/r1YGdzXQDZw/1.jpg",
                     "height": 90,
                     "width": 120,
@@ -258,10 +264,10 @@
             }
         },
         "gd$rating": {
-            "average": 5.0,
+            "average": 4.75,
             "max": 5,
             "min": 1,
-            "numRaters": 9,
+            "numRaters": 16,
             "rel": "http://schemas.google.com/g/2005#overall"
         },
         "yt$recorded": {
@@ -269,11 +275,11 @@
         },
         "yt$statistics": {
             "favoriteCount": "0",
-            "viewCount": "1360"
+            "viewCount": "3163"
         },
         "yt$rating": {
-            "numDislikes": "0",
-            "numLikes": "9"
+            "numDislikes": "1",
+            "numLikes": "15"
         }
     }
 }

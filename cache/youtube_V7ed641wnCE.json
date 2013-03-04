@@ -6,7 +6,7 @@
         "xmlns$media": "http://search.yahoo.com/mrss/",
         "xmlns$gd": "http://schemas.google.com/g/2005",
         "xmlns$yt": "http://gdata.youtube.com/schemas/2007",
-        "gd$etag": "W/\"AkICRn47eCp7I2A9WhVXEUo.\"",
+        "gd$etag": "W/\"D0MFRH47eCp7I2A9WhBSEU4.\"",
         "id": {
             "$t": "tag:youtube.com,2008:video:V7ed641wnCE"
         },
@@ -14,7 +14,7 @@
             "$t": "2011-08-06T19:12:18.000Z"
         },
         "updated": {
-            "$t": "2012-04-11T21:09:27.000Z"
+            "$t": "2013-02-17T21:10:15.000Z"
         },
         "category": [
             {
@@ -117,7 +117,7 @@
             "gd$feedLink": {
                 "rel": "http://gdata.youtube.com/schemas/2007#comments",
                 "href": "http://gdata.youtube.com/feeds/api/videos/V7ed641wnCE/comments?v=2",
-                "countHint": 0
+                "countHint": 1
             }
         },
         "media$group": {
@@ -139,7 +139,7 @@
                     "yt$format": 5
                 },
                 {
-                    "url": "rtsp://v5.cache1.c.youtube.com/CiILENy73wIaGQkhnHCN6523VxMYDSANFEgGUgZ2aWRlb3MM/0/0/0/video.3gp",
+                    "url": "rtsp://v7.cache8.c.youtube.com/CiILENy73wIaGQkhnHCN6523VxMYDSANFEgGUgZ2aWRlb3MM/0/0/0/video.3gp",
                     "type": "video/3gpp",
                     "medium": "video",
                     "expression": "full",
@@ -147,7 +147,7 @@
                     "yt$format": 1
                 },
                 {
-                    "url": "rtsp://v5.cache2.c.youtube.com/CiILENy73wIaGQkhnHCN6523VxMYESARFEgGUgZ2aWRlb3MM/0/0/0/video.3gp",
+                    "url": "rtsp://v7.cache8.c.youtube.com/CiILENy73wIaGQkhnHCN6523VxMYESARFEgGUgZ2aWRlb3MM/0/0/0/video.3gp",
                     "type": "video/3gpp",
                     "medium": "video",
                     "expression": "full",
@@ -199,6 +199,12 @@
                     "yt$name": "hqdefault"
                 },
                 {
+                    "url": "http://i.ytimg.com/vi/V7ed641wnCE/sddefault.jpg",
+                    "height": 480,
+                    "width": 640,
+                    "yt$name": "sddefault"
+                },
+                {
                     "url": "http://i.ytimg.com/vi/V7ed641wnCE/1.jpg",
                     "height": 90,
                     "width": 120,
@@ -241,16 +247,16 @@
             "average": 5.0,
             "max": 5,
             "min": 1,
-            "numRaters": 4,
+            "numRaters": 8,
             "rel": "http://schemas.google.com/g/2005#overall"
         },
         "yt$statistics": {
             "favoriteCount": "0",
-            "viewCount": "614"
+            "viewCount": "839"
         },
         "yt$rating": {
             "numDislikes": "0",
-            "numLikes": "4"
+            "numLikes": "8"
         }
     }
 }
