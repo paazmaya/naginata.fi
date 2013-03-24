@@ -57,9 +57,9 @@ var sendanmaki = {
 
 	/**
 	 * Keep alive interval.
-	 * 1000 * 60 * 3 ms = 3 minutes
+	 * 1000 * 60 * 4 ms = 4 minutes
 	 */
-	keepAliveInt: (60000 * 3),
+	keepAliveInt: (60000 * 4),
 
     /**
      * This shall be run on domReady in order to initiate
@@ -116,7 +116,7 @@ var sendanmaki = {
             return false;
         });
 
-		// href has link to actual page, rel has inline link
+		// href has link to actual page, rel has inline player link
         $('.mediathumb a:has(img)').click(function() {
 			sendanmaki.mediaThumbClick($(this));
 			return false;
@@ -161,14 +161,6 @@ var sendanmaki = {
         $(document).on('click', '#colorbox input[type="button"][name="close"]', function() {
             $.colorbox.close();
         });
-
-        // Might want to check that the editor is not open...
-		$(window).on('beforeunload', function() {
-
-			//console.log('beforeunload');
-			//return false;
-
-		});
 
 		// Finally check if div#logo data is set. It is used only for messaging
 		var success = $('#logo').data('msgLoginSuccess'); // 1 or 0
@@ -225,8 +217,8 @@ var sendanmaki = {
 			// By using iframe, fullscreen becomes possible
 			$.colorbox({
 				title: $a.attr('title'),
-				height: h,
-				width: w,
+				innerHeight: h,
+				innerWidth: w,
 				href: data.url,
 				iframe: true,
 				scrolling: false
@@ -326,8 +318,6 @@ var sendanmaki = {
             }
         });
     },
-
-
 
     /**
      * Callback for submitting the contribution form.
