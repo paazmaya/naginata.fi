@@ -126,7 +126,6 @@ class ShikakeOji
      */
     private $appUrls = array(
         '/update-article' => 'pageUpdateArticle',
-        '/receive-modernizr-statistics' => 'pageReceiveModernizrStats',
         '/authenticate-user' => 'pageAuthenticateUser',
         '/keep-session-alive' => 'keepSessionAlive',
 		//'/application.cache' => 'renderAppCache',
@@ -512,78 +511,6 @@ class ShikakeOji
     }
 
     /**
-     * Save Modernizr statistics
-     */
-    private function pageReceiveModernizrStats()
-    {
-		header('Content-type: application/json');
-
-        $required = array(
-            'modernizr',
-            'useragent',
-            'flash',
-            'version'
-        );
-        $received = $this->checkRequiredPost($required);
-        if ($received === false)
-        {
-            return json_encode(array('answer' => '0'));
-        }
-
-        $counter = 0;
-        /*
-        'mdrnzr_client' id, useragent, flash, created, address, modernizr
-        'mdrnzr_key' id, title
-        'mdrnzr_value' id, key_id, client_id, hasthis
-        */
-        if (isset($this->database))
-        {
-            $sql = 'INSERT INTO mdrnzr_client (useragent, flash, created, address, modernizr) ' .
-                'VALUES (\'' . $received['useragent'] . '\', \'' . $received['flash'] .
-                '\', \'' . time() . '\', \'' . $_SERVER['REMOTE_ADDR'] . '\', \'' . $received['version'] . '\')';
-            $this->database->query($sql);
-            $client_id = $this->database->lastInsertId();
-
-            // Check that there is no key that would not be saved in the mdrnzr_key table.
-            $keys = array();
-            $values = array();
-            foreach ($received['modernizr'] as $k => $v)
-            {
-                // There should be no arrays, checked client side...
-                if (is_string($v))
-                {
-                    $values[] = array($k, $v, $client_id); // optimize by moving $client_id to prepare...
-                    $keys[] = '(\'' . $k . '\')';
-                }
-            }
-
-            // TODO: how about other database types?
-            // http://dev.mysql.com/doc/refman/5.1/en/insert.html
-            $sql = 'INSERT IGNORE INTO mdrnzr_key (title) VALUES ' . implode(', ', $keys); // title must be unique indexed
-            $this->database->query($sql);
-
-            // Insert the values of this client to mdrnzr_value table.
-            $prep = $this->database->prepare('INSERT INTO mdrnzr_value (key_id, hasthis, client_id) VALUES(' .
-                '(SELECT id FROM mdrnzr_key WHERE title = ? LIMIT 1), ?, ? )');
-            foreach ($values as $row)
-            {
-                $prep->execute($row);
-            }
-
-            $stat = $this->database->query('SELECT COUNT(id) AS total FROM mdrnzr_client WHERE address = \'' .
-                $_SERVER['REMOTE_ADDR'] . '\' GROUP BY address');
-            $res = $stat->fetch(PDO::FETCH_ASSOC);
-
-            $counter = $res['total'];
-        }
-        // How many times this IP address sent its Modernizr data
-		$json = array(
-			'answer' => $counter
-		);
-		return json_encode($json);
-    }
-
-    /**
      * Try to authenticate the user via OAuth.
      * The email provider should tell if the user is who she/he/it claims to be.
      * https://developers.google.com/accounts/docs/OpenID
@@ -802,7 +729,6 @@ class ShikakeOji
 
 		/*
 		/favicon.ico
-		/js/modernizr.min.js
 		*/
 		$out .= "\n";
 

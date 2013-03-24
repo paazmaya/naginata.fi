@@ -505,10 +505,6 @@ class ShikakeOjiPage
         {
             $this->minify('css', $this->styles);
             $out .= '<link rel="stylesheet" href="' . $base . $this->minifiedName . 'css" type="text/css" media="all" />';
-
-            $this->minifyFile('js', 'js/modernizr.js'); // 2.6.1
-            $out .= '<script type="text/javascript" src="/js/modernizr.min.js"></script>';
-			
         }
         else
         {
@@ -516,7 +512,6 @@ class ShikakeOjiPage
             {
                 $out .= '<link rel="stylesheet" href="' . $base . $css . '" type="text/css" media="all" />';
             }
-            $out .= '<script type="text/javascript" src="/js/modernizr.js"></script>';
         }
         $out .= '</head>';
 
