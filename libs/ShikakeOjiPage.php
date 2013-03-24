@@ -25,7 +25,6 @@ class ShikakeOjiPage
      * Should be relative to public_html/css/
      */
     public $styles = array(
-        'fonts.css',
         'colorbox.css',
         'main.css'
     );
@@ -445,6 +444,9 @@ class ShikakeOjiPage
         $out .= '<title>' . $this->head['header'] . ' | ' . $title . '</title>';
         $out .= '<meta name="description" content="' . $this->head['description'] . '"/>';
         $out .= '<link rel="shortcut icon" href="/img/favicon.png" type="image/png"/>';
+		
+		// Web Fonts from Google.
+		$out .= '<link href="http://fonts.googleapis.com/css?family=Inder|Lora&subset=latin-ext,latin" rel="stylesheet" type="text/css"/>';
 
 		if (strpos($_SERVER['HTTP_USER_AGENT'], 'facebookexternalhit') !== false)
 		{

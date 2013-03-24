@@ -13,29 +13,6 @@
  * 072434 blue
  * 989E7B greyish
  */
-/* http://www.fontsquirrel.com/fonts/inder */
-/* http://www.fontspring.com/blog/the-new-bulletproof-font-face-syntax */
-@font-face {
-    font-family: 'InderRegular';
-    src: url('../fonts/Inder-Regular-webfont.eot');
-    src: url('../fonts/Inder-Regular-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../fonts/Inder-Regular-webfont.woff') format('woff'),
-         url('../fonts/Inder-Regular-webfont.ttf') format('truetype'),
-         url('../fonts/Inder-Regular-webfont.svg#InderRegular') format('svg');
-    font-weight: normal;
-    font-style: normal;
-}
-/* http://www.fontsquirrel.com/fonts/lora */
-@font-face {
-    font-family: 'LoraRegular';
-    src: url('../fonts/Lora-Regular-webfont.eot');
-    src: url('../fonts/Lora-Regular-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../fonts/Lora-Regular-webfont.woff') format('woff'),
-         url('../fonts/Lora-Regular-webfont.ttf') format('truetype'),
-         url('../fonts/Lora-Regular-webfont.svg#LoraRegular') format('svg');
-    font-weight: normal;
-    font-style: normal;
-}
 * {
 	margin: 0;
 	padding: 0;
@@ -55,7 +32,7 @@ html, body {
 }
 header, article, section {
 	padding: 2em 1em;
-	font-family: 'LoraRegular', Verdana, sans-serif;
+	font-family: 'Lora', Verdana, sans-serif;
 }
 p {
 	margin: 1em 0.5em;
@@ -91,7 +68,7 @@ nav ul, footer > p {
 }
 nav, footer {
 	font-variant: small-caps;
-	font-family: 'InderRegular', Verdana, sans-serif;
+	font-family: 'Inder', Verdana, sans-serif;
 	width: 100%;
 	border-top: 0.1em solid #072434;
 	border-bottom: 0.1em solid #072434;
@@ -146,7 +123,7 @@ nav a:hover, footer a:hover, .current a {
 }
 h1, h2, h3, h4, h5, h6 {
 	color: #072434;
-	font-family: 'InderRegular', Verdana, sans-serif;
+	font-family: 'Inder', Verdana, sans-serif;
 	width: 100%;
 }
 h1 {
@@ -413,7 +390,7 @@ label span {
 	word-spacing: 3.5em;
 	padding-top: 1em;
 	color: #072434;
-	font-family: 'InderRegular', Verdana, sans-serif;
+	font-family: 'Inder', Verdana, sans-serif;
 }
 /* Image area notes */
 .note {

@@ -15,6 +15,7 @@ Technologies
  * CSS3 for styling (http://www.css3.info/modules/)
  * Local Storage replacing browser cookies (http://www.w3.org/TR/webstorage/)
  * Application Cache for faster loading and possible offline browsing (http://www.html5rocks.com/en/tutorials/appcache/beginner/)
+ * Google Web Fonts (http://www.google.com/fonts)
  
 About the martial art
 ---------------------

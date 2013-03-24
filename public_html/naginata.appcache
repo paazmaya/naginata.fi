@@ -14,7 +14,6 @@ CACHE:
 /img/logo.png
 /img/mobile-logo.png
 /img/openid-icon-100x100.png
-/js/modernizr.min.js
 /js/naginata.min.js
 
 # Resources that require the user to be online.
