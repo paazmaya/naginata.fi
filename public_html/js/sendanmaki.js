@@ -104,7 +104,7 @@ var sendanmaki = {
 				}
 				else {
 					// Manifest didn't changed. Nothing new to server.
-					console.log('applicationCache.status when updateready event occurred: ' + applicationCache.status);
+					//console.log('applicationCache.status when updateready event occurred: ' + applicationCache.status);
 				}
 			}, false);
 		}
@@ -130,7 +130,7 @@ var sendanmaki = {
         // Track ColorBox usage with Google Analytics
         $(document).on('cbox_complete', function() {
             var href = $.colorbox.element().attr('href');
-            console.log('cbox_complete occurred. href: ' + href);
+            //console.log('cbox_complete occurred. href: ' + href);
             if (href) {
                 _gaq.push(['_trackPageview', href]);
             }
@@ -363,7 +363,7 @@ var sendanmaki = {
             page: location.pathname.substr(3),
             content: content
         };
-		console.dir(data);
+		//console.dir(data);
 
 		// Update the page
 		$('article').html(content);
