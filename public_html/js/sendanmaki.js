@@ -206,13 +206,12 @@ var sendanmaki = {
 	 * It can be a Flickr image, Vimeo or Youtube video.
 	 */
 	mediaThumbClick: function($a) {
-		var minFlashVer = 9;
 		var data = $a.data();
 
 		// Tell Analytics
 		_gaq.push(['_trackPageview', $a.attr('href')]);
 
-		if (data.type && data.type == 'flash') {
+		if (data.iframe) {
 			// Vimeo has size data, Youtube does not
 			var w = $('#wrapper').width();
 			var h = w * 0.75;
@@ -223,31 +222,13 @@ var sendanmaki = {
 				h = data.height;
 			}
 
-			var player;
-			if ($.flash.version.major >= minFlashVer) {
-				// 9 should be upgradable in most of the PC cases
-				player = $.flash.create({
-					swf: data.url,
-					height: '100%',
-					width: '100%',
-					hasVersion: minFlashVer
-				});
-			}
-			else {
-				w = '400px';
-				h = '300px';
-				player = '<h1>Vaikuttaa siltä että Flash lisäke ei ole käytettävissä.</h1>' +
-					'<p>Siksi ei tätä sisältöäkään voida tarkistella.</p>' +
-					'<p>Viimeisimmän version Flash lisäkkeestä voi ladata osoitteesta ' +
-					'<a href="http://get.adobe.com/flashplayer/" title="Get Flash Player">http://get.adobe.com/flashplayer/</a></p>' +
-					'<p>Nykyinen versiosi on ' + $.flash.version.string + '</p>';
-			}
-
+			// By using iframe, fullscreen becomes possible
 			$.colorbox({
-				html: player,
 				title: $a.attr('title'),
 				height: h,
 				width: w,
+				href: data.url,
+				iframe: true,
 				scrolling: false
 			});
 		}

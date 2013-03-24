@@ -57,7 +57,7 @@ class ShikakeOji
 
     /**
      * PDO connected database connection.
-     * Page content, moderated content and Modernizr statistics are stored here.
+     * Page content, moderated content are stored here.
      * http://php.net/pdo
      */
     public $database;
@@ -129,7 +129,6 @@ class ShikakeOji
         '/authenticate-user' => 'pageAuthenticateUser',
         '/keep-session-alive' => 'keepSessionAlive',
 		//'/application.cache' => 'renderAppCache',
-		'/modernizr-statistics' => 'showModernizrStats',
 		'/sitemap' => 'showSiteMap'
     );
 
@@ -746,15 +745,6 @@ class ShikakeOji
 		$out .= '# ' . date('Y-m-d', $highestDate) . "\n";
 
 		return $out;
-	}
-
-	/**
-	 * Show Modernizr statistics
-	 */
-	private function showModernizrStats()
-	{
-		header('Content-type: text/html');
-		return $this->output->renderModernizrTable();
 	}
 
 	/**
