@@ -158,7 +158,7 @@ var sendanmaki = {
         });
 
         // Logged in can most likely edit content, thus AJAX.
-        $('#colorbox form.edit').live('submit', function() {
+        $(document).on('submit', '#colorbox form.edit', function() {
             if (sendanmaki.isLoggedIn) {
                 sendanmaki.submitEditForm($(this));
                 return false;
@@ -166,7 +166,7 @@ var sendanmaki = {
         });
 		
         // Close colorbox if opened as modal
-        $('#colorbox input[type="button"][name="close"]').live('click', function() {
+        $(document).on('click', '#colorbox input[type="button"][name="close"]', function() {
             $.colorbox.close();
         });
 
