@@ -15,7 +15,8 @@
              "realname": "Richard",
              "location": "Japan \/ \u65e5\u672c",
              "iconserver": "219",
-             "iconfarm": 1
+             "iconfarm": 1,
+             "path_alias": "oroshi"
         },
          "title": {
             "_content": "Jikishinkage-ryu Naginata \/ \u76f4\u5fc3\u5f71\u6d41\u8599\u5200"
@@ -34,7 +35,7 @@
              "takengranularity": "0",
              "lastupdate": "1275257830"
         },
-         "views": "491",
+         "views": "499",
          "editability": {
             "cancomment": 0,
              "canaddmeta": 0
@@ -95,14 +96,14 @@
                      "author": "8519244@N06",
                      "raw": "halberd",
                      "_content": "halberd",
-                     "machine_tag": 0
+                     "machine_tag": false
                 },
                  {
                     "id": "8473922-4601612764-832117",
                      "author": "8519244@N06",
                      "raw": "polearm",
                      "_content": "polearm",
-                     "machine_tag": 0
+                     "machine_tag": false
                 },
                  {
                     "id": "8473922-4601612764-3110",

@@ -6,7 +6,7 @@
         "xmlns$media": "http://search.yahoo.com/mrss/",
         "xmlns$gd": "http://schemas.google.com/g/2005",
         "xmlns$yt": "http://gdata.youtube.com/schemas/2007",
-        "gd$etag": "W/\"DEcDQH47eCp7I2A9WhBSEkU.\"",
+        "gd$etag": "W/\"DUYBRn47eCp7I2A9WhBQGE0.\"",
         "id": {
             "$t": "tag:youtube.com,2008:video:64cmdEUl_jc"
         },
@@ -14,7 +14,7 @@
             "$t": "2010-08-26T08:16:36.000Z"
         },
         "updated": {
-            "$t": "2013-02-19T15:01:11.000Z"
+            "$t": "2013-03-20T19:19:17.000Z"
         },
         "category": [
             {
@@ -117,7 +117,7 @@
             "gd$feedLink": {
                 "rel": "http://gdata.youtube.com/schemas/2007#comments",
                 "href": "http://gdata.youtube.com/feeds/api/videos/64cmdEUl_jc/comments?v=2",
-                "countHint": 36
+                "countHint": 44
             }
         },
         "yt$hd": {
@@ -251,19 +251,19 @@
             }
         },
         "gd$rating": {
-            "average": 4.8933334,
+            "average": 4.902439,
             "max": 5,
             "min": 1,
-            "numRaters": 150,
+            "numRaters": 164,
             "rel": "http://schemas.google.com/g/2005#overall"
         },
         "yt$statistics": {
             "favoriteCount": "0",
-            "viewCount": "32161"
+            "viewCount": "33846"
         },
         "yt$rating": {
             "numDislikes": "4",
-            "numLikes": "146"
+            "numLikes": "160"
         }
     }
 }

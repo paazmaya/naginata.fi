@@ -17,7 +17,8 @@
              "realname": "",
              "location": "Helsinki, Finland",
              "iconserver": "1350",
-             "iconfarm": 2
+             "iconfarm": 2,
+             "path_alias": "paazio"
         },
          "title": {
             "_content": "Naginata in Himeji Sports Center 2011-06-09"
@@ -36,7 +37,7 @@
              "takengranularity": "0",
              "lastupdate": "1312882885"
         },
-         "views": "123",
+         "views": "124",
          "editability": {
             "cancomment": 0,
              "canaddmeta": 0

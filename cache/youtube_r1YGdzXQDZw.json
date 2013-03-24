@@ -8,7 +8,7 @@
         "xmlns$gml": "http://www.opengis.net/gml",
         "xmlns$yt": "http://gdata.youtube.com/schemas/2007",
         "xmlns$georss": "http://www.georss.org/georss",
-        "gd$etag": "W/\"A08EQH47eCp7I2A9WhBSEEg.\"",
+        "gd$etag": "W/\"CU4DSX47eCp7I2A9WhBRGEk.\"",
         "id": {
             "$t": "tag:youtube.com,2008:video:r1YGdzXQDZw"
         },
@@ -16,7 +16,7 @@
             "$t": "2012-08-16T13:05:05.000Z"
         },
         "updated": {
-            "$t": "2013-02-17T00:10:01.000Z"
+            "$t": "2013-03-09T15:46:18.000Z"
         },
         "category": [
             {
@@ -124,7 +124,7 @@
             "gd$feedLink": {
                 "rel": "http://gdata.youtube.com/schemas/2007#comments",
                 "href": "http://gdata.youtube.com/feeds/api/videos/r1YGdzXQDZw/comments?v=2",
-                "countHint": 4
+                "countHint": 5
             }
         },
         "georss$where": {
@@ -264,10 +264,10 @@
             }
         },
         "gd$rating": {
-            "average": 4.75,
+            "average": 4.7777777,
             "max": 5,
             "min": 1,
-            "numRaters": 16,
+            "numRaters": 18,
             "rel": "http://schemas.google.com/g/2005#overall"
         },
         "yt$recorded": {
@@ -275,11 +275,11 @@
         },
         "yt$statistics": {
             "favoriteCount": "0",
-            "viewCount": "3163"
+            "viewCount": "3452"
         },
         "yt$rating": {
             "numDislikes": "1",
-            "numLikes": "15"
+            "numLikes": "17"
         }
     }
 }

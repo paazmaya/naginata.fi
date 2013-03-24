@@ -17,7 +17,8 @@
              "realname": "",
              "location": "Helsinki, Finland",
              "iconserver": "1350",
-             "iconfarm": 2
+             "iconfarm": 2,
+             "path_alias": "paazio"
         },
          "title": {
             "_content": "Kyoto 2011-05-04 Shimogamo Jinja, Jikishinkageryu Naginatajutsu"
@@ -36,7 +37,7 @@
              "takengranularity": "0",
              "lastupdate": "1312882567"
         },
-         "views": "308",
+         "views": "310",
          "editability": {
             "cancomment": 0,
              "canaddmeta": 0
@@ -83,42 +84,42 @@
                      "author": "14224905@N08",
                      "raw": "kyoto",
                      "_content": "kyoto",
-                     "machine_tag": 0
+                     "machine_tag": false
                 },
                  {
                     "id": "14132092-5763043699-104364",
                      "author": "14224905@N08",
                      "raw": "taikai",
                      "_content": "taikai",
-                     "machine_tag": 0
+                     "machine_tag": false
                 },
                  {
                     "id": "14132092-5763043699-32472872",
                      "author": "14224905@N08",
                      "raw": "jikishinkageryu",
                      "_content": "jikishinkageryu",
-                     "machine_tag": 0
+                     "machine_tag": false
                 },
                  {
                     "id": "14132092-5763043699-117865",
                      "author": "14224905@N08",
                      "raw": "naginata",
                      "_content": "naginata",
-                     "machine_tag": 0
+                     "machine_tag": false
                 },
                  {
                     "id": "14132092-5763043699-1762505",
                      "author": "14224905@N08",
                      "raw": "\u306a\u304e\u306a\u305f",
                      "_content": "\u306a\u304e\u306a\u305f",
-                     "machine_tag": 0
+                     "machine_tag": false
                 },
                  {
                     "id": "14132092-5763043699-19273084",
                      "author": "14224905@N08",
                      "raw": "\u76f4\u5fc3\u5f71\u6d41",
                      "_content": "\u76f4\u5fc3\u5f71\u6d41",
-                     "machine_tag": 0
+                     "machine_tag": false
                 },
                  {
                     "id": "14132092-5763043699-11741766",
@@ -132,7 +133,7 @@
                      "author": "14224905@N08",
                      "raw": "japan",
                      "_content": "japan",
-                     "machine_tag": 0
+                     "machine_tag": false
                 },
                  {
                     "id": "14132092-5763043699-680155",
@@ -146,7 +147,7 @@
                      "author": "14224905@N08",
                      "raw": "\u8599\u5200\u8853",
                      "_content": "\u8599\u5200\u8853",
-                     "machine_tag": 0
+                     "machine_tag": false
                 },
                  {
                     "id": "14132092-5763043699-45105012",
@@ -160,56 +161,56 @@
                      "author": "14224905@N08",
                      "raw": "\u65e5\u672c",
                      "_content": "\u65e5\u672c",
-                     "machine_tag": 0
+                     "machine_tag": false
                 },
                  {
                     "id": "14132092-5763043699-290",
                      "author": "14224905@N08",
                      "raw": "people",
                      "_content": "people",
-                     "machine_tag": 0
+                     "machine_tag": false
                 },
                  {
                     "id": "14132092-5763043699-357489",
                      "author": "14224905@N08",
                      "raw": "budo",
                      "_content": "budo",
-                     "machine_tag": 0
+                     "machine_tag": false
                 },
                  {
                     "id": "14132092-5763043699-1970",
                      "author": "14224905@N08",
                      "raw": "japanese",
                      "_content": "japanese",
-                     "machine_tag": 0
+                     "machine_tag": false
                 },
                  {
                     "id": "14132092-5763043699-4711",
                      "author": "14224905@N08",
                      "raw": "martialart",
                      "_content": "martialart",
-                     "machine_tag": 0
+                     "machine_tag": false
                 },
                  {
                     "id": "14132092-5763043699-4942608",
                      "author": "14224905@N08",
                      "raw": "\u6b66\u9053",
                      "_content": "\u6b66\u9053",
-                     "machine_tag": 0
+                     "machine_tag": false
                 },
                  {
                     "id": "14132092-5763043699-1641557",
                      "author": "14224905@N08",
                      "raw": "\u6b66\u8853",
                      "_content": "\u6b66\u8853",
-                     "machine_tag": 0
+                     "machine_tag": false
                 },
                  {
                     "id": "14132092-5763043699-6595506",
                      "author": "14224905@N08",
                      "raw": "keikogi",
                      "_content": "keikogi",
-                     "machine_tag": 0
+                     "machine_tag": false
                 }
             ]
         },

@@ -6,7 +6,7 @@
         "xmlns$media": "http://search.yahoo.com/mrss/",
         "xmlns$gd": "http://schemas.google.com/g/2005",
         "xmlns$yt": "http://gdata.youtube.com/schemas/2007",
-        "gd$etag": "W/\"DkUFSX47eCp7I2A9WhNWGE8.\"",
+        "gd$etag": "W/\"DEQFSH47eCp7I2A9WhBQEkk.\"",
         "id": {
             "$t": "tag:youtube.com,2008:video:a5VqaxmgVvU"
         },
@@ -14,7 +14,7 @@
             "$t": "2011-06-05T10:07:24.000Z"
         },
         "updated": {
-            "$t": "2012-12-18T09:50:18.000Z"
+            "$t": "2013-03-14T07:31:59.000Z"
         },
         "category": [
             {
@@ -167,7 +167,7 @@
                 }
             ],
             "media$description": {
-                "$t": "Sonobe Masami & Kajiyama Takeko performing Jiki Shinkage Ryu Naginata Jutsu Kata.",
+                "$t": "Sonobe Masami & Kajiyama Takeko performing Jiki Shinkage Ryu Naginata Jutsu Kata.\nFootage by Seido Co., Ltd.:\nwww.seidoshop.com (en)\nwww.seidoshop.jp (jp)\nwww.budoexport.com (fr)\nwww.budoexport.es (es)",
                 "type": "plain"
             },
             "media$keywords": {
@@ -258,7 +258,7 @@
         },
         "yt$statistics": {
             "favoriteCount": "0",
-            "viewCount": "1612"
+            "viewCount": "1643"
         },
         "yt$rating": {
             "numDislikes": "1",
