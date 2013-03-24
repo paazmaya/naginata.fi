@@ -9,7 +9,6 @@
  * Contains:
  *   Google Analytics
  *   Sendanmaki
- *   Modernizr statistics
  */
 
 // -- Google Analytics for naginata.fi --
@@ -28,19 +27,12 @@ _gaq.push(['_trackPageview']);
 		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 	}
 })();
-// -- Enought about Google Analytics --
+// -- Enough about Google Analytics --
 
 
 // Run all client side preparation once DOM is ready.
 $(document).ready(function() {
     sendanmaki.domReady();
-
-	// Do not run the Modernizr stats immediately.
-	if (typeof Modernizr !== 'undefined') {
-		mdrnzr.once = setInterval(function() {
-			mdrnzr.checkUpdate();
-		}, 1200);
-	}
 });
 
 
@@ -244,7 +236,8 @@ var sendanmaki = {
 			else {
 				w = '400px';
 				h = '300px';
-				player = '<p><strong>Vaikuttaa siltä että Flash lisäke ei ole käytettävissä.</strong> Siksi ei tätä sisältöäkään voida tarkistella.</p>' +
+				player = '<h1>Vaikuttaa siltä että Flash lisäke ei ole käytettävissä.</h1>' +
+					'<p>Siksi ei tätä sisältöäkään voida tarkistella.</p>' +
 					'<p>Viimeisimmän version Flash lisäkkeestä voi ladata osoitteesta ' +
 					'<a href="http://get.adobe.com/flashplayer/" title="Get Flash Player">http://get.adobe.com/flashplayer/</a></p>' +
 					'<p>Nykyinen versiosi on ' + $.flash.version.string + '</p>';
@@ -331,7 +324,7 @@ var sendanmaki = {
             onComplete: function() {
 				$('textarea[name="content"]').attr('lang', sendanmaki.lang).val(html);
 
-				// 3.00
+				// 3.11
 				var editor = CodeMirror.fromTextArea($('textarea[name="content"]').get(0), {
 					mode: 'text/html',
 					matchBrackets: true,
@@ -449,19 +442,4 @@ var sendanmaki = {
      */
     loginForm: '<ul class="login-list"><li><a href="/authenticate-user?identifier=google" title="Google">' +
 		'<img src="/img/google_100.png" alt="Google" /><br />Google</a></li></ul>'
-};
-
-/**
- * Modernizr test results
- * https://raw.github.com/paazmaya/PaazioTools/master/JavaScript/modernizr.htm
- * Also uses SWFObject.
- */
-var mdrnzr = {
-    results: {},
-	interval: 60 * 60 * 24 * 7 * 2, // 2 weeks
-	key: 'last-modernizr',
-    url: '/receive-modernizr-statistics',
-	once: null, // setInterval id
-
-    }
 };
