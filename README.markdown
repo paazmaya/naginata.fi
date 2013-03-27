@@ -28,7 +28,7 @@ version.
 The method of using naginata as a weapon has existed much longer and some around 500 styles
 have existed in the past.
 
-Today these are still some 4...6 active style, of which most of them contain other weapons
+Today these are still some ten active style, of which most of them contain other weapons
 aside using just a naginata. In any case in these styles naginata is used against a sword.
 
 This website will focus on the following two:
@@ -53,13 +53,13 @@ PHP libraries used and included
 
  * Possible contributors and administrators can login via OpenID (https://openid.net/) which is supported via LightOpenID (https://gitorious.org/~paazmaya/lightopenid/paazmayas-lightopenid)
  * Edited content is saved for moderation and diff generated with PHP-Diff (https://github.com/chrisboulton/php-diff)
- * PHPMailer (https://code.google.com/a/apache-extras.org/p/phpmailer/)
+ * PHPMailer for sending those diffs to moderator (https://github.com/Synchro/PHPMailer)
+ * The minification of JS and CSS files are done via Minify (https://github.com/mrclay/minify)
 
 Javascript libraries used and included
 --------------------------------------
 
  * jQuery for client interaction (http://jquery.com/)
- * Flash SWF files are used for playing 3rd party videos, such as Youtube and Vimeo, via jQuery.SWFObject (http://jquery.thewikies.com/swfobject/)
  * Content editing highlight via CodeMirror (http://codemirror.net/)
  * jQuery plugin "Colorbox" used for opening content in same page (http://jacklmoore.com/colorbox/)
  
@@ -68,7 +68,6 @@ Other notes
 
  * Both Javascript and CSS files are combined to a single file, minified and finally compressed.
  * This reduces the amount of HTTP requests and if supported by the client, the download size.
- * The minification is done via Minify (https://github.com/mrclay/minify)
  * Unused Javascript could be stripped out with JSlim (https://github.com/zgrossbart/jslim)
  * 3rd party media service data cached locally server side in order to reduce API calls. cURL is optimal for fetching updates (http://curl.haxx.se/)
  * Microformats add meaning to what is already semantically correct markup (http://microformats.org/)
