@@ -15,7 +15,8 @@
              "realname": "Chad Cullen",
              "location": "Tampa, Florida",
              "iconserver": "112",
-             "iconfarm": 1
+             "iconfarm": 1,
+             "path_alias": "chadcullen"
         },
          "title": {
             "_content": "Naginata Competition"
@@ -34,7 +35,7 @@
              "takengranularity": "0",
              "lastupdate": "1344226851"
         },
-         "views": "68",
+         "views": "101",
          "editability": {
             "cancomment": 0,
              "canaddmeta": 0
