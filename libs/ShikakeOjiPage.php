@@ -379,6 +379,9 @@ class ShikakeOjiPage
         $out .= '<meta name="description" content="' . $this->head['description'] . '"/>';
         $out .= '<link rel="shortcut icon" href="/img/favicon.png" type="image/png"/>';
 		
+    // http://dev.opera.com/articles/view/an-introduction-to-meta-viewport-and-viewport/
+    $out .= '<meta name="viewport" content="width=device-width, initial-scale=1.0" />';
+    
 		// Web Fonts from Google.
 		$out .= '<link href="http://fonts.googleapis.com/css?family=Inder|Lora&subset=latin-ext,latin" rel="stylesheet" type="text/css"/>';
 

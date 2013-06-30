@@ -143,9 +143,6 @@ h4 {
 	margin-top: 1.1em;
 	font-size: 1.1em;
 }
-header h1:hover {
-	text-shadow: 0.5em 0.5em 6px #072434;
-}
 header p {
 	text-align: right;
 	margin-top: -2.5em;
@@ -155,7 +152,7 @@ header p {
 }
 .desc-transform {
 	backface-visibility: visible;
-	transform-origin: 50% 50%;
+	transform-origin: 25% 25%;
 	transform: perspective(500px) rotateY(-15deg);
 }
 article ul, article ol {

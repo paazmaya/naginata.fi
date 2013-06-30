@@ -8,7 +8,7 @@ Full legal text available in `license.txt`.
 Technologies
 -------------
  * Apache web server with mod_rewrite (http://httpd.apache.org/)
- * PHP 5.3 (http://www.php.net/)
+ * PHP 5.4 (http://www.php.net/)
  * MySQL database as content storage (http://www.mysql.com/)
  * JSON used as a data format for configuration (http://www.json.org/)
  * HTML5 for markup (http://developers.whatwg.org/)
@@ -22,7 +22,7 @@ About the martial art
 Naginata is a weapon made of a long wooden stick on which a curved blade is attached.
 
 The art of using this weapon is often called simply as Naginata, but more accurately
-it can be called as Atarashii Naginatado, in the case of the post-Meiji era standarzised 
+it can be called as Atarashii Naginatado, in the case of the post-Meiji era standarsised 
 version.
 
 The method of using naginata as a weapon has existed much longer and some around 500 styles
@@ -139,7 +139,7 @@ TODO
  * Translations for application strings
  * Configuration of language_TERRITORY
  * Separate handling per page type, not all are simple articles
- * OpenID login redirects to wrong page. It is always / when it should be something more.
+ * OpenID login redirects to wrong page. It is always / when there should be something more.
  * Facebook liking and related, https://developers.facebook.com/tools/debug/og/object?q=naginata.fi
  
  
