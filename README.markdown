@@ -48,6 +48,9 @@ Atarashii Naginatado page.
 
 Contributors are welcome.
 
+[JetBrains](http://www.jetbrains.com/) has kindly provided this project with an open source license for 
+[WebStorm IDE](http://www.jetbrains.com/webstorm/).
+
 PHP libraries used and included
 -------------------------------
 
@@ -55,6 +58,7 @@ PHP libraries used and included
  * Edited content is saved for moderation and diff generated with PHP-Diff (https://github.com/chrisboulton/php-diff)
  * PHPMailer for sending those diffs to moderator (https://github.com/Synchro/PHPMailer)
  * The minification of JS and CSS files are done via Minify (https://github.com/mrclay/minify)
+ * HybridAuth used for authentication via 3rd party providers (http://hybridauth.sourceforge.net)
 
 Javascript libraries used and included
 --------------------------------------
