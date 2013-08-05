@@ -49,7 +49,9 @@ Atarashii Naginatado page.
 Contributors are welcome.
 
 [JetBrains](http://www.jetbrains.com/) has kindly provided this project with an open source license for 
-[WebStorm IDE](http://www.jetbrains.com/webstorm/).
+[PhpStorm IDE](http://www.jetbrains.com/phpstorm/).
+![Developed with JetBrains PhpStorm](http://www.jetbrains.com/phpstorm/documentation/phpstorm_banners/phpstorm1/phpstorm125x37_white.gif)
+
 
 PHP libraries used and included
 -------------------------------
