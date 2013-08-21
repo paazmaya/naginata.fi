@@ -21,7 +21,7 @@ _gaq.push(['_trackPageview']);
 // http://code.google.com/apis/analytics/docs/gaJS/gaJSApiBasicConfiguration.html
 
 (function () {
-  if (location.port != 7775) { // that is my development server...
+  if (location.port != 8802) { // that is my development server...
     var ga = document.createElement('script');
     ga.type = 'text/javascript';
     ga.async = true;
@@ -133,7 +133,6 @@ var sendanmaki = {
     // Track ColorBox usage with Google Analytics
     $(document).on('cbox_complete', function () {
       var href = $.colorbox.element().attr('href');
-      //console.log('cbox_complete occurred. href: ' + href);
       if (href) {
         _gaq.push(['_trackPageview', href]);
       }
@@ -259,13 +258,13 @@ var sendanmaki = {
       // Show colorbox
       $.colorbox({
         html: '<h1 class="appmessage ' + msg.toLowerCase() + '">' + text + '</h1>',
-        modal: true,
+        closeButton: false,
         scrolling: false,
         onComplete: function () {
-          // Hide automatically after 4 seconds
+          // Hide automatically after 3 seconds
           setTimeout(function () {
             $.colorbox.close();
-          }, 4 * 1000);
+          }, 3 * 1000);
         }
       });
     }
@@ -296,7 +295,7 @@ var sendanmaki = {
     $form.data('original', html); // what is currently on the page
     $.colorbox({
       html: $form,
-      modal: true,
+      closeButton: false,
       onComplete: function () {
         $('textarea[name="content"]').attr('lang', sendanmaki.lang).val(html);
 
@@ -337,7 +336,6 @@ var sendanmaki = {
       page: location.pathname.substr(3),
       content: content
     };
-    //console.dir(data);
 
     // Update the page
     $('article').html(content);
