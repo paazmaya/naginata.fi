@@ -74,6 +74,7 @@ nav, footer {
 	border-bottom: 0.1em solid #072434;
 	height: 1.5em;
 	color: #072434;
+  display: block;
 }
 nav ul, footer p {
 	list-style: none;
