@@ -16,8 +16,8 @@
              "username": "paazio",
              "realname": "",
              "location": "Helsinki, Finland",
-             "iconserver": "1350",
-             "iconfarm": 2,
+             "iconserver": "8130",
+             "iconfarm": 9,
              "path_alias": "paazio"
         },
          "title": {
@@ -35,9 +35,9 @@
             "posted": "1360153144",
              "taken": "2012-12-06 14:04:01",
              "takengranularity": "0",
-             "lastupdate": "1360153440"
+             "lastupdate": "1372624504"
         },
-         "views": "17",
+         "views": "60",
          "editability": {
             "cancomment": 0,
              "canaddmeta": 0
@@ -70,28 +70,28 @@
                      "author": "14224905@N08",
                      "raw": "japan",
                      "_content": "japan",
-                     "machine_tag": 0
+                     "machine_tag": false
                 },
                  {
                     "id": "14132092-8450641664-357489",
                      "author": "14224905@N08",
                      "raw": "budo",
                      "_content": "budo",
-                     "machine_tag": 0
+                     "machine_tag": false
                 },
                  {
                     "id": "14132092-8450641664-1771348",
                      "author": "14224905@N08",
                      "raw": "bujutsu",
                      "_content": "bujutsu",
-                     "machine_tag": 0
+                     "machine_tag": false
                 },
                  {
                     "id": "14132092-8450641664-581338",
                      "author": "14224905@N08",
                      "raw": "koryu",
                      "_content": "koryu",
-                     "machine_tag": 0
+                     "machine_tag": false
                 },
                  {
                     "id": "14132092-8450641664-117865",

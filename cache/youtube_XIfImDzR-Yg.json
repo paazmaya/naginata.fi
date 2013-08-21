@@ -180,46 +180,46 @@
             },
             "media$thumbnail": [
                 {
-                    "url": "http://i.ytimg.com/vi/XIfImDzR-Yg/default.jpg",
+                    "url": "http://i1.ytimg.com/vi/XIfImDzR-Yg/default.jpg",
                     "height": 90,
                     "width": 120,
                     "time": "00:02:28",
                     "yt$name": "default"
                 },
                 {
-                    "url": "http://i.ytimg.com/vi/XIfImDzR-Yg/mqdefault.jpg",
+                    "url": "http://i1.ytimg.com/vi/XIfImDzR-Yg/mqdefault.jpg",
                     "height": 180,
                     "width": 320,
                     "yt$name": "mqdefault"
                 },
                 {
-                    "url": "http://i.ytimg.com/vi/XIfImDzR-Yg/hqdefault.jpg",
+                    "url": "http://i1.ytimg.com/vi/XIfImDzR-Yg/hqdefault.jpg",
                     "height": 360,
                     "width": 480,
                     "yt$name": "hqdefault"
                 },
                 {
-                    "url": "http://i.ytimg.com/vi/XIfImDzR-Yg/sddefault.jpg",
+                    "url": "http://i1.ytimg.com/vi/XIfImDzR-Yg/sddefault.jpg",
                     "height": 480,
                     "width": 640,
                     "yt$name": "sddefault"
                 },
                 {
-                    "url": "http://i.ytimg.com/vi/XIfImDzR-Yg/1.jpg",
+                    "url": "http://i1.ytimg.com/vi/XIfImDzR-Yg/1.jpg",
                     "height": 90,
                     "width": 120,
                     "time": "00:01:14",
                     "yt$name": "start"
                 },
                 {
-                    "url": "http://i.ytimg.com/vi/XIfImDzR-Yg/2.jpg",
+                    "url": "http://i1.ytimg.com/vi/XIfImDzR-Yg/2.jpg",
                     "height": 90,
                     "width": 120,
                     "time": "00:02:28",
                     "yt$name": "middle"
                 },
                 {
-                    "url": "http://i.ytimg.com/vi/XIfImDzR-Yg/3.jpg",
+                    "url": "http://i1.ytimg.com/vi/XIfImDzR-Yg/3.jpg",
                     "height": 90,
                     "width": 120,
                     "time": "00:03:42",
@@ -252,7 +252,7 @@
         },
         "yt$statistics": {
             "favoriteCount": "0",
-            "viewCount": "455"
+            "viewCount": "507"
         },
         "yt$rating": {
             "numDislikes": "0",

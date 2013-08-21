@@ -11,11 +11,11 @@
          "rotation": 0,
          "owner": {
             "nsid": "8519244@N06",
-             "username": "oroshi",
+             "username": "RStonell",
              "realname": "Richard",
              "location": "Japan \/ \u65e5\u672c",
-             "iconserver": "219",
-             "iconfarm": 1,
+             "iconserver": "3798",
+             "iconfarm": 4,
              "path_alias": "oroshi"
         },
          "title": {
@@ -35,7 +35,7 @@
              "takengranularity": "0",
              "lastupdate": "1275257830"
         },
-         "views": "499",
+         "views": "583",
          "editability": {
             "cancomment": 0,
              "canaddmeta": 0
@@ -48,7 +48,7 @@
             "candownload": 0,
              "canblog": 0,
              "canprint": 0,
-             "canshare": 1
+             "canshare": 0
         },
          "comments": {
             "_content": "1"
@@ -89,7 +89,7 @@
                      "author": "8519244@N06",
                      "raw": "glaive",
                      "_content": "glaive",
-                     "machine_tag": 0
+                     "machine_tag": false
                 },
                  {
                     "id": "8473922-4601612764-938302",
@@ -103,7 +103,7 @@
                      "author": "8519244@N06",
                      "raw": "polearm",
                      "_content": "polearm",
-                     "machine_tag": false
+                     "machine_tag": 0
                 },
                  {
                     "id": "8473922-4601612764-3110",

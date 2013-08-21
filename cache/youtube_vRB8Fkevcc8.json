@@ -6,7 +6,7 @@
         "xmlns$media": "http://search.yahoo.com/mrss/",
         "xmlns$gd": "http://schemas.google.com/g/2005",
         "xmlns$yt": "http://gdata.youtube.com/schemas/2007",
-        "gd$etag": "W/\"A04CR347eCp7I2A9WhBRFEU.\"",
+        "gd$etag": "W/\"DkUDQH47eCp7I2A9WhFQEUo.\"",
         "id": {
             "$t": "tag:youtube.com,2008:video:vRB8Fkevcc8"
         },
@@ -14,7 +14,7 @@
             "$t": "2012-05-22T15:32:37.000Z"
         },
         "updated": {
-            "$t": "2013-03-05T13:26:06.000Z"
+            "$t": "2013-07-07T05:17:51.000Z"
         },
         "category": [
             {
@@ -183,46 +183,46 @@
             },
             "media$thumbnail": [
                 {
-                    "url": "http://i.ytimg.com/vi/vRB8Fkevcc8/default.jpg",
+                    "url": "http://i1.ytimg.com/vi/vRB8Fkevcc8/default.jpg",
                     "height": 90,
                     "width": 120,
                     "time": "00:01:43",
                     "yt$name": "default"
                 },
                 {
-                    "url": "http://i.ytimg.com/vi/vRB8Fkevcc8/mqdefault.jpg",
+                    "url": "http://i1.ytimg.com/vi/vRB8Fkevcc8/mqdefault.jpg",
                     "height": 180,
                     "width": 320,
                     "yt$name": "mqdefault"
                 },
                 {
-                    "url": "http://i.ytimg.com/vi/vRB8Fkevcc8/hqdefault.jpg",
+                    "url": "http://i1.ytimg.com/vi/vRB8Fkevcc8/hqdefault.jpg",
                     "height": 360,
                     "width": 480,
                     "yt$name": "hqdefault"
                 },
                 {
-                    "url": "http://i.ytimg.com/vi/vRB8Fkevcc8/sddefault.jpg",
+                    "url": "http://i1.ytimg.com/vi/vRB8Fkevcc8/sddefault.jpg",
                     "height": 480,
                     "width": 640,
                     "yt$name": "sddefault"
                 },
                 {
-                    "url": "http://i.ytimg.com/vi/vRB8Fkevcc8/1.jpg",
+                    "url": "http://i1.ytimg.com/vi/vRB8Fkevcc8/1.jpg",
                     "height": 90,
                     "width": 120,
                     "time": "00:00:51.500",
                     "yt$name": "start"
                 },
                 {
-                    "url": "http://i.ytimg.com/vi/vRB8Fkevcc8/2.jpg",
+                    "url": "http://i1.ytimg.com/vi/vRB8Fkevcc8/2.jpg",
                     "height": 90,
                     "width": 120,
                     "time": "00:01:43",
                     "yt$name": "middle"
                 },
                 {
-                    "url": "http://i.ytimg.com/vi/vRB8Fkevcc8/3.jpg",
+                    "url": "http://i1.ytimg.com/vi/vRB8Fkevcc8/3.jpg",
                     "height": 90,
                     "width": 120,
                     "time": "00:02:34.500",
@@ -250,19 +250,19 @@
             }
         },
         "gd$rating": {
-            "average": 5.0,
+            "average": 4.3333335,
             "max": 5,
             "min": 1,
-            "numRaters": 4,
+            "numRaters": 6,
             "rel": "http://schemas.google.com/g/2005#overall"
         },
         "yt$statistics": {
             "favoriteCount": "0",
-            "viewCount": "608"
+            "viewCount": "901"
         },
         "yt$rating": {
-            "numDislikes": "0",
-            "numLikes": "4"
+            "numDislikes": "1",
+            "numLikes": "5"
         }
     }
 }
