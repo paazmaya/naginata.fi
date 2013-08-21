@@ -417,7 +417,7 @@ class ShikakeOjiPage
 
         // https://developer.apple.com/library/safari/#documentation/appleapplications/reference/safariwebcontent/configuringwebapplications/configuringwebapplications.html
         $out .= '<link rel="apple-touch-icon" href="/img/mobile-logo.png"/>'; // 57x57
-
+        
         $base = '/css/';
 
         // CodeMirror only if logged in
@@ -1142,9 +1142,6 @@ class ShikakeOjiPage
         // Are there newer source files than the single output file?
         $newerexists = false;
 
-        // Keep log of what has happened and how much the filesizes were reduced.
-        $log = array();
-
         $data = array();
         foreach ($files as $file)
         {
@@ -1159,9 +1156,6 @@ class ShikakeOjiPage
 
         $alldata = implode("\n\n", $data);
         $bytecount = file_put_contents($outfile, $alldata);
-        $log[] = date($this->shikakeOji->logDateFormat) . ' outfile: ' . $outfile . ', size: ' . $bytecount;
-
-        file_put_contents($this->minifyLog, implode("\n", $log) . "\n", FILE_APPEND);
 
         return $bytecount !== false;
     }
@@ -1222,8 +1216,6 @@ class ShikakeOjiPage
 
             if ($doMinify)
             {
-                $log[] =
-                    date($this->shikakeOji->logDateFormat) . ' source: ' . $source . ', size: ' . filesize($source);
 
                 $content = file_get_contents($source);
 
@@ -1260,9 +1252,6 @@ class ShikakeOjiPage
                 if (!$failed)
                 {
                     file_put_contents($destination, $minified);
-
-                    $log[] =
-                        date($this->shikakeOji->logDateFormat) . ' destination: ' . $destination . ', size: ' . filesize($destination);
                 }
             }
             file_put_contents($this->minifyLog, implode("\n", $log) . "\n", FILE_APPEND);
