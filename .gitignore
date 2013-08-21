@@ -1,13 +1,7 @@
 naginata-config.json
-naginata-curl.log
-naginata-minify.log
-naginata-openid.log
-naginata-php.log
-naginata-redirect.log
+*.log
 public_html/css/*.min.css
 public_html/img/pngcrush.exe
 public_html/js/*.min.js
-session-checker.log
 stuff/*
 stats
-/nbproject/private/*
