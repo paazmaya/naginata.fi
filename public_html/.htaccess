@@ -39,18 +39,18 @@ FileETag INode MTime Size
   ExpiresActive on
 
 # Perhaps better to whitelist expires rules? Perhaps.
-  ExpiresDefault                          "access plus 1 month"
+  ExpiresDefault                          "access plus 2 month"
 
 # cache.appcache needs re-requests in FF 3.6 (thanks Remy ~Introducing HTML5)
   ExpiresByType text/cache-manifest       "access plus 0 seconds"
 
 # Your document html
-  ExpiresByType text/html                 "access plus 10 seconds"
+  ExpiresByType text/html                 "access plus 2 days"
 
 # Data
-  ExpiresByType text/xml                  "access plus 0 seconds"
-  ExpiresByType application/xml           "access plus 0 seconds"
-  ExpiresByType application/json          "access plus 0 seconds"
+  ExpiresByType text/xml                  "access plus 10 hours"
+  ExpiresByType application/xml           "access plus 10 hours"
+  ExpiresByType application/json          "access plus 10 hours"
 
 # Favicon (cannot be renamed)
   ExpiresByType image/x-icon              "access plus 1 month"
@@ -69,8 +69,8 @@ FileETag INode MTime Size
   ExpiresByType application/vnd.ms-fontobject "access plus 1 month"
 
 # CSS and JavaScript
-  ExpiresByType text/css                  "access plus 1 week"
-  ExpiresByType application/javascript    "access plus 1 week"
+  ExpiresByType text/css                  "access plus 1 month"
+  ExpiresByType application/javascript    "access plus 1 month"
 
   <IfModule mod_headers.c>
     Header append Cache-Control "public"

@@ -14,11 +14,11 @@
  */
 class ShikakeOjiPage
 {
-	/**
-	 * Unix timestamp of the last modification of the given page.
-	 * ...assuming there is a page set.
-	 */
-	public $pageModified = 0;
+    /**
+     * Unix timestamp of the last modification of the given page.
+     * ...assuming there is a page set.
+     */
+    public $pageModified = 0;
 
     /**
      * List of Cascaded Style Sheet files that are minified into one
@@ -34,9 +34,9 @@ class ShikakeOjiPage
      * Should be relative to public_html/js/
      */
     public $scripts = array(
-        'jquery.js', // 1.9.1
-        'jquery.colorbox.js', // 1.4.6, https://github.com/paazmaya/colorbox/commits/modal
-        'jquery.outerhtml.js', //
+        'jquery.js',
+        'jquery.colorbox.js',
+        'jquery.outerhtml.js',
         'sendanmaki.js'
     );
 
@@ -54,11 +54,8 @@ class ShikakeOjiPage
 
     /**
      * How will JS and CSS files will be called once minified in to one file per type?
-     * If compression is supported, the client will receive the one with gz, and
-     * that will be appended to this variable, "gz." that is.
-     * For example:
-     * naginata.min --> js/naginata.min.js and naginata.min.gz.js
-     * --> css/naginata.min.css and css/naginata.min.gz.css
+     *
+     * Compressed files are delivered via Apache.
      */
     public $minifiedName = 'naginata.min.';
 
@@ -87,52 +84,52 @@ class ShikakeOjiPage
      * Special fields to be prosessed in the content. It is always a 3rd party service.
      * [flickr|image id]
      * [youtube|video id]
-	 * [local|image name in public_html/img/]
+     * [local|image name in public_html/img/]
      */
     private $specialFields = array(
-        'flickr' => 'renderFlickr',
+        'flickr'  => 'renderFlickr',
         'youtube' => 'renderYoutube',
-        'vimeo' => 'renderVimeo',
-		'local' => 'renderLocalImage'
+        'vimeo'   => 'renderVimeo',
+        'local'   => 'renderLocalImage'
     );
 
-	/**
-	 * Instance of a ShikakeOji class.
-	 */
-	private $shikakeOji;
-	
-	/**
-	 * Markup for navigation
-	 */
-	private $navigation;
-	
-	/**
-	 * Data used for the head section
-	 */
-	private $head;
-	
-	/**
-	 * Id of this page in table naginata_page if any.
-	 */
-	private $pageId = -1;
+    /**
+     * Instance of a ShikakeOji class.
+     */
+    private $shikakeOji;
+
+    /**
+     * Markup for navigation
+     */
+    private $navigation;
+
+    /**
+     * Data used for the head section
+     */
+    private $head;
+
+    /**
+     * Id of this page in table naginata_page if any.
+     */
+    private $pageId = -1;
 
     /**
      * Constructor does not do much.
      */
     function __construct($shikakeOji)
     {
-		if (!isset($shikakeOji) || !is_object($shikakeOji))
-		{
-			return false;
-		}
+        if (!isset($shikakeOji) || !is_object($shikakeOji))
+        {
+            return false;
+        }
 
-		// Must be defined in order to access data and config.
-		$this->shikakeOji = $shikakeOji;
+        // Must be defined in order to access data and config.
+        $this->shikakeOji = $shikakeOji;
 
         // Calculate interval time for 2 week of seconds.
         $this->cacheInterval = (60 * 60 * 24 * 7 * 2);
-		
-		// Create navigation for later use
+
+        // Create navigation for later use
         $navigation = '';
         $sql = 'SELECT * FROM naginata_page WHERE lang = \'' . $this->shikakeOji->language . '\' ORDER BY weight ASC';
         $run = $this->shikakeOji->database->query($sql);
@@ -140,21 +137,21 @@ class ShikakeOjiPage
         {
             while ($res = $run->fetch(PDO::FETCH_ASSOC))
             {
-				$navigation .= '<li';
-				if ($this->shikakeOji->currentPage == $res['url'])
-				{
-					$navigation .= ' class="current"';
-					$this->head = $res; // head section data
-					$this->pageId = $res['id']; // page_id for naginata_article
-				}
-				$navigation .= '><a href="/' . $this->shikakeOji->language . $res['url'] . '" title="' . $res['header'] . '" rel="prefetch">' . $res['title'] . '</a></li>';
+                $navigation .= '<li';
+                if ($this->shikakeOji->currentPage == $res['url'])
+                {
+                    $navigation .= ' class="current"';
+                    $this->head = $res; // head section data
+                    $this->pageId = $res['id']; // page_id for naginata_article
+                }
+                $navigation .= '><a href="/' . $this->shikakeOji->language . $res['url'] . '" title="' . $res['header'] . '" rel="prefetch">' . $res['title'] . '</a></li>';
             }
         }
-		$this->navigation = $navigation;
-		
-		// Require few libraries
-		require $this->shikakeOji->libPath . '/minify/Minify/JS/ClosureCompiler.php';
-		require $this->shikakeOji->libPath . '/minify/Minify/CSS/Compressor.php';
+        $this->navigation = $navigation;
+
+        // Require few libraries
+        require $this->shikakeOji->libPath . '/minify/Minify/JS/ClosureCompiler.php';
+        require $this->shikakeOji->libPath . '/minify/Minify/CSS/Compressor.php';
     }
 
     /**
@@ -167,15 +164,16 @@ class ShikakeOjiPage
         if ($this->useTidy && extension_loaded('tidy'))
         {
             $conf = array(
-                'indent' => true,
+                'indent'     => true,
                 'output-xml' => true,
-                'input-xml' => true,
-                'wrap' => '200'
+                'input-xml'  => true,
+                'wrap'       => '200'
             );
 
             $tidy = new tidy();
             $tidy->parseString($out, $conf, 'utf8');
             $tidy->cleanRepair();
+
             return tidy_get_output($tidy);
         }
         else
@@ -188,16 +186,18 @@ class ShikakeOjiPage
      * Encode HTML entities for a block of text
      *
      * @param     string/array    $str
+     *
      * @return    string/array
      */
     public static function encodeHtml($str)
     {
         if (is_array($str))
         {
-            foreach($str as $k => $s)
+            foreach ($str as $k => $s)
             {
                 $str[$k] = self::encodeHtml($s);
             }
+
             return $str;
         }
         else
@@ -210,16 +210,18 @@ class ShikakeOjiPage
      * Decode HTML entities from a block of text
      *
      * @param     string/array    $str
+     *
      * @return    string/array
      */
     public static function decodeHtml($str)
     {
         if (is_array($str))
         {
-            foreach($str as $k => $s)
+            foreach ($str as $k => $s)
             {
                 $str[$k] = self::decodeHtml($s);
             }
+
             return $str;
         }
         else
@@ -232,7 +234,8 @@ class ShikakeOjiPage
      * Pretty print some JSON
      * http://fi.php.net/manual/en/function.json-encode.php#80339
      *
-     * @param    string    $json    A string encoded as JSON
+     * @param    string $json    A string encoded as JSON
+     *
      * @return    string
      */
     public static function jsonPrettyPrint($json)
@@ -244,14 +247,14 @@ class ShikakeOjiPage
 
         $len = strlen($json);
 
-        for($c = 0; $c < $len; $c++)
+        for ($c = 0; $c < $len; $c++)
         {
             $char = $json[$c];
-            switch($char)
+            switch ($char)
             {
                 case '{':
                 case '[':
-                    if(!$in_string)
+                    if (!$in_string)
                     {
                         $new_json .= $char . "\n" . str_repeat($tab, $indent_level + 1);
                         $indent_level++;
@@ -263,18 +266,18 @@ class ShikakeOjiPage
                     break;
                 case '}':
                 case ']':
-                    if(!$in_string)
+                    if (!$in_string)
                     {
                         $indent_level--;
                         $new_json .= "\n" . str_repeat($tab, $indent_level) . $char;
-                     }
+                    }
                     else
                     {
                         $new_json .= $char;
                     }
                     break;
                 case ',':
-                    if(!$in_string)
+                    if (!$in_string)
                     {
                         $new_json .= ",\n" . str_repeat($tab, $indent_level);
                     }
@@ -284,7 +287,7 @@ class ShikakeOjiPage
                     }
                     break;
                 case ':':
-                    if(!$in_string)
+                    if (!$in_string)
                     {
                         $new_json .= ": ";
                     }
@@ -294,7 +297,7 @@ class ShikakeOjiPage
                     }
                     break;
                 case '"':
-                    if($c > 0 && $json[$c-1] != '\\')
+                    if ($c > 0 && $json[$c - 1] != '\\')
                     {
                         $in_string = !$in_string;
                     }
@@ -321,125 +324,125 @@ class ShikakeOjiPage
         {
             return '<p class="fail">Navigation data for this page missing</p>';
         }
-		
-		$data = $this->shikakeOji->appData;
-		
+
+        $data = $this->shikakeOji->appData;
+
         $pdo = $this->shikakeOji->database; // used only twice but anyhow for speed...
 
-		$out = $this->createHtmlHead($data['title'][$this->shikakeOji->language]);
+        $out = $this->createHtmlHead($data['title'][$this->shikakeOji->language]);
 
 
-		$latest = 0;
+        $latest = 0;
         $sql = 'SELECT content, modified FROM naginata_article WHERE page_id = \'' .
-			$this->pageId . '\' AND published = 1 ORDER BY modified DESC LIMIT 1';
+            $this->pageId . '\' AND published = 1 ORDER BY modified DESC LIMIT 1';
         $run = $pdo->query($sql);
         if ($run)
         {
             while ($res = $run->fetch(PDO::FETCH_ASSOC))
-			{
-				$out .= '<article data-data-modified="' . $res['modified'] . '">';
-				$out .= $this->findSpecialFields(self::decodeHtml($res['content']));
-				$out .= '</article>';
+            {
+                $out .= '<article data-data-modified="' . $res['modified'] . '">';
+                $out .= $this->findSpecialFields(self::decodeHtml($res['content']));
+                $out .= '</article>';
 
-				$latest = max($latest, $res['modified']);
-			}
+                $latest = max($latest, $res['modified']);
+            }
         }
         else
         {
             return '<p class="fail">Article data for this page missing</p>';
         }
 
-		// Set the latest modification time for header info
-		$this->pageModified = $latest;
+        // Set the latest modification time for header info
+        $this->pageModified = $latest;
 
 
-		$out .= $this->createHtmlFooter($data['footer'][$this->shikakeOji->language]);
+        $out .= $this->createHtmlFooter($data['footer'][$this->shikakeOji->language]);
 
         return $out;
     }
-	
-	/**
-	 * Create HTML5 head
-	 * $title = $data['title'][$this->shikakeOji->language]
-	 */
-	private function createHtmlHead($title)
-	{
-		// None of the OGP items validate, as well as using prefix in html element...
+
+    /**
+     * Create HTML5 head
+     * $title = $data['title'][$this->shikakeOji->language]
+     */
+    private function createHtmlHead($title)
+    {
+        // None of the OGP items validate, as well as using prefix in html element...
         $out = '<!DOCTYPE html>';
         $out .= '<html lang="' . $this->shikakeOji->language . '"';
-		//$out .= ' manifest="applicaton.cache"'; // http://www.html5rocks.com/en/tutorials/appcache/beginner/
-		if (strpos($_SERVER['HTTP_USER_AGENT'], 'facebookexternalhit') !== false)
-		{
-			$out .= ' prefix="og:http://ogp.me/ns#"'; // http://dev.w3.org/html5/rdfa/
-		}
-		$out .= '>';
+        //$out .= ' manifest="applicaton.cache"'; // http://www.html5rocks.com/en/tutorials/appcache/beginner/
+        if (strpos($_SERVER['HTTP_USER_AGENT'], 'facebookexternalhit') !== false)
+        {
+            $out .= ' prefix="og:http://ogp.me/ns#"'; // http://dev.w3.org/html5/rdfa/
+        }
+        $out .= '>';
         $out .= '<head>';
         $out .= '<meta charset="utf-8"/>';
         $out .= '<title>' . $this->head['header'] . ' | ' . $title . '</title>';
         $out .= '<meta name="description" content="' . $this->head['description'] . '"/>';
         $out .= '<link rel="shortcut icon" href="/img/favicon.png" type="image/png"/>';
-		
-    // http://dev.opera.com/articles/view/an-introduction-to-meta-viewport-and-viewport/
-    $out .= '<meta name="viewport" content="width=device-width, initial-scale=1.0" />';
-    
-		// Web Fonts from Google.
-		$out .= '<link href="http://fonts.googleapis.com/css?family=Inder|Lora&subset=latin-ext,latin" rel="stylesheet" type="text/css"/>';
 
-		if (strpos($_SERVER['HTTP_USER_AGENT'], 'facebookexternalhit') !== false)
-		{
-			// http://ogp.me/
-			$out .= '<meta property="og:title" content="' . $this->head['title'] . '"/>';
-			$out .= '<meta property="og:description" content="' . $this->head['description'] . '"/>';
-			$out .= '<meta property="og:type" content="sports_team"/>';
-			
-			// All the images referenced by og:image must be at least 200px in both dimensions.
-			$out .= '<meta property="og:image" content="http://' . $_SERVER['HTTP_HOST'] . '/img/logo-200x200.png"/>';
-			
-			$out .= '<meta property="og:url" content="http://' . $_SERVER['HTTP_HOST'] . $this->shikakeOji->currentPage . '"/>';
-			$out .= '<meta property="og:site_name" content="' . $this->head['title'] . '"/>';
-			$out .= '<meta property="og:locale" content="fi_FI"/>'; // language_TERRITORY
-			$out .= '<meta property="og:locale:alternate" content="en_GB"/>';
-			$out .= '<meta property="og:locale:alternate" content="ja_JP"/>';
-			//$out .= '<meta property="og:country-name" content="Finland"/>';
+        // http://dev.opera.com/articles/view/an-introduction-to-meta-viewport-and-viewport/
+        $out .= '<meta name="viewport" content="width=device-width, initial-scale=1.0" />';
 
-			// https://developers.facebook.com/docs/opengraph/
-			$out .= '<meta property="fb:app_id" content="' . $this->shikakeOji->config['facebook']['app_id'] . '"/>'; // A Facebook Platform application ID that administers this page.
-			$out .= '<meta property="fb:admins" content="' . $this->shikakeOji->config['facebook']['admins'] . '"/>';
-		}
+        // Web Fonts from Google.
+        $out .= '<link href="http://fonts.googleapis.com/css?family=Inder|Lora&subset=latin-ext,latin" rel="stylesheet" type="text/css"/>';
 
-		// Developer guidance for websites with content for Adobe Flash Player in Windows 8
-		// http://msdn.microsoft.com/en-us/library/ie/jj193557%28v=vs.85%29.aspx
-		$out .= '<meta http-equiv="X-UA-Compatible" content="requiresActiveX=true" />';
-		
+        if (strpos($_SERVER['HTTP_USER_AGENT'], 'facebookexternalhit') !== false)
+        {
+            // http://ogp.me/
+            $out .= '<meta property="og:title" content="' . $this->head['title'] . '"/>';
+            $out .= '<meta property="og:description" content="' . $this->head['description'] . '"/>';
+            $out .= '<meta property="og:type" content="sports_team"/>';
+
+            // All the images referenced by og:image must be at least 200px in both dimensions.
+            $out .= '<meta property="og:image" content="http://' . $_SERVER['HTTP_HOST'] . '/img/logo-200x200.png"/>';
+
+            $out .= '<meta property="og:url" content="http://' . $_SERVER['HTTP_HOST'] . $this->shikakeOji->currentPage . '"/>';
+            $out .= '<meta property="og:site_name" content="' . $this->head['title'] . '"/>';
+            $out .= '<meta property="og:locale" content="fi_FI"/>'; // language_TERRITORY
+            $out .= '<meta property="og:locale:alternate" content="en_GB"/>';
+            $out .= '<meta property="og:locale:alternate" content="ja_JP"/>';
+            //$out .= '<meta property="og:country-name" content="Finland"/>';
+
+            // https://developers.facebook.com/docs/opengraph/
+            $out .= '<meta property="fb:app_id" content="' . $this->shikakeOji->config['facebook']['app_id'] . '"/>'; // A Facebook Platform application ID that administers this page.
+            $out .= '<meta property="fb:admins" content="' . $this->shikakeOji->config['facebook']['admins'] . '"/>';
+        }
+
+        // Developer guidance for websites with content for Adobe Flash Player in Windows 8
+        // http://msdn.microsoft.com/en-us/library/ie/jj193557%28v=vs.85%29.aspx
+        $out .= '<meta http-equiv="X-UA-Compatible" content="requiresActiveX=true" />';
+
         // http://microformats.org/wiki/rel-license
         $out .= '<link rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/"/>';
         $out .= '<link rel="author" href="http://paazmaya.com"/>';
 
-		// https://developer.apple.com/library/safari/#documentation/appleapplications/reference/safariwebcontent/configuringwebapplications/configuringwebapplications.html
+        // https://developer.apple.com/library/safari/#documentation/appleapplications/reference/safariwebcontent/configuringwebapplications/configuringwebapplications.html
         $out .= '<link rel="apple-touch-icon" href="/img/mobile-logo.png"/>'; // 57x57
 
         $base = '/css/';
 
-		// CodeMirror only if logged in
-		if ($this->shikakeOji->isLoggedIn)
-		{
-			$out .= '<link rel="stylesheet" href="/js/codemirror/codemirror.';
-			if ($this->useMinification)
-			{
-				$this->minifyFile('css', 'js/codemirror/codemirror.css'); // 3.0
-				$out .= 'min.';
-			}
-			$out .= 'css" type="text/css" media="all" />';
-			
-			$out .= '<link rel="stylesheet" href="/js/codemirror/theme/solarized.';
-			if ($this->useMinification)
-			{
-				$this->minifyFile('css', 'js/codemirror/theme/solarized.css');
-				$out .= 'min.';
-			}
-			$out .= 'css" type="text/css" media="all" />';
-		}
-		
+        // CodeMirror only if logged in
+        if ($this->shikakeOji->isLoggedIn)
+        {
+            $out .= '<link rel="stylesheet" href="/js/codemirror/codemirror.';
+            if ($this->useMinification)
+            {
+                $this->minifyFile('css', 'js/codemirror/codemirror.css'); // 3.0
+                $out .= 'min.';
+            }
+            $out .= 'css" type="text/css" media="all" />';
+
+            $out .= '<link rel="stylesheet" href="/js/codemirror/theme/solarized.';
+            if ($this->useMinification)
+            {
+                $this->minifyFile('css', 'js/codemirror/theme/solarized.css');
+                $out .= 'min.';
+            }
+            $out .= 'css" type="text/css" media="all" />';
+        }
+
         if ($this->useMinification)
         {
             $this->minify('css', $this->styles);
@@ -455,8 +458,8 @@ class ShikakeOjiPage
         $out .= '</head>';
 
         $out .= '<body>';
-		
-		
+
+
         $out .= '<nav><ul>' . $this->navigation . '</ul></nav>';
 
         $out .= '<div id="wrapper">';
@@ -480,38 +483,38 @@ class ShikakeOjiPage
         $out .= '<h1>' . $this->head['header'] . '</h1>';
         $out .= '<p class="desc-transform">' . $this->head['description'] . '</p>';
         $out .= '</header>';
-		
-		return $out;
-	}
-	
-	/**
-	 * Create HTML5 footer.
-	 * $data = $data['footer'][$this->shikakeOji->language]
-	 */
-	private function createHtmlFooter($data)
-	{
+
+        return $out;
+    }
+
+    /**
+     * Create HTML5 footer.
+     * $data = $data['footer'][$this->shikakeOji->language]
+     */
+    private function createHtmlFooter($data)
+    {
         $out = '</div>';
-		
+
         $out .= '<footer>';
         $out .= '<p>';
-		
-		// Last modification date
-		$data[] = array(
-			'url' => 'http://github.com/paazmaya/naginata.fi',
-			'alt' => 'Tällä sivulla olevaa sisältöä on muokattu viimeksi ' . date('j.n.Y G:i', $this->pageModified),
-			'text' => 'Muokattu viimeksi ' . date('j.n.Y G:i', $this->pageModified)
-		);
+
+        // Last modification date
+        $data[] = array(
+            'url'  => 'http://github.com/paazmaya/naginata.fi',
+            'alt'  => 'Tällä sivulla olevaa sisältöä on muokattu viimeksi ' . date('j.n.Y G:i', $this->pageModified),
+            'text' => 'Muokattu viimeksi ' . date('j.n.Y G:i', $this->pageModified)
+        );
 
         $links = array();
         foreach ($data as $item)
         {
-			$a = '<a href="' . $item['url'] . '" title="' . $item['alt'] . '"';
-			if (isset($item['data']))
-			{
-				// $(this).data('hover')
-				$a .= ' data-hover="' . $item['data'] . '"';
-			}
-			$a .= '>' . $item['text'] . '</a>';
+            $a = '<a href="' . $item['url'] . '" title="' . $item['alt'] . '"';
+            if (isset($item['data']))
+            {
+                // $(this).data('hover')
+                $a .= ' data-hover="' . $item['data'] . '"';
+            }
+            $a .= '>' . $item['text'] . '</a>';
             $links[] = $a;
         }
 
@@ -521,56 +524,56 @@ class ShikakeOjiPage
         $out .= '</footer>';
 
         $base = '/js/';
-		
-		// Include CodeMirror if user logged in
-		if ($this->shikakeOji->isLoggedIn)
-		{
-			$codemirror = array(
-				'codemirror.js',
-				'util/closetag.js',
-				'mode/xml/xml.js',
-				'mode/javascript/javascript.js',
-				'mode/css/css.js',
-				'mode/htmlmixed/htmlmixed.js'
-			);
-			$combinedName = 'codemirror-set.min.js';
-			
-			$cmData = '';
-			$mtime = 0;
-			if (file_exists('js/' . $combinedName))
-			{
-				$mtime = filemtime('js/' . $combinedName);
-			}
-			$rebuild = false;
-			
-			foreach ($codemirror as $code)
-			{
-				if ($this->useMinification)
-				{
-					if ($mtime < filemtime('js/codemirror/' . $code))
-					{
-						$rebuild  = true;
-					}
-					$cmData .= file_get_contents('js/codemirror/' . $code);
-				}
-				else
-				{
-					$out .= '<script src="/js/codemirror/' . $code . '"></script>';
-				}
-			}
-			
-			if ($this->useMinification)
-			{
-				if ($rebuild)
-				{
-					file_put_contents('js/' . $combinedName, $cmData);
-					$this->minifyFile('js', 'js/' . $combinedName);
-				}
-				$out .= '<script src="/js/' . $combinedName . '"></script>';
-			}
-			
-			
-		}
+
+        // Include CodeMirror if user logged in
+        if ($this->shikakeOji->isLoggedIn)
+        {
+            $codemirror = array(
+                'codemirror.js',
+                'util/closetag.js',
+                'mode/xml/xml.js',
+                'mode/javascript/javascript.js',
+                'mode/css/css.js',
+                'mode/htmlmixed/htmlmixed.js'
+            );
+            $combinedName = 'codemirror-set.min.js';
+
+            $cmData = '';
+            $mtime = 0;
+            if (file_exists('js/' . $combinedName))
+            {
+                $mtime = filemtime('js/' . $combinedName);
+            }
+            $rebuild = false;
+
+            foreach ($codemirror as $code)
+            {
+                if ($this->useMinification)
+                {
+                    if ($mtime < filemtime('js/codemirror/' . $code))
+                    {
+                        $rebuild = true;
+                    }
+                    $cmData .= file_get_contents('js/codemirror/' . $code);
+                }
+                else
+                {
+                    $out .= '<script src="/js/codemirror/' . $code . '"></script>';
+                }
+            }
+
+            if ($this->useMinification)
+            {
+                if ($rebuild)
+                {
+                    file_put_contents('js/' . $combinedName, $cmData);
+                    $this->minifyFile('js', 'js/' . $combinedName);
+                }
+                $out .= '<script src="/js/' . $combinedName . '"></script>';
+            }
+
+
+        }
 
         if ($this->useMinification)
         {
@@ -579,60 +582,63 @@ class ShikakeOjiPage
         }
         else
         {
-            foreach($this->scripts as $js)
+            foreach ($this->scripts as $js)
             {
                 $out .= '<script type="text/javascript" src="' . $base . $js . '"></script>';
             }
         }
-		
+
 
         $out .= '</body>';
         $out .= '</html>';
-		
-		return $out;
-	}
+
+        return $out;
+    }
 
     /**
      * Find and replace all the special fields listed in $this->specialFields
      * and call then the specific "render" method for that 3rd party service
-     * @param    string    $str    Content to be searched
+     *
+     * @param    string $str    Content to be searched
+     *
      * @return    string    Replaced content, if any
      */
     private function findSpecialFields($str)
     {
-        foreach($this->specialFields as $key => $value)
+        foreach ($this->specialFields as $key => $value)
         {
             $search = '/' . preg_quote('[' . $key . '|') . '(.*?)' . preg_quote(']') . '/i';
             $str = preg_replace_callback($search, array($this, $this->specialFields[$key]), $str);
         }
+
         return $str;
     }
-	
-	/**
-	 * The most simple image rendering option as the image in question
-	 * is stored locally at the server.
-	 * Also the image is shown as is, no linking to a higher resolution exists.
-	 * Hope that the file name is descriptive as it is used for alternative text.
-	 */
-	private function renderLocalImage($matches)
-	{
-		$imgDir = '../public_html/img/';
-		
+
+    /**
+     * The most simple image rendering option as the image in question
+     * is stored locally at the server.
+     * Also the image is shown as is, no linking to a higher resolution exists.
+     * Hope that the file name is descriptive as it is used for alternative text.
+     */
+    private function renderLocalImage($matches)
+    {
+        $imgDir = '../public_html/img/';
+
         $out = '';
-		
-		if (isset($matches['1']) && $matches['1'] != '')
+
+        if (isset($matches['1']) && $matches['1'] != '')
         {
-			if (file_exists($imgDir . $matches['1']))
-			{
-				$alt = ucwords(str_replace('-', ' ', substr($matches['1'], 0, strrpos($matches['1'], '.'))));
-				$size = getimagesize($imgDir . $matches['1']);
-				$out .= '<div class="medialocal" data-key="local|' . $matches['1'] . '"><img src="/img/' . $matches['1'] . '" alt="' . 
-					$alt . '" width="' . $size['0'] . '" height="' . $size['1'] . '" /></div>';
-			}
-		}
-		
-		return $out;
-	}
+            if (file_exists($imgDir . $matches['1']))
+            {
+                $alt = ucwords(str_replace('-', ' ', substr($matches['1'], 0, strrpos($matches['1'], '.'))));
+                $size = getimagesize($imgDir . $matches['1']);
+                $out .= '<div class="medialocal" data-key="local|' . $matches['1'] . '"><img src="/img/' . $matches['1'] . '" alt="' .
+                    $alt . '" width="' . $size['0'] . '" height="' . $size['1'] . '" /></div>';
+            }
+        }
+
+        return $out;
+    }
 
     /**
      * Get the given Flickr data and render it as image thumbnails.
@@ -645,10 +651,10 @@ class ShikakeOjiPage
         $out = '';
 
         $params = array(
-            'api_key' => $this->shikakeOji->config['flickr']['apikey'],
-            'format' => 'json', // Always using JSON
+            'api_key'        => $this->shikakeOji->config['flickr']['apikey'],
+            'format'         => 'json', // Always using JSON
             'nojsoncallback' => 1,
-            'method' => 'flickr.photos.search'
+            'method'         => 'flickr.photos.search'
         );
 
         if (isset($matches['1']) && $matches['1'] != '')
@@ -657,22 +663,22 @@ class ShikakeOjiPage
 
             if (count($list) > 1)
             {
-				// Multiple items, thus 'ul.imagelist'
+                // Multiple items, thus 'ul.imagelist'
                 $params['per_page'] = 63;
-				
-				// Cache file name
+
+                // Cache file name
                 $cache = $this->cacheDir . 'flickr';
 
-                foreach($list as $item)
+                foreach ($list as $item)
                 {
                     $a = explode('=', $item);
                     if (count($a) == 2)
                     {
                         $params[$a['0']] = $a['1'];
-						$cache .= '_' . $a['0'] . '-' . $a['1'];
+                        $cache .= '_' . $a['0'] . '-' . $a['1'];
                     }
                 }
-				
+
                 $cache .= '.json';
             }
             else
@@ -683,7 +689,7 @@ class ShikakeOjiPage
 
             }
 
-            $url = 'http://api.flickr.com/services/rest/?' . http_build_query($params, NULL, '&');
+            $url = 'http://api.flickr.com/services/rest/?' . http_build_query($params, null, '&');
             $feed = $this->getDataCache($cache, $url);
             $data = json_decode($feed, true);
 
@@ -706,7 +712,7 @@ class ShikakeOjiPage
                 // and flickr.photos.getSizes
                 $cache = $this->cacheDir . 'flickr_' . $matches['1'] . '_sizes.json';
                 $params['method'] = 'flickr.photos.getSizes';
-                $url = 'http://api.flickr.com/services/rest/?' . http_build_query($params, NULL, '&');
+                $url = 'http://api.flickr.com/services/rest/?' . http_build_query($params, null, '&');
                 $feed = $this->getDataCache($cache, $url);
                 $sizes = json_decode($feed, true);
 
@@ -741,32 +747,36 @@ class ShikakeOjiPage
         */
 
         $collected = array(
-			'id' => $photo['id'],
-            'title' => $photo['title']['_content'],
+            'id'          => $photo['id'],
+            'title'       => $photo['title']['_content'],
             'description' => '',
-            'published' => DateTime::createFromFormat('Y-m-d H:i:s', $photo['dates']['taken'], new DateTimeZone('UTC')),
-            'href' => 'http://flickr.com/photos/' . $photo['owner']['nsid'] . '/' . $photo['id'],
-            'owner' => $photo['owner']['username'],
-            'ownerlink' => 'http://flickr.com/people/' . $photo['owner']['nsid']
+            'published'   => DateTime::createFromFormat('Y-m-d H:i:s', $photo['dates']['taken'],
+                new DateTimeZone('UTC')),
+            'href'        => 'http://flickr.com/photos/' . $photo['owner']['nsid'] . '/' . $photo['id'],
+            'owner'       => $photo['owner']['username'],
+            'ownerlink'   => 'http://flickr.com/people/' . $photo['owner']['nsid']
         );
 
         $thumbs = array();
 
-        foreach($sizes as $size)
+        foreach ($sizes as $size)
         {
             if ($size['label'] == 'Small')
             {
                 $thumbs[] = array(
-                    'width' => $size['width'],
+                    'width'  => $size['width'],
                     'height' => $size['height'],
-                    'url' => $size['source']
+                    'url'    => $size['source']
                 );
             }
-            else if ($size['label'] == 'Large')
+            else
             {
-                $collected['inline'] = $size['source'];
-                $collected['inlinewidth'] = $size['width'];
-                $collected['inlineheight'] = $size['height'];
+                if ($size['label'] == 'Large')
+                {
+                    $collected['inline'] = $size['source'];
+                    $collected['inlinewidth'] = $size['width'];
+                    $collected['inlineheight'] = $size['height'];
+                }
             }
         }
         $collected['thumbs'] = $thumbs;
@@ -786,14 +796,14 @@ class ShikakeOjiPage
             return '<!-- no pictures -->';
         }
         $out = '<ul class="imagelist" data-key="flickr|' . $key . '">';
-        foreach($data['photos']['photo'] as $photo)
+        foreach ($data['photos']['photo'] as $photo)
         {
             // http://flic.kr/p/{base58-photo-id}
-            $url = 'http://farm' . $photo['farm'] . '.static.flickr.com/' . $photo['server'] . '/' . 
-				$photo['id'] . '_' . $photo['secret'];
+            $url = 'http://farm' . $photo['farm'] . '.static.flickr.com/' . $photo['server'] . '/' .
+                $photo['id'] . '_' . $photo['secret'];
             $out .= '<li>';
-            $out .= '<a href="' . $url . '_b.jpg" data-photo-page="http://www.flickr.com/photos/' . 
-				$photo['owner'] . '/' . $photo['id'] . '" title="' . $photo['title'] . '">';
+            $out .= '<a href="' . $url . '_b.jpg" data-photo-page="http://www.flickr.com/photos/' .
+                $photo['owner'] . '/' . $photo['id'] . '" title="' . $photo['title'] . '">';
             $out .= '<img src="' . $url . '_s.jpg" alt="' . $photo['title'] . '"/>';
             $out .= '</a>';
             $out .= '</li>';
@@ -807,6 +817,7 @@ class ShikakeOjiPage
             */
         }
         $out .= '</ul>';
+
         return $out;
     }
 
@@ -830,7 +841,7 @@ class ShikakeOjiPage
 
             // Get the thumbs for this video
             $thumbs = array(); // store 2 which are 120x90
-            foreach($data['entry']['media$group']['media$thumbnail'] as $thumb)
+            foreach ($data['entry']['media$group']['media$thumbnail'] as $thumb)
             {
                 /*
                 $name = $this->cacheDir . 'youtube_' . $matches['1'] . '_' . substr($thumb['url'], strrpos($thumb['url'], '/') + 1);
@@ -849,22 +860,26 @@ class ShikakeOjiPage
 
             // Z in the date-time stands for Coordinated Universal Time (UTC)
             $collected = array(
-				'id' => $matches['1'],
-                'thumbs' => $thumbs,
-                'title' => $data['entry']['title']['$t'],
+                'id'          => $matches['1'],
+                'thumbs'      => $thumbs,
+                'title'       => $data['entry']['title']['$t'],
                 'description' => '',
-                'published' => DateTime::createFromFormat('Y-m-d\TH:i:s.000\Z', $data['entry']['published']['$t'], new DateTimeZone('UTC')),
-                'href' => 'http://www.youtube.com/watch?v=' . $matches['1'],
-                'inline' => 'http://www.youtube.com/embed/' . $matches['1'] . '?version=3&f=videos&app=youtube_gdata', // type of application/x-shockwave-flash
-                'iframe' => true,
-                'owner' => $data['entry']['author']['0']['name']['$t'],
-                'ownerlink' => 'http://youtube.com/' . $data['entry']['author']['0']['name']['$t']
+                'published'   => DateTime::createFromFormat('Y-m-d\TH:i:s.000\Z', $data['entry']['published']['$t'],
+                    new DateTimeZone('UTC')),
+                'href'        => 'http://www.youtube.com/watch?v=' . $matches['1'],
+                'inline'      => 'http://www.youtube.com/embed/' . $matches['1'] . '?version=3&f=videos&app=youtube_gdata',
+                // type of application/x-shockwave-flash
+                'iframe'      => true,
+                'owner'       => $data['entry']['author']['0']['name']['$t'],
+                'ownerlink'   => 'http://youtube.com/' . $data['entry']['author']['0']['name']['$t']
             );
-			// https://developers.google.com/youtube/player_parameters
+
+            // https://developers.google.com/youtube/player_parameters
 
 
             return $this->createMediathumb($collected, 'youtube');
         }
+
         return '';
     }
 
@@ -907,35 +922,37 @@ class ShikakeOjiPage
             */
 
             $collected = array(
-				'id' => $matches['1'],
-                'thumbs' => array(array(
-                    'url' => $data['thumbnail_medium'],
-                    'width' => 200,
+                'id'           => $matches['1'],
+                'thumbs'       => array(array(
+                    'url'    => $data['thumbnail_medium'],
+                    'width'  => 200,
                     'height' => 150
                 )),
-                'title' => $data['title'],
-                'description' => '',
-                'published' => DateTime::createFromFormat('Y-m-d H:i:s', $data['upload_date'], new DateTimeZone('EST')),
-                'href' => 'http://vimeo.com/' . $matches['1'],
-                'inline' => 'http://player.vimeo.com/video/' . $matches['1'],
-                'inlinewidth' => $data['width'],
+                'title'        => $data['title'],
+                'description'  => '',
+                'published'    => DateTime::createFromFormat('Y-m-d H:i:s', $data['upload_date'],
+                    new DateTimeZone('EST')),
+                'href'         => 'http://vimeo.com/' . $matches['1'],
+                'inline'       => 'http://player.vimeo.com/video/' . $matches['1'],
+                'inlinewidth'  => $data['width'],
                 'inlineheight' => $data['height'],
-                'iframe' => true,
-                'owner' => $data['user_name'],
-                'ownerlink' => $data['user_url']
+                'iframe'       => true,
+                'owner'        => $data['user_name'],
+                'ownerlink'    => $data['user_url']
             );
-			
-			// https://developer.vimeo.com/player/js-api
+
+            // https://developer.vimeo.com/player/js-api
 
             return $this->createMediathumb($collected, 'vimeo');
         }
+
         return '';
     }
 
     /**
      * Create the "mediathumb" figure with the given data.
      * $data = array(
-	 *   'id' => '2352525252',
+     *   'id' => '2352525252',
      *   'thumbs' => array(
      *     array(
      *       'url' => $data['thumbnail_medium'],
@@ -980,7 +997,7 @@ class ShikakeOjiPage
         {
             if (is_array($data['thumbs']))
             {
-                foreach($data['thumbs'] as $img)
+                foreach ($data['thumbs'] as $img)
                 {
                     $out .= '<img src="' . self::encodeHtml($img['url']) . '" alt="' . $data['title'] . '"';
 
@@ -1017,6 +1034,7 @@ class ShikakeOjiPage
     /**
      * Get the cached data if available.
      * Update if needed as based on the cache lifetime setting.
+     *
      * @return    string    JSON string
      */
     private function getDataCache($cache, $url)
@@ -1054,6 +1072,7 @@ class ShikakeOjiPage
 
     /**
      * Get data from the given URL by using CURL.
+     *
      * @return    string    JSON string
      */
     private function getDataCurl($url)
@@ -1062,13 +1081,13 @@ class ShikakeOjiPage
 
         $ch = curl_init();
         curl_setopt_array($ch, array(
-            CURLOPT_URL => $url,
-            CURLOPT_HEADER => false,
+            CURLOPT_URL            => $url,
+            CURLOPT_HEADER         => false,
             CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_FAILONERROR => true,
-            CURLOPT_STDERR => $fh,
-            CURLOPT_VERBOSE => true,
-            CURLOPT_REFERER => 'http://naginata.fi' . $this->shikakeOji->currentPage
+            CURLOPT_FAILONERROR    => true,
+            CURLOPT_STDERR         => $fh,
+            CURLOPT_VERBOSE        => true,
+            CURLOPT_REFERER        => 'http://naginata.fi' . $this->shikakeOji->currentPage
         ));
 
         //curl_setopt($ch, CURLOPT_ENCODING, 'gzip');
@@ -1082,7 +1101,7 @@ class ShikakeOjiPage
             ' bytes, speed_download: ' . $headers['speed_download'] . "\n";
         fwrite($fh, $log);
 
-        $error_number = (int) curl_errno($ch);
+        $error_number = (int)curl_errno($ch);
         $error_message = curl_error($ch);
 
         curl_close($ch);
@@ -1109,8 +1128,9 @@ class ShikakeOjiPage
      * That is if the resulting minified file does not exist yet,
      * nor it is not older than any of the given files.
      *
-     * @param string $type    Either js or css
-     * @param array $files    List of files location in the public_html/[type]/ folder
+     * @param string $type     Either js or css
+     * @param array  $files    List of files location in the public_html/[type]/ folder
+     *
      * @return boolean True if the resulting file was updated, false is anything was wrong
      */
     private function minify($type, $files)
@@ -1125,14 +1145,11 @@ class ShikakeOjiPage
         // Are there newer source files than the single output file?
         $newerexists = false;
 
-        // Return value will be this, did the minified file need an update
-        $wrote = false;
-
         // Keep log of what has happened and how much the filesizes were reduced.
         $log = array();
 
         $data = array();
-        foreach($files as $file)
+        foreach ($files as $file)
         {
             $minified = $this->minifyFile($type, $type . '/' . $file);
             if ($minified !== false)
@@ -1142,32 +1159,22 @@ class ShikakeOjiPage
         }
 
         $outfile = $base . $this->minifiedName . $type;
-        $outfilegz = $base . $this->minifiedName . 'gz.' . $type;
 
         $alldata = implode("\n\n", $data);
         $bytecount = file_put_contents($outfile, $alldata);
         $log[] = date($this->shikakeOji->logDateFormat) . ' outfile: ' . $outfile . ', size: ' . $bytecount;
 
-        if ($bytecount !== false)
-        {
-            $gz = gzopen($outfilegz, 'wb9');
-            gzwrite($gz, $alldata);
-            gzclose($gz);
-			
-            $wrote = true;
-            $log[] = date($this->shikakeOji->logDateFormat) . ' outfilegz: ' . $outfilegz . ', size: ' . filesize($outfilegz);
-        }
-
         file_put_contents($this->minifyLog, implode("\n", $log) . "\n", FILE_APPEND);
 
-        return $wrote;
+        return $bytecount !== false;
     }
 
     /**
      * Minify a single file. Adds ".min" to the filename before the suffix.
      *
-     * @param   string  $type    Either js or css
-     * @param   string  $file    Name of the file in public_html/ folder or under it
+     * @param   string $type    Either js or css
+     * @param   string $file    Name of the file in public_html/ folder or under it
+     *
      * @return  string/boolean  Minified output or false if something went wrong
      */
     private function minifyFile($type, $file)
@@ -1183,7 +1190,7 @@ class ShikakeOjiPage
         // Absolute path of the given file
         $base = realpath('../public_html') . '/';
         $source = $base . $file;
-		$info = pathinfo($source);
+        $info = pathinfo($source);
 
         // By default, minification has not failed, yet.
         $failed = false;
@@ -1204,7 +1211,7 @@ class ShikakeOjiPage
                 // Rebuild the name by including ".min" in the end
                 $destination = $info['dirname'] . '/' . $info['filename'] . '.min.' . $info['extension'];
             }
-			
+
             $minified = '';
             if (file_exists($destination))
             {
@@ -1218,8 +1225,9 @@ class ShikakeOjiPage
 
             if ($doMinify)
             {
-				$log[] = date($this->shikakeOji->logDateFormat) . ' source: ' . $source . ', size: ' . filesize($source);
-				
+                $log[] =
+                    date($this->shikakeOji->logDateFormat) . ' source: ' . $source . ', size: ' . filesize($source);
+
                 $content = file_get_contents($source);
 
                 if ($type == 'js')
@@ -1230,31 +1238,37 @@ class ShikakeOjiPage
                     }
                     catch (Exception $error)
                     {
-                        $log[] = date($this->shikakeOji->logDateFormat) . ' ERROR: ' . $error->getMessage() . ' while JS source: ' . $source;
+                        $log[] =
+                            date($this->shikakeOji->logDateFormat) . ' ERROR: ' . $error->getMessage() . ' while JS source: ' . $source;
                         $failed = true;
                     }
                 }
-                else if ($type == 'css')
+                else
                 {
-                    try
+                    if ($type == 'css')
                     {
-                        $minified = Minify_CSS_Compressor::process($content);
-                    }
-                    catch (Exception $error)
-                    {
-                        $log[] = date($this->shikakeOji->logDateFormat) . ' ERROR: ' . $error->getMessage() . ' while CSS source: ' . $source;
-                        $failed = true;
+                        try
+                        {
+                            $minified = Minify_CSS_Compressor::process($content);
+                        }
+                        catch (Exception $error)
+                        {
+                            $log[] =
+                                date($this->shikakeOji->logDateFormat) . ' ERROR: ' . $error->getMessage() . ' while CSS source: ' . $source;
+                            $failed = true;
+                        }
                     }
                 }
 
                 if (!$failed)
                 {
                     file_put_contents($destination, $minified);
-					
-                    $log[] = date($this->shikakeOji->logDateFormat) . ' destination: ' . $destination . ', size: ' . filesize($destination);
+
+                    $log[] =
+                        date($this->shikakeOji->logDateFormat) . ' destination: ' . $destination . ', size: ' . filesize($destination);
                 }
             }
-			file_put_contents($this->minifyLog, implode("\n", $log) . "\n", FILE_APPEND);
+            file_put_contents($this->minifyLog, implode("\n", $log) . "\n", FILE_APPEND);
         }
 
         return ($doMinify && $failed) ? false : $minified;

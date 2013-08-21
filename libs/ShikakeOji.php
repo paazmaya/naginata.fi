@@ -25,11 +25,12 @@ class ShikakeOji
     /**
      * What is the version of this class?
      */
-    public static $VERSION = '0.12';
+    public static $VERSION = '0.13';
 
     /**
      * Current language, defaults to Finnish. Available languages are fi/en/ja.
-	 * @see http://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
+     *
+     * @see http://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
      */
     public $language = 'fi';
 
@@ -108,12 +109,6 @@ class ShikakeOji
     public $libPath = __DIR__;
 
     /**
-     * Client supports compression?
-     * This is checked and set in constructor.
-     */
-    private $isCompressionSupported = false;
-
-    /**
      * Is the page internal, thus only ouputting JSON?
      * These require user to login via OAuth.
      */
@@ -125,55 +120,50 @@ class ShikakeOji
      * Key is the URL, value is the name of the function to be called.
      */
     private $appUrls = array(
-        '/update-article' => 'pageUpdateArticle',
-        '/authenticate-user' => 'pageAuthenticateUser',
+        '/update-article'     => 'pageUpdateArticle',
+        '/authenticate-user'  => 'pageAuthenticateUser',
         '/keep-session-alive' => 'keepSessionAlive',
-		//'/application.cache' => 'renderAppCache',
-		'/sitemap' => 'showSiteMap'
+        //'/application.cache' => 'renderAppCache',
+        '/sitemap'            => 'showSiteMap'
     );
 
     /**
      * Constructor will load the JSON data and decode it as well as
      * check for compression support of the client.
-	 * If loading fails, the process is not continued.
+     * If loading fails, the process is not continued.
      */
     function __construct($dataPath, $configPath)
     {
-		$this->loadConfig($configPath);
+        $this->loadConfig($configPath);
 
         $this->checkSession();
 
         $this->dataPath = $dataPath;
         $this->loadData();
 
-        if (isset($_SERVER['HTTP_ACCEPT_ENCODING']) && strpos($_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip') !== false)
-        {
-            $this->isCompressionSupported = true;
-            //$this->minifiedName .= 'gz.'; // It might conflict with what Apache is delivering already compressed
-        }
-		
-		// Language setting based on browser values
-		// If url empty, using browser, then default to fi
-		if (isset($_SERVER['REQUEST_URI']))
-		{
-			if (!$this->checkLanguage(substr($_SERVER['REQUEST_URI'], 1, 2)))
-			{
-				if (isset($_SERVER['HTTP_ACCEPT_LANGUAGE']))
-				{
-					$candidates = explode(',', $_SERVER['HTTP_ACCEPT_LANGUAGE']);
-					foreach ($candidates as $candidate)
-					{
-						if ($this->checkLanguage(substr($candidate, 0, 2)))
-						{
-							break; // Assume we have found a match
-						}
-					}
-				}
-			}
-		}
 
-		$this->checkRequestedPage();
-		$this->output = new ShikakeOjiPage($this);
+        // Language setting based on browser values
+        // If url empty, using browser, then default to fi
+        if (isset($_SERVER['REQUEST_URI']))
+        {
+            if (!$this->checkLanguage(substr($_SERVER['REQUEST_URI'], 1, 2)))
+            {
+                if (isset($_SERVER['HTTP_ACCEPT_LANGUAGE']))
+                {
+                    $candidates = explode(',', $_SERVER['HTTP_ACCEPT_LANGUAGE']);
+                    foreach ($candidates as $candidate)
+                    {
+                        if ($this->checkLanguage(substr($candidate, 0, 2)))
+                        {
+                            break; // Assume we have found a match
+                        }
+                    }
+                }
+            }
+        }
+
+        $this->checkRequestedPage();
+        $this->output = new ShikakeOjiPage($this);
     }
 
     /**
@@ -210,7 +200,7 @@ class ShikakeOji
         // URLs should only be lowercase, thus check and redirect later
         $lowercase = isset($url['path']) ? strtolower($url['path']) : '/';
 
-		// App urls shall be without language
+        // App urls shall be without language
         if (array_key_exists($lowercase, $this->appUrls))
         {
             // Application internal URLs. Allow query in the URL.
@@ -219,36 +209,37 @@ class ShikakeOji
         }
         else
         {
-			// Plain page related url
-			$pageurl = substr($lowercase, 3);
-			if ($pageurl === false)
-			{
-				$pageurl = '/';
-			}
-			
-			// Remove all extra slashes
-			$pageurl = '/' . str_replace('/', '', $pageurl);
-			
+            // Plain page related url
+            $pageurl = substr($lowercase, 3);
+            if ($pageurl === false)
+            {
+                $pageurl = '/';
+            }
+
+            // Remove all extra slashes
+            $pageurl = '/' . str_replace('/', '', $pageurl);
+
             // Content
             $found = false;
 
-			$sql = 'SELECT * FROM naginata_page WHERE url = \'' . $pageurl . '\' AND lang = \'' . $this->language . '\'';
-			$run = $this->database->query($sql);
-			if ($run)
-			{
-				while ($res = $run->fetch(PDO::FETCH_ASSOC))
-				{
+            $sql =
+                'SELECT * FROM naginata_page WHERE url = \'' . $pageurl . '\' AND lang = \'' . $this->language . '\'';
+            $run = $this->database->query($sql);
+            if ($run)
+            {
+                while ($res = $run->fetch(PDO::FETCH_ASSOC))
+                {
                     if ($pageurl == $res['url']) // TODO: this it is of course but later add more logic
                     {
                         $this->currentPage = $pageurl;
                         $found = true;
                     }
-				}
-			}
+                }
+            }
 
             if (!$found)
             {
-				// Not found
+                // Not found
                 $this->redirectTo('/', 404);
             }
             else
@@ -272,17 +263,19 @@ class ShikakeOji
             // These functions return a string/true or false on failure.
             $out = call_user_func(array($this, $this->appUrls[$this->currentPage]));
 
-			// Other headers sent from the function above
+            // Other headers sent from the function above
             header('Content-Language: ' . $this->language);
-			header('Last-modified: ' . date('r', time()));
+            header('Last-modified: ' . date('r', time()));
+
             return $out;
         }
         else
         {
-			$out = $this->output->renderHtml();
+            $out = $this->output->renderHtml();
             header('Content-type: text/html; charset=utf-8');
             header('Content-Language: ' . $this->language);
             header('Last-modified: ' . date('r', $this->output->pageModified));
+
             return $out;
         }
     }
@@ -317,37 +310,41 @@ class ShikakeOji
             $this->isLoggedIn = true;
             $this->userEmail = $_SESSION['email'];
         }
-		/*
-		$log = date('Y-m-d H:i:s') . ' REMOTE_ADDR: ' . $_SERVER['REMOTE_ADDR'] . "\n\t" .
-				'REQUEST_URI : ' . $_SERVER['REQUEST_URI'] . "\n\t" .
-				'HTTP_USER_AGENT: ' . $_SERVER['HTTP_USER_AGENT'] . "\n\t" .
-				'$sid: ' . $sid . "\n\t" .
-				'$_SESSION[email]: ' . $_SESSION['email'] . "\n\t" .
-				'$_SESSION[sid]: ' . $_SESSION['sid'] . "\n";
+        /*
+        $log = date('Y-m-d H:i:s') . ' REMOTE_ADDR: ' . $_SERVER['REMOTE_ADDR'] . "\n\t" .
+                'REQUEST_URI : ' . $_SERVER['REQUEST_URI'] . "\n\t" .
+                'HTTP_USER_AGENT: ' . $_SERVER['HTTP_USER_AGENT'] . "\n\t" .
+                '$sid: ' . $sid . "\n\t" .
+                '$_SESSION[email]: ' . $_SESSION['email'] . "\n\t" .
+                '$_SESSION[sid]: ' . $_SESSION['sid'] . "\n";
 
-		file_put_contents('../session-checker.log', $log, FILE_APPEND);
-		*/
+        file_put_contents('../session-checker.log', $log, FILE_APPEND);
+        */
     }
 
     /**
-	 * Sets the langauge according to the order of language checking:
-	 * 1. Default fi, since site is in Finland 
-	 * 2. First two characters of url followed by nothing or /
-	 * 3. Browser setting via $_SERVER['HTTP_ACCEPT_LANGUAGE'], which is first matching
-	 * 
-	 * @param $candidate string Possible language ISO code from URL, if not false
-	 * @return boolean True in case candidate matched
+     * Sets the langauge according to the order of language checking:
+     * 1. Default fi, since site is in Finland
+     * 2. First two characters of url followed by nothing or /
+     * 3. Browser setting via $_SERVER['HTTP_ACCEPT_LANGUAGE'], which is first matching
+     *
+     * @param $candidate string Possible language ISO code from URL, if not false
+     *
+     * @return boolean True in case candidate matched
      */
     private function checkLanguage($candidate)
-    {		
-		if ($candidate !== false && 
-			array_key_exists($candidate, $this->config['language']) && 
-			$this->config['language'][$candidate])
-		{
-			$this->language = $candidate;
-			return true;
-		}
-		return false;
+    {
+        if ($candidate !== false &&
+            array_key_exists($candidate, $this->config['language']) &&
+            $this->config['language'][$candidate]
+        )
+        {
+            $this->language = $candidate;
+
+            return true;
+        }
+
+        return false;
     }
 
     /**
@@ -373,7 +370,8 @@ class ShikakeOji
 
         // PDO database connection if the settings are set.
         if (isset($this->config['database']) && isset($this->config['database']['type']) &&
-            in_array($this->config['database']['type'], PDO::getAvailableDrivers()))
+            in_array($this->config['database']['type'], PDO::getAvailableDrivers())
+        )
         {
             $attr = array();
             $dsn = $this->config['database']['type'] . ':';
@@ -410,25 +408,28 @@ class ShikakeOji
             $error = $this->getJsonError();
             if ($error != '')
             {
-				header('Content-type: text/plain');
+                header('Content-type: text/plain');
                 header('X-Failure-type: data');
                 echo $error;
-				exit();
+                exit();
             }
         }
     }
 
     /**
      * Save application data to the JSON file storage and update modificatiion date.
+     *
      * @return     boolean    True if saving succeeded, else false
      */
     private function saveData()
     {
         if ($this->dataPath != '' && $this->isLoggedIn)
         {
-            $jsonstring = ShikakeOjiPage::jsonPrettyPrint(json_encode($this->appData)); // PHP 5.4 onwards JSON_PRETTY_PRINT
+            $jsonstring =
+                ShikakeOjiPage::jsonPrettyPrint(json_encode($this->appData)); // PHP 5.4 onwards JSON_PRETTY_PRINT
             return (file_put_contents($this->dataPath, $jsonstring) !== false);
         }
+
         return false;
     }
 
@@ -441,7 +442,7 @@ class ShikakeOji
      */
     private function pageUpdateArticle()
     {
-		header('Content-type: application/json');
+        header('Content-type: application/json');
 
         $required = array(
             'lang', // language: fi
@@ -454,7 +455,7 @@ class ShikakeOji
             return json_encode(array('answer' => '0'));
         }
 
-		$success = false;
+        $success = false;
 
         // Get the id of the page
         $sql = 'SELECT P.id, A.content, A.modified FROM naginata_page P LEFT JOIN naginata_article A ' .
@@ -465,8 +466,8 @@ class ShikakeOji
         {
             $res = $run->fetch(PDO::FETCH_ASSOC);
 
-			$content = str_replace("\n\n", "\n", $received['content']); // remove duplicate new lines
-			$published = $this->isEmailAdministrator($this->userEmail) ? 1 : 0;
+            $content = str_replace("\n\n", "\n", $received['content']); // remove duplicate new lines
+            $published = $this->isEmailAdministrator($this->userEmail) ? 1 : 0;
 
             // Insert new revision for moderation
             $sql = 'INSERT INTO naginata_article (page_id, content, modified, email, published) VALUES (\'' .
@@ -494,25 +495,27 @@ class ShikakeOji
                 $this->config['email']['name'],
                 $_SERVER['HTTP_HOST'] . $received['page'] . ' - Muokattu, tekijänä ' . $this->userEmail,
                 'Terve, ' . "\n" . 'Sivustolla ' . $_SERVER['HTTP_HOST'] .
-                    ' tapahtui sisällön muokkaus tapahtuma, jonka tekijänä ' . $this->userEmail . '.' . "\n" .
-                    'Aiemman version päiväys: ' . date($this->logDateFormat, $res['modified']) . "\n" .
-                    'Sivun ' . $received['page'] . ' muutokset esitetty alla:' . "\n\n" . $diffUnified
+                ' tapahtui sisällön muokkaus tapahtuma, jonka tekijänä ' . $this->userEmail . '.' . "\n" .
+                'Aiemman version päiväys: ' . date($this->logDateFormat, $res['modified']) . "\n" .
+                'Sivun ' . $received['page'] . ' muutokset esitetty alla:' . "\n\n" . $diffUnified
             );
             $success = $isSaved && $isEmailed;
         }
 
-		$json = array(
-			'answer' => $success,
-			'login' => intval($this->isLoggedIn),
-			'email' => $this->userEmail
-		);
-		return json_encode($json);
+        $json = array(
+            'answer' => $success,
+            'login'  => intval($this->isLoggedIn),
+            'email'  => $this->userEmail
+        );
+
+        return json_encode($json);
     }
 
     /**
      * Try to authenticate the user via OAuth.
      * The email provider should tell if the user is who she/he/it claims to be.
      * https://developers.google.com/accounts/docs/OpenID
+     *
      * @return string/boolean
      */
     private function pageAuthenticateUser()
@@ -528,18 +531,18 @@ class ShikakeOji
             //'openid.ui.mode' => 'popup', // Google can use x-has-session but not useful for this app
             'openid.ui.lang' => $this->language . '_' . $this->territory
         );
-	
+
         if (isset($_GET['openid_mode']))
         {
             if ($openid->mode)
             {
                 $attr = $openid->getAttributes();
-				$validate = $openid->validate();
+                $validate = $openid->validate();
 
                 if ($validate &&
                     array_key_exists('contact/email', $attr) &&
                     ($this->isEmailAdministrator($attr['contact/email']) ||
-                    $this->isEmailContributor($attr['contact/email']))
+                        $this->isEmailContributor($attr['contact/email']))
                 )
                 {
                     // TODO: add differentiation between admins and contributors
@@ -550,21 +553,21 @@ class ShikakeOji
 
                 // Show a message of the login state
                 // Set a temporary session variable. Once it is found, it will be removed
-                $_SESSION['msg-login-success'] = (bool) $this->isLoggedIn;
+                $_SESSION['msg-login-success'] = (bool)$this->isLoggedIn;
 
-				// Build the mail message for site owner
+                // Build the mail message for site owner
                 $mailBody = 'OpenID was validated: ' . $validate . "\n\n";
                 $mailBody .= 'Attributes:' . "\n";
-                foreach($attr as $k => $v)
+                foreach ($attr as $k => $v)
                 {
                     $mailBody .= '  ' . $k . "\t" . $v . "\n";
                 }
                 $mailBody .= "\n" . 'Session values:' . "\n";
-                foreach($_SESSION as $k => $v)
+                foreach ($_SESSION as $k => $v)
                 {
                     $mailBody .= '  ' . $k . "\t" . $v . "\n";
                 }
-				$mailBody .= "\n" . 'Page: ' . (isset($_GET['page']) ? $_GET['page'] : 'not set...') . "\n";
+                $mailBody .= "\n" . 'Page: ' . (isset($_GET['page']) ? $_GET['page'] : 'not set...') . "\n";
 
                 $this->sendEmail(
                     $this->config['email']['address'],
@@ -576,216 +579,223 @@ class ShikakeOji
                 $this->redirectTo('/', '');
             }
         }
-        else if (isset($_GET['identifier']) && $_GET['identifier'] != '')
-        {
-			// Assuming $_GET['identifier'] == 'google', thus the following
-		    $id = 'https://www.google.com/accounts/o8/id';
-			
-			// TODO: add other indentifiers...
-            
-            $openid->returnUrl = 'http://' . $_SERVER['HTTP_HOST'] . $this->currentPage;
-            $openid->required = array(
-                'contact/email',
-                'namePerson'
-            );
-            $openid->identity = $id;
-            $authUrl = $openid->authUrl();
-
-            $log = date($this->logDateFormat) . ' [' . $_SERVER['REMOTE_ADDR'] . '] ' . 
-				$id . ' ' . implode("\n\t\t" . '&', explode('&', $authUrl)) . "\n";
-            file_put_contents($this->openidLog, $log, FILE_APPEND);
-
-            header('Location: ' . $authUrl);
-            exit();
-        }
         else
         {
-			header('Content-type: application/json');
-            return json_encode(array('answer' => '0'));
+            if (isset($_GET['identifier']) && $_GET['identifier'] != '')
+            {
+                // Assuming $_GET['identifier'] == 'google', thus the following
+                $id = 'https://www.google.com/accounts/o8/id';
+
+                // TODO: add other indentifiers...
+
+                $openid->returnUrl = 'http://' . $_SERVER['HTTP_HOST'] . $this->currentPage;
+                $openid->required = array(
+                    'contact/email',
+                    'namePerson'
+                );
+                $openid->identity = $id;
+                $authUrl = $openid->authUrl();
+
+                $log = date($this->logDateFormat) . ' [' . $_SERVER['REMOTE_ADDR'] . '] ' .
+                    $id . ' ' . implode("\n\t\t" . '&', explode('&', $authUrl)) . "\n";
+                file_put_contents($this->openidLog, $log, FILE_APPEND);
+
+                header('Location: ' . $authUrl);
+                exit();
+            }
+            else
+            {
+                header('Content-type: application/json');
+
+                return json_encode(array('answer' => '0'));
+            }
         }
     }
 
     /**
      * Keep session alive call via AJAX.
-	 * Since checkSession runs before this call, the session variables should be there.
+     * Since checkSession runs before this call, the session variables should be there.
+     *
      * @return    int    Session lifetime in seconds.
      */
     private function keepSessionAlive()
     {
-		header('Content-type: application/json');
+        header('Content-type: application/json');
 
         $lifetime = time() - $_SESSION['init'];
 
-		$json = array(
-			'answer' => $lifetime,
-			'login' => intval($this->isLoggedIn),
-			'email' => $this->userEmail
-		);
-		return json_encode($json);
+        $json = array(
+            'answer' => $lifetime,
+            'login'  => intval($this->isLoggedIn),
+            'email'  => $this->userEmail
+        );
+
+        return json_encode($json);
     }
 
-	/**
-	 * Render a manifest file for applicationCache
-	 * Does return something only on error.
-	 */
-	private function renderAppCache()
-	{
-		header('Content-type: text/cache-manifest');
+    /**
+     * Render a manifest file for applicationCache
+     * Does return something only on error.
+     */
+    private function renderAppCache()
+    {
+        header('Content-type: text/cache-manifest');
 
-		// date of the latest changed file
-		$highestDate = 0;
+        // date of the latest changed file
+        $highestDate = 0;
 
-		$out = 'CACHE MANIFEST' . "\n";
-		$out .= "\n";
-		$out .= 'CACHE:' . "\n";
+        $out = 'CACHE MANIFEST' . "\n";
+        $out .= "\n";
+        $out .= 'CACHE:' . "\n";
 
-		$sql = 'SELECT P.url, A.modified FROM naginata_page P' .
-			' LEFT JOIN naginata_article A ON P.id = A.page_id WHERE P.lang = \'' .
-			$this->language . '\' ORDER BY P.weight ASC, A.modified DESC';
-		$run = $this->database->query($sql);
-		if ($run)
-		{
-			while ($res = $run->fetch(PDO::FETCH_ASSOC))
-			{
-				$out .= $res['url'] . "\n";
-				$highestDate = max($highestDate, $res['modified']);
-			}
-		}
+        $sql = 'SELECT P.url, A.modified FROM naginata_page P' .
+            ' LEFT JOIN naginata_article A ON P.id = A.page_id WHERE P.lang = \'' .
+            $this->language . '\' ORDER BY P.weight ASC, A.modified DESC';
+        $run = $this->database->query($sql);
+        if ($run)
+        {
+            while ($res = $run->fetch(PDO::FETCH_ASSOC))
+            {
+                $out .= $res['url'] . "\n";
+                $highestDate = max($highestDate, $res['modified']);
+            }
+        }
 
-		$images = glob('../public_html/img/*');
-		foreach($images as $img)
-		{
-			$highestDate = max($highestDate, filemtime($img));
-			$out .= '/img/' . basename($img) . "\n";
-		}
-
-
-		if (!$this->output->useMinification)
-		{
-			foreach($this->output->styles as $css)
-			{
-				$out .= '/css/' . $css . "\n";
-				$highestDate = max($highestDate, filemtime('../public_html/css/' . $css));
-			}
-		}
-		else
-		{
-			$out .= '/css/' . $this->output->minifiedName . 'css' . "\n";
-			$highestDate = max($highestDate, filemtime('../public_html/css/' . $this->output->minifiedName . 'css'));
-		}
-		if (!$this->output->useMinification)
-		{
-			foreach($this->output->scripts as $js)
-			{
-				$out .= '/js/' . $js . "\n";
-				$highestDate = max($highestDate, filemtime('../public_html/js/' . $js));
-			}
-		}
-		else
-		{
-			$out .= '/js/' . $this->output->minifiedName . 'js' . "\n";
-			$highestDate = max($highestDate, filemtime('../public_html/js/' . $this->output->minifiedName . 'js'));
-		}
-
-		$flickr = glob('../cache/flickr_*_sizes.json');
-		foreach($flickr as $fl)
-		{
-			$fc = file_get_contents($fl);
-			$json = json_decode($fc, true);
-			$out .= $json['sizes']['size']['2']['source'] . "\n";
-		}
-
-		$flickr = glob('../cache/flickr_*_sizes.json');
-		foreach($flickr as $fl)
-		{
-			$fc = file_get_contents($fl);
-			$json = json_decode($fc, true);
-			$out .= $json['sizes']['size']['2']['source'] . "\n";
-		}
-
-		$youtube = glob('../cache/youtube_*.json');
-		foreach($youtube as $yo)
-		{
-			$ys = file_get_contents($yo);
-			$json = json_decode($ys, true);
-			foreach($json['entry']['media$group']['media$thumbnail'] as $thumb)
-			{
-				if ($thumb['height'] == 90)
-				{
-					$out .= $thumb['url'] . "\n";
-				}
-			}
-		}
-
-		$vimeo = glob('../cache/vimeo_*.json');
-		foreach($vimeo as $vi)
-		{
-			$vs = file_get_contents($vi);
-			$json = json_decode($vs, true);
-			$out .= $json['0']['thumbnail_medium'] . "\n";
-		}
+        $images = glob('../public_html/img/*');
+        foreach ($images as $img)
+        {
+            $highestDate = max($highestDate, filemtime($img));
+            $out .= '/img/' . basename($img) . "\n";
+        }
 
 
-		/*
-		/favicon.ico
-		*/
-		$out .= "\n";
+        if (!$this->output->useMinification)
+        {
+            foreach ($this->output->styles as $css)
+            {
+                $out .= '/css/' . $css . "\n";
+                $highestDate = max($highestDate, filemtime('../public_html/css/' . $css));
+            }
+        }
+        else
+        {
+            $out .= '/css/' . $this->output->minifiedName . 'css' . "\n";
+            $highestDate = max($highestDate, filemtime('../public_html/css/' . $this->output->minifiedName . 'css'));
+        }
+        if (!$this->output->useMinification)
+        {
+            foreach ($this->output->scripts as $js)
+            {
+                $out .= '/js/' . $js . "\n";
+                $highestDate = max($highestDate, filemtime('../public_html/js/' . $js));
+            }
+        }
+        else
+        {
+            $out .= '/js/' . $this->output->minifiedName . 'js' . "\n";
+            $highestDate = max($highestDate, filemtime('../public_html/js/' . $this->output->minifiedName . 'js'));
+        }
 
-		// Resources that require the user to be online.
-		$out .= 'NETWORK:' . "\n";
-		$out .= '*' . "\n";
+        $flickr = glob('../cache/flickr_*_sizes.json');
+        foreach ($flickr as $fl)
+        {
+            $fc = file_get_contents($fl);
+            $json = json_decode($fc, true);
+            $out .= $json['sizes']['size']['2']['source'] . "\n";
+        }
 
-		$out .= "\n";
+        $flickr = glob('../cache/flickr_*_sizes.json');
+        foreach ($flickr as $fl)
+        {
+            $fc = file_get_contents($fl);
+            $json = json_decode($fc, true);
+            $out .= $json['sizes']['size']['2']['source'] . "\n";
+        }
 
-		$out .= 'OFFLINE:' . "\n";
-		$out .= '/keep-session-alive /offline.json' . "\n";
+        $youtube = glob('../cache/youtube_*.json');
+        foreach ($youtube as $yo)
+        {
+            $ys = file_get_contents($yo);
+            $json = json_decode($ys, true);
+            foreach ($json['entry']['media$group']['media$thumbnail'] as $thumb)
+            {
+                if ($thumb['height'] == 90)
+                {
+                    $out .= $thumb['url'] . "\n";
+                }
+            }
+        }
 
-		$out .= "\n";
+        $vimeo = glob('../cache/vimeo_*.json');
+        foreach ($vimeo as $vi)
+        {
+            $vs = file_get_contents($vi);
+            $json = json_decode($vs, true);
+            $out .= $json['0']['thumbnail_medium'] . "\n";
+        }
 
-		$out .= '# ' . date('Y-m-d', $highestDate) . "\n";
 
-		return $out;
-	}
+        /*
+        /favicon.ico
+        */
+        $out .= "\n";
 
-	/**
-	 * Show sitemap.xml
-	 */
-	private function showSiteMap()
-	{
-		header('Content-type: text/xml');
+        // Resources that require the user to be online.
+        $out .= 'NETWORK:' . "\n";
+        $out .= '*' . "\n";
 
-		$out = '<?xml version="1.0" encoding="utf-8"?>';
-		$out .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
-		
-		$lang = 'fi';
-		$sql = 'SELECT P.url, MAX(A.modified) AS lastmod FROM naginata_page P' .
-			' LEFT JOIN naginata_article A ON P.id = A.page_id WHERE P.lang = \'' .
-			$lang . '\' AND A.published = 1 GROUP BY A.page_id';
-		$run = $this->database->query($sql);
-		if ($run)
-		{
-			while ($res = $run->fetch(PDO::FETCH_ASSOC))
-			{
-				$out .= '<url>';
-				$out .= '<loc>http://' . $_SERVER['HTTP_HOST'] . $res['url'] . '</loc>';
-				$out .= '<lastmod>' . date('Y-m-d', $res['lastmod']) . '</lastmod>';
-				$out .= '<changefreq>monthly</changefreq>';
-				$out .= '</url>';
-			}
-		}
-		$out .= '</urlset>';
+        $out .= "\n";
 
-		return $out;
-	}
+        $out .= 'OFFLINE:' . "\n";
+        $out .= '/keep-session-alive /offline.json' . "\n";
+
+        $out .= "\n";
+
+        $out .= '# ' . date('Y-m-d', $highestDate) . "\n";
+
+        return $out;
+    }
+
+    /**
+     * Show sitemap.xml
+     */
+    private function showSiteMap()
+    {
+        header('Content-type: text/xml');
+
+        $out = '<?xml version="1.0" encoding="utf-8"?>';
+        $out .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
+
+        $lang = 'fi';
+        $sql = 'SELECT P.url, MAX(A.modified) AS lastmod FROM naginata_page P' .
+            ' LEFT JOIN naginata_article A ON P.id = A.page_id WHERE P.lang = \'' .
+            $lang . '\' AND A.published = 1 GROUP BY A.page_id';
+        $run = $this->database->query($sql);
+        if ($run)
+        {
+            while ($res = $run->fetch(PDO::FETCH_ASSOC))
+            {
+                $out .= '<url>';
+                $out .= '<loc>http://' . $_SERVER['HTTP_HOST'] . $res['url'] . '</loc>';
+                $out .= '<lastmod>' . date('Y-m-d', $res['lastmod']) . '</lastmod>';
+                $out .= '<changefreq>monthly</changefreq>';
+                $out .= '</url>';
+            }
+        }
+        $out .= '</urlset>';
+
+        return $out;
+    }
 
     /**
      * Check $_POST against the given $required array.
+     *
      * @return array/boolean    False if any of the required is missing, else escaped data
      */
     private function checkRequiredPost($required)
     {
         $received = array();
-        foreach($required as $r)
+        foreach ($required as $r)
         {
             if (isset($_POST[$r]) && $_POST[$r] != '')
             {
@@ -797,26 +807,31 @@ class ShikakeOji
         {
             return false;
         }
+
         return $received;
     }
 
     /**
      * Redirect the client to the given URL with 301 (moved permanently) HTTP code.
-     * @param    string    $url    Redirect to this URL within this domain
+     *
+     * @param    string $url    Redirect to this URL within this domain
      */
     private function redirectTo($url, $code = '301')
     {
-		$url = '/' . $this->language . $url;
-        $log = date($this->logDateFormat) . ' [' . $_SERVER['REMOTE_ADDR'] . '] ' . $_SERVER['REQUEST_URI'] . ' --> ' . $url . "\n";
+        $url = '/' . $this->language . $url;
+        $log =
+            date($this->logDateFormat) . ' [' . $_SERVER['REMOTE_ADDR'] . '] ' . $_SERVER['REQUEST_URI'] . ' --> ' . $url . "\n";
         file_put_contents($this->redirectLog, $log, FILE_APPEND);
         if ($code != '')
         {
-			$text = 'Moved Permanently';
-			switch($code)
-			{
-				case '404': $text = 'Not Found'; break;
-				//case '': $text = ''; break;
-			}
+            $text = 'Moved Permanently';
+            switch ($code)
+            {
+                case '404':
+                    $text = 'Not Found';
+                    break;
+                //case '': $text = ''; break;
+            }
             header('HTTP/1.1 ' . $code . ' ' . $text);
         }
         header('Location: http://' . $_SERVER['HTTP_HOST'] . $url);
@@ -825,7 +840,9 @@ class ShikakeOji
 
     /**
      * Is the given email found in the administrators list.
-     * @param   string  $email
+     *
+     * @param   string $email
+     *
      * @return  boolean
      */
     private function isEmailAdministrator($email)
@@ -834,16 +851,19 @@ class ShikakeOji
         {
             return false;
         }
-		if (!isset($this->config['users']['administrators']) || !is_array($this->config['users']['administrators']))
-		{
-			return false;
-		}
+        if (!isset($this->config['users']['administrators']) || !is_array($this->config['users']['administrators']))
+        {
+            return false;
+        }
+
         return in_array($email, $this->config['users']['administrators']);
     }
 
     /**
      * Is the given email found in the contributors list.
-     * @param   string  $email
+     *
+     * @param   string $email
+     *
      * @return  boolean
      */
     private function isEmailContributor($email)
@@ -852,10 +872,11 @@ class ShikakeOji
         {
             return false;
         }
-		if (!isset($this->config['users']['contributors']) || !is_array($this->config['users']['contributors']))
-		{
-			return false;
-		}
+        if (!isset($this->config['users']['contributors']) || !is_array($this->config['users']['contributors']))
+        {
+            return false;
+        }
+
         return in_array($email, $this->config['users']['contributors']);
     }
 
@@ -864,10 +885,11 @@ class ShikakeOji
      * Sends a blind copy to the sender address.
      * Uses PHPMailer - PHP email class, Version: 5.2.
      *
-     * @param string $toMail    Email address of the recipient
-     * @param string $toName    Name of the recipient
+     * @param string $toMail     Email address of the recipient
+     * @param string $toName     Name of the recipient
      * @param string $subject    Subject of the mail
      * @param string $message    Text format of the mail
+     *
      * @return boolean    True if the sending succeeded
      */
     function sendEmail($toMail, $toName, $subject, $message)
@@ -905,6 +927,7 @@ class ShikakeOji
 
     /**
      * http://www.php.net/manual/en/function.json-last-error.php
+     *
      * @return    string
      */
     private function getJsonError()
