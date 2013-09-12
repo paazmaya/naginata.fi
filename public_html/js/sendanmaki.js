@@ -113,16 +113,16 @@ var sendanmaki = {
     }
 
     // external urls shall open in a new window
-    $('a[href^="http://"],a[href^="https://"]').not('.mediathumb a, .imagelist a').click(function () {
+    $('a[href^="http://"],a[href^="https://"]').not('.mediathumb a, .imagelist a').on('click',function (event) {
+      event.preventDefault();
       var href = $(this).attr('href');
       window.open(href, $.now());
-      return false;
     });
 
     // href has link to actual page, rel has inline player link
-    $('.mediathumb a:has(img)').click(function () {
+    $('.mediathumb a:has(img)').on('click',function (event) {
+      event.preventDefault();
       sendanmaki.mediaThumbClick($(this));
-      return false;
     });
 
     // data-photo-page ...
@@ -139,7 +139,8 @@ var sendanmaki = {
     });
 
     // Open modal form for logging in via OpenID
-    $('a[href="#contribute"]').click(function () {
+    $('a[href="#contribute"]').on('click', function (event) {
+      event.preventDefault();
       if (sendanmaki.isLoggedIn) {
         // Edit the current page
         sendanmaki.editModeClick();
@@ -148,14 +149,13 @@ var sendanmaki = {
         // open login form
         sendanmaki.openLoginForm();
       }
-      return false;
     });
 
     // Logged in can most likely edit content, thus AJAX.
-    $(document).on('submit', '#colorbox form.edit', function () {
+    $(document).on('submit', '#colorbox form.edit', function (event) {
+      event.preventDefault();
       if (sendanmaki.isLoggedIn) {
         sendanmaki.submitEditForm($(this));
-        return false;
       }
     });
 
@@ -198,6 +198,7 @@ var sendanmaki = {
   /**
    * Handle a click on a media thumbnail.
    * It can be a Flickr image, Vimeo or Youtube video.
+   * @param {jQuery} $a
    */
   mediaThumbClick: function ($a) {
     var data = $a.data();
@@ -250,7 +251,7 @@ var sendanmaki = {
   /**
    * Show a message that was set via temporary session variable
    * div#logo shall contain all the message data
-   * @param   msg    Data item to be used
+   * @param {string} msg    Data item to be used
    */
   showAppMessage: function (msg) {
     var text = $('#logo').data(msg);
@@ -324,6 +325,7 @@ var sendanmaki = {
   /**
    * Callback for submitting the contribution form.
    * It will insert the edited content to article.
+   * @param {jQuery} $form
    */
   submitEditForm: function ($form) {
     var content = $('textarea[name="content"]').val();
@@ -381,7 +383,7 @@ var sendanmaki = {
 
   /**
    * Create a note element on a image that has src == data.url
-   * data = {x, y, width, heigth, note, url}
+   * @param {object} data {x, y, width, heigth, note, url}
    */
   createImgNote: function (data) {
     var parent = $('img[src="' + data.url + '"]').parent();
