@@ -1,8 +1,8 @@
 # Graduointisäännöt
 
 > Suomen Kendoseurojen Keskusliitto ry - Atarashii Naginata
-> Jukka Paasonen
-> 1.9.2013
+
+> Jukka Paasonen - 1.9.2013
 
 Atarashii Naginatan graduointisäännöt ovat yhteneväiset 
 Euroopan Naginataliiton ja Kansainvälisen Naginataliiton kanssa. 

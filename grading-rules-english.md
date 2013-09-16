@@ -1,9 +1,8 @@
 # Grading Rules
 
-> Finnish Kendo Association
-> Atarashii Naginata
-> Jukka Paasonen
-> 1st Sep 2013
+> Finnish Kendo Association - Atarashii Naginata
+
+> Jukka Paasonen - 1st Sep 2013
 
 Atarashii Naginata grading rules are consistent with the rules of the 
 European Naginata Federation and the International Naginata Federation.
