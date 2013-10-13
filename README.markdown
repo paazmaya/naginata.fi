@@ -87,8 +87,8 @@ Thus the documentation for this file is below.
 ```js
 "database": {
     "type": "sqlite", // PDO driver name, http://php.net/manual/en/pdo.getavailabledrivers.php
-    "address": "naginata.fi.sqlite", // server address, or file path for SQLite, or 
-    "database": "", // name of the database, if not SQLite
+    "address": "naginata.fi.sqlite", // Server address, or file path for SQLite
+    "database": "", // Name of the database, if not SQLite
     "username": "",
     "password": ""
 },
