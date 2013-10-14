@@ -1,7 +1,8 @@
 {
   "name": "naginata.fi",
-  "version": "1.0.0",
-  "description": "a sample node.js app for heroku",
+  "version": "0.4.0",
+  "title": "Naginata in Finland",
+  "description": "A web site in Finland for an ancient martial art from Japan",
   "main": "web.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -20,10 +21,18 @@
   "keywords": [
     "atarashii",
     "naginata",
+    "jikishin",
+    "koryu",
     "finland",
     "heroku"
   ],
-  "author": "Juga Paazmaya",
-  "license": "Attribution-ShareAlike 3.0 Unported",
+  "author": {
+    "name": "Juga Paazmaya",
+    "url": "http://paazmaya.com"
+  },
+  "license": {
+    "name": "Attribution-ShareAlike 3.0 Unported",
+    "url": "http://creativecommons.org/licenses/by-sa/3.0/"
+  },
   "gitHead": ""
 }

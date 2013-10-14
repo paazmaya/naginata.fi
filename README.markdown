@@ -2,12 +2,12 @@
 
 A web site in Finland for an ancient martial art from Japan.
 
-All the code is under Creative Commons License - Attribution & Share Alike (http://creativecommons.org/licenses/by-sa/3.0/). 
+All the code is under Creative Commons License - Attribution & Share Alike (http://creativecommons.org/licenses/by-sa/3.0/).
 Full legal text available in `license.txt`.
 
 ## Technologies
 
- * Apache web server with mod_rewrite (http://httpd.apache.org/)
+ * Apache web server with `mod_rewrite` (http://httpd.apache.org/)
  * PHP 5.4 (http://www.php.net/)
  * MySQL database as content storage (http://www.mysql.com/)
  * JSON used as a data format for configuration (http://www.json.org/)
@@ -16,13 +16,14 @@ Full legal text available in `license.txt`.
  * Local Storage replacing browser cookies (http://www.w3.org/TR/webstorage/)
  * Application Cache for faster loading and possible offline browsing (http://www.html5rocks.com/en/tutorials/appcache/beginner/)
  * Google Web Fonts (http://www.google.com/fonts)
- 
+ * Node.js (http://nodejs.org)
+
 ## About the martial art
 
 Naginata is a weapon made of a long wooden stick on which a curved blade is attached.
 
 The art of using this weapon is often called simply as Naginata, but more accurately
-it can be called as Atarashii Naginata, in the case of the post-Meiji era standarsised 
+it can be called as Atarashii Naginata, in the case of the post-Meiji era standarsised
 version.
 
 The method of using naginata as a weapon has existed much longer and some around 500 styles
@@ -43,12 +44,12 @@ technologies and to promote the martial art.
 
 The domain, `naginata.fi` is privately registered to Jukka Paasonen.
 
-Leena Lecklin was kind enough to draw the `naginata-bogu-chudan-artwork-lecklin.png` picture used in 
+Leena Lecklin was kind enough to draw the `naginata-bogu-chudan-artwork-lecklin.png` picture used in
 _Atarashii Naginata_ page.
 
 Contributors are welcome.
 
-[JetBrains](http://www.jetbrains.com/) has kindly provided this project with an open source license for 
+[JetBrains](http://www.jetbrains.com/) has kindly provided this project with an open source license for
 [PhpStorm IDE](http://www.jetbrains.com/phpstorm/).
 ![Developed with JetBrains PhpStorm](http://www.jetbrains.com/phpstorm/documentation/phpstorm_banners/phpstorm1/phpstorm125x37_white.gif)
 
@@ -66,7 +67,7 @@ Contributors are welcome.
  * jQuery for client interaction (http://jquery.com/)
  * Content editing highlight via CodeMirror (http://codemirror.net/)
  * jQuery plugin "Colorbox" used for opening content in same page (http://jacklmoore.com/colorbox/)
- 
+
 ## Other notes
 
  * Both JavaScript and CSS files are combined to a single file, minified and finally compressed.
@@ -76,12 +77,12 @@ Contributors are welcome.
  * Microformats add meaning to what is already semantically correct markup (http://microformats.org/)
  * Open Graph Protocol, mainly used by Facebook makes "liking" more trackable (http://ogp.me/)
  * Speed study (http://blog.chromium.org/2010/07/do-you-know-how-slow-your-web-page-is.html)
- 
+
 ## Configuration file structure
 
-The `naginata-config.json` file is for configuring all API keys, database access, etc. 
+The `naginata-config.json` file is for configuring all API keys, database access, etc.
 Since PHP `[json_decode](http://php.net/manual/en/function.json-decode.php json_decode)` does not supported
-JSON string that contains comments, the file contained in this repository do not provide documentation. 
+JSON string that contains comments, the file contained in this repository do not provide documentation.
 Thus the documentation for this file is below.
 
 ```js
@@ -140,7 +141,7 @@ Thus the documentation for this file is below.
 
 The **Finnish Kendo Association - Naginata Grading Rules** are included in
 this repository as Markdown files. In order to print those, they should
-be converted to PDF files first. 
+be converted to PDF files first.
 [This can be achieved with _pandoc_](http://johnmacfarlane.net/pandoc/).
 
 ```sh
@@ -151,11 +152,8 @@ pandoc -V geometry:margin=0.5in -o grading-rules-english.md grading-rules-englis
 ## TODO
 
  * Translations for application strings
- * Configuration of language_TERRITORY
+ * Configuration of `language_TERRITORY`
  * Separate handling per page type, not all are simple articles
  * OpenID login redirects to wrong page. It is always / when there should be something more.
  * Facebook liking and related, https://developers.facebook.com/tools/debug/og/object?q=naginata.fi
- 
- 
- 
- 
+
