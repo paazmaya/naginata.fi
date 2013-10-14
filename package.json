@@ -2,13 +2,17 @@
   "name": "naginata.fi",
   "version": "0.4.0",
   "title": "Naginata in Finland",
+  "homepage": "https://github.com/paazmaya/naginata.fi",
   "description": "A web site in Finland for an ancient martial art from Japan",
+  "private": "true",
   "main": "web.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node web.js"
   },
   "dependencies": {
-    "express": "~3.3.4"
+    "express": "~3.3.4",
+    "marked": ""
   },
   "engines": {
     "node": ">=0.10.13",
@@ -17,6 +21,9 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/paazmaya/naginata.fi.git"
+  },
+  "bugs": { 
+    "url" : "https://github.com/paazmaya/naginata.fi/issues"
   },
   "keywords": [
     "atarashii",
@@ -30,8 +37,16 @@
     "name": "Juga Paazmaya",
     "url": "http://paazmaya.com"
   },
+  "contributors": [
+    {
+      "name": "Leena Lecklin"
+    },
+    {
+      "name": "Mari Paasonen"
+    }
+  ],
   "license": {
-    "name": "Attribution-ShareAlike 3.0 Unported",
+    "type": "Attribution-ShareAlike 3.0 Unported",
     "url": "http://creativecommons.org/licenses/by-sa/3.0/"
   },
   "gitHead": ""
