@@ -1,3 +1,35 @@
-
-section
-    != content
+doctype 5
+html(lang=settings.lang)
+  head
+    title= settings.title + " | " + settings.titlesuffix
+    meta(charset="utf-8")
+    meta(content="", name="description")
+    link(type="image/png", href="/img/favicon.png", rel="shortcut icon")
+    link(type="text/css", rel="stylesheet", href="http://fonts.googleapis.com/css?family=Inder|Lora&subset=latin-ext,latin")
+    meta(content="requiresActiveX=true", http-equiv="X-UA-Compatible")
+    link(href="http://creativecommons.org/licenses/by-sa/3.0/", rel="license")
+    link(href="http://paazmaya.com", rel="author")
+    link(href="/img/mobile-logo.png", rel="apple-touch-icon")
+    link(media="all", type="text/css", href="/css/naginata.min.css", rel="stylesheet")
+  body
+    nav
+      ul
+        li.current
+          a(rel="prefetch", title="", href="/")
+    div#wrapper
+      div#logo
+        p 
+          = settings.titlesuffix
+      header
+        h1
+        p.desc-transform
+      article
+        != content
+      footer
+        p
+          a(title="PAAZMAYA.com", href="http://paazmaya.com")
+            &copy; Jukka Paasonen
+          |
+          a(title="Kirjaudu sähköpostilla muokkaamaan sivuja", href="http://github.com/paazmaya/naginata.fi")
+            Muokkaa sivuja Githubissa
+    script(src="/js/jquery.js")

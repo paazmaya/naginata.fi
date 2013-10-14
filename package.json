@@ -8,12 +8,15 @@
   "main": "web.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node web.js"
+    "start": "node server.js"
   },
   "dependencies": {
     "express": "~3.3.4",
     "marked": "",
     "jade": ""
+  },
+  "devDependencies": {
+    "grunt": "~0.4.1"
   },
   "engines": {
     "node": ">=0.10.13",
@@ -23,8 +26,8 @@
     "type": "git",
     "url": "https://github.com/paazmaya/naginata.fi.git"
   },
-  "bugs": { 
-    "url" : "https://github.com/paazmaya/naginata.fi/issues"
+  "bugs": {
+    "url": "https://github.com/paazmaya/naginata.fi/issues"
   },
   "keywords": [
     "atarashii",

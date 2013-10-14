@@ -17,6 +17,8 @@ Full legal text available in `license.txt`.
  * Application Cache for faster loading and possible offline browsing (http://www.html5rocks.com/en/tutorials/appcache/beginner/)
  * Google Web Fonts (http://www.google.com/fonts)
  * Node.js (http://nodejs.org)
+ * Express.js (http://expressjs.com/)
+ * Jade (http://jade-lang.com/)
 
 ## About the martial art
 
