@@ -14,11 +14,12 @@ html(lang=settings.lang)
   body
     nav
       ul
-        li.current
-          a(rel="prefetch", title="", href="/")
+        - for (var x = 0; x < 3; x++)
+          li.current
+            a(rel="prefetch", title="", href="/")
     div#wrapper
       div#logo
-        p 
+        p
           = settings.titlesuffix
       header
         h1
