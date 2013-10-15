@@ -41,27 +41,28 @@ module.exports = function(grunt) {
     },
 
     jshint: {
-      files: [
-        'Gruntfile.js',
-        'public_html/js/Juga.js',
-        'public_html/js/Juga.admin.js'
-      ],
-      jshintrc: '.jshintrc'
+      onlymine: {
+        src: [
+          'Gruntfile.js',
+          'public_html/js/sendanmaki.js'
+        ],
+        jshintrc: '.jshintrc'
+      }
     },
     
     
     jasmine: {
       public: {
         src: [
-          'public_html/js/Juga.js'
+          'public_html/js/sendanmaki.js'
         ],
         options: {
           vendor: [
             'public_html/js/jquery.js',
-            'public_html/js/jquery.swfobject.js',
-            'public_html/js/jquery.colorbox.js'
+            'public_html/js/jquery.colorbox.js',
+            'public_html/js/jquery.outerhtml.js'
           ],
-          specs: 'tests/js/Juga_spec.js'
+          specs: 'tests/js/sendanmaki_spec.js'
         }
       }
     },
