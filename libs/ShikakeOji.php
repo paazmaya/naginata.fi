@@ -424,8 +424,7 @@ class ShikakeOji
     {
         if ($this->dataPath != '' && $this->isLoggedIn)
         {
-            $jsonstring =
-                ShikakeOjiPage::jsonPrettyPrint(json_encode($this->appData)); // PHP 5.4 onwards JSON_PRETTY_PRINT
+            $jsonstring = json_encode($this->appData, JSON_PRETTY_PRINT);
             return (file_put_contents($this->dataPath, $jsonstring) !== false);
         }
 
