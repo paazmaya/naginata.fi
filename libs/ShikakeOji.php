@@ -42,7 +42,7 @@ class ShikakeOji
     /**
      * Should be set to the realpath of the JSON file where app data is stored.
      */
-    public $dataPath = '../naginata-data.json';
+    public $dataPath = '../page-data.json';
 
     /**
      * Configuration for Emails sending, 3rd party API keys, etc.
