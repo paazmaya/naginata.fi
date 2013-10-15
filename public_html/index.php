@@ -35,7 +35,6 @@ $shio = new ShikakeOji(
 );
 
 $shio->removeWwwRedirect();
-$shio->output->useMinification = true;
 $shio->output->useTidy = false;
 
 echo $shio->renderPage();

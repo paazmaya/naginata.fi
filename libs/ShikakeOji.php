@@ -15,7 +15,6 @@
  *    realpath('../naginata-data.json'),
  *    realpath('../naginata-config.json')
  *  );
- *  $shio->output->useMinification = true;
  *  echo $shio->renderPage();
  */
 require 'ShikakeOjiPage.php';
@@ -25,7 +24,7 @@ class ShikakeOji
     /**
      * What is the version of this class?
      */
-    public static $VERSION = '0.13';
+    public static $VERSION = '0.14';
 
     /**
      * Current language, defaults to Finnish. Available languages are fi/en/ja.

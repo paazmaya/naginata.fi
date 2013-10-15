@@ -21,36 +21,11 @@ class ShikakeOjiPage
     public $pageModified = 0;
 
     /**
-     * List of Cascaded Style Sheet files that are minified into one
-     * Should be relative to public_html/css/
-     */
-    public $styles = array(
-        'colorbox.css',
-        'main.css'
-    );
-
-    /**
-     * List of Javascript files that are minified into one.
-     * Should be relative to public_html/js/
-     */
-    public $scripts = array(
-        'jquery.js',
-        'jquery.colorbox.js',
-        'jquery.outerhtml.js',
-        'sendanmaki.js'
-    );
-
-    /**
      * Use Tidy if available.
      * http://www.php.net/manual/en/tidy.examples.php
      * http://tidy.sourceforge.net/docs/quickref.html
      */
     public $useTidy = false;
-
-    /**
-     * Shall the JS and CSS files minification be done?
-     */
-    public $useMinification = true;
 
     /**
      * How will JS and CSS files will be called once minified in to one file per type?
@@ -423,35 +398,13 @@ class ShikakeOjiPage
         // CodeMirror only if logged in
         if ($this->shikakeOji->isLoggedIn)
         {
-            $out .= '<link rel="stylesheet" href="/js/codemirror/codemirror.';
-            if ($this->useMinification)
-            {
-                $this->minifyFile('css', 'js/codemirror/codemirror.css'); // 3.0
-                $out .= 'min.';
-            }
-            $out .= 'css" type="text/css" media="all" />';
+            $out .= '<link rel="stylesheet" href="/js/codemirror/codemirror.css" type="text/css" media="all" />';
 
-            $out .= '<link rel="stylesheet" href="/js/codemirror/theme/solarized.';
-            if ($this->useMinification)
-            {
-                $this->minifyFile('css', 'js/codemirror/theme/solarized.css');
-                $out .= 'min.';
-            }
-            $out .= 'css" type="text/css" media="all" />';
+            $out .= '<link rel="stylesheet" href="/js/codemirror/theme/solarized.css" type="text/css" media="all" />';
         }
 
-        if ($this->useMinification)
-        {
-            $this->minify('css', $this->styles);
-            $out .= '<link rel="stylesheet" href="' . $base . $this->minifiedName . 'css" type="text/css" media="all" />';
-        }
-        else
-        {
-            foreach ($this->styles as $css)
-            {
-                $out .= '<link rel="stylesheet" href="' . $base . $css . '" type="text/css" media="all" />';
-            }
-        }
+        $out .= '<link rel="stylesheet" href="' . $base . $this->minifiedName . 'css" type="text/css" media="all" />';
+        
         $out .= '</head>';
 
         $out .= '<body>';
@@ -545,46 +498,11 @@ class ShikakeOjiPage
 
             foreach ($codemirror as $code)
             {
-                if ($this->useMinification)
-                {
-                    if ($mtime < filemtime('js/codemirror/' . $code))
-                    {
-                        $rebuild = true;
-                    }
-                    $cmData .= file_get_contents('js/codemirror/' . $code);
-                }
-                else
-                {
-                    $out .= '<script src="/js/codemirror/' . $code . '"></script>';
-                }
-            }
-
-            if ($this->useMinification)
-            {
-                if ($rebuild)
-                {
-                    file_put_contents('js/' . $combinedName, $cmData);
-                    $this->minifyFile('js', 'js/' . $combinedName);
-                }
-                $out .= '<script src="/js/' . $combinedName . '"></script>';
-            }
-
-
-        }
-
-        if ($this->useMinification)
-        {
-            $this->minify('js', $this->scripts);
-            $out .= '<script type="text/javascript" src="' . $base . $this->minifiedName . 'js"></script>';
-        }
-        else
-        {
-            foreach ($this->scripts as $js)
-            {
-                $out .= '<script type="text/javascript" src="' . $base . $js . '"></script>';
+                $out .= '<script src="/js/codemirror/' . $code . '"></script>';
             }
         }
 
+        $out .= '<script type="text/javascript" src="' . $base . $this->minifiedName . 'js"></script>';
 
         $out .= '</body>';
         $out .= '</html>';
