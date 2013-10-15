@@ -35,11 +35,6 @@ class ShikakeOjiPage
     public $minifiedName = 'naginata.min.';
 
     /**
-     * Log for minification. Entry added every time minification is needed.
-     */
-    public $minifyLog = '../naginata-minify.log';
-
-    /**
      * CURL log
      */
     public $curlLog = '../naginata-curl.log';
@@ -123,10 +118,6 @@ class ShikakeOjiPage
             }
         }
         $this->navigation = $navigation;
-
-        // Require few libraries
-        require $this->shikakeOji->libPath . '/minify/Minify/JS/ClosureCompiler.php';
-        require $this->shikakeOji->libPath . '/minify/Minify/CSS/Compressor.php';
     }
 
     /**
@@ -1036,146 +1027,6 @@ class ShikakeOjiPage
         }
 
         return $results;
-    }
-
-    /**
-     * Combines and minifies the given local files.
-     * That is if the resulting minified file does not exist yet,
-     * nor it is not older than any of the given files.
-     *
-     * @param string $type     Either js or css
-     * @param array  $files    List of files location in the public_html/[type]/ folder
-     *
-     * @return boolean True if the resulting file was updated, false is anything was wrong
-     */
-    private function minify($type, $files)
-    {
-        if (!is_array($files) || count($files) == 0)
-        {
-            return false;
-        }
-        // Where can those files be found, under type
-        $base = realpath('../public_html/' . $type) . '/';
-
-        // Are there newer source files than the single output file?
-        $newerexists = false;
-
-        $data = array();
-        foreach ($files as $file)
-        {
-            $minified = $this->minifyFile($type, $type . '/' . $file);
-            if ($minified !== false)
-            {
-                $data[] = '/* ' . $file . ' */' . "\n" . $minified;
-            }
-        }
-
-        $outfile = $base . $this->minifiedName . $type;
-
-        $alldata = implode("\n\n", $data);
-        $bytecount = file_put_contents($outfile, $alldata);
-
-        return $bytecount !== false;
-    }
-
-    /**
-     * Minify a single file. Adds ".min" to the filename before the suffix.
-     *
-     * @param   string $type    Either js or css
-     * @param   string $file    Name of the file in public_html/ folder or under it
-     *
-     * @return  string/boolean  Minified output or false if something went wrong
-     */
-    private function minifyFile($type, $file)
-    {
-        // Keep log of what has happened and how much the filesizes were reduced.
-        $log = array();
-
-        if ($type != 'js' && $type != 'css')
-        {
-            return false;
-        }
-
-        // Absolute path of the given file
-        $base = realpath('../public_html') . '/';
-        $source = $base . $file;
-        $info = pathinfo($source);
-
-        // By default, minification has not failed, yet.
-        $failed = false;
-
-        if (file_exists($source))
-        {
-            $doMinify = true;
-            $mtime_src = filemtime($source);
-
-            // If the filename has a ".min" appended in the end, its content is used as such.
-            if (substr($info['filename'], -4) == '.min')
-            {
-                $destination = $source;
-                $doMinify = false;
-            }
-            else
-            {
-                // Rebuild the name by including ".min" in the end
-                $destination = $info['dirname'] . '/' . $info['filename'] . '.min.' . $info['extension'];
-            }
-
-            $minified = '';
-            if (file_exists($destination))
-            {
-                $mtime_des = filemtime($destination);
-                if ($mtime_src <= $mtime_des)
-                {
-                    $doMinify = false;
-                    $minified = file_get_contents($destination);
-                }
-            }
-
-            if ($doMinify)
-            {
-
-                $content = file_get_contents($source);
-
-                if ($type == 'js')
-                {
-                    try
-                    {
-                        $minified = Minify_JS_ClosureCompiler::minify($content);
-                    }
-                    catch (Exception $error)
-                    {
-                        $log[] =
-                            date($this->shikakeOji->logDateFormat) . ' ERROR: ' . $error->getMessage() . ' while JS source: ' . $source;
-                        $failed = true;
-                    }
-                }
-                else
-                {
-                    if ($type == 'css')
-                    {
-                        try
-                        {
-                            $minified = Minify_CSS_Compressor::process($content);
-                        }
-                        catch (Exception $error)
-                        {
-                            $log[] =
-                                date($this->shikakeOji->logDateFormat) . ' ERROR: ' . $error->getMessage() . ' while CSS source: ' . $source;
-                            $failed = true;
-                        }
-                    }
-                }
-
-                if (!$failed)
-                {
-                    file_put_contents($destination, $minified);
-                }
-            }
-            file_put_contents($this->minifyLog, implode("\n", $log) . "\n", FILE_APPEND);
-        }
-
-        return ($doMinify && $failed) ? false : $minified;
     }
 
 }

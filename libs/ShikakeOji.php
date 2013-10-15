@@ -81,7 +81,7 @@ class ShikakeOji
     public $logDateFormat = 'Y-m-d H:i:s';
 
     /**
-     * Log for minification. Entry added every time minification is needed.
+     * 
      */
     public $redirectLog = '../naginata-redirect.log';
 
@@ -666,34 +666,12 @@ class ShikakeOji
             $highestDate = max($highestDate, filemtime($img));
             $out .= '/img/' . basename($img) . "\n";
         }
+       
+        $out .= '/css/' . $this->output->minifiedName . 'css' . "\n";
+        $highestDate = max($highestDate, filemtime('../public_html/css/' . $this->output->minifiedName . 'css'));
 
-
-        if (!$this->output->useMinification)
-        {
-            foreach ($this->output->styles as $css)
-            {
-                $out .= '/css/' . $css . "\n";
-                $highestDate = max($highestDate, filemtime('../public_html/css/' . $css));
-            }
-        }
-        else
-        {
-            $out .= '/css/' . $this->output->minifiedName . 'css' . "\n";
-            $highestDate = max($highestDate, filemtime('../public_html/css/' . $this->output->minifiedName . 'css'));
-        }
-        if (!$this->output->useMinification)
-        {
-            foreach ($this->output->scripts as $js)
-            {
-                $out .= '/js/' . $js . "\n";
-                $highestDate = max($highestDate, filemtime('../public_html/js/' . $js));
-            }
-        }
-        else
-        {
-            $out .= '/js/' . $this->output->minifiedName . 'js' . "\n";
-            $highestDate = max($highestDate, filemtime('../public_html/js/' . $this->output->minifiedName . 'js'));
-        }
+        $out .= '/js/' . $this->output->minifiedName . 'js' . "\n";
+        $highestDate = max($highestDate, filemtime('../public_html/js/' . $this->output->minifiedName . 'js'));
 
         $flickr = glob('../cache/flickr_*_sizes.json');
         foreach ($flickr as $fl)
