@@ -3,82 +3,75 @@ module.exports = function(grunt) {
 
   // Project configuration.
   grunt.initConfig({
-    // Metadata.
-    meta: {
-      version: '0.1.0'
-    },
-    banner: '/*! PROJECT_NAME - v<%= meta.version %> - ' +
+    pkg: grunt.file.readJSON('package.json'),
+      
+    banner: '/*! <%= pkg.name %> - v<%= pkg.version %> - ' +
       '<%= grunt.template.today("yyyy-mm-dd") %>\n' +
-      '* http://PROJECT_WEBSITE/\n' +
       '* Copyright (c) <%= grunt.template.today("yyyy") %> ' +
-      'YOUR_NAME; Licensed MIT */\n',
-    // Task configuration.
-    concat: {
-      options: {
-        banner: '<%= banner %>',
-        stripBanners: true
-      },
-      dist: {
-        src: ['lib/FILE_NAME.js'],
-        dest: 'dist/FILE_NAME.js'
-      }
-    },
+      '<% pkg.author.name %>; Licensed Attribution-ShareAlike 3.0 Unported */\n',
+      
     uglify: {
-      options: {
-        banner: '<%= banner %>'
-      },
-      dist: {
-        src: '<%= concat.dist.dest %>',
-        dest: 'dist/FILE_NAME.min.js'
-      }
-    },
-    jshint: {
-      options: {
-        curly: true,
-        eqeqeq: true,
-        immed: true,
-        latedef: true,
-        newcap: true,
-        noarg: true,
-        sub: true,
-        undef: true,
-        unused: true,
-        boss: true,
-        eqnull: true,
-        globals: {
-          jQuery: true
+      javascript: {
+        options: {
+          banner: '<%= banner %>'
+        },
+        files: {
+          'public_html/js/naginata.min.js': [
+            'public_html/js/jquery.js',
+            'public_html/js/jquery.colorbox.js',
+            'public_html/js/jquery.outerhtml.js',
+            'public_html/js/sendanmaki.js'
+          ]
         }
-      },
-      gruntfile: {
-        src: 'Gruntfile.js'
-      },
-      lib_test: {
-        src: ['lib/**/*.js', 'test/**/*.js']
       }
     },
-    nodeunit: {
-      files: ['test/**/*_test.js']
-    },
-    watch: {
-      gruntfile: {
-        files: '<%= jshint.gruntfile.src %>',
-        tasks: ['jshint:gruntfile']
-      },
-      lib_test: {
-        files: '<%= jshint.lib_test.src %>',
-        tasks: ['jshint:lib_test', 'nodeunit']
+
+    cssmin: {
+      css: {
+        options: {
+          banner: '<%= banner %>'
+        },
+        files: {
+          'public_html/css/naginata.min.css': [
+            'public_html/css/colorbox.css',
+            'public_html/css/main.css'
+          ]
+        }
       }
-    }
+    },
+
+    jshint: {
+      files: [
+        'Gruntfile.js',
+        'public_html/js/Juga.js',
+        'public_html/js/Juga.admin.js'
+      ],
+      jshintrc: '.jshintrc'
+    },
+    
+    
+    jasmine: {
+      public: {
+        src: [
+          'public_html/js/Juga.js'
+        ],
+        options: {
+          vendor: [
+            'public_html/js/jquery.js',
+            'public_html/js/jquery.swfobject.js',
+            'public_html/js/jquery.colorbox.js'
+          ],
+          specs: 'tests/js/Juga_spec.js'
+        }
+      }
+    },
   });
 
-  // These plugins provide necessary tasks.
-  grunt.loadNpmTasks('grunt-contrib-concat');
-  grunt.loadNpmTasks('grunt-contrib-uglify');
-  grunt.loadNpmTasks('grunt-contrib-nodeunit');
+  grunt.loadNpmTasks('grunt-contrib-cssmin');
+  grunt.loadNpmTasks('grunt-contrib-jasmine');
   grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-uglify');
 
-  // Default task.
-  grunt.registerTask('default', ['jshint', 'nodeunit', 'concat', 'uglify']);
-
+  grunt.registerTask('minify', ['uglify', 'cssmin']);
+  grunt.registerTask('default', ['jshint', 'jasmine', 'minify']);
 };
