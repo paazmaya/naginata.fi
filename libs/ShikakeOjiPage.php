@@ -303,19 +303,11 @@ class ShikakeOjiPage
 
         // https://developer.apple.com/library/safari/#documentation/appleapplications/reference/safariwebcontent/configuringwebapplications/configuringwebapplications.html
         $out .= '<link rel="apple-touch-icon" href="/img/mobile-logo.png"/>'; // 57x57
-        
+
         $base = '/css/';
 
-        // CodeMirror only if logged in
-        if ($this->shikakeOji->isLoggedIn)
-        {
-            $out .= '<link rel="stylesheet" href="/js/codemirror/codemirror.css" type="text/css" media="all" />';
-
-            $out .= '<link rel="stylesheet" href="/js/codemirror/theme/solarized.css" type="text/css" media="all" />';
-        }
-
         $out .= '<link rel="stylesheet" href="' . $base . $this->minifiedName . 'css" type="text/css" media="all" />';
-        
+
         $out .= '</head>';
 
         $out .= '<body>';
@@ -326,15 +318,7 @@ class ShikakeOjiPage
         $out .= '<div id="wrapper">';
 
         // div#logo tag shall contain all the message data, if needed
-        $out .= '<div id="logo"';
-        $out .= ' data-login-success="Olet kirjautunut, nyt on hauskaa." data-login-failure="Kirjautuminen meni pieleen, voi pahus."';
-        // Check for possible OpenID login try out.
-        if (isset($_SESSION['msg-login-success']))
-        {
-            $out .= ' data-msg-login-success="' . ($_SESSION['msg-login-success'] ? 1 : 0) . '"';
-            unset($_SESSION['msg-login-success']);
-        }
-        $out .= '>';
+        $out .= '<div id="logo">';
 
         // should be only two words
         $out .= '<p>' . $title . '</p>';
@@ -385,34 +369,6 @@ class ShikakeOjiPage
         $out .= '</footer>';
 
         $base = '/js/';
-
-        // Include CodeMirror if user logged in
-        if ($this->shikakeOji->isLoggedIn)
-        {
-            $codemirror = array(
-                'codemirror.js',
-                'util/closetag.js',
-                'mode/xml/xml.js',
-                'mode/javascript/javascript.js',
-                'mode/css/css.js',
-                'mode/htmlmixed/htmlmixed.js'
-            );
-            $combinedName = 'codemirror-set.min.js';
-
-            $cmData = '';
-            $mtime = 0;
-            if (file_exists('js/' . $combinedName))
-            {
-                $mtime = filemtime('js/' . $combinedName);
-            }
-            $rebuild = false;
-
-            foreach ($codemirror as $code)
-            {
-                $out .= '<script src="/js/codemirror/' . $code . '"></script>';
-            }
-        }
-
         $out .= '<script type="text/javascript" src="' . $base . $this->minifiedName . 'js"></script>';
 
         $out .= '</body>';
