@@ -28,8 +28,6 @@ app.use(express.static(__dirname + '/public_html'));
 
 app.engine('jade', require('jade').__express);
 
-app.set('titlesuffix', 'Naginata Suomessa');
-
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
 
@@ -77,12 +75,12 @@ for (var key in pageJson.title) {
   }
 }
 
-var pageRegex = new RegExp('/^\/(' + langKeys.join('|') + ')(\/(\w+))?$/');
+var pageRegex = new RegExp('^\/(' + langKeys.join('|') + ')(\/(\w+))?$');
+
 
 app.get(pageRegex, function(req, res) {
   var lang = req.params[0];
   app.set('lang', lang);
-  console.dir(req);
 
   var current = null;
   var pages = pageJson.pages.filter(function (item) {
@@ -102,8 +100,9 @@ app.get(pageRegex, function(req, res) {
   }
   current.titlesuffix = pageJson.title[lang];
 
-  //if (strpos($_SERVER['HTTP_USER_AGENT'], 'facebookexternalhit') !== false)
-  //facebookMeta(current);
+  if (req.header('user-agent').indexOf('facebookexternalhit') !== -1) {
+    current.facebook = facebookMeta(current);
+  }
 
   var html = getContent(lang, current.title);
   res.render('index', { content: html, pages: pages, footers: pageJson.footer[lang], meta: current, lang: lang });
