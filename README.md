@@ -7,21 +7,6 @@ Full legal text available in `LICENSE.md`.
 
 [![Dependency Status](https://gemnasium.com/paazmaya/naginata.fi.png)](https://gemnasium.com/paazmaya/naginata.fi)
 
-## Technologies
-
- * Apache web server with `mod_rewrite` (http://httpd.apache.org/)
- * PHP 5.4 (http://www.php.net/)
- * MySQL database as content storage (http://www.mysql.com/)
- * JSON used as a data format for configuration (http://www.json.org/)
- * HTML5 for markup (http://developers.whatwg.org/)
- * CSS3 for styling (http://www.css3.info/modules/)
- * Local Storage replacing browser cookies (http://www.w3.org/TR/webstorage/)
- * Application Cache for faster loading and possible offline browsing (http://www.html5rocks.com/en/tutorials/appcache/beginner/)
- * Google Web Fonts (http://www.google.com/fonts)
- * Node.js (http://nodejs.org)
- * Express.js (http://expressjs.com/)
- * Jade (http://jade-lang.com/)
-
 ## About the martial art
 
 Naginata is a weapon made of a long wooden stick on which a curved blade is attached.
@@ -57,88 +42,48 @@ Contributors are welcome.
 [PhpStorm IDE](http://www.jetbrains.com/phpstorm/).
 ![Developed with JetBrains PhpStorm](http://www.jetbrains.com/phpstorm/documentation/phpstorm_banners/phpstorm1/phpstorm125x37_white.gif)
 
+## Technologies
 
-## PHP libraries used and included
+ * JavaScript for the front and the back ends, more about it below
+ * HTML5 for markup (http://developers.whatwg.org/)
+ * CSS3 for styling (http://www.css3.info/modules/)
+ * Local Storage replacing browser cookies (http://www.w3.org/TR/webstorage/)
+ * Google Web Fonts (http://www.google.com/fonts)
+ * Google Analytics
 
- * Possible contributors and administrators can login via OpenID (https://openid.net/) which is supported via LightOpenID (https://gitorious.org/~paazmaya/lightopenid/paazmayas-lightopenid)
- * Edited content is saved for moderation and diff generated with PHP-Diff (https://github.com/chrisboulton/php-diff)
- * PHPMailer for sending those diffs to moderator (https://github.com/Synchro/PHPMailer)
- * HybridAuth used for authentication via 3rd party providers (http://hybridauth.sourceforge.net)
+### [Node.js](http://nodejs.org "Node.js is a platform built on Chrome's JavaScript runtime for easily building fast, scalable network applications")
 
-## JavaScript libraries used and included
+* [NPM](https://npmjs.org/ "Node Packaged Modules")
 
- * jQuery for client interaction (http://jquery.com/)
- * Content editing highlight via CodeMirror (http://codemirror.net/)
- * jQuery plugin "Colorbox" used for opening content in same page (http://jacklmoore.com/colorbox/)
+### [Bower](http://bower.io/ "Bower is a package manager for the web")
+
+### [Grunt](http://gruntjs.com/ "The JavaScript Task Runner")
+
+ * Both JavaScript and CSS files are combined to a single file, minified and finally compressed.
+
+### [Jade](http://jade-lang.com/ "node templating language")
+
+### [Express.js](http://expressjs.com/ "web application framework for node")
+
+### [jQuery](http://jquery.com/ "New wave JavaScript")
+
+### [Colorbox](http://jacklmoore.com/colorbox/ "A lightweight customizable lightbox plugin for jQuery")
+
+ * jQuery plugin "Colorbox" used for opening content in same page
+
+
+### [Markdown](http://daringfireball.net/projects/markdown/ "Markdown is a text-to-HTML conversion tool for web writers")
+
+
+### [JSON](http://www.json.org/ "JSON (JavaScript Object Notation) is a lightweight data-interchange format")
+
+ * JSON used as a data format for configuration
+
 
 ## Other notes
 
- * Both JavaScript and CSS files are combined to a single file, minified and finally compressed.
- * This reduces the amount of HTTP requests and if supported by the client, the download size.
- * Unused JavaScript could be stripped out with JSlim (https://github.com/zgrossbart/jslim)
- * 3rd party media service data cached locally server side in order to reduce API calls. cURL is optimal for fetching updates (http://curl.haxx.se/)
- * Microformats add meaning to what is already semantically correct markup (http://microformats.org/)
- * Open Graph Protocol, mainly used by Facebook makes "liking" more trackable (http://ogp.me/)
  * Speed study (http://blog.chromium.org/2010/07/do-you-know-how-slow-your-web-page-is.html)
 
-## Configuration file structure
-
-The `naginata-config.json` file is for configuring all API keys, database access, etc.
-Since PHP `[json_decode](http://php.net/manual/en/function.json-decode.php json_decode)` does not supported
-JSON string that contains comments, the file contained in this repository do not provide documentation.
-Thus the documentation for this file is below.
-
-```js
-"database": {
-    "type": "sqlite", // PDO driver name, http://php.net/manual/en/pdo.getavailabledrivers.php
-    "address": "naginata.fi.sqlite", // Server address, or file path for SQLite
-    "database": "", // Name of the database, if not SQLite
-    "username": "",
-    "password": ""
-},
-"email": { // Email server settings. SMTP is used for sending emails
-    "address": "email@address.com", // address of the sender and who will get all copies
-    "name": "Some Tonttu", // name of the owner of the address abowe
-    "username": "", // username for the servers listed below
-    "password": "", // password for the servers listed below
-    "pop3": "pop3.address.com:110",
-    "smtp": "smtp.address.com:587"
-},
-"facebook": { // Facebook API keys if needed
-    "app_id": "",
-    "secret": "",
-    "admins": ""
-},
-"flickr": { // Flickr API keys if needed
-    "apikey": "",
-    "secret": ""
-},
-"google": { // Google API keys if needed
-    "consumer_key": "",
-    "consumer_secret": ""
-},
-"twitter": { // Twitter API keys if needed
-    "consumer_key": "",
-    "consumer_secret": "",
-    "access_token": "",
-    "access_token_secret": "",
-    "request_token_url": "https://api.twitter.com/oauth/request_token",
-    "authorize_url": "https://api.twitter.com/oauth/authorize",
-    "access_token_url": "https://api.twitter.com/oauth/access_token"
-},
-"vimeo": { // Vimeo API keys if needed
-},
-"youtube": { // Youtube API keys if needed
-},
-"users": { // Users that can login via OpenID, only email is used
-    "administrators": [
-        "olavic@gmail.com"
-    ],
-    "contributors": [
-
-    ]
-}
-```
 
 ## Grading requirements for printing
 
@@ -151,12 +96,9 @@ be converted to PDF files first.
 pandoc -V geometry:margin=0.5in -o grading-rules-english.md grading-rules-english.pdf
 ```
 
-
 ## TODO
 
  * Translations for application strings
  * Configuration of `language_TERRITORY`
  * Separate handling per page type, not all are simple articles
- * OpenID login redirects to wrong page. It is always / when there should be something more.
  * Facebook liking and related, https://developers.facebook.com/tools/debug/og/object?q=naginata.fi
-
