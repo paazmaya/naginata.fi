@@ -17,7 +17,7 @@ var express = require('express');
 var fs = require('fs');
 var md = require('marked').parse;
 
-var pageData = fs.readFileSync('page-data.json', { encoding: 'utf8' });
+var pageData = fs.readFileSync('content/page-data.json', { encoding: 'utf8' });
 var pageJson = JSON.parse(pageData);
 
 
@@ -30,7 +30,7 @@ app.engine('jade', require('jade').__express);
 
 app.set('titlesuffix', 'Naginata Suomessa');
 
-app.set('views', __dirname);
+app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
 
 var defaultLang = 'fi';
