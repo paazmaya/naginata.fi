@@ -33,6 +33,7 @@
     "browser": true,
     "devel": false,
     "jquery": true,
+    "$": true,
     "node": false,
 
     "window": true

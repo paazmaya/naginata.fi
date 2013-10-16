@@ -2,7 +2,7 @@
  * NAGINATA.fi *
  ***************
  * Juga Paazmaya <olavic@gmail.com>
- * http://creativecommons.org/licenses/by-sa/3.0/
+ * License http://creativecommons.org/licenses/by-sa/3.0/
  *
  * sendanmaki.js
  *
@@ -10,6 +10,7 @@
  *   Google Analytics
  *   Sendanmaki
  */
+'use strict';
 
 // -- Google Analytics for naginata.fi --
 var _gaq = _gaq || [];
@@ -33,25 +34,7 @@ _gaq.push(['_trackPageview']);
 // -- Enough about Google Analytics --
 
 
-// Run all client side preparation once DOM is ready.
-$(document).ready(function () {
-  sendanmaki.domReady();
-});
-
-
 var sendanmaki = {
-  /**
-   * Is the user logged in to the backend?
-   * Value updated on every keep alive call.
-   */
-  isLoggedIn: 0,
-
-  /**
-   * Email address of the current user against OpenID.
-   * Value updated on every keep alive call.
-   */
-  userEmail: '',
-
   /**
    * Current page language.
    * Fetched from html lang attribute.
@@ -138,37 +121,10 @@ var sendanmaki = {
       }
     });
 
-    // Open modal form for logging in via OpenID
-    $('a[href="#contribute"]').on('click', function (event) {
-      event.preventDefault();
-      if (sendanmaki.isLoggedIn) {
-        // Edit the current page
-        sendanmaki.editModeClick();
-      }
-      else {
-        // open login form
-        sendanmaki.openLoginForm();
-      }
-    });
-
-    // Logged in can most likely edit content, thus AJAX.
-    $(document).on('submit', '#colorbox form.edit', function (event) {
-      event.preventDefault();
-      if (sendanmaki.isLoggedIn) {
-        sendanmaki.submitEditForm($(this));
-      }
-    });
-
     // Close colorbox if opened as modal
     $(document).on('click', '#colorbox input[type="button"][name="close"]', function () {
       $.colorbox.close();
     });
-
-    // Finally check if div#logo data is set. It is used only for messaging
-    var success = $('#logo').data('msgLoginSuccess'); // 1 or 0
-    if (typeof success !== 'undefined') {
-      sendanmaki.showAppMessage(success ? 'loginSuccess' : 'loginFailure');
-    }
 
     // Keep session alive and update login status
     setInterval(function () {
@@ -237,151 +193,6 @@ var sendanmaki = {
   },
 
   /**
-   * Callback for a click on the #contribute link located in the footer.
-   * This should be only called if not logged in.
-   */
-  openLoginForm: function () {
-    $.colorbox({
-      title: $('#contribute').attr('title'),
-      modal: false,
-      html: sendanmaki.loginForm
-    });
-  },
-
-  /**
-   * Show a message that was set via temporary session variable
-   * div#logo shall contain all the message data
-   * @param {string} msg    Data item to be used
-   */
-  showAppMessage: function (msg) {
-    var text = $('#logo').data(msg);
-    if (typeof text !== 'undefined') {
-      // Show colorbox
-      $.colorbox({
-        html: '<h1 class="appmessage ' + msg.toLowerCase() + '">' + text + '</h1>',
-        closeButton: false,
-        scrolling: false,
-        onComplete: function () {
-          // Hide automatically after 3 seconds
-          setTimeout(function () {
-            $.colorbox.close();
-          }, 3 * 1000);
-        }
-      });
-    }
-  },
-
-  /**
-   * Click handler for showing the content editor in case user logged in.
-   */
-  editModeClick: function () {
-    // http://api.jquery.com/next/
-    var html = $('article').html();
-    var $h = $('<div id="contain">' + html + '</div>');
-
-    // replace .mediathumb parts by [|]
-    $h.children('.mediathumb').replaceWith(function () {
-      return "\n" + '[' + $(this).data('key') + ']' + "\n";
-    });
-    $h.children('.medialocal').replaceWith(function () {
-      return "\n" + '[' + $(this).data('key') + ']' + "\n";
-    });
-    $h.children('ul.imagelist').replaceWith(function () {
-      return "\n" + '[' + $(this).data('key') + ']' + "\n";
-    });
-
-    html = $h.html();
-
-    var $form = $(sendanmaki.editForm).clone();
-    $form.data('original', html); // what is currently on the page
-    $.colorbox({
-      html: $form,
-      closeButton: false,
-      onComplete: function () {
-        $('textarea[name="content"]').attr('lang', sendanmaki.lang).val(html);
-
-        // 3.11
-        var editor = CodeMirror.fromTextArea($('textarea[name="content"]').get(0), {
-          mode: 'text/html',
-          matchBrackets: true,
-          indentUnit: 1,
-          tabSize: 2,
-          autoClearEmptyLines: true,
-          lineWrapping: true,
-          lineNumbers: true,
-          theme: 'solarized light',
-          autofocus: true,
-          autoCloseTags: true
-        });
-        editor.on('change', function (editor) {
-          editor.save();
-          var now = new Date();
-          $('label span').text('Viimeisin muokkaus ' + now.toLocaleTimeString());
-        });
-      }
-    });
-  },
-
-  /**
-   * Callback for submitting the contribution form.
-   * It will insert the edited content to article.
-   * @param {jQuery} $form
-   */
-  submitEditForm: function ($form) {
-    var content = $('textarea[name="content"]').val();
-
-    // https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Date
-    var now = new Date();
-
-    var data = {
-      lang: sendanmaki.lang,
-      page: location.pathname.substr(3),
-      content: content
-    };
-
-    // Update the page
-    $('article').html(content);
-
-    // disable send button
-    $('input[type="submit"]').attr('disabled', 'disabled');
-
-    // feedback for the user
-    $('label span').text('Muokkauksesi lähti koti palvelinta ' + now.toLocaleTimeString());
-
-    // Feedback of the ajax submit on background color
-    $form.addClass('ajax-ongoing');
-
-    $.post($form.attr('action'), data, function (received, status) {
-      $form.removeClass('ajax-ongoing');
-
-      now = new Date();
-      $('label span').text('Muokkauksesi lähetetty ' + now.toLocaleTimeString());
-
-      var style;
-      if (status != 'success') {
-        style = 'ajax-failure';
-      }
-      else if (received.answer) {
-        // 1 or true
-        style = 'ajax-success';
-
-        // Success, thus return original later
-        setTimeout(function () {
-          $form.removeClass(style);
-          //$.colorbox.close();
-        }, 2 * 1000);
-      }
-      else {
-        style = 'ajax-unsure';
-      }
-
-      $form.addClass(style);
-      $('input[type="submit"]').attr('disabled', null);
-
-    }, 'json');
-  },
-
-  /**
    * Create a note element on a image that has src == data.url
    * @param {object} data {x, y, width, heigth, note, url}
    */
@@ -398,22 +209,10 @@ var sendanmaki = {
       div.append(area, note);
       parent.append(div).show();
     }
-  },
-
-  /**
-   * A form to be shown in colorbox when editing an article content.
-   */
-  editForm: '<form action="/update-article" method="post" class="edit">' +
-    '<label>HTML5 sallittu<span>Muokkausta ei vielä lähetetty...</span></label>' +
-    '<textarea name="content" spellcheck="true" autofocus="autofocus"></textarea>' +
-    '<input type="submit" value="Lähetä" />' +
-    '<input type="button" name="close" value="Sulje" />' +
-    '</form>',
-
-  /**
-   * Login form. Please note that this uses OpenID.
-   * http://www.whatwg.org/specs/web-apps/current-work/multipage/forms.html
-   */
-  loginForm: '<ul class="login-list"><li><a href="/authenticate-user?identifier=google" title="Google">' +
-    '<img src="/img/google_100.png" alt="Google" /><br />Google</a></li></ul>'
+  }
 };
+
+
+(function () {
+  sendanmaki.domReady();
+})();
