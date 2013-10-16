@@ -17,8 +17,8 @@ module.exports = function(grunt) {
         },
         files: {
           'public_html/js/naginata.min.js': [
-            'public_html/js/jquery.js',
-            'public_html/js/jquery.colorbox.js',
+            'bower_components/jquery/jquery.js',
+            'bower_components/colorbox/jquery.colorbox.js',
             'public_html/js/jquery.outerhtml.js',
             'public_html/js/sendanmaki.js'
           ]
@@ -33,7 +33,7 @@ module.exports = function(grunt) {
         },
         files: {
           'public_html/css/naginata.min.css': [
-            'public_html/css/colorbox.css',
+            'public_html/css/colorbox.css', // TODO: use one from bower once find out which example this is...
             'public_html/css/main.css'
           ]
         }
@@ -58,8 +58,8 @@ module.exports = function(grunt) {
         ],
         options: {
           vendor: [
-            'public_html/js/jquery.js',
-            'public_html/js/jquery.colorbox.js',
+            'bower_components/jquery/jquery.js',
+            'bower_components/colorbox/jquery.colorbox.js',
             'public_html/js/jquery.outerhtml.js'
           ],
           specs: 'tests/js/sendanmaki_spec.js'
