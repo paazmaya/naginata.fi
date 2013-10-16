@@ -3,7 +3,9 @@
 A web site in Finland for an ancient martial art from Japan.
 
 All the code is under Creative Commons License - Attribution & Share Alike (http://creativecommons.org/licenses/by-sa/3.0/).
-Full legal text available in `license.txt`.
+Full legal text available in `LICENSE.md`.
+
+[![Dependency Status](https://gemnasium.com/paazmaya/naginata.fi.png)](https://gemnasium.com/paazmaya/naginata.fi)
 
 ## Technologies
 
@@ -61,7 +63,6 @@ Contributors are welcome.
  * Possible contributors and administrators can login via OpenID (https://openid.net/) which is supported via LightOpenID (https://gitorious.org/~paazmaya/lightopenid/paazmayas-lightopenid)
  * Edited content is saved for moderation and diff generated with PHP-Diff (https://github.com/chrisboulton/php-diff)
  * PHPMailer for sending those diffs to moderator (https://github.com/Synchro/PHPMailer)
- * The minification of JS and CSS files are done via Minify (https://github.com/mrclay/minify)
  * HybridAuth used for authentication via 3rd party providers (http://hybridauth.sourceforge.net)
 
 ## JavaScript libraries used and included
