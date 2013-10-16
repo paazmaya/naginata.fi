@@ -52,6 +52,8 @@ app.get(/^\/(fi|en|ja)(\/(\w+))?$/, function(req, res) {
   }
   current.titlesuffix = pageJson.title[lang];
 
+  // Content will be current.title
+
   var file = 'grading-rules-' + (language || 'english') + '.md'
   var data = fs.readFileSync(file, { encoding: 'utf8' });
   var html = md(data);
