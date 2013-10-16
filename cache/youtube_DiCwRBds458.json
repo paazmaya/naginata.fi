@@ -6,7 +6,7 @@
         "xmlns$media": "http://search.yahoo.com/mrss/",
         "xmlns$gd": "http://schemas.google.com/g/2005",
         "xmlns$yt": "http://gdata.youtube.com/schemas/2007",
-        "gd$etag": "W/\"CkUCQX47eCp7I2A9WhFTEEg.\"",
+        "gd$etag": "W/\"CkcHSX47eCp7I2A9Wh5TFE0.\"",
         "id": {
             "$t": "tag:youtube.com,2008:video:DiCwRBds458"
         },
@@ -14,7 +14,7 @@
             "$t": "2011-05-08T01:54:07.000Z"
         },
         "updated": {
-            "$t": "2013-06-01T01:31:00.000Z"
+            "$t": "2013-09-28T20:27:18.000Z"
         },
         "category": [
             {
@@ -139,7 +139,7 @@
                     "yt$format": 5
                 },
                 {
-                    "url": "rtsp://v2.cache7.c.youtube.com/CiILENy73wIaGQmf42wXRLAgDhMYDSANFEgGUgZ2aWRlb3MM/0/0/0/video.3gp",
+                    "url": "rtsp://r4---sn-4g57kues.c.youtube.com/CiILENy73wIaGQmf42wXRLAgDhMYDSANFEgGUgZ2aWRlb3MM/0/0/0/video.3gp",
                     "type": "video/3gpp",
                     "medium": "video",
                     "expression": "full",
@@ -147,7 +147,7 @@
                     "yt$format": 1
                 },
                 {
-                    "url": "rtsp://v2.cache7.c.youtube.com/CiILENy73wIaGQmf42wXRLAgDhMYESARFEgGUgZ2aWRlb3MM/0/0/0/video.3gp",
+                    "url": "rtsp://r4---sn-4g57kues.c.youtube.com/CiILENy73wIaGQmf42wXRLAgDhMYESARFEgGUgZ2aWRlb3MM/0/0/0/video.3gp",
                     "type": "video/3gpp",
                     "medium": "video",
                     "expression": "full",
@@ -246,7 +246,7 @@
         },
         "yt$statistics": {
             "favoriteCount": "0",
-            "viewCount": "5961"
+            "viewCount": "6334"
         },
         "yt$rating": {
             "numDislikes": "0",

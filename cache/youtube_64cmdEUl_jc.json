@@ -6,7 +6,7 @@
         "xmlns$media": "http://search.yahoo.com/mrss/",
         "xmlns$gd": "http://schemas.google.com/g/2005",
         "xmlns$yt": "http://gdata.youtube.com/schemas/2007",
-        "gd$etag": "W/\"DEAEQH47eCp7I2A9WhFVEUU.\"",
+        "gd$etag": "W/\"D0cHR347eCp7I2A9Wh5SEEs.\"",
         "id": {
             "$t": "tag:youtube.com,2008:video:64cmdEUl_jc"
         },
@@ -14,7 +14,7 @@
             "$t": "2010-08-26T08:16:36.000Z"
         },
         "updated": {
-            "$t": "2013-08-11T02:05:01.000Z"
+            "$t": "2013-10-06T13:10:36.000Z"
         },
         "category": [
             {
@@ -117,7 +117,7 @@
             "gd$feedLink": {
                 "rel": "http://gdata.youtube.com/schemas/2007#comments",
                 "href": "http://gdata.youtube.com/feeds/api/videos/64cmdEUl_jc/comments?v=2",
-                "countHint": 52
+                "countHint": 54
             }
         },
         "yt$hd": {
@@ -142,7 +142,7 @@
                     "yt$format": 5
                 },
                 {
-                    "url": "rtsp://v7.cache1.c.youtube.com/CiILENy73wIaGQk3_iVFdCaH6xMYDSANFEgGUgZ2aWRlb3MM/0/0/0/video.3gp",
+                    "url": "rtsp://r4---sn-4g57kuez.c.youtube.com/CiILENy73wIaGQk3_iVFdCaH6xMYDSANFEgGUgZ2aWRlb3MM/0/0/0/video.3gp",
                     "type": "video/3gpp",
                     "medium": "video",
                     "expression": "full",
@@ -150,7 +150,7 @@
                     "yt$format": 1
                 },
                 {
-                    "url": "rtsp://v7.cache1.c.youtube.com/CiILENy73wIaGQk3_iVFdCaH6xMYESARFEgGUgZ2aWRlb3MM/0/0/0/video.3gp",
+                    "url": "rtsp://r4---sn-4g57kuez.c.youtube.com/CiILENy73wIaGQk3_iVFdCaH6xMYESARFEgGUgZ2aWRlb3MM/0/0/0/video.3gp",
                     "type": "video/3gpp",
                     "medium": "video",
                     "expression": "full",
@@ -251,19 +251,19 @@
             }
         },
         "gd$rating": {
-            "average": 4.9099097,
+            "average": 4.9173555,
             "max": 5,
             "min": 1,
-            "numRaters": 222,
+            "numRaters": 242,
             "rel": "http://schemas.google.com/g/2005#overall"
         },
         "yt$statistics": {
             "favoriteCount": "0",
-            "viewCount": "41306"
+            "viewCount": "44405"
         },
         "yt$rating": {
             "numDislikes": "5",
-            "numLikes": "217"
+            "numLikes": "237"
         }
     }
 }

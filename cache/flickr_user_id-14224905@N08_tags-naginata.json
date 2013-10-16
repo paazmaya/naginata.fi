@@ -1,28 +1,28 @@
 {
     "photos": {
         "page": 1,
-         "pages": 3,
+         "pages": 2,
          "perpage": 63,
-         "total": "129",
+         "total": "126",
          "photo": [
             {
+                "id": "8450641664",
+                 "owner": "14224905@N08",
+                 "secret": "fea2b93757",
+                 "server": "8362",
+                 "farm": 9,
+                 "title": "2012-12-06 Himeji - Naginata taiso in Jukendo book",
+                 "ispublic": 1,
+                 "isfriend": 0,
+                 "isfamily": 0
+            },
+             {
                 "id": "8310222005",
                  "owner": "14224905@N08",
                  "secret": "f8fd5e3497",
                  "server": "8084",
                  "farm": 9,
                  "title": "2012-12-22 Himeji - Last Naginata training of the year",
-                 "ispublic": 1,
-                 "isfriend": 0,
-                 "isfamily": 0
-            },
-             {
-                "id": "8311210012",
-                 "owner": "14224905@N08",
-                 "secret": "4db397cd88",
-                 "server": "8071",
-                 "farm": 9,
-                 "title": "2012-12-02 Yokosuka - All Japan Naginata Championships 2012",
                  "ispublic": 1,
                  "isfriend": 0,
                  "isfamily": 0
@@ -39,34 +39,12 @@
                  "isfamily": 0
             },
              {
-                "id": "8310163991",
-                 "owner": "14224905@N08",
-                 "secret": "2311baf6ef",
-                 "server": "8222",
-                 "farm": 9,
-                 "title": "2012-12-02 Yokosuka - Thrusting tsuki",
-                 "ispublic": 1,
-                 "isfriend": 0,
-                 "isfamily": 0
-            },
-             {
                 "id": "8310434296",
                  "owner": "14224905@N08",
                  "secret": "6376408a49",
                  "server": "8493",
                  "farm": 9,
                  "title": "2012-11-30 Hamamatsu - Kamon on Saya of Naginata in Hamamatsu Castle",
-                 "ispublic": 1,
-                 "isfriend": 0,
-                 "isfamily": 0
-            },
-             {
-                "id": "8020483840",
-                 "owner": "14224905@N08",
-                 "secret": "73f9f9ff63",
-                 "server": "8039",
-                 "farm": 9,
-                 "title": "5th Naginata World Championships, Koryu demonstrations about to start 2011-07-03",
                  "ispublic": 1,
                  "isfriend": 0,
                  "isfamily": 0
@@ -105,171 +83,6 @@
                  "isfamily": 0
             },
              {
-                "id": "7896510078",
-                 "owner": "14224905@N08",
-                 "secret": "3784100263",
-                 "server": "8031",
-                 "farm": 9,
-                 "title": "Naginata INF Seminar 2012 Uppsala - 12",
-                 "ispublic": 1,
-                 "isfriend": 0,
-                 "isfamily": 0
-            },
-             {
-                "id": "7896514856",
-                 "owner": "14224905@N08",
-                 "secret": "41f04cb760",
-                 "server": "8315",
-                 "farm": 9,
-                 "title": "Naginata INF Seminar 2012 Uppsala - 14",
-                 "ispublic": 1,
-                 "isfriend": 0,
-                 "isfamily": 0
-            },
-             {
-                "id": "7322793128",
-                 "owner": "14224905@N08",
-                 "secret": "6ecbf9ba35",
-                 "server": "7102",
-                 "farm": 8,
-                 "title": "Naginata Tapanila 2012-05-06 2",
-                 "ispublic": 1,
-                 "isfriend": 0,
-                 "isfamily": 0
-            },
-             {
-                "id": "7322791966",
-                 "owner": "14224905@N08",
-                 "secret": "12d05c342e",
-                 "server": "7097",
-                 "farm": 8,
-                 "title": "Naginata Tapanila 2012-05-06 1",
-                 "ispublic": 1,
-                 "isfriend": 0,
-                 "isfamily": 0
-            },
-             {
-                "id": "7322793674",
-                 "owner": "14224905@N08",
-                 "secret": "46af1663f4",
-                 "server": "7215",
-                 "farm": 8,
-                 "title": "Naginata Tapanila 2012-05-06 4",
-                 "ispublic": 1,
-                 "isfriend": 0,
-                 "isfamily": 0
-            },
-             {
-                "id": "5988482559",
-                 "owner": "14224905@N08",
-                 "secret": "c7f38f2417",
-                 "server": "6030",
-                 "farm": 7,
-                 "title": "Jikishinkageryu Naginatajutsu, Himeji Budokan 2011-06-16",
-                 "ispublic": 1,
-                 "isfriend": 0,
-                 "isfamily": 0
-            },
-             {
-                "id": "5896930485",
-                 "owner": "14224905@N08",
-                 "secret": "bc7a7e2b6c",
-                 "server": "5191",
-                 "farm": 6,
-                 "title": "Naginata in Himeji 2011-06-11",
-                 "ispublic": 1,
-                 "isfriend": 0,
-                 "isfamily": 0
-            },
-             {
-                "id": "5892262839",
-                 "owner": "14224905@N08",
-                 "secret": "89ba17ac87",
-                 "server": "5103",
-                 "farm": 6,
-                 "title": "Jikishinkageryu Naginata seminar in Himeji 2011-06-22",
-                 "ispublic": 1,
-                 "isfriend": 0,
-                 "isfamily": 0
-            },
-             {
-                "id": "5763043905",
-                 "owner": "14224905@N08",
-                 "secret": "5a542834cf",
-                 "server": "2514",
-                 "farm": 3,
-                 "title": "Himeji 2011-05-26 Jikishinkageryu Naginatajutsu",
-                 "ispublic": 1,
-                 "isfriend": 0,
-                 "isfamily": 0
-            },
-             {
-                "id": "5763043699",
-                 "owner": "14224905@N08",
-                 "secret": "fcda29747e",
-                 "server": "5185",
-                 "farm": 6,
-                 "title": "Kyoto 2011-05-04 Shimogamo Jinja, Jikishinkageryu Naginatajutsu",
-                 "ispublic": 1,
-                 "isfriend": 0,
-                 "isfamily": 0
-            },
-             {
-                "id": "4632519379",
-                 "owner": "14224905@N08",
-                 "secret": "88b217df5e",
-                 "server": "3371",
-                 "farm": 4,
-                 "title": "Himeji, Japan 2010-04-15",
-                 "ispublic": 1,
-                 "isfriend": 0,
-                 "isfamily": 0
-            },
-             {
-                "id": "4595256326",
-                 "owner": "14224905@N08",
-                 "secret": "37148e5411",
-                 "server": "3283",
-                 "farm": 4,
-                 "title": "Himeji, Japan 2010-04-21",
-                 "ispublic": 1,
-                 "isfriend": 0,
-                 "isfamily": 0
-            },
-             {
-                "id": "8450641664",
-                 "owner": "14224905@N08",
-                 "secret": "fea2b93757",
-                 "server": "8362",
-                 "farm": 9,
-                 "title": "2012-12-06 Himeji - Naginata taiso in Jukendo book",
-                 "ispublic": 1,
-                 "isfriend": 0,
-                 "isfamily": 0
-            },
-             {
-                "id": "8436921185",
-                 "owner": "14224905@N08",
-                 "secret": "42a4c6a463",
-                 "server": "8184",
-                 "farm": 9,
-                 "title": "2013-01-23 Himeji - 18th Soke of Jikishinkageryu Naginatajutsu",
-                 "ispublic": 1,
-                 "isfriend": 0,
-                 "isfamily": 0
-            },
-             {
-                "id": "8091033492",
-                 "owner": "14224905@N08",
-                 "secret": "065d0cc99f",
-                 "server": "8324",
-                 "farm": 9,
-                 "title": "Shudokan Dojo sign, next to Osaka Castle, Osaka, Japan 2011-06-05",
-                 "ispublic": 1,
-                 "isfriend": 0,
-                 "isfamily": 0
-            },
-             {
                 "id": "7896478092",
                  "owner": "14224905@N08",
                  "secret": "f6d6ca8ab8",
@@ -287,6 +100,17 @@
                  "server": "8310",
                  "farm": 9,
                  "title": "Naginata INF Seminar 2012 Uppsala - 08",
+                 "ispublic": 1,
+                 "isfriend": 0,
+                 "isfamily": 0
+            },
+             {
+                "id": "7896510078",
+                 "owner": "14224905@N08",
+                 "secret": "3784100263",
+                 "server": "8031",
+                 "farm": 9,
+                 "title": "Naginata INF Seminar 2012 Uppsala - 12",
                  "ispublic": 1,
                  "isfriend": 0,
                  "isfamily": 0
@@ -320,6 +144,17 @@
                  "server": "8308",
                  "farm": 9,
                  "title": "Naginata INF Seminar 2012 Uppsala - 02",
+                 "ispublic": 1,
+                 "isfriend": 0,
+                 "isfamily": 0
+            },
+             {
+                "id": "7896514856",
+                 "owner": "14224905@N08",
+                 "secret": "41f04cb760",
+                 "server": "8315",
+                 "farm": 9,
+                 "title": "Naginata INF Seminar 2012 Uppsala - 14",
                  "ispublic": 1,
                  "isfriend": 0,
                  "isfamily": 0
@@ -424,6 +259,39 @@
                  "isfamily": 0
             },
              {
+                "id": "7322793128",
+                 "owner": "14224905@N08",
+                 "secret": "6ecbf9ba35",
+                 "server": "7102",
+                 "farm": 8,
+                 "title": "Naginata Tapanila 2012-05-06 2",
+                 "ispublic": 1,
+                 "isfriend": 0,
+                 "isfamily": 0
+            },
+             {
+                "id": "7322791966",
+                 "owner": "14224905@N08",
+                 "secret": "12d05c342e",
+                 "server": "7097",
+                 "farm": 8,
+                 "title": "Naginata Tapanila 2012-05-06 1",
+                 "ispublic": 1,
+                 "isfriend": 0,
+                 "isfamily": 0
+            },
+             {
+                "id": "7322793674",
+                 "owner": "14224905@N08",
+                 "secret": "46af1663f4",
+                 "server": "7215",
+                 "farm": 8,
+                 "title": "Naginata Tapanila 2012-05-06 4",
+                 "ispublic": 1,
+                 "isfriend": 0,
+                 "isfamily": 0
+            },
+             {
                 "id": "7322796388",
                  "owner": "14224905@N08",
                  "secret": "03e5127f42",
@@ -512,39 +380,6 @@
                  "isfamily": 0
             },
              {
-                "id": "6025333946",
-                 "owner": "14224905@N08",
-                 "secret": "d18d4484bc",
-                 "server": "6071",
-                 "farm": 7,
-                 "title": "Jikishinkageryu Naginatajutsu in Hyogo Kenritsu Budokan, Himeji 2011-05-29",
-                 "ispublic": 1,
-                 "isfriend": 0,
-                 "isfamily": 0
-            },
-             {
-                "id": "6024779061",
-                 "owner": "14224905@N08",
-                 "secret": "de8bc8c77f",
-                 "server": "6128",
-                 "farm": 7,
-                 "title": "Jikishinkageryu Naginatajutsu with Fukuoka sensei in Himeji Budokan 2011-05-26",
-                 "ispublic": 1,
-                 "isfriend": 0,
-                 "isfamily": 0
-            },
-             {
-                "id": "6025334076",
-                 "owner": "14224905@N08",
-                 "secret": "bfeb0aa7a6",
-                 "server": "6089",
-                 "farm": 7,
-                 "title": "Naginata in Himeji Sports Center 2011-06-09",
-                 "ispublic": 1,
-                 "isfriend": 0,
-                 "isfamily": 0
-            },
-             {
                 "id": "6004950535",
                  "owner": "14224905@N08",
                  "secret": "3e14c0577b",
@@ -567,12 +402,67 @@
                  "isfamily": 0
             },
              {
+                "id": "5988482559",
+                 "owner": "14224905@N08",
+                 "secret": "c7f38f2417",
+                 "server": "6030",
+                 "farm": 7,
+                 "title": "Jikishinkageryu Naginatajutsu, Himeji Budokan 2011-06-16",
+                 "ispublic": 1,
+                 "isfriend": 0,
+                 "isfamily": 0
+            },
+             {
                 "id": "5973529225",
                  "owner": "14224905@N08",
                  "secret": "c13bf69915",
                  "server": "6149",
                  "farm": 7,
                  "title": "Naginata in Himeji Sports Center 2011-06-04",
+                 "ispublic": 1,
+                 "isfriend": 0,
+                 "isfamily": 0
+            },
+             {
+                "id": "5896930485",
+                 "owner": "14224905@N08",
+                 "secret": "bc7a7e2b6c",
+                 "server": "5191",
+                 "farm": 6,
+                 "title": "Naginata in Himeji 2011-06-11",
+                 "ispublic": 1,
+                 "isfriend": 0,
+                 "isfamily": 0
+            },
+             {
+                "id": "5892262839",
+                 "owner": "14224905@N08",
+                 "secret": "89ba17ac87",
+                 "server": "5103",
+                 "farm": 6,
+                 "title": "Jikishinkageryu Naginata seminar in Himeji 2011-06-22",
+                 "ispublic": 1,
+                 "isfriend": 0,
+                 "isfamily": 0
+            },
+             {
+                "id": "5763043905",
+                 "owner": "14224905@N08",
+                 "secret": "5a542834cf",
+                 "server": "2514",
+                 "farm": 3,
+                 "title": "Himeji 2011-05-26 Jikishinkageryu Naginatajutsu",
+                 "ispublic": 1,
+                 "isfriend": 0,
+                 "isfamily": 0
+            },
+             {
+                "id": "5763043699",
+                 "owner": "14224905@N08",
+                 "secret": "fcda29747e",
+                 "server": "5185",
+                 "farm": 6,
+                 "title": "Kyoto 2011-05-04 Shimogamo Jinja, Jikishinkageryu Naginatajutsu",
                  "ispublic": 1,
                  "isfriend": 0,
                  "isfamily": 0
@@ -589,12 +479,23 @@
                  "isfamily": 0
             },
              {
-                "id": "4632520539",
+                "id": "4632519379",
                  "owner": "14224905@N08",
-                 "secret": "aaba8e61fa",
-                 "server": "4070",
-                 "farm": 5,
+                 "secret": "88b217df5e",
+                 "server": "3371",
+                 "farm": 4,
                  "title": "Himeji, Japan 2010-04-15",
+                 "ispublic": 1,
+                 "isfriend": 0,
+                 "isfamily": 0
+            },
+             {
+                "id": "4595256326",
+                 "owner": "14224905@N08",
+                 "secret": "37148e5411",
+                 "server": "3283",
+                 "farm": 4,
+                 "title": "Himeji, Japan 2010-04-21",
                  "ispublic": 1,
                  "isfriend": 0,
                  "isfamily": 0
@@ -611,45 +512,12 @@
                  "isfamily": 0
             },
              {
-                "id": "4339173618",
-                 "owner": "14224905@N08",
-                 "secret": "30a64c0f5c",
-                 "server": "4036",
-                 "farm": 5,
-                 "title": "Naginata Helsinki 2010-02-07 13",
-                 "ispublic": 1,
-                 "isfriend": 0,
-                 "isfamily": 0
-            },
-             {
                 "id": "4338424327",
                  "owner": "14224905@N08",
                  "secret": "287da4b287",
                  "server": "2729",
                  "farm": 3,
                  "title": "Naginata Helsinki 2010-02-07 09",
-                 "ispublic": 1,
-                 "isfriend": 0,
-                 "isfamily": 0
-            },
-             {
-                "id": "4339171586",
-                 "owner": "14224905@N08",
-                 "secret": "76e1df4c9d",
-                 "server": "4066",
-                 "farm": 5,
-                 "title": "Naginata Helsinki 2010-02-07 12",
-                 "ispublic": 1,
-                 "isfriend": 0,
-                 "isfamily": 0
-            },
-             {
-                "id": "4339175212",
-                 "owner": "14224905@N08",
-                 "secret": "89128e1f4d",
-                 "server": "2778",
-                 "farm": 3,
-                 "title": "Naginata Helsinki 2010-02-07 14",
                  "ispublic": 1,
                  "isfriend": 0,
                  "isfamily": 0
@@ -694,6 +562,138 @@
                  "server": "4065",
                  "farm": 5,
                  "title": "Naginata Helsinki 2010-02-07 10",
+                 "ispublic": 1,
+                 "isfriend": 0,
+                 "isfamily": 0
+            },
+             {
+                "id": "4339164262",
+                 "owner": "14224905@N08",
+                 "secret": "45cd7b2b27",
+                 "server": "4052",
+                 "farm": 5,
+                 "title": "Naginata Helsinki 2010-02-07 08",
+                 "ispublic": 1,
+                 "isfriend": 0,
+                 "isfamily": 0
+            },
+             {
+                "id": "8436921185",
+                 "owner": "14224905@N08",
+                 "secret": "42a4c6a463",
+                 "server": "8184",
+                 "farm": 9,
+                 "title": "2013-01-23 Himeji - 18th Soke of Jikishinkageryu Naginatajutsu",
+                 "ispublic": 1,
+                 "isfriend": 0,
+                 "isfamily": 0
+            },
+             {
+                "id": "8311210012",
+                 "owner": "14224905@N08",
+                 "secret": "4db397cd88",
+                 "server": "8071",
+                 "farm": 9,
+                 "title": "2012-12-02 Yokosuka - All Japan Naginata Championships 2012",
+                 "ispublic": 1,
+                 "isfriend": 0,
+                 "isfamily": 0
+            },
+             {
+                "id": "8310163991",
+                 "owner": "14224905@N08",
+                 "secret": "2311baf6ef",
+                 "server": "8222",
+                 "farm": 9,
+                 "title": "2012-12-02 Yokosuka - Thrusting tsuki",
+                 "ispublic": 1,
+                 "isfriend": 0,
+                 "isfamily": 0
+            },
+             {
+                "id": "8091033492",
+                 "owner": "14224905@N08",
+                 "secret": "065d0cc99f",
+                 "server": "8324",
+                 "farm": 9,
+                 "title": "Shudokan Dojo sign, next to Osaka Castle, Osaka, Japan 2011-06-05",
+                 "ispublic": 1,
+                 "isfriend": 0,
+                 "isfamily": 0
+            },
+             {
+                "id": "6025333946",
+                 "owner": "14224905@N08",
+                 "secret": "d18d4484bc",
+                 "server": "6071",
+                 "farm": 7,
+                 "title": "Jikishinkageryu Naginatajutsu in Hyogo Kenritsu Budokan, Himeji 2011-05-29",
+                 "ispublic": 1,
+                 "isfriend": 0,
+                 "isfamily": 0
+            },
+             {
+                "id": "6024779061",
+                 "owner": "14224905@N08",
+                 "secret": "de8bc8c77f",
+                 "server": "6128",
+                 "farm": 7,
+                 "title": "Jikishinkageryu Naginatajutsu with Fukuoka sensei in Himeji Budokan 2011-05-26",
+                 "ispublic": 1,
+                 "isfriend": 0,
+                 "isfamily": 0
+            },
+             {
+                "id": "6025334076",
+                 "owner": "14224905@N08",
+                 "secret": "bfeb0aa7a6",
+                 "server": "6089",
+                 "farm": 7,
+                 "title": "Naginata in Himeji Sports Center 2011-06-09",
+                 "ispublic": 1,
+                 "isfriend": 0,
+                 "isfamily": 0
+            },
+             {
+                "id": "4632520539",
+                 "owner": "14224905@N08",
+                 "secret": "aaba8e61fa",
+                 "server": "4070",
+                 "farm": 5,
+                 "title": "Himeji, Japan 2010-04-15",
+                 "ispublic": 1,
+                 "isfriend": 0,
+                 "isfamily": 0
+            },
+             {
+                "id": "4339173618",
+                 "owner": "14224905@N08",
+                 "secret": "30a64c0f5c",
+                 "server": "4036",
+                 "farm": 5,
+                 "title": "Naginata Helsinki 2010-02-07 13",
+                 "ispublic": 1,
+                 "isfriend": 0,
+                 "isfamily": 0
+            },
+             {
+                "id": "4339171586",
+                 "owner": "14224905@N08",
+                 "secret": "76e1df4c9d",
+                 "server": "4066",
+                 "farm": 5,
+                 "title": "Naginata Helsinki 2010-02-07 12",
+                 "ispublic": 1,
+                 "isfriend": 0,
+                 "isfamily": 0
+            },
+             {
+                "id": "4339175212",
+                 "owner": "14224905@N08",
+                 "secret": "89128e1f4d",
+                 "server": "2778",
+                 "farm": 3,
+                 "title": "Naginata Helsinki 2010-02-07 14",
                  "ispublic": 1,
                  "isfriend": 0,
                  "isfamily": 0

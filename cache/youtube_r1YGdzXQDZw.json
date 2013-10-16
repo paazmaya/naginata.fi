@@ -8,7 +8,7 @@
         "xmlns$gml": "http://www.opengis.net/gml",
         "xmlns$yt": "http://gdata.youtube.com/schemas/2007",
         "xmlns$georss": "http://www.georss.org/georss",
-        "gd$etag": "W/\"CUQBSH47eCp7I2A9WhFVFkk.\"",
+        "gd$etag": "W/\"C0cDSX47eCp7I2A9Wh5TFEk.\"",
         "id": {
             "$t": "tag:youtube.com,2008:video:r1YGdzXQDZw"
         },
@@ -16,7 +16,7 @@
             "$t": "2012-08-16T13:05:05.000Z"
         },
         "updated": {
-            "$t": "2013-08-16T08:55:59.000Z"
+            "$t": "2013-09-29T07:51:18.000Z"
         },
         "category": [
             {
@@ -124,7 +124,7 @@
             "gd$feedLink": {
                 "rel": "http://gdata.youtube.com/schemas/2007#comments",
                 "href": "http://gdata.youtube.com/feeds/api/videos/r1YGdzXQDZw/comments?v=2",
-                "countHint": 11
+                "countHint": 13
             }
         },
         "georss$where": {
@@ -156,7 +156,7 @@
                     "yt$format": 5
                 },
                 {
-                    "url": "rtsp://v1.cache4.c.youtube.com/CiILENy73wIaGQmcDdA1dwZWrxMYDSANFEgGUgZ2aWRlb3MM/0/0/0/video.3gp",
+                    "url": "rtsp://r1---sn-4g57kues.c.youtube.com/CiILENy73wIaGQmcDdA1dwZWrxMYDSANFEgGUgZ2aWRlb3MM/0/0/0/video.3gp",
                     "type": "video/3gpp",
                     "medium": "video",
                     "expression": "full",
@@ -164,7 +164,7 @@
                     "yt$format": 1
                 },
                 {
-                    "url": "rtsp://v1.cache4.c.youtube.com/CiILENy73wIaGQmcDdA1dwZWrxMYESARFEgGUgZ2aWRlb3MM/0/0/0/video.3gp",
+                    "url": "rtsp://r1---sn-4g57kues.c.youtube.com/CiILENy73wIaGQmcDdA1dwZWrxMYESARFEgGUgZ2aWRlb3MM/0/0/0/video.3gp",
                     "type": "video/3gpp",
                     "medium": "video",
                     "expression": "full",
@@ -264,10 +264,10 @@
             }
         },
         "gd$rating": {
-            "average": 4.8333335,
+            "average": 4.8125,
             "max": 5,
             "min": 1,
-            "numRaters": 48,
+            "numRaters": 64,
             "rel": "http://schemas.google.com/g/2005#overall"
         },
         "yt$recorded": {
@@ -275,11 +275,11 @@
         },
         "yt$statistics": {
             "favoriteCount": "0",
-            "viewCount": "10122"
+            "viewCount": "12787"
         },
         "yt$rating": {
-            "numDislikes": "2",
-            "numLikes": "46"
+            "numDislikes": "3",
+            "numLikes": "61"
         }
     }
 }
