@@ -4,12 +4,12 @@ module.exports = function(grunt) {
   // Project configuration.
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
-      
+
     banner: '/*! <%= pkg.name %> - v<%= pkg.version %> - ' +
       '<%= grunt.template.today("yyyy-mm-dd") %>\n' +
       '* Copyright (c) <%= grunt.template.today("yyyy") %> ' +
       '<% pkg.author.name %>; Licensed Attribution-ShareAlike 3.0 Unported */\n',
-      
+
     uglify: {
       javascript: {
         options: {
@@ -33,7 +33,7 @@ module.exports = function(grunt) {
         },
         files: {
           'public_html/css/naginata.min.css': [
-            'public_html/css/colorbox.css', // TODO: use one from bower once find out which example this is...
+            'public_html/css/colorbox.css', // Use custom styles, modified from example 2.
             'public_html/css/main.css'
           ]
         }
@@ -49,8 +49,8 @@ module.exports = function(grunt) {
         jshintrc: '.jshintrc'
       }
     },
-    
-    
+
+
     jasmine: {
       public: {
         src: [

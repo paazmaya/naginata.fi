@@ -42,12 +42,6 @@ var sendanmaki = {
   lang: 'fi',
 
   /**
-   * Keep alive interval.
-   * 1000 * 60 * 4 ms = 4 minutes
-   */
-  keepAliveInt: (60000 * 4),
-
-  /**
    * This shall be run on domReady in order to initiate
    * all the handlers needed.
    */
@@ -56,6 +50,42 @@ var sendanmaki = {
     //var modified = $('article').data('dataModified');
 
     sendanmaki.lang = $('html').attr('lang');
+
+    if (sendanmaki.lang === 'fi') {
+      /*
+       jQuery Colorbox language configuration
+       language: Finnish (fi)
+       translated by: Mikko
+       */
+      jQuery.extend(jQuery.colorbox.settings, {
+        current: "Kuva {current} / {total}",
+        previous: "Edellinen",
+        next: "Seuraava",
+        close: "Sulje",
+        xhrError: "Sisällön lataaminen epäonnistui.",
+        imgError: "Kuvan lataaminen epäonnistui.",
+        slideshowStart: "Aloita kuvaesitys.",
+        slideshowStop: "Lopeta kuvaesitys."
+      });
+    }
+    else if (sendanmaki.lang === 'ja') {
+      // Colorbox translations
+      /*
+       jQuery Colorbox language configuration
+       language: Japanaese (ja)
+       translated by: Hajime Fujimoto
+       */
+      jQuery.extend(jQuery.colorbox.settings, {
+        current: "{total}枚中{current}枚目",
+        previous: "前",
+        next: "次",
+        close: "閉じる",
+        xhrError: "コンテンツの読み込みに失敗しました",
+        imgError: "画像の読み込みに失敗しました",
+        slideshowStart: "スライドショー開始",
+        slideshowStop: "スライドショー終了"
+      });
+    }
 
     // Add notes to a chudan kamae bogu image, if available
     $('.hasnotes li').each(function () {
@@ -96,14 +126,14 @@ var sendanmaki = {
     }
 
     // external urls shall open in a new window
-    $('a[href^="http://"],a[href^="https://"]').not('.mediathumb a, .imagelist a').on('click',function (event) {
+    $('a[href^="http://"],a[href^="https://"]').not('.mediathumb a, .imagelist a').on('click', function (event) {
       event.preventDefault();
       var href = $(this).attr('href');
       window.open(href, $.now());
     });
 
     // href has link to actual page, rel has inline player link
-    $('.mediathumb a:has(img)').on('click',function (event) {
+    $('.mediathumb a:has(img)').on('click', function (event) {
       event.preventDefault();
       sendanmaki.mediaThumbClick($(this));
     });
@@ -125,30 +155,6 @@ var sendanmaki = {
     $(document).on('click', '#colorbox input[type="button"][name="close"]', function () {
       $.colorbox.close();
     });
-
-    // Keep session alive and update login status
-    setInterval(function () {
-      sendanmaki.keepAlive();
-    }, sendanmaki.keepAliveInt);
-    sendanmaki.keepAlive();
-  },
-
-  /**
-   * Keep PHP session alive and get the current login status
-   */
-  keepAlive: function () {
-    var data = {};
-    $.post('/keep-session-alive', data, function (received, status) {
-      if (received.answer != 'offline') {
-        sendanmaki.isLoggedIn = received.login;
-        sendanmaki.userEmail = received.email;
-      }
-
-      if (sendanmaki.isLoggedIn) {
-        $('a[href="#contribute"]').text('Muokkaa');
-      }
-
-    }, 'json');
   },
 
   /**
@@ -194,7 +200,7 @@ var sendanmaki = {
 
   /**
    * Create a note element on a image that has src == data.url
-   * @param {object} data {x, y, width, heigth, note, url}
+   * @param {object} data {x, y, width, height, note, url}
    */
   createImgNote: function (data) {
     var parent = $('img[src="' + data.url + '"]').parent();
