@@ -1,5 +1,7 @@
 /** naginata.fi **/
 
+'use strict';
+
 // http://expressjs.com
 var express = require('express');
 var fs = require('fs');
@@ -21,18 +23,20 @@ app.set('titlesuffix', 'Naginata Suomessa');
 app.set('views', __dirname);
 app.set('view engine', 'jade');
 
-var languages = {
-  en: 'english',
-  fi: 'finnish',
-  ja: 'japanese'
-};
 var defaultLang = 'fi';
+
+var getContent = function (lang, title) {
+  var data = fs.readFileSync(
+    'content/' + lang + '/' + title + '.md',
+    { encoding: 'utf8' }
+  );
+  return md(data);
+};
 
 app.get(/^\/(fi|en|ja)(\/(\w+))?$/, function(req, res) {
   var lang = req.params[0];
   app.set('lang', lang);
   console.log('params: ' + req.params);
-  var language = languages[lang];
 
   var current = null;
   var pages = pageJson.pages.filter(function (item) {
@@ -52,11 +56,7 @@ app.get(/^\/(fi|en|ja)(\/(\w+))?$/, function(req, res) {
   }
   current.titlesuffix = pageJson.title[lang];
 
-  // Content will be current.title
-
-  var file = 'grading-rules-' + (language || 'english') + '.md'
-  var data = fs.readFileSync(file, { encoding: 'utf8' });
-  var html = md(data);
+  var html = getContent(lang, current.title);
   res.render('index', { content: html, pages: pages, footers: pageJson.footer[lang], meta: current, lang: lang });
 });
 

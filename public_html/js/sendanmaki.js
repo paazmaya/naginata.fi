@@ -388,7 +388,7 @@ var sendanmaki = {
   createImgNote: function (data) {
     var parent = $('img[src="' + data.url + '"]').parent();
     var existing = $('div.note[rel="' + data.note + '"]').size();
-    if (parent.size() > 0 && existing == 0) {
+    if (parent.size() > 0 && existing === 0) {
       var div = $('<div class="note" rel="' + data.note + '"></div>');
       var tpo = parent.position();
       div.css('left', data.x + tpo.left).css('top', data.y + tpo.top);
