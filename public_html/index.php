@@ -4,7 +4,7 @@
  ***************
  * Juga Paazmaya <olavic@gmail.com>
  * http://creativecommons.org/licenses/by-sa/3.0/
- * 
+ *
  * main handler
  */
 
@@ -30,7 +30,7 @@ ini_set('session.hash_function', 1); // default 0 = md5, 1 = sha1
 require '../libs/ShikakeOji.php';
 
 $shio = new ShikakeOji(
-	realpath('../naginata-data.json'),
+	realpath('../page-data.json'),
 	realpath('../naginata-config.json')
 );
 

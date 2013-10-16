@@ -14,9 +14,10 @@ html(lang=settings.lang)
   body
     nav
       ul
-        - for (var x = 0; x < 3; x++)
-          li.current
-            a(rel="prefetch", title="", href="/")
+        - each page in pages
+            li
+                a(rel="prefetch", title=page.header, href=page.url)
+                    = page.title
     div#wrapper
       div#logo
         p
