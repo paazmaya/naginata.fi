@@ -35,7 +35,7 @@
              "takengranularity": "0",
              "lastupdate": "1275257830"
         },
-         "views": "583",
+         "views": "647",
          "editability": {
             "cancomment": 0,
              "canaddmeta": 0
@@ -89,14 +89,14 @@
                      "author": "8519244@N06",
                      "raw": "glaive",
                      "_content": "glaive",
-                     "machine_tag": false
+                     "machine_tag": 0
                 },
                  {
                     "id": "8473922-4601612764-938302",
                      "author": "8519244@N06",
                      "raw": "halberd",
                      "_content": "halberd",
-                     "machine_tag": false
+                     "machine_tag": 0
                 },
                  {
                     "id": "8473922-4601612764-832117",

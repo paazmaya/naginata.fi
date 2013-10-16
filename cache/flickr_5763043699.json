@@ -37,7 +37,7 @@
              "takengranularity": "0",
              "lastupdate": "1312882567"
         },
-         "views": "355",
+         "views": "365",
          "editability": {
             "cancomment": 0,
              "canaddmeta": 0
@@ -105,14 +105,14 @@
                      "author": "14224905@N08",
                      "raw": "naginata",
                      "_content": "naginata",
-                     "machine_tag": 0
+                     "machine_tag": false
                 },
                  {
                     "id": "14132092-5763043699-1762505",
                      "author": "14224905@N08",
                      "raw": "\u306a\u304e\u306a\u305f",
                      "_content": "\u306a\u304e\u306a\u305f",
-                     "machine_tag": 0
+                     "machine_tag": false
                 },
                  {
                     "id": "14132092-5763043699-19273084",
@@ -133,7 +133,7 @@
                      "author": "14224905@N08",
                      "raw": "japan",
                      "_content": "japan",
-                     "machine_tag": 0
+                     "machine_tag": false
                 },
                  {
                     "id": "14132092-5763043699-680155",
@@ -161,7 +161,7 @@
                      "author": "14224905@N08",
                      "raw": "\u65e5\u672c",
                      "_content": "\u65e5\u672c",
-                     "machine_tag": 0
+                     "machine_tag": false
                 },
                  {
                     "id": "14132092-5763043699-290",
@@ -175,7 +175,7 @@
                      "author": "14224905@N08",
                      "raw": "budo",
                      "_content": "budo",
-                     "machine_tag": 0
+                     "machine_tag": false
                 },
                  {
                     "id": "14132092-5763043699-1970",
@@ -196,7 +196,7 @@
                      "author": "14224905@N08",
                      "raw": "\u6b66\u9053",
                      "_content": "\u6b66\u9053",
-                     "machine_tag": 0
+                     "machine_tag": false
                 },
                  {
                     "id": "14132092-5763043699-1641557",
@@ -210,7 +210,7 @@
                      "author": "14224905@N08",
                      "raw": "keikogi",
                      "_content": "keikogi",
-                     "machine_tag": 0
+                     "machine_tag": false
                 }
             ]
         },
