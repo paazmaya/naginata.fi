@@ -16,7 +16,6 @@ app.use(express.static(__dirname + '/public_html'));
 
 app.engine('jade', require('jade').__express);
 
-app.set('title', 'Ajankohtaista');
 app.set('titlesuffix', 'Naginata Suomessa');
 
 app.set('views', __dirname);
@@ -35,17 +34,28 @@ app.get(/^\/(fi|en|ja)(\/(\w+))?$/, function(req, res) {
   console.log('params: ' + req.params);
   var language = languages[lang];
 
+  var current = null;
   var pages = pageJson.pages.filter(function (item) {
     if (item.url.substr(0, 3) === '/' + lang) {
+
+      // Use this loop to catch the current page meta
+      if (item.url === req.path) {
+        current = item;
+      }
       return true;
     }
     return false;
   });
 
+  if (current === null) {
+    res.redirect('/' + lang); // TODO: add not found code
+  }
+  current.titlesuffix = pageJson.title[lang];
+
   var file = 'grading-rules-' + (language || 'english') + '.md'
   var data = fs.readFileSync(file, { encoding: 'utf8' });
   var html = md(data);
-  res.render('index', { content: html, pages: pages, lang: lang });
+  res.render('index', { content: html, pages: pages, footers: pageJson.footer[lang], meta: current, lang: lang });
 });
 
 // Catch anything that does not match the previous get.

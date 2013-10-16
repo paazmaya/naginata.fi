@@ -75,22 +75,40 @@
   "footer": {
     "fi": [
       {
-        "url": "http:\/\/paazmaya.com",
+        "url": "http://paazmaya.com",
         "alt": "PAAZMAYA.com",
         "text": "&copy; Jukka Paasonen"
       },
       {
-        "url": "#contribute",
-        "alt": "Kirjaudu sähköpostilla muokkaamaan sivuja",
-        "text": "Kirjaudu",
-        "data": "Muokkaa"
+        "url": "http://github.com/paazmaya/naginata.fi",
+        "alt": "Muokkaa sivuja Githubissa",
+        "text": "Muokkaa Githubissa"
       }
     ],
     "en": [
+      {
+        "url": "http://paazmaya.com",
+        "alt": "PAAZMAYA.com",
+        "text": "&copy; Jukka Paasonen"
+      },
+      {
+        "url": "http://github.com/paazmaya/naginata.fi",
+        "alt": "Contribute to the content and code at Github",
+        "text": "Contribute at Github"
+      }
 
     ],
     "jp": [
-
+      {
+        "url": "http://paazmaya.com",
+        "alt": "PAAZMAYA.com",
+        "text": "&copy; Jukka Paasonen"
+      },
+      {
+        "url": "http://github.com/paazmaya/naginata.fi",
+        "alt": "",
+        "text": "Github"
+      }
     ]
   }
 }

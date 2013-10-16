@@ -1,12 +1,12 @@
 doctype 5
 html(lang=settings.lang)
   head
-    title= settings.title + " | " + settings.titlesuffix
+    title= meta.title + " | " + meta.titlesuffix
     meta(charset="utf-8")
-    meta(content="", name="description")
+    meta(content=meta.description, name="description")
+    meta(content="requiresActiveX=true", http-equiv="X-UA-Compatible")
     link(type="image/png", href="/img/favicon.png", rel="shortcut icon")
     link(type="text/css", rel="stylesheet", href="http://fonts.googleapis.com/css?family=Inder|Lora&subset=latin-ext,latin")
-    meta(content="requiresActiveX=true", http-equiv="X-UA-Compatible")
     link(href="http://creativecommons.org/licenses/by-sa/3.0/", rel="license")
     link(href="http://paazmaya.com", rel="author")
     link(href="/img/mobile-logo.png", rel="apple-touch-icon")
@@ -15,23 +15,24 @@ html(lang=settings.lang)
     nav
       ul
         - each page in pages
-            li
-                a(rel="prefetch", title=page.header, href=page.url)
-                    = page.title
+          li(class=page.url == meta.url ? "current" : "")
+            a(rel="prefetch", title=page.header, href=page.url)
+              = page.title
     div#wrapper
       div#logo
         p
-          = settings.titlesuffix
+          = meta.titlesuffix
       header
         h1
+          = meta.header
         p.desc-transform
+          = meta.description
       article
         != content
-      footer
-        p
-          a(title="PAAZMAYA.com", href="http://paazmaya.com")
-            &copy; Jukka Paasonen
-          |
-          a(title="Kirjaudu sähköpostilla muokkaamaan sivuja", href="http://github.com/paazmaya/naginata.fi")
-            Muokkaa sivuja Githubissa
-    script(src="/js/jquery.js")
+    footer
+      p
+        - each footer in footers
+          a(title=footer.alt, href=footer.url)
+            != footer.text
+
+    script(src="/js/naginata.min.js")
