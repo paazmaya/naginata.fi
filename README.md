@@ -74,6 +74,16 @@ Contributors are welcome.
 
 ### [Markdown](http://daringfireball.net/projects/markdown/ "Markdown is a text-to-HTML conversion tool for web writers")
 
+All of the page contents are stored as Markdown formatter text files, under the `content` directory.
+
+Markdown is converted to HTML via `marked` plugin and the passed to `jade` template.
+
+Markdown files can be converted to PDF files, for example with [_pandoc_](http://johnmacfarlane.net/pandoc/),
+as shown below.
+
+```sh
+pandoc -V geometry:margin=0.5in -o grading-rules-english.md grading-rules-english.pdf
+```
 
 ### [JSON](http://www.json.org/ "JSON (JavaScript Object Notation) is a lightweight data-interchange format")
 
@@ -85,20 +95,8 @@ Contributors are welcome.
  * Speed study (http://blog.chromium.org/2010/07/do-you-know-how-slow-your-web-page-is.html)
 
 
-## Grading requirements for printing
+## [TODO](https://github.com/paazmaya/naginata.fi/issues "issues")
 
-The **Finnish Kendo Association - Naginata Grading Rules** are included in
-this repository as Markdown files. In order to print those, they should
-be converted to PDF files first.
-[This can be achieved with _pandoc_](http://johnmacfarlane.net/pandoc/).
-
-```sh
-pandoc -V geometry:margin=0.5in -o grading-rules-english.md grading-rules-english.pdf
-```
-
-## TODO
-
- * Translations for application strings
- * Configuration of `language_TERRITORY`
- * Separate handling per page type, not all are simple articles
+ * Translations for application strings, issues 1 and 2
+ * Jasmine unit tests, for what ever little testable things there are, issue 3 and 4 for coverage
  * Facebook liking and related, https://developers.facebook.com/tools/debug/og/object?q=naginata.fi
