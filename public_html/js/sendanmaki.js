@@ -22,7 +22,7 @@ _gaq.push(['_trackPageview']);
 // http://code.google.com/apis/analytics/docs/gaJS/gaJSApiBasicConfiguration.html
 
 (function () {
-  if (location.port != 8802) { // that is my development server...
+  if (location.host === 'naginata.fi') { // only at production...
     var ga = document.createElement('script');
     ga.type = 'text/javascript';
     ga.async = true;
@@ -51,41 +51,6 @@ var sendanmaki = {
 
     sendanmaki.lang = $('html').attr('lang');
 
-    if (sendanmaki.lang === 'fi') {
-      /*
-       jQuery Colorbox language configuration
-       language: Finnish (fi)
-       translated by: Mikko
-       */
-      jQuery.extend(jQuery.colorbox.settings, {
-        current: "Kuva {current} / {total}",
-        previous: "Edellinen",
-        next: "Seuraava",
-        close: "Sulje",
-        xhrError: "Sisällön lataaminen epäonnistui.",
-        imgError: "Kuvan lataaminen epäonnistui.",
-        slideshowStart: "Aloita kuvaesitys.",
-        slideshowStop: "Lopeta kuvaesitys."
-      });
-    }
-    else if (sendanmaki.lang === 'ja') {
-      // Colorbox translations
-      /*
-       jQuery Colorbox language configuration
-       language: Japanaese (ja)
-       translated by: Hajime Fujimoto
-       */
-      jQuery.extend(jQuery.colorbox.settings, {
-        current: "{total}枚中{current}枚目",
-        previous: "前",
-        next: "次",
-        close: "閉じる",
-        xhrError: "コンテンツの読み込みに失敗しました",
-        imgError: "画像の読み込みに失敗しました",
-        slideshowStart: "スライドショー開始",
-        slideshowStop: "スライドショー終了"
-      });
-    }
 
     // Add notes to a chudan kamae bogu image, if available
     $('.hasnotes li').each(function () {
@@ -138,6 +103,45 @@ var sendanmaki = {
       sendanmaki.mediaThumbClick($(this));
     });
 
+  },
+
+  initColorbox: function () {
+
+    // Colorbox translations
+    if (sendanmaki.lang === 'fi') {
+      /*
+       jQuery Colorbox language configuration
+       language: Finnish (fi)
+       translated by: Mikko
+       */
+      jQuery.extend(jQuery.colorbox.settings, {
+        current: "Kuva {current} / {total}",
+        previous: "Edellinen",
+        next: "Seuraava",
+        close: "Sulje",
+        xhrError: "Sisällön lataaminen epäonnistui.",
+        imgError: "Kuvan lataaminen epäonnistui.",
+        slideshowStart: "Aloita kuvaesitys.",
+        slideshowStop: "Lopeta kuvaesitys."
+      });
+    }
+    else if (sendanmaki.lang === 'ja') {
+      /*
+       jQuery Colorbox language configuration
+       language: Japanaese (ja)
+       translated by: Hajime Fujimoto
+       */
+      jQuery.extend(jQuery.colorbox.settings, {
+        current: "{total}枚中{current}枚目",
+        previous: "前",
+        next: "次",
+        close: "閉じる",
+        xhrError: "コンテンツの読み込みに失敗しました",
+        imgError: "画像の読み込みに失敗しました",
+        slideshowStart: "スライドショー開始",
+        slideshowStop: "スライドショー終了"
+      });
+    }
     // data-photo-page ...
     $('.imagelist a').colorbox({
       rel: 'several'
@@ -221,4 +225,5 @@ var sendanmaki = {
 
 (function () {
   sendanmaki.domReady();
+  sendanmaki.initColorbox();
 })();
