@@ -43,10 +43,46 @@ var getContent = function (lang, title) {
   return md(data);
 };
 
-app.get(/^\/(fi|en|ja)(\/(\w+))?$/, function(req, res) {
+var facebookMeta = function (page) {
+  // property, name
+  var meta = [
+    // http://ogp.me/
+    { property: 'og:title', content: page.title },
+    { property: 'og:description', content: page.description },
+    { property: 'og:type', content: 'sports_team' },
+
+    // All the images referenced by og:image must be at least 200px in both dimensions.
+    { property: 'og:image', content: '/img/logo-200x200.png' },
+
+    { property: 'og:url', content: 'http://naginata.fi' + page.url },
+    { property: 'og:site_name', content: page.titlesuffix },
+    { property: 'og:locale', content: 'fi_FI' }, // language_TERRITORY
+    { property: 'og:locale:alternate', content: 'en_GB' },
+    { property: 'og:locale:alternate', content: 'ja_JP' },
+    { property: 'og:country-name', content: 'Finland' },
+
+    // https://developers.facebook.com/docs/opengraph/
+    // A Facebook Platform application ID that administers this page.
+    { property: 'fb:app_id', content: pageJson.facebook.app_id },
+    { property: 'fb:admins', content: pageJson.facebook.admins }
+  ];
+
+  return meta;
+};
+
+var langKeys = [];
+for (var key in pageJson.title) {
+  if (pageJson.title.hasOwnProperty(key)) {
+    langKeys.push(key);
+  }
+}
+
+var pageRegex = new RegExp('/^\/(' + langKeys.join('|') + ')(\/(\w+))?$/');
+
+app.get(pageRegex, function(req, res) {
   var lang = req.params[0];
   app.set('lang', lang);
-  console.log('params: ' + req.params);
+  console.dir(req);
 
   var current = null;
   var pages = pageJson.pages.filter(function (item) {
@@ -65,6 +101,9 @@ app.get(/^\/(fi|en|ja)(\/(\w+))?$/, function(req, res) {
     res.redirect('/' + lang); // TODO: add not found code
   }
   current.titlesuffix = pageJson.title[lang];
+
+  //if (strpos($_SERVER['HTTP_USER_AGENT'], 'facebookexternalhit') !== false)
+  //facebookMeta(current);
 
   var html = getContent(lang, current.title);
   res.render('index', { content: html, pages: pages, footers: pageJson.footer[lang], meta: current, lang: lang });

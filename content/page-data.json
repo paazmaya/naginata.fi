@@ -110,5 +110,9 @@
         "text": "Github"
       }
     ]
+  },
+  "facebook": {
+    "app_id": "8060948243",
+    "admins": "paazmaya"
   }
 }

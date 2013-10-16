@@ -34,14 +34,9 @@ class ShikakeOji
     public $language = 'fi';
 
     /**
-     * As in fi_FI or en_GB, the latter part of that is the territory. FI/GB/JP
-     */
-    public $territory = 'FI';
-
-    /**
      * Should be set to the realpath of the JSON file where app data is stored.
      */
-    public $dataPath = '../page-data.json';
+    public $dataPath = '../content/page-data.json';
 
     /**
      * Configuration for Emails sending, 3rd party API keys, etc.
@@ -102,10 +97,6 @@ class ShikakeOji
      * Key is the URL, value is the name of the function to be called.
      */
     private $appUrls = array(
-        '/update-article'     => 'pageUpdateArticle',
-        '/authenticate-user'  => 'pageAuthenticateUser',
-        '/keep-session-alive' => 'keepSessionAlive',
-        //'/application.cache' => 'renderAppCache',
         '/sitemap'            => 'showSiteMap'
     );
 
@@ -377,107 +368,6 @@ class ShikakeOji
                 exit();
             }
         }
-    }
-
-    /**
-     * Render a manifest file for applicationCache
-     * Does return something only on error.
-     */
-    private function renderAppCache()
-    {
-        header('Content-type: text/cache-manifest');
-
-        // date of the latest changed file
-        $highestDate = 0;
-
-        $out = 'CACHE MANIFEST' . "\n";
-        $out .= "\n";
-        $out .= 'CACHE:' . "\n";
-
-        $sql = 'SELECT P.url, A.modified FROM naginata_page P' .
-            ' LEFT JOIN naginata_article A ON P.id = A.page_id WHERE P.lang = \'' .
-            $this->language . '\' ORDER BY P.weight ASC, A.modified DESC';
-        $run = $this->database->query($sql);
-        if ($run)
-        {
-            while ($res = $run->fetch(PDO::FETCH_ASSOC))
-            {
-                $out .= $res['url'] . "\n";
-                $highestDate = max($highestDate, $res['modified']);
-            }
-        }
-
-        $images = glob('../public_html/img/*');
-        foreach ($images as $img)
-        {
-            $highestDate = max($highestDate, filemtime($img));
-            $out .= '/img/' . basename($img) . "\n";
-        }
-
-        $out .= '/css/' . $this->output->minifiedName . 'css' . "\n";
-        $highestDate = max($highestDate, filemtime('../public_html/css/' . $this->output->minifiedName . 'css'));
-
-        $out .= '/js/' . $this->output->minifiedName . 'js' . "\n";
-        $highestDate = max($highestDate, filemtime('../public_html/js/' . $this->output->minifiedName . 'js'));
-
-        $flickr = glob('../cache/flickr_*_sizes.json');
-        foreach ($flickr as $fl)
-        {
-            $fc = file_get_contents($fl);
-            $json = json_decode($fc, true);
-            $out .= $json['sizes']['size']['2']['source'] . "\n";
-        }
-
-        $flickr = glob('../cache/flickr_*_sizes.json');
-        foreach ($flickr as $fl)
-        {
-            $fc = file_get_contents($fl);
-            $json = json_decode($fc, true);
-            $out .= $json['sizes']['size']['2']['source'] . "\n";
-        }
-
-        $youtube = glob('../cache/youtube_*.json');
-        foreach ($youtube as $yo)
-        {
-            $ys = file_get_contents($yo);
-            $json = json_decode($ys, true);
-            foreach ($json['entry']['media$group']['media$thumbnail'] as $thumb)
-            {
-                if ($thumb['height'] == 90)
-                {
-                    $out .= $thumb['url'] . "\n";
-                }
-            }
-        }
-
-        $vimeo = glob('../cache/vimeo_*.json');
-        foreach ($vimeo as $vi)
-        {
-            $vs = file_get_contents($vi);
-            $json = json_decode($vs, true);
-            $out .= $json['0']['thumbnail_medium'] . "\n";
-        }
-
-
-        /*
-        /favicon.ico
-        */
-        $out .= "\n";
-
-        // Resources that require the user to be online.
-        $out .= 'NETWORK:' . "\n";
-        $out .= '*' . "\n";
-
-        $out .= "\n";
-
-        $out .= 'OFFLINE:' . "\n";
-        $out .= '/keep-session-alive /offline.json' . "\n";
-
-        $out .= "\n";
-
-        $out .= '# ' . date('Y-m-d', $highestDate) . "\n";
-
-        return $out;
     }
 
     /**
