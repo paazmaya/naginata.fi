@@ -50,6 +50,7 @@ Contributors are welcome.
  * Local Storage replacing browser cookies (http://www.w3.org/TR/webstorage/)
  * Google Web Fonts (http://www.google.com/fonts)
  * Google Analytics
+ * Deploy to Heroku `git push heroku master`, http://naginata-finland.herokuapp.com
 
 ### [Node.js](http://nodejs.org "Node.js is a platform built on Chrome's JavaScript runtime for easily building fast, scalable network applications")
 
