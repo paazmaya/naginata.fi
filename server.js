@@ -22,9 +22,9 @@ var pageJson = JSON.parse(pageData);
 
 
 var app = express();
-app.use(express.logger());
 //app.use(express.compress());
 app.use(express.static(__dirname + '/public_html'));
+app.use(express.logger());
 
 app.engine('jade', require('jade').__express);
 
@@ -75,8 +75,7 @@ for (var key in pageJson.title) {
   }
 }
 
-var pageRegex = new RegExp('^\/(' + langKeys.join('|') + ')(\/(\w+))?$');
-
+var pageRegex = new RegExp('^\/(' + langKeys.join('|') + ')(\/(\\w+))?$');
 
 app.get(pageRegex, function(req, res) {
   var lang = req.params[0];
@@ -96,7 +95,8 @@ app.get(pageRegex, function(req, res) {
   });
 
   if (current === null) {
-    res.redirect('/' + lang); // TODO: add not found code
+    res.redirect('/' + lang, 404); // TODO: add not found code
+    return;
   }
   current.titlesuffix = pageJson.title[lang];
 
@@ -110,7 +110,7 @@ app.get(pageRegex, function(req, res) {
 
 // Catch anything that does not match the previous get.
 app.get('*', function(req, res) {
-  res.redirect('/' + defaultLang);
+  res.redirect('/' + defaultLang, 404);
 });
 
 var port = process.env.PORT || 5000;
