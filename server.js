@@ -26,6 +26,11 @@ var app = express();
 app.use(express.static(__dirname + '/public_html'));
 app.use(express.logger());
 
+app.on('uncaughtException', function (err) {
+  console.error(err.stack);
+  console.log("Node NOT Exiting...");
+});
+
 app.engine('jade', require('jade').__express);
 
 app.set('views', __dirname + '/views');
@@ -113,7 +118,10 @@ app.get('*', function(req, res) {
   res.redirect('/' + defaultLang, 404);
 });
 
-var port = process.env.PORT || 5000;
-app.listen(port, function() {
-  console.log("Listening on " + port);
+// https://devcenter.heroku.com/articles/config-vars
+var ipaddr = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
+var port = process.env.OPENSHIFT_NODEJS_PORT || process.env.PORT || 5000;
+
+app.listen(port, ipaddr, function() {
+  console.log("Express.js running at http://" + ipaddr + ":" + port + "/");
 });
