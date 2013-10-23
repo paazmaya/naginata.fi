@@ -5,6 +5,7 @@
     Hämeenlinna](https://www.facebook.com/events/501891759879564/ "Finnish Naginata Friendship Seminar 2014")
 -   13.9.2014 - [Suomen Avoin Kilpailu,
     Hämeenlinna](https://www.facebook.com/events/147521468779208/ "Naginata Finnish Open 2014")
+-   22.-24.8.2014 - Kansainvälisen Naginataliiton leiri, Alankomaat
 -   5.2014 - [Leiri Potsdamissa,
     Saksassa](http://www.genkido.de/naginata.html "Bishamonten Naginata Kyôshitsu")
 -   3.2014 - Vuosittainen leiri Iso-Britanniassa
