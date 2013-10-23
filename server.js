@@ -73,9 +73,22 @@ var facebookMeta = function (page) {
   return meta;
 };
 
+/**
+ * @see http://expressjs.com/api.html#req.acceptedLanguages
+ */
+var checkLang = function (acceptedLanguages) {
+  acceptedLanguages.forEach(function (item) {
+    var key = item.substr(0, 2);
+    if (pageJson.languages.hasOwnProperty(key) && pageJson.languages[key] === true) {
+      defaultLang = item.substr(0, 2);
+      return;
+    }
+  });
+};
+
 var langKeys = [];
-for (var key in pageJson.title) {
-  if (pageJson.title.hasOwnProperty(key)) {
+for (var key in pageJson.languages) {
+  if (pageJson.languages.hasOwnProperty(key) && pageJson.languages[key] === true) {
     langKeys.push(key);
   }
 }
@@ -100,7 +113,7 @@ app.get(pageRegex, function(req, res) {
   });
 
   if (current === null) {
-    res.redirect('/' + lang, 404); // TODO: add not found code
+    res.redirect(404, '/' + lang);
     return;
   }
   current.titlesuffix = pageJson.title[lang];
@@ -113,9 +126,15 @@ app.get(pageRegex, function(req, res) {
   res.render('index', { content: html, pages: pages, footers: pageJson.footer[lang], meta: current, lang: lang });
 });
 
-// Catch anything that does not match the previous get.
+// Softer landing page
+app.get('/', function(req, res) {
+  checkLang(req.acceptedLanguages);
+  res.redirect(301, '/' + defaultLang);
+});
+
+// Catch anything that does not match the previous rules.
 app.get('*', function(req, res) {
-  res.redirect('/' + defaultLang, 404);
+  res.redirect(404, '/' + defaultLang);
 });
 
 // https://devcenter.heroku.com/articles/config-vars

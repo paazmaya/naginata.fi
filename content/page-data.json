@@ -1,4 +1,9 @@
 {
+	"languages": {
+		"fi": true,
+		"en": false,
+		"ja": false
+	},
   "pages": [
     {
       "url": "/fi",
