@@ -2,7 +2,7 @@
 [Suomen Kendoseurojen Keskusliitto
 ry](http://fka.fi/ "FKA - Suomen Kendoseurojen Keskusliitto ry"):n
 alaisuudessa harjoitellaan Atarashii Naginata:a, jonka pääohjaajana
-toimii Jukka Paasonen (1 dan, [etunimi]@naginata.fi).
+toimii Jukka Paasonen (2 dan, [etunimi]@naginata.fi).
 
 [![Naginata](http://farm4.staticflickr.com/3560/3516387044_7fb505ca33_m.jpg)](http://flickr.com/photos/8014296@N04/3516387044 "Naginata")
 
@@ -32,7 +32,7 @@ Harjoitukset ovat torstaisin kello 18:00 - 19:30 ja sunnuntaisin kello
 16:00 - 18:00. Kumpikin harjoituksista pidetään "keskisalissa".
 
 Helsingin Kendoseuran naginatavastaava Jarno Yliluoma
-([etunimi.sukunimi]@gmail.com) vastaa tiedusteluihin lajiin liittyviin
+([etunimi.sukunimi]@gmail.com) vastaa lajiin liittyviin
 tiedusteluihin.
 
 ### Tapanilan Erä - Kendojaos
