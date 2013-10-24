@@ -94,7 +94,7 @@ pandoc -V geometry:margin=0.5in -o grading-rules-english.md grading-rules-englis
 ## Other notes
 
  * Speed study (http://blog.chromium.org/2010/07/do-you-know-how-slow-your-web-page-is.html)
-
+ * Sitespeed.io, 2.1-wip `./sitespeed.io -u http://naginata.fi -o csv -k true`
 
 ## [TODO](https://github.com/paazmaya/naginata.fi/issues "issues")
 
