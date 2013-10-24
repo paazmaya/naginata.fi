@@ -138,7 +138,7 @@ app.get('*', function(req, res) {
 });
 
 // https://devcenter.heroku.com/articles/config-vars
-var ipaddr = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
+var ipaddr = process.env.OPENSHIFT_NODEJS_IP || null;
 var port = process.env.OPENSHIFT_NODEJS_PORT || process.env.PORT || 5000;
 
 app.listen(port, ipaddr, function() {
