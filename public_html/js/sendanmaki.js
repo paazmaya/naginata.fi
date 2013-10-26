@@ -53,6 +53,7 @@ var sendanmaki = {
 
 
     // Add notes to a chudan kamae bogu image, if available
+    // /img/naginata-bogu-chudan-artwork-lecklin.png
     $('.hasnotes li').each(function () {
       var data = $(this).data();
       if (typeof data !== 'undefined') {
@@ -90,16 +91,22 @@ var sendanmaki = {
       }, false);
     }
 
+
+    // Reusage
+    var $images = $('p > a:has(img:only-child)');
+    var $external = $('a[href^="http://"],a[href^="https://"]').not($images);
+
     // external urls shall open in a new window
-    $('a[href^="http://"],a[href^="https://"]').not('.mediathumb a, .imagelist a').on('click', function (event) {
+    $external.on('click', function (event) {
       event.preventDefault();
       var href = $(this).attr('href');
       window.open(href, $.now());
     });
 
     // href has link to actual page, rel has inline player link
-    $('.mediathumb a:has(img)').on('click', function (event) {
+    $images.on('click', function (event) {
       event.preventDefault();
+      console.log(this);
       sendanmaki.mediaThumbClick($(this));
     });
 
@@ -168,9 +175,17 @@ var sendanmaki = {
    */
   mediaThumbClick: function ($a) {
     var data = $a.data();
+    var href = $a.attr('href');
+
+    // Find the domain
+    if (href.search(/\/\/.*flickr\.com\//) !== -1) {
+
+    }
+
+    // Flickr, replace _m.jpg --> _z.jpg
 
     // Tell Analytics
-    _gaq.push(['_trackPageview', $a.attr('href')]);
+    _gaq.push(['_trackPageview', href]);
 
     if (data.iframe) {
       // Vimeo has size data, Youtube does not

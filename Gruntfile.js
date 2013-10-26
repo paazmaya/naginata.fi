@@ -19,7 +19,6 @@ module.exports = function(grunt) {
           'public_html/js/naginata.min.js': [
             'bower_components/jquery/jquery.js',
             'bower_components/colorbox/jquery.colorbox.js',
-            'public_html/js/jquery.outerhtml.js',
             'public_html/js/sendanmaki.js'
           ]
         }
@@ -59,13 +58,13 @@ module.exports = function(grunt) {
         options: {
           vendor: [
             'bower_components/jquery/jquery.js',
-            'bower_components/colorbox/jquery.colorbox.js',
-            'public_html/js/jquery.outerhtml.js'
+            'bower_components/colorbox/jquery.colorbox.js'
           ],
           specs: 'tests/js/sendanmaki_spec.js'
         }
       }
-    },
+    }
+
   });
 
   grunt.loadNpmTasks('grunt-contrib-cssmin');

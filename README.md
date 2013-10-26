@@ -54,14 +54,18 @@ Contributors are welcome.
 
 ### [Node.js](http://nodejs.org "Node.js is a platform built on Chrome's JavaScript runtime for easily building fast, scalable network applications")
 
-* [NPM](https://npmjs.org/ "Node Packaged Modules")
+ * [NPM](https://npmjs.org/ "Node Packaged Modules")
+ * `npm install`
 
 ### [Bower](http://bower.io/ "Bower is a package manager for the web")
+
+ * `bower install`
 
 ### [Grunt](http://gruntjs.com/ "The JavaScript Task Runner")
 
  * Both JavaScript and CSS files are combined to a single file, minified and finally compressed.
-
+ * `grunt minify`
+ 
 ### [Jade](http://jade-lang.com/ "node templating language")
 
 ### [Express.js](http://expressjs.com/ "web application framework for node")

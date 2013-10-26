@@ -15,7 +15,16 @@
 // http://expressjs.com
 var express = require('express');
 var fs = require('fs');
-var md = require('marked').parse;
+
+// https://github.com/chjj/marked
+var marked = require('marked');
+var md = marked.parse;
+
+marked.setOptions({
+  gfm: true,
+  breaks: true
+});
+
 
 var pageData = fs.readFileSync('content/page-data.json', { encoding: 'utf8' });
 var pageJson = JSON.parse(pageData);

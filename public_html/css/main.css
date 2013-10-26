@@ -3,9 +3,9 @@
  ***************
  * Juga Paazmaya <olavic@gmail.com>
  * http://creativecommons.org/licenses/by-sa/3.0/
- * 
+ *
  * main.css
- * 
+ *
  * Reindeer in the Arctic, http://kuler.adobe.com/#themeID/1691184
  * FEFEFE white
  * 4B5535 army green
@@ -172,105 +172,50 @@ article li {
 }
 article img {
 }
+
 /* a that has no direct child img */
 article p > a:not(img)::after, article li > a:not(img)::after {
-    content: url(../img/link-arrow.png);
-    margin-left: 4px;
+  /*content: url(../img/link-arrow.png);*/
+  margin-left: 4px;
 }
-.imagelist a::after {
-	content: '';
-	margin-left: 0;
-}
-form {
-	width: 60em;
-}
-form.login {
-	background-image: url(../img/openid-icon-100x100.png);
-	background-position: center bottom;
-	background-repeat: no-repeat;
-	/*height: 10em;*/
-}
-form.edit {
-	height: 100%;
-}
-/* AJAX feedback on form submit */
-form.ajax-ongoing {
-	background-color: #95D2F1;
-}
-form.ajax-failure {
-	background-color: #f01854;
-}
-form.ajax-success {
-	background-color: #1fbd33;
-}
-form.ajax-unsure {
-	background-color: #FAF554;
-}
-select, input, textarea {
-	width: 48rem;
-	border: 1px solid #072434;
-	margin: 1em;
-}
-textarea {
-	height: 24rem;
-	padding: 0.5em;
-	margin: 0.5em;
-}
-input[type=submit], input[type=button] {
-	width: 15em;
-	margin: 1em 5em;
-	padding: 0.5em;
-	text-align: center;
-	font-weight: bold;
-	background-color: #072434;
-	border-color: #DFE0E4;
-	color: #DFE0E4;
-}
-input[type=submit]:hover, input[type=button]:hover {
-	background-color: #4B5535;
-	border-color: #DFE0E4;
-	color: #DFE0E4;
-}
-input[disabled], input[disabled]:hover {
-	background-color: #989E7B;
-}
-label {
-	width: 38rem;
-	margin-left: 1em;
-	font-weight: bold;
-}
-label span {
-	position: absolute;
-	right: 1.5em;
-}
+
 /* paragraph containing a link that contains image(s) */
-.mediathumb {
+p > a:only-child {
 	border: 0.2em solid #072434;
 	padding: 0.6em;
 	margin: 1em;
 	text-align: center;
 	float: left;
+  font-size: 0.8em;
+  font-weight: bold;
+  width: 280px;
+  color: #072434;
 }
-.mediathumb:nth-child(even) {
+p > a:only-child > img:only-of-type {
+  display: block;
+  margin: 0.4em auto;
+}
+p > a:only-child > img {
+  margin: 0.4em;
+}
+
+
+/* make flex box */
+/*
+p > a:only-child:nth-child(even) {
     float: right;
     margin-left: 2em;
 }
-.mediathumb:nth-child(odd) {
+p > a:only-child:nth-child(odd) {
     margin-right: 2em;
 }
-.mediathumb figcaption {
-	font-size: 0.8em;
-	font-weight: bold;
-	width: 250px;
-	color: #072434;
-}
-.mediathumb a {
-	color: #072434;
-}
-/* first-child would be span so it will not work */
-.mediathumb img:not(:first-of-type) {
+
+p > a:only-child img:not(:first-of-type) {
 	margin-left: 0.5em;
 }
+*/
+
+
 /* under mediathumb there is span that on hover should show play video icon */
 .playicon {
 	visibility: hidden;
@@ -299,6 +244,7 @@ label span {
 .medialocal {
 	float: left;
 }
+
 /* unordered list */
 .imagelist {
 	list-style: none;
@@ -312,6 +258,10 @@ label span {
 .imagelist a {
 	border: 1px solid #072434;
 	display: block;
+}
+.imagelist a::after {
+  content: '';
+  margin-left: 0;
 }
 .imagelist a:hover {
 	border-color: #4B5535;
@@ -327,42 +277,8 @@ label span {
 	color: #121212;
 	background-color: #FEFEFE;
 }
-/* login form is replaced with a ul of OpenID providers */
 
-.login-list {
-	list-style: none;
-}
-.login-list li {
-	display: inline-block;
-	padding: 0.5em;
-}
-.login-list a {
-	display: block;
-	text-align: center;
-}
-.login-list img {
-	width: 100px;
-	height: 100px;
-}
 
-/* content shown in a colorbox after login */
-.appmessage {
-	padding: 2em;
-	padding-left: 4em;
-	background-position: 1em center;
-	background-repeat: no-repeat;
-	background-image: url(../img/mobile-logo.png);
-	overflow: visible;
-}
-.loginfailure {
-	background-image: url(../img/logo-red-57x57.png);
-}
-.loginsuccess {
-	background-image: url(../img/logo-green-57x57.png);
-}
-.CodeMirror {
-	border: 1px solid #121212;
-}
 #wrapper {
 	min-height: 100%;
 	width: 50em;

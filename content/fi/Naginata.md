@@ -9,10 +9,9 @@ tarkoituksena oli toimia kouluissa liikunnan opetuksena tytöille, jossa
 se toimi \~1910 alkaen toiseen maailmansotaan saakka.
 
 [![Naginata
-Competition](http://farm7.staticflickr.com/6231/6282661367_12b51920c4_m.jpg)](http://flickr.com/photos/96248369@N00/6282661367 "Naginata Competition")
-
-Naginata Competition /
-[ethics\_gradient](http://flickr.com/people/96248369@N00 "Flickr - ethics_gradient")
+Competition](http://farm7.staticflickr.com/6231/6282661367_12b51920c4_m.jpg)
+Naginata Competition / ethics_gradient
+](http://flickr.com/photos/96248369@N00/6282661367 "Naginata Competition")
 
 Myöhemmin lajin nimi muutettiin "uudeksi naginataksi", josta tuli
 standarsoitu versio samaan tapaan kuten muun muassa kendōn, judōn ja
@@ -91,10 +90,9 @@ Hikitate, eli merkin antava osapuoli, antaa toisen lyödä avaamiinsa
 osumakohteisiin eri määrän suorituksia.
 
 [![Fighting
-Spirit](http://farm8.staticflickr.com/7036/7040969153_c884abd640_m.jpg)](http://flickr.com/photos/31676563@N05/7040969153 "Fighting Spirit")
-
-Fighting Spirit / [Teruhide
-Tomori](http://flickr.com/people/31676563@N05 "Flickr - Teruhide Tomori")
+Spirit](http://farm8.staticflickr.com/7036/7040969153_c884abd640_m.jpg)
+Fighting Spirit / Teruhide Tomori
+](http://flickr.com/photos/31676563@N05/7040969153 "Fighting Spirit")
 
 ### Gokaku geiko
 

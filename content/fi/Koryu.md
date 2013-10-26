@@ -14,28 +14,26 @@ asukokonaisuus vastaa Atarashii Naginata:ssa käytettyä, standardoitua
 harjoituspukua.
 
 [![Kyoto 2011-05-02 107th Embu Taikai, Jikishinkageryu
-Naginatajutsu](http://farm3.staticflickr.com/2291/5763589730_ae7116f625_m.jpg)](http://flickr.com/photos/14224905@N08/5763589730 "Kyoto 2011-05-02 107th Embu Taikai, Jikishinkageryu Naginatajutsu")
-
-Kyoto 2011-05-02 107th Embu Taikai, Jikishinkageryu Naginatajutsu /
-[paazio](http://flickr.com/people/14224905@N08 "Flickr - paazio")
+Naginatajutsu](http://farm3.staticflickr.com/2291/5763589730_ae7116f625_m.jpg)
+Kyoto 2011-05-02 107th Embu Taikai, Jikishinkageryu Naginatajutsu / paazio
+](http://flickr.com/photos/14224905@N08/5763589730 "Kyoto 2011-05-02 107th Embu Taikai, Jikishinkageryu Naginatajutsu")
 
 [![Jikishinkage-ryu Naginata /
-直心影流薙刀](http://farm2.staticflickr.com/1322/4601612764_1e3537aeab_m.jpg)](http://flickr.com/photos/8519244@N06/4601612764 "Jikishinkage-ryu Naginata / 直心影流薙刀")
-
-Jikishinkage-ryu Naginata / 直心影流薙刀 /
-[RStonell](http://flickr.com/people/8519244@N06 "Flickr - RStonell")
+直心影流薙刀](http://farm2.staticflickr.com/1322/4601612764_1e3537aeab_m.jpg)
+Jikishinkage-ryu Naginata / 直心影流薙刀 / RStonell
+](http://flickr.com/photos/8519244@N06/4601612764 "Jikishinkage-ryu Naginata / 直心影流薙刀")
 
 Poikkeuksetta kaikki tyyliä harjoittelevat henkilöt kuuluvat
 Shūtokukai:hin (秀徳会), Japanilaiseen pääorganisaatioon jonka tehtävänä
 on ylläpitää ja kunnioittaa tyylin perinnettä. Samoin Suomessa ja
 Hawaijilla sijaitsevien ulkomaisten ryhmien jäsenet.
 
-[![Furikaeshi](http://i1.ytimg.com/vi/WPud9FUkuS8/default.jpg)![Furikaeshi](http://i1.ytimg.com/vi/WPud9FUkuS8/1.jpg)](http://www.youtube.com/watch?v=WPud9FUkuS8 "Furikaeshi")
+[![Furikaeshi](http://i1.ytimg.com/vi/WPud9FUkuS8/default.jpg)
+![Furikaeshi](http://i1.ytimg.com/vi/WPud9FUkuS8/1.jpg)
+Furikaeshi / lolinternetslol
+](http://www.youtube.com/watch?v=WPud9FUkuS8 "Furikaeshi")
 
-Furikaeshi /
-[lolinternetslol](http://youtube.com/lolinternetslol "Youtube - lolinternetslol")
-
-Jikishinkageryū Naginatajutsun tTunnusomaisia tekniikoita ovat tuuli- ja
+Jikishinkageryū Naginatajutsun tunnusomaisia tekniikoita ovat tuuli- ja
 vesimyllyjen mukaan nimenyt pyörivän leikkauksen tekniikat joiden avulla
 ase voi olla koko ajan liikkeessä.
 
@@ -65,13 +63,13 @@ Lisätietoa tyylisuunnasta:
     Kyōkai](http://www.nihonkobudokyoukai.org/martialarts/059/ "Jikishinkageryu Naginatajutsu - Nihon Kobudo Kyokai")
 
 [![Kyoto 2011-05-04 Shimogamo Jinja, Jikishinkageryu
-Naginatajutsu](http://farm6.staticflickr.com/5185/5763043699_fcda29747e_m.jpg)](http://flickr.com/photos/14224905@N08/5763043699 "Kyoto 2011-05-04 Shimogamo Jinja, Jikishinkageryu Naginatajutsu")
+Naginatajutsu](http://farm6.staticflickr.com/5185/5763043699_fcda29747e_m.jpg)
+Kyoto 2011-05-04 Shimogamo Jinja, Jikishinkageryu Naginatajutsu / paazio
+](http://flickr.com/photos/14224905@N08/5763043699 "Kyoto 2011-05-04 Shimogamo Jinja, Jikishinkageryu Naginatajutsu")
 
-Kyoto 2011-05-04 Shimogamo Jinja, Jikishinkageryu Naginatajutsu /
-[paazio](http://flickr.com/people/14224905@N08 "Flickr - paazio")
 
 [![Himeji 2011-05-26 Jikishinkageryu
-Naginatajutsu](http://farm3.staticflickr.com/2514/5763043905_5a542834cf_m.jpg)](http://flickr.com/photos/14224905@N08/5763043905 "Himeji 2011-05-26 Jikishinkageryu Naginatajutsu")
+Naginatajutsu](http://farm3.staticflickr.com/2514/5763043905_5a542834cf_m.jpg)
+Himeji 2011-05-26 Jikishinkageryu Naginatajutsu / paazio
+](http://flickr.com/photos/14224905@N08/5763043905 "Himeji 2011-05-26 Jikishinkageryu Naginatajutsu")
 
-Himeji 2011-05-26 Jikishinkageryu Naginatajutsu /
-[paazio](http://flickr.com/people/14224905@N08 "Flickr - paazio")
