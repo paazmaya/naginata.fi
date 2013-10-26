@@ -173,47 +173,36 @@ article li {
 article img {
 }
 
-/* a that has no direct child img */
-article p > a:not(img)::after, article li > a:not(img)::after {
-  /*content: url(../img/link-arrow.png);*/
-  margin-left: 4px;
+article a {
+  color: #006600;
+}
+article a:hover, article a:focus {
+  color: white;
+  background-color: #006600;
 }
 
 /* paragraph containing a link that contains image(s) */
 p > a:only-child {
-	border: 0.2em solid #072434;
-	padding: 0.6em;
-	margin: 1em;
-	text-align: center;
-	float: left;
+}
+p > a:only-child > img:only-of-type {
+  display: block;
+  border: 0.2em solid #072434;
+  padding: 0.6em;
+  margin: 2em;
+  text-align: center;
+  float: left;
   font-size: 0.8em;
   font-weight: bold;
   width: 280px;
   color: #072434;
 }
-p > a:only-child > img:only-of-type {
-  display: block;
-  margin: 0.4em auto;
-}
-p > a:only-child > img {
-  margin: 0.4em;
+
+/* Colorbox background overlay */
+#cboxOverlay {
+  background: #f8f8f8;
 }
 
 
-/* make flex box */
-/*
-p > a:only-child:nth-child(even) {
-    float: right;
-    margin-left: 2em;
-}
-p > a:only-child:nth-child(odd) {
-    margin-right: 2em;
-}
-
-p > a:only-child img:not(:first-of-type) {
-	margin-left: 0.5em;
-}
-*/
 
 
 /* under mediathumb there is span that on hover should show play video icon */
@@ -245,38 +234,6 @@ p > a:only-child img:not(:first-of-type) {
 	float: left;
 }
 
-/* unordered list */
-.imagelist {
-	list-style: none;
-	clear: both;
-	padding: 0;
-}
-.imagelist li {
-	float: left;
-	padding: 0.2em;
-}
-.imagelist a {
-	border: 1px solid #072434;
-	display: block;
-}
-.imagelist a::after {
-  content: '';
-  margin-left: 0;
-}
-.imagelist a:hover {
-	border-color: #4B5535;
-}
-.imagelist img {
-	display: block;
-	width: 75px;
-	height: 75px;
-}
-.fail {
-	margin: 1em;
-	border: 0.3em solid #AB26BB;
-	color: #121212;
-	background-color: #FEFEFE;
-}
 
 
 #wrapper {
@@ -335,9 +292,4 @@ p > a:only-child img:not(:first-of-type) {
 	padding: 0.2em 0.4em;
 	margin-top: -0.5em;
 	text-align: center;
-}
-/* modernizr stats table */
-.stats td {
-	padding: 2px;
-	border: 1px solid lightgrey;
 }

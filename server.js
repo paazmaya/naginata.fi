@@ -22,7 +22,7 @@ var md = marked.parse;
 
 marked.setOptions({
   gfm: true,
-  breaks: true
+  breaks: false
 });
 
 

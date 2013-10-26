@@ -131,6 +131,11 @@
 
 ## Videoita näytöksistä ja kilpailuista
 
+[![Furikaeshi](http://i1.ytimg.com/vi/WPud9FUkuS8/default.jpg)
+![Furikaeshi](http://i1.ytimg.com/vi/WPud9FUkuS8/1.jpg)
+Furikaeshi / lolinternetslol
+](http://www.youtube.com/watch?v=WPud9FUkuS8 "Furikaeshi")
+
 [![Rhythm Naginata at the 5th Naginata World
 Championships](http://b.vimeocdn.com/ts/345/146/345146871_200.jpg)](http://vimeo.com/50075290 "Rhythm Naginata at the 5th Naginata World Championships")
 

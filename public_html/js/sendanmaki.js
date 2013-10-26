@@ -175,14 +175,15 @@ var sendanmaki = {
    */
   mediaThumbClick: function ($a) {
     var data = $a.data();
-    var href = $a.attr('href');
+    var href = $a.find('img').attr('src');
 
+    console.log(href);
     // Find the domain
     if (href.search(/\/\/.*flickr\.com\//) !== -1) {
-
+      // Flickr, replace _m.jpg --> _z.jpg
+      href = href.replace('_m.jpg', '_z.jpg');
     }
 
-    // Flickr, replace _m.jpg --> _z.jpg
 
     // Tell Analytics
     _gaq.push(['_trackPageview', href]);
@@ -211,7 +212,7 @@ var sendanmaki = {
     else {
       $.colorbox({
         title: $a.attr('title'),
-        href: data.url,
+        href: href,
         photo: true
       });
     }

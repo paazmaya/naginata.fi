@@ -89,8 +89,7 @@ alkukirjaimella ja aseen nimi pienellä.
 
 [![Naginata
 Competition](http://farm7.staticflickr.com/6059/6283180930_4405e8e6f1_m.jpg)
-Naginata Competition / ethics_gradient
-](http://flickr.com/photos/96248369@N00/6283180930 "Naginata Competition")
+](http://flickr.com/photos/96248369@N00/6283180930 "Naginata Competition / ethics_gradient")
 
 Nykyisessä muodossa tuo terä on valmistettu bambusta ja teräksistä
 naginataa tapaa enää vain museoissa tai asekeräilijöiden kokoelmista.

@@ -4,9 +4,7 @@ ry](http://fka.fi/ "FKA - Suomen Kendoseurojen Keskusliitto ry"):n
 alaisuudessa harjoitellaan Atarashii Naginata:a, jonka pääohjaajana
 toimii Jukka Paasonen (2 dan, [etunimi]@naginata.fi).
 
-[![Naginata](http://farm4.staticflickr.com/3560/3516387044_7fb505ca33_m.jpg)
-Naginata / Gitta Wilén
-](http://flickr.com/photos/8014296@N04/3516387044 "Naginata")
+[![Naginata](http://farm4.staticflickr.com/3560/3516387044_7fb505ca33_m.jpg)](http://flickr.com/photos/8014296@N04/3516387044 "Naginata / Gitta Wilén")
 
 Liitto ylläpitää [sähköpostilistaa jolla tiedotetaan leireistä,
 graduoinneista ja käydään muuta
