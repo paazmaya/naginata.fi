@@ -47,6 +47,12 @@ app.set('view engine', 'jade');
 
 var defaultLang = 'fi';
 
+/**
+ * Get the contents of the current page in HTML format.
+ * @param {string} lang ISO 2 char language code
+ * @param {string} title Page title
+ * @returns {string} HTML content
+ */
 var getContent = function (lang, title) {
   var data = fs.readFileSync(
     'content/' + lang + '/' + title + '.md',
@@ -55,6 +61,11 @@ var getContent = function (lang, title) {
   return md(data);
 };
 
+/**
+ * Facebook Open Graph Meta data.
+ * @param {Object} page Current page meta data
+ * @returns {Array}
+ */
 var facebookMeta = function (page) {
   // property, name
   var meta = [
@@ -83,6 +94,9 @@ var facebookMeta = function (page) {
 };
 
 /**
+ * Checks if the current language should be changed according to the
+ * current users language preferences and thus changes if needed.
+ * @param {Array} acceptedLanguages
  * @see http://expressjs.com/api.html#req.acceptedLanguages
  */
 var checkLang = function (acceptedLanguages) {

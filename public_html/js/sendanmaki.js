@@ -42,36 +42,65 @@ var sendanmaki = {
   lang: 'fi',
 
   /**
+   * Image notes for the given key image.
+   */
+  notes: {
+    "/img/naginata-bogu-chudan-artwork-lecklin.png": [
+      {
+        "width": "104", "height": "126", "x": "45", "y": "0", "note": "Men"
+      },
+      {
+        "width": "58", "height": "82", "x": "147", "y": "235", "note": "Kote"
+      },
+      {
+        "width": "83", "height": "118", "x": "55", "y": "138", "note": "Do"
+      },
+      {
+        "width": "137", "height": "87", "x": "30", "y": "246", "note": "Tare"
+      },
+      {
+        "width": "52", "height": "133", "x": "112", "y": "435", "note": "Sune ate"
+      },
+      {
+        "width": "31", "height": "39", "x": "369", "y": "236", "note": "Kissaki"
+      },
+      {
+        "width": "23", "height": "25", "x": "13", "y": "252", "note": "Ishizuki"
+      },
+      {
+        "width": "48", "height": "26", "x": "251", "y": "307", "note": "Sendanmaki"
+      },
+      {
+        "width": "39", "height": "27", "x": "352", "y": "279", "note": "Monouchi"
+      }
+    ]
+  },
+
+  /**
    * This shall be run on domReady in order to initiate
    * all the handlers needed.
    */
   domReady: function () {
-    // When was the current page content last modified
-    //var modified = $('article').data('dataModified');
-
     sendanmaki.lang = $('html').attr('lang');
 
-
     // Add notes to a chudan kamae bogu image, if available
-    // /img/naginata-bogu-chudan-artwork-lecklin.png
-    $('.hasnotes li').each(function () {
-      var data = $(this).data();
-      if (typeof data !== 'undefined') {
-        sendanmaki.createImgNote(data);
-      }
-    }).on('mouseover mouseout', function (event) {
-        var data = $(this).data();
+    $.each(sendanmaki.notes, function (item) {
+      $('img[src="' + item + '"]').each(function () {
+        sendanmaki.createImgNote(sendanmaki.notes[item], item);
+      }).on('mouseover mouseout', function (event) {
+          var data = $(this).data();
 
-        if (data.url && data.note) {
-          var div = $('img[src="' + data.url + '"]').parent().children('div.note:contains("' + data.note + '")');
+          var div = $(this).parent().children('div.note:contains("' + sendanmaki.notes[item].note + '")');
           if (event.type == 'mouseover') {
             div.addClass('notehover');
           }
           else {
             div.removeClass('notehover');
           }
-        }
-      });
+
+        });
+    });
+
 
     // Nokia E7 browser fails on this...
     if (typeof applicationCache !== 'undefined') {
@@ -177,7 +206,6 @@ var sendanmaki = {
     var data = $a.data();
     var href = $a.find('img').attr('src');
 
-    console.log(href);
     // Find the domain
     if (href.search(/\/\/.*flickr\.com\//) !== -1) {
       // Flickr, replace _m.jpg --> _z.jpg
@@ -220,10 +248,10 @@ var sendanmaki = {
 
   /**
    * Create a note element on a image that has src == data.url
-   * @param {object} data {x, y, width, height, note, url}
+   * @param {object} data {x, y, width, height, note}
    */
-  createImgNote: function (data) {
-    var parent = $('img[src="' + data.url + '"]').parent();
+  createImgNote: function (data, url) {
+    var parent = $('img[src="' + url + '"]').parent();
     var existing = $('div.note[rel="' + data.note + '"]').size();
     if (parent.size() > 0 && existing === 0) {
       var div = $('<div class="note" rel="' + data.note + '"></div>');
