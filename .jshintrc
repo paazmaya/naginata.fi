@@ -32,7 +32,7 @@
   "globals": {
     "browser": true,
     "devel": false,
-    "jquery": true,
+    "jQuery": true,
     "$": true,
     "node": false,
 
