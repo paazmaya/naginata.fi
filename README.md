@@ -105,3 +105,7 @@ pandoc -V geometry:margin=0.5in -o grading-rules-english.md grading-rules-englis
  * Translations for application strings, issues 1 and 2
  * Jasmine unit tests, for what ever little testable things there are, issue 3 and 4 for coverage
  * Facebook liking and related, https://developers.facebook.com/tools/debug/og/object?q=naginata.fi
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/paazmaya/naginata.fi/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
