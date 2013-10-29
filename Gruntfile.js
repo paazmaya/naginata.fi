@@ -48,7 +48,17 @@ module.exports = function(grunt) {
         jshintrc: '.jshintrc'
       }
     },
-
+    
+    jscs: {
+      onlymine: {
+        options: {
+          config: '.jscs.json',
+        },
+        files: {
+          src: '<%= jshint.onlymine.src %>'
+        }
+      }
+    },
 
     jasmine: {
       public: {
@@ -71,8 +81,9 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jasmine');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-jscs-checker');
 
   grunt.registerTask('minify', ['uglify', 'cssmin']);
-  grunt.registerTask('test', ['jshint', 'jasmine']);
+  grunt.registerTask('test', ['jshint', 'jscs', 'jasmine']);
   grunt.registerTask('default', ['test', 'minify']);
 };
