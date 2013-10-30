@@ -28,7 +28,7 @@ html(lang=settings.lang)
           = meta.header
         p.desc-transform
           = meta.description
-      article
+      article(class=meta.title.toLowerCase())
         != content
     footer
       p

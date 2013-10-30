@@ -203,7 +203,21 @@ p > a:only-child > img:only-of-type {
 }
 
 
-
+/* first list in media page is Flickr grid */
+article.media ul {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  align-content: center;
+  width: 100%;
+}
+article.media li {
+  flex: 1;
+}
+article.media li > a {
+  width: 75px;
+  height: 75px;
+}
 
 /* under mediathumb there is span that on hover should show play video icon */
 .playicon {

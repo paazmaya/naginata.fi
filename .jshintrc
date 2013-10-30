@@ -35,6 +35,7 @@
     "jQuery": true,
     "$": true,
     "node": false,
+    "require": true,
 
     "window": true
   }
