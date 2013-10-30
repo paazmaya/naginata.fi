@@ -31,7 +31,10 @@ var pageJson = JSON.parse(pageData);
 
 
 var app = express();
-app.use(express.compress());
+
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.compress());
+}
 app.use(express.static(__dirname + '/public_html'));
 app.use(express.logger());
 
