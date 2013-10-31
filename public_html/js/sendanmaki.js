@@ -34,7 +34,6 @@ _gaq.push(['_trackPageview']);
 })();
 // -- Enough about Google Analytics --
 
-
 var sendanmaki = window.sendanmaki = {
   /**
    * Current page language.
@@ -140,7 +139,6 @@ var sendanmaki = window.sendanmaki = {
         });
     });
 
-
     // Nokia E7 browser fails on this...
     if (typeof window.applicationCache !== 'undefined') {
       window.applicationCache.addEventListener('updateready', function () {
@@ -154,7 +152,6 @@ var sendanmaki = window.sendanmaki = {
         }
       }, false);
     }
-
 
     // Reusage
     var $images = $('p > a:has(img:only-child)');
@@ -172,7 +169,6 @@ var sendanmaki = window.sendanmaki = {
       event.preventDefault();
       sendanmaki.mediaThumbClick($(this));
     });
-
   },
 
   initColorbox: function () {
@@ -303,7 +299,6 @@ var sendanmaki = window.sendanmaki = {
     }
   }
 };
-
 
 (function () {
   sendanmaki.domReady();
