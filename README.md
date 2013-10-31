@@ -101,6 +101,7 @@ pandoc -V geometry:margin=0.5in -o grading-rules-english.md grading-rules-englis
 
  * Unit tests, run on every commit at Travis CI
  * `npm run test`
+ * http://about.travis-ci.org/docs/user/languages/javascript-with-nodejs/
 
 ### [Karma](http://karma-runner.github.io "Spectacular Test Runner for JavaScript")
 
