@@ -5,3 +5,5 @@ stuff/*
 stats
 node_modules
 bower_components
+coverage
+.idea

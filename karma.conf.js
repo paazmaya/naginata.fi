@@ -17,19 +17,19 @@ module.exports = function(config) {
     frameworks: [
       'jasmine'
     ],
-    logLevel: config.LOG_DEBUG,
+    logLevel: config.LOG_DISABLE,
     loggers: [
       {type: 'console'}
     ],
     reporters: [
-      'progress',
+      //'progress',
       'coverage'
     ],
     preprocessors: {
       'public_html/js/sendanmaki.js': ['coverage']
     },
     coverageReporter: {
-      type: 'lcov',
+      type: 'lcovonly',
       dir: 'coverage/'
     },
     singleRun: true

@@ -9,7 +9,8 @@
   "subdomain": "naginata-finland",
   "scripts": {
     "test": "grunt test",
-    "start": "node server.js"
+    "start": "node server.js",
+    "coveralls": "karma start karma.conf.js && cat coverage/*/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
   },
   "dependencies": {
     "express": "~3.4.0",

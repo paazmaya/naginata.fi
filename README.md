@@ -100,10 +100,12 @@ pandoc -V geometry:margin=0.5in -o grading-rules-english.md grading-rules-englis
 ### [Jasmine](http://pivotal.github.io/jasmine/ "Jasmine is a behavior-driven development framework for testing JavaScript code")
 
  * Unit tests, run on every commit at Travis CI
+ * `npm run test`
 
 ### [Karma](http://karma-runner.github.io "Spectacular Test Runner for JavaScript")
 
  * Code coverage, results pushed to Coveralls.io
+ * `npm run coveralls`
 
 ## Other notes
 
