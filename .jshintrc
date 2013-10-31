@@ -12,7 +12,7 @@
   "maxdepth": 4,
   "maxlen": 100,
   "maxparams": 4,
-  "maxstatements": 8,
+  "maxstatements": 12,
   "noarg": true,
   "nonew": true,
   "onevar": false,
@@ -37,7 +37,8 @@
     "node": false,
     "require": true,
     "module": true,
-
+    "location": true,
+    "document": true,
     "window": true
   }
 }
