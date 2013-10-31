@@ -36,6 +36,7 @@
     "$": true,
     "node": false,
     "require": true,
+    "module": true,
 
     "window": true
   }
