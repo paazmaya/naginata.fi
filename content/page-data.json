@@ -56,19 +56,19 @@
       "url": "/en/koryu",
       "header": "Jikishinkageryu Naginatajutsu",
       "title": "Koryu",
-      "description": ""
+      "description": "Koryu can be translated as old school and as such is related to the classical form of Naginata. The style Jikishinkageryu Naginatajutsu is one of the two main styles that were used to develop the modern Atarashii Naginata. It was founded over 500 years ago and it is still one of the biggest styles that have naginata as their main weapon."
     },
     {
       "url": "/en/media",
       "header": "Pictures and videos",
       "title": "Media",
-      "description": ""
+      "description": "Pictures and video clips from the trainings and demonstrations of Naginata around the World"
     },
     {
       "url": "/en/contact",
       "header": "Contact Information",
       "title": "Contact",
-      "description": "How to get connected"
+      "description": "Get connected to the people who are in anyway related to the history and contents of this web site and to Naginata in Finland."
     },
     {
       "url": "/ja",
@@ -98,7 +98,7 @@
       },
       {
         "url": "http://github.com/paazmaya/naginata.fi",
-        "alt": "Contribute to the content and code at Github",
+        "alt": "Contribute to the content and the code at Github",
         "text": "Contribute at Github"
       }
 
@@ -107,7 +107,7 @@
       {
         "url": "http://paazmaya.com",
         "alt": "PAAZMAYA.com",
-        "text": "&copy; Jukka Paasonen"
+        "text": "&copy; パーソネン ユッカ"
       },
       {
         "url": "http://github.com/paazmaya/naginata.fi",
