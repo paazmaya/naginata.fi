@@ -24,7 +24,7 @@ class ShikakeOji
     /**
      * What is the version of this class?
      */
-    public static $VERSION = '0.14';
+    public static $VERSION = '0.15';
 
     /**
      * Current language, defaults to Finnish. Available languages are fi/en/ja.
@@ -71,16 +71,6 @@ class ShikakeOji
     public $currentPage = '/';
 
     /**
-     * The format used with "date()" while writing a log entry.
-     */
-    public $logDateFormat = 'Y-m-d H:i:s';
-
-    /**
-     *
-     */
-    public $redirectLog = '../naginata-redirect.log';
-
-    /**
      * Library path, which is used to find the other libraries included.
      */
     public $libPath = __DIR__;
@@ -97,7 +87,7 @@ class ShikakeOji
      * Key is the URL, value is the name of the function to be called.
      */
     private $appUrls = array(
-        '/sitemap'            => 'showSiteMap'
+        '/sitemap' => 'showSiteMap'
     );
 
     /**
@@ -409,9 +399,7 @@ class ShikakeOji
     private function redirectTo($url, $code = '301')
     {
         $url = '/' . $this->language . $url;
-        $log =
-            date($this->logDateFormat) . ' [' . $_SERVER['REMOTE_ADDR'] . '] ' . $_SERVER['REQUEST_URI'] . ' --> ' . $url . "\n";
-        file_put_contents($this->redirectLog, $log, FILE_APPEND);
+s
         if ($code != '')
         {
             $text = 'Moved Permanently';
@@ -420,7 +408,7 @@ class ShikakeOji
                 case '404':
                     $text = 'Not Found';
                     break;
-                //case '': $text = ''; break;
+
             }
             header('HTTP/1.1 ' . $code . ' ' . $text);
         }

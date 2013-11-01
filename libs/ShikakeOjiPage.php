@@ -21,23 +21,11 @@ class ShikakeOjiPage
     public $pageModified = 0;
 
     /**
-     * Use Tidy if available.
-     * http://www.php.net/manual/en/tidy.examples.php
-     * http://tidy.sourceforge.net/docs/quickref.html
-     */
-    public $useTidy = false;
-
-    /**
      * How will JS and CSS files will be called once minified in to one file per type?
      *
      * Compressed files are delivered via Apache.
      */
     public $minifiedName = 'naginata.min.';
-
-    /**
-     * CURL log
-     */
-    public $curlLog = '../naginata-curl.log';
 
     /**
      * Cache directory
@@ -127,25 +115,7 @@ class ShikakeOjiPage
     {
         $out = $this->createHtmlPage();
 
-        if ($this->useTidy && extension_loaded('tidy'))
-        {
-            $conf = array(
-                'indent'     => true,
-                'output-xml' => true,
-                'input-xml'  => true,
-                'wrap'       => '200'
-            );
-
-            $tidy = new tidy();
-            $tidy->parseString($out, $conf, 'utf8');
-            $tidy->cleanRepair();
-
-            return tidy_get_output($tidy);
-        }
-        else
-        {
-            return $out;
-        }
+        return $out;
     }
 
     /**
@@ -859,8 +829,6 @@ class ShikakeOjiPage
      */
     private function getDataCurl($url)
     {
-        $fh = fopen($this->curlLog, 'a');
-
         $ch = curl_init();
         curl_setopt_array($ch, array(
             CURLOPT_URL            => $url,
@@ -877,11 +845,6 @@ class ShikakeOjiPage
 
         $results = curl_exec($ch);
         $headers = curl_getinfo($ch);
-
-        $log = date($this->shikakeOji->logDateFormat) . ' url: ' . $headers['url'] . ', content_type: ' .
-            $headers['content_type'] . ', size_download: ' . $headers['size_download'] .
-            ' bytes, speed_download: ' . $headers['speed_download'] . "\n";
-        fwrite($fh, $log);
 
         $error_number = (int)curl_errno($ch);
         $error_message = curl_error($ch);
