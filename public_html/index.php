@@ -3,9 +3,8 @@
  * NAGINATA.fi *
  ***************
  * Juga Paazmaya <olavic@gmail.com>
- * http://creativecommons.org/licenses/by-sa/3.0/
- *
- * main handler
+ * License: Attribution-ShareAlike 3.0 Unported
+ *          http://creativecommons.org/licenses/by-sa/3.0/
  */
 
 ini_set('error_log', '../naginata-php.log');
@@ -35,7 +34,6 @@ $shio = new ShikakeOji(
 );
 
 $shio->removeWwwRedirect();
-$shio->output->useTidy = false;
 
 echo $shio->renderPage();
 

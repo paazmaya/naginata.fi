@@ -1,3 +1,10 @@
+/***************
+ * NAGINATA.fi *
+ ***************
+ * Juga Paazmaya <olavic@gmail.com>
+ * License: Attribution-ShareAlike 3.0 Unported
+ *          http://creativecommons.org/licenses/by-sa/3.0/
+ */
 'use strict';
 
 module.exports = function(config) {
@@ -10,8 +17,6 @@ module.exports = function(config) {
     ],
     basePath: './',
     browsers: [
-      //'Chrome',
-      //'Firefox',
       'PhantomJS'
     ],
     frameworks: [
@@ -22,7 +27,6 @@ module.exports = function(config) {
       {type: 'console'}
     ],
     reporters: [
-      //'progress',
       'coverage'
     ],
     preprocessors: {

@@ -2,14 +2,10 @@
  * NAGINATA.fi *
  ***************
  * Juga Paazmaya <olavic@gmail.com>
- * License http://creativecommons.org/licenses/by-sa/3.0/
- *
- * server.js
- *
- * Dependencies:
- *   Node.js
- *   Express.js
+ * License: Attribution-ShareAlike 3.0 Unported
+ *          http://creativecommons.org/licenses/by-sa/3.0/
  */
+
 'use strict';
 
 // http://expressjs.com

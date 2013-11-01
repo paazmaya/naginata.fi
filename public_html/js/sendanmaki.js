@@ -2,13 +2,8 @@
  * NAGINATA.fi *
  ***************
  * Juga Paazmaya <olavic@gmail.com>
- * License http://creativecommons.org/licenses/by-sa/3.0/
- *
- * sendanmaki.js
- *
- * Contains:
- *   Google Analytics
- *   Sendanmaki
+ * License: Attribution-ShareAlike 3.0 Unported
+ *          http://creativecommons.org/licenses/by-sa/3.0/
  */
 'use strict';
 
