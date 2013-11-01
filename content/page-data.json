@@ -68,12 +68,36 @@
       "url": "/en/contact",
       "header": "Contact Information",
       "title": "Contact",
-      "description": "Get connected to the people who are in anyway related to the history and contents of this web site and to Naginata in Finland."
+      "description": "Get connected to the people who are in anyway related to the history and contents of this web site and to Naginata in Finland"
     },
     {
       "url": "/ja",
       "header": "ニュス",
       "title": "ニュス",
+      "description": ""
+    },
+    {
+      "url": "/ja/naginata",
+      "header": "新しいなぎなた",
+      "title": "なぎなた",
+      "description": ""
+    },
+    {
+      "url": "/ja/koryu",
+      "header": "直心影流薙刀術",
+      "title": "古流",
+      "description": ""
+    },
+    {
+      "url": "/ja/media",
+      "header": "写真やビデオ",
+      "title": "メディア",
+      "description": ""
+    },
+    {
+      "url": "/ja/renraku",
+      "header": "連絡",
+      "title": "連絡",
       "description": ""
     }
   ],
@@ -111,8 +135,8 @@
       },
       {
         "url": "http://github.com/paazmaya/naginata.fi",
-        "alt": "",
-        "text": "Github"
+        "alt": "Githubで貢献する",
+        "text": "Githubで貢献する"
       }
     ]
   },
