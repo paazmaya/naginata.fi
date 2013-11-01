@@ -6,6 +6,9 @@ All the code is under Creative Commons License - Attribution & Share Alike (http
 Full legal text available in `LICENSE.md`.
 
 [![Dependency Status](https://gemnasium.com/paazmaya/naginata.fi.png)](https://gemnasium.com/paazmaya/naginata.fi)
+[![Build Status](https://travis-ci.org/paazmaya/naginata.fi.png)](https://travis-ci.org/paazmaya/naginata.fi)
+[![Coverage Status](https://coveralls.io/repos/paazmaya/naginata.fi/badge.png)](https://coveralls.io/r/paazmaya/naginata.fi)
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/paazmaya/naginata.fi/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 
 ## About the martial art
 
@@ -65,7 +68,7 @@ Contributors are welcome.
 
  * Both JavaScript and CSS files are combined to a single file, minified and finally compressed.
  * `grunt minify`
- 
+
 ### [Jade](http://jade-lang.com/ "node templating language")
 
 ### [Express.js](http://expressjs.com/ "web application framework for node")
@@ -94,11 +97,21 @@ pandoc -V geometry:margin=0.5in -o grading-rules-english.md grading-rules-englis
 
  * JSON used as a data format for configuration
 
+### [Jasmine](http://pivotal.github.io/jasmine/ "Jasmine is a behavior-driven development framework for testing JavaScript code")
+
+ * Unit tests, run on every commit at Travis CI
+ * `npm run test`
+ * http://about.travis-ci.org/docs/user/languages/javascript-with-nodejs/
+
+### [Karma](http://karma-runner.github.io "Spectacular Test Runner for JavaScript")
+
+ * Code coverage, results pushed to Coveralls.io
+ * `npm run coveralls`
 
 ## Other notes
 
  * Speed study (http://blog.chromium.org/2010/07/do-you-know-how-slow-your-web-page-is.html)
- * Sitespeed.io, 2.1-wip `./sitespeed.io -u http://naginata.fi -o csv -k true`
+ * Sitespeed.io, 2.1 `./sitespeed.io -u http://naginata.fi -o csv -k true`
 
 ## [TODO](https://github.com/paazmaya/naginata.fi/issues "issues")
 
@@ -106,6 +119,4 @@ pandoc -V geometry:margin=0.5in -o grading-rules-english.md grading-rules-englis
  * Jasmine unit tests, for what ever little testable things there are, issue 3 and 4 for coverage
  * Facebook liking and related, https://developers.facebook.com/tools/debug/og/object?q=naginata.fi
 
-
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/paazmaya/naginata.fi/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 

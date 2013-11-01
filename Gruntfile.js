@@ -1,4 +1,5 @@
-/*global module:false*/
+'use strict';
+
 module.exports = function(grunt) {
 
   // Project configuration.
@@ -43,12 +44,15 @@ module.exports = function(grunt) {
       onlymine: {
         src: [
           'Gruntfile.js',
+          'karma.conf.js',
           'public_html/js/sendanmaki.js'
         ],
-        jshintrc: '.jshintrc'
+        options: {
+          jshintrc: '.jshintrc'
+        }
       }
     },
-    
+
     jscs: {
       onlymine: {
         options: {

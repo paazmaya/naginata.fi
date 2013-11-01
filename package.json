@@ -1,6 +1,6 @@
 {
   "name": "naginata.fi",
-  "version": "0.4.0-4",
+  "version": "0.4.0-5",
   "title": "Naginata in Finland",
   "homepage": "https://github.com/paazmaya/naginata.fi",
   "description": "A web site in Finland for an ancient martial art from Japan",
@@ -9,12 +9,14 @@
   "subdomain": "naginata-finland",
   "scripts": {
     "test": "grunt test",
-    "start": "node server.js"
+    "start": "node server.js",
+    "coveralls": "karma start karma.conf.js && cat coverage/*/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
   },
   "dependencies": {
     "express": "~3.4.0",
     "marked": "~0.2.9",
-    "jade": "~0.35.0"
+    "jade": "~0.35.0",
+    "coveralls": "~2.3.0"
   },
   "devDependencies": {
     "grunt": "~0.4.1",
@@ -24,7 +26,17 @@
     "grunt-contrib-cssmin": "~0.6.2",
     "grunt-contrib-jshint": "~0.7.0",
     "grunt-jscs-checker": "~0.2.2",
-    "bower": "~1.2.7"
+    "bower": "~1.2.7",
+    "karma-chrome-launcher": "~0.1.0",
+    "karma-phantomjs-launcher": "~0.1.0",
+    "karma-firefox-launcher": "~0.1.0",
+    "karma-script-launcher": "~0.1.0",
+    "karma-html2js-preprocessor": "~0.1.0",
+    "karma-requirejs": "~0.1.0",
+    "karma-jasmine": "~0.1.3",
+    "karma-coffee-preprocessor": "~0.1.0",
+    "karma": "~0.10.4",
+    "karma-coverage": "~0.1.0"
   },
   "engines": {
     "node": "0.10.x",

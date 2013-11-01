@@ -26,15 +26,15 @@ _gaq.push(['_trackPageview']);
     var ga = document.createElement('script');
     ga.type = 'text/javascript';
     ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    ga.src = ('https:' === document.location.protocol ? 'https://ssl' : 'http://www') +
+      '.google-analytics.com/ga.js';
     var s = document.getElementsByTagName('script')[0];
     s.parentNode.insertBefore(ga, s);
   }
 })();
 // -- Enough about Google Analytics --
 
-
-var sendanmaki = {
+var sendanmaki = window.sendanmaki = {
   /**
    * Current page language.
    * Fetched from html lang attribute.
@@ -45,33 +45,70 @@ var sendanmaki = {
    * Image notes for the given key image.
    */
   notes: {
-    "/img/naginata-bogu-chudan-artwork-lecklin.png": [
+    '/img/naginata-bogu-chudan-artwork-lecklin.png': [
       {
-        "width": "104", "height": "126", "x": "45", "y": "0", "note": "Men"
+        width: 104,
+        height: 126,
+        x: 45,
+        y: 0,
+        note: 'Men'
       },
       {
-        "width": "58", "height": "82", "x": "147", "y": "235", "note": "Kote"
+        width: 58,
+        height: 82,
+        x: 147,
+        y: 235,
+        note: 'Kote'
       },
       {
-        "width": "83", "height": "118", "x": "55", "y": "138", "note": "Do"
+        width: 83,
+        height: 118,
+        x: 55,
+        y: 138,
+        note: 'Do'
       },
       {
-        "width": "137", "height": "87", "x": "30", "y": "246", "note": "Tare"
+        width: 137,
+        height: 87,
+        x: 30,
+        y: 246,
+        note: 'Tare'
       },
       {
-        "width": "52", "height": "133", "x": "112", "y": "435", "note": "Sune ate"
+        width: 52,
+        height: 133,
+        x: 112,
+        y: 435,
+        note: 'Sune ate'
       },
       {
-        "width": "31", "height": "39", "x": "369", "y": "236", "note": "Kissaki"
+        width: 31,
+        height: 39,
+        x: 369,
+        y: 236,
+        note: 'Kissaki'
       },
       {
-        "width": "23", "height": "25", "x": "13", "y": "252", "note": "Ishizuki"
+        width: 23,
+        height: 25,
+        x: 13,
+        y: 252,
+        note: 'Ishizuki'
       },
       {
-        "width": "48", "height": "26", "x": "251", "y": "307", "note": "Sendanmaki"
+        width: 48,
+        height: 26,
+        x: 251,
+        y: 307,
+        note: 'Sendanmaki'
       },
+
       {
-        "width": "39", "height": "27", "x": "352", "y": "279", "note": "Monouchi"
+        width: 39,
+        height: 27,
+        x: 352,
+        y: 279,
+        note: 'Monouchi'
       }
     ]
   },
@@ -81,17 +118,18 @@ var sendanmaki = {
    * all the handlers needed.
    */
   domReady: function () {
-    sendanmaki.lang = $('html').attr('lang');
+    sendanmaki.lang = $('html').attr('lang') || sendanmaki.lang;
 
     // Add notes to a chudan kamae bogu image, if available
     $.each(sendanmaki.notes, function (item) {
       $('img[src="' + item + '"]').each(function () {
         sendanmaki.createImgNote(sendanmaki.notes[item], item);
       }).on('mouseover mouseout', function (event) {
-          var data = $(this).data();
+          //var data = $(this).data();
 
-          var div = $(this).parent().children('div.note:contains("' + sendanmaki.notes[item].note + '")');
-          if (event.type == 'mouseover') {
+          var div = $(this).parent().children('div.note:contains("' +
+                      sendanmaki.notes[item].note + '")');
+          if (event.type === 'mouseover') {
             div.addClass('notehover');
           }
           else {
@@ -101,25 +139,19 @@ var sendanmaki = {
         });
     });
 
-
     // Nokia E7 browser fails on this...
-    if (typeof applicationCache !== 'undefined') {
-      applicationCache.addEventListener('updateready', function (e) {
-        if (applicationCache.status == applicationCache.UPDATEREADY) {
+    if (typeof window.applicationCache !== 'undefined') {
+      window.applicationCache.addEventListener('updateready', function () {
+        if (window.applicationCache.status === window.applicationCache.UPDATEREADY) {
           // Browser downloaded a new app cache.
           // Swap it in and reload the page to get the new hotness.
-          applicationCache.swapCache();
-          if (confirm('A new version of this site is available. Load it?')) {
+          window.applicationCache.swapCache();
+          if (window.confirm('A new version of this site is available. Load it?')) {
             location.reload();
           }
         }
-        else {
-          // Manifest didn't changed. Nothing new to server.
-          //console.log('applicationCache.status when updateready event occurred: ' + applicationCache.status);
-        }
       }, false);
     }
-
 
     // Reusage
     var $images = $('p > a:has(img:only-child)');
@@ -135,10 +167,8 @@ var sendanmaki = {
     // href has link to actual page, rel has inline player link
     $images.on('click', function (event) {
       event.preventDefault();
-      console.log(this);
       sendanmaki.mediaThumbClick($(this));
     });
-
   },
 
   initColorbox: function () {
@@ -151,14 +181,14 @@ var sendanmaki = {
        translated by: Mikko
        */
       jQuery.extend(jQuery.colorbox.settings, {
-        current: "Kuva {current} / {total}",
-        previous: "Edellinen",
-        next: "Seuraava",
-        close: "Sulje",
-        xhrError: "Sisällön lataaminen epäonnistui.",
-        imgError: "Kuvan lataaminen epäonnistui.",
-        slideshowStart: "Aloita kuvaesitys.",
-        slideshowStop: "Lopeta kuvaesitys."
+        current: 'Kuva {current} / {total}',
+        previous: 'Edellinen',
+        next: 'Seuraava',
+        close: 'Sulje',
+        xhrError: 'Sisällön lataaminen epäonnistui.',
+        imgError: 'Kuvan lataaminen epäonnistui.',
+        slideshowStart: 'Aloita kuvaesitys.',
+        slideshowStop: 'Lopeta kuvaesitys.'
       });
     }
     else if (sendanmaki.lang === 'ja') {
@@ -168,14 +198,14 @@ var sendanmaki = {
        translated by: Hajime Fujimoto
        */
       jQuery.extend(jQuery.colorbox.settings, {
-        current: "{total}枚中{current}枚目",
-        previous: "前",
-        next: "次",
-        close: "閉じる",
-        xhrError: "コンテンツの読み込みに失敗しました",
-        imgError: "画像の読み込みに失敗しました",
-        slideshowStart: "スライドショー開始",
-        slideshowStop: "スライドショー終了"
+        current: '{total}枚中{current}枚目',
+        previous: '前',
+        next: '次',
+        close: '閉じる',
+        xhrError: 'コンテンツの読み込みに失敗しました',
+        imgError: '画像の読み込みに失敗しました',
+        slideshowStart: 'スライドショー開始',
+        slideshowStop: 'スライドショー終了'
       });
     }
     // data-photo-page ...
@@ -205,6 +235,7 @@ var sendanmaki = {
   mediaThumbClick: function ($a) {
     var data = $a.data();
     var href = $a.find('img').attr('src');
+    data.title = $a.attr('title');
 
     // Find the domain
     if (href.search(/\/\/.*flickr\.com\//) !== -1) {
@@ -212,38 +243,41 @@ var sendanmaki = {
       href = href.replace('_m.jpg', '_z.jpg');
     }
 
-
     // Tell Analytics
     _gaq.push(['_trackPageview', href]);
 
     if (data.iframe) {
-      // Vimeo has size data, Youtube does not
-      var w = $('#wrapper').width();
-      var h = w * 0.75;
-      if (data.width) {
-        w = data.width;
-      }
-      if (data.height) {
-        h = data.height;
-      }
-
-      // By using iframe, fullscreen becomes possible
-      $.colorbox({
-        title: $a.attr('title'),
-        innerHeight: h,
-        innerWidth: w,
-        href: data.url,
-        iframe: true,
-        scrolling: false
-      });
+      sendanmaki.openIframe(data);
     }
     else {
       $.colorbox({
-        title: $a.attr('title'),
+        title: data.title,
         href: href,
         photo: true
       });
     }
+  },
+
+  openIframe: function (data) {
+    // Vimeo has size data, Youtube does not
+    var w = $('#wrapper').width();
+    var h = w * 0.75;
+    if (data.width) {
+      w = data.width;
+    }
+    if (data.height) {
+      h = data.height;
+    }
+
+    // By using iframe, fullscreen becomes possible
+    $.colorbox({
+      title: data.title,
+      innerHeight: h,
+      innerWidth: w,
+      href: data.url,
+      iframe: true,
+      scrolling: false
+    });
   },
 
   /**
@@ -265,7 +299,6 @@ var sendanmaki = {
     }
   }
 };
-
 
 (function () {
   sendanmaki.domReady();
