@@ -48,7 +48,7 @@ class ShikakeOji
      * Application data, decoded from JSON string which is loaded
      * from $this->dataPath.
      */
-    public $addData;
+    public $appData;
 
     /**
      * PDO connected database connection.
@@ -399,7 +399,6 @@ class ShikakeOji
     private function redirectTo($url, $code = '301')
     {
         $url = '/' . $this->language . $url;
-s
         if ($code != '')
         {
             $text = 'Moved Permanently';

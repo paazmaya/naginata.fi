@@ -803,15 +803,8 @@ class ShikakeOjiPage
 
         if ($update)
         {
-            if (extension_loaded('curl'))
-            {
-                $data = $this->getDataCurl($url);
-            }
-            else
-            {
-                // Fall back to slower version...
-                $data = file_get_contents($url);
-            }
+            $data = file_get_contents($url);
+            
             file_put_contents($cache, $jsonstring = json_encode($data, JSON_PRETTY_PRINT));
         }
         else
@@ -820,52 +813,6 @@ class ShikakeOjiPage
         }
 
         return $data;
-    }
-
-    /**
-     * Get data from the given URL by using CURL.
-     *
-     * @return    string    JSON string
-     */
-    private function getDataCurl($url)
-    {
-        $ch = curl_init();
-        curl_setopt_array($ch, array(
-            CURLOPT_URL            => $url,
-            CURLOPT_HEADER         => false,
-            CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_FAILONERROR    => true,
-            CURLOPT_STDERR         => $fh,
-            CURLOPT_VERBOSE        => true,
-            CURLOPT_REFERER        => 'http://naginata.fi' . $this->shikakeOji->currentPage
-        ));
-
-        //curl_setopt($ch, CURLOPT_ENCODING, 'gzip');
-        //curl_setopt($ch, CURLOPT_USERAGENT, '');
-
-        $results = curl_exec($ch);
-        $headers = curl_getinfo($ch);
-
-        $error_number = (int)curl_errno($ch);
-        $error_message = curl_error($ch);
-
-        curl_close($ch);
-
-        fclose($fh);
-
-        // invalid headers
-        if (!in_array($headers['http_code'], array(0, 200)))
-        {
-            //throw new Exception('Bad headercode', (int) $headers['http_code']);
-        }
-
-        // are there errors?
-        if ($error_number > 0)
-        {
-            //throw new Exception($error_message, $error_number);
-        }
-
-        return $results;
     }
 
 }
