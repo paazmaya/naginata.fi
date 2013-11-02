@@ -8,6 +8,7 @@
 
 'use strict';
 
+var _gaq = _gaq || [];
 var sendanmaki = window.sendanmaki = {
   /**
    * Current page language.
