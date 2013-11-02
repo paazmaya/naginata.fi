@@ -197,32 +197,67 @@ p > a:only-child > img:only-of-type {
 
 
 /* first list in media page is Flickr grid */
-article.media ul {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-around;
-  align-content: center;
+article.media ul:first-of-type {
+  display: block;
   width: 100%;
+  list-style-type: none;
 }
-article.media li {
-  flex: 1;
+article.media ul:first-of-type > li {
+  float: left;
+  padding: 0;
+  margin: 0;
+  line-height: 0;
 }
-article.media li > a {
+article.media ul:first-of-type > li > a {
+  padding: 0.4em;
+  display: block;
+}
+article.media ul:first-of-type > li > a:hover img {
+  opacity: 0.5;
+}
+article.media ul:first-of-type > li img {
   width: 75px;
   height: 75px;
 }
 
+/* second list is for the videos */
+article.media ul:last-of-type {
+  display: block;
+  width: 100%;
+  list-style-type: none;
+}
+article.media ul:last-of-type > li {
+  display: block;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  line-height: 0;
+}
+article.media ul:last-of-type > li > a {
+  padding: 0.4em;
+  display: block;
+}
+article.media ul:last-of-type > li > a:hover img {
+  opacity: 0.5;
+}
+article.media ul:last-of-type > li p {
+  float: left;
+  margin-left: 1em;
+}
+
+
+
 /* under mediathumb there is span that on hover should show play video icon */
 .playicon {
-	visibility: hidden;
-	display: block;
-	position: absolute;
-	width: 50px;
-	height: 50px;
-	margin-top: -10px;
-	margin-left: -10px;
-	background-repeat: no-repeat;
-	background-position: center center;
+  visibility: hidden;
+  display: block;
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  margin-top: -10px;
+  margin-left: -10px;
+  background-repeat: no-repeat;
+  background-position: center center;
 }
 .vimeo .playicon {
 	background-image: url('../img/vimeo_48.png');

@@ -131,133 +131,111 @@
 
 ## Videoita näytöksistä ja kilpailuista
 
-[![Furikaeshi](http://i1.ytimg.com/vi/WPud9FUkuS8/default.jpg)
-![Furikaeshi](http://i1.ytimg.com/vi/WPud9FUkuS8/1.jpg)
-Furikaeshi / lolinternetslol
-](http://www.youtube.com/watch?v=WPud9FUkuS8 "Furikaeshi")
+-   [![Furikaeshi](http://i1.ytimg.com/vi/WPud9FUkuS8/default.jpg)
+    ![Furikaeshi](http://i1.ytimg.com/vi/WPud9FUkuS8/1.jpg)
+    Furikaeshi / lolinternetslol
+    ](http://www.youtube.com/watch?v=WPud9FUkuS8 "Furikaeshi")
 
-[![Rhythm Naginata at the 5th Naginata World
-Championships](http://b.vimeocdn.com/ts/345/146/345146871_200.jpg)](http://vimeo.com/50075290 "Rhythm Naginata at the 5th Naginata World Championships")
+-   [![Rhythm Naginata at the 5th Naginata World
+    Championships](http://b.vimeocdn.com/ts/345/146/345146871_200.jpg)](http://vimeo.com/50075290 "Rhythm Naginata at the 5th Naginata World Championships")
+    Rhythm Naginata at the 5th Naginata World Championships / [Juga
+    Paazmaya](http://vimeo.com/paazmaya "Vimeo - Juga Paazmaya")
 
-Rhythm Naginata at the 5th Naginata World Championships / [Juga
-Paazmaya](http://vimeo.com/paazmaya "Vimeo - Juga Paazmaya")
+-   [![リズムなぎなた](http://i1.ytimg.com/vi/vRB8Fkevcc8/default.jpg)![リズムなぎなた](http://i1.ytimg.com/vi/vRB8Fkevcc8/1.jpg)](http://www.youtube.com/watch?v=vRB8Fkevcc8 "リズムなぎなた")
+    リズムなぎなた /
+    [katamondehoshii](http://youtube.com/katamondehoshii "Youtube - katamondehoshii")
 
-[![リズムなぎなた](http://i1.ytimg.com/vi/vRB8Fkevcc8/default.jpg)![リズムなぎなた](http://i1.ytimg.com/vi/vRB8Fkevcc8/1.jpg)](http://www.youtube.com/watch?v=vRB8Fkevcc8 "リズムなぎなた")
+-   [![Ishujiai: Senpo - 5th Naginata World
+    Championships](http://b.vimeocdn.com/ts/345/175/345175294_200.jpg)](http://vimeo.com/50070446 "Ishujiai: Senpo - 5th Naginata World Championships")
+    Ishujiai: Senpo - 5th Naginata World Championships / [Juga
+    Paazmaya](http://vimeo.com/paazmaya "Vimeo - Juga Paazmaya")
 
-リズムなぎなた /
-[katamondehoshii](http://youtube.com/katamondehoshii "Youtube - katamondehoshii")
+-   [![Ishujiai: Chuken - 5th Naginata World
+    Championships](http://b.vimeocdn.com/ts/345/106/345106504_200.jpg)](http://vimeo.com/50069067 "Ishujiai: Chuken - 5th Naginata World Championships")
+    Ishujiai: Chuken - 5th Naginata World Championships / [Juga
+    Paazmaya](http://vimeo.com/paazmaya "Vimeo - Juga Paazmaya")
 
-[![Ishujiai: Senpo - 5th Naginata World
-Championships](http://b.vimeocdn.com/ts/345/175/345175294_200.jpg)](http://vimeo.com/50070446 "Ishujiai: Senpo - 5th Naginata World Championships")
+-   [![Ishujiai: Taisho - 5th Naginata World
+    Championships](http://b.vimeocdn.com/ts/345/097/345097201_200.jpg)](http://vimeo.com/50068282 "Ishujiai: Taisho - 5th Naginata World Championships")
+    Ishujiai: Taisho - 5th Naginata World Championships / [Juga
+    Paazmaya](http://vimeo.com/paazmaya "Vimeo - Juga Paazmaya")
 
-Ishujiai: Senpo - 5th Naginata World Championships / [Juga
-Paazmaya](http://vimeo.com/paazmaya "Vimeo - Juga Paazmaya")
+-   [![Jikishinkageryu Naginatajutsu at 5th Naginata World
+    Championships](http://b.vimeocdn.com/ts/344/928/344928580_200.jpg)](http://vimeo.com/50043587 "Jikishinkageryu Naginatajutsu at 5th Naginata World Championships"
+    Jikishinkageryu Naginatajutsu at 5th Naginata World Championships /
+    [Juga Paazmaya](http://vimeo.com/paazmaya "Vimeo - Juga Paazmaya")
 
-[![Ishujiai: Chuken - 5th Naginata World
-Championships](http://b.vimeocdn.com/ts/345/106/345106504_200.jpg)](http://vimeo.com/50069067 "Ishujiai: Chuken - 5th Naginata World Championships")
+-   [![Jikishinkage-ryu
+    Naginata](http://i1.ytimg.com/vi/64cmdEUl_jc/default.jpg)![Jikishinkage-ryu
+    Naginata](http://i1.ytimg.com/vi/64cmdEUl_jc/1.jpg)](http://www.youtube.com/watch?v=64cmdEUl_jc "Jikishinkage-ryu Naginata")
+    Jikishinkage-ryu Naginata /
+    [KendoWorld](http://youtube.com/KendoWorld "Youtube - KendoWorld")
 
-Ishujiai: Chuken - 5th Naginata World Championships / [Juga
-Paazmaya](http://vimeo.com/paazmaya "Vimeo - Juga Paazmaya")
+-   [![naginata-justu](http://i1.ytimg.com/vi/V7ed641wnCE/default.jpg)![naginata-justu](http://i1.ytimg.com/vi/V7ed641wnCE/1.jpg)](http://www.youtube.com/watch?v=V7ed641wnCE "naginata-justu")
+    naginata-justu /
+    [slimeslayer](http://youtube.com/slimeslayer "Youtube - slimeslayer")
 
-[![Ishujiai: Taisho - 5th Naginata World
-Championships](http://b.vimeocdn.com/ts/345/097/345097201_200.jpg)](http://vimeo.com/50068282 "Ishujiai: Taisho - 5th Naginata World Championships")
+-   [![Naginata - Tokyo Budokan Reopening Events August
+    2012](http://i1.ytimg.com/vi/r1YGdzXQDZw/default.jpg)![Naginata - Tokyo
+    Budokan Reopening Events August
+    2012](http://i1.ytimg.com/vi/r1YGdzXQDZw/1.jpg)](http://www.youtube.com/watch?v=r1YGdzXQDZw "Naginata - Tokyo Budokan Reopening Events August 2012")
+    Naginata - Tokyo Budokan Reopening Events August 2012 /
+    [GuillaumeErard.com - Life in Japan and
+    Budo](http://youtube.com/GuillaumeErard.com%20-%20Life%20in%20Japan%20and%20Budo "Youtube - GuillaumeErard.com - Life in Japan and Budo")
 
-Ishujiai: Taisho - 5th Naginata World Championships / [Juga
-Paazmaya](http://vimeo.com/paazmaya "Vimeo - Juga Paazmaya")
+-   [![Jikishinkage Ryu Naginata 5-4-2010 Shimogamo Jinja, Kyoto](http://i1.ytimg.com/vi/ntwaxNRAYmM/default.jpg)![Jikishinkage Ryu
+    Naginata 5-4-2010 Shimogamo Jinja, Kyoto](http://i1.ytimg.com/vi/ntwaxNRAYmM/1.jpg)
+    Jikishinkage Ryu Naginata 5-4-2010 Shimogamo Jinja, Kyoto / Youtube - mekugi
+    ](http://www.youtube.com/watch?v=ntwaxNRAYmM "Jikishinkage Ryu Naginata 5-4-2010 Shimogamo Jinja, Kyoto")
 
-[![Jikishinkageryu Naginatajutsu at 5th Naginata World
-Championships](http://b.vimeocdn.com/ts/344/928/344928580_200.jpg)](http://vimeo.com/50043587 "Jikishinkageryu Naginatajutsu at 5th Naginata World Championships")
+-   [![Jiki Shinkage Ryu Naginata Jutsu - 34th All Japan Kobudo](http://i1.ytimg.com/vi/a5VqaxmgVvU/default.jpg)![Jiki Shinkage
+    Ryu Naginata Jutsu - 34th All Japan
+    Kobudo](http://i1.ytimg.com/vi/a5VqaxmgVvU/1.jpg)](http://www.youtube.com/watch?v=a5VqaxmgVvU "Jiki Shinkage Ryu Naginata Jutsu - 34th All Japan Kobudo")
+    Jiki Shinkage Ryu Naginata Jutsu - 34th All Japan Kobudo / [BudoExport &
+    Seido](http://youtube.com/BudoExport%20&%20Seido "Youtube - BudoExport & Seido")
 
-Jikishinkageryu Naginatajutsu at 5th Naginata World Championships /
-[Juga Paazmaya](http://vimeo.com/paazmaya "Vimeo - Juga Paazmaya")
+-   [![5th WNC - Jikishinkage Ryu Naginata
+    Demo](http://i1.ytimg.com/vi/XIfImDzR-Yg/default.jpg)![5th WNC -
+    Jikishinkage Ryu Naginata
+    Demo](http://i1.ytimg.com/vi/XIfImDzR-Yg/1.jpg)](http://www.youtube.com/watch?v=XIfImDzR-Yg "5th WNC - Jikishinkage Ryu Naginata Demo")
+    5th WNC - Jikishinkage Ryu Naginata Demo /
+    [koukenK3](http://youtube.com/koukenK3 "Youtube - koukenK3")
 
-[![Jikishinkage-ryu
-Naginata](http://i1.ytimg.com/vi/64cmdEUl_jc/default.jpg)![Jikishinkage-ryu
-Naginata](http://i1.ytimg.com/vi/64cmdEUl_jc/1.jpg)](http://www.youtube.com/watch?v=64cmdEUl_jc "Jikishinkage-ryu Naginata")
+-   [![Jikishinkage ryu
+    kata](http://i1.ytimg.com/vi/jaRA2zY_VhU/default.jpg)![Jikishinkage ryu
+    kata](http://i1.ytimg.com/vi/jaRA2zY_VhU/1.jpg)](http://www.youtube.com/watch?v=jaRA2zY_VhU "Jikishinkage ryu  kata")
+    Jikishinkage ryu kata /
+    [lolinternetslol](http://youtube.com/lolinternetslol "Youtube - lolinternetslol")
 
-Jikishinkage-ryu Naginata /
-[KendoWorld](http://youtube.com/KendoWorld "Youtube - KendoWorld")
+-   [![Jikishin kage-ryu
+    kata](http://i1.ytimg.com/vi/IibZC8PBYns/default.jpg)![Jikishin kage-ryu
+    kata](http://i1.ytimg.com/vi/IibZC8PBYns/1.jpg)](http://www.youtube.com/watch?v=IibZC8PBYns "Jikishin kage-ryu kata")
+    Jikishin kage-ryu kata /
+    [lolinternetslol](http://youtube.com/lolinternetslol "Youtube - lolinternetslol")
 
-[![naginata-justu](http://i1.ytimg.com/vi/V7ed641wnCE/default.jpg)![naginata-justu](http://i1.ytimg.com/vi/V7ed641wnCE/1.jpg)](http://www.youtube.com/watch?v=V7ed641wnCE "naginata-justu")
+-   [![下鴨神社　奉納演武　直心影流薙刀術](http://i1.ytimg.com/vi/DiCwRBds458/default.jpg)![下鴨神社　奉納演武　直心影流薙刀術](http://i1.ytimg.com/vi/DiCwRBds458/1.jpg)](http://www.youtube.com/watch?v=DiCwRBds458 "下鴨神社　奉納演武　直心影流薙刀術")
+    下鴨神社　奉納演武　直心影流薙刀術 /
+    [kuniedasagami2008](http://youtube.com/kuniedasagami2008 "Youtube - kuniedasagami2008")
 
-naginata-justu /
-[slimeslayer](http://youtube.com/slimeslayer "Youtube - slimeslayer")
+-   [![結成40周年記念調布市なぎなた大会](http://i1.ytimg.com/vi/v696WandAw8/default.jpg)![結成40周年記念調布市なぎなた大会](http://i1.ytimg.com/vi/v696WandAw8/1.jpg)
+    結成40周年記念調布市なぎなた大会 / Youtube - osuga01
+    ](http://www.youtube.com/watch?v=v696WandAw8 "結成40周年記念調布市なぎなた大会")
 
-[![Naginata - Tokyo Budokan Reopening Events August
-2012](http://i1.ytimg.com/vi/r1YGdzXQDZw/default.jpg)![Naginata - Tokyo
-Budokan Reopening Events August
-2012](http://i1.ytimg.com/vi/r1YGdzXQDZw/1.jpg)](http://www.youtube.com/watch?v=r1YGdzXQDZw "Naginata - Tokyo Budokan Reopening Events August 2012")
+-   [![北海道日記- 自由學校20週年紀念
+    傳統武術表演2](http://i1.ytimg.com/vi/0TOaYDdhqlk/default.jpg)![北海道日記-
+    自由學校20週年紀念
+    傳統武術表演2](http://i1.ytimg.com/vi/0TOaYDdhqlk/1.jpg)](http://www.youtube.com/watch?v=0TOaYDdhqlk "北海道日記- 自由學校20週年紀念 傳統武術表演2")
+    北海道日記- 自由學校20週年紀念 傳統武術表演2 /
+    [kanedino](http://youtube.com/kanedino "Youtube - kanedino")
 
-Naginata - Tokyo Budokan Reopening Events August 2012 /
-[GuillaumeErard.com - Life in Japan and
-Budo](http://youtube.com/GuillaumeErard.com%20-%20Life%20in%20Japan%20and%20Budo "Youtube - GuillaumeErard.com - Life in Japan and Budo")
+-   [![北海道日記- 自由學校20週年紀念
+    傳統武術表演3](http://i1.ytimg.com/vi/3horKHbL7I8/default.jpg)![北海道日記-
+    自由學校20週年紀念
+    傳統武術表演3](http://i1.ytimg.com/vi/3horKHbL7I8/1.jpg)](http://www.youtube.com/watch?v=3horKHbL7I8 "北海道日記- 自由學校20週年紀念 傳統武術表演3")
+    北海道日記- 自由學校20週年紀念 傳統武術表演3 /
+    [kanedino](http://youtube.com/kanedino "Youtube - kanedino")
 
-[![Jikishinkage Ryu Naginata 5-4-2010 Shimogamo Jinja,
-Kyoto](http://i1.ytimg.com/vi/ntwaxNRAYmM/default.jpg)![Jikishinkage Ryu
-Naginata 5-4-2010 Shimogamo Jinja,
-Kyoto](http://i1.ytimg.com/vi/ntwaxNRAYmM/1.jpg)](http://www.youtube.com/watch?v=ntwaxNRAYmM "Jikishinkage Ryu Naginata 5-4-2010 Shimogamo Jinja, Kyoto")
-
-Jikishinkage Ryu Naginata 5-4-2010 Shimogamo Jinja, Kyoto /
-[mekugi](http://youtube.com/mekugi "Youtube - mekugi")
-
-[![Jiki Shinkage Ryu Naginata Jutsu - 34th All Japan
-Kobudo](http://i1.ytimg.com/vi/a5VqaxmgVvU/default.jpg)![Jiki Shinkage
-Ryu Naginata Jutsu - 34th All Japan
-Kobudo](http://i1.ytimg.com/vi/a5VqaxmgVvU/1.jpg)](http://www.youtube.com/watch?v=a5VqaxmgVvU "Jiki Shinkage Ryu Naginata Jutsu - 34th All Japan Kobudo")
-
-Jiki Shinkage Ryu Naginata Jutsu - 34th All Japan Kobudo / [BudoExport &
-Seido](http://youtube.com/BudoExport%20&%20Seido "Youtube - BudoExport & Seido")
-
-[![5th WNC - Jikishinkage Ryu Naginata
-Demo](http://i1.ytimg.com/vi/XIfImDzR-Yg/default.jpg)![5th WNC -
-Jikishinkage Ryu Naginata
-Demo](http://i1.ytimg.com/vi/XIfImDzR-Yg/1.jpg)](http://www.youtube.com/watch?v=XIfImDzR-Yg "5th WNC - Jikishinkage Ryu Naginata Demo")
-
-5th WNC - Jikishinkage Ryu Naginata Demo /
-[koukenK3](http://youtube.com/koukenK3 "Youtube - koukenK3")
-
-[![Jikishinkage ryu
-kata](http://i1.ytimg.com/vi/jaRA2zY_VhU/default.jpg)![Jikishinkage ryu
-kata](http://i1.ytimg.com/vi/jaRA2zY_VhU/1.jpg)](http://www.youtube.com/watch?v=jaRA2zY_VhU "Jikishinkage ryu  kata")
-
-Jikishinkage ryu kata /
-[lolinternetslol](http://youtube.com/lolinternetslol "Youtube - lolinternetslol")
-
-[![Jikishin kage-ryu
-kata](http://i1.ytimg.com/vi/IibZC8PBYns/default.jpg)![Jikishin kage-ryu
-kata](http://i1.ytimg.com/vi/IibZC8PBYns/1.jpg)](http://www.youtube.com/watch?v=IibZC8PBYns "Jikishin kage-ryu kata")
-
-Jikishin kage-ryu kata /
-[lolinternetslol](http://youtube.com/lolinternetslol "Youtube - lolinternetslol")
-
-[![下鴨神社　奉納演武　直心影流薙刀術](http://i1.ytimg.com/vi/DiCwRBds458/default.jpg)![下鴨神社　奉納演武　直心影流薙刀術](http://i1.ytimg.com/vi/DiCwRBds458/1.jpg)](http://www.youtube.com/watch?v=DiCwRBds458 "下鴨神社　奉納演武　直心影流薙刀術")
-
-下鴨神社　奉納演武　直心影流薙刀術 /
-[kuniedasagami2008](http://youtube.com/kuniedasagami2008 "Youtube - kuniedasagami2008")
-
-[![結成40周年記念調布市なぎなた大会](http://i1.ytimg.com/vi/v696WandAw8/default.jpg)![結成40周年記念調布市なぎなた大会](http://i1.ytimg.com/vi/v696WandAw8/1.jpg)](http://www.youtube.com/watch?v=v696WandAw8 "結成40周年記念調布市なぎなた大会")
-
-結成40周年記念調布市なぎなた大会 /
-[osuga01](http://youtube.com/osuga01 "Youtube - osuga01")
-
-[![北海道日記- 自由學校20週年紀念
-傳統武術表演2](http://i1.ytimg.com/vi/0TOaYDdhqlk/default.jpg)![北海道日記-
-自由學校20週年紀念
-傳統武術表演2](http://i1.ytimg.com/vi/0TOaYDdhqlk/1.jpg)](http://www.youtube.com/watch?v=0TOaYDdhqlk "北海道日記- 自由學校20週年紀念 傳統武術表演2")
-
-北海道日記- 自由學校20週年紀念 傳統武術表演2 /
-[kanedino](http://youtube.com/kanedino "Youtube - kanedino")
-
-[![北海道日記- 自由學校20週年紀念
-傳統武術表演3](http://i1.ytimg.com/vi/3horKHbL7I8/default.jpg)![北海道日記-
-自由學校20週年紀念
-傳統武術表演3](http://i1.ytimg.com/vi/3horKHbL7I8/1.jpg)](http://www.youtube.com/watch?v=3horKHbL7I8 "北海道日記- 自由學校20週年紀念 傳統武術表演3")
-
-北海道日記- 自由學校20週年紀念 傳統武術表演3 /
-[kanedino](http://youtube.com/kanedino "Youtube - kanedino")
-
-[![Atarashii Naginatado -
-Shiai](http://b.vimeocdn.com/ts/248/910/24891079_200.jpg)](http://vimeo.com/6520199 "Atarashii Naginatado - Shiai")
-
-Atarashii Naginatado - Shiai / [Juga
-Paazmaya](http://vimeo.com/paazmaya "Vimeo - Juga Paazmaya")
+-   [![Atarashii Naginatado -
+    Shiai](http://b.vimeocdn.com/ts/248/910/24891079_200.jpg)](http://vimeo.com/6520199 "Atarashii Naginatado - Shiai")
+    Atarashii Naginatado - Shiai / [Juga
+    Paazmaya](http://vimeo.com/paazmaya "Vimeo - Juga Paazmaya")
