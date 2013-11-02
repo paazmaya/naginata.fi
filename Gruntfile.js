@@ -28,6 +28,7 @@ module.exports = function(grunt) {
           'public_html/js/naginata.min.js': [
             'bower_components/jquery/jquery.js',
             'bower_components/colorbox/jquery.colorbox.js',
+            'public_html/js/analytics.js',
             'public_html/js/sendanmaki.js'
           ]
         }
@@ -53,6 +54,7 @@ module.exports = function(grunt) {
         src: [
           'Gruntfile.js',
           'karma.conf.js',
+          'public_html/js/analytics.js',
           'public_html/js/sendanmaki.js'
         ],
         options: {
