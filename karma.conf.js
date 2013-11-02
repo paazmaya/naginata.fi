@@ -33,9 +33,11 @@ module.exports = function(config) {
       'public_html/js/sendanmaki.js': ['coverage']
     },
     coverageReporter: {
-      type: 'lcovonly',
+      type: 'lcov',
       dir: 'coverage/'
     },
     singleRun: true
   });
 };
+
+

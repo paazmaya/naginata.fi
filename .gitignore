@@ -1,9 +1,7 @@
 naginata-config.json
 *.log
 public_html/img/pngcrush.exe
-stuff/*
-stats
 node_modules
 bower_components
 coverage
-.idea
+newrelic.js
