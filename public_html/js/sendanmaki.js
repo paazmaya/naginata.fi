@@ -129,8 +129,8 @@ var sendanmaki = window.sendanmaki = {
     }
 
     // Reusage
-    var $images = $('p > a:has(img:only-child)');
-    var $external = $('a[href^="http://"],a[href^="https://"]').not($images);
+    var $media = $('article p > a:has(img:only-child), article.media ul a');
+    var $external = $('a[href^="http://"], a[href^="https://"]').not($media);
 
     // external urls shall open in a new window
     $external.on('click', function (event) {
@@ -140,7 +140,7 @@ var sendanmaki = window.sendanmaki = {
     });
 
     // href has link to actual page, rel has inline player link
-    $images.on('click', function (event) {
+    $media.on('click', function (event) {
       event.preventDefault();
       sendanmaki.mediaThumbClick($(this));
     });
@@ -184,7 +184,7 @@ var sendanmaki = window.sendanmaki = {
       });
     }
     // data-photo-page ...
-    $('.imagelist a').colorbox({
+    $('article.media ul:first-of-type > li > a').colorbox({
       rel: 'several'
     });
 
@@ -213,7 +213,7 @@ var sendanmaki = window.sendanmaki = {
     data.title = $a.attr('title');
 
     // Find the domain
-    if (href.search(/\/\/.*flickr\.com\//) !== -1) {
+    if (href.search(/flickr\.com\//) !== -1) {
       // Flickr, replace _m.jpg --> _z.jpg
       href = href.replace('_m.jpg', '_z.jpg');
     }
