@@ -45,7 +45,7 @@ input:focus, select:focus, textarea:focus {
     outline: 1px solid #6E5728;
 }
 li {
-    padding: 0.2em 0;
+    padding: 0.3em 0;
 }
 nav {
     position: absolute;
@@ -67,7 +67,7 @@ nav, footer {
     border-bottom: 0.1em solid #072434;
     height: 1.5em;
     color: #072434;
-  display: block;
+    display: block;
 }
 nav ul, footer p {
     list-style: none;
@@ -160,23 +160,16 @@ article ul {
 article ol {
     list-style-type: decimal;
 }
-article li {
-    padding-left: 0.3em;
-}
-article img {
-}
 
 article a {
-  color: #006600;
+  color: #072434;
 }
 article a:hover, article a:focus {
   color: white;
-  background-color: #006600;
+  background-color: #072434;
 }
 
 /* paragraph containing a link that contains image(s) */
-p > a:only-child {
-}
 p > a:only-child > img:only-of-type {
   display: block;
   border: 0.2em solid #072434;
@@ -192,7 +185,8 @@ p > a:only-child > img:only-of-type {
 
 /* Colorbox background overlay */
 #cboxOverlay {
-  background: #f8f8f8;
+  background: #072434;
+  opacity: 0.3;
 }
 
 
@@ -226,60 +220,38 @@ article.media ul:last-of-type {
   width: 100%;
   list-style-type: none;
 }
-article.media ul:last-of-type > li {
+article.media ul:last-of-type li {
   display: block;
   width: 100%;
-  padding: 0;
-  margin: 0;
-  line-height: 0;
 }
-article.media ul:last-of-type > li > a {
+article.media ul:last-of-type a {
   padding: 0.4em;
+  padding-left: 60px;
   display: block;
+  position: relative;
 }
-article.media ul:last-of-type > li > a:hover img {
-  opacity: 0.5;
-}
-article.media ul:last-of-type > li p {
-  float: left;
-  margin-left: 1em;
-}
-article.media ul:last-of-type > li > ul {
-  margin-left: 1em;
-  width: auto;
-}
-article.media ul:last-of-type > li > ul > li {
-  float: left;
-  margin-left: 1em;
-  width: auto;
-}
-
-
-
-/* under mediathumb there is span that on hover should show play video icon */
-.playicon {
-  visibility: hidden;
-  display: block;
+article.media ul:last-of-type a::before {
+  content: ' ';
   position: absolute;
-  width: 50px;
-  height: 50px;
-  margin-top: -10px;
-  margin-left: -10px;
+  top: 0;
+  left: 0;
   background-repeat: no-repeat;
   background-position: center center;
+  background-size: 28px 28px;
+  width: 28px;
+  height: 100%;
 }
-.vimeo .playicon {
-    background-image: url('../img/vimeo_48.png');
+article.media ul:last-of-type a:hover::before {
+  opacity: 0.5;
 }
-.youtube .playicon {
-    background-image: url('../img/youtube_48.png');
+article.media ul:last-of-type a[href*="youtube.com"]::before {
+  background-image: url('../img/youtube_48.png');
 }
-.flickr .playicon {
-    background-image: url('../img/flickr_48.png');
+article.media ul:last-of-type a[href*="vimeo.com"]::before {
+  background-image: url('../img/vimeo_48.png');
 }
-.vimeo:hover .playicon, .youtube:hover .playicon, .flickr:hover .playicon {
-    visibility: visible;
-}
+
+
 /* local image in an article */
 .medialocal {
     float: left;
