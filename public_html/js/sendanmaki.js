@@ -87,6 +87,76 @@ var sendanmaki = window.sendanmaki = {
       }
     ]
   },
+  
+  /**
+   * Add notes to a chudan kamae bogu image, if available.
+   * @param {jQuery} item
+   */
+  buildImageNotes: function (item) {
+    $('img[src="' + item + '"]').each(function () {
+      sendanmaki.createImgNote(sendanmaki.notes[item], item);
+    }).on('mouseover mouseout', function (event) {
+        //var data = $(this).data();
+
+        var div = $(this).parent().children('div.note:contains("' +
+                    sendanmaki.notes[item].note + '")');
+        if (event.type === 'mouseover') {
+          div.addClass('notehover');
+        }
+        else {
+          div.removeClass('notehover');
+        }
+
+      });
+  },
+  
+  /**
+   * Click handler for Media page video list.
+   *
+   * Converts the href value for iframe player version, as described below.
+   *
+   * Youtube
+   * http://www.youtube.com/watch?v=[id]
+   * http://www.youtube.com/embed/[id]?version=3&f=videos&app=youtube_gdata
+   *
+   * Vimeo
+   * http://vimeo.com/[id]
+   * http://player.vimeo.com/video/[id]
+   * 
+   * @param {jQuery.Event} event
+   */
+  onVideoClick: function (event) {
+    event.preventDefault();
+    var href = $(this).attr('href');
+    href = href.replace(/vimeo.com\/(\w+)/, 'player.vimeo.com/video/$1');
+    href = href.replace(/youtube.com\/watch\?v=(\w+)/,
+                      'youtube.com/embed/$1?version=3&f=videos&app=youtube_gdata');
+    
+    sendanmaki.openIframe(href, $(this).attr('title'));
+  },
+
+  /**
+   * @param {jQuery.Event} event
+   */
+  onFigureClick: function (event) {
+    event.preventDefault();
+    var href = $(this).find('img').attr('src');
+
+    // Find the domain
+    if (href.search(/flickr\.com\//) !== -1) {
+      // Flickr, replace _m.jpg --> _z.jpg
+      href = href.replace('_m.jpg', '_z.jpg');
+    }
+
+    // Tell Analytics
+    _gaq.push(['_trackPageview', href]);
+
+    $.colorbox({
+      title: $(this).attr('title'),
+      href: href,
+      photo: true
+    });
+  },
 
   /**
    * This shall be run on domReady in order to initiate
@@ -95,24 +165,7 @@ var sendanmaki = window.sendanmaki = {
   domReady: function () {
     sendanmaki.lang = $('html').attr('lang') || sendanmaki.lang;
 
-    // Add notes to a chudan kamae bogu image, if available
-    $.each(sendanmaki.notes, function (item) {
-      $('img[src="' + item + '"]').each(function () {
-        sendanmaki.createImgNote(sendanmaki.notes[item], item);
-      }).on('mouseover mouseout', function (event) {
-          //var data = $(this).data();
-
-          var div = $(this).parent().children('div.note:contains("' +
-                      sendanmaki.notes[item].note + '")');
-          if (event.type === 'mouseover') {
-            div.addClass('notehover');
-          }
-          else {
-            div.removeClass('notehover');
-          }
-
-        });
-    });
+    $.each(sendanmaki.notes, sendanmaki.buildImageNotes);
 
     // Nokia E7 browser fails on this...
     if (typeof window.applicationCache !== 'undefined') {
@@ -139,50 +192,36 @@ var sendanmaki = window.sendanmaki = {
       window.open(href, $.now());
     });
 
-    // Video links
-    $('article.media ul:last-of-type a').on('click', function (event) {
-      event.preventDefault();
-
-      // Youtube
-      // http://www.youtube.com/watch?v=[id]
-      // http://www.youtube.com/embed/[id]?version=3&f=videos&app=youtube_gdata
-
-      // Vimeo
-      // http://vimeo.com/[id]
-      // http://player.vimeo.com/video/[id]
-
-      var href = $(this).attr('href');
-      href = href.replace(/vimeo.com\/(\w+)/, 'player.vimeo.com/video/$1');
-      href = href.replace(/youtube.com\/watch\?v=(\w+)/,
-                          'youtube.com/embed/$1?version=3&f=videos&app=youtube_gdata');
-
-      sendanmaki.openIframe(href, $(this).attr('title'));
-    });
-
     // Thumbnail on all pages except media
-    $('article p > a:has(img:only-child)').on('click', function (event) {
-      event.preventDefault();
-      var href = $(this).find('img').attr('src');
+    $('article p > a:has(img:only-child)').on('click', sendanmaki.onFigureClick);
 
-      // Find the domain
-      if (href.search(/flickr\.com\//) !== -1) {
-        // Flickr, replace _m.jpg --> _z.jpg
-        href = href.replace('_m.jpg', '_z.jpg');
-      }
+    // Video links
+    $('article.media ul:last-of-type a').on('click', sendanmaki.onVideoClick);
 
-      // Tell Analytics
-      _gaq.push(['_trackPageview', href]);
-
-      $.colorbox({
-        title: $(this).attr('title'),
-        href: href,
-        photo: true
-      });
+    // data-photo-page ...
+    $('article.media ul:first-of-type > li > a').colorbox({
+      rel: 'several',
+      photo: true
     });
 
+    // Track ColorBox usage with Google Analytics
+    $(document).on('cbox_complete', function () {
+      var href = $.colorbox.element().attr('href');
+      if (href) {
+        _gaq.push(['_trackPageview', href]);
+      }
+    });
+
+    // Close colorbox if opened as modal
+    $(document).on('click', '#colorbox input[type="button"][name="close"]', function () {
+      $.colorbox.close();
+    });
   },
 
-  initColorbox: function () {
+  /**
+   * Set translation strings on Colorbox based on the current lang.
+   */
+  localiseColorbox: function () {
 
     // Colorbox translations
     if (sendanmaki.lang === 'fi') {
@@ -219,24 +258,6 @@ var sendanmaki = window.sendanmaki = {
         slideshowStop: 'スライドショー終了'
       });
     }
-    // data-photo-page ...
-    $('article.media ul:first-of-type > li > a').colorbox({
-      rel: 'several',
-      photo: true
-    });
-
-    // Track ColorBox usage with Google Analytics
-    $(document).on('cbox_complete', function () {
-      var href = $.colorbox.element().attr('href');
-      if (href) {
-        _gaq.push(['_trackPageview', href]);
-      }
-    });
-
-    // Close colorbox if opened as modal
-    $(document).on('click', '#colorbox input[type="button"][name="close"]', function () {
-      $.colorbox.close();
-    });
   },
 
   /**
@@ -280,6 +301,6 @@ var sendanmaki = window.sendanmaki = {
 };
 
 (function () {
+  sendanmaki.localiseColorbox();
   sendanmaki.domReady();
-  sendanmaki.initColorbox();
 })();
