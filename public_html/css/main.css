@@ -27,6 +27,9 @@ header, article, section {
     padding: 2em 1em;
     font-family: 'Lora', Verdana, sans-serif;
 }
+html[lang="ja"] {
+  font-family:"ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", Osaka, "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+}
 p {
     margin: 1em 0.5em;
 }
