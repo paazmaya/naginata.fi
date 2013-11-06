@@ -128,7 +128,7 @@ var sendanmaki = window.sendanmaki = {
       }, false);
     }
 
-    // Reusage
+    // Re-usage
     var $media = $('article p > a:has(img:only-child), article.media ul a');
     var $external = $('a[href^="http://"], a[href^="https://"]').not($media);
 
@@ -139,11 +139,47 @@ var sendanmaki = window.sendanmaki = {
       window.open(href, $.now());
     });
 
-    // href has link to actual page, rel has inline player link
-    $media.on('click', function (event) {
+    // Video links
+    $('article.media ul:last-of-type a').on('click', function (event) {
       event.preventDefault();
-      sendanmaki.mediaThumbClick($(this));
+
+      // Youtube
+      // http://www.youtube.com/watch?v=[id]
+      // http://www.youtube.com/embed/[id]?version=3&f=videos&app=youtube_gdata
+
+      // Vimeo
+      // http://vimeo.com/[id]
+      // http://player.vimeo.com/video/[id]
+
+      var href = $(this).attr('href');
+      href = href.replace(/vimeo.com\/(\w+)/, 'player.vimeo.com/video/$1');
+      href = href.replace(/youtube.com\/watch\?v=(\w+)/,
+                          'youtube.com/embed/$1?version=3&f=videos&app=youtube_gdata');
+
+      sendanmaki.openIframe(href, $(this).attr('title'));
     });
+
+    // Thumbnail on all pages except media
+    $('article p > a:has(img:only-child)').on('click', function (event) {
+      event.preventDefault();
+      var href = $(this).find('img').attr('src');
+
+      // Find the domain
+      if (href.search(/flickr\.com\//) !== -1) {
+        // Flickr, replace _m.jpg --> _z.jpg
+        href = href.replace('_m.jpg', '_z.jpg');
+      }
+
+      // Tell Analytics
+      _gaq.push(['_trackPageview', href]);
+
+      $.colorbox({
+        title: $(this).attr('title'),
+        href: href,
+        photo: true
+      });
+    });
+
   },
 
   initColorbox: function () {
@@ -185,7 +221,8 @@ var sendanmaki = window.sendanmaki = {
     }
     // data-photo-page ...
     $('article.media ul:first-of-type > li > a').colorbox({
-      rel: 'several'
+      rel: 'several',
+      photo: true
     });
 
     // Track ColorBox usage with Google Analytics
@@ -203,53 +240,20 @@ var sendanmaki = window.sendanmaki = {
   },
 
   /**
-   * Handle a click on a media thumbnail.
-   * It can be a Flickr image, Vimeo or Youtube video.
-   * @param {jQuery} $a
+   * Open the given url in a Colorbox iFrame.
+   * @param {string} url
+   * @param {string} title
    */
-  mediaThumbClick: function ($a) {
-    var data = $a.data();
-    var href = $a.find('img').attr('src');
-    data.title = $a.attr('title');
-
-    // Find the domain
-    if (href.search(/flickr\.com\//) !== -1) {
-      // Flickr, replace _m.jpg --> _z.jpg
-      href = href.replace('_m.jpg', '_z.jpg');
-    }
-
-    // Tell Analytics
-    _gaq.push(['_trackPageview', href]);
-
-    if (data.iframe) {
-      sendanmaki.openIframe(data);
-    }
-    else {
-      $.colorbox({
-        title: data.title,
-        href: href,
-        photo: true
-      });
-    }
-  },
-
-  openIframe: function (data) {
-    // Vimeo has size data, Youtube does not
+  openIframe: function (url, title) {
     var w = $('#wrapper').width();
     var h = w * 0.75;
-    if (data.width) {
-      w = data.width;
-    }
-    if (data.height) {
-      h = data.height;
-    }
 
     // By using iframe, fullscreen becomes possible
     $.colorbox({
-      title: data.title,
+      title: title,
       innerHeight: h,
       innerWidth: w,
-      href: data.url,
+      href: url,
       iframe: true,
       scrolling: false
     });
