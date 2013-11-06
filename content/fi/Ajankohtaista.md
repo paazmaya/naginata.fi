@@ -15,6 +15,7 @@
 
 ## Menneitä tapahtumia
 
+-   18.-20.10.2013 - Leiri ikkyu ja ylemmille arvoille, Praha, Tsekki, opettajana Kimura sensei
 -   6.10.2013 - [Kyu-graduointi arvoille 6-2 kyu (16:30), KKTI Dojo,
     Olympiastadion,
     Helsinki](https://www.facebook.com/events/157924271076783/ "Kyu-graduointi arvoille 6-2 kyu")

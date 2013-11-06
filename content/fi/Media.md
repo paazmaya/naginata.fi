@@ -129,8 +129,8 @@
 -   [![Naginata Helsinki 2010-02-07
     14](http://farm3.static.flickr.com/2778/4339175212_89128e1f4d_s.jpg)](http://farm3.static.flickr.com/2778/4339175212_89128e1f4d_z.jpg "Naginata Helsinki 2010-02-07 14")
 
-## Videoita näytöksistä ja kilpailuista
 
+## Videoita näytöksistä ja kilpailuista
 
 -   [Rhythm Naginata at the 5th Naginata World Championships](http://vimeo.com/50075290 "Rhythm Naginata at the 5th Naginata World Championships / Vimeo - Juga Paazmaya")
 -   [リズムなぎなた](http://www.youtube.com/watch?v=vRB8Fkevcc8 "リズムなぎなた")
