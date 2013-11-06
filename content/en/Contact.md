@@ -1,60 +1,57 @@
-Atarashii Naginata in Finland is under the [Finnish Kendo
-Association](http://fka.fi/ "FKA - Finnish Kendo Association") lead by
-Mr. Jukka Paasonen (2 dan, [first name]@naginata.fi).
+Atarashii Naginata in Finland is organised under the [Finnish Kendo
+Association (FKA)](http://fka.fi/ "FKA - Finnish Kendo Association") and is 
+lead by Mr. Jukka Paasonen (2 dan, [first name]@naginata.fi).
 
 [![Naginata](http://farm4.staticflickr.com/3560/3516387044_7fb505ca33_m.jpg)](http://flickr.com/photos/8014296@N04/3516387044 "Naginata / Gitta Wilén")
 
-The FKA maintains a [mailing list in which can be subscribed for being informed of the seminars, 
-gradings and other engagements](http://fka.fi/mailman/listinfo/naginata_tiedotus_fka.fi "Naginata_tiedotus@fka.fi")
+The FKA maintains a [mailing list in which can be subscribed for being 
+informed of the seminars, gradings and other 
+engagements](http://fka.fi/mailman/listinfo/naginata_tiedotus_fka.fi "Naginata_tiedotus@fka.fi")
 related to Atarashii Naginata.
 
-Finland has also other styles and organizations who are
-practicing weapons that include naginata. They do not necessarily have
-direct contact with the Finnish Kendo Association. These styles are
-Jikishinkageryū, inter alia, Tenshin Shoden Katori Shintoryū and Suiōryū .
+There are also other styles and organizations in which is possible to
+practise with the weapon naginata. However those are not necessarily in a
+direct contact with the Finnish Kendo Association. These styles are such as
+Jikishinkageryū, Tenshin Shoden Katori Shintoryū and Suiōryū .
+
 
 ## Clubs
 
+### Helsinki Kendo Club Ki-Ken-Tai-Icchi
 
-### Helsinki Kendo Club Ki- Ken-Tai - Icchi
+At [Helsinki Kendo Club, Ki-Ken-Tai-Icchi (KKTI) it is possible to join the classes
+of Atarashii Naginata and Jikishinkageryū 
+Naginatajutsu](http://kendohelsinki.org "Ki-Ken-Tai-Icchi, Helsinki Kendo Club, Olympic Stadium")
 
-[Helsinki Kendo Club, Ki- Ken-Tai - Icchi ry to practice
-Atarashii Naginata : a and Jikishinkageryū
-Naginatajutsu:a](http://kendohelsinki.org " Ki- Ken-Tai - Icchi, Helsinki Kendo Club, the Olympic Stadium")
+The trainings are held on every Thursday at 18:00 - 19:30 and Sunday at
+16:00 - 18:00. All of the trainings are in the "keskisali" training area.
 
-The exercises are Thursdays at 18:00 - 19:30 and Sundays at
-16:00 - 18:00 . Each of the exercises is considered a " medium room " .
+Please contact Mr. Jarno Yliluoma ([firstname.lastname]@gmail.com) for any 
+inquiris related to Naginata in KKTI.
 
-Helsinki Kendo Club naginatavastaava Jarno Yliluoma
-( [firstname.lastname] @ gmail.com ) is responsible for the species -related
-inquiries.
+### Tapanilan Erä - Kendo division
 
-### Tapanilan Lot - Kendojaos
+[Tapanilan Erä Kendo Division has started weekly trainings in Atarashii Naginata,
+from beginning of Autumn 2013.](http://www.tapanila-kendo.org/ "Tapanilan Erä - Kendo")
 
-[Tapanilan lot Kendo Division has started Atarashii Naginata
-regular training in the autumn 2013
-from the beginning.](http://www.tapanila-kendo.org/ "Tapanilan Lot - Kendo")
+Trainings are held in every Wednesday at the "Studio", from 19:00 to 21:00.
 
-Training is once a week on Wednesdays at 19:00 - 21:00
-The "studio " .
+The responsible contact person for Naginata at Tapanila is Mr. Janne
+Sojantola ([firstname.lastname]@gmail.com), who is also leading the trainings.
 
-Naginataan related responding Tapanila naginata
-guiding Janne Sojantola([firstname.lastname] @ gmail.com ) .
 
-## Procurement of Equipment
+## Training equipments
 
-Type of hobby clubs will offer a range of joint orders
-which may, in particular just started to participate in the course .
+It is sometimes possible to order training equipments via the club that in
+which the practitioner is a member, usually when new classes begin.
 
-The site owner also has a few " shiai
-Naginata " Training guns for sale, price ranging from 80 to 90 EUR
-Depending on the timing and size of your order .
+The site owner also has a few "Shiai naginata" training weapons for sale,
+price ranging from 80 to 90 EUR, depending on the timing and size of the given order.
 
-Below are links to some of the food at sensible martial movements which can
-species -related equipment to obtain:
+Below are links to some of the sensible martial shops from where it is possibe
+to obtain training equipments:
 
-- [Bokkenshop(Tozando );
-    Japanese](http://www.bokkenshop.com/ "Bokkenshop")
-- [Tozando, Japan](http://www.tozandoshop.com/ "Tozando")
-- [E - Bogu, Japan](http://www.e-bogu.jp/ the "E- Bogu Japan" )
-- [Nine Circles, in English](http://www.ninecircles.co.uk/ "Tozando")
+-   [Bokkenshop (Tozando), Japan](http://www.bokkenshop.com/ "Bokkenshop")
+-   [Tozando, Japan](http://www.tozandoshop.com/ "Tozando")
+-   [E - Bogu, Japan](http://www.e-bogu.jp/ "E- Bogu Japan")
+-   [Nine Circles, Great Britain](http://www.ninecircles.co.uk/ "Nine Circles")

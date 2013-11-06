@@ -16,8 +16,8 @@ harjoittelemiin aseisiin kuuluu naginata. Näillä ei välttämättä ole
 suoraa yhteyttä Kendoseurojen Keskusliittoon. Tällaisia tyylejä ovat
 muun muassa Jikishinkageryū, Tenshin Shoden Katori Shintoryū ja Suiōryū.
 
-## Seurat
 
+## Seurat
 
 ### Helsingin Kendoseura Ki-Ken-Tai-Icchi
 
@@ -44,6 +44,7 @@ Harjoitukset ovat kerran viikossa keskiviikkoisin kello 19:00 - 21:00
 Naginataan liittyviin tiedusteluihin vastaa Tapanilassa naginataa
 ohjaava Janne Sojantola ([etunimi.sukunimi]@gmail.com).
 
+
 ## Varustehankintaa
 
 Lajin harrastamista tarjoavat seurat tekevät välillä yhteistilauksia
@@ -56,8 +57,7 @@ riippuen tilauksen ajankohdasta ja suuruudesta.
 Alla linkkejä muutamiin asiallisiin budo-tarvikeliikkeisiin joista voi
 lajiin liittyvä varusteita hankkia:
 
--   [Bokkenshop (Tozando),
-    Japani](http://www.bokkenshop.com/ "Bokkenshop")
+-   [Bokkenshop (Tozando), Japani](http://www.bokkenshop.com/ "Bokkenshop")
 -   [Tozando, Japani](http://www.tozandoshop.com/ "Tozando")
 -   [E-Bogu, Japani](http://www.e-bogu.jp/ "E-Bogu Japan")
--   [Nine Circles, Englanti](http://www.ninecircles.co.uk/ "Tozando")
+-   [Nine Circles, Englanti](http://www.ninecircles.co.uk/ "Nine Circles")
