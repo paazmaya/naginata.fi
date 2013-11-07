@@ -21,6 +21,9 @@ marked.setOptions({
   breaks: false
 });
 
+// https://developer.mozilla.org/en-US/docs/Security/CSP/Using_Content_Security_Policy
+// Content-Security-Policy-Report-Only: default-src 'self' *.vimeo.com *.youtube.com *.flickr.com
+
 
 var pageData = fs.readFileSync('content/page-data.json', { encoding: 'utf8' });
 var pageJson = JSON.parse(pageData);
@@ -36,7 +39,7 @@ app.use(express.logger());
 
 app.on('uncaughtException', function (err) {
   console.error(err.stack);
-  console.log("Node NOT Exiting...");
+  console.log('Node NOT Exiting...');
 });
 
 app.engine('jade', require('jade').__express);
@@ -145,8 +148,15 @@ app.get(pageRegex, function(req, res) {
   }
 
   var html = getContent(lang, current.title);
-  res.render('index', { content: html, pages: pages, footers: pageJson.footer[lang], meta: current, lang: lang });
+  res.render('index', {
+    content: html,
+    pages: pages,
+    footers: pageJson.footer[lang],
+    meta: current,
+    lang: lang
+  });
 });
+
 
 // Softer landing page
 app.get('/', function(req, res) {
@@ -164,5 +174,5 @@ var ipaddr = process.env.OPENSHIFT_NODEJS_IP || null; // Heroku fails with addre
 var port = process.env.OPENSHIFT_NODEJS_PORT || process.env.PORT || 5000;
 
 app.listen(port, ipaddr, function() {
-  console.log("Express.js running at http://" + ipaddr + ":" + port + "/");
+  console.log('Express.js running at http://' + ipaddr + ':' + port + '/');
 });

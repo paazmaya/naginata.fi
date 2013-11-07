@@ -54,6 +54,7 @@ module.exports = function(grunt) {
         src: [
           'Gruntfile.js',
           'karma.conf.js',
+          'server.js',
           'public_html/js/analytics.js',
           'public_html/js/sendanmaki.js'
         ],
