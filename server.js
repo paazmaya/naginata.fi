@@ -8,6 +8,8 @@
 
 'use strict';
 
+//require('newrelic');
+
 // http://expressjs.com
 var express = require('express');
 var fs = require('fs');

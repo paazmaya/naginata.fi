@@ -1,8 +1,8 @@
 {
   "languages": {
     "fi": true,
-    "en": false,
-    "ja": false
+    "en": true,
+    "ja": true
   },
   "title": {
     "fi": "Naginata Suomessa",
