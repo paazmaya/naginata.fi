@@ -54,7 +54,7 @@ Contributors are welcome.
  * Local Storage replacing browser cookies (http://www.w3.org/TR/webstorage/)
  * Google Web Fonts (http://www.google.com/fonts)
  * Google Analytics
- * Deploy to Heroku `git push heroku master`, http://naginata-finland.herokuapp.com
+ * Deployment to Heroku, Nodejitsu and Openshift. Final decision of which to use based on perceived speed vs price
 
 ### [Node.js](http://nodejs.org "Node.js is a platform built on Chrome's JavaScript runtime for easily building fast, scalable network applications")
 
@@ -72,14 +72,20 @@ Contributors are welcome.
 
 ### [Jade](http://jade-lang.com/ "node templating language")
 
+ * Single index template done in Jade
+
 ### [Express.js](http://expressjs.com/ "web application framework for node")
 
+ * Runs the site
+
 ### [jQuery](http://jquery.com/ "New wave JavaScript")
+
+ * Available via Bower
 
 ### [Colorbox](http://jacklmoore.com/colorbox/ "A lightweight customizable lightbox plugin for jQuery")
 
  * jQuery plugin "Colorbox" used for opening content in same page
-
+ * Available via Bower
 
 ### [Markdown](http://daringfireball.net/projects/markdown/ "Markdown is a text-to-HTML conversion tool for web writers")
 
@@ -112,7 +118,7 @@ pandoc -V geometry:margin=0.5in -o grading-rules-english.md grading-rules-englis
 ## Other notes
 
  * Speed study (http://blog.chromium.org/2010/07/do-you-know-how-slow-your-web-page-is.html)
- * Sitespeed.io, 2.1 `./sitespeed.io -u http://naginata.fi -o csv -k true`
+ * Sitespeed.io, `./sitespeed.io -u http://naginata.fi -o csv -k true`
 
 ## [TODO](https://github.com/paazmaya/naginata.fi/issues "issues")
 
@@ -120,4 +126,10 @@ pandoc -V geometry:margin=0.5in -o grading-rules-english.md grading-rules-englis
  * Jasmine unit tests, for what ever little testable things there are, issue 3 and 4 for coverage
  * Facebook liking and related, https://developers.facebook.com/tools/debug/og/object?q=naginata.fi
 
+## History
 
+Versions before 0.4.0 were using PHP as the backend and content editing was done at the site, after
+OpenID based login. Content was stored as HTML5 in MySQL database.
+
+From version 0.4.0 onward, the site is running with Node.js and thus JavaScript as the backend.
+Content is at the source code repository in text files in Markdown format.

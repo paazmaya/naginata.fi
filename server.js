@@ -192,7 +192,6 @@ app.get(pageRegex, function (req, res) {
   });
 });
 
-
 // Softer landing page
 app.get('/', function (req, res) {
   checkLang(req.acceptedLanguages);

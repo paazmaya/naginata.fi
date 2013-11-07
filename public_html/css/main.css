@@ -193,6 +193,8 @@ p > a:only-child > img:only-of-type {
 }
 #cboxTitle {
   font-family: 'Inder', Verdana, sans-serif;
+  top: -25px;
+  left: 4px;
 }
 
 
