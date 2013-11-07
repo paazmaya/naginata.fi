@@ -26,8 +26,11 @@ marked.setOptions({
 // https://developer.mozilla.org/en-US/docs/Security/CSP/Using_Content_Security_Policy
 // Content-Security-Policy-Report-Only: default-src 'self' *.vimeo.com *.youtube.com *.flickr.com
 
+var fsOptions = {
+  encoding: 'utf8'
+};
 
-var pageData = fs.readFileSync('content/page-data.json', { encoding: 'utf8' });
+var pageData = fs.readFileSync('content/page-data.json', fsOptions);
 var pageJson = JSON.parse(pageData);
 
 
@@ -58,10 +61,7 @@ var defaultLang = 'fi';
  * @returns {string} HTML content
  */
 var getContent = function (lang, title) {
-  var data = fs.readFileSync(
-    'content/' + lang + '/' + title + '.md',
-    { encoding: 'utf8' }
-  );
+  var data = fs.readFileSync('content/' + lang + '/' + title + '.md', fsOptions);
   return md(data);
 };
 
@@ -74,24 +74,57 @@ var facebookMeta = function (page) {
   // property, name
   var meta = [
     // http://ogp.me/
-    { property: 'og:title', content: page.title },
-    { property: 'og:description', content: page.description },
-    { property: 'og:type', content: 'sports_team' },
-
+    {
+      property: 'og:title',
+      content: page.title
+    },
+    {
+      property: 'og:description',
+      content: page.description
+    },
+    {
+      property: 'og:type',
+      content: 'sports_team'
+    },
     // All the images referenced by og:image must be at least 200px in both dimensions.
-    { property: 'og:image', content: '/img/logo-200x200.png' },
-
-    { property: 'og:url', content: 'http://naginata.fi' + page.url },
-    { property: 'og:site_name', content: page.titlesuffix },
-    { property: 'og:locale', content: 'fi_FI' }, // language_TERRITORY
-    { property: 'og:locale:alternate', content: 'en_GB' },
-    { property: 'og:locale:alternate', content: 'ja_JP' },
-    { property: 'og:country-name', content: 'Finland' },
-
+    {
+      property: 'og:image',
+      content: '/img/logo-200x200.png'
+    },
+    {
+      property: 'og:url',
+      content: 'http://naginata.fi' + page.url
+    },
+    {
+      property: 'og:site_name',
+      content: page.titlesuffix
+    },
+    {
+      property: 'og:locale',
+      content: 'fi_FI'
+    }, // language_TERRITORY
+    {
+      property: 'og:locale:alternate',
+      content: 'en_GB'
+    },
+    {
+      property: 'og:locale:alternate',
+      content: 'ja_JP'
+    },
+    {
+      property: 'og:country-name',
+      content: 'Finland'
+    },
     // https://developers.facebook.com/docs/opengraph/
     // A Facebook Platform application ID that administers this page.
-    { property: 'fb:app_id', content: pageJson.facebook.app_id },
-    { property: 'fb:admins', content: pageJson.facebook.admins }
+    {
+      property: 'fb:app_id',
+      content: pageJson.facebook.app_id
+    },
+    {
+      property: 'fb:admins',
+      content: pageJson.facebook.admins
+    }
   ];
 
   return meta;
@@ -122,7 +155,7 @@ for (var key in pageJson.languages) {
 
 var pageRegex = new RegExp('^\/(' + langKeys.join('|') + ')(\/(\\w+))?$');
 
-app.get(pageRegex, function(req, res) {
+app.get(pageRegex, function (req, res) {
   var lang = req.params[0];
   app.set('lang', lang);
 
@@ -161,13 +194,13 @@ app.get(pageRegex, function(req, res) {
 
 
 // Softer landing page
-app.get('/', function(req, res) {
+app.get('/', function (req, res) {
   checkLang(req.acceptedLanguages);
   res.redirect(301, '/' + defaultLang);
 });
 
 // Catch anything that does not match the previous rules.
-app.get('*', function(req, res) {
+app.get('*', function (req, res) {
   res.redirect(404, '/' + defaultLang);
 });
 
@@ -175,6 +208,6 @@ app.get('*', function(req, res) {
 var ipaddr = process.env.OPENSHIFT_NODEJS_IP || null; // Heroku fails with address
 var port = process.env.OPENSHIFT_NODEJS_PORT || process.env.PORT || 5000;
 
-app.listen(port, ipaddr, function() {
+app.listen(port, ipaddr, function () {
   console.log('Express.js running at http://' + ipaddr + ':' + port + '/');
 });
