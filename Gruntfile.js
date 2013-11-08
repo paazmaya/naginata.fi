@@ -63,6 +63,10 @@ module.exports = function(grunt) {
         }
       }
     },
+    
+    eslint: {
+      target: '<%= jshint.onlymine.src %>'
+    },
 
     jscs: {
       onlymine: {
@@ -92,13 +96,14 @@ module.exports = function(grunt) {
 
   });
 
+  grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-jasmine');
   grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-eslint');
   grunt.loadNpmTasks('grunt-jscs-checker');
 
   grunt.registerTask('minify', ['uglify', 'cssmin']);
-  grunt.registerTask('test', ['jshint', 'jscs', 'jasmine']);
+  grunt.registerTask('test', ['jshint', 'eslint', 'jscs', 'jasmine']);
   grunt.registerTask('default', ['test', 'minify']);
 };

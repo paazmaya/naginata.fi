@@ -23,6 +23,9 @@
   "requireKeywordsOnNewLine": [ "else", "catch" ],
   "requireLineFeedAtFileEnd": true,
   "safeContextKeyword": "self",
+  
+  "disallowSpaceAfterPrefixUnaryOperators": ["++", "--"],
+  "disallowSpaceBeforePostfixUnaryOperators": ["++", "--"],
 
   "validateJSDoc": {
     "checkParamNames": true,

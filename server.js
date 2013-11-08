@@ -33,7 +33,6 @@ var fsOptions = {
 var pageData = fs.readFileSync('content/page-data.json', fsOptions);
 var pageJson = JSON.parse(pageData);
 
-
 var app = express();
 
 if (process.env.NODE_ENV === 'production') {
