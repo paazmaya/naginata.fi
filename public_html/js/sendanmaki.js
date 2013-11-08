@@ -230,7 +230,7 @@ var sendanmaki = window.sendanmaki = {
        language: Finnish (fi)
        translated by: Mikko
        */
-      jQuery.extend(jQuery.colorbox.settings, {
+      $.extend($.colorbox.settings, {
         current: 'Kuva {current} / {total}',
         previous: 'Edellinen',
         next: 'Seuraava',
@@ -247,7 +247,7 @@ var sendanmaki = window.sendanmaki = {
        language: Japanaese (ja)
        translated by: Hajime Fujimoto
        */
-      jQuery.extend(jQuery.colorbox.settings, {
+      $.extend($.colorbox.settings, {
         current: '{total}枚中{current}枚目',
         previous: '前',
         next: '次',

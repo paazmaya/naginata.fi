@@ -71,7 +71,7 @@ module.exports = function(grunt) {
     jscs: {
       onlymine: {
         options: {
-          config: '.jscs.json',
+          config: '.jscs.json'
         },
         files: {
           src: '<%= jshint.onlymine.src %>'
