@@ -24,7 +24,7 @@ class ShikakeOji
     /**
      * What is the version of this class?
      */
-    public static $VERSION = '0.15';
+    public static $VERSION = '0.16';
 
     /**
      * Current language, defaults to Finnish. Available languages are fi/en/ja.
@@ -74,21 +74,6 @@ class ShikakeOji
      * Library path, which is used to find the other libraries included.
      */
     public $libPath = __DIR__;
-
-    /**
-     * Is the page internal, thus only ouputting JSON?
-     * These require user to login via OAuth.
-     */
-    private $isInternalPage = false;
-
-    /**
-     * URLs used by the application, not for showing content.
-     * These should be human readable English with dashes.
-     * Key is the URL, value is the name of the function to be called.
-     */
-    private $appUrls = array(
-        '/sitemap' => 'showSiteMap'
-    );
 
     /**
      * Constructor will load the JSON data and decode it as well as
@@ -161,57 +146,37 @@ class ShikakeOji
         $url = parse_url($_SERVER['REQUEST_URI']); // use as such
 
         // URLs should only be lowercase, thus check and redirect later
-        $lowercase = isset($url['path']) ? strtolower($url['path']) : '/';
+        $lowercase = isset($url['path']) ? strtolower($url['path']) : '/' . $this->language;
 
-        // App urls shall be without language
-        if (array_key_exists($lowercase, $this->appUrls))
+        // Plain page related url
+        $pageurl = trim($lowercase);
+
+        // Remove the last slash
+        //$pageurl = substr($pageurl, -1, 1) == '/' ? substr($pageurl, 0, -1) : $pageurl;
+
+        // Content
+        $found = false;
+
+        foreach ($this->appData['pages'] as $pages)
         {
-            // Application internal URLs. Allow query in the URL.
-            $this->currentPage = $lowercase;
-            $this->isInternalPage = true;
+            if ($pageurl == $pages['url'])
+            {
+                $this->currentPage = $pageurl;
+                $found = true;
+            }
+        }
+
+        if (!$found)
+        {
+            // Not found
+            $this->redirectTo('/' . $this->language, 404);
         }
         else
         {
-            // Plain page related url
-            $pageurl = substr($lowercase, 3);
-            if ($pageurl === false)
+            // Was the address found in lowercase?
+            if ($this->currentPage != $url['path'] || (isset($url['query']) && $url['query'] != ''))
             {
-                $pageurl = '/';
-            }
-
-            // Remove all extra slashes
-            $pageurl = '/' . str_replace('/', '', $pageurl);
-
-            // Content
-            $found = false;
-
-            $sql =
-                'SELECT * FROM naginata_page WHERE url = \'' . $pageurl . '\' AND lang = \'' . $this->language . '\'';
-            $run = $this->database->query($sql);
-            if ($run)
-            {
-                while ($res = $run->fetch(PDO::FETCH_ASSOC))
-                {
-                    if ($pageurl == $res['url']) // TODO: this it is of course but later add more logic
-                    {
-                        $this->currentPage = $pageurl;
-                        $found = true;
-                    }
-                }
-            }
-
-            if (!$found)
-            {
-                // Not found
-                $this->redirectTo('/', 404);
-            }
-            else
-            {
-                // Was the address found in lowercase?
-                if ('/' . $this->language . $this->currentPage != $url['path'] || (isset($url['query']) && $url['query'] != ''))
-                {
-                    $this->redirectTo($this->currentPage);
-                }
+                $this->redirectTo($this->currentPage);
             }
         }
     }
@@ -221,26 +186,11 @@ class ShikakeOji
      */
     public function renderPage()
     {
-        if ($this->isInternalPage)
-        {
-            // These functions return a string/true or false on failure.
-            $out = call_user_func(array($this, $this->appUrls[$this->currentPage]));
+        $out = $this->output->renderHtml();
+        header('Content-type: text/html; charset=utf-8');
+        header('Content-Language: ' . $this->language);
 
-            // Other headers sent from the function above
-            header('Content-Language: ' . $this->language);
-            header('Last-modified: ' . date('r', time()));
-
-            return $out;
-        }
-        else
-        {
-            $out = $this->output->renderHtml();
-            header('Content-type: text/html; charset=utf-8');
-            header('Content-Language: ' . $this->language);
-            header('Last-modified: ' . date('r', $this->output->pageModified));
-
-            return $out;
-        }
+        return $out;
     }
 
     /**
@@ -361,44 +311,13 @@ class ShikakeOji
     }
 
     /**
-     * Show sitemap.xml
-     */
-    private function showSiteMap()
-    {
-        header('Content-type: text/xml');
-
-        $out = '<?xml version="1.0" encoding="utf-8"?>';
-        $out .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
-
-        $lang = 'fi';
-        $sql = 'SELECT P.url, MAX(A.modified) AS lastmod FROM naginata_page P' .
-            ' LEFT JOIN naginata_article A ON P.id = A.page_id WHERE P.lang = \'' .
-            $lang . '\' AND A.published = 1 GROUP BY A.page_id';
-        $run = $this->database->query($sql);
-        if ($run)
-        {
-            while ($res = $run->fetch(PDO::FETCH_ASSOC))
-            {
-                $out .= '<url>';
-                $out .= '<loc>http://' . $_SERVER['HTTP_HOST'] . $res['url'] . '</loc>';
-                $out .= '<lastmod>' . date('Y-m-d', $res['lastmod']) . '</lastmod>';
-                $out .= '<changefreq>monthly</changefreq>';
-                $out .= '</url>';
-            }
-        }
-        $out .= '</urlset>';
-
-        return $out;
-    }
-
-    /**
      * Redirect the client to the given URL with 301 (moved permanently) HTTP code.
      *
-     * @param    string $url    Redirect to this URL within this domain
+     * @param    string $url Redirect to this URL within this domain
+     * @param string    $code
      */
     private function redirectTo($url, $code = '301')
     {
-        $url = '/' . $this->language . $url;
         if ($code != '')
         {
             $text = 'Moved Permanently';
