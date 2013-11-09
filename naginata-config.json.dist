@@ -1,16 +1,4 @@
 {
-	"database": {
-		"type": "sqlite",
-		"address": "naginata.fi.sqlite",
-		"database": "",
-		"username": "",
-		"password": ""
-	},
-	"language": {
-		"fi": true,
-		"en": true,
-		"ja": true
-	},
 	"email": {
 		"address": "email@address.com",
 		"name": "Some Tonttu",

@@ -51,13 +51,6 @@ class ShikakeOji
     public $appData;
 
     /**
-     * PDO connected database connection.
-     * Page content, moderated content are stored here.
-     * http://php.net/pdo
-     */
-    public $database;
-
-    /**
      * An instance of the ShikakeOjiPage class.
      */
     public $output;
@@ -229,8 +222,8 @@ class ShikakeOji
     private function checkLanguage($candidate)
     {
         if ($candidate !== false &&
-            array_key_exists($candidate, $this->config['language']) &&
-            $this->config['language'][$candidate]
+            array_key_exists($candidate, $this->appData['languages']) &&
+            $this->appData['languages'][$candidate]
         )
         {
             $this->language = $candidate;
@@ -243,7 +236,6 @@ class ShikakeOji
 
     /**
      * Load the given JSON configuration file.
-     * If it contains database connection values, connection will be open.
      */
     private function loadConfig($configPath)
     {
@@ -260,32 +252,6 @@ class ShikakeOji
             header('X-Failure-type: config');
             echo $error;
             exit();
-        }
-
-        // PDO database connection if the settings are set.
-        if (isset($this->config['database']) && isset($this->config['database']['type']) &&
-            in_array($this->config['database']['type'], PDO::getAvailableDrivers())
-        )
-        {
-            $attr = array();
-            $dsn = $this->config['database']['type'] . ':';
-            if ($this->config['database']['type'] != 'sqlite')
-            {
-                $dsn .= 'dbname=' . $this->config['database']['database'] . ';host=' . $this->config['database']['address'];
-                $attr[PDO::MYSQL_ATTR_INIT_COMMAND] = 'SET NAMES utf8';
-            }
-            else
-            {
-                $dir = dirname($configPath);
-                $dsn .= realpath($dir . '/' . $this->config['database']['address']);
-            }
-
-            $this->database = new PDO($dsn, $this->config['database']['username'],
-                $this->config['database']['password'], $attr);
-
-            $this->database->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
-            $this->database->setAttribute(PDO::ATTR_ORACLE_NULLS, PDO::NULL_TO_STRING);
-            $this->database->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
         }
     }
 

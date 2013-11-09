@@ -224,6 +224,10 @@ app.get(pageRegex, function (req, res) {
     'Content-Security-Policy-Report-Only',
     'default-src \'self\' *.vimeo.com *.youtube.com *.flickr.com *.googleapis.com *.googleusercontent.com'
   );
+  res.set(
+    'Content-Language',
+    lang
+  );
   res.render('index', {
     content: html,
     pages: pages,

@@ -91,54 +91,6 @@ class ShikakeOjiPage
     }
 
     /**
-     * Encode HTML entities for a block of text
-     *
-     * @param     string/array    $str
-     *
-     * @return    string/array
-     */
-    public static function encodeHtml($str)
-    {
-        if (is_array($str))
-        {
-            foreach ($str as $k => $s)
-            {
-                $str[$k] = self::encodeHtml($s);
-            }
-
-            return $str;
-        }
-        else
-        {
-            return htmlentities(trim($str), ENT_QUOTES, 'UTF-8');
-        }
-    }
-
-    /**
-     * Decode HTML entities from a block of text
-     *
-     * @param     string/array    $str
-     *
-     * @return    string/array
-     */
-    public static function decodeHtml($str)
-    {
-        if (is_array($str))
-        {
-            foreach ($str as $k => $s)
-            {
-                $str[$k] = self::decodeHtml($s);
-            }
-
-            return $str;
-        }
-        else
-        {
-            return html_entity_decode(trim($str), ENT_QUOTES, 'UTF-8');
-        }
-    }
-
-    /**
      * Create the whole HTML5 markup with content specific to this page and login status.
      * http://html5doctor.com/element-index/
      *
@@ -203,24 +155,7 @@ class ShikakeOjiPage
 
         if (strpos($_SERVER['HTTP_USER_AGENT'], 'facebookexternalhit') !== false)
         {
-            // http://ogp.me/
-            $out .= '<meta property="og:title" content="' . $this->head['title'] . '"/>';
-            $out .= '<meta property="og:description" content="' . $this->head['description'] . '"/>';
-            $out .= '<meta property="og:type" content="sports_team"/>';
-
-            // All the images referenced by og:image must be at least 200px in both dimensions.
-            $out .= '<meta property="og:image" content="http://' . $_SERVER['HTTP_HOST'] . '/img/logo-200x200.png"/>';
-
-            $out .= '<meta property="og:url" content="http://' . $_SERVER['HTTP_HOST'] . $this->shikakeOji->currentPage . '"/>';
-            $out .= '<meta property="og:site_name" content="' . $this->head['title'] . '"/>';
-            $out .= '<meta property="og:locale" content="fi_FI"/>'; // language_TERRITORY
-            $out .= '<meta property="og:locale:alternate" content="en_GB"/>';
-            $out .= '<meta property="og:locale:alternate" content="ja_JP"/>';
-            //$out .= '<meta property="og:country-name" content="Finland"/>';
-
-            // https://developers.facebook.com/docs/opengraph/
-            $out .= '<meta property="fb:app_id" content="' . $this->shikakeOji->config['facebook']['app_id'] . '"/>'; // A Facebook Platform application ID that administers this page.
-            $out .= '<meta property="fb:admins" content="' . $this->shikakeOji->config['facebook']['admins'] . '"/>';
+            $out .= $this->facebookMeta();
         }
 
         // Developer guidance for websites with content for Adobe Flash Player in Windows 8
@@ -258,6 +193,34 @@ class ShikakeOjiPage
         $out .= '<h1>' . $this->head['header'] . '</h1>';
         $out .= '<p class="desc-transform">' . $this->head['description'] . '</p>';
         $out .= '</header>';
+
+        return $out;
+    }
+
+    /**
+     * Facebook specific meta data.
+     * @return string
+     */
+    private function facebookMeta()
+    {
+        // http://ogp.me/
+        $out = '<meta property="og:title" content="' . $this->head['title'] . '"/>';
+        $out .= '<meta property="og:description" content="' . $this->head['description'] . '"/>';
+        $out .= '<meta property="og:type" content="sports_team"/>';
+
+        // All the images referenced by og:image must be at least 200px in both dimensions.
+        $out .= '<meta property="og:image" content="http://' . $_SERVER['HTTP_HOST'] . '/img/logo-200x200.png"/>';
+
+        $out .= '<meta property="og:url" content="http://' . $_SERVER['HTTP_HOST'] . $this->shikakeOji->currentPage . '"/>';
+        $out .= '<meta property="og:site_name" content="' . $this->head['title'] . '"/>';
+        $out .= '<meta property="og:locale" content="fi_FI"/>'; // language_TERRITORY
+        $out .= '<meta property="og:locale:alternate" content="en_GB"/>';
+        $out .= '<meta property="og:locale:alternate" content="ja_JP"/>';
+        //$out .= '<meta property="og:country-name" content="Finland"/>';
+
+        // https://developers.facebook.com/docs/opengraph/
+        $out .= '<meta property="fb:app_id" content="' . $this->shikakeOji->config['facebook']['app_id'] . '"/>'; // A Facebook Platform application ID that administers this page.
+        $out .= '<meta property="fb:admins" content="' . $this->shikakeOji->config['facebook']['admins'] . '"/>';
 
         return $out;
     }
