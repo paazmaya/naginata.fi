@@ -8,11 +8,11 @@
   "immed": true,
   "indent": 2,
   "latedef": true,
-  "maxcomplexity": 12,
+  "maxcomplexity": 10,
   "maxdepth": 4,
   "maxlen": 100,
   "maxparams": 4,
-  "maxstatements": 12,
+  "maxstatements": 14,
   "noarg": true,
   "nonew": true,
   "onevar": false,
@@ -41,7 +41,7 @@
     "document": true,
     "window": true,
     "__dirname": false,
-    "process": true
+    "process": false
   }
 }
 

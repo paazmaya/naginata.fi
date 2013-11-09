@@ -13,12 +13,15 @@
 // http://expressjs.com
 var express = require('express');
 var fs = require('fs');
-var keen = require('keen.io'); // analytics
 
-var keen = keen.configure({
-  projectId: process.env.KEEN_IO_ID,
-  writeKey: process.env.KEEN_IO_WRITE
-});
+// Keen.IO analytics
+var keen = null;
+if (process.env.KEEN_IO_ID && process.env.KEEN_IO_WRITE) {
+  keen = require('keen.io').configure({
+    projectId: process.env.KEEN_IO_ID,
+    writeKey: process.env.KEEN_IO_WRITE
+  });
+}
 
 // https://github.com/chjj/marked
 var marked = require('marked');
@@ -60,13 +63,40 @@ app.set('view engine', 'jade');
 var defaultLang = 'fi';
 
 /**
+ * Send data to back end analytics, Keen.IO.
+ * @see https://keen.io/docs/clients/javascript/reference/#data-collection
+ */
+var keenSend = function (type, content) {
+  if (!keen) {
+    return;
+  }
+  keen.addEvent(type, content, function(err, res) {
+    if (err) {
+      console.log('Oh no, an error! ' + err);
+    }
+    else {
+      console.log('Hooray, it worked! ' + res);
+    }
+  });
+};
+
+/**
  * Get the contents of the current page in HTML format.
  * @param {string} lang ISO 2 char language code
  * @param {string} title Page title
  * @returns {string} HTML content
  */
 var getContent = function (lang, title) {
-  var data = fs.readFileSync('content/' + lang + '/' + title + '.md', fsOptions);
+  var data = '# 404';
+  var path = 'content/' + lang + '/' + title + '.md';
+  if (fs.existsSync(path)) {
+    data = fs.readFileSync(path, fsOptions);
+  }
+  else {
+    keenSend('not found content', {
+      path: path
+    });
+  }
   return md(data);
 };
 
@@ -136,21 +166,6 @@ var facebookMeta = function (page) {
 };
 
 /**
- * Send data to back end analytics, Keen.IO.
- * @see https://keen.io/docs/clients/javascript/reference/#data-collection
- */
-var keenSend = function (type, content) {
-  keen.addEvent(type, content, function(err, res) {
-    if (err) {
-      console.log('Oh no, an error! ' + err);
-    }
-    else {
-      console.log('Hooray, it worked! ' + res);
-    }
-  });
-};
-
-/**
  * Checks if the current language should be changed according to the
  * current users language preferences and thus changes if needed.
  * @param {Array} acceptedLanguages
@@ -193,6 +208,10 @@ app.get(pageRegex, function (req, res) {
   });
 
   if (current === null) {
+    keenSend('redirection', {
+      request: req.url,
+      responce: '/' + lang
+    });
     res.redirect(404, '/' + lang);
     return;
   }
