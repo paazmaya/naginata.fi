@@ -13,6 +13,12 @@
 // http://expressjs.com
 var express = require('express');
 var fs = require('fs');
+var keen = require('keen.io'); // analytics
+
+var keen = keen.configure({
+  projectId: process.env.KEEN_IO_ID,
+  writeKey: process.env.KEEN_IO_WRITE
+});
 
 // https://github.com/chjj/marked
 var marked = require('marked');
@@ -130,6 +136,21 @@ var facebookMeta = function (page) {
 };
 
 /**
+ * Send data to back end analytics, Keen.IO.
+ * @see https://keen.io/docs/clients/javascript/reference/#data-collection
+ */
+var keenSend = function (type, content) {
+  keen.addEvent(type, content, function(err, res) {
+    if (err) {
+      console.log('Oh no, an error! ' + err);
+    }
+    else {
+      console.log('Hooray, it worked! ' + res);
+    }
+  });
+};
+
+/**
  * Checks if the current language should be changed according to the
  * current users language preferences and thus changes if needed.
  * @param {Array} acceptedLanguages
@@ -199,6 +220,10 @@ app.get('/', function (req, res) {
 
 // Catch anything that does not match the previous rules.
 app.get('*', function (req, res) {
+  keenSend('redirection', {
+    request: req.url,
+    responce: '/' + defaultLang
+  });
   res.redirect(404, '/' + defaultLang);
 });
 

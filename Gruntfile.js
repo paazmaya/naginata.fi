@@ -63,7 +63,7 @@ module.exports = function(grunt) {
         }
       }
     },
-    
+
     eslint: {
       target: '<%= jshint.onlymine.src %>'
     },
@@ -104,6 +104,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-jscs-checker');
 
   grunt.registerTask('minify', ['uglify', 'cssmin']);
-  grunt.registerTask('test', ['jshint', 'eslint', 'jscs', 'jasmine']);
+  grunt.registerTask('test', ['jshint', /*'eslint',*/ 'jscs', 'jasmine']);
   grunt.registerTask('default', ['test', 'minify']);
 };
