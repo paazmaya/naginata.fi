@@ -16,7 +16,7 @@ var fs = require('fs');
 
 // Keen.IO analytics
 var keen = null;
-if (process.env.KEEN_IO_ID && process.env.KEEN_IO_WRITE) {
+if (process && process.env && process.env.KEEN_IO_ID && process.env.KEEN_IO_WRITE) {
   keen = require('keen.io').configure({
     projectId: process.env.KEEN_IO_ID,
     writeKey: process.env.KEEN_IO_WRITE
@@ -31,9 +31,6 @@ marked.setOptions({
   gfm: true,
   breaks: false
 });
-
-// https://developer.mozilla.org/en-US/docs/Security/CSP/Using_Content_Security_Policy
-// Content-Security-Policy-Report-Only: default-src 'self' *.vimeo.com *.youtube.com *.flickr.com
 
 var fsOptions = {
   encoding: 'utf8'
@@ -222,12 +219,23 @@ app.get(pageRegex, function (req, res) {
   }
 
   var html = getContent(lang, current.title);
+  // https://developer.mozilla.org/en-US/docs/Security/CSP/Using_Content_Security_Policy
+  res.set(
+    'Content-Security-Policy-Report-Only',
+    'default-src \'self\' *.vimeo.com *.youtube.com *.flickr.com *.googleapis.com *.googleusercontent.com'
+  );
   res.render('index', {
     content: html,
     pages: pages,
     footers: pageJson.footer[lang],
     meta: current,
     lang: lang
+  }, function (error, html) {
+    console.log(error);
+    if (error) {
+      keenSend('error', error);
+    }
+    res.send(html);
   });
 });
 
@@ -240,7 +248,7 @@ app.get('/', function (req, res) {
 // Catch anything that does not match the previous rules.
 app.get('*', function (req, res) {
   keenSend('redirection', {
-    request: req.url,
+    request: req.originalUrl,
     responce: '/' + defaultLang
   });
   res.redirect(404, '/' + defaultLang);

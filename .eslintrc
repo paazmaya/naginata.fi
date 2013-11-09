@@ -4,7 +4,7 @@
     "browser": true,
     "node": true
   },
-  
+
   "globals": {
     "jQuery": false,
     "$": true,
@@ -21,16 +21,16 @@
     "block-scoped-var": 0,
     "brace-style": 0,
     "camelcase": 0,
-    "complexity": [0, 11],
+    "complexity": [0, 8],
     "consistent-this": [0, "self"],
     "curly": 2,
     "dot-notation": 2,
     "eqeqeq": 2,
     "guard-for-in": 0,
     "max-depth": [0, 4],
-    "max-len": [0, 80, 4],
-    "max-params": [0, 3],
-    "max-statements": [0, 10],
+    "max-len": [0, 100, 4],
+    "max-params": [0, 4],
+    "max-statements": [0, 14],
     "new-cap": 2,
     "new-parens": 2,
     "no-alert": 1,
