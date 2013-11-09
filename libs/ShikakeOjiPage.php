@@ -12,6 +12,8 @@
  *  $shih = new ShikakeOjiPage();
  *  echo $shih->renderHtml();
  */
+require 'Markdown.php';
+
 class ShikakeOjiPage
 {
     /**
@@ -161,8 +163,8 @@ class ShikakeOjiPage
         {
             $markdown = file_get_contents($path);
 
-            $out .= '<article>';
-            $out .= $markdown; // TODO: Markdown converter...
+            $out .= '<article class="' . strtolower($this->pageTitle) . '">';
+            $out .= \Michelf\Markdown::defaultTransform($markdown);
             $out .= '</article>';
         }
         else
