@@ -19,11 +19,13 @@ html(lang=settings.lang)
           li(class=page.url == meta.url ? "current" : "")
             a(rel="prefetch", title=page.header, href=page.url)
               = page.title
-        - each language, key in languages
-          li
-            a(title=language.name, href="/" + key)
-              = language.name
     div#wrapper
+      ul#languages
+        - each language, key in languages
+          - if (key !== settings.lang)
+            li
+              a(title=language.name, href="/" + key)
+                = language.name
       div#logo
         p
           = meta.titlesuffix

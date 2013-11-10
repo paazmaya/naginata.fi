@@ -57,9 +57,6 @@ class ShikakeOjiPage
         // Must be defined in order to access data and config.
         $this->shikakeOji = $shikakeOji;
 
-        // Calculate interval time for 2 week of seconds.
-        $this->cacheInterval = (60 * 60 * 24 * 7 * 2);
-
         // Create navigation for later use
         $navigation = '';
         foreach ($shikakeOji->appData['pages'] as $pages)
@@ -77,6 +74,7 @@ class ShikakeOjiPage
                   $pages['header'] . '" rel="prefetch">' . $pages['title'] . '</a></li>';
             }
         }
+
 
         $this->navigation = $navigation;
     }
@@ -170,18 +168,27 @@ class ShikakeOjiPage
         // https://developer.apple.com/library/safari/#documentation/appleapplications/reference/safariwebcontent/configuringwebapplications/configuringwebapplications.html
         $out .= '<link rel="apple-touch-icon" href="/img/mobile-logo.png"/>'; // 57x57
 
-        $base = '/css/';
-
-        $out .= '<link rel="stylesheet" href="' . $base . $this->minifiedName . 'css" type="text/css" media="all" />';
+        $out .= '<link rel="stylesheet" href="/css/' . $this->minifiedName . 'css" type="text/css" media="all" />';
 
         $out .= '</head>';
 
         $out .= '<body>';
 
-
         $out .= '<nav><ul>' . $this->navigation . '</ul></nav>';
 
         $out .= '<div id="wrapper">';
+
+        // Enabled languages
+        $out .= '<ul id="languages">';
+        foreach ($this->shikakeOji->appData['languages'] as $key => $language)
+        {
+            if ($language['enabled'] === true && $key !== $this->shikakeOji->language)
+            {
+                $out .= '<li><a href="/' . $key . '" title="' .
+                    $language['name'] . '">' . $language['name'] . '</a></li>';
+            }
+        }
+        $out .= '</ul>';
 
         // div#logo tag shall contain all the message data, if needed
         $out .= '<div id="logo">';
