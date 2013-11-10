@@ -134,3 +134,5 @@ OpenID based login. Content was stored as HTML5 in MySQL database.
 
 From version 0.4.0 onward, the site is running with Node.js and thus JavaScript as the backend.
 Content is at the source code repository in text files in Markdown format.
+
+PHP version was made to match the same simplified functionality as the Node.js counterpart in 0.4.1.

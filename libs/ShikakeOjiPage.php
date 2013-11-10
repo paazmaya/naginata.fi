@@ -227,8 +227,8 @@ class ShikakeOjiPage
         //$out .= '<meta property="og:country-name" content="Finland"/>';
 
         // https://developers.facebook.com/docs/opengraph/
-        $out .= '<meta property="fb:app_id" content="' . $this->shikakeOji->config['facebook']['app_id'] . '"/>'; // A Facebook Platform application ID that administers this page.
-        $out .= '<meta property="fb:admins" content="' . $this->shikakeOji->config['facebook']['admins'] . '"/>';
+        $out .= '<meta property="fb:app_id" content="' . $this->shikakeOji->appData['facebook']['app_id'] . '"/>'; // A Facebook Platform application ID that administers this page.
+        $out .= '<meta property="fb:admins" content="' . $this->shikakeOji->appData['facebook']['admins'] . '"/>';
 
         return $out;
     }

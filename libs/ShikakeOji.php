@@ -12,8 +12,7 @@
  *
  * Usage:
  *  $shio = new ShikakeOji(
- *    realpath('../naginata-data.json'),
- *    realpath('../naginata-config.json')
+ *    realpath('../content/page-data.json')
  *  );
  *  echo $shio->renderPage();
  */
@@ -24,7 +23,7 @@ class ShikakeOji
     /**
      * What is the version of this class?
      */
-    public static $VERSION = '0.16';
+    public static $VERSION = '0.17';
 
     /**
      * Current language, defaults to Finnish. Available languages are fi/en/ja.
@@ -37,12 +36,6 @@ class ShikakeOji
      * Should be set to the realpath of the JSON file where app data is stored.
      */
     public $dataPath = '../content/page-data.json';
-
-    /**
-     * Configuration for 3rd party API keys.
-     * See "naginata-config.json.dist" for possible keys.
-     */
-    public $config;
 
     /**
      * Application data, decoded from JSON string which is loaded
@@ -68,13 +61,14 @@ class ShikakeOji
      * check for compression support of the client.
      * If loading fails, the process is not continued.
      */
-    function __construct($dataPath, $configPath)
+    function __construct($dataPath = null)
     {
-        $this->loadConfig($configPath);
-
         $this->checkSession();
 
-        $this->dataPath = $dataPath;
+        if ($dataPath !== null)
+        {
+            $this->dataPath = $dataPath;
+        }
         $this->loadData();
 
 
@@ -227,27 +221,6 @@ class ShikakeOji
         }
 
         return false;
-    }
-
-    /**
-     * Load the given JSON configuration file.
-     */
-    private function loadConfig($configPath)
-    {
-        if (!file_exists($configPath))
-        {
-            return false;
-        }
-        $this->config = json_decode(file_get_contents($configPath), true);
-
-        $error = $this->getJsonError();
-        if ($error != '')
-        {
-            header('Content-type: text/plain');
-            header('X-Failure-type: config');
-            echo $error;
-            exit();
-        }
     }
 
     /**

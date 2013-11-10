@@ -29,8 +29,7 @@ ini_set('session.hash_function', 1); // default 0 = md5, 1 = sha1
 require '../libs/ShikakeOji.php';
 
 $shio = new ShikakeOji(
-	realpath('../content/page-data.json'),
-	realpath('../naginata-config.json')
+	realpath('../content/page-data.json')
 );
 
 $shio->removeWwwRedirect();
