@@ -74,8 +74,6 @@ class ShikakeOjiPage
                   $pages['header'] . '" rel="prefetch">' . $pages['title'] . '</a></li>';
             }
         }
-
-
         $this->navigation = $navigation;
     }
 
@@ -192,8 +190,6 @@ class ShikakeOjiPage
 
         // div#logo tag shall contain all the message data, if needed
         $out .= '<div id="logo">';
-
-        // should be only two words
         $out .= '<p>' . $title . '</p>';
         $out .= '</div>';
 
@@ -256,8 +252,7 @@ class ShikakeOjiPage
 
         $out .= '</footer>';
 
-        $base = '/js/';
-        $out .= '<script type="text/javascript" src="' . $base . $this->minifiedName . 'js"></script>';
+        $out .= '<script type="text/javascript" src="/js/' . $this->minifiedName . 'js"></script>';
 
         $out .= '</body>';
         $out .= '</html>';
