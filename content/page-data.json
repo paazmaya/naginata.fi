@@ -1,8 +1,17 @@
 {
   "languages": {
-    "fi": true,
-    "en": true,
-    "ja": true
+    "fi": {
+      "enabled": true,
+      "name": "Suomi"
+    },
+    "en": {
+      "enabled": true,
+      "name": "English"
+    },
+    "ja": {
+      "enabled": true,
+      "name": "日本語"
+    }
   },
   "title": {
     "fi": "Naginata Suomessa",

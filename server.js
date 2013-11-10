@@ -171,7 +171,8 @@ var facebookMeta = function (page) {
 var checkLang = function (acceptedLanguages) {
   acceptedLanguages.forEach(function (item) {
     var key = item.substr(0, 2);
-    if (pageJson.languages.hasOwnProperty(key) && pageJson.languages[key] === true) {
+    if (pageJson.languages.hasOwnProperty(key) && 
+        pageJson.languages[key]['enabled'] === true) {
       defaultLang = item.substr(0, 2);
       return;
     }
@@ -180,7 +181,8 @@ var checkLang = function (acceptedLanguages) {
 
 var langKeys = [];
 for (var key in pageJson.languages) {
-  if (pageJson.languages.hasOwnProperty(key) && pageJson.languages[key] === true) {
+  if (pageJson.languages.hasOwnProperty(key) &&
+      pageJson.languages[key]['enabled'] === true) {
     langKeys.push(key);
   }
 }
@@ -218,21 +220,20 @@ app.get(pageRegex, function (req, res) {
     current.facebook = facebookMeta(current);
   }
 
-  var html = getContent(lang, current.title);
   // https://developer.mozilla.org/en-US/docs/Security/CSP/Using_Content_Security_Policy
-  res.set(
-    'Content-Security-Policy-Report-Only',
-    'default-src \'self\' *.vimeo.com *.youtube.com *.flickr.com *.googleapis.com *.googleusercontent.com'
-  );
-  res.set(
-    'Content-Language',
+  res.set({
+    'Content-Security-Policy-Report-Only':
+    'default-src \'self\' *.vimeo.com *.youtube.com *.flickr.com ' +
+      '*.googleapis.com *.googleusercontent.com',
+    'Content-Language':
     lang
-  );
+  });
   res.render('index', {
-    content: html,
+    content: getContent(lang, current.title),
     pages: pages,
     footers: pageJson.footer[lang],
     meta: current,
+    languages: pageJson.languages,
     lang: lang
   }, function (error, html) {
     console.log(error);
