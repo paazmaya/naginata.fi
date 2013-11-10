@@ -171,7 +171,7 @@ var facebookMeta = function (page) {
 var checkLang = function (acceptedLanguages) {
   acceptedLanguages.forEach(function (item) {
     var key = item.substr(0, 2);
-    if (pageJson.languages.hasOwnProperty(key) && 
+    if (pageJson.languages.hasOwnProperty(key) &&
         pageJson.languages[key]['enabled'] === true) {
       defaultLang = item.substr(0, 2);
       return;
@@ -219,14 +219,22 @@ app.get(pageRegex, function (req, res) {
   if (req.header('user-agent').indexOf('facebookexternalhit') !== -1) {
     current.facebook = facebookMeta(current);
   }
+  
+  // Every visit writes analytics
+  keenSend('page view', {
+    url: req.originalUrl,
+    acceptedLanguages: req.acceptedLanguages,
+    acceptedCharsets: req.acceptedCharsets
+  });
+  
 
   // https://developer.mozilla.org/en-US/docs/Security/CSP/Using_Content_Security_Policy
   res.set({
-    'Content-Security-Policy-Report-Only':
-    'default-src \'self\' *.vimeo.com *.youtube.com *.flickr.com ' +
+    'Content-Security-Policy-Report-Only': 'default-src \'self\' ' +
+      '*.vimeo.com *.youtube.com ' +
+      '*.flickr.com *.staticflickr.com ' +
       '*.googleapis.com *.googleusercontent.com',
-    'Content-Language':
-    lang
+    'Content-Language': lang
   });
   res.render('index', {
     content: getContent(lang, current.title),
@@ -236,7 +244,6 @@ app.get(pageRegex, function (req, res) {
     languages: pageJson.languages,
     lang: lang
   }, function (error, html) {
-    console.log(error);
     if (error) {
       keenSend('error', error);
     }
@@ -253,7 +260,7 @@ app.get('/', function (req, res) {
 // Catch anything that does not match the previous rules.
 app.get('*', function (req, res) {
   keenSend('redirection', {
-    request: req.originalUrl,
+    url: req.originalUrl,
     responce: '/' + defaultLang
   });
   res.redirect(404, '/' + defaultLang);
