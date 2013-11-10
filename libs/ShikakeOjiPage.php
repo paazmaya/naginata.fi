@@ -73,7 +73,8 @@ class ShikakeOjiPage
                     $this->head = $pages; // head section data
                     $this->pageTitle = $pages['title'];
                 }
-                $navigation .= '><a href="' . $pages['url'] . '" title="' . $pages['header'] . '" rel="prefetch">' . $pages['title'] . '</a></li>';
+                $navigation .= '><a href="' . $pages['url'] . '" title="' .
+                  $pages['header'] . '" rel="prefetch">' . $pages['title'] . '</a></li>';
             }
         }
 

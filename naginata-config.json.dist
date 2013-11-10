@@ -1,44 +1,7 @@
 {
-	"email": {
-		"address": "email@address.com",
-		"name": "Some Tonttu",
-        "username": "sometonttu"
-		"password": "",
-		"pop3": "pop3.address.com:110",
-		"smtp": "smtp.address.com:587"
-	},
 	"facebook": {
 		"app_id": "",
 		"secret": "",
 		"admins": ""
-	},
-    "flickr": {
-        "apikey": "",
-        "secret": ""
-    },
-	"google": {
-		"consumer_key": "",
-		"consumer_secret": ""
-	},
-	"twitter": {
-		"consumer_key": "",
-		"consumer_secret": "",
-		"access_token": "",
-		"access_token_secret": "",
-		"request_token_url": "https://api.twitter.com/oauth/request_token",
-		"authorize_url": "https://api.twitter.com/oauth/authorize",
-		"access_token_url": "https://api.twitter.com/oauth/access_token"
-	},
-	"vimeo": {
-	},
-	"youtube": {
-	},
-	"users": {
-		"administrators": [
-			"olavic@gmail.com"
-		],
-		"contributors": [
-
-		]
 	}
 }

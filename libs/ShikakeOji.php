@@ -39,7 +39,7 @@ class ShikakeOji
     public $dataPath = '../content/page-data.json';
 
     /**
-     * Configuration for Emails sending, 3rd party API keys, etc.
+     * Configuration for 3rd party API keys.
      * See "naginata-config.json.dist" for possible keys.
      */
     public $config;
@@ -62,11 +62,6 @@ class ShikakeOji
      * All URLs are starting with forward slash.
      */
     public $currentPage = '/';
-
-    /**
-     * Library path, which is used to find the other libraries included.
-     */
-    public $libPath = __DIR__;
 
     /**
      * Constructor will load the JSON data and decode it as well as
@@ -223,7 +218,7 @@ class ShikakeOji
     {
         if ($candidate !== false &&
             array_key_exists($candidate, $this->appData['languages']) &&
-            $this->appData['languages'][$candidate]
+            $this->appData['languages'][$candidate]['enabled']
         )
         {
             $this->language = $candidate;
