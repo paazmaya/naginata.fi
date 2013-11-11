@@ -234,7 +234,8 @@ app.get(pageRegex, function (req, res) {
       '*.vimeo.com *.youtube.com ' +
       '*.flickr.com *.staticflickr.com ' +
       '*.googleapis.com *.googleusercontent.com',
-    'Content-Language': lang
+    'Content-Language': lang,
+    'Accept-Ranges': 'bytes'
   });
   res.render('index', {
     content: getContent(lang, current.title),

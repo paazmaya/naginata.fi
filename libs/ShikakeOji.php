@@ -171,6 +171,11 @@ class ShikakeOji
         $out = $this->output->renderHtml();
         header('Content-type: text/html; charset=utf-8');
         header('Content-Language: ' . $this->language);
+        header('Content-Security-Policy-Report-Only: default-src \'self\' ' .
+          '*.vimeo.com *.youtube.com ' .
+          '*.flickr.com *.staticflickr.com ' .
+          '*.googleapis.com *.googleusercontent.com');
+        header('Accept-Ranges: bytes');
 
         return $out;
     }
