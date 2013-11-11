@@ -131,7 +131,7 @@ Bambukärkinen harjoitusase (shiai-naginata), koostuu seuraavista osista:
 -   Kissaki, terän kärki
 -   Ishizuki, varren pää
 -   Sendanmaki, terän ja varren kiinnitysteippi
--   Monouchi, tarkka kohta terässä jolla lyönti tehdään
+-   Monouchi, terän osa jolla leikkaukset tehdään
 
 ## Graduointivaatimukset
 
@@ -139,8 +139,5 @@ Suomen Kendoseurojen Keskusliitto ry määrittelee Atarashii Naginatan
 kyu-graduointivaatimukset Suomessa. Ne pohjautuvat Euroopan (ENF) ja
 Kansainvälisen (INF) Naginataliittojen vastaaviin vaatimuksiin.
 
-Vaatimukset ovat saatavilla
-[suomen](https://github.com/paazmaya/naginata.fi/blob/master/grading-rules-finnish.md "Graduointisäännöt")
-ja
-[englannin](https://github.com/paazmaya/naginata.fi/blob/master/grading-rules-english.md "Grading rules")
-kielillä.
+[Vaatimukset ovat saatavilla täällä
+](https://github.com/paazmaya/naginata.fi/blob/master/content/fi/Graduointisäännöt.md "Graduointisäännöt").

@@ -7,7 +7,7 @@ spread outside of Japan more widely than Jikishinkageryū the
 Jikishinkageryu is again the largest in Japan. These two styles
 Our head teacher created the beginning of the current Atarashii naginata .
 
-The difference Atarashii Naginata the jackets, Jikishinkageryū Naginatajutsussa
+The difference Atarashii Naginata the jackets, Jikishinkageryū Naginatajutsu
 used to coat the sleeves is not part of tightness in the band. otherwise
 outfit to Atarashii Naginata for a used, standardized
 training suit.
@@ -25,7 +25,7 @@ Shūtokukai : price (秀 徳 会), The Japanese main organization responsible
 is to maintain and respect the style of the tradition . Likewise, Finland and
 Hawaii resident foreign members of the teams .
 
-Jikishinkageryū Naginatajutsun conventional techniques as wind and
+Jikishinkageryū Naginatajutsu conventional techniques as wind and
 water mills of the designated section of a rotary techniques to help
 weapon may be constantly on the move .
 
@@ -38,25 +38,24 @@ the knowledge and skill levels is a class of its own . below are listed
 Style founder and chief instructor of the last couple of centuries. Style Head Instructor
 referred to by the title Soke (宗 家) .
 
--   1st Matsumoto Bisen no kami (松本 大 炊 助 政 元) -备 前 守纪
--   14th Satake (佐 竹 鉴 柳 斎 源 义 文 十 同 茂雄 女-佐 竹 鉴 柳 斎 源 义 文·同 茂雄 女)
--   15th Hideo Sonobe (园 部 秀雄)
--   16th Shigehachi Sonobe (园 部 繁 八)
--   17th Toya Akiko (戸 谷 明子)
--   18th Masami Sonobe (园 部 正 美)
+-   1st Matsumoto Bisen no kami (松本 大炊助政元) - 備前守紀
+-   14th Satake (佐竹 鑑柳斎源義文 十同茂雄女 - 佐竹 鑑柳斎源義文 ・同茂雄女)
+-   15th Sonobe Hideo (園部 秀雄)
+-   16th Sonobe Shigehachi (園部 繁八)
+-   17th Toya Akiko (戸谷 明子)
+-   18th Sonobe Masami (園部 正美)
 
 Learn more about the style :
 
 - [Japanese main organisation - Jikishinkageryū
     Naginatajutsu](http://www.jikishin-naginata.jp/ "Jikishinkageryu Naginatajutsu")
-- [Historically important styles of organization - Jikishinkageryū
-    Naginatajutsu - Nihon Kobudo
-    Kyokai](http://www.nihonkobudokyoukai.org/martialarts/059/ "Jikishinkageryu Naginatajutsu - by Nihon Kobudo Kyokai")
+- [Organisation for preserving and promoting historically important styles, Nihon Kobudo Kyokai - Jikishinkageryū
+    Naginatajutsu](http://www.nihonkobudokyoukai.org/martialarts/059/ "Jikishinkageryu Naginatajutsu - At Nihon Kobudo Kyokai")
 
 [![2011-05-04 Kyoto Shimogamo Jinja, Jikishinkageryu
-Naginatajutsu](http://farm6.staticflickr.com/5185/5763043699_fcda29747e_m.jpg )
-](http://flickr.com/photos/14224905@N08/5763043699 " Kyoto 2011-05-04 Shimogamo Jinja, Jikishinkageryu Naginatajutsu / paazio")
+Naginatajutsu](http://farm6.staticflickr.com/5185/5763043699_fcda29747e_m.jpg)
+](http://flickr.com/photos/14224905@N08/5763043699 "Kyoto 2011-05-04 Shimogamo Jinja, Jikishinkageryu Naginatajutsu / paazio")
 
 [![2011-05-26 Himeji Jikishinkageryu
-Naginatajutsu](http://farm3.staticflickr.com/2514/5763043905_5a542834cf_m.jpg )
-](http://flickr.com/photos/14224905@N08/5763043905 " Himeji 2011-05-26 Jikishinkageryu Naginatajutsu / paazio")
+Naginatajutsu](http://farm3.staticflickr.com/2514/5763043905_5a542834cf_m.jpg)
+](http://flickr.com/photos/14224905@N08/5763043905 "Himeji 2011-05-26 Jikishinkageryu Naginatajutsu / paazio")

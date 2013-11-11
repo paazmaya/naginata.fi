@@ -29,10 +29,10 @@ The trainings are held on every Thursday at 18:00 - 19:30 and Sunday at
 Please contact Mr. Jarno Yliluoma ([firstname.lastname]@gmail.com) for any 
 inquiris related to Naginata in KKTI.
 
-### Tapanilan Erä - Kendo division
+### Tapanilan Erä - Kendo Division
 
 [Tapanilan Erä Kendo Division has started weekly trainings in Atarashii Naginata,
-from beginning of Autumn 2013.](http://www.tapanila-kendo.org/ "Tapanilan Erä - Kendo")
+from beginning of Autumn 2013.](http://www.tapanila-kendo.org/ "Tapanilan Erä - Kendo Division")
 
 Trainings are held in every Wednesday at the "Studio", from 19:00 to 21:00.
 

@@ -9,12 +9,12 @@
 -   5.2014 - [Leiri Potsdamissa,
     Saksassa](http://www.genkido.de/naginata.html "Bishamonten Naginata Kyôshitsu")
 -   3.2014 - Vuosittainen leiri Iso-Britanniassa
--   9.-11.11.2013 - [Euroopan Naginataliiton leiri Brysselissä,
-    Belgiassa. Leirin jälkeen
-    kilpailut.](https://www.facebook.com/events/541531802573585/ "Stage ENF + la coupe Isabelle D'Hose le 11 novembre")
 
 ## Menneitä tapahtumia
 
+-   9.-11.11.2013 - [Euroopan Naginataliiton leiri Brysselissä,
+    Belgiassa, jonka jälkeen Isabelle D'Hose-
+    kilpailut.](https://www.facebook.com/events/541531802573585/ "Stage ENF + la coupe Isabelle D'Hose le 11 novembre")
 -   18.-20.10.2013 - Leiri ikkyu ja ylemmille arvoille, Praha, Tsekki, opettajana Kimura sensei
 -   6.10.2013 - [Kyu-graduointi arvoille 6-2 kyu (16:30), KKTI Dojo,
     Olympiastadion,
@@ -117,10 +117,8 @@ Japanissa harrastajista yli 90% on naisia, mutta Japanin ulkopuolella
 harrastajakunta koostuu tasapuolisesti sekä miehistä että naisista.
 
 Naginata harjoituspuku koostuu valkoisesta lyhythihaisesta takista ja
-mustasta tai tumman sinisestä hakamasta.
-
-Valkoista vyötä voi käyttää hakaman alla saadakseen puvun pysymään
-tukevammin paikallaan.
+mustasta tai tumman sinisestä hakamasta. Valkoista vyötä voi käyttää 
+hakaman alla saadakseen asun pysymään tukevammin paikallaan.
 
 Harjoituspuku (takki ja hakama) maksavat noin 90 € ja harjoitusnaginata
 (shiai-yo naginata) noin 80 €. Myöhemmin voi hankkia suojavarusteet,
