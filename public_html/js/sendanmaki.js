@@ -87,29 +87,49 @@ var sendanmaki = window.sendanmaki = {
       }
     ]
   },
-  
+
   /**
    * Add notes to a chudan kamae bogu image, if available.
    * @param {jQuery} item
    */
   buildImageNotes: function (item) {
     $('img[src="' + item + '"]').each(function () {
-      sendanmaki.createImgNote(sendanmaki.notes[item], item);
+      sendanmaki.notes[item].forEach(function (data) {
+        sendanmaki.createImgNote(data, item);
+      });
     }).on('mouseover mouseout', function (event) {
-        //var data = $(this).data();
-
-        var div = $(this).parent().children('div.note:contains("' +
+        var cont = $(this).parent().children('span:contains("' +
                     sendanmaki.notes[item].note + '")');
         if (event.type === 'mouseover') {
-          div.addClass('notehover');
+          cont.addClass('notehover');
         }
         else {
-          div.removeClass('notehover');
+          cont.removeClass('notehover');
         }
-
       });
   },
-  
+
+  /**
+   * Create a note element on a image that has src == data.url
+   * @param {object} data {x, y, width, height, note}
+   */
+  createImgNote: function (data, url) {
+    var parent = $('img[src="' + url + '"]').parent().css('position', 'relative');
+
+    if (parent.size() > 0 && $('span.note[rel="' + data.note + '"]').length === 0) {
+      var cont = $('<span class="note" rel="' + data.note + '"></span>');
+      cont.css('left', data.x).css('top', data.y);
+
+      var area = $('<span class="notearea"></span>');
+      area.css('width', data.width).css('height', data.height);
+
+      var note = $('<span class="notetext">' + data.note + '</span>');
+      cont.append(area, note);
+
+      parent.append(cont).show();
+    }
+  },
+
   /**
    * Click handler for Media page video list.
    *
@@ -122,7 +142,7 @@ var sendanmaki = window.sendanmaki = {
    * Vimeo
    * http://vimeo.com/[id]
    * http://player.vimeo.com/video/[id]
-   * 
+   *
    * @param {jQuery.Event} event
    */
   onVideoClick: function (event) {
@@ -131,7 +151,7 @@ var sendanmaki = window.sendanmaki = {
     href = href.replace(/vimeo.com\/(\w+)/, 'player.vimeo.com/video/$1');
     href = href.replace(/youtube.com\/watch\?v=(\w+)/,
                       'youtube.com/embed/$1?version=3&f=videos&app=youtube_gdata');
-    
+
     sendanmaki.openIframe(href, $(this).attr('title'));
   },
 
@@ -278,25 +298,6 @@ var sendanmaki = window.sendanmaki = {
       iframe: true,
       scrolling: false
     });
-  },
-
-  /**
-   * Create a note element on a image that has src == data.url
-   * @param {object} data {x, y, width, height, note}
-   */
-  createImgNote: function (data, url) {
-    var parent = $('img[src="' + url + '"]').parent();
-    var existing = $('div.note[rel="' + data.note + '"]').size();
-    if (parent.size() > 0 && existing === 0) {
-      var div = $('<div class="note" rel="' + data.note + '"></div>');
-      var tpo = parent.position();
-      div.css('left', data.x + tpo.left).css('top', data.y + tpo.top);
-      var area = $('<span class="notearea"></span>');
-      var note = $('<span class="notetext">' + data.note + '</span>');
-      area.css('width', data.width).css('height', data.height);
-      div.append(area, note);
-      parent.append(div).show();
-    }
   }
 };
 
