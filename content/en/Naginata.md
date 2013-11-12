@@ -15,6 +15,10 @@ standarsised version in the same way as it was with Kendo, Judo and Iaido, for e
 
 The current form of the catalytic species additions reached in the 1970s.
 
+## The concept of Naginata (Naginata Rinen)
+
+> The concept of Naginata is to foster a competent mind through the training of Naginata.
+
 ## Basic Techniques - Kihon
 
 ### Spaces
