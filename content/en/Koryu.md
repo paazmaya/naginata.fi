@@ -1,4 +1,4 @@
-Before the end of the Edo period of about 400 at the school in the municipality practiced
+Before the end of the Edo period of about 400 at the school in the municipality practised
 naginata use, usually as part of a broader compilation of different weapons.
 
 Meiji period, the end of the styles are no longer just over ten . Of these,

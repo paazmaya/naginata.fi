@@ -1,6 +1,9 @@
 
 ## Kuvia Flickr:issä
 
+Tässä esitetyt kuvat ovat kaikki Jukka Paasosen ottamia ja vapaasti käytettävissä naginatan markkinointiin
+kunhan kuva linkitetään alkuperäiseen sivuunsa Flickr:issä ja/tai kuvaajan nimi mainitaan.
+
 -   [![2012-12-06 Himeji - Naginata taiso in Jukendo
     book](http://farm9.static.flickr.com/8362/8450641664_fea2b93757_s.jpg)](http://farm9.static.flickr.com/8362/8450641664_fea2b93757_z.jpg "2012-12-06 Himeji - Naginata taiso in Jukendo book")
 -   [![2012-12-22 Himeji - Last Naginata training of the
@@ -13,10 +16,6 @@
     10](http://farm9.static.flickr.com/8180/7896503292_ec80ff1b79_s.jpg)](http://farm9.static.flickr.com/8180/7896503292_ec80ff1b79_z.jpg "Naginata INF Seminar 2012 Uppsala - 10")
 -   [![Naginata INF Seminar 2012 Uppsala -
     13](http://farm9.static.flickr.com/8461/7896512612_8793b62e5c_s.jpg)](http://farm9.static.flickr.com/8461/7896512612_8793b62e5c_z.jpg "Naginata INF Seminar 2012 Uppsala - 13")
--   [![Naginata INF Seminar 2012 Uppsala -
-    11](http://farm9.static.flickr.com/8435/7896506982_dca3d1c65d_s.jpg)](http://farm9.static.flickr.com/8435/7896506982_dca3d1c65d_z.jpg "Naginata INF Seminar 2012 Uppsala - 11")
--   [![Naginata INF Seminar 2012 Uppsala -
-    03](http://farm9.static.flickr.com/8313/7896478092_f6d6ca8ab8_s.jpg)](http://farm9.static.flickr.com/8313/7896478092_f6d6ca8ab8_z.jpg "Naginata INF Seminar 2012 Uppsala - 03")
 -   [![Naginata INF Seminar 2012 Uppsala -
     08](http://farm9.static.flickr.com/8310/7896497718_fe55710472_s.jpg)](http://farm9.static.flickr.com/8310/7896497718_fe55710472_z.jpg "Naginata INF Seminar 2012 Uppsala - 08")
 -   [![Naginata INF Seminar 2012 Uppsala -
@@ -32,13 +31,9 @@
 -   [![Naginata INF Seminar 2012 Uppsala -
     04](http://farm9.static.flickr.com/8170/7896486144_6dc0bc0a9f_s.jpg)](http://farm9.static.flickr.com/8170/7896486144_6dc0bc0a9f_z.jpg "Naginata INF Seminar 2012 Uppsala - 04")
 -   [![Naginata INF Seminar 2012 Uppsala -
-    01](http://farm9.static.flickr.com/8306/7896468302_daa1e5cc82_s.jpg)](http://farm9.static.flickr.com/8306/7896468302_daa1e5cc82_z.jpg "Naginata INF Seminar 2012 Uppsala - 01")
--   [![Naginata INF Seminar 2012 Uppsala -
     07](http://farm9.static.flickr.com/8301/7896495090_f071163601_s.jpg)](http://farm9.static.flickr.com/8301/7896495090_f071163601_z.jpg "Naginata INF Seminar 2012 Uppsala - 07")
 -   [![Naginata INF Seminar 2012 Uppsala -
     06](http://farm9.static.flickr.com/8456/7896492076_fe637292d2_s.jpg)](http://farm9.static.flickr.com/8456/7896492076_fe637292d2_z.jpg "Naginata INF Seminar 2012 Uppsala - 06")
--   [![Naginata Olympiastadion 2012-05-13
-    2](http://farm8.static.flickr.com/7092/7325915248_bcd9f5013d_s.jpg)](http://farm8.static.flickr.com/7092/7325915248_bcd9f5013d_z.jpg "Naginata Olympiastadion 2012-05-13 2")
 -   [![Naginata Olympiastadion 2012-05-13
     1](http://farm9.static.flickr.com/8018/7325914770_e23060cbac_s.jpg)](http://farm9.static.flickr.com/8018/7325914770_e23060cbac_z.jpg "Naginata Olympiastadion 2012-05-13 1")
 -   [![Naginata Olympiastadion 2012-05-13
@@ -59,8 +54,6 @@
     4](http://farm8.static.flickr.com/7095/7322720230_13d51d3fe5_s.jpg)](http://farm8.static.flickr.com/7095/7322720230_13d51d3fe5_z.jpg "Naginata Kotka 2012-05-17 4")
 -   [![Naginata Kotka 2012-05-17
     6](http://farm8.static.flickr.com/7237/7322721756_f2dd161603_s.jpg)](http://farm8.static.flickr.com/7237/7322721756_f2dd161603_z.jpg "Naginata Kotka 2012-05-17 6")
--   [![Naginata Kotka 2012-05-17
-    2](http://farm8.static.flickr.com/7098/7322718612_4d1df73cf8_s.jpg)](http://farm8.static.flickr.com/7098/7322718612_4d1df73cf8_z.jpg "Naginata Kotka 2012-05-17 2")
 -   [![Naginata Kotka 2012-05-17
     5](http://farm8.static.flickr.com/7090/7322721174_37084e99e3_s.jpg)](http://farm8.static.flickr.com/7090/7322721174_37084e99e3_z.jpg "Naginata Kotka 2012-05-17 5")
 -   [![Naginata Kotka 2012-05-17
@@ -94,17 +87,11 @@
 -   [![Kobe, Japan
     2010-04-17](http://farm2.static.flickr.com/1116/4593691496_b30c388351_s.jpg)](http://farm2.static.flickr.com/1116/4593691496_b30c388351_z.jpg "Kobe, Japan 2010-04-17")
 -   [![Naginata Helsinki 2010-02-07
-    09](http://farm3.static.flickr.com/2729/4338424327_287da4b287_s.jpg)](http://farm3.static.flickr.com/2729/4338424327_287da4b287_z.jpg "Naginata Helsinki 2010-02-07 09")
--   [![Naginata Helsinki 2010-02-07
     06](http://farm3.static.flickr.com/2692/4339160168_08dc1a9d81_s.jpg)](http://farm3.static.flickr.com/2692/4339160168_08dc1a9d81_z.jpg "Naginata Helsinki 2010-02-07 06")
 -   [![Naginata Helsinki 2010-02-07
     07](http://farm5.static.flickr.com/4011/4339162394_b87994a1bb_s.jpg)](http://farm5.static.flickr.com/4011/4339162394_b87994a1bb_z.jpg "Naginata Helsinki 2010-02-07 07")
 -   [![Naginata Helsinki 2010-02-07
     11](http://farm5.static.flickr.com/4008/4338427189_f89d2db2b5_s.jpg)](http://farm5.static.flickr.com/4008/4338427189_f89d2db2b5_z.jpg "Naginata Helsinki 2010-02-07 11")
--   [![Naginata Helsinki 2010-02-07
-    10](http://farm5.static.flickr.com/4065/4339167466_e3a8a150fe_s.jpg)](http://farm5.static.flickr.com/4065/4339167466_e3a8a150fe_z.jpg "Naginata Helsinki 2010-02-07 10")
--   [![Naginata Helsinki 2010-02-07
-    08](http://farm5.static.flickr.com/4052/4339164262_45cd7b2b27_s.jpg)](http://farm5.static.flickr.com/4052/4339164262_45cd7b2b27_z.jpg "Naginata Helsinki 2010-02-07 08")
 -   [![2013-01-23 Himeji - 18th Soke of Jikishinkageryu
     Naginatajutsu](http://farm9.static.flickr.com/8184/8436921185_42a4c6a463_s.jpg)](http://farm9.static.flickr.com/8184/8436921185_42a4c6a463_z.jpg "2013-01-23 Himeji - 18th Soke of Jikishinkageryu Naginatajutsu")
 -   [![2012-12-02 Yokosuka - All Japan Naginata Championships
@@ -115,40 +102,37 @@
     2011-06-05](http://farm9.static.flickr.com/8324/8091033492_065d0cc99f_s.jpg)](http://farm9.static.flickr.com/8324/8091033492_065d0cc99f_z.jpg "Shudokan Dojo sign, next to Osaka Castle, Osaka, Japan 2011-06-05")
 -   [![Jikishinkageryu Naginatajutsu in Hyogo Kenritsu Budokan, Himeji
     2011-05-29](http://farm7.static.flickr.com/6071/6025333946_d18d4484bc_s.jpg)](http://farm7.static.flickr.com/6071/6025333946_d18d4484bc_z.jpg "Jikishinkageryu Naginatajutsu in Hyogo Kenritsu Budokan, Himeji 2011-05-29")
--   [![Jikishinkageryu Naginatajutsu with Fukuoka sensei in Himeji
-    Budokan
+-   [![Jikishinkageryu Naginatajutsu with Fukuoka sensei in Himeji Budokan
     2011-05-26](http://farm7.static.flickr.com/6128/6024779061_de8bc8c77f_s.jpg)](http://farm7.static.flickr.com/6128/6024779061_de8bc8c77f_z.jpg "Jikishinkageryu Naginatajutsu with Fukuoka sensei in Himeji Budokan 2011-05-26")
 -   [![Naginata in Himeji Sports Center
     2011-06-09](http://farm7.static.flickr.com/6089/6025334076_bfeb0aa7a6_s.jpg)](http://farm7.static.flickr.com/6089/6025334076_bfeb0aa7a6_z.jpg "Naginata in Himeji Sports Center 2011-06-09")
 -   [![Himeji, Japan
     2010-04-15](http://farm5.static.flickr.com/4070/4632520539_aaba8e61fa_s.jpg)](http://farm5.static.flickr.com/4070/4632520539_aaba8e61fa_z.jpg "Himeji, Japan 2010-04-15")
--   [![Naginata Helsinki 2010-02-07
-    13](http://farm5.static.flickr.com/4036/4339173618_30a64c0f5c_s.jpg)](http://farm5.static.flickr.com/4036/4339173618_30a64c0f5c_z.jpg "Naginata Helsinki 2010-02-07 13")
--   [![Naginata Helsinki 2010-02-07
-    12](http://farm5.static.flickr.com/4066/4339171586_76e1df4c9d_s.jpg)](http://farm5.static.flickr.com/4066/4339171586_76e1df4c9d_z.jpg "Naginata Helsinki 2010-02-07 12")
--   [![Naginata Helsinki 2010-02-07
-    14](http://farm3.static.flickr.com/2778/4339175212_89128e1f4d_s.jpg)](http://farm3.static.flickr.com/2778/4339175212_89128e1f4d_z.jpg "Naginata Helsinki 2010-02-07 14")
 
 
 ## Videoita näytöksistä ja kilpailuista
 
--   [Rhythm Naginata at the 5th Naginata World Championships](http://vimeo.com/50075290 "Rhythm Naginata at the 5th Naginata World Championships / Vimeo - Juga Paazmaya")
+Videot avautuvat sivuilla toimivaan soittimeen, jonka voi laittaa täyttämään koko ikkunan soittimen oikeasta alareunasta.
+
+Videoiden tiedot kuten nimi ja otsikko ovat videoiden alkuperäisten julkaisijoiden tuottamia.
+
 -   [リズムなぎなた](http://www.youtube.com/watch?v=vRB8Fkevcc8 "リズムなぎなた")
--   [Ishujiai: Senpo - 5th Naginata World Championships](http://vimeo.com/50070446 "Ishujiai: Senpo - 5th Naginata World Championships / Vimeo - Juga Paazmaya")
--   [Ishujiai: Chuken - 5th Naginata World Championships](http://vimeo.com/50069067 "Ishujiai: Chuken - 5th Naginata World Championships / Vimeo - Juga Paazmaya")
--   [Ishujiai: Taisho - 5th Naginata World Championships](http://vimeo.com/50068282 "Ishujiai: Taisho - 5th Naginata World Championships / Vimeo - Juga Paazmaya")
--   [Jikishinkageryu Naginatajutsu at 5th Naginata World Championships](http://vimeo.com/50043587 "Jikishinkageryu Naginatajutsu at 5th Naginata World Championships / Vimeo - Juga Paazmaya")
--   [Jikishinkage-ryu Naginata](http://www.youtube.com/watch?v=64cmdEUl_jc "Jikishinkage-ryu Naginata / Youtube - KendoWorld")
--   [naginata-justu](http://www.youtube.com/watch?v=V7ed641wnCE "naginata-justu / Youtube - slimeslayer")
--   [Naginata - Tokyo Budokan Reopening Events August 2012](http://www.youtube.com/watch?v=r1YGdzXQDZw "Naginata - Tokyo Budokan Reopening Events August 2012 / GuillaumeErard.com - Life in Japan and Budo")
--   [Jikishinkage Ryu Naginata 5-4-2010 Shimogamo Jinja, Kyoto](http://www.youtube.com/watch?v=ntwaxNRAYmM "Jikishinkage Ryu Naginata 5-4-2010 Shimogamo Jinja, Kyoto / Youtube - mekugi")
--   [Jiki Shinkage Ryu Naginata Jutsu - 34th All Japan Kobudo](http://www.youtube.com/watch?v=a5VqaxmgVvU "Jiki Shinkage Ryu Naginata Jutsu - 34th All Japan Kobudo / Youtube - BudoExport & Seido")
--   [5th WNC - Jikishinkage Ryu Naginata Demo](http://www.youtube.com/watch?v=XIfImDzR-Yg "5th WNC - Jikishinkage Ryu Naginata Demo / Youtube - koukenK3")
--   [Jikishinkage ryu kata](http://www.youtube.com/watch?v=jaRA2zY_VhU "Jikishinkage ryu  kata / Youtube - lolinternetslol")
--   [Jikishin kage-ryu kata](http://www.youtube.com/watch?v=IibZC8PBYns "Jikishin kage-ryu kata / Youtube - lolinternetslol")
--   [Furikaeshi](http://www.youtube.com/watch?v=WPud9FUkuS8 "Furikaeshi / Youtube - lolinternetslol")
 -   [下鴨神社　奉納演武　直心影流薙刀術](http://www.youtube.com/watch?v=DiCwRBds458 "下鴨神社　奉納演武　直心影流薙刀術 / Youtube - kuniedasagami2008")
--   [結成40周年記念調布市なぎなた大会](http://www.youtube.com/watch?v=v696WandAw8 "結成40周年記念調布市なぎなた大会 / Youtube - osuga01")
 -   [北海道日記- 自由學校20週年紀念 傳統武術表演2](http://www.youtube.com/watch?v=0TOaYDdhqlk "北海道日記- 自由學校20週年紀念 傳統武術表演2 / Youtube - kanedino")
 -   [北海道日記- 自由學校20週年紀念 傳統武術表演3](http://www.youtube.com/watch?v=3horKHbL7I8 "北海道日記- 自由學校20週年紀念 傳統武術表演3 / Youtube - kanedino")
+-   [結成40周年記念調布市なぎなた大会](http://www.youtube.com/watch?v=v696WandAw8 "結成40周年記念調布市なぎなた大会 / Youtube - osuga01")
+-   [5th WNC - Jikishinkage Ryu Naginata Demo](http://www.youtube.com/watch?v=XIfImDzR-Yg "5th WNC - Jikishinkage Ryu Naginata Demo / Youtube - koukenK3")
 -   [Atarashii Naginatado - Shiai](http://vimeo.com/6520199 "Atarashii Naginatado - Shiai / Vimeo - Juga Paazmaya")
+-   [Furikaeshi](http://www.youtube.com/watch?v=WPud9FUkuS8 "Furikaeshi / Youtube - lolinternetslol")
+-   [Ishujiai: Chuken - 5th Naginata World Championships](http://vimeo.com/50069067 "Ishujiai: Chuken - 5th Naginata World Championships / Vimeo - Juga Paazmaya")
+-   [Ishujiai: Senpo - 5th Naginata World Championships](http://vimeo.com/50070446 "Ishujiai: Senpo - 5th Naginata World Championships / Vimeo - Juga Paazmaya")
+-   [Ishujiai: Taisho - 5th Naginata World Championships](http://vimeo.com/50068282 "Ishujiai: Taisho - 5th Naginata World Championships / Vimeo - Juga Paazmaya")
+-   [Jiki Shinkage Ryu Naginata Jutsu - 34th All Japan Kobudo](http://www.youtube.com/watch?v=a5VqaxmgVvU "Jiki Shinkage Ryu Naginata Jutsu - 34th All Japan Kobudo / Youtube - BudoExport & Seido")
+-   [Jikishin kage-ryu kata](http://www.youtube.com/watch?v=IibZC8PBYns "Jikishin kage-ryu kata / Youtube - lolinternetslol")
+-   [Jikishinkage Ryu Naginata 5-4-2010 Shimogamo Jinja, Kyoto](http://www.youtube.com/watch?v=ntwaxNRAYmM "Jikishinkage Ryu Naginata 5-4-2010 Shimogamo Jinja, Kyoto / Youtube - mekugi")
+-   [Jikishinkage ryu kata](http://www.youtube.com/watch?v=jaRA2zY_VhU "Jikishinkage ryu  kata / Youtube - lolinternetslol")
+-   [Jikishinkage-ryu Naginata](http://www.youtube.com/watch?v=64cmdEUl_jc "Jikishinkage-ryu Naginata / Youtube - KendoWorld")
+-   [Jikishinkageryu Naginatajutsu at 5th Naginata World Championships](http://vimeo.com/50043587 "Jikishinkageryu Naginatajutsu at 5th Naginata World Championships / Vimeo - Juga Paazmaya")
+-   [Naginata - Tokyo Budokan Reopening Events August 2012](http://www.youtube.com/watch?v=r1YGdzXQDZw "Naginata - Tokyo Budokan Reopening Events August 2012 / GuillaumeErard.com - Life in Japan and Budo")
+-   [Rhythm Naginata at the 5th Naginata World Championships](http://vimeo.com/50075290 "Rhythm Naginata at the 5th Naginata World Championships / Vimeo - Juga Paazmaya")
+-   [naginata-justu](http://www.youtube.com/watch?v=V7ed641wnCE "naginata-justu / Youtube - slimeslayer")
