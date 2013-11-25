@@ -8,13 +8,11 @@
 
 'use strict';
 
-//require('newrelic');
-
 // http://expressjs.com
 var express = require('express');
 var fs = require('fs');
 
-// Keen.IO analytics
+// Keen.IO analytics, used only if the evironment variables are in place.
 var keen = null;
 if (process && process.env && process.env.KEEN_IO_ID && process.env.KEEN_IO_WRITE) {
   keen = require('keen.io').configure({
@@ -268,7 +266,7 @@ app.get('*', function (req, res) {
 });
 
 // https://devcenter.heroku.com/articles/config-vars
-var ipaddr = process.env.OPENSHIFT_NODEJS_IP || null; // Heroku fails with address
+var ipaddr = process.env.OPENSHIFT_NODEJS_IP || null; // Heroku fails with non null address
 var port = process.env.OPENSHIFT_NODEJS_PORT || process.env.PORT || 5000;
 
 app.listen(port, ipaddr, function () {

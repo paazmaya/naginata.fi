@@ -4,18 +4,18 @@
 
 > Jukka Paasonen - 1.9.2013
 
-Atarashii Naginatan graduointisäännöt ovat yhteneväiset 
-Euroopan Naginataliiton ja Kansainvälisen Naginataliiton kanssa. 
-Kendoseurojen Keskusliiton muiden lajien kohdalla raadin jäsenten 
+Atarashii Naginatan graduointisäännöt ovat yhteneväiset
+Euroopan Naginataliiton ja Kansainvälisen Naginataliiton kanssa.
+Kendoseurojen Keskusliiton muiden lajien kohdalla raadin jäsenten
 vaatimukset ovat hieman erilaiset, olen vaativammat alempien kyu arvojen kohdalla.
 
-Niiltä osin kun tässä dokumentissa ei mainita, noudatetaan liiton 
+Niiltä osin kun tässä dokumentissa ei mainita, noudatetaan liiton
 yleisiä graduointisääntöjä.
 
-Graduointiraadissa tulee olla kolme tai viisi jäsentä. Enemmistön 
-tulee puoltaa kokelaan läpäisyä. Myönnettäessä arvoja 6 - 2 kyu, 
-vähintään yhden raadin jäsenen on oltava vähintään _shodan_. 
-Ensimmäisen kyu-arvon tapauksessa, vähintään kolmelle raadin 
+Graduointiraadissa tulee olla kolme tai viisi jäsentä. Enemmistön
+tulee puoltaa kokelaan läpäisyä. Myönnettäessä arvoja 6 - 2 kyu,
+vähintään yhden raadin jäsenen on oltava vähintään _shodan_.
+Ensimmäisen kyu-arvon tapauksessa, vähintään kolmelle raadin
 jäsenellä on oltava vähintään _sandan_.
 
 Graduointiin ilmoittautumiseen tarvitaan kokelaan osalta seuraavat tiedot:
@@ -26,8 +26,8 @@ Graduointiin ilmoittautumiseen tarvitaan kokelaan osalta seuraavat tiedot:
 * Viimeksi suoritettu arvo, ajankohta
 * Suosittelija.
 
-Kokeen jälkeen kerätään graduointimaksut sillä hetkellä voimassaolevan 
-graduointihinnaston mukaisesti. 
+Kokeen jälkeen kerätään graduointimaksut sillä hetkellä voimassaolevan
+graduointihinnaston mukaisesti.
 Vuonna 2013: 20 EUR per suoritettava arvo.
 
 Ulkomailla graduointia varten tarvitaan Suomen Kendoseurojen Keskusliitto ry:n lupa.
@@ -35,7 +35,7 @@ Ulkomailla graduointia varten tarvitaan Suomen Kendoseurojen Keskusliitto ry:n l
 ## Kyu arvojen tekniset vaatimukset
 
 Kuhunkin kyu arvoon kuuluu mahdollisten edeltävien tekniikoiden tarkistus
-mikäli niitä ei ole erikseen listattu. 
+mikäli niitä ei ole erikseen listattu.
 Tämä kuitenkin lähinnä siinä tapauksessa jos teknisessä osaamisessa esiintyy puutteita.
 
 ### 6 kyu

@@ -1,14 +1,16 @@
 
 ## Tulevia tapahtumia
 
--   14.9.2014 - [Naginataystävyysleiri,
+-   6.-7.9.2014 - [Naginataystävyysleiri,
     Hämeenlinna](https://www.facebook.com/events/501891759879564/ "Finnish Naginata Friendship Seminar 2014")
--   13.9.2014 - [Suomen Avoin Kilpailu,
+-   6.9.2014 - [Suomen Avoin Kilpailu,
     Hämeenlinna](https://www.facebook.com/events/147521468779208/ "Naginata Finnish Open 2014")
 -   22.-24.8.2014 - Kansainvälisen Naginataliiton leiri, Alankomaat
--   5.2014 - [Leiri Potsdamissa,
+-   5.2014 - [Atarashii Naginata- ja Jikishinkageryu Naginatajutsu-leiri Potsdamissa,
     Saksassa](http://www.genkido.de/naginata.html "Bishamonten Naginata Kyôshitsu")
+-   4.2014 - Atarashii Naginata pääsiäisleiri Helsingissä
 -   3.2014 - Vuosittainen leiri Iso-Britanniassa
+-   1.2014 - Ensimmäinen Atarashii Naginata-leiri Pietarissa, Venäjällä
 
 ## Menneitä tapahtumia
 

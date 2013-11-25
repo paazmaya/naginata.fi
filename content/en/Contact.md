@@ -1,8 +1,14 @@
 Atarashii Naginata in Finland is organised under the [Finnish Kendo
-Association (FKA)](http://fka.fi/ "FKA - Finnish Kendo Association") and is 
-lead by Mr. Jukka Paasonen (2 dan, [first name]@naginata.fi).
+Association (FKA)](http://fka.fi/ "FKA - Finnish Kendo Association") which
+is a member of the European Naginata Federation. The head instructor is 
+Mr. Jukka Paasonen (2 dan, [first name]@naginata.fi).
 
-[![Naginata](http://farm4.staticflickr.com/3560/3516387044_7fb505ca33_m.jpg)](http://flickr.com/photos/8014296@N04/3516387044 "Naginata / Gitta Wilén")
+Jikishinkageryu Naginatajutsu is organised under the Shutokukai (registered
+association), of which all members belong to the Japanese Shutokukai organisation.
+The head teacher in Finland is Mr. Jukka Paasonen (reiken no maki, [first name]@naginata.fi).
+
+[![Naginata](http://farm4.staticflickr.com/3560/3516387044_7fb505ca33_m.jpg)
+](http://flickr.com/photos/8014296@N04/3516387044 "Naginata / Gitta Wilén")
 
 The FKA maintains a [mailing list in which can be subscribed for being 
 informed of the seminars, gradings and other 

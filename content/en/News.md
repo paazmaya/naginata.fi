@@ -1,13 +1,15 @@
 ## Upcoming events
 
--   14/09/2014 - [Naginata Friendship Seminar,
+-   06-07/09/2014 - [Naginata Friendship Seminar,
     Hämeenlinna](https://www.facebook.com/events/501891759879564/ "Finnish Naginata Friendship Seminar 2014")
--   13/09/2014 - [Finnish Open Competition,
+-   06/09/2014 - [Finnish Open Competition,
     Hämeenlinna](https://www.facebook.com/events/147521468779208/ "Naginata Finnish Open 2014")
 -   22-24/08/2014 - International Naginata Federation Seminar, The Netherlands
--   05/2014 - [Seminar in Potsdam,
+-   05/2014 - [Atarashii Naginata and Jikishinkageryu Naginatajutsu Seminar in Potsdam,
     Germany](http://www.genkido.de/naginata.html "Bishamonten Naginata Kyôshitsu")
+-   04/2014 - Atarashii Naginata Easter Seminar in Helsinki
 -   03/2014 - Annual Seminar in the UK
+-   01/2014 - First Atarashii Naginata seminar in St. Petersburg, Russia
 
 ## In the Past
 
