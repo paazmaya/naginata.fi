@@ -35,7 +35,7 @@ pääopettajat loivat alun nykyiselle Atarashii Naginatalle.
 Harjoituspuvut ovat lähes samankaltaiset, lukuunottamatta takin hihojen kiristysnauhaa,
 jota ei Jikishinkageryū Naginatajutsussa ole.
 Näytösten yhteydessä käytetään yleensä mustaa takkia, jonka hihat on sidottu
-nauhalla.
+nauhalla, jotta tekniikan suorittaminen ei häiriintyisi.
 
 Koryun harrastajia suositellaan opiskelemaan myös Atarashii Naginataa niiden historiallisten
 yhteyksien takia. Vastaavasti hieman edistyneemmät Atarashii Naginatan harrastajat voivat aloittaa

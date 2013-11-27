@@ -6,7 +6,7 @@
 -   6.9.2014 - [Suomen Avoin Kilpailu,
     Hämeenlinna](https://www.facebook.com/events/147521468779208/ "Naginata Finnish Open 2014")
 -   22.-24.8.2014 - Kansainvälisen Naginataliiton leiri, Alankomaat
--   5.2014 - [Atarashii Naginata- ja Jikishinkageryu Naginatajutsu-leiri Potsdamissa,
+-   2.-4.5.2014 - [Atarashii Naginata- ja Jikishinkageryu Naginatajutsu-leiri Potsdamissa,
     Saksassa](http://www.genkido.de/naginata.html "Bishamonten Naginata Kyôshitsu")
 -   4.2014 - Atarashii Naginata pääsiäisleiri Helsingissä
 -   3.2014 - Vuosittainen leiri Iso-Britanniassa
@@ -119,7 +119,7 @@ Japanissa harrastajista yli 90% on naisia, mutta Japanin ulkopuolella
 harrastajakunta koostuu tasapuolisesti sekä miehistä että naisista.
 
 Naginata harjoituspuku koostuu valkoisesta lyhythihaisesta takista ja
-mustasta tai tumman sinisestä hakamasta. Valkoista vyötä voi käyttää 
+mustasta tai tumman sinisestä hakamasta. Valkoista vyötä voi käyttää
 hakaman alla saadakseen asun pysymään tukevammin paikallaan.
 
 Harjoituspuku (takki ja hakama) maksavat noin 90 € ja harjoitusnaginata

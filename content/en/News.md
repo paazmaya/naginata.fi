@@ -5,7 +5,7 @@
 -   06/09/2014 - [Finnish Open Competition,
     Hämeenlinna](https://www.facebook.com/events/147521468779208/ "Naginata Finnish Open 2014")
 -   22-24/08/2014 - International Naginata Federation Seminar, The Netherlands
--   05/2014 - [Atarashii Naginata and Jikishinkageryu Naginatajutsu Seminar in Potsdam,
+-   02-04/05/2014 - [Atarashii Naginata and Jikishinkageryu Naginatajutsu Seminar in Potsdam,
     Germany](http://www.genkido.de/naginata.html "Bishamonten Naginata Kyôshitsu")
 -   04/2014 - Atarashii Naginata Easter Seminar in Helsinki
 -   03/2014 - Annual Seminar in the UK
@@ -84,14 +84,14 @@ called naginata.
 Competition](http://farm7.staticflickr.com/6059/6283180930_4405e8e6f1_m.jpg)
 ](http://flickr.com/photos/96248369@N00/6283180930 "Naginata Competition / ethics_gradient")
 
-While the weapon currently used in the training is made of a wooden 
+While the weapon currently used in the training is made of a wooden
 handle and the blade is made of bamboo, it is most likely true
 that a real naginata can be also seen in a museum or perhaps
 in a collectors collection.
 
-In the regular trainings, two practitioners both equipped with naginata 
+In the regular trainings, two practitioners both equipped with naginata
 exchange techniques such as attack, defence and counter attack.
-All happens within a predefined rules and risk for injury is very low, even 
+All happens within a predefined rules and risk for injury is very low, even
 while practising in protective gear on a full contact sparring.
 
 These pages are about Atarashii Naginata (Naginata in short) and
@@ -110,7 +110,7 @@ Sports enthusiasts in Japan for more than 90% are women, but outside of Japan
 enthusiast base consists of a balance of men and women .
 
 Naginata training suit consists of a white jacket and short sleeves
-black or dark blue hakama. A white belt may be used under the hakama in 
+black or dark blue hakama. A white belt may be used under the hakama in
 order to have the outfit to sit more firmly in place.
 
 The outfit (jacket and hakama) cost usually about 90 € and practising
@@ -119,5 +119,5 @@ of which consisting of sets is called bogu . This includes a helmet
 (men), chest armour (do), gloves (kote), waist protector (tare) and
 shin guards (sune-ate). The common price starts from 600 €, but
 they do not need to purchase all the same time, since their training
-progresses step by step, by adding one protector at the time, 
+progresses step by step, by adding one protector at the time,
 starting with the sune-ate.

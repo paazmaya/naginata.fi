@@ -1,17 +1,17 @@
 Atarashii Naginata in Finland is organised under the [Finnish Kendo
 Association (FKA)](http://fka.fi/ "FKA - Finnish Kendo Association") which
-is a member of the European Naginata Federation. The head instructor is 
+is a member of the European Naginata Federation. The head instructor is
 Mr. Jukka Paasonen (2 dan, [first name]@naginata.fi).
 
 Jikishinkageryu Naginatajutsu is organised under the Shutokukai (registered
 association), of which all members belong to the Japanese Shutokukai organisation.
 The head teacher in Finland is Mr. Jukka Paasonen (reiken no maki, [first name]@naginata.fi).
 
-[![Naginata](http://farm4.staticflickr.com/3560/3516387044_7fb505ca33_m.jpg)
-](http://flickr.com/photos/8014296@N04/3516387044 "Naginata / Gitta Wilén")
+[![Kirsikankukkajuhla Roihuvuoressa](http://farm6.static.flickr.com/5231/7188222444_8b8d2512c1_m.jpg)
+](http://flickr.com/photos/naakkalinna/7188222444 "Kirsikankukkajuhla Roihuvuoressa / Naakka")
 
-The FKA maintains a [mailing list in which can be subscribed for being 
-informed of the seminars, gradings and other 
+The FKA maintains a [mailing list in which can be subscribed for being
+informed of the seminars, gradings and other
 engagements](http://fka.fi/mailman/listinfo/naginata_tiedotus_fka.fi "Naginata_tiedotus@fka.fi")
 related to Atarashii Naginata.
 
@@ -26,13 +26,13 @@ Jikishinkageryū, Tenshin Shoden Katori Shintoryū and Suiōryū .
 ### Helsinki Kendo Club Ki-Ken-Tai-Icchi
 
 At [Helsinki Kendo Club, Ki-Ken-Tai-Icchi (KKTI) it is possible to join the classes
-of Atarashii Naginata and Jikishinkageryū 
+of Atarashii Naginata and Jikishinkageryū
 Naginatajutsu](http://kendohelsinki.org "Ki-Ken-Tai-Icchi, Helsinki Kendo Club, Olympic Stadium")
 
 The trainings are held on every Thursday at 18:00 - 19:30 and Sunday at
 16:00 - 18:00. All of the trainings are in the "keskisali" training area.
 
-Please contact Mr. Jarno Yliluoma ([firstname.lastname]@gmail.com) for any 
+Please contact Mr. Jarno Yliluoma ([firstname.lastname]@gmail.com) for any
 inquiris related to Naginata in KKTI.
 
 ### Tapanilan Erä - Kendo Division

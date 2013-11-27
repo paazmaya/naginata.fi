@@ -1,5 +1,5 @@
 Suomessa Atarashii Naginataa hallinnoi [Suomen Kendoseurojen Keskusliitto
-ry](http://fka.fi/ "FKA - Suomen Kendoseurojen Keskusliitto ry"), joka on 
+ry](http://fka.fi/ "FKA - Suomen Kendoseurojen Keskusliitto ry"), joka on
 jäsenenä Euroopan Naginataliitossa. Lajin pääohjaajana toimii
 Jukka Paasonen (2 dan, [etunimi]@naginata.fi).
 
@@ -7,7 +7,8 @@ Jikishinkageryu Naginatajutsun harjoittelua organisoi Suomessa Shutokukai ry,
 jonka kaikki jäsenet kuuluvat Japanilaiseen Shutokukai organisaatioon.
 Suomessa tyylin pääopettajana toimii Jukka Paasonen (reiken no maki, [etunimi]@naginata.fi).
 
-[![Naginata](http://farm4.staticflickr.com/3560/3516387044_7fb505ca33_m.jpg)](http://flickr.com/photos/8014296@N04/3516387044 "Naginata / Gitta Wilén")
+[![Kirsikankukkajuhla Roihuvuoressa](http://farm6.static.flickr.com/5231/7188222444_8b8d2512c1_m.jpg)
+](http://flickr.com/photos/naakkalinna/7188222444 "Kirsikankukkajuhla Roihuvuoressa / Naakka")
 
 Liitto ylläpitää [sähköpostilistaa jolla tiedotetaan leireistä,
 graduoinneista ja käydään muuta
