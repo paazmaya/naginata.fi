@@ -1,6 +1,6 @@
-
 Atarashii Naginata rakentuu pitkälti kahden vanhan Japanin suurimman
-naginatatyylin pohjalta. Nämä tyylit olivat Tendōryu ja Jikishinkageryu,
+naginatatyylin pohjalta. Nämä tyylit olivat [Tendōryū](http://shingetsukai.com/ "天道流薙刀術 眞月会")
+ja [Jikishinkageryū](http://www.jikishin-naginata.jp/ "直心影流薙刀術 秀徳会"),
 jotka ovat edelleen harrastajamääriltään suurimmat jäljelle jääneistä
 klassisista naginatatyyleistä.
 

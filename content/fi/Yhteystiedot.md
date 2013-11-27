@@ -4,7 +4,7 @@ jäsenenä Euroopan Naginataliitossa. Lajin pääohjaajana toimii
 Jukka Paasonen (2 dan, [etunimi]@naginata.fi).
 
 Jikishinkageryu Naginatajutsun harjoittelua organisoi Suomessa Shutokukai ry,
-jonka kaikki jäsenet kuuluvat Japanilaiseen Shutokukai organisaatioon.
+jonka kaikki jäsenet kuuluvat Japanilaiseen Shūtokukai organisaatioon.
 Suomessa tyylin pääopettajana toimii Jukka Paasonen (reiken no maki, [etunimi]@naginata.fi).
 
 [![Kirsikankukkajuhla Roihuvuoressa](http://farm6.static.flickr.com/5231/7188222444_8b8d2512c1_m.jpg)

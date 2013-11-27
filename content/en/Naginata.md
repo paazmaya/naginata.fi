@@ -1,6 +1,7 @@
 Atarashii Naginata is largely based on the two biggest old classical
-naginata styles, namely Tendōryu and Jikishinkageryu, of which the latter
-is bigger in Japan, while the prior bigger outside Japan.
+naginata styles, namely [Tendōryū](http://shingetsukai.com/ "天道流薙刀術 眞月会") and
+[Jikishinkageryū](http://www.jikishin-naginata.jp/ "直心影流薙刀術 秀徳会"), which are still
+the biggest styles in which naginata is used as the main weapon.
 
 Initially, this new art was called as Gakko Naginata (school Naginata), because of its
 initial purpose to serve as a school physical education for girls, in which it was used
