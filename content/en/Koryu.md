@@ -1,42 +1,61 @@
-Before the end of the Edo period of about 400 at the school in the municipality practised
-naginata use, usually as part of a broader compilation of different weapons.
+Jikishinkageryū Naginatajutsu is one of the biggest styles that are still being
+practisted,in which the naginata is the main weapon. The style was founded in Japan
+about 500 years ago, in the Kanto area, in a place called Kashima. From the same
+place many sword fighting schools have been initiated.
 
-Meiji period, the end of the styles are no longer just over ten . Of these,
-clearly the two largest are the Tendōryū and Jikishinkageryū . Tendōryū is
-spread outside of Japan more widely than Jikishinkageryū the
-Jikishinkageryu is again the largest in Japan. These two styles
-Our head teacher created the beginning of the current Atarashii naginata .
+[![Himeji 2011-05-26 Jikishinkageryu
+Naginatajutsu](http://farm3.staticflickr.com/2514/5763043905_5a542834cf_m.jpg)
+](http://flickr.com/photos/14224905@N08/5763043905 "Himeji 2011-05-26 Jikishinkageryu Naginatajutsu / paazio")
 
-The difference Atarashii Naginata the jackets, Jikishinkageryū Naginatajutsu
-used to coat the sleeves is not part of tightness in the band. otherwise
-outfit to Atarashii Naginata for a used, standardized
-training suit.
+At the moment the style is being practisted along with Japan, at Hawaii, Belgium and Finland.
+All practitioners are members of the [Japanese main organisation called
+Shūtokukai (秀徳会)](http://www.jikishin-naginata.jp/ "Jikishinkageryu Naginatajutsu"),
+which has the purpose of preserving and respecting the legacy of Jikishinkageryū Naginatajutsu.
 
-[![2011-05-02 Kyoto 107th Embu Taikai, Jikishinkageryu
+Style specific characteristics are the circular cutting techniques named
+after the wind- and watermills, in which the naginata can be in motion all the time.
+
+In addition to naginata, the style also studies the use of tanto (short knife),
+bokken (wooden sword) and kusarigama (chain attached to a sickle).
+
+Jikishinkageryū belongs to the [Japanese organisation for classical styles,
+Nihon Kobudō Kyōkai](http://www.nihonkobudokyoukai.org/martialarts/059/ "Jikishinkageryu Naginatajutsu - Nihon Kobudo Kyokai"),
+which is a society recognised by the Japanese government for authenticating
+the historical martial art styles.
+
+
+## Koryu and Atarashii Naginata
+
+By the end of the Meiji period in Japan, there were some ten styles left from the
+vast 400 from Edo period. The two biggest styles were Tendōryū ja Jikishinkageryū,
+both of which the main weapon is naginata. The head teachers of these two styles
+initiated the work for what we now know as Atarashii Naginata.
+
+The training outfits are somewhat identical with the one exception being the
+tightening band in the sleeves, which is not present in the Jikishinkageryū
+version. During the demonstrations, usually a black jacket is worn and its
+sleeves are tied so they would not interfer with the action.
+
+The practitioners of koryu are suggested to study Atarashii Naginata due to their
+historical relations. Equally the students of Atarashii Naginata are encouraged to
+study koryu after a minimum of a year of active experience in Atarashii Naginata.
+
+
+[![Kyoto 2011-05-02 107th Embu Taikai, Jikishinkageryu
 Naginatajutsu](http://farm3.staticflickr.com/2291/5763589730_ae7116f625_m.jpg)
 ](http://flickr.com/photos/14224905@N08/5763589730 "Kyoto 2011-05-02 107th Embu Taikai, Jikishinkageryu Naginatajutsu / paazio")
 
-[![Jikishinkage -ryu Naginata /
-直 心 影 流 薙刀](http://farm2.staticflickr.com/1322/4601612764_1e3537aeab_m.jpg)
-](http://flickr.com/photos/8519244@N06/4601612764 "Jikishinkage -ryu Naginata / 直心影流薙刀 / RStonell")
+[![Kyoto 2011-05-04 Shimogamo Jinja, Jikishinkageryu
+Naginatajutsu](http://farm6.staticflickr.com/5185/5763043699_fcda29747e_m.jpg)
+](http://flickr.com/photos/14224905@N08/5763043699 "Kyoto 2011-05-04 Shimogamo Jinja, Jikishinkageryu Naginatajutsu / paazio")
 
-Without exception, all persons practicing the style of
-Shūtokukai : price (秀 徳 会), The Japanese main organization responsible
-is to maintain and respect the style of the tradition . Likewise, Finland and
-Hawaii resident foreign members of the teams .
 
-Jikishinkageryū Naginatajutsu conventional techniques as wind and
-water mills of the designated section of a rotary techniques to help
-weapon may be constantly on the move .
+## Chief instructor of the style (soke, 宗家)
 
-The style was founded about 500 years ago, the carrier 's area of ​​Kashima in .
+The chief instructor of the style is selected with a certain high technical requiments,
+deep knowledge, but also good social skills are very important.
 
-## Chief instructor of the line (系谱)
-
-Style the chief instructor of the specific criteria selected person,
-the knowledge and skill levels is a class of its own . below are listed
-Style founder and chief instructor of the last couple of centuries. Style Head Instructor
-referred to by the title Soke (宗 家) .
+Below is a list of the founder and few recent chief instructors from the last century.
 
 -   1st Matsumoto Bisen no kami (松本 大炊助政元) - 備前守紀
 -   14th Satake (佐竹 鑑柳斎源義文 十同茂雄女 - 佐竹 鑑柳斎源義文 ・同茂雄女)
@@ -44,18 +63,3 @@ referred to by the title Soke (宗 家) .
 -   16th Sonobe Shigehachi (園部 繁八)
 -   17th Toya Akiko (戸谷 明子)
 -   18th Sonobe Masami (園部 正美)
-
-Learn more about the style :
-
-- [Japanese main organisation - Jikishinkageryū
-    Naginatajutsu](http://www.jikishin-naginata.jp/ "Jikishinkageryu Naginatajutsu")
-- [Organisation for preserving and promoting historically important styles, Nihon Kobudo Kyokai - Jikishinkageryū
-    Naginatajutsu](http://www.nihonkobudokyoukai.org/martialarts/059/ "Jikishinkageryu Naginatajutsu - At Nihon Kobudo Kyokai")
-
-[![2011-05-04 Kyoto Shimogamo Jinja, Jikishinkageryu
-Naginatajutsu](http://farm6.staticflickr.com/5185/5763043699_fcda29747e_m.jpg)
-](http://flickr.com/photos/14224905@N08/5763043699 "Kyoto 2011-05-04 Shimogamo Jinja, Jikishinkageryu Naginatajutsu / paazio")
-
-[![2011-05-26 Himeji Jikishinkageryu
-Naginatajutsu](http://farm3.staticflickr.com/2514/5763043905_5a542834cf_m.jpg)
-](http://flickr.com/photos/14224905@N08/5763043905 "Himeji 2011-05-26 Jikishinkageryu Naginatajutsu / paazio")
