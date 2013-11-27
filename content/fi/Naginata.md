@@ -4,19 +4,23 @@ naginatatyylin pohjalta. Nämä tyylit olivat Tendōryu ja Jikishinkageryu,
 jotka ovat edelleen harrastajamääriltään suurimmat jäljelle jääneistä
 klassisista naginatatyyleistä.
 
-Aluksi tätä taitoa kutsuttiin nimellä Gakkō Naginata, koska sen
+Aluksi tätä taitoa kutsuttiin nimellä Gakkō Naginata (koulu naginata), koska sen
 tarkoituksena oli toimia kouluissa liikunnan opetuksena tytöille, jossa
-se toimi \~1910 alkaen toiseen maailmansotaan saakka.
+se toimi ~1910 alkaen toiseen maailmansotaan saakka.
 
 [![Naginata
 Competition](http://farm7.staticflickr.com/6231/6282661367_12b51920c4_m.jpg)
 ](http://flickr.com/photos/96248369@N00/6282661367 "Naginata Competition / ethics_gradient")
 
-Myöhemmin lajin nimi muutettiin "uudeksi naginataksi", josta tuli
-standarsoitu versio samaan tapaan kuten muun muassa kendōn, judōn ja
-iaidōn osalta tehtiin.
+Myöhemmin lajin nimi muutettiin Atarashii Naginata:ksi, kirjaimellisesti "uudeksi naginataksi",
+josta tuli standarsoitu versio vanhoista kamppailutaidoista samaan tapaan kuten muun muassa kendō, judō ja
+iaidō muodostettiin.
 
-Nykyisen muodon kata-lisäyksineen laji saavutti 1970-luvulla.
+Nykyisen muodon  laji saavutti 1970-luvulla kun Zen Nihon Kata-sarja saatiin valmiiksi.
+
+## Naginatan tarkoitus (Naginata Rinen, なぎなた理念)
+
+> Naginatan tarkoituksena on kehittää tomintakykyistä mieltä Naginatan harjoittelun avulla.
 
 ## Perustekniikat - Kihon
 
@@ -35,7 +39,7 @@ lyöntityypit osumakohteiden mukaan.
 -   Dō
 -   Kote
 -   Furikaeshi men/sune/kote
--   Tsuki
+-   Tsuki.
 
 ### Asennot
 
@@ -50,9 +54,9 @@ tietämistä tarvitaan graduoinnin paperiosuutta suorittaessa.
 -   Gedan no kamae
 -   Waki kamae
 -   Jōdan no kamae
--   Mugamae
+-   Mugamae.
 
-### Happoburi
+### Happōburi
 
 Yleensä harjoitus alkaa aseen käyttöharjoituksella, jossa käydään läpi
 eri kulmia joista naginata voi käyttää. Näillä on tarkoitus oppia
@@ -64,29 +68,44 @@ viidestä osasta.
 -   Nanameburi
 -   Yokoburi
 -   Nanameburi shita kara
--   Furikaeshi
+-   Furikaeshi.
 
 ## Pariharjoittelu
 
+[![Toshidama Gallery: Toyohara Chikanobu (1838 - 1912) Guard Ladies of the Chiyoda Palace,
+1892](http://farm9.staticflickr.com/8107/8453641906_8f54ca9720_m.jpg)
+](http://www.flickr.com/photos/toshidama-gallery/8453641906 "Toshidama Gallery: Toyohara Chikanobu (1838 - 1912) Guard Ladies of the Chiyoda Palace, 1892 / Alex Faulkner")
+
+Naginatan pariharjoittelussa kummallakin harjoittelijalla on bambu-teräinen naginata.
+
+### Uchikaeshi
+
+Ensimmäinen pariharjoitus koostuu kuudesta osasta, joissa jokaisessa
+toinen osapuoli harjoittelee lyöntia ja toinen sen vastaanottoa.
+Tarkoituksena on oppia oikeaa lyönti- ja vastaanottoetäisyyttä,
+ajoitusta sekä tekniikoiden yhdistämistä yhdeksi kokonaisuudeksi.
+
 ### Shikake Ōji
 
-Pariharjoitteluun perusteisiin kuuluu kahdeksan osainen sarja nimeltä
-Shikake Ōji. Kummallakin pareista on bambuteräinen naginata aseenaan ja
-keskenään jakavat hyökkääjän (shikake) ja puolustajan (ōji) roolit.
+Pariharjoittelun perusteisiin kuuluu kahdeksasta erillisestä osasta koostuva sarja nimeltään
+Shikake Ōji. Kukin osa koostuu kahdesta tai kolmesta hyökkäyksestä ja niiden puolustuksesta.
+Hyökkäävää osapuolta joka tekee useimmiten aloitteen, kutsutaan nimellä Shikake, ja puolustavaa,
+joka yleensä myös voittaa, kutsutaan nimellä Oji.
 
 ### Zen Nihon Naginata Kata
 
 Seitsemän pariharjoituksen sarja jossa kummallakin pareista on
 kovapuinen naginata aseenaan. Kyseinen naginata on hyvin samankaltainen
-Tendoryu Naginatajutsussa käytetyn kanssa. Tätä sarjaa harjoitellaan
-yleensä vasta toisen dan-arvon (nidan) suorituksen jälkeen, kenties
-siitä syystä että sarja on hyvin vaativa ja että sen osia vaaditaan
-kolmannesta danista ylöspäin.
+Tendōryu Naginatajutsussa käytetyn kanssa, sillä poikkeuksella että tsuba on erikokoinen.
+
+Tätä sarjaa harjoitellaan yleensä vasta toisen dan-arvon (nidan) suorituksen jälkeen,
+kenties siitä syystä että sarja on teknisesti ja taktiikaltaan hyvin vaativa ja että sen
+osaamista vaaditaan kolmannesta dan-arvosta ylöspäin.
 
 ### Kakari geiko
 
-Hikitate, eli merkin antava osapuoli, antaa toisen lyödä avaamiinsa
-osumakohteisiin eri määrän suorituksia.
+Yleensä kokeneempi osapuoli, jota tässä harjoituksessa kutsutaan nimellä "hikitate",
+avaa kohteita toiselle harjoittelijalle, jonka tulee lyödä suorituksia nopealla tahdilla.
 
 [![Fighting
 Spirit](http://farm8.staticflickr.com/7036/7040969153_c884abd640_m.jpg)
@@ -94,33 +113,19 @@ Spirit](http://farm8.staticflickr.com/7036/7040969153_c884abd640_m.jpg)
 
 ### Gokaku geiko
 
-Niin sanottu vapaa ottelu, jossa pyritään soveltamaan kaikkea oppimaansa
-ja tehdä niillä pistesuorituksia. Tunnetaan myös nimellä Jigeiko, joksi
-vastaavaa esimerkiksi Kendossa kutsutaan.
+Vapaamuotoinen ottelu, jossa pyritään mahdollisuuksien mukaan lyömään pistekohteisiin ja hallitsemaan
+ottelutilannetta.
 
-### Isshu jiai
+### Ishu jiai
 
 Kun kendoa harrastava ja naginataa harrastava henkilö ottelevat toisiaan
 vastaan kutsutaan tätä isshu jiai:ksi.
 
 Tähän otteluun ei ole virallisia sääntöjä koska kyseessä on kaksi eri
-lajia.
+lajia, mutta usein otteluita järjestetään näytösluontoisesti, esimerkiksi tilaisuuksissa kuten
+Kyoto Taikai tai vaikkapa Naginatan Maailmanmestaruuskilpailut.
 
 ## Varusteet
-
-### Bōgu
-
-Kontaktiharjoittelua varten suunniteltu suojahaarniska (bogu), koostuu
-seuraavista osista:
-
--   Men
--   Kote
--   Dō
--   Tare
--   Sune ate
-
-![Naginata Bogu Chudan Artwork
-Lecklin](/img/naginata-bogu-chudan-artwork-lecklin.png)
 
 ### Shiai-naginata
 
@@ -131,7 +136,21 @@ Bambukärkinen harjoitusase (shiai-naginata), koostuu seuraavista osista:
 -   Kissaki, terän kärki
 -   Ishizuki, varren pää
 -   Sendanmaki, terän ja varren kiinnitysteippi
--   Monouchi, terän osa jolla leikkaukset tehdään
+-   Monouchi, terän osa jolla leikkaukset tehdään.
+
+![Naginata Bogu Chudan Artwork
+Lecklin](/img/naginata-bogu-chudan-artwork-lecklin.png)
+
+### Bōgu
+
+Kontaktiharjoittelua varten suunniteltu suojahaarniska (bōgu), koostuu
+seuraavista osista:
+
+-   Men
+-   Kote
+-   Dō
+-   Tare
+-   Sune ate.
 
 ## Graduointivaatimukset
 
