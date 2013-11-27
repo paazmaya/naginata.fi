@@ -1,43 +1,61 @@
+Jikishinkageryū Naginatajutsu on yksi suurimmista edelleen harjoiteltavista
+kouluista tai tyyleistä, jonka pääaseena on naginata. Tyyli perustettiin
+Japanissa noin 500 vuotta sitten, Kanto:n alueella Kashima:ssa, josta
+monet lukuisat miekkailutyylit ovat myös lähtöisin.
 
-Ennen Edo-kauden loppua on noin 400:ssa koulukunnassa harjoiteltu
-naginatan käyttöä, yleensä osana laajempaa asekokonaisuutta.
+[![Himeji 2011-05-26 Jikishinkageryu
+Naginatajutsu](http://farm3.staticflickr.com/2514/5763043905_5a542834cf_m.jpg)
+](http://flickr.com/photos/14224905@N08/5763043905 "Himeji 2011-05-26 Jikishinkageryu Naginatajutsu / paazio")
 
-Meiji-kauden lopulla tyylejä on ollut enää reilu kymmenen. Näistä
-selkeästi kaksi suurinta ovat Tendōryū ja Jikishinkageryū. Tendōryū on
-levittäytynyt Japanin ulkopuolelle laajemmin kuin Jikishinkageryū, kun
-taas Jikishinkageryu on suurin Japanissa. Näiden kahden tyylin
-pääopettajat loivat alun nykyiselle Atarashii Naginatalle.
-
-Erona Atarashii Naginata:n takkiin, Jikishinkageryū Naginatajutsussa
-käytetyn takin hihoihin ei kuulu kiristävää nauhaa. Muutoin
-asukokonaisuus vastaa Atarashii Naginata:ssa käytettyä, standardoitua
-harjoituspukua.
-
-[![Kyoto 2011-05-02 107th Embu Taikai, Jikishinkageryu
-Naginatajutsu](http://farm3.staticflickr.com/2291/5763589730_ae7116f625_m.jpg)
-](http://flickr.com/photos/14224905@N08/5763589730 "Kyoto 2011-05-02 107th Embu Taikai, Jikishinkageryu Naginatajutsu / paazio")
-
-[![Jikishinkage-ryu Naginata /
-直心影流薙刀](http://farm2.staticflickr.com/1322/4601612764_1e3537aeab_m.jpg)
-](http://flickr.com/photos/8519244@N06/4601612764 "Jikishinkage-ryu Naginata / 直心影流薙刀 / RStonell")
-
-Poikkeuksetta kaikki tyyliä harjoittelevat henkilöt kuuluvat
-Shūtokukai:hin (秀徳会), Japanilaiseen pääorganisaatioon jonka tehtävänä
-on ylläpitää ja kunnioittaa tyylin perinnettä. Samoin Suomessa ja
-Hawaijilla sijaitsevien ulkomaisten ryhmien jäsenet.
+Tyyliä harrastetaan tällä hetkellä Japanin lisäksi Hawai'illa, Belgiassa ja
+Suomessa. Kaikki harrastajat kuuluvat [Japanilaiseen pääorganisaation nimeltään
+Shūtokukai (秀徳会)](http://www.jikishin-naginata.jp/ "Jikishinkageryu Naginatajutsu"),
+jonka tehtävänä on ylläpitää ja kunnioittaa tyylin perinnettä.
 
 Jikishinkageryū Naginatajutsun tunnusomaisia tekniikoita ovat tuuli- ja
 vesimyllyjen mukaan nimenyt pyörivän leikkauksen tekniikat joiden avulla
 ase voi olla koko ajan liikkeessä.
 
-Tyyli perustettiin noin 500 vuotta sitten, Kanto:n alueella Kashima:ssa.
+Naginatan lisäksi tyylissä harjoitellaan tanto:n (lyhyt veitsi), bokken:in (puinen miekka) ja
+kusarigama:n (sirppi jossa ketju) käyttöä.
 
-## Pääopettajan linja (系譜)
+Jikishinkageryū kuuluu [Japanilaiseen vanhojen koulukuntien yhteisöön,
+Nihon Kobudō Kyōkai:hin](http://www.nihonkobudokyoukai.org/martialarts/059/ "Jikishinkageryu Naginatajutsu - Nihon Kobudo Kyokai"),
+joka on Japanin valtion tunnustama historiallisten perinteiden kokoaja.
+
+
+## Koryu ja Atarashii Naginata
+
+Meiji-kauden lopulla vanhoja tyylejä on Japanissa ollut enää reilu kymmenen, niistä
+noin 400 tyylistä joita Edo-kaudella vielä oli. Näistä
+selkeästi kaksi suurinta olivat Tendōryū ja Jikishinkageryū, joissa kummassakin
+nimenomaan naginata on tyylin pääaseena. Näiden kahden tyylin
+pääopettajat loivat alun nykyiselle Atarashii Naginatalle.
+
+Harjoituspuvut ovat lähes samankaltaiset, lukuunottamatta takin hihojen kiristysnauhaa,
+jota ei Jikishinkageryū Naginatajutsussa ole.
+Näytösten yhteydessä käytetään yleensä mustaa takkia, jonka hihat on sidottu
+nauhalla.
+
+Koryun harrastajia suositellaan opiskelemaan myös Atarashii Naginataa niiden historiallisten
+yhteyksien takia. Vastaavasti hieman edistyneemmät Atarashii Naginatan harrastajat voivat aloittaa
+koryun opiskelun, yleensä vähintään vuoden aktiivisen harjoittelun jälkeen.
+
+[![Kyoto 2011-05-02 107th Embu Taikai, Jikishinkageryu
+Naginatajutsu](http://farm3.staticflickr.com/2291/5763589730_ae7116f625_m.jpg)
+](http://flickr.com/photos/14224905@N08/5763589730 "Kyoto 2011-05-02 107th Embu Taikai, Jikishinkageryu Naginatajutsu / paazio")
+
+[![Kyoto 2011-05-04 Shimogamo Jinja, Jikishinkageryu
+Naginatajutsu](http://farm6.staticflickr.com/5185/5763043699_fcda29747e_m.jpg)
+](http://flickr.com/photos/14224905@N08/5763043699 "Kyoto 2011-05-04 Shimogamo Jinja, Jikishinkageryu Naginatajutsu / paazio")
+
+## Pääopettaja (soke, 宗家)
 
 Tyylin pääopettajana toimii siihen erityisin perustein valittu henkilö,
-jonka tieto- ja taitotaso on täysin omaa luokkaansa. Alla lueteltuna
-tyylin perustaja ja pääopettajia parin viime vuosisadan ajalta. Tyylin pääopettajaa
-kutsutaan arvonimellä Sōke (宗家).
+jonka tieto- ja taitotaso on täysin omaa luokkaansa, mutta myös sosiaaliset taidot
+ovat hyvin tärkeitä.
+
+Alla lueteltuna tyylin perustaja ja pääopettajia parin viime vuosisadan ajalta.
 
 -   1\. Matsumoto Bisen no kami (松本 大炊助政元) - 備前守紀
 -   14\. Satake (佐竹 鑑柳斎源義文 十同茂雄女 - 佐竹 鑑柳斎源義文 ・同茂雄女)
@@ -45,20 +63,3 @@ kutsutaan arvonimellä Sōke (宗家).
 -   16\. Sonobe Shigehachi (園部 繁八)
 -   17\. Toya Akiko (戸谷 明子)
 -   18\. Sonobe Masami (園部 正美)
-
-Lisätietoa tyylisuunnasta:
-
--   [Japanin päääorganisaatio - Jikishinkageryū
-    Naginatajutsu](http://www.jikishin-naginata.jp/ "Jikishinkageryu Naginatajutsu")
--   [Historiallisesti tärkeiden tyylien järjestö - Jikishinkageryū
-    Naginatajutsu - Nihon Kobudō
-    Kyōkai](http://www.nihonkobudokyoukai.org/martialarts/059/ "Jikishinkageryu Naginatajutsu - Nihon Kobudo Kyokai")
-
-[![Kyoto 2011-05-04 Shimogamo Jinja, Jikishinkageryu
-Naginatajutsu](http://farm6.staticflickr.com/5185/5763043699_fcda29747e_m.jpg)
-](http://flickr.com/photos/14224905@N08/5763043699 "Kyoto 2011-05-04 Shimogamo Jinja, Jikishinkageryu Naginatajutsu / paazio")
-
-[![Himeji 2011-05-26 Jikishinkageryu
-Naginatajutsu](http://farm3.staticflickr.com/2514/5763043905_5a542834cf_m.jpg)
-](http://flickr.com/photos/14224905@N08/5763043905 "Himeji 2011-05-26 Jikishinkageryu Naginatajutsu / paazio")
-
