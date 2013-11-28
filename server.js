@@ -227,7 +227,6 @@ app.get(pageRegex, function (req, res) {
     acceptedCharsets: req.acceptedCharsets
   });
 
-
   // https://developer.mozilla.org/en-US/docs/Security/CSP/Using_Content_Security_Policy
   res.set({
     'Content-Security-Policy-Report-Only': 'default-src \'self\' ' +

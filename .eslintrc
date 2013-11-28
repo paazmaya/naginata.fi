@@ -24,7 +24,7 @@
     "complexity": [0, 8],
     "consistent-this": [0, "self"],
     "curly": 2,
-    "dot-notation": 2,
+    "dot-notation": 1,
     "eqeqeq": 2,
     "guard-for-in": 0,
     "max-depth": [0, 4],

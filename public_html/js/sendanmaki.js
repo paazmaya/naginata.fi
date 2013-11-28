@@ -19,7 +19,7 @@ var sendanmaki = window.sendanmaki = {
   /**
    * Time between when Page Timing API data is being send.
    */
-  interval: 60*1000,
+  interval: 60 * 1000,
 
   /**
    * Image notes for the given key image.
@@ -309,14 +309,23 @@ var sendanmaki = window.sendanmaki = {
    * Send Page Timing API results to Keen.IO.
    */
   sendPageTimings: function () {
-    var timing = window.performance.timing || {};
-    timing.url = window.location.pathname;
+    if (typeof window.performance !== 'object' || typeof window.performance.timing !== 'object') {
+      return;
+    }
+    var timing = window.performance.timing;
+    var data = {
+      url: window.location.pathname
+    };
+    $.each(window.performance.timing, function (key, value) {
+      if (typeof value === 'number') {
+        data[key] = value;
+      }
+    });
     var now = $.now();
     var earlier = window.localStorage.getItem('timingsSent') || 0;
 
     if (now - earlier > sendanmaki.interval) {
-      $.post('/page-timings', timing, function (data) {
-        //console.log(data);
+      $.post('/page-timings', data, function () {
         window.localStorage.setItem('timingsSent', now);
       });
     }

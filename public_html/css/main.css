@@ -152,10 +152,10 @@ h1 {
 }
 
 h2 {
-  font-size:  1.5em;
-  margin-top: 1.4em;
+  font-size:     1.5em;
+  margin-top:    1.4em;
   margin-bottom: 0.7em;
-  clear:      both;
+  clear:         both;
 }
 
 h3, h3 a {
@@ -208,8 +208,8 @@ article a:hover, article a:focus {
 }
 
 blockquote {
-  padding: 0.2em;
-  border: 1px solid #808080;
+  padding:          0.2em;
+  border:           1px solid #808080;
   background-color: lightgrey;
 }
 
@@ -241,7 +241,6 @@ p > a:only-child > img:only-of-type {
 
 /* first list in media page is Flickr grid */
 article.media ul:first-of-type {
-  display:         block;
   width:           100%;
   list-style-type: none;
 }
