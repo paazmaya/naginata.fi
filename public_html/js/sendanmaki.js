@@ -314,10 +314,9 @@ var sendanmaki = window.sendanmaki = {
     var now = $.now();
     var earlier = window.localStorage.getItem('timingsSent') || 0;
 
-    console.table(timing);
     if (now - earlier > sendanmaki.interval) {
       $.post('/page-timings', timing, function (data) {
-        console.log(data);
+        //console.log(data);
         window.localStorage.setItem('timingsSent', now);
       });
     }

@@ -252,12 +252,6 @@ app.get(pageRegex, function (req, res) {
   });
 });
 
-// Page Timing statistics Keen.IO
-app.post('/page-timings', function (req, res) {
-  res.send('Keen.IO - ' + req.body.url);
-  keenSend('page timing', req.body);
-});
-
 // Softer landing page
 app.get('/', function (req, res) {
   checkLang(req.acceptedLanguages);
@@ -271,6 +265,12 @@ app.get('*', function (req, res) {
     responce: '/' + defaultLang
   });
   res.redirect(404, '/' + defaultLang);
+});
+
+// Page Timing statistics Keen.IO
+app.post('/page-timings', function (req, res) {
+  res.send('Keen.IO - ' + req.body.url);
+  keenSend('page timing', req.body);
 });
 
 // https://devcenter.heroku.com/articles/config-vars
