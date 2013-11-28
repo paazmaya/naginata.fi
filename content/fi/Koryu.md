@@ -58,7 +58,7 @@ ovat hyvin tärkeitä.
 Alla lueteltuna tyylin perustaja ja pääopettajia parin viime vuosisadan ajalta.
 
 -   1\. Matsumoto Bisen no kami (松本 大炊助政元) - 備前守紀
--   14\. Satake (佐竹 鑑柳斎源義文 十同茂雄女 - 佐竹 鑑柳斎源義文 ・同茂雄女)
+-   14\. Satake Yoshinori (佐竹 鑑柳斎源義文)
 -   15\. Sonobe Hideo (園部 秀雄)
 -   16\. Sonobe Shigehachi (園部 繁八)
 -   17\. Toya Akiko (戸谷 明子)

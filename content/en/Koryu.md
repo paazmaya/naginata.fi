@@ -58,7 +58,7 @@ deep knowledge, but also good social skills are very important.
 Below is a list of the founder and few recent chief instructors from the last century.
 
 -   1st Matsumoto Bisen no kami (松本 大炊助政元) - 備前守紀
--   14th Satake (佐竹 鑑柳斎源義文 十同茂雄女 - 佐竹 鑑柳斎源義文 ・同茂雄女)
+-   14th Satake Yoshinori (佐竹 鑑柳斎源義文)
 -   15th Sonobe Hideo (園部 秀雄)
 -   16th Sonobe Shigehachi (園部 繁八)
 -   17th Toya Akiko (戸谷 明子)
