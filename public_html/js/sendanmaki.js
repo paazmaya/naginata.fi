@@ -17,6 +17,11 @@ var sendanmaki = window.sendanmaki = {
   lang: 'fi',
 
   /**
+   * Time between when Page Timing API data is being send.
+   */
+  interval: 60*1000,
+
+  /**
    * Image notes for the given key image.
    */
   notes: {
@@ -298,10 +303,32 @@ var sendanmaki = window.sendanmaki = {
       iframe: true,
       scrolling: false
     });
+  },
+
+  /**
+   * Send Page Timing API results to Keen.IO.
+   */
+  sendPageTimings: function () {
+    var timing = window.performance.timing || {};
+    timing.url = window.location.pathname;
+    var now = $.now();
+    var earlier = window.localStorage.getItem('timingsSent') || 0;
+
+    console.table(timing);
+    if (now - earlier > sendanmaki.interval) {
+      $.post('/page-timings', timing, function (data) {
+        console.log(data);
+        window.localStorage.setItem('timingsSent', now);
+      });
+    }
   }
 };
 
 (function () {
   sendanmaki.localiseColorbox();
   sendanmaki.domReady();
+
+  window.onload = function () {
+    window.setTimeout(sendanmaki.sendPageTimings, 500);
+  };
 })();

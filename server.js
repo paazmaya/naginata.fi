@@ -44,6 +44,8 @@ if (process.env.NODE_ENV === 'production') {
 }
 app.use(express.static(__dirname + '/public_html'));
 app.use(express.logger());
+app.use(express.json());
+app.use(express.urlencoded());
 
 app.on('uncaughtException', function (err) {
   console.error(err.stack);
@@ -170,7 +172,7 @@ var checkLang = function (acceptedLanguages) {
   acceptedLanguages.forEach(function (item) {
     var key = item.substr(0, 2);
     if (pageJson.languages.hasOwnProperty(key) &&
-        pageJson.languages[key]['enabled'] === true) {
+        pageJson.languages[key].enabled === true) {
       defaultLang = item.substr(0, 2);
       return;
     }
@@ -180,7 +182,7 @@ var checkLang = function (acceptedLanguages) {
 var langKeys = [];
 for (var key in pageJson.languages) {
   if (pageJson.languages.hasOwnProperty(key) &&
-      pageJson.languages[key]['enabled'] === true) {
+      pageJson.languages[key].enabled === true) {
     langKeys.push(key);
   }
 }
@@ -217,14 +219,14 @@ app.get(pageRegex, function (req, res) {
   if (req.header('user-agent').indexOf('facebookexternalhit') !== -1) {
     current.facebook = facebookMeta(current);
   }
-  
+
   // Every visit writes analytics
   keenSend('page view', {
     url: req.originalUrl,
     acceptedLanguages: req.acceptedLanguages,
     acceptedCharsets: req.acceptedCharsets
   });
-  
+
 
   // https://developer.mozilla.org/en-US/docs/Security/CSP/Using_Content_Security_Policy
   res.set({
@@ -248,6 +250,12 @@ app.get(pageRegex, function (req, res) {
     }
     res.send(html);
   });
+});
+
+// Page Timing statistics Keen.IO
+app.post('/page-timings', function (req, res) {
+  res.send('Keen.IO - ' + req.body.url);
+  keenSend('page timing', req.body);
 });
 
 // Softer landing page
