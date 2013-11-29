@@ -19,7 +19,7 @@ var sendanmaki = window.sendanmaki = {
   /**
    * Time between when Page Timing API data is being send.
    */
-  interval: 60 * 1000,
+  interval: 60 * 60 * 1000,
 
   /**
    * Image notes for the given key image.
