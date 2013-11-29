@@ -314,7 +314,8 @@ var sendanmaki = window.sendanmaki = {
     }
     var timing = window.performance.timing;
     var data = {
-      url: window.location.pathname
+      url: window.location.pathname,
+      userAgent: window.navigator.userAgent
     };
     $.each(window.performance.timing, function (key, value) {
       if (typeof value === 'number') {

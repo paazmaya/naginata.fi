@@ -1,7 +1,6 @@
-naginata-config.json
 *.log
-public_html/img/pngcrush.exe
 node_modules
 bower_components
 coverage
 .idea
+libs/keen-keys.php

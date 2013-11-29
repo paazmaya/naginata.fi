@@ -139,6 +139,13 @@ class ShikakeOji
         // Content
         $found = false;
 
+        // Keen.IO statistics
+        if ($pageurl === '/page-timings')
+        {
+            $this->sendKeenStats();
+            exit();
+        }
+
         foreach ($this->appData['pages'] as $pages)
         {
             if ($pageurl == $pages['url'])
@@ -161,6 +168,28 @@ class ShikakeOji
                 $this->redirectTo($this->currentPage);
             }
         }
+    }
+
+    /**
+     * Found from the $_POST data, the Page Timing statistics are send to Keen.IO.
+     * @see https://keen.io/docs/getting-started-guide/
+     */
+    private function sendKeenStats()
+    {
+        require 'keen-keys.php';
+
+        $event = urlencode('page timing');
+
+        $json = json_encode($_POST);
+
+        $curl = curl_init('https://api.keen.io/3.0/projects/' . $keen['projectId'] . '/events/' . $event . '?api_key=' . $keen['writeKey']);
+        curl_setopt($curl, CURLOPT_POST, true);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($curl, CURLOPT_HTTPHEADER, ['Content-Type: application/json']);
+        curl_setopt($curl, CURLOPT_POSTFIELDS, $json);
+        echo curl_exec($curl);
+        curl_close($curl);
+
     }
 
     /**
