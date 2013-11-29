@@ -10,7 +10,7 @@
     Saksassa](http://www.genkido.de/naginata.html "Bishamonten Naginata Kyôshitsu")
 -   4.2014 - Atarashii Naginata pääsiäisleiri Helsingissä
 -   3.2014 - Vuosittainen leiri Iso-Britanniassa
--   1.2014 - Ensimmäinen Atarashii Naginata-leiri Pietarissa, Venäjällä
+-   14.-16.2.2014 - Ensimmäinen Atarashii Naginata-leiri Pietarissa, Venäjällä
 
 ## Menneitä tapahtumia
 
