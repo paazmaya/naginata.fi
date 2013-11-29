@@ -178,7 +178,7 @@ class ShikakeOji
     {
         require 'keen-keys.php';
 
-        $event = urlencode('page timing');
+        $event = 'page timing';
 
         $json = json_encode($_POST);
 

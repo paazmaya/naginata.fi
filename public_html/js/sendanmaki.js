@@ -192,20 +192,6 @@ var sendanmaki = window.sendanmaki = {
 
     $.each(sendanmaki.notes, sendanmaki.buildImageNotes);
 
-    // Nokia E7 browser fails on this...
-    if (typeof window.applicationCache !== 'undefined') {
-      window.applicationCache.addEventListener('updateready', function () {
-        if (window.applicationCache.status === window.applicationCache.UPDATEREADY) {
-          // Browser downloaded a new app cache.
-          // Swap it in and reload the page to get the new hotness.
-          window.applicationCache.swapCache();
-          if (window.confirm('A new version of this site is available. Load it?')) {
-            location.reload();
-          }
-        }
-      }, false);
-    }
-
     // Re-usage
     var $media = $('article p > a:has(img:only-child), article.media ul a');
     var $external = $('a[href^="http://"], a[href^="https://"]').not($media);
@@ -312,7 +298,6 @@ var sendanmaki = window.sendanmaki = {
     if (typeof window.performance !== 'object' || typeof window.performance.timing !== 'object') {
       return;
     }
-    var timing = window.performance.timing;
     var data = {
       url: window.location.pathname,
       userAgent: window.navigator.userAgent
