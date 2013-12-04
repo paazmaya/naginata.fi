@@ -232,7 +232,8 @@ app.get(pageRegex, function (req, res) {
     'Content-Security-Policy-Report-Only': 'default-src \'self\' ' +
       '*.vimeo.com *.youtube.com ' +
       '*.flickr.com *.staticflickr.com ' +
-      '*.googleapis.com *.googleusercontent.com',
+      '*.googleapis.com *.googleusercontent.com' +
+      '*.google-analytics.com',
     'Content-Language': lang,
     'Accept-Ranges': 'bytes'
   });
