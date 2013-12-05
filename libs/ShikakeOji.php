@@ -184,6 +184,11 @@ class ShikakeOji
         require 'keen-keys.php';
         header('Content-type: application/json');
 
+        // Convert string to array
+        if (isset($_POST['entries']))
+        {
+            $_POST['entries'] = json_decode($_POST['entries']);
+        }
         $json = json_encode($_POST);
 
         $curl = curl_init('https://api.keen.io/3.0/projects/' . $keen['projectId'] . '/events/' . $event . '?api_key=' . $keen['writeKey']);

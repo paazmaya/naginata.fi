@@ -280,6 +280,10 @@ app.post('/navigation-timings', function (req, res) {
 app.post('/resource-timings', function (req, res) {
   res.set({'Content-type': 'application/json'});
   res.send('Keen.IO - ' + req.body.url);
+
+  // Entries are sent as string due to post data form
+  req.body.entries = JSON.parse(req.body.entries);
+
   keenSend('resource timing', req.body);
 });
 
