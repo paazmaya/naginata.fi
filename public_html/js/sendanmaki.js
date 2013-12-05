@@ -298,7 +298,8 @@ var sendanmaki = window.sendanmaki = {
    * @see http://www.w3.org/TR/navigation-timing/
    */
   sendNavigationTimings: function () {
-    if (typeof window.performance !== 'object' || typeof window.performance.timing !== 'object') {
+    if (typeof window.performance !== 'object' ||
+        typeof window.performance.timing !== 'object') {
       return;
     }
     var data = {
@@ -332,8 +333,20 @@ var sendanmaki = window.sendanmaki = {
     var data = {
       url: window.location.pathname,
       userAgent: window.navigator.userAgent,
-      entries: window.performance.getEntriesByType('resource')
+      entries: JSON.stringify(window.performance.getEntriesByType('resource'))
     };
+
+    /*
+    var entries = window.performance.getEntriesByType('resource');
+    entries.forEach(function (item) {
+      $.each(window.performance.timing, function (key, value) {
+        if (typeof value === 'number') {
+          data[key] = value;
+        }
+      });
+    });
+    */
+
     var now = $.now();
     var earlier = window.localStorage.getItem('resTimeSent') || 0;
 

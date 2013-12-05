@@ -271,12 +271,14 @@ app.get('*', function (req, res) {
 
 // Navigation Timing API statistics to Keen.IO
 app.post('/navigation-timings', function (req, res) {
+  res.set({'Content-type': 'application/json'});
   res.send('Keen.IO - ' + req.body.url);
   keenSend('navigation timing', req.body);
 });
 
 // Resource Timing API statistics to Keen.IO
 app.post('/resource-timings', function (req, res) {
+  res.set({'Content-type': 'application/json'});
   res.send('Keen.IO - ' + req.body.url);
   keenSend('resource timing', req.body);
 });

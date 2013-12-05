@@ -182,6 +182,7 @@ class ShikakeOji
     private function sendKeenStats($event = 'page timing')
     {
         require 'keen-keys.php';
+        header('Content-type: application/json');
 
         $json = json_encode($_POST);
 
@@ -192,7 +193,6 @@ class ShikakeOji
         curl_setopt($curl, CURLOPT_POSTFIELDS, $json);
         echo curl_exec($curl);
         curl_close($curl);
-
     }
 
     /**
@@ -206,7 +206,8 @@ class ShikakeOji
         header('Content-Security-Policy-Report-Only: default-src \'self\' ' .
           '*.vimeo.com *.youtube.com ' .
           '*.flickr.com *.staticflickr.com ' .
-          '*.googleapis.com *.googleusercontent.com');
+          '*.googleapis.com *.googleusercontent.com ' .
+          '*.google-analytics.com');
         header('Accept-Ranges: bytes');
 
         return $out;
