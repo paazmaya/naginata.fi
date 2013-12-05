@@ -77,6 +77,10 @@ Contributors are welcome.
 ### [Express.js](http://expressjs.com/ "web application framework for node")
 
  * Runs the site
+ 
+### [SPDY](https://github.com/indutny/node-spdy "SPDY Server for node.js")
+
+ * Runs the site with better network usage
 
 ### [jQuery](http://jquery.com/ "New wave JavaScript")
 
