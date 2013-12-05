@@ -13,32 +13,32 @@
     "coveralls": "karma start karma.conf.js && cat coverage/*/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
   },
   "dependencies": {
-    "express": "~3.4.0",
+    "express": "~3.4.6",
     "marked": "~0.2.10",
     "jade": "~0.35.0",
     "keen.io": "~0.0.3",
     "spdy": "~1.17.6"
   },
   "devDependencies": {
-    "grunt": "~0.4.1",
+    "grunt": "~0.4.2",
     "grunt-contrib-uglify": "~0.2.4",
     "grunt-contrib-jasmine": "~0.5.2",
     "grunt-contrib-cssmin": "~0.7.0",
     "grunt-contrib-jshint": "~0.7.0",
     "grunt-jscs-checker": "~0.2.3",
-    "bower": "~1.2.7",
+    "bower": "~1.2.8",
     "karma-chrome-launcher": "~0.1.0",
     "karma-phantomjs-launcher": "~0.1.0",
     "karma-firefox-launcher": "~0.1.0",
     "karma-script-launcher": "~0.1.0",
     "karma-html2js-preprocessor": "~0.1.0",
-    "karma-requirejs": "~0.1.0",
+    "karma-requirejs": "~0.2.0",
     "karma-jasmine": "~0.1.3",
     "karma-coffee-preprocessor": "~0.1.0",
-    "karma": "~0.10.4",
-    "karma-coverage": "~0.1.2",
+    "karma": "~0.10.8",
+    "karma-coverage": "~0.1.4",
     "grunt-eslint": "~0.1.3",
-    "coveralls": "~2.3.0"
+    "coveralls": "~2.5.0"
   },
   "engines": {
     "node": "0.10.x",
