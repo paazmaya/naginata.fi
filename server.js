@@ -235,7 +235,8 @@ app.get(pageRegex, function (req, res) {
       '*.googleapis.com *.googleusercontent.com' +
       '*.google-analytics.com',
     'Content-Language': lang,
-    'Accept-Ranges': 'bytes'
+    'Accept-Ranges': 'bytes',
+    'Timing-Allow-Origin': '*'
   });
   res.render('index', {
     content: getContent(lang, current.title),
