@@ -314,18 +314,19 @@ var sendanmaki = window.sendanmaki = {
     var earlier = window.localStorage.getItem('navTimeSent') || 0;
 
     if (now - earlier > sendanmaki.interval) {
-      $.post('/page-timings', data, function () {
+      $.post('/navigation-timings', data, function () {
         window.localStorage.setItem('navTimeSent', now);
       });
     }
   },
-  
+
   /**
    * Send Resource Timing API results to Keen.IO.
    * @see http://www.w3.org/TR/resource-timing
    */
   sendResourceTimings: function () {
-    if (typeof window.performance !== 'object' || typeof window.performance.getEntriesByType !== 'function') {
+    if (typeof window.performance !== 'object' ||
+        typeof window.performance.getEntriesByType !== 'function') {
       return;
     }
     var data = {
@@ -342,7 +343,7 @@ var sendanmaki = window.sendanmaki = {
       });
     }
   }
-  
+
 };
 
 (function () {

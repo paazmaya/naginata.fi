@@ -140,9 +140,14 @@ class ShikakeOji
         $found = false;
 
         // Keen.IO statistics
-        if ($pageurl === '/page-timings')
+        if ($pageurl === '/navigation-timings')
         {
-            $this->sendKeenStats();
+            $this->sendKeenStats('navigation timing');
+            exit();
+        }
+        else if ($pageurl === '/resource-timings')
+        {
+            $this->sendKeenStats('resource timing');
             exit();
         }
 
@@ -174,11 +179,9 @@ class ShikakeOji
      * Found from the $_POST data, the Page Timing statistics are send to Keen.IO.
      * @see https://keen.io/docs/getting-started-guide/
      */
-    private function sendKeenStats()
+    private function sendKeenStats($event = 'page timing')
     {
         require 'keen-keys.php';
-
-        $event = 'page timing';
 
         $json = json_encode($_POST);
 

@@ -11,7 +11,7 @@
 // http://expressjs.com
 var express = require('express');
 var fs = require('fs');
-var spdy = require('spdy'),
+//var spdy = require('spdy');
 
 // Keen.IO analytics, used only if the evironment variables are in place.
 var keen = null;
@@ -270,9 +270,9 @@ app.get('*', function (req, res) {
 });
 
 // Navigation Timing API statistics to Keen.IO
-app.post('/page-timings', function (req, res) {
+app.post('/navigation-timings', function (req, res) {
   res.send('Keen.IO - ' + req.body.url);
-  keenSend('page timing', req.body);
+  keenSend('navigation timing', req.body);
 });
 
 // Resource Timing API statistics to Keen.IO
@@ -285,13 +285,15 @@ app.post('/resource-timings', function (req, res) {
 var ipaddr = process.env.OPENSHIFT_NODEJS_IP || null; // Heroku fails with non null address
 var port = process.env.OPENSHIFT_NODEJS_PORT || process.env.PORT || 5000;
 
+/*
 // https://github.com/indutny/node-spdy
 var spdyOptions = {
   key: '', //fs.readFileSync('keys/spdy-key.pem'),
   cert: '' //fs.readFileSync('keys/spdy-cert.pem')
 };
 var server = spdy.createServer(spdyOptions, app);
+*/
 
-server.listen(port, ipaddr, function () {
+app.listen(port, ipaddr, function () {
   console.log('Express.js running at http://' + ipaddr + ':' + port + '/');
 });
