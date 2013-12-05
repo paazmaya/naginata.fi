@@ -268,10 +268,16 @@ app.get('*', function (req, res) {
   res.redirect(404, '/' + defaultLang);
 });
 
-// Page Timing statistics Keen.IO
+// Navigation Timing API statistics to Keen.IO
 app.post('/page-timings', function (req, res) {
   res.send('Keen.IO - ' + req.body.url);
   keenSend('page timing', req.body);
+});
+
+// Resource Timing API statistics to Keen.IO
+app.post('/resource-timings', function (req, res) {
+  res.send('Keen.IO - ' + req.body.url);
+  keenSend('resource timing', req.body);
 });
 
 // https://devcenter.heroku.com/articles/config-vars

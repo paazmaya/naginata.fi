@@ -17,7 +17,9 @@ var sendanmaki = window.sendanmaki = {
   lang: 'fi',
 
   /**
-   * Time between when Page Timing API data is being send.
+   * Time between when Navigation and Resource Timing API data is being send
+   * by the current user.
+   * TODO: separate to per page and increase interval.
    */
   interval: 60 * 60 * 1000,
 
@@ -292,9 +294,10 @@ var sendanmaki = window.sendanmaki = {
   },
 
   /**
-   * Send Page Timing API results to Keen.IO.
+   * Send Navigation Timing API results to Keen.IO.
+   * @see http://www.w3.org/TR/navigation-timing/
    */
-  sendPageTimings: function () {
+  sendNavigationTimings: function () {
     if (typeof window.performance !== 'object' || typeof window.performance.timing !== 'object') {
       return;
     }
@@ -308,14 +311,38 @@ var sendanmaki = window.sendanmaki = {
       }
     });
     var now = $.now();
-    var earlier = window.localStorage.getItem('timingsSent') || 0;
+    var earlier = window.localStorage.getItem('navTimeSent') || 0;
 
     if (now - earlier > sendanmaki.interval) {
       $.post('/page-timings', data, function () {
-        window.localStorage.setItem('timingsSent', now);
+        window.localStorage.setItem('navTimeSent', now);
+      });
+    }
+  },
+  
+  /**
+   * Send Resource Timing API results to Keen.IO.
+   * @see http://www.w3.org/TR/resource-timing
+   */
+  sendResourceTimings: function () {
+    if (typeof window.performance !== 'object' || typeof window.performance.getEntriesByType !== 'function') {
+      return;
+    }
+    var data = {
+      url: window.location.pathname,
+      userAgent: window.navigator.userAgent,
+      entries: window.performance.getEntriesByType('resource')
+    };
+    var now = $.now();
+    var earlier = window.localStorage.getItem('resTimeSent') || 0;
+
+    if (now - earlier > sendanmaki.interval) {
+      $.post('/resource-timings', data, function () {
+        window.localStorage.setItem('resTimeSent', now);
       });
     }
   }
+  
 };
 
 (function () {
@@ -323,6 +350,7 @@ var sendanmaki = window.sendanmaki = {
   sendanmaki.domReady();
 
   window.onload = function () {
-    window.setTimeout(sendanmaki.sendPageTimings, 500);
+    window.setTimeout(sendanmaki.sendNavigationTimings, 500);
+    window.setTimeout(sendanmaki.sendResourceTimings, 600);
   };
 })();
