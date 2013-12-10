@@ -116,6 +116,7 @@ Videot avautuvat sivuilla toimivaan soittimeen, jonka voi laittaa täyttämään
 
 Videoiden tiedot kuten nimi ja otsikko ovat videoiden alkuperäisten julkaisijoiden tuottamia.
 
+-   [Sonobe Hideo 1930 in saineikan 園部秀雄](http://www.youtube.com/watch?v=NtJlD11pj5k "Sonobe Hideo 1930 in saineikan 園部秀雄")
 -   [リズムなぎなた](http://www.youtube.com/watch?v=vRB8Fkevcc8 "リズムなぎなた")
 -   [下鴨神社　奉納演武　直心影流薙刀術](http://www.youtube.com/watch?v=DiCwRBds458 "下鴨神社　奉納演武　直心影流薙刀術 / Youtube - kuniedasagami2008")
 -   [北海道日記- 自由學校20週年紀念 傳統武術表演2](http://www.youtube.com/watch?v=0TOaYDdhqlk "北海道日記- 自由學校20週年紀念 傳統武術表演2 / Youtube - kanedino")
