@@ -295,7 +295,9 @@ var sendanmaki = window.sendanmaki = {
 
   /**
    * Send Navigation Timing API results to Keen.IO.
+   *
    * @see http://www.w3.org/TR/navigation-timing/
+   * @see http://caniuse.com/nav-timing
    */
   sendNavigationTimings: function () {
     if (typeof window.performance !== 'object' ||
@@ -323,7 +325,11 @@ var sendanmaki = window.sendanmaki = {
 
   /**
    * Send Resource Timing API results to Keen.IO.
+   *
+   * Available perhaps in EI10 and Chrome 26...
+   *
    * @see http://www.w3.org/TR/resource-timing
+   * @see https://bugzilla.mozilla.org/show_bug.cgi?id=822480
    */
   sendResourceTimings: function () {
     if (typeof window.performance !== 'object' ||
@@ -335,17 +341,6 @@ var sendanmaki = window.sendanmaki = {
       userAgent: window.navigator.userAgent,
       entries: JSON.stringify(window.performance.getEntriesByType('resource'))
     };
-
-    /*
-    var entries = window.performance.getEntriesByType('resource');
-    entries.forEach(function (item) {
-      $.each(window.performance.timing, function (key, value) {
-        if (typeof value === 'number') {
-          data[key] = value;
-        }
-      });
-    });
-    */
 
     var now = $.now();
     var earlier = window.localStorage.getItem('resTimeSent') || 0;
@@ -365,6 +360,6 @@ var sendanmaki = window.sendanmaki = {
 
   window.onload = function () {
     window.setTimeout(sendanmaki.sendNavigationTimings, 500);
-    window.setTimeout(sendanmaki.sendResourceTimings, 600);
+    window.setTimeout(sendanmaki.sendResourceTimings, 1000);
   };
 })();
