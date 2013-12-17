@@ -10,6 +10,7 @@ Full legal text available in `LICENSE.md`.
 [![Coverage Status](https://coveralls.io/repos/paazmaya/naginata.fi/badge.png)](https://coveralls.io/r/paazmaya/naginata.fi)
 [![Code Climate](https://codeclimate.com/github/paazmaya/naginata.fi.png)](https://codeclimate.com/github/paazmaya/naginata.fi)
 [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/paazmaya/naginata.fi/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+[![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
 
 ## About the martial art
 
