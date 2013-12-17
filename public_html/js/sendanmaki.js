@@ -123,7 +123,7 @@ var sendanmaki = window.sendanmaki = {
   createImgNote: function (data, url) {
     var parent = $('img[src="' + url + '"]').parent().css('position', 'relative');
 
-    if (parent.size() > 0 && $('span.note[rel="' + data.note + '"]').length === 0) {
+    if (parent.length > 0 && $('span.note[rel="' + data.note + '"]').length === 0) {
       var cont = $('<span class="note" rel="' + data.note + '"></span>');
       cont.css('left', data.x).css('top', data.y);
 
