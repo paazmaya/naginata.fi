@@ -126,6 +126,7 @@ pandoc -V geometry:margin=0.5in -o grading-rules-english.md grading-rules-englis
  * Sitespeed.io, `./sitespeed.io -u http://naginata.fi -o csv -k true`
  * Keen.IO for data analytics
  * https://github.com/ktsashes/fruitjs
+ * phantomas and photobox for testing
 
 ## [TODO](https://github.com/paazmaya/naginata.fi/issues "issues")
 

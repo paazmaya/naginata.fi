@@ -93,12 +93,12 @@ module.exports = function(grunt) {
         }
       }
     },
-    
+
     // https://github.com/macbre/phantomas
-    phantomas: {        
+    phantomas: {
       hitrost: {
         options: {
-          indexPath: './phantomas/',
+          indexPath: 'phantomas/',
           raw: [
             '--film-strip',
             '--verbose'
@@ -107,17 +107,27 @@ module.exports = function(grunt) {
         }
       }
     },
-    
+
     photobox: {
       layout: {
         options: {
           indexPath: 'photobox/',
           urls: [
-            'http://naginata.fi'
+            'http://naginata.fi/fi',
+            'http://naginata.fi/fi/naginata',
+            'http://naginata.fi/fi/koryu',
+            'http://naginata.fi/fi/media',
+            'http://naginata.fi/fi/yhteystiedot',
+            'http://naginata.fi/en',
+            'http://naginata.fi/en/naginata',
+            'http://naginata.fi/en/koryu',
+            'http://naginata.fi/en/media',
+            'http://naginata.fi/en/contact'
           ],
-          screenSizes: [ 
+          screenSizes: [
             '640', '800', '1024', '1248'
-          ]
+          ],
+          useImageMagick: true
         }
       }
     }
@@ -134,6 +144,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-photobox');
 
   grunt.registerTask('minify', ['uglify', 'cssmin']);
-  grunt.registerTask('test', ['jshint', /*'eslint',*/ 'jscs', 'jasmine']);
+  grunt.registerTask('test', ['jshint', 'eslint', 'jscs', 'jasmine']);
   grunt.registerTask('default', ['test', 'minify']);
 };
