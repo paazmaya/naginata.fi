@@ -1,0 +1,893 @@
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <link rel="stylesheet" href="public/styles/phantomas.css" media="all">
+</head>
+<body>
+  <main>
+  <ul id="p--graphs" class="p--graphs">
+    
+      <li id="graph--requests" class="p--graphs--graph">
+        <h3>requests</h3>
+    
+      <li id="graph--gzipRequests" class="p--graphs--graph">
+        <h3>gzipRequests</h3>
+    
+      <li id="graph--postRequests" class="p--graphs--graph">
+        <h3>postRequests</h3>
+    
+      <li id="graph--httpsRequests" class="p--graphs--graph">
+        <h3>httpsRequests</h3>
+    
+      <li id="graph--redirects" class="p--graphs--graph">
+        <h3>redirects</h3>
+    
+      <li id="graph--notFound" class="p--graphs--graph">
+        <h3>notFound</h3>
+    
+      <li id="graph--timeToFirstByte" class="p--graphs--graph">
+        <h3>timeToFirstByte</h3>
+    
+      <li id="graph--timeToLastByte" class="p--graphs--graph">
+        <h3>timeToLastByte</h3>
+    
+      <li id="graph--bodySize" class="p--graphs--graph">
+        <h3>bodySize</h3>
+    
+      <li id="graph--contentLength" class="p--graphs--graph">
+        <h3>contentLength</h3>
+    
+      <li id="graph--ajaxRequests" class="p--graphs--graph">
+        <h3>ajaxRequests</h3>
+    
+      <li id="graph--htmlCount" class="p--graphs--graph">
+        <h3>htmlCount</h3>
+    
+      <li id="graph--htmlSize" class="p--graphs--graph">
+        <h3>htmlSize</h3>
+    
+      <li id="graph--cssCount" class="p--graphs--graph">
+        <h3>cssCount</h3>
+    
+      <li id="graph--cssSize" class="p--graphs--graph">
+        <h3>cssSize</h3>
+    
+      <li id="graph--jsCount" class="p--graphs--graph">
+        <h3>jsCount</h3>
+    
+      <li id="graph--jsSize" class="p--graphs--graph">
+        <h3>jsSize</h3>
+    
+      <li id="graph--jsonCount" class="p--graphs--graph">
+        <h3>jsonCount</h3>
+    
+      <li id="graph--jsonSize" class="p--graphs--graph">
+        <h3>jsonSize</h3>
+    
+      <li id="graph--imageCount" class="p--graphs--graph">
+        <h3>imageCount</h3>
+    
+      <li id="graph--imageSize" class="p--graphs--graph">
+        <h3>imageSize</h3>
+    
+      <li id="graph--webfontCount" class="p--graphs--graph">
+        <h3>webfontCount</h3>
+    
+      <li id="graph--webfontSize" class="p--graphs--graph">
+        <h3>webfontSize</h3>
+    
+      <li id="graph--base64Count" class="p--graphs--graph">
+        <h3>base64Count</h3>
+    
+      <li id="graph--base64Size" class="p--graphs--graph">
+        <h3>base64Size</h3>
+    
+      <li id="graph--otherCount" class="p--graphs--graph">
+        <h3>otherCount</h3>
+    
+      <li id="graph--otherSize" class="p--graphs--graph">
+        <h3>otherSize</h3>
+    
+      <li id="graph--cacheHits" class="p--graphs--graph">
+        <h3>cacheHits</h3>
+    
+      <li id="graph--cacheMisses" class="p--graphs--graph">
+        <h3>cacheMisses</h3>
+    
+      <li id="graph--cachingNotSpecified" class="p--graphs--graph">
+        <h3>cachingNotSpecified</h3>
+    
+      <li id="graph--cachingTooShort" class="p--graphs--graph">
+        <h3>cachingTooShort</h3>
+    
+      <li id="graph--cachingDisabled" class="p--graphs--graph">
+        <h3>cachingDisabled</h3>
+    
+      <li id="graph--domains" class="p--graphs--graph">
+        <h3>domains</h3>
+    
+      <li id="graph--maxRequestsPerDomain" class="p--graphs--graph">
+        <h3>maxRequestsPerDomain</h3>
+    
+      <li id="graph--medianRequestsPerDomain" class="p--graphs--graph">
+        <h3>medianRequestsPerDomain</h3>
+    
+      <li id="graph--DOMqueries" class="p--graphs--graph">
+        <h3>DOMqueries</h3>
+    
+      <li id="graph--DOMqueriesById" class="p--graphs--graph">
+        <h3>DOMqueriesById</h3>
+    
+      <li id="graph--DOMqueriesByClassName" class="p--graphs--graph">
+        <h3>DOMqueriesByClassName</h3>
+    
+      <li id="graph--DOMqueriesByTagName" class="p--graphs--graph">
+        <h3>DOMqueriesByTagName</h3>
+    
+      <li id="graph--DOMqueriesByQuerySelectorAll" class="p--graphs--graph">
+        <h3>DOMqueriesByQuerySelectorAll</h3>
+    
+      <li id="graph--DOMinserts" class="p--graphs--graph">
+        <h3>DOMinserts</h3>
+    
+      <li id="graph--DOMqueriesDuplicated" class="p--graphs--graph">
+        <h3>DOMqueriesDuplicated</h3>
+    
+      <li id="graph--eventsBound" class="p--graphs--graph">
+        <h3>eventsBound</h3>
+    
+      <li id="graph--headersCount" class="p--graphs--graph">
+        <h3>headersCount</h3>
+    
+      <li id="graph--headersSentCount" class="p--graphs--graph">
+        <h3>headersSentCount</h3>
+    
+      <li id="graph--headersRecvCount" class="p--graphs--graph">
+        <h3>headersRecvCount</h3>
+    
+      <li id="graph--headersSize" class="p--graphs--graph">
+        <h3>headersSize</h3>
+    
+      <li id="graph--headersSentSize" class="p--graphs--graph">
+        <h3>headersSentSize</h3>
+    
+      <li id="graph--headersRecvSize" class="p--graphs--graph">
+        <h3>headersRecvSize</h3>
+    
+      <li id="graph--documentWriteCalls" class="p--graphs--graph">
+        <h3>documentWriteCalls</h3>
+    
+      <li id="graph--evalCalls" class="p--graphs--graph">
+        <h3>evalCalls</h3>
+    
+      <li id="graph--jQueryOnDOMReadyFunctions" class="p--graphs--graph">
+        <h3>jQueryOnDOMReadyFunctions</h3>
+    
+      <li id="graph--jQuerySizzleCalls" class="p--graphs--graph">
+        <h3>jQuerySizzleCalls</h3>
+    
+      <li id="graph--jsErrors" class="p--graphs--graph">
+        <h3>jsErrors</h3>
+    
+      <li id="graph--assetsNotGzipped" class="p--graphs--graph">
+        <h3>assetsNotGzipped</h3>
+    
+      <li id="graph--assetsWithQueryString" class="p--graphs--graph">
+        <h3>assetsWithQueryString</h3>
+    
+      <li id="graph--smallImages" class="p--graphs--graph">
+        <h3>smallImages</h3>
+    
+      <li id="graph--multipleRequests" class="p--graphs--graph">
+        <h3>multipleRequests</h3>
+    
+      <li id="graph--timeToFirstCss" class="p--graphs--graph">
+        <h3>timeToFirstCss</h3>
+    
+      <li id="graph--timeToFirstJs" class="p--graphs--graph">
+        <h3>timeToFirstJs</h3>
+    
+      <li id="graph--timeToFirstImage" class="p--graphs--graph">
+        <h3>timeToFirstImage</h3>
+    
+      <li id="graph--onDOMReadyTime" class="p--graphs--graph">
+        <h3>onDOMReadyTime</h3>
+    
+      <li id="graph--onDOMReadyTimeEnd" class="p--graphs--graph">
+        <h3>onDOMReadyTimeEnd</h3>
+    
+      <li id="graph--windowOnLoadTime" class="p--graphs--graph">
+        <h3>windowOnLoadTime</h3>
+    
+      <li id="graph--windowOnLoadTimeEnd" class="p--graphs--graph">
+        <h3>windowOnLoadTimeEnd</h3>
+    
+      <li id="graph--httpTrafficCompleted" class="p--graphs--graph">
+        <h3>httpTrafficCompleted</h3>
+    
+      <li id="graph--windowAlerts" class="p--graphs--graph">
+        <h3>windowAlerts</h3>
+    
+      <li id="graph--windowConfirms" class="p--graphs--graph">
+        <h3>windowConfirms</h3>
+    
+      <li id="graph--windowPrompts" class="p--graphs--graph">
+        <h3>windowPrompts</h3>
+    
+      <li id="graph--consoleMessages" class="p--graphs--graph">
+        <h3>consoleMessages</h3>
+    
+      <li id="graph--cookiesSent" class="p--graphs--graph">
+        <h3>cookiesSent</h3>
+    
+      <li id="graph--cookiesRecv" class="p--graphs--graph">
+        <h3>cookiesRecv</h3>
+    
+      <li id="graph--domainsWithCookies" class="p--graphs--graph">
+        <h3>domainsWithCookies</h3>
+    
+      <li id="graph--documentCookiesLength" class="p--graphs--graph">
+        <h3>documentCookiesLength</h3>
+    
+      <li id="graph--documentCookiesCount" class="p--graphs--graph">
+        <h3>documentCookiesCount</h3>
+    
+      <li id="graph--bodyHTMLSize" class="p--graphs--graph">
+        <h3>bodyHTMLSize</h3>
+    
+      <li id="graph--iframesCount" class="p--graphs--graph">
+        <h3>iframesCount</h3>
+    
+      <li id="graph--imagesWithoutDimensions" class="p--graphs--graph">
+        <h3>imagesWithoutDimensions</h3>
+    
+      <li id="graph--commentsSize" class="p--graphs--graph">
+        <h3>commentsSize</h3>
+    
+      <li id="graph--hiddenContentSize" class="p--graphs--graph">
+        <h3>hiddenContentSize</h3>
+    
+      <li id="graph--whiteSpacesSize" class="p--graphs--graph">
+        <h3>whiteSpacesSize</h3>
+    
+      <li id="graph--DOMelementsCount" class="p--graphs--graph">
+        <h3>DOMelementsCount</h3>
+    
+      <li id="graph--DOMelementMaxDepth" class="p--graphs--graph">
+        <h3>DOMelementMaxDepth</h3>
+    
+      <li id="graph--nodesWithInlineCSS" class="p--graphs--graph">
+        <h3>nodesWithInlineCSS</h3>
+    
+      <li id="graph--globalVariables" class="p--graphs--graph">
+        <h3>globalVariables</h3>
+    
+      <li id="graph--localStorageEntries" class="p--graphs--graph">
+        <h3>localStorageEntries</h3>
+    
+      <li id="graph--smallestResponse" class="p--graphs--graph">
+        <h3>smallestResponse</h3>
+    
+      <li id="graph--biggestResponse" class="p--graphs--graph">
+        <h3>biggestResponse</h3>
+    
+      <li id="graph--fastestResponse" class="p--graphs--graph">
+        <h3>fastestResponse</h3>
+    
+      <li id="graph--slowestResponse" class="p--graphs--graph">
+        <h3>slowestResponse</h3>
+    
+      <li id="graph--smallestLatency" class="p--graphs--graph">
+        <h3>smallestLatency</h3>
+    
+      <li id="graph--biggestLatency" class="p--graphs--graph">
+        <h3>biggestLatency</h3>
+    
+      <li id="graph--medianResponse" class="p--graphs--graph">
+        <h3>medianResponse</h3>
+    
+      <li id="graph--medianLatency" class="p--graphs--graph">
+        <h3>medianLatency</h3>
+    
+  </ul>
+  
+    <table class="p--table">
+      <thead class="p--table--head">
+        <th class="p--table--column">Date</th>
+        
+          <th class="p--table--column">requests</th>
+        
+          <th class="p--table--column">gzipRequests</th>
+        
+          <th class="p--table--column">postRequests</th>
+        
+          <th class="p--table--column">httpsRequests</th>
+        
+          <th class="p--table--column">redirects</th>
+        
+          <th class="p--table--column">notFound</th>
+        
+          <th class="p--table--column">timeToFirstByte</th>
+        
+      </thead>
+      <tbody class="p--table--body">
+        
+          <tr class="p--table--row">
+            <td class="p--table--column__highlight">2013-12-17T21:58:47.264Z</td>
+            
+              <td class="p--table--column">9</td>
+            
+              <td class="p--table--column">4</td>
+            
+              <td class="p--table--column">0</td>
+            
+              <td class="p--table--column">0</td>
+            
+              <td class="p--table--column">1</td>
+            
+              <td class="p--table--column">0</td>
+            
+              <td class="p--table--column">236</td>
+            
+          </tr>
+        
+      </tbody>
+    </table>
+  
+    <table class="p--table">
+      <thead class="p--table--head">
+        <th class="p--table--column">Date</th>
+        
+          <th class="p--table--column">timeToLastByte</th>
+        
+          <th class="p--table--column">bodySize</th>
+        
+          <th class="p--table--column">contentLength</th>
+        
+          <th class="p--table--column">ajaxRequests</th>
+        
+          <th class="p--table--column">htmlCount</th>
+        
+          <th class="p--table--column">htmlSize</th>
+        
+          <th class="p--table--column">cssCount</th>
+        
+      </thead>
+      <tbody class="p--table--body">
+        
+          <tr class="p--table--row">
+            <td class="p--table--column__highlight">2013-12-17T21:58:47.264Z</td>
+            
+              <td class="p--table--column">241</td>
+            
+              <td class="p--table--column">123089</td>
+            
+              <td class="p--table--column">144321</td>
+            
+              <td class="p--table--column">1</td>
+            
+              <td class="p--table--column">2</td>
+            
+              <td class="p--table--column">9911</td>
+            
+              <td class="p--table--column">2</td>
+            
+          </tr>
+        
+      </tbody>
+    </table>
+  
+    <table class="p--table">
+      <thead class="p--table--head">
+        <th class="p--table--column">Date</th>
+        
+          <th class="p--table--column">cssSize</th>
+        
+          <th class="p--table--column">jsCount</th>
+        
+          <th class="p--table--column">jsSize</th>
+        
+          <th class="p--table--column">jsonCount</th>
+        
+          <th class="p--table--column">jsonSize</th>
+        
+          <th class="p--table--column">imageCount</th>
+        
+          <th class="p--table--column">imageSize</th>
+        
+      </thead>
+      <tbody class="p--table--body">
+        
+          <tr class="p--table--row">
+            <td class="p--table--column__highlight">2013-12-17T21:58:47.264Z</td>
+            
+              <td class="p--table--column">7985</td>
+            
+              <td class="p--table--column">2</td>
+            
+              <td class="p--table--column">101995</td>
+            
+              <td class="p--table--column">0</td>
+            
+              <td class="p--table--column">0</td>
+            
+              <td class="p--table--column">3</td>
+            
+              <td class="p--table--column">3198</td>
+            
+          </tr>
+        
+      </tbody>
+    </table>
+  
+    <table class="p--table">
+      <thead class="p--table--head">
+        <th class="p--table--column">Date</th>
+        
+          <th class="p--table--column">webfontCount</th>
+        
+          <th class="p--table--column">webfontSize</th>
+        
+          <th class="p--table--column">base64Count</th>
+        
+          <th class="p--table--column">base64Size</th>
+        
+          <th class="p--table--column">otherCount</th>
+        
+          <th class="p--table--column">otherSize</th>
+        
+          <th class="p--table--column">cacheHits</th>
+        
+      </thead>
+      <tbody class="p--table--body">
+        
+          <tr class="p--table--row">
+            <td class="p--table--column__highlight">2013-12-17T21:58:47.264Z</td>
+            
+              <td class="p--table--column">0</td>
+            
+              <td class="p--table--column">0</td>
+            
+              <td class="p--table--column">0</td>
+            
+              <td class="p--table--column">0</td>
+            
+              <td class="p--table--column">0</td>
+            
+              <td class="p--table--column">0</td>
+            
+              <td class="p--table--column">1</td>
+            
+          </tr>
+        
+      </tbody>
+    </table>
+  
+    <table class="p--table">
+      <thead class="p--table--head">
+        <th class="p--table--column">Date</th>
+        
+          <th class="p--table--column">cacheMisses</th>
+        
+          <th class="p--table--column">cachingNotSpecified</th>
+        
+          <th class="p--table--column">cachingTooShort</th>
+        
+          <th class="p--table--column">cachingDisabled</th>
+        
+          <th class="p--table--column">domains</th>
+        
+          <th class="p--table--column">maxRequestsPerDomain</th>
+        
+          <th class="p--table--column">medianRequestsPerDomain</th>
+        
+      </thead>
+      <tbody class="p--table--body">
+        
+          <tr class="p--table--row">
+            <td class="p--table--column__highlight">2013-12-17T21:58:47.264Z</td>
+            
+              <td class="p--table--column">0</td>
+            
+              <td class="p--table--column">1</td>
+            
+              <td class="p--table--column">2</td>
+            
+              <td class="p--table--column">0</td>
+            
+              <td class="p--table--column">4</td>
+            
+              <td class="p--table--column">5</td>
+            
+              <td class="p--table--column">1.5</td>
+            
+          </tr>
+        
+      </tbody>
+    </table>
+  
+    <table class="p--table">
+      <thead class="p--table--head">
+        <th class="p--table--column">Date</th>
+        
+          <th class="p--table--column">DOMqueries</th>
+        
+          <th class="p--table--column">DOMqueriesById</th>
+        
+          <th class="p--table--column">DOMqueriesByClassName</th>
+        
+          <th class="p--table--column">DOMqueriesByTagName</th>
+        
+          <th class="p--table--column">DOMqueriesByQuerySelectorAll</th>
+        
+          <th class="p--table--column">DOMinserts</th>
+        
+          <th class="p--table--column">DOMqueriesDuplicated</th>
+        
+      </thead>
+      <tbody class="p--table--body">
+        
+          <tr class="p--table--row">
+            <td class="p--table--column__highlight">2013-12-17T21:58:47.264Z</td>
+            
+              <td class="p--table--column">9</td>
+            
+              <td class="p--table--column">0</td>
+            
+              <td class="p--table--column">0</td>
+            
+              <td class="p--table--column">9</td>
+            
+              <td class="p--table--column">0</td>
+            
+              <td class="p--table--column">44</td>
+            
+              <td class="p--table--column">2</td>
+            
+          </tr>
+        
+      </tbody>
+    </table>
+  
+    <table class="p--table">
+      <thead class="p--table--head">
+        <th class="p--table--column">Date</th>
+        
+          <th class="p--table--column">eventsBound</th>
+        
+          <th class="p--table--column">headersCount</th>
+        
+          <th class="p--table--column">headersSentCount</th>
+        
+          <th class="p--table--column">headersRecvCount</th>
+        
+          <th class="p--table--column">headersSize</th>
+        
+          <th class="p--table--column">headersSentSize</th>
+        
+          <th class="p--table--column">headersRecvSize</th>
+        
+      </thead>
+      <tbody class="p--table--body">
+        
+          <tr class="p--table--row">
+            <td class="p--table--column__highlight">2013-12-17T21:58:47.264Z</td>
+            
+              <td class="p--table--column">34</td>
+            
+              <td class="p--table--column">136</td>
+            
+              <td class="p--table--column">32</td>
+            
+              <td class="p--table--column">104</td>
+            
+              <td class="p--table--column">5378</td>
+            
+              <td class="p--table--column">1313</td>
+            
+              <td class="p--table--column">4065</td>
+            
+          </tr>
+        
+      </tbody>
+    </table>
+  
+    <table class="p--table">
+      <thead class="p--table--head">
+        <th class="p--table--column">Date</th>
+        
+          <th class="p--table--column">documentWriteCalls</th>
+        
+          <th class="p--table--column">evalCalls</th>
+        
+          <th class="p--table--column">jQueryVersion</th>
+        
+          <th class="p--table--column">jQueryOnDOMReadyFunctions</th>
+        
+          <th class="p--table--column">jQuerySizzleCalls</th>
+        
+          <th class="p--table--column">jsErrors</th>
+        
+          <th class="p--table--column">assetsNotGzipped</th>
+        
+      </thead>
+      <tbody class="p--table--body">
+        
+          <tr class="p--table--row">
+            <td class="p--table--column__highlight">2013-12-17T21:58:47.264Z</td>
+            
+              <td class="p--table--column">0</td>
+            
+              <td class="p--table--column">0</td>
+            
+              <td class="p--table--column">2.0.3</td>
+            
+              <td class="p--table--column">1</td>
+            
+              <td class="p--table--column">8</td>
+            
+              <td class="p--table--column">0</td>
+            
+              <td class="p--table--column">2</td>
+            
+          </tr>
+        
+      </tbody>
+    </table>
+  
+    <table class="p--table">
+      <thead class="p--table--head">
+        <th class="p--table--column">Date</th>
+        
+          <th class="p--table--column">assetsWithQueryString</th>
+        
+          <th class="p--table--column">smallImages</th>
+        
+          <th class="p--table--column">multipleRequests</th>
+        
+          <th class="p--table--column">timeToFirstCss</th>
+        
+          <th class="p--table--column">timeToFirstJs</th>
+        
+          <th class="p--table--column">timeToFirstImage</th>
+        
+          <th class="p--table--column">onDOMReadyTime</th>
+        
+      </thead>
+      <tbody class="p--table--body">
+        
+          <tr class="p--table--row">
+            <td class="p--table--column__highlight">2013-12-17T21:58:47.264Z</td>
+            
+              <td class="p--table--column">2</td>
+            
+              <td class="p--table--column">2</td>
+            
+              <td class="p--table--column">0</td>
+            
+              <td class="p--table--column">755</td>
+            
+              <td class="p--table--column">1323</td>
+            
+              <td class="p--table--column">1321</td>
+            
+              <td class="p--table--column">699</td>
+            
+          </tr>
+        
+      </tbody>
+    </table>
+  
+    <table class="p--table">
+      <thead class="p--table--head">
+        <th class="p--table--column">Date</th>
+        
+          <th class="p--table--column">onDOMReadyTimeEnd</th>
+        
+          <th class="p--table--column">windowOnLoadTime</th>
+        
+          <th class="p--table--column">windowOnLoadTimeEnd</th>
+        
+          <th class="p--table--column">httpTrafficCompleted</th>
+        
+          <th class="p--table--column">windowAlerts</th>
+        
+          <th class="p--table--column">windowConfirms</th>
+        
+          <th class="p--table--column">windowPrompts</th>
+        
+      </thead>
+      <tbody class="p--table--body">
+        
+          <tr class="p--table--row">
+            <td class="p--table--column__highlight">2013-12-17T21:58:47.264Z</td>
+            
+              <td class="p--table--column">703</td>
+            
+              <td class="p--table--column">1174</td>
+            
+              <td class="p--table--column">1175</td>
+            
+              <td class="p--table--column">1851</td>
+            
+              <td class="p--table--column">0</td>
+            
+              <td class="p--table--column">0</td>
+            
+              <td class="p--table--column">0</td>
+            
+          </tr>
+        
+      </tbody>
+    </table>
+  
+    <table class="p--table">
+      <thead class="p--table--head">
+        <th class="p--table--column">Date</th>
+        
+          <th class="p--table--column">consoleMessages</th>
+        
+          <th class="p--table--column">cookiesSent</th>
+        
+          <th class="p--table--column">cookiesRecv</th>
+        
+          <th class="p--table--column">domainsWithCookies</th>
+        
+          <th class="p--table--column">documentCookiesLength</th>
+        
+          <th class="p--table--column">documentCookiesCount</th>
+        
+          <th class="p--table--column">bodyHTMLSize</th>
+        
+      </thead>
+      <tbody class="p--table--body">
+        
+          <tr class="p--table--row">
+            <td class="p--table--column__highlight">2013-12-17T21:58:47.264Z</td>
+            
+              <td class="p--table--column">0</td>
+            
+              <td class="p--table--column">0</td>
+            
+              <td class="p--table--column">199</td>
+            
+              <td class="p--table--column">1</td>
+            
+              <td class="p--table--column">232</td>
+            
+              <td class="p--table--column">5</td>
+            
+              <td class="p--table--column">10382</td>
+            
+          </tr>
+        
+      </tbody>
+    </table>
+  
+    <table class="p--table">
+      <thead class="p--table--head">
+        <th class="p--table--column">Date</th>
+        
+          <th class="p--table--column">iframesCount</th>
+        
+          <th class="p--table--column">imagesWithoutDimensions</th>
+        
+          <th class="p--table--column">commentsSize</th>
+        
+          <th class="p--table--column">hiddenContentSize</th>
+        
+          <th class="p--table--column">whiteSpacesSize</th>
+        
+          <th class="p--table--column">DOMelementsCount</th>
+        
+          <th class="p--table--column">DOMelementMaxDepth</th>
+        
+      </thead>
+      <tbody class="p--table--body">
+        
+          <tr class="p--table--row">
+            <td class="p--table--column__highlight">2013-12-17T21:58:47.264Z</td>
+            
+              <td class="p--table--column">0</td>
+            
+              <td class="p--table--column">1</td>
+            
+              <td class="p--table--column">0</td>
+            
+              <td class="p--table--column">1027</td>
+            
+              <td class="p--table--column">64</td>
+            
+              <td class="p--table--column">102</td>
+            
+              <td class="p--table--column">5</td>
+            
+          </tr>
+        
+      </tbody>
+    </table>
+  
+    <table class="p--table">
+      <thead class="p--table--head">
+        <th class="p--table--column">Date</th>
+        
+          <th class="p--table--column">nodesWithInlineCSS</th>
+        
+          <th class="p--table--column">globalVariables</th>
+        
+          <th class="p--table--column">localStorageEntries</th>
+        
+          <th class="p--table--column">smallestResponse</th>
+        
+          <th class="p--table--column">biggestResponse</th>
+        
+          <th class="p--table--column">fastestResponse</th>
+        
+          <th class="p--table--column">slowestResponse</th>
+        
+      </thead>
+      <tbody class="p--table--body">
+        
+          <tr class="p--table--row">
+            <td class="p--table--column__highlight">2013-12-17T21:58:47.264Z</td>
+            
+              <td class="p--table--column">0</td>
+            
+              <td class="p--table--column">7</td>
+            
+              <td class="p--table--column">0</td>
+            
+              <td class="p--table--column">35</td>
+            
+              <td class="p--table--column">99402</td>
+            
+              <td class="p--table--column">25</td>
+            
+              <td class="p--table--column">645</td>
+            
+          </tr>
+        
+      </tbody>
+    </table>
+  
+    <table class="p--table">
+      <thead class="p--table--head">
+        <th class="p--table--column">Date</th>
+        
+          <th class="p--table--column">smallestLatency</th>
+        
+          <th class="p--table--column">biggestLatency</th>
+        
+          <th class="p--table--column">medianResponse</th>
+        
+          <th class="p--table--column">medianLatency</th>
+        
+      </thead>
+      <tbody class="p--table--body">
+        
+          <tr class="p--table--row">
+            <td class="p--table--column__highlight">2013-12-17T21:58:47.264Z</td>
+            
+              <td class="p--table--column">25</td>
+            
+              <td class="p--table--column">645</td>
+            
+              <td class="p--table--column">171.5</td>
+            
+              <td class="p--table--column">90.5</td>
+            
+          </tr>
+        
+      </tbody>
+    </table>
+  
+</main>
+<script>var results = [{"generator":"phantomas v0.10.1","url":"http://naginata.fi/en","metrics":{"requests":9,"gzipRequests":4,"postRequests":0,"httpsRequests":0,"redirects":1,"notFound":0,"timeToFirstByte":236,"timeToLastByte":241,"bodySize":123089,"contentLength":144321,"ajaxRequests":1,"htmlCount":2,"htmlSize":9911,"cssCount":2,"cssSize":7985,"jsCount":2,"jsSize":101995,"jsonCount":0,"jsonSize":0,"imageCount":3,"imageSize":3198,"webfontCount":0,"webfontSize":0,"base64Count":0,"base64Size":0,"otherCount":0,"otherSize":0,"cacheHits":1,"cacheMisses":0,"cachingNotSpecified":1,"cachingTooShort":2,"cachingDisabled":0,"domains":4,"maxRequestsPerDomain":5,"medianRequestsPerDomain":1.5,"DOMqueries":9,"DOMqueriesById":0,"DOMqueriesByClassName":0,"DOMqueriesByTagName":9,"DOMqueriesByQuerySelectorAll":0,"DOMinserts":44,"DOMqueriesDuplicated":2,"eventsBound":34,"headersCount":136,"headersSentCount":32,"headersRecvCount":104,"headersSize":5378,"headersSentSize":1313,"headersRecvSize":4065,"documentWriteCalls":0,"evalCalls":0,"jQueryVersion":"2.0.3","jQueryOnDOMReadyFunctions":1,"jQuerySizzleCalls":8,"jsErrors":0,"assetsNotGzipped":2,"assetsWithQueryString":2,"smallImages":2,"multipleRequests":0,"timeToFirstCss":755,"timeToFirstJs":1323,"timeToFirstImage":1321,"onDOMReadyTime":699,"onDOMReadyTimeEnd":703,"windowOnLoadTime":1174,"windowOnLoadTimeEnd":1175,"httpTrafficCompleted":1851,"windowAlerts":0,"windowConfirms":0,"windowPrompts":0,"consoleMessages":0,"cookiesSent":0,"cookiesRecv":199,"domainsWithCookies":1,"documentCookiesLength":232,"documentCookiesCount":5,"bodyHTMLSize":10382,"iframesCount":0,"imagesWithoutDimensions":1,"commentsSize":0,"hiddenContentSize":1027,"whiteSpacesSize":64,"DOMelementsCount":102,"DOMelementMaxDepth":5,"nodesWithInlineCSS":0,"globalVariables":7,"localStorageEntries":0,"smallestResponse":35,"biggestResponse":99402,"fastestResponse":25,"slowestResponse":645,"smallestLatency":25,"biggestLatency":645,"medianResponse":171.5,"medianLatency":90.5},"offenders":{"domains":["naginata.fi: 5 request(s)","www.google-analytics.com: 2 request(s)","fonts.googleapis.com: 1 request(s)","farm7.staticflickr.com: 1 request(s)"],"hiddenContentSize":["body > div#colorbox (1026 bytes)"],"DOMqueries":["tag name \"a\": 3 queries","tag name \"*\": 2 queries"],"globalVariables":["$, _gaq, _gat, gaGlobal, jQuery, jQuery203063345854217186570.7103475742042065, sendanmaki"]},"asserts":false,"notices":["First css received in 755 ms: <http://naginata.fi/css/naginata.min.css>","First image received in 1321 ms: <http://farm7.staticflickr.com/6059/6283180930_4405e8e6f1_m.jpg>","First js received in 1323 ms: <http://naginata.fi/js/naginata.min.js>","Redirect: <http://naginata.fi/> is a redirect (HTTP 302 Moved Temporarily) to <http://naginata.fi/en>","","The smallest response (0.03 kB): <http://www.google-analytics.com/__utm.gif?utmwv=5.4.6&utms=1&utmn=1474014481&utmhn=naginata.fi&utmcs=UTF-8&utmsr=1920x1080&utmvp=2560x2048&utmsc=32-bit&utmul=en-gb&utmje=0&utmfl=-&utmdt=News%20%7C%20Naginata%20Finland&utmhid=985149804&utmr=-&utmp=%2Fen&utmht=1387317526194&utmac=UA-2643697-14&utmcc=__utma%3D193791282.2022440201.1387317526.1387317526.1387317526.1%3B%2B__utmz%3D193791282.1387317526.1.1.utmcsr%3D(direct)%7Cutmccn%3D(direct)%7Cutmcmd%3D(none)%3B&utmu=qBAAAAAAAAAAAAAAAAAAAAB~>","The biggest response (97.07 kB): <http://naginata.fi/js/naginata.min.js>","","The fastest response (25 ms): <http://www.google-analytics.com/__utm.gif?utmwv=5.4.6&utms=1&utmn=1474014481&utmhn=naginata.fi&utmcs=UTF-8&utmsr=1920x1080&utmvp=2560x2048&utmsc=32-bit&utmul=en-gb&utmje=0&utmfl=-&utmdt=News%20%7C%20Naginata%20Finland&utmhid=985149804&utmr=-&utmp=%2Fen&utmht=1387317526194&utmac=UA-2643697-14&utmcc=__utma%3D193791282.2022440201.1387317526.1387317526.1387317526.1%3B%2B__utmz%3D193791282.1387317526.1.1.utmcsr%3D(direct)%7Cutmccn%3D(direct)%7Cutmcmd%3D(none)%3B&utmu=qBAAAAAAAAAAAAAAAAAAAAB~>","The slowest response (645 ms): <http://naginata.fi/js/naginata.min.js>","","The smallest latency (25 ms): <http://www.google-analytics.com/__utm.gif?utmwv=5.4.6&utms=1&utmn=1474014481&utmhn=naginata.fi&utmcs=UTF-8&utmsr=1920x1080&utmvp=2560x2048&utmsc=32-bit&utmul=en-gb&utmje=0&utmfl=-&utmdt=News%20%7C%20Naginata%20Finland&utmhid=985149804&utmr=-&utmp=%2Fen&utmht=1387317526194&utmac=UA-2643697-14&utmcc=__utma%3D193791282.2022440201.1387317526.1387317526.1387317526.1%3B%2B__utmz%3D193791282.1387317526.1.1.utmcsr%3D(direct)%7Cutmccn%3D(direct)%7Cutmcmd%3D(none)%3B&utmu=qBAAAAAAAAAAAAAAAAAAAAB~>","The biggest latency (645 ms): <http://naginata.fi/js/naginata.min.js>","","Time spent on backend / frontend: 17% / 83%"],"timestamp":1387317527264}]</script>
+<script src="public/scripts/d3.min.js"></script>
+<script src="public/scripts/phantomas.min.js"></script>
+</body>
+</html>
