@@ -11,7 +11,7 @@
 // http://expressjs.com
 var express = require('express');
 var fs = require('fs');
-//var spdy = require('spdy');
+var spdy = require('spdy');
 
 // Keen.IO analytics, used only if the evironment variables are in place.
 var keen = null;
@@ -291,15 +291,21 @@ app.post('/resource-timings', function (req, res) {
 var ipaddr = process.env.OPENSHIFT_NODEJS_IP || null; // Heroku fails with non null address
 var port = process.env.OPENSHIFT_NODEJS_PORT || process.env.PORT || 5000;
 
-/*
+
 // https://github.com/indutny/node-spdy
-var spdyOptions = {
-  key: '', //fs.readFileSync('keys/spdy-key.pem'),
-  cert: '' //fs.readFileSync('keys/spdy-cert.pem')
+spdyOptions = {
+  key: fs.readFileSync(__dirname + '/keys/spdy-key.pem'),
+  cert: fs.readFileSync(__dirname + '/keys/spdy-cert.pem'),
+  ca: [fs.readFileSync(__dirname + '/keys/spdy-ca-key.pem')],
+
+  // **optional** SPDY-specific options
+  windowSize: 1024 * 1024, // Server's window size
+
+  // **optional** if true - server will send 3.1 frames on 3.0 *plain* spdy
+  autoSpdy31: false
 };
 var server = spdy.createServer(spdyOptions, app);
-*/
 
-app.listen(port, ipaddr, function () {
+server.listen(port, ipaddr, function () {
   console.log('Express.js running at http://' + ipaddr + ':' + port + '/');
 });
