@@ -293,7 +293,7 @@ var port = process.env.OPENSHIFT_NODEJS_PORT || process.env.PORT || 5000;
 
 
 // https://github.com/indutny/node-spdy
-spdyOptions = {
+var spdyOptions = {
   key: fs.readFileSync(__dirname + '/keys/spdy-key.pem'),
   cert: fs.readFileSync(__dirname + '/keys/spdy-cert.pem'),
   ca: [fs.readFileSync(__dirname + '/keys/spdy-ca-key.pem')],

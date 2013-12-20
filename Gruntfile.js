@@ -65,6 +65,9 @@ module.exports = function(grunt) {
     },
 
     eslint: {
+      options: {
+        config: 'eslint.json'
+      },
       target: '<%= jshint.onlymine.src %>'
     },
 
