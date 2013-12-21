@@ -49,26 +49,17 @@ module.exports = function(grunt) {
       }
     },
 
-    jshint: {
-      onlymine: {
-        src: [
-          'Gruntfile.js',
-          'karma.conf.js',
-          'server.js',
-          'public_html/js/analytics.js',
-          'public_html/js/sendanmaki.js'
-        ],
-        options: {
-          jshintrc: '.jshintrc'
-        }
-      }
-    },
-
     eslint: {
       options: {
         config: 'eslint.json'
       },
-      target: '<%= jshint.onlymine.src %>'
+      target: [
+        'Gruntfile.js',
+        'karma.conf.js',
+        'server.js',
+        'public_html/js/analytics.js',
+        'public_html/js/sendanmaki.js'
+      ]
     },
 
     jscs: {
@@ -77,7 +68,7 @@ module.exports = function(grunt) {
           config: '.jscs.json'
         },
         files: {
-          src: '<%= jshint.onlymine.src %>'
+          src: '<%= eslint.target %>'
         }
       }
     },
@@ -147,6 +138,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-photobox');
 
   grunt.registerTask('minify', ['uglify', 'cssmin']);
-  grunt.registerTask('test', ['jshint', 'eslint', 'jscs', 'jasmine']);
+  grunt.registerTask('test', ['eslint', 'jscs', 'jasmine']);
   grunt.registerTask('default', ['test', 'minify']);
 };

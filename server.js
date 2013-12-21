@@ -291,7 +291,6 @@ app.post('/resource-timings', function (req, res) {
 var ipaddr = process.env.OPENSHIFT_NODEJS_IP || null; // Heroku fails with non null address
 var port = process.env.OPENSHIFT_NODEJS_PORT || process.env.PORT || 5000;
 
-
 // https://github.com/indutny/node-spdy
 var spdyOptions = {
   key: fs.readFileSync(__dirname + '/keys/spdy-key.pem'),
