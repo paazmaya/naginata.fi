@@ -11,6 +11,7 @@ Full legal text available in `LICENSE.md`.
 [![Code Climate](https://codeclimate.com/github/paazmaya/naginata.fi.png)](https://codeclimate.com/github/paazmaya/naginata.fi)
 [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/paazmaya/naginata.fi/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
+[![Stories in Ready](https://badge.waffle.io/paazmaya/naginata.fi.png?label=ready)](http://waffle.io/paazmaya/naginata.fi)
 
 ## About the martial art
 
