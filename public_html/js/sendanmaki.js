@@ -308,11 +308,33 @@ var sendanmaki = window.sendanmaki = {
       url: window.location.pathname,
       userAgent: window.navigator.userAgent
     };
+    // navigationStart is the first event taking place in the PerformanceTiming sequence
+    var navigationStart = window.performance.timing.navigationStart;
+    // All the keys will be set to the relative time as it gives more value than the time.
     $.each(window.performance.timing, function (key, value) {
       if (typeof value === 'number') {
-        data[key] = value;
+        // Value should be the time when the given event took place, 
+        // but might be 0 if the event was not fired or was not completed.
+        data[key] = value === 0 ? 0 : value - navigationStart;
       }
     });
+    
+    /*
+    interface PerformanceNavigation {
+      const unsigned short TYPE_NAVIGATE = 0;
+      const unsigned short TYPE_RELOAD = 1;
+      const unsigned short TYPE_BACK_FORWARD = 2;
+      const unsigned short TYPE_RESERVED = 255;
+      readonly attribute unsigned short type;
+      readonly attribute unsigned short redirectCount;
+    };
+    */
+    if (typeof window.performance.navigation === 'object') {
+      var nav = window.performance.navigation;
+      data.redirectCount = nav.redirectCount;
+      data.navigationType = nav.type < 3 ? ['NAVIGATE', 'RELOAD', 'BACK_FORWARD'][nav.type] : nav.type;
+    }
+    
     var now = $.now();
     var earlier = window.localStorage.getItem('navTimeSent') || 0;
 
