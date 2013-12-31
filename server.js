@@ -41,12 +41,27 @@ var pageJson = JSON.parse(pageData);
 var app = express();
 
 if (process.env.NODE_ENV === 'production') {
+  // Compress response data with gzip/deflate.
   app.use(express.compress());
 }
+
+// Static file server with the given root path.
 app.use(express.static(__dirname + '/public_html'));
+
+// Log requests with the given options or a format string,  ':remote-addr - - [:date] ":method :url HTTP/:http-version" :status :res[content-length] ":referrer" ":user-agent"'
 app.use(express.logger());
+
+// Parse JSON request bodies, providing the parsed object as req.body.
 app.use(express.json());
+
+// Parse x-ww-form-urlencoded request bodies, providing the parsed object as req.body using https://github.com/visionmedia/node-querystring
 app.use(express.urlencoded());
+
+// Adds the X-Response-Time header displaying the response duration in milliseconds.
+app.use(express.responseTime()); 
+
+// Times out the request in ms, defaulting to 5000
+app.use(express.responseTime(1200)); 
 
 app.on('uncaughtException', function (err) {
   console.error(err.stack);
@@ -70,10 +85,10 @@ var keenSend = function (type, content) {
   }
   keen.addEvent(type, content, function(err, res) {
     if (err) {
-      console.log('Oh no, an error! ' + err);
+      console.log('Keen.IO error: ' + err);
     }
     else {
-      console.log('Hooray, it worked! ' + res);
+      console.log('Keen.IO responce: ' + res);
     }
   });
 };
