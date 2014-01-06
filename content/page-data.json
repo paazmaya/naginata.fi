@@ -81,33 +81,33 @@
     },
     {
       "url": "/ja",
-      "header": "ニュス",
-      "title": "ニュス",
-      "description": ""
+      "header": "ニュ-ス”,
+      "title": "ニュ-ス”,
+      "description": “フィンランドにおけるなぎなたの最新イベント及びニュース”,
     },
     {
       "url": "/ja/naginata",
       "header": "新しいなぎなた",
       "title": "なぎなた",
-      "description": ""
+      "description": “現代日本武道である新しいなぎなたは長い武器を使用する",
     },
     {
       "url": "/ja/koryu",
       "header": "直心影流薙刀術",
       "title": "古流",
-      "description": ""
+      "description": “文字通り古流とは古い流派のことである。なぎなたと関連しており、？？？”
     },
     {
       "url": "/ja/media",
       "header": "写真やビデオ",
       "title": "メディア",
-      "description": ""
+      "description": “世界のなぎなたの稽古風景や演武の写真及びビデオクリップ”
     },
     {
-      "url": "/ja/renraku",
-      "header": "連絡",
-      "title": "連絡",
-      "description": ""
+      "url": "/ja/toiawase”,
+      "header": “問い合わせ”,
+      "title": “問い合わせ”,
+      "description": “当該ウェブサイト運営管理者への問い合わせ”
     }
   ],
   "footer": {
