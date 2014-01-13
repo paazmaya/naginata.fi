@@ -9,7 +9,7 @@
     Germany](http://www.genkido.de/naginata.html "Bishamonten Naginata Kyôshitsu")
 -   04/2014 - Atarashii Naginata Easter Seminar in Helsinki
 -   03/2014 - Annual Seminar in the UK
--   14-16/02/2014 - First Atarashii Naginata seminar in St. Petersburg, Russia
+-   14-16/02/2014 - [First Atarashii Naginata seminar in St. Petersburg, Russia](https://www.facebook.com/events/1398129980435747/ "Открытый семинар по нагинате")
 
 ## In the Past
 
