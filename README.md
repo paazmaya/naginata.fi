@@ -129,18 +129,20 @@ pandoc -V geometry:margin=0.5in -o grading-rules-english.md grading-rules-englis
 
  * Results are available at [paazmaya.github.io/naginata.fi/phantomas](http://paazmaya.github.io/naginata.fi/phantomas)
 
+### [Sitespeed.io](http://sitespeed.io) for page performance metrics
+
+ * Run with command `./sitespeed.io -u http://naginata.fi -k true -d 2`
+ * Results are available at [paazmaya.github.io/naginata.fi/sitespeed](http://paazmaya.github.io/naginata.fi/sitespeed)
+
 ## Other notes
 
  * Speed study (http://blog.chromium.org/2010/07/do-you-know-how-slow-your-web-page-is.html)
- * Sitespeed.io, `./sitespeed.io -u http://naginata.fi -o csv -k true`
  * Keen.IO for data analytics
  * https://github.com/ktsashes/fruitjs
- * phantomas and photobox for testing
 
 ## [TODO](https://github.com/paazmaya/naginata.fi/issues "issues")
 
- * Translations for application strings, issues 1 and 2
- * Jasmine unit tests, for what ever little testable things there are, issue 3 and 4 for coverage
+ * Jasmine unit tests, for what ever little testable things there are, issue #3 and #4 for coverage
  * Facebook liking and related, https://developers.facebook.com/tools/debug/og/object?q=naginata.fi
 
 ## History

@@ -86,44 +86,6 @@ module.exports = function(grunt) {
           specs: 'tests/js/sendanmaki_spec.js'
         }
       }
-    },
-
-    // https://github.com/macbre/phantomas
-    phantomas: {
-      hitrost: {
-        options: {
-          indexPath: 'phantomas/',
-          raw: [
-            '--film-strip',
-            '--verbose'
-          ],
-          url: 'http://naginata.fi'
-        }
-      }
-    },
-
-    photobox: {
-      layout: {
-        options: {
-          indexPath: 'photobox/',
-          urls: [
-            'http://naginata.fi/fi',
-            'http://naginata.fi/fi/naginata',
-            'http://naginata.fi/fi/koryu',
-            'http://naginata.fi/fi/media',
-            'http://naginata.fi/fi/yhteystiedot',
-            'http://naginata.fi/en',
-            'http://naginata.fi/en/naginata',
-            'http://naginata.fi/en/koryu',
-            'http://naginata.fi/en/media',
-            'http://naginata.fi/en/contact'
-          ],
-          screenSizes: [
-            '640', '800', '1024', '1248'
-          ],
-          template: 'magic'
-        }
-      }
     }
 
   });
@@ -134,8 +96,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-eslint');
   grunt.loadNpmTasks('grunt-jscs-checker');
-  grunt.loadNpmTasks('grunt-phantomas');
-  grunt.loadNpmTasks('grunt-photobox');
 
   grunt.registerTask('minify', ['uglify', 'cssmin']);
   grunt.registerTask('test', ['eslint', 'jscs', 'jasmine']);
