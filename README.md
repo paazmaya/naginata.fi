@@ -121,9 +121,13 @@ pandoc -V geometry:margin=0.5in -o grading-rules-english.md grading-rules-englis
  * Code coverage, results pushed to Coveralls.io
  * `npm run coveralls`
 
-### [grunt-photobox](https://github.com/stefanjudis/grunt-photobox) provider user interface difference testing
+### [grunt-photobox](https://github.com/stefanjudis/grunt-photobox) provides user interface difference testing
 
  * Results are available at [paazmaya.github.io/naginata.fi/photobox](http://paazmaya.github.io/naginata.fi/photobox)
+
+### [grunt-phantomas](https://github.com/stefanjudis/grunt-phantomas) for page performance testing with history
+
+ * Results are available at [paazmaya.github.io/naginata.fi/phantomas](http://paazmaya.github.io/naginata.fi/phantomas)
 
 ## Other notes
 
