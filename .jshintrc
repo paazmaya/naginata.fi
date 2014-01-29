@@ -41,7 +41,8 @@
     "document": true,
     "window": true,
     "__dirname": false,
-    "process": false
+    "process": false,
+    "ga": false
   }
 }
 

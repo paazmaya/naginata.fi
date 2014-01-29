@@ -13,7 +13,8 @@
     "document": false,
     "window": false,
     "__dirname": false,
-    "process": false
+    "process": false,
+    "ga": false
   },
 
   "rules": {
@@ -91,7 +92,7 @@
     "no-undef-init": 2,
     "no-underscore-dangle": 1,
     "no-unreachable": 2,
-    "no-unused-expressions": 2,
+    "no-unused-expressions": 1,
     "no-unused-vars": [2, "local"],
     "no-use-before-define": 1,
     "no-with": 2,
@@ -108,6 +109,6 @@
     "unnecessary-strict": 2,
     "use-isnan": 2,
     "wrap-iife": 0,
-    "wrap-regex": 0
+    "wrap-regex": 1
   }
 }

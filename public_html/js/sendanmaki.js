@@ -8,7 +8,6 @@
 
 'use strict';
 
-var _gaq = _gaq || [];
 var sendanmaki = window.sendanmaki = {
   /**
    * Current page language.
@@ -176,7 +175,7 @@ var sendanmaki = window.sendanmaki = {
     }
 
     // Tell Analytics
-    _gaq.push(['_trackPageview', href]);
+    ga('send', 'pageview', href);
 
     $.colorbox({
       title: $(this).attr('title'),
@@ -221,7 +220,7 @@ var sendanmaki = window.sendanmaki = {
     $(document).on('cbox_complete', function () {
       var href = $.colorbox.element().attr('href');
       if (href) {
-        _gaq.push(['_trackPageview', href]);
+        ga('send', 'pageview', href);
       }
     });
 

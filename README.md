@@ -131,7 +131,7 @@ pandoc -V geometry:margin=0.5in -o grading-rules-english.md grading-rules-englis
 
 ### [Sitespeed.io](http://sitespeed.io) for page performance metrics
 
- * Run with command `./sitespeed.io -u http://naginata.fi -k true -d 2`
+ * Run with command `../2.5.4/bin/sitespeed.io -u http://naginata.fi -k true -d 2`
  * Results are available at [paazmaya.github.io/naginata.fi/sitespeed](http://paazmaya.github.io/naginata.fi/sitespeed)
 
 ## Other notes
