@@ -121,6 +121,10 @@ pandoc -V geometry:margin=0.5in -o grading-rules-english.md grading-rules-englis
  * Code coverage, results pushed to Coveralls.io
  * `npm run coveralls`
 
+### [grunt-photobox](https://github.com/stefanjudis/grunt-photobox) provider user interface difference testing
+
+ * Results are available at [paazmaya.github.io/naginata.fi/photobox](http://paazmaya.github.io/naginata.fi/photobox)
+
 ## Other notes
 
  * Speed study (http://blog.chromium.org/2010/07/do-you-know-how-slow-your-web-page-is.html)

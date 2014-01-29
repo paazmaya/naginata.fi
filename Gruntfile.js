@@ -121,7 +121,7 @@ module.exports = function(grunt) {
           screenSizes: [
             '640', '800', '1024', '1248'
           ],
-          useImageMagick: true
+          template: 'magic'
         }
       }
     }
