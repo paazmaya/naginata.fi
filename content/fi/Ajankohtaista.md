@@ -9,7 +9,7 @@
 -   2.-4.5.2014 - [Atarashii Naginata- ja Jikishinkageryu Naginatajutsu-leiri Potsdamissa,
     Saksassa](http://www.genkido.de/naginata.html "Bishamonten Naginata Kyôshitsu")
 -   4.2014 - Atarashii Naginata pääsiäisleiri Helsingissä
--   3.2014 - Vuosittainen leiri Iso-Britanniassa
+-   7.-9.3.2014 - [Vuosittainen leiri Iso-Britanniassa](http://www.naginata.org.uk/2014-annual-british-naginata-seminar-details/ "2014 Annual British Naginata Seminar Details")
 -   14.-16.2.2014 - [Ensimmäinen Atarashii Naginata-leiri Pietarissa, Venäjällä](https://www.facebook.com/events/1398129980435747/ "Открытый семинар по нагинате")
 
 ## Menneitä tapahtumia
