@@ -34,15 +34,10 @@ class ShikakeOjiPage
     private $navigation;
 
     /**
-     * Data used for the head section
+     * Data used for the head section.
+     * Contains keys: url, header, title, description
      */
     private $head;
-
-    /**
-     * Title of the current page from page-data,
-     * matching the current url.
-     */
-    private $pageTitle = '';
 
     /**
      * Constructor does not do much.
@@ -68,7 +63,6 @@ class ShikakeOjiPage
                 {
                     $navigation .= ' class="current"';
                     $this->head = $pages; // head section data
-                    $this->pageTitle = $pages['title'];
                 }
                 $navigation .= '><a href="' . $pages['url'] . '" title="' .
                   $pages['header'] . '" rel="prefetch">' . $pages['title'] . '</a></li>';
@@ -105,14 +99,20 @@ class ShikakeOjiPage
         $data = $this->shikakeOji->appData;
 
         $out = $this->createHtmlHead($data['title'][$this->shikakeOji->language]);
+        
+        $name = str_replace('/', '', substr($this->head['url'], 3));
+        if ($name === '')
+        {
+            $name = 'index';
+        }
 
-        $path = '../content/' . $this->shikakeOji->language . '/' . $this->pageTitle . '.md';
+        $path = '../content/' . $this->shikakeOji->language . '/' . $name . '.md';
 
         if (file_exists($path))
         {
             $markdown = file_get_contents($path);
 
-            $out .= '<article class="' . strtolower($this->pageTitle) . '">';
+            $out .= '<article class="' . strtolower($this->head['title']) . '">';
             $out .= \Michelf\Markdown::defaultTransform($markdown);
             $out .= '</article>';
         }
