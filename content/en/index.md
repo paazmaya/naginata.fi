@@ -5,7 +5,7 @@
 -   06/09/2014 - [Finnish Open Competition,
     Hämeenlinna](https://www.facebook.com/events/147521468779208/ "Naginata Finnish Open 2014")
 -   22-24/08/2014 - International Naginata Federation Seminar, The Netherlands
--   02-04/05/2014 - [Atarashii Naginata and Jikishinkageryu Naginatajutsu Seminar in Potsdam,
+-   03-04/05/2014 - [Atarashii Naginata and Jikishinkageryu Naginatajutsu Seminar in Potsdam,
     Germany](http://www.genkido.de/naginata.html "Bishamonten Naginata Kyôshitsu")
 -   04/2014 - Atarashii Naginata Easter Seminar in Helsinki
 -   07-09/03/2014 - [Annual Seminar in the UK](http://www.naginata.org.uk/2014-annual-british-naginata-seminar-details/ "2014 Annual British Naginata Seminar Details")
@@ -13,6 +13,7 @@
 
 ## In the Past
 
+-   15-17/11/2013 - Onshukai, the annual main seminar of Jikishinkageryu Naginatajutsu in Chiba, Japan
 -   09-11/11/2013 - [European Naginata Federation the seminar in Brussels,
     Belgium. followed by Isabelle D'Hose
     competition](https://www.facebook.com/events/541531802573585/ "Stage ENF + la coupe Isabelle D'Hose le 11 novembre")
