@@ -96,12 +96,16 @@ var keenSend = function (type, content) {
 /**
  * Get the contents of the current page in HTML format.
  * @param {string} lang ISO 2 char language code
- * @param {string} title Page title
+ * @param {string} url Page URL, including the language
  * @returns {string} HTML content
  */
-var getContent = function (lang, title) {
+var getContent = function (lang, url) {
   var data = '# 404';
-  var path = 'content/' + lang + '/' + title + '.md';
+  url = url.replace('/' + lang, '').replace('/', '');
+  if (url === '') {
+    url = 'index';
+  }
+  var path = 'content/' + lang + '/' + url + '.md';
   if (fs.existsSync(path)) {
     data = fs.readFileSync(path, fsOptions);
   }
@@ -255,7 +259,7 @@ app.get(pageRegex, function (req, res) {
     'Timing-Allow-Origin': '*'
   });
   res.render('index', {
-    content: getContent(lang, current.title),
+    content: getContent(lang, current.url),
     pages: pages,
     footers: pageJson.footer[lang],
     meta: current,
