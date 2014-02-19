@@ -12,6 +12,8 @@ html(lang=settings.lang)
     link(href="http://paazmaya.com", rel="author")
     link(href="/img/mobile-logo.png", rel="apple-touch-icon")
     link(media="all", type="text/css", href="/css/naginata.min.css", rel="stylesheet")
+    - each image in prefetch
+      link(rel="prefetch", href=image)
   body
     nav
       ul

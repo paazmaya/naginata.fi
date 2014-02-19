@@ -58,10 +58,10 @@ app.use(express.json());
 app.use(express.urlencoded());
 
 // Adds the X-Response-Time header displaying the response duration in milliseconds.
-app.use(express.responseTime()); 
+app.use(express.responseTime());
 
 // Times out the request in ms, defaulting to 5000
-app.use(express.responseTime(1200)); 
+app.use(express.responseTime(1200));
 
 app.on('uncaughtException', function (err) {
   console.error(err.stack);
@@ -183,6 +183,50 @@ var facebookMeta = function (page) {
 };
 
 /**
+ * Iterate all pages for the current language and get a list of unique Flick images.
+ * TODO: Cache results...
+ */
+var flickrImageList = function () {
+  // If any of the files in 'content/*/*.md' has changed, update the whole cache.
+  var regex = new RegExp('\\((http:\\/\\/farm\\d+\\.static\\.?flickr\\.com\\S+\\.jpg)\\)', 'g');
+
+  // Loop all Markdown files under content/*/
+  var dir = 'content/';
+  var directories = fs.readdirSync(dir);
+  directories = directories.filter(function (item) {
+    var stats = fs.statSync(dir + item);
+    return stats.isDirectory();
+  });
+
+  var images = []; // thumbnails of Flickr images
+
+  // Read their contents
+  directories.forEach(function (directory) {
+    var files = fs.readdirSync(dir + directory);
+    files.forEach(function (file) {
+      if (file.substr(-2) === 'md') {
+        var path = dir + directory + '/' + file;
+        var content = fs.readFileSync(path, fsOptions);
+
+        var matches;
+        while ((matches = regex.exec(content)) !== null) {
+          images.push(matches[1]);
+        }
+      }
+    });
+  });
+
+  // Only unique
+  images = images.filter(function (e, i, arr) {
+    return arr.lastIndexOf(e) === i;
+  });
+
+  //var json = JSON.stringify(images);
+
+  return images;
+};
+
+/**
  * Checks if the current language should be changed according to the
  * current users language preferences and thus changes if needed.
  * @param {Array} acceptedLanguages
@@ -263,6 +307,7 @@ app.get(pageRegex, function (req, res) {
     pages: pages,
     footers: pageJson.footer[lang],
     meta: current,
+    prefetch: flickrImageList(),
     languages: pageJson.languages,
     lang: lang
   }, function (error, html) {
@@ -312,18 +357,18 @@ var port = process.env.OPENSHIFT_NODEJS_PORT || process.env.PORT || 5000;
 
 // https://github.com/indutny/node-spdy
 var spdyOptions = {
-  key: fs.readFileSync(__dirname + '/keys/spdy-key.pem'),
-  cert: fs.readFileSync(__dirname + '/keys/spdy-cert.pem'),
-  ca: [fs.readFileSync(__dirname + '/keys/spdy-ca-key.pem')],
+  //key: fs.readFileSync(__dirname + '/keys/spdy-key.pem'),
+  //cert: fs.readFileSync(__dirname + '/keys/spdy-cert.pem'),
+  //ca: [fs.readFileSync(__dirname + '/keys/spdy-ca-key.pem')],
 
   // **optional** SPDY-specific options
-  windowSize: 1024 * 1024, // Server's window size
+  //windowSize: 1024 * 1024, // Server's window size
 
   // **optional** if true - server will send 3.1 frames on 3.0 *plain* spdy
-  autoSpdy31: false
+  //autoSpdy31: false
 };
-var server = spdy.createServer(spdyOptions, app);
+//var server = spdy.createServer(spdyOptions, app);
 
-server.listen(port, ipaddr, function () {
+app.listen(port, ipaddr, function () {
   console.log('Express.js running at http://' + ipaddr + ':' + port + '/');
 });
