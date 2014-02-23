@@ -1,6 +1,6 @@
 {
   "name": "naginata.fi",
-  "version": "0.5.2",
+  "version": "0.5.3",
   "homepage": "https://github.com/paazmaya/naginata.fi",
   "authors": [
     "Juga Paazmaya <olavic@gmail.com>"
@@ -20,7 +20,7 @@
     "tests"
   ],
   "dependencies": {
-    "jquery": "~2.0.3",
-    "colorbox": "~1.4.32"
+    "jquery": "~2.1.x",
+    "colorbox": "~1.4.x"
   }
 }
