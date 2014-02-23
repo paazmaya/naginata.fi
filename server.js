@@ -80,6 +80,7 @@ var defaultLang = 'fi';
  * @see https://keen.io/docs/clients/javascript/reference/#data-collection
  */
 var keenSend = function (type, content) {
+  console.log('keenSend. type: ' + type + ', content: ' + content);
   if (!keen) {
     return;
   }
@@ -296,7 +297,7 @@ app.get(pageRegex, function (req, res) {
     'Content-Security-Policy-Report-Only': 'default-src \'self\' ' +
       '*.vimeo.com *.youtube.com ' +
       '*.flickr.com *.staticflickr.com ' +
-      '*.googleapis.com *.googleusercontent.com' +
+      '*.googleapis.com *.googleusercontent.com ' +
       '*.google-analytics.com',
     'Content-Language': lang,
     'Accept-Ranges': 'bytes',

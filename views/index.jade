@@ -1,4 +1,4 @@
-doctype 5
+doctype html
 html(lang=settings.lang)
   head
     title= meta.title + " | " + meta.titlesuffix
@@ -43,5 +43,4 @@ html(lang=settings.lang)
         - each footer in footers
           a(title=footer.alt, href=footer.url)
             != footer.text
-
     script(src="/js/naginata.min.js")
