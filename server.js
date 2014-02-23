@@ -284,6 +284,14 @@ app.get(pageRegex, function (req, res) {
   if (req.header('user-agent').indexOf('facebookexternalhit') !== -1) {
     current.facebook = facebookMeta(current);
   }
+  
+  // prev, next
+  var index = pages.indexOf(current);
+  var prev = index > 0 ? index - 1 : pages.length - 1;
+  var next = index < pages.length - 1 ? index + 1 : 0;
+  console.log(index, prev, next);
+  pages[prev].rel = 'prev';
+  pages[next].rel = 'next';
 
   // Every visit writes analytics
   keenSend('page view', {

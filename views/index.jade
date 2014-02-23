@@ -19,7 +19,7 @@ html(lang=settings.lang)
       ul
         - each page in pages
           li(class=page.url == meta.url ? "current" : "")
-            a(rel="prefetch", title=page.header, href=page.url)
+            a(rel=page.rel, title=page.header, href=page.url)
               = page.title
     div#wrapper
       ul#languages
