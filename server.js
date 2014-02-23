@@ -189,7 +189,7 @@ var facebookMeta = function (page) {
  */
 var flickrImageList = function () {
   // If any of the files in 'content/*/*.md' has changed, update the whole cache.
-  var regex = new RegExp('\\((http:\\/\\/farm\\d+\\.static\\.?flickr\\.com\\S+\\.jpg)\\)', 'g');
+  var regex = new RegExp('\\((http:\\/\\/farm\\d+\\.static\\.?flickr\\.com\\S+\\_m.jpg)\\)', 'g');
 
   // Loop all Markdown files under content/*/
   var dir = 'content/';
