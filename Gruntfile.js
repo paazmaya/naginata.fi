@@ -22,11 +22,12 @@ module.exports = function(grunt) {
     uglify: {
       javascript: {
         options: {
-          banner: '<%= banner %>'
+          banner: '<%= banner %>',
+          preserveComments: 'some'
         },
         files: {
           'public_html/js/naginata.min.js': [
-            'bower_components/jquery/jquery.js',
+            'bower_components/jquery/dist/jquery.js',
             'bower_components/colorbox/jquery.colorbox.js',
             'public_html/js/analytics.js',
             'public_html/js/sendanmaki.js'

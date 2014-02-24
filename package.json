@@ -15,7 +15,7 @@
   "dependencies": {
     "express": "~3.4.x",
     "marked": "~0.3.x",
-    "jade": "~1.0.x",
+    "jade": "~1.1.x",
     "keen.io": "~0.0.x",
     "spdy": "~1.19.x"
   },
