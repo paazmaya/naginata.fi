@@ -205,7 +205,7 @@ var flickrImageList = function () {
   directories.forEach(function (directory) {
     var files = fs.readdirSync(dir + directory);
     files.forEach(function (file) {
-      if (file.substr(-2) === 'md') {
+      if (file.split('.').pop() === 'md') {
         var path = dir + directory + '/' + file;
         var content = fs.readFileSync(path, fsOptions);
 
