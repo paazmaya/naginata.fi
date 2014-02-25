@@ -6,14 +6,16 @@
     Hämeenlinna](https://www.facebook.com/events/147521468779208/ "Naginata Finnish Open 2014")
 -   22-24/08/2014 - International Naginata Federation Seminar, The Netherlands
 -   03-04/05/2014 - [Atarashii Naginata and Jikishinkageryu Naginatajutsu Seminar in Potsdam,
-    Germany](http://www.genkido.de/naginata.html "Bishamonten Naginata Kyôshitsu")
+    Germany](https://www.facebook.com/events/497656113676309/ "Atarashii Naginata & Jikishinkageryu Naginatajutsu Seminar")
 -   04/2014 - Atarashii Naginata Easter Seminar in Helsinki
 -   07-09/03/2014 - [Annual Seminar in the UK](http://www.naginata.org.uk/2014-annual-british-naginata-seminar-details/ "2014 Annual British Naginata Seminar Details")
--   14-16/02/2014 - [First Atarashii Naginata seminar in St. Petersburg, Russia](https://www.facebook.com/events/1398129980435747/ "Открытый семинар по нагинате")
 
 ## In the Past
 
--   15-17/11/2013 - Onshukai, the annual main seminar of Jikishinkageryu Naginatajutsu in Chiba, Japan
+-   14-16/02/2014 - [First Atarashii Naginata seminar in St. Petersburg, 
+    Russia](https://www.facebook.com/events/1398129980435747/ "Открытый семинар по нагинате")
+-   15-17/11/2013 - [Onshukai, the annual main seminar of Jikishinkageryu Naginatajutsu in Chiba, 
+    Japan](http://www.flickr.com/photos/paazio/11474557086/in/set-72157638410929463 "2013-11-17 Japan, Chiba - Onshukai training program")
 -   09-11/11/2013 - [European Naginata Federation the seminar in Brussels,
     Belgium. followed by Isabelle D'Hose
     competition](https://www.facebook.com/events/541531802573585/ "Stage ENF + la coupe Isabelle D'Hose le 11 novembre")
@@ -65,8 +67,8 @@
     Helsinki](https://www.facebook.com/events/385015054876105/ "Naginata Mini Seminar - Helsinki")
 -   13/05/2012 - Hanami festival - Naginata demonstration (12:50), Roihuvuori,
     Helsinki
--   06/05/2012 - [Naginata Introductory Seminar (13:00 - 17:00), Mosa,
-    Helsinki](https://www.facebook.com/events/296023357146874/ "Naginata Introductory Seminar - Mosa")
+-   06/05/2012 - [Naginata Introductory Seminar (13:00 - 17:00), Tapanila,
+    Helsinki](https://www.facebook.com/events/296023357146874/ "Naginata Introductory Seminar - Tapanila")
 -   07/02/2010 - [Mini Camp in Helsinki, directed by Mrs. Kirsi Högglund from Uppsala,
     Sweden](http://www.flickr.com/photos/paazio/sets/72157623374097714/ "Naginata - Helsinki(FI) - 2010/02/07")
 -   15/02/2009 - Atarashii naginata training began in Finland at the Helsinki

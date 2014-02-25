@@ -7,14 +7,16 @@
     Hämeenlinna](https://www.facebook.com/events/147521468779208/ "Naginata Finnish Open 2014")
 -   22.-24.8.2014 - Kansainvälisen Naginataliiton leiri, Alankomaat
 -   3.-4.5.2014 - [Atarashii Naginata- ja Jikishinkageryu Naginatajutsu-leiri Potsdamissa,
-    Saksassa](http://www.genkido.de/naginata.html "Bishamonten Naginata Kyôshitsu")
+    Saksassa](https://www.facebook.com/events/497656113676309/ "Atarashii Naginata & Jikishinkageryu Naginatajutsu Seminar")
 -   4.2014 - Atarashii Naginata pääsiäisleiri Helsingissä
 -   7.-9.3.2014 - [Vuosittainen leiri Iso-Britanniassa](http://www.naginata.org.uk/2014-annual-british-naginata-seminar-details/ "2014 Annual British Naginata Seminar Details")
--   14.-16.2.2014 - [Ensimmäinen Atarashii Naginata-leiri Pietarissa, Venäjällä](https://www.facebook.com/events/1398129980435747/ "Открытый семинар по нагинате")
 
 ## Menneitä tapahtumia
 
--   15.-17.11.2013 - Onshukai, Jikishinkageryu Naginatajutsu:n vuotuinen pääleiri, Chiba, Japani
+-   14.-16.2.2014 - [Ensimmäinen Atarashii Naginata-leiri Pietarissa, 
+    Venäjällä](https://www.facebook.com/events/1398129980435747/ "Открытый семинар по нагинате")
+-   15.-17.11.2013 - [Onshukai, Jikishinkageryu Naginatajutsu:n vuotuinen pääleiri, Chiba, 
+    Japani](http://www.flickr.com/photos/paazio/11474557086/in/set-72157638410929463 "2013-11-17 Japan, Chiba - Onshukai training program")
 -   9.-11.11.2013 - [Euroopan Naginataliiton leiri Brysselissä,
     Belgiassa, jonka jälkeen Isabelle D'Hose-
     kilpailut.](https://www.facebook.com/events/541531802573585/ "Stage ENF + la coupe Isabelle D'Hose le 11 novembre")

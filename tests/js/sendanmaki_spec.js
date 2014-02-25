@@ -17,11 +17,12 @@ describe('Naginata is in Finland', function() {
   });
   
 });
+
 describe('Image Notes', function() {
   var url = '/img/naginata-bogu-chudan-artwork-lecklin.png';
     
   beforeEach(function(){
-    $('<div id="stuff"><div><p><img src="/img/naginata-bogu-chudan-artwork-lecklin.png"/></p></div></div>').appendTo('body');
+    $('<div id="stuff"><div><p><img src="' + url + '"/></p></div></div>').appendTo('body');
   });
 
   afterEach(function(){
