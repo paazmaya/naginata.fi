@@ -1,12 +1,12 @@
 ## Upcoming events
 
+-   11/2014 - [Atarashii Naginata and Jikishinkageryu Naginatajutsu Seminar in Potsdam,
+    Germany](https://www.facebook.com/events/497656113676309/ "Atarashii Naginata & Jikishinkageryu Naginatajutsu Seminar")
 -   06-07/09/2014 - [Naginata Friendship Seminar,
     Hämeenlinna](https://www.facebook.com/events/501891759879564/ "Finnish Naginata Friendship Seminar 2014")
 -   06/09/2014 - [Finnish Open Competition,
     Hämeenlinna](https://www.facebook.com/events/147521468779208/ "Naginata Finnish Open 2014")
 -   22-24/08/2014 - International Naginata Federation Seminar, The Netherlands
--   03-04/05/2014 - [Atarashii Naginata and Jikishinkageryu Naginatajutsu Seminar in Potsdam,
-    Germany](https://www.facebook.com/events/497656113676309/ "Atarashii Naginata & Jikishinkageryu Naginatajutsu Seminar")
 -   04/2014 - Atarashii Naginata Easter Seminar in Helsinki
 -   07-09/03/2014 - [Annual Seminar in the UK](http://www.naginata.org.uk/2014-annual-british-naginata-seminar-details/ "2014 Annual British Naginata Seminar Details")
 
@@ -19,7 +19,7 @@
 -   09-11/11/2013 - [European Naginata Federation the seminar in Brussels,
     Belgium. followed by Isabelle D'Hose
     competition](https://www.facebook.com/events/541531802573585/ "Stage ENF + la coupe Isabelle D'Hose le 11 novembre")
--   18-20/10/2013 - Seminar for ikkyu and up in Prague, Czeck, Directed by Kimura sensei
+-   18-20/10/2013 - Seminar for ikkyu and up in Prague, Czech, Directed by Kimura sensei
 -   06/10/2013 - [Kyu Grading for 6-2 kyu (16:30), KKTI Dojo, Olympic Stadium,
     Helsinki](https://www.facebook.com/events/157924271076783/ "Kyu Grading for values of 6-2 kyu")
 -   04/09/2013 - Atarashii Naginata course starts [Tapanilan Erä,
@@ -41,7 +41,7 @@
 -   07/06/2013 - Naginata [in Hämeenlinna Kendo Club](http://www.jookenkai.net/ "Hämeenlinna - Ken Yeah I guess")
     20th anniversary seminar, Hämeenlinna
 -   19/05/2013 - Naginata demonstration at [Hanami Festival in Roihuvuori,
-    Helsinki](http://www.roihuvuori.fi/hanami/ "Next - hanami party Roihuvuori cherry park May 2013")
+    Helsinki](http://www.roihuvuori.fi/hanami/ "Next - Hanami party Roihuvuori cherry park May 2013")
 -   23/03/2013 - [Naginata introduction seminar in Turku, Finland (11:00 -
     16:00)](https://www.facebook.com/events/136689943169944/ "Atarashii Naginata seminar"), organised by
     [Kendo Club Rendaino](http://www.rendaino.fi/ "Turku Kendo Club Rendaino Association")
@@ -71,8 +71,8 @@
     Helsinki](https://www.facebook.com/events/296023357146874/ "Naginata Introductory Seminar - Tapanila")
 -   07/02/2010 - [Mini Camp in Helsinki, directed by Mrs. Kirsi Högglund from Uppsala,
     Sweden](http://www.flickr.com/photos/paazio/sets/72157623374097714/ "Naginata - Helsinki(FI) - 2010/02/07")
--   15/02/2009 - Atarashii naginata training began in Finland at the Helsinki
-    Kendo Club Ki-ken-tai-Icchi, with the guidance of Jukka Paasonen who is also responsible about
+-   15/02/2009 - Atarashii Naginata training began in Finland at the Helsinki
+    Kendo Club Ki-Ken-Tai-Icchi, with the guidance of Jukka Paasonen who is also responsible about
     these web sites.
 
 ## Naginata in brief
