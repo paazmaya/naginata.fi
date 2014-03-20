@@ -8,11 +8,11 @@
 -   6.9.2014 - [Suomen Avoin Kilpailu,
     Hämeenlinna](https://www.facebook.com/events/147521468779208/ "Naginata Finnish Open 2014")
 -   22.-24.8.2014 - Kansainvälisen Naginataliiton leiri, Amstelveen, Alankomaat
--   4.2014 - Atarashii Naginata pääsiäisleiri Helsingissä
--   7.-9.3.2014 - [Vuosittainen leiri Iso-Britanniassa](http://www.naginata.org.uk/2014-annual-british-naginata-seminar-details/ "2014 Annual British Naginata Seminar Details")
+-   18.4.2014 - Atarashii Naginata pääsiäisleiri Helsingissä, Tapanilan Erän Kendo-jaoksen järjestämänä
 
 ## Menneitä tapahtumia
 
+-   7.-9.3.2014 - [Vuosittainen leiri Iso-Britanniassa](http://www.naginata.org.uk/2014-annual-british-naginata-seminar-details/ "2014 Annual British Naginata Seminar Details")
 -   14.-16.2.2014 - [Ensimmäinen Atarashii Naginata-leiri Pietarissa, 
     Venäjällä](https://www.facebook.com/events/1398129980435747/ "Открытый семинар по нагинате")
 -   15.-17.11.2013 - [Onshukai, Jikishinkageryu Naginatajutsu:n vuotuinen pääleiri, Chiba, 
