@@ -7,8 +7,8 @@
     Hämeenlinna](https://www.facebook.com/events/501891759879564/ "Finnish Naginata Friendship Seminar 2014")
 -   6.9.2014 - [Suomen Avoin Kilpailu,
     Hämeenlinna](https://www.facebook.com/events/147521468779208/ "Naginata Finnish Open 2014")
--   22.-24.8.2014 - Kansainvälisen Naginataliiton leiri, Amstelveen, Alankomaat
--   18.4.2014 - Atarashii Naginata pääsiäisleiri Helsingissä, Tapanilan Erän Kendo-jaoksen järjestämänä
+-   22.-24.8.2014 - [Kansainvälisen Naginataliiton leiri, Amstelveen, Alankomaat](http://international-naginata.org/drupal/node/17 "2014 INF seminar Announcement")
+-   18.4.2014 - [Atarashii Naginata pääsiäisleiri Helsingissä](https://www.facebook.com/events/254398958076220/ "Atarashii Naginata Pääsiäisleiri"), Tapanilan Erän Kendo-jaoksen järjestämänä
 
 ## Menneitä tapahtumia
 
