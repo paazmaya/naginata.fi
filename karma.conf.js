@@ -10,7 +10,7 @@
 module.exports = function(config) {
   config.set({
     files: [
-      'bower_components/jquery/jquery.js',
+      'bower_components/jquery/dist/jquery.js',
       'bower_components/colorbox/jquery.colorbox.js',
       'public_html/js/sendanmaki.js',
       'tests/js/*.js'

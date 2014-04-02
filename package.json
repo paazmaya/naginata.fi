@@ -24,20 +24,15 @@
     "coveralls": "^2.10",
     "grunt": "^0.4",
     "grunt-contrib-cssmin": "^0.9",
+    "grunt-contrib-connect": "^0.7",
     "grunt-contrib-jasmine": "^0.6",
     "grunt-contrib-uglify": "^0.4",
     "grunt-eslint": "^0.3",
     "grunt-jscs-checker": "^0.4",
     "karma": "^0.12",
-    "karma-chrome-launcher": "^0.1",
-    "karma-coffee-preprocessor": "^0.2",
     "karma-coverage": "^0.2",
-    "karma-firefox-launcher": "^0.1",
-    "karma-html2js-preprocessor": "^0.1",
     "karma-jasmine": "^0.2",
-    "karma-phantomjs-launcher": "^0.1",
-    "karma-requirejs": "^0.2",
-    "karma-script-launcher": "^0.1"
+    "karma-phantomjs-launcher": "^0.1"
   },
   "engines": {
     "node": "0.10.x",

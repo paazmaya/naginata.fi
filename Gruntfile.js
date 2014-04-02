@@ -73,6 +73,14 @@ module.exports = function(grunt) {
         }
       }
     },
+    
+    connect: {
+      forjasmine: {
+        options: {
+          port: 9922
+        }
+      }
+    },
 
     jasmine: {
       public: {
@@ -80,6 +88,7 @@ module.exports = function(grunt) {
           'public_html/js/sendanmaki.js'
         ],
         options: {
+          host: 'http://localhost:<%= connect.forjasmine.options.port %>',
           vendor: [
             'bower_components/jquery/dist/jquery.js',
             'bower_components/colorbox/jquery.colorbox.js'
@@ -94,10 +103,11 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-jasmine');
+  grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-eslint');
   grunt.loadNpmTasks('grunt-jscs-checker');
 
   grunt.registerTask('minify', ['uglify', 'cssmin']);
-  grunt.registerTask('test', ['eslint', 'jscs', 'jasmine']);
+  grunt.registerTask('test', ['eslint', 'jscs', 'connect', 'jasmine']);
   grunt.registerTask('default', ['test', 'minify']);
 };
