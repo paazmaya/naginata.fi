@@ -74,7 +74,8 @@ module.exports = function(grunt) {
             'bower_components/jquery/dist/jquery.js',
             'bower_components/colorbox/jquery.colorbox.js'
           ],
-          specs: 'tests/js/sendanmaki_spec.js'
+          specs: 'tests/js/sendanmaki_spec.js',
+          display: 'full'
         }
       }
     }
