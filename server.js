@@ -244,11 +244,13 @@ var checkLang = function (acceptedLanguages) {
   });
 };
 
-var langKeys = [];
+var langKeys = []; // Enabled language ISO codes: en, fi, ...
+var langMeta = {}; // Enabled language meta data, needed for language navigation
 for (var key in pageJson.languages) {
   if (pageJson.languages.hasOwnProperty(key) &&
       pageJson.languages[key].enabled === true) {
     langKeys.push(key);
+    langMeta[key] = pageJson.languages[key];
   }
 }
 
@@ -317,7 +319,7 @@ app.get(pageRegex, function (req, res) {
     footers: pageJson.footer[lang],
     meta: current,
     prefetch: flickrImageList(),
-    languages: pageJson.languages,
+    languages: langMeta,
     lang: lang
   }, function (error, html) {
     if (error) {
