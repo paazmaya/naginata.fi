@@ -62,7 +62,7 @@ module.exports = function(grunt) {
         'public_html/js/analytics.js',
         'public_html/js/sendanmaki.js'
       ]
-    }
+    },
     
     connect: {
       forjasmine: {

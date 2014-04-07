@@ -9,6 +9,7 @@
 
 module.exports = function(config) {
   config.set({
+    autoWatch: false,
     files: [
       'bower_components/jquery/dist/jquery.js',
       'bower_components/colorbox/jquery.colorbox.js',
@@ -22,7 +23,7 @@ module.exports = function(config) {
     frameworks: [
       'jasmine'
     ],
-    logLevel: config.LOG_DISABLE,
+    logLevel: config.LOG_DEBUG,
     loggers: [
       {type: 'console'}
     ],
@@ -32,6 +33,9 @@ module.exports = function(config) {
     preprocessors: {
       'public_html/js/sendanmaki.js': ['coverage']
     },
+    plugins: [
+      'karma-*'
+    ],
     coverageReporter: {
       type: 'lcovonly',
       dir: 'coverage/'
