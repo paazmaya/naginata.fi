@@ -98,15 +98,13 @@ var sendanmaki = window.sendanmaki = {
    * Add notes to a chudan kamae bogu image, if available.
    * @param {jQuery} item
    */
-  buildImageNotes: function (item) {
-    var self = this;
-    $('img[src="' + item + '"]').each(function () {
-      self.notes[item].forEach(function (data) {
-        self.createImgNote(data, item);
+  buildImageNotes: function (key, items) {
+    $('img[src="' + key + '"]').each(function () {
+      items.forEach(function (data) {
+        sendanmaki.createImgNote(data, key);
       });
     }).on('mouseover mouseout', function (event) {
-        var cont = $(this).parent().children('span:contains("' +
-                    self.notes[item].note + '")');
+        var cont = $(this).parent().children('span:contains("' + items.note + '")');
         if (event.type === 'mouseover') {
           cont.addClass('notehover');
         }
