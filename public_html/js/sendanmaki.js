@@ -99,13 +99,14 @@ var sendanmaki = window.sendanmaki = {
    * @param {jQuery} item
    */
   buildImageNotes: function (item) {
+    var self = this;
     $('img[src="' + item + '"]').each(function () {
-      sendanmaki.notes[item].forEach(function (data) {
-        sendanmaki.createImgNote(data, item);
+      self.notes[item].forEach(function (data) {
+        self.createImgNote(data, item);
       });
     }).on('mouseover mouseout', function (event) {
         var cont = $(this).parent().children('span:contains("' +
-                    sendanmaki.notes[item].note + '")');
+                    self.notes[item].note + '")');
         if (event.type === 'mouseover') {
           cont.addClass('notehover');
         }
@@ -153,12 +154,13 @@ var sendanmaki = window.sendanmaki = {
    */
   onVideoClick: function (event) {
     event.preventDefault();
-    var href = $(this).attr('href');
+    var $self = $(this);
+    var href = $self.attr('href');
     href = href.replace(/vimeo.com\/(\w+)/, 'player.vimeo.com/video/$1');
     href = href.replace(/youtube.com\/watch\?v=(\w+)/,
                       'youtube.com/embed/$1?version=3&f=videos&app=youtube_gdata');
 
-    sendanmaki.openIframe(href, $(this).attr('title'));
+    sendanmaki.openIframe(href, $self.attr('title'));
   },
 
   /**
@@ -166,7 +168,8 @@ var sendanmaki = window.sendanmaki = {
    */
   onFigureClick: function (event) {
     event.preventDefault();
-    var href = $(this).find('img').attr('src');
+    var $self = $(this);
+    var href = $self.find('img').attr('src');
 
     // Find the domain
     if (href.search(/flickr\.com\//) !== -1) {
@@ -178,7 +181,7 @@ var sendanmaki = window.sendanmaki = {
     ga('send', 'pageview', href);
 
     $.colorbox({
-      title: $(this).attr('title'),
+      title: $self.attr('title'),
       href: href,
       photo: true
     });
@@ -189,9 +192,10 @@ var sendanmaki = window.sendanmaki = {
    * all the handlers needed.
    */
   domReady: function () {
-    sendanmaki.lang = $('html').attr('lang') || sendanmaki.lang;
+    this.lang = $('html').attr('lang') || this.lang;
+    sendanmaki.localiseColorbox();
 
-    $.each(sendanmaki.notes, sendanmaki.buildImageNotes);
+    $.each(this.notes, this.buildImageNotes);
 
     // Re-usage
     var $media = $('article p > a:has(img:only-child), article.media ul a');
@@ -236,7 +240,7 @@ var sendanmaki = window.sendanmaki = {
   localiseColorbox: function () {
 
     // Colorbox translations
-    if (sendanmaki.lang === 'fi') {
+    if (this.lang === 'fi') {
       /*
        jQuery Colorbox language configuration
        language: Finnish (fi)
@@ -253,7 +257,7 @@ var sendanmaki = window.sendanmaki = {
         slideshowStop: 'Lopeta kuvaesitys.'
       });
     }
-    else if (sendanmaki.lang === 'ja') {
+    else if (this.lang === 'ja') {
       /*
        jQuery Colorbox language configuration
        language: Japanaese (ja)
@@ -278,7 +282,7 @@ var sendanmaki = window.sendanmaki = {
    * @param {string} title
    */
   openIframe: function (url, title) {
-    var w = $('#wrapper').width();
+    var w = $('#wrapper').width() || 1000;
     var h = w * 0.75;
 
     // By using iframe, fullscreen becomes possible
@@ -337,7 +341,7 @@ var sendanmaki = window.sendanmaki = {
     var now = $.now();
     var earlier = window.localStorage.getItem('navTimeSent') || 0;
 
-    if (now - earlier > sendanmaki.interval) {
+    if (now - earlier > this.interval) {
       $.post('/navigation-timings', data, function () {
         window.localStorage.setItem('navTimeSent', now);
       });
@@ -366,7 +370,7 @@ var sendanmaki = window.sendanmaki = {
     var now = $.now();
     var earlier = window.localStorage.getItem('resTimeSent') || 0;
 
-    if (now - earlier > sendanmaki.interval) {
+    if (now - earlier > this.interval) {
       $.post('/resource-timings', data, function () {
         window.localStorage.setItem('resTimeSent', now);
       });
@@ -376,7 +380,6 @@ var sendanmaki = window.sendanmaki = {
 };
 
 (function () {
-  sendanmaki.localiseColorbox();
   sendanmaki.domReady();
 
   window.onload = function () {

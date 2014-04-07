@@ -23,7 +23,8 @@ module.exports = function(grunt) {
       javascript: {
         options: {
           banner: '<%= banner %>',
-          preserveComments: 'some'
+          preserveComments: 'some',
+          sourceMap: true
         },
         files: {
           'public_html/js/naginata.min.js': [
