@@ -13,6 +13,12 @@ var express = require('express');
 var fs = require('fs');
 var spdy = require('spdy');
 
+// Dependencies for express
+var serveStatic = require('serve-static');
+var bodyParser = require('body-parser');
+var morgan = require('morgan'); // logger
+var responseTime = require('response-time');
+
 // Keen.IO analytics, used only if the evironment variables are in place.
 var keen = null;
 if (process && process.env && process.env.KEEN_IO_ID && process.env.KEEN_IO_WRITE) {
@@ -42,26 +48,14 @@ var app = express();
 
 if (process.env.NODE_ENV === 'production') {
   // Compress response data with gzip/deflate.
-  app.use(express.compress());
+  var compress = require('compression');
+  app.use(compress());
 }
 
-// Static file server with the given root path.
-app.use(express.static(__dirname + '/public_html'));
-
-// Log requests with the given options or a format string,  ':remote-addr - - [:date] ":method :url HTTP/:http-version" :status :res[content-length] ":referrer" ":user-agent"'
-app.use(express.logger());
-
-// Parse JSON request bodies, providing the parsed object as req.body.
-app.use(express.json());
-
-// Parse x-ww-form-urlencoded request bodies, providing the parsed object as req.body using https://github.com/visionmedia/node-querystring
-app.use(express.urlencoded());
-
-// Adds the X-Response-Time header displaying the response duration in milliseconds.
-app.use(express.responseTime());
-
-// Times out the request in ms, defaulting to 5000
-app.use(express.responseTime(1200));
+app.use(serveStatic(__dirname + '/public_html'));
+app.use(morgan());
+app.use(bodyParser());
+app.use(responseTime());
 
 app.on('uncaughtException', function (err) {
   console.error(err.stack);
@@ -165,11 +159,11 @@ var flickrImageList = function () {
 /**
  * Checks if the current language should be changed according to the
  * current users language preferences and thus changes if needed.
- * @param {Array} acceptedLanguages
- * @see http://expressjs.com/api.html#req.acceptedLanguages
+ * @param {Array} acceptsLanguages
+ * @see http://expressjs.com/api.html#req.acceptsLanguages
  */
-var checkLang = function (acceptedLanguages) {
-  acceptedLanguages.forEach(function (item) {
+var checkLang = function (acceptsLanguages) {
+  acceptsLanguages.forEach(function (item) {
     var key = item.substr(0, 2);
     if (pageJson.languages.hasOwnProperty(key) &&
         pageJson.languages[key].enabled === true) {
@@ -190,7 +184,7 @@ for (var key in pageJson.languages) {
 }
 
 var pageRegex = new RegExp('^\/(' + langKeys.join('|') + ')(\/(\\w+))?$');
-
+// TODO: express 4 uses :lang/:page style and params will be an object
 app.get(pageRegex, function (req, res) {
   var lang = req.params[0];
   app.set('lang', lang);
@@ -227,19 +221,19 @@ app.get(pageRegex, function (req, res) {
   var index = pages.indexOf(current);
   var prev = index > 0 ? index - 1 : pages.length - 1;
   var next = index < pages.length - 1 ? index + 1 : 0;
-  console.log(index, prev, next);
   pages[prev].rel = 'prev';
   pages[next].rel = 'next';
 
   // Every visit writes analytics
   keenSend('page view', {
     url: req.originalUrl,
-    acceptedLanguages: req.acceptedLanguages,
-    acceptedCharsets: req.acceptedCharsets
+    acceptedLanguages: req.acceptsLanguages(),
+    acceptedCharsets: req.acceptsCharsets()
   });
 
   // https://developer.mozilla.org/en-US/docs/Security/CSP/Using_Content_Security_Policy
   res.set({
+    'Content-Type': 'text/html; charset=utf-8',
     'Content-Security-Policy-Report-Only': 'default-src \'self\' ' +
       '*.vimeo.com *.youtube.com ' +
       '*.flickr.com *.staticflickr.com ' +
@@ -267,7 +261,7 @@ app.get(pageRegex, function (req, res) {
 
 // Softer landing page
 app.get('/', function (req, res) {
-  checkLang(req.acceptedLanguages);
+  checkLang(req.acceptsLanguages());
   res.redirect(301, '/' + defaultLang);
 });
 
@@ -303,18 +297,22 @@ var ipaddr = process.env.OPENSHIFT_NODEJS_IP || null; // Heroku fails with non n
 var port = process.env.OPENSHIFT_NODEJS_PORT || process.env.PORT || 5000;
 
 // https://github.com/indutny/node-spdy
+/*
 var spdyOptions = {
-  //key: fs.readFileSync(__dirname + '/keys/spdy-key.pem'),
-  //cert: fs.readFileSync(__dirname + '/keys/spdy-cert.pem'),
-  //ca: [fs.readFileSync(__dirname + '/keys/spdy-ca-key.pem')],
+  key: fs.readFileSync(__dirname + '/keys/server.key'),
+  cert: fs.readFileSync(__dirname + '/keys/server.crt'),
+  ca: fs.readFileSync(__dirname + '/keys/server.csr'),
 
   // **optional** SPDY-specific options
-  //windowSize: 1024 * 1024, // Server's window size
+  windowSize: 1024 * 1024, // Server's window size
 
   // **optional** if true - server will send 3.1 frames on 3.0 *plain* spdy
-  //autoSpdy31: false
+  autoSpdy31: false
+  
+  //plain: false
 };
-//var server = spdy.createServer(spdyOptions, app);
+var server = spdy.createServer(spdyOptions, app);
+*/
 
 app.listen(port, ipaddr, function () {
   console.log('Express.js running at http://' + ipaddr + ':' + port + '/');
