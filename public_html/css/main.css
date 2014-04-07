@@ -208,9 +208,12 @@ article a:hover, article a:focus {
 }
 
 blockquote {
-  padding:          0.2em;
-  border:           1px solid #808080;
-  background-color: lightgrey;
+  padding:          0.3em;
+  color:            white;
+  background-color: #072434;
+}
+blockquote p {
+  color:            white;
 }
 
 /* paragraph containing a link that contains image(s) */

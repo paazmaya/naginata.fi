@@ -13,7 +13,7 @@
     "coveralls": "./node_modules/karma/bin/karma start karma.conf.js && cat coverage/*/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
   },
   "dependencies": {
-    "express": "~4.0.0-rc4",
+    "express": "~4.0",
     "marked": "~0.3.x",
     "jade": "~1.3.x",
     "keen.io": "~0.0.x",
