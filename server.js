@@ -234,7 +234,7 @@ app.get(pageRegex, function (req, res) {
   // https://developer.mozilla.org/en-US/docs/Security/CSP/Using_Content_Security_Policy
   res.set({
     'Content-Type': 'text/html; charset=utf-8',
-    'Content-Security-Policy-Report-Only': 'default-src \'self\' ' +
+    'Content-Security-Policy': 'default-src \'self\' ' +
       '*.vimeo.com *.youtube.com ' +
       '*.flickr.com *.staticflickr.com ' +
       '*.googleapis.com *.googleusercontent.com ' +
