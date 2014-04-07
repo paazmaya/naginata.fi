@@ -17,7 +17,7 @@ Full legal text available in `LICENSE.md`.
 Naginata is a weapon made of a long wooden stick on which a curved blade is attached.
 
 The art of using this weapon is often called simply as Naginata, but more accurately
-it can be called as Atarashii Naginata, in the case of the post-Meiji era standarsised
+it can be called as Atarashii Naginata, in the case of the post-Meiji era standardised
 version.
 
 The method of using naginata as a weapon has existed much longer and some around 500 styles
@@ -57,82 +57,59 @@ Contributors are welcome.
  * Google Analytics
  * Deployment to Heroku, Nodejitsu and Openshift. Final decision of which to use based on perceived speed vs price
 
-### [Node.js](http://nodejs.org "Node.js is a platform built on Chrome's JavaScript runtime for easily building fast, scalable network applications")
+List of software used for making `naginata.fi` possible:
 
- * [NPM](https://npmjs.org/ "Node Packaged Modules")
- * `npm install`
+ * [Bower](http://bower.io/ "Bower is a package manager for the web")
+ * [Colorbox](http://jacklmoore.com/colorbox/ "A lightweight customizable lightbox plugin for jQuery")
+ * [ESLint](http://eslint.org/ "The pluggable linting utility for JavaScript")
+ * [Express.js](http://expressjs.com/ "web application framework for node")
+ * [Grunt](http://gruntjs.com/ "The JavaScript Task Runner")
+ * [JSON](http://www.json.org/ "JSON (JavaScript Object Notation) is a lightweight data-interchange format")
+ * [Jade](http://jade-lang.com/ "node templating language")
+ * [Jasmine](http://pivotal.github.io/jasmine/ "Jasmine is a behavior-driven development framework for testing JavaScript code")
+ * [Karma](http://karma-runner.github.io "Spectacular Test Runner for JavaScript")
+ * [Markdown](http://daringfireball.net/projects/markdown/ "Markdown is a text-to-HTML conversion tool for web writers")
+ * [Node.js](http://nodejs.org "Node.js is a platform built on Chrome's JavaScript runtime for easily building fast, scalable network applications")
+ * [SPDY](https://github.com/indutny/node-spdy "SPDY Server for node.js")
+ * [Sitespeed.io](http://sitespeed.io "Analyze your website speed and performance")
+ * [Phantomas](http://macbre.github.io/phantomas/ "PhantomJS-based web performance metrics collector and monitoring tool")
+ * [photobox](https://github.com/stefanjudis/photobox "Module to create screenshots of your site and check if the layout has changed")
+ * [jQuery](http://jquery.com/ "New wave JavaScript")
 
-### [Bower](http://bower.io/ "Bower is a package manager for the web")
 
- * `bower install`
+## Installation
 
-### [Grunt](http://gruntjs.com/ "The JavaScript Task Runner")
+```sh
+npm install
+bower install
+grunt
+```
 
- * Both JavaScript and CSS files are combined to a single file, minified and finally compressed.
- * `grunt minify`
+## Testing
 
-### [Jade](http://jade-lang.com/ "node templating language")
+```sh
+grunt test
+npm run coveralls
+../2.5.4/bin/sitespeed.io -u http://naginata.fi -k true -d 2
+```
 
- * Single index template done in Jade
+[paazmaya.github.io/naginata.fi/photobox](http://paazmaya.github.io/naginata.fi/photobox)
 
-### [Express.js](http://expressjs.com/ "web application framework for node")
+[paazmaya.github.io/naginata.fi/phantomas](http://paazmaya.github.io/naginata.fi/phantomas)
 
- * Runs the site
- 
-### [SPDY](https://github.com/indutny/node-spdy "SPDY Server for node.js")
+[paazmaya.github.io/naginata.fi/sitespeed](http://paazmaya.github.io/naginata.fi/sitespeed)
 
- * Runs the site with better network usage
 
-### [jQuery](http://jquery.com/ "New wave JavaScript")
+## Editing content
 
- * Available via Bower
+Please create a pull request, which only touches the Markdown files under `content/` and/or `page-data.json` file.
 
-### [Colorbox](http://jacklmoore.com/colorbox/ "A lightweight customizable lightbox plugin for jQuery")
-
- * jQuery plugin "Colorbox" used for opening content in same page
- * Available via Bower
-
-### [Markdown](http://daringfireball.net/projects/markdown/ "Markdown is a text-to-HTML conversion tool for web writers")
-
-All of the page contents are stored as Markdown formatter text files, under the `content` directory.
-
-Markdown is converted to HTML via `marked` plugin and the passed to `jade` template.
-
-Markdown files can be converted to PDF files, for example with [_pandoc_](http://johnmacfarlane.net/pandoc/),
-as shown below.
+The existing Markdown files can be exported as PDF, for example with [_pandoc_](http://johnmacfarlane.net/pandoc/):
 
 ```sh
 pandoc -V geometry:margin=0.5in -o grading-rules-english.md grading-rules-english.pdf
 ```
-
-### [JSON](http://www.json.org/ "JSON (JavaScript Object Notation) is a lightweight data-interchange format")
-
- * JSON used as a data format for configuration
-
-### [Jasmine](http://pivotal.github.io/jasmine/ "Jasmine is a behavior-driven development framework for testing JavaScript code")
-
- * Unit tests, run on every commit at Travis CI
- * `npm run test`
- * http://about.travis-ci.org/docs/user/languages/javascript-with-nodejs/
-
-### [Karma](http://karma-runner.github.io "Spectacular Test Runner for JavaScript")
-
- * Code coverage, results pushed to Coveralls.io
- * `npm run coveralls`
-
-### [grunt-photobox](https://github.com/stefanjudis/grunt-photobox) provides user interface difference testing
-
- * Results are available at [paazmaya.github.io/naginata.fi/photobox](http://paazmaya.github.io/naginata.fi/photobox)
-
-### [grunt-phantomas](https://github.com/stefanjudis/grunt-phantomas) for page performance testing with history
-
- * Results are available at [paazmaya.github.io/naginata.fi/phantomas](http://paazmaya.github.io/naginata.fi/phantomas)
-
-### [Sitespeed.io](http://sitespeed.io) for page performance metrics
-
- * Run with command `../2.5.4/bin/sitespeed.io -u http://naginata.fi -k true -d 2`
- * Results are available at [paazmaya.github.io/naginata.fi/sitespeed](http://paazmaya.github.io/naginata.fi/sitespeed)
-
+ 
 ## Other notes
 
  * Speed study (http://blog.chromium.org/2010/07/do-you-know-how-slow-your-web-page-is.html)
@@ -153,3 +130,5 @@ From version 0.4.0 onward, the site is running with Node.js and thus JavaScript 
 Content is at the source code repository in text files in Markdown format.
 
 PHP version was made to match the same simplified functionality as the Node.js counterpart in 0.4.1.
+
+Around the release of 0.6.0, the actual `naginata.fi` domain was moved to Heroku and served from there with Node.js.

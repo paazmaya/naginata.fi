@@ -62,18 +62,7 @@ module.exports = function(grunt) {
         'public_html/js/analytics.js',
         'public_html/js/sendanmaki.js'
       ]
-    },
-
-    jscs: {
-      onlymine: {
-        options: {
-          config: '.jscs.json'
-        },
-        files: {
-          src: '<%= eslint.target %>'
-        }
-      }
-    },
+    }
     
     connect: {
       forjasmine: {
@@ -106,9 +95,8 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jasmine');
   grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-eslint');
-  grunt.loadNpmTasks('grunt-jscs-checker');
 
   grunt.registerTask('minify', ['uglify', 'cssmin']);
-  grunt.registerTask('test', ['eslint', 'jscs', 'connect', 'jasmine']);
+  grunt.registerTask('test', ['eslint', 'connect', 'jasmine']);
   grunt.registerTask('default', ['test', 'minify']);
 };
