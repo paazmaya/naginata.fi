@@ -20,6 +20,9 @@ html(lang=settings.lang)
     - if (meta.facebook)
       - each fb in meta.facebook
         meta(property=fb.property, content=fb.content)
+    - each page in pages
+      - if (page.rel)
+        link(rel=page.rel, href=page.url)
   body
     nav
       ul

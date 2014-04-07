@@ -223,7 +223,7 @@ app.get(pageRegex, function (req, res) {
   var next = index < pages.length - 1 ? index + 1 : 0;
   pages[prev].rel = 'prev';
   pages[next].rel = 'next';
-
+  
   // Every visit writes analytics
   keenSend('page view', {
     url: req.originalUrl,
