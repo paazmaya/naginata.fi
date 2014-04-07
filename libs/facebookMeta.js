@@ -1,0 +1,77 @@
+/***************
+ * NAGINATA.fi *
+ ***************
+ * Juga Paazmaya <olavic@gmail.com>
+ * License: Attribution-ShareAlike 3.0 Unported
+ *          http://creativecommons.org/licenses/by-sa/3.0/
+ */
+
+'use strict';
+
+/**
+ * Facebook Open Graph Meta data.
+ * @param {Object} page Current page meta data
+ * @param {Object} fb Facebook application meta
+ * @returns {Array}
+ */
+var facebookMeta = function (page, fb) {
+  // property, name
+  var meta = [
+    // http://ogp.me/
+    {
+      property: 'og:title',
+      content: page.title
+    },
+    {
+      property: 'og:description',
+      content: page.description
+    },
+    {
+      property: 'og:type',
+      content: 'sports_team'
+    },
+    // All the images referenced by og:image must be at least 200px in both dimensions.
+    {
+      property: 'og:image',
+      content: '/img/logo-200x200.png'
+    },
+    {
+      property: 'og:url',
+      content: 'http://naginata.fi' + page.url
+    },
+    {
+      property: 'og:site_name',
+      content: page.titlesuffix
+    },
+    {
+      property: 'og:locale',
+      content: 'fi_FI'
+    }, // language_TERRITORY
+    {
+      property: 'og:locale:alternate',
+      content: 'en_GB'
+    },
+    {
+      property: 'og:locale:alternate',
+      content: 'ja_JP'
+    },
+    {
+      property: 'og:country-name',
+      content: 'Finland'
+    },
+    // https://developers.facebook.com/docs/opengraph/
+    // A Facebook Platform application ID that administers this page.
+    {
+      property: 'fb:app_id',
+      content: fb.app_id
+    },
+    {
+      property: 'fb:admins',
+      content: fb.admins
+    }
+  ];
+
+  return meta;
+};
+
+module.exports = facebookMeta;

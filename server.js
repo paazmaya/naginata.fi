@@ -119,71 +119,6 @@ var getContent = function (lang, url) {
 };
 
 /**
- * Facebook Open Graph Meta data.
- * @param {Object} page Current page meta data
- * @returns {Array}
- */
-var facebookMeta = function (page) {
-  // property, name
-  var meta = [
-    // http://ogp.me/
-    {
-      property: 'og:title',
-      content: page.title
-    },
-    {
-      property: 'og:description',
-      content: page.description
-    },
-    {
-      property: 'og:type',
-      content: 'sports_team'
-    },
-    // All the images referenced by og:image must be at least 200px in both dimensions.
-    {
-      property: 'og:image',
-      content: '/img/logo-200x200.png'
-    },
-    {
-      property: 'og:url',
-      content: 'http://naginata.fi' + page.url
-    },
-    {
-      property: 'og:site_name',
-      content: page.titlesuffix
-    },
-    {
-      property: 'og:locale',
-      content: 'fi_FI'
-    }, // language_TERRITORY
-    {
-      property: 'og:locale:alternate',
-      content: 'en_GB'
-    },
-    {
-      property: 'og:locale:alternate',
-      content: 'ja_JP'
-    },
-    {
-      property: 'og:country-name',
-      content: 'Finland'
-    },
-    // https://developers.facebook.com/docs/opengraph/
-    // A Facebook Platform application ID that administers this page.
-    {
-      property: 'fb:app_id',
-      content: pageJson.facebook.app_id
-    },
-    {
-      property: 'fb:admins',
-      content: pageJson.facebook.admins
-    }
-  ];
-
-  return meta;
-};
-
-/**
  * Iterate all pages for the current language and get a list of unique Flick images.
  * TODO: Cache results...
  */
@@ -284,7 +219,8 @@ app.get(pageRegex, function (req, res) {
   current.titlesuffix = pageJson.title[lang];
 
   if (req.header('user-agent').indexOf('facebookexternalhit') !== -1) {
-    current.facebook = facebookMeta(current);
+    var facebookMeta = require('./libs/facebookMeta.js');
+    current.facebook = facebookMeta(current, pageJson.facebook);
   }
   
   // prev, next

@@ -14,6 +14,9 @@ html(lang=settings.lang)
     link(media="all", type="text/css", href="/css/naginata.min.css", rel="stylesheet")
     - each image in prefetch
       link(rel="prefetch", href=image)
+    - if (meta.facebook)
+      - each fb in meta.facebook
+        meta(property=fb.property, content=fb.content)
   body
     nav
       ul
