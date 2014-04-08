@@ -70,11 +70,12 @@ List of software used for making `naginata.fi` possible:
  * [Karma](http://karma-runner.github.io "Spectacular Test Runner for JavaScript")
  * [Markdown](http://daringfireball.net/projects/markdown/ "Markdown is a text-to-HTML conversion tool for web writers")
  * [Node.js](http://nodejs.org "Node.js is a platform built on Chrome's JavaScript runtime for easily building fast, scalable network applications")
+ * [Phantomas](http://macbre.github.io/phantomas/ "PhantomJS-based web performance metrics collector and monitoring tool")
  * [SPDY](https://github.com/indutny/node-spdy "SPDY Server for node.js")
  * [Sitespeed.io](http://sitespeed.io "Analyze your website speed and performance")
- * [Phantomas](http://macbre.github.io/phantomas/ "PhantomJS-based web performance metrics collector and monitoring tool")
- * [photobox](https://github.com/stefanjudis/photobox "Module to create screenshots of your site and check if the layout has changed")
  * [jQuery](http://jquery.com/ "New wave JavaScript")
+ * [photobox](https://github.com/stefanjudis/photobox "Module to create screenshots of your site and check if the layout has changed")
+ * [uCSS](https://github.com/operasoftware/ucss "uCSS is made for crawling (large) websites to find unused CSS selectors")
 
 
 ## Installation
@@ -91,6 +92,7 @@ grunt
 grunt test
 npm run coveralls
 ../2.5.4/bin/sitespeed.io -u http://naginata.fi -k true -d 2
+ucss
 ```
 
 [paazmaya.github.io/naginata.fi/photobox](http://paazmaya.github.io/naginata.fi/photobox)

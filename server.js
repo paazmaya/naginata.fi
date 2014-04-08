@@ -217,7 +217,8 @@ app.get(pageRegex, function (req, res) {
   }
   current.titlesuffix = pageJson.title[lang];
 
-  if (req.header('user-agent').indexOf('facebookexternalhit') !== -1) {
+  var userAgent = req.header('user-agent');
+  if (userAgent && userAgent.indexOf('facebookexternalhit') !== -1) {
     var facebookMeta = require('./libs/facebookMeta.js');
     current.facebook = facebookMeta(current, pageJson.facebook);
   }
