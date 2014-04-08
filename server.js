@@ -190,16 +190,15 @@ app.get(pageRegex, function (req, res) {
   app.set('lang', lang);
 
   var current = null;
-  var pages = pageJson.pages.filter(function (item) {
-    if (item.url.substr(0, 3) === '/' + lang) {
-
-      // Use this loop to catch the current page meta
-      if (item.url === req.path) {
-        current = item;
+  var pages = [];
+  // Get the pages for the given language, in order to create navigation
+  pageJson.pages.forEach(function (item) {
+    if (item[lang]) {
+      if (item[lang].url === req.path) {
+        current = item[lang];
       }
-      return true;
+      pages.push(item[lang]);
     }
-    return false;
   });
 
   if (current === null) {

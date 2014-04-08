@@ -20,94 +20,104 @@
   },
   "pages": [
     {
-      "url": "/fi",
-      "header": "Ajankohtaista",
-      "title": "Ajankohtaista",
-      "description": "Ajankohtaista ja historiallistakin tietoa Naginata-aseella harjoitteluun liittyen. Tähän kuuluvat muun muassa lajit ja tyylit kuten Atarashii Naginatado ja Jikishinkageryu Naginatajutsu"
+      "fi": {
+        "url": "/fi",
+        "header": "Ajankohtaista",
+        "title": "Ajankohtaista",
+        "description": "Ajankohtaista ja historiallistakin tietoa Naginata-aseella harjoitteluun liittyen. Tähän kuuluvat muun muassa lajit ja tyylit kuten Atarashii Naginatado ja Jikishinkageryu Naginatajutsu"
+      },
+      "en": {
+        "url": "/en",
+        "header": "News",
+        "title": "News",
+        "description": "Latest events and news in the area of Finnish Naginata, with International coverage"
+      },
+      "ja": {
+        "url": "/ja",
+        "header": "ニュ-ス",
+        "title": "ニュ-ス",
+        "description": "フィンランドにおけるなぎなたの最新イベント及びニュース"
+      }
     },
     {
-      "url": "/fi/naginata",
-      "header": "Atarashii Naginata",
-      "title": "Naginata",
-      "description": "Uuden ja yhdenmukaisen naginatan harjoittelu perustuu kahden naginatan kohtaamiseen, joko suojavarusteiden kanssa tai ilman. Perustekniikat, ennaltamäärätyt parihajoitukset ja vapaat ottelut luovat laajan mutta yhtenäisen kokonaisuuden lajissa, jota harrastaa Japanissa pääasiassa naiset, kun Japanin ulkopuolella sekä naiset että miehet"
+      "fi": {
+        "url": "/fi/naginata",
+        "header": "Atarashii Naginata",
+        "title": "Naginata",
+        "description": "Uuden ja yhdenmukaisen naginatan harjoittelu perustuu kahden naginatan kohtaamiseen, joko suojavarusteiden kanssa tai ilman. Perustekniikat, ennaltamäärätyt parihajoitukset ja vapaat ottelut luovat laajan mutta yhtenäisen kokonaisuuden lajissa, jota harrastaa Japanissa pääasiassa naiset, kun Japanin ulkopuolella sekä naiset että miehet"
+      },
+      "en": {
+        "url": "/en/naginata",
+        "header": "Atarashii Naginata",
+        "title": "Naginata",
+        "description": "The modern Japanese martial art Atarashii Naginata is about using a long weapon"
+      },
+      "ja": {
+        "url": "/ja/naginata",
+        "header": "新しいなぎなた",
+        "title": "なぎなた",
+        "description": "現代日本武道である新しいなぎなたは長い武器を使用する"
+      }
     },
     {
-      "url": "/fi/koryu",
-      "header": "Jikishinkageryu Naginatajutsu",
-      "title": "Koryu",
-      "description": "Kirjaimellisesti käännettynä koryu tarkoittaa vanhaa koulua. Naginatan osalta koryu viittaa niihin vanhoihin kouluihin ja tyyleihin, joissa aseella harjoiteltiin."
+      "fi": {
+        "url": "/fi/koryu",
+        "header": "Jikishinkageryu Naginatajutsu",
+        "title": "Koryu",
+        "description": "Kirjaimellisesti käännettynä koryu tarkoittaa vanhaa koulua. Naginatan osalta koryu viittaa niihin vanhoihin kouluihin ja tyyleihin, joissa aseella harjoiteltiin."
+      },
+      "en": {
+        "url": "/en/koryu",
+        "header": "Jikishinkageryu Naginatajutsu",
+        "title": "Koryu",
+        "description": "Literally koryu means old school. While related to naginata, it stands for the classical old schools which were using the weapon in their system."
+      },
+      "ja": {
+        "url": "/ja/koryu",
+        "header": "直心影流薙刀術",
+        "title": "古流",
+        "description": "文字通り古流とは古い流派のことである。なぎなたと関連しており、？？？"
+      }
     },
     {
-      "url": "/fi/media",
-      "header": "Kuvat, Videot ja muu Media",
-      "title": "Media",
-      "description": "Kuvia ja videoita naginatan harjoittelusta ympäri maailmaa"
+      "fi": {
+        "url": "/fi/media",
+        "header": "Kuvat, Videot ja muu Media",
+        "title": "Media",
+        "description": "Kuvia ja videoita naginatan harjoittelusta ympäri maailmaa"
+      },
+      "en": {
+        "url": "/en/media",
+        "header": "Pictures and videos",
+        "title": "Media",
+        "description": "Pictures and video clips from the trainings and demonstrations of Naginata around the World"
+      },
+      "ja": {
+        "url": "/ja/media",
+        "header": "写真やビデオ",
+        "title": "メディア",
+        "description": "世界のなぎなたの稽古風景や演武の写真及びビデオクリップ"
+      }
     },
     {
-      "url": "/fi/yhteystiedot",
-      "header": "Yhteystiedot",
-      "title": "Yhteystiedot",
-      "description": "Yhteystiedot seuroihin ja ihmisiin jotka tämän sivuston luontiin ovat vaikuttaneet, jakamalla tietoaan, opetuksellaan tai muulla tapaa"
-    },
-    {
-      "url": "/en",
-      "header": "News",
-      "title": "News",
-      "description": "Latest events and news in the area of Finnish Naginata, with International coverage"
-    },
-    {
-      "url": "/en/naginata",
-      "header": "Atarashii Naginata",
-      "title": "Naginata",
-      "description": "The modern Japanese martial art Atarashii Naginata is about using a long weapon"
-    },
-    {
-      "url": "/en/koryu",
-      "header": "Jikishinkageryu Naginatajutsu",
-      "title": "Koryu",
-      "description": "Literally koryu means old school. While related to naginata, it stands for the classical old schools which were using the weapon in their system."
-    },
-    {
-      "url": "/en/media",
-      "header": "Pictures and videos",
-      "title": "Media",
-      "description": "Pictures and video clips from the trainings and demonstrations of Naginata around the World"
-    },
-    {
-      "url": "/en/contact",
-      "header": "Contact Information",
-      "title": "Contact",
-      "description": "Get connected to the people who are in anyway related to the history and contents of this web site and to Naginata in Finland"
-    },
-    {
-      "url": "/ja",
-      "header": "ニュ-ス",
-      "title": "ニュ-ス",
-      "description": "フィンランドにおけるなぎなたの最新イベント及びニュース"
-    },
-    {
-      "url": "/ja/naginata",
-      "header": "新しいなぎなた",
-      "title": "なぎなた",
-      "description": "現代日本武道である新しいなぎなたは長い武器を使用する"
-    },
-    {
-      "url": "/ja/koryu",
-      "header": "直心影流薙刀術",
-      "title": "古流",
-      "description": "文字通り古流とは古い流派のことである。なぎなたと関連しており、？？？"
-    },
-    {
-      "url": "/ja/media",
-      "header": "写真やビデオ",
-      "title": "メディア",
-      "description": "世界のなぎなたの稽古風景や演武の写真及びビデオクリップ"
-    },
-    {
-      "url": "/ja/toiawase",
-      "header": "問い合わせ",
-      "title": "問い合わせ",
-      "description": "当該ウェブサイト運営管理者への問い合わせ"
+      "fi": {
+        "url": "/fi/yhteystiedot",
+        "header": "Yhteystiedot",
+        "title": "Yhteystiedot",
+        "description": "Yhteystiedot seuroihin ja ihmisiin jotka tämän sivuston luontiin ovat vaikuttaneet, jakamalla tietoaan, opetuksellaan tai muulla tapaa"
+      },
+      "en": {
+        "url": "/en/contact",
+        "header": "Contact Information",
+        "title": "Contact",
+        "description": "Get connected to the people who are in anyway related to the history and contents of this web site and to Naginata in Finland"
+      },
+      "ja": {
+        "url": "/ja/toiawase",
+        "header": "問い合わせ",
+        "title": "問い合わせ",
+        "description": "当該ウェブサイト運営管理者への問い合わせ"
+      }
     }
   ],
   "footer": {
@@ -134,7 +144,6 @@
         "alt": "Contribute to the content and the code at Github",
         "text": "Contribute at Github"
       }
-
     ],
     "ja": [
       {
