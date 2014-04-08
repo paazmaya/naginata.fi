@@ -18,6 +18,7 @@ var serveStatic = require('serve-static');
 var bodyParser = require('body-parser');
 var morgan = require('morgan'); // logger
 var responseTime = require('response-time');
+var compress = require('compression');
 
 // Keen.IO analytics, used only if the evironment variables are in place.
 var keen = null;
@@ -46,12 +47,7 @@ var pageJson = JSON.parse(pageData);
 
 var app = express();
 
-if (process.env.NODE_ENV === 'production') {
-  // Compress response data with gzip/deflate.
-  var compress = require('compression');
-  app.use(compress());
-}
-
+app.use(compress());
 app.use(serveStatic(__dirname + '/public_html'));
 app.use(morgan());
 app.use(bodyParser());
