@@ -178,11 +178,14 @@ header p {
 
 .desc-transform {
   -webkit-backface-visibility: visible;
+  -ms-backface-visibility: visible;
   backface-visibility: visible;
   -webkit-transform-origin:    25% 25%;
+  -ms-transform-origin:    25% 25%;
   transform-origin:    25% 25%;
-  -webkit-transform:           perspective(500px) rotateY(-15deg);
-  transform:           perspective(500px) rotateY(-15deg);
+  -webkit-transform:  perspective(600px) rotateY(-10deg) rotateX(-10deg);
+  -ms-transform:      perspective(600px) rotateY(-10deg) rotateX(-10deg);
+  transform:          perspective(600px) rotateY(-10deg) rotateX(-10deg);
 }
 
 article ul, article ol {
@@ -208,6 +211,8 @@ article a:hover, article a:focus {
   color:            white;
   background-color: #072434;
   text-decoration:  none;
+  -webkit-transition: background-color 0.1s linear;
+  transition: background-color 0.1s linear;
 }
 
 blockquote {
@@ -231,6 +236,11 @@ p > a:only-child > img:only-of-type {
   font-weight: bold;
   width:       280px;
   color:       #072434;
+}
+p > a:only-child > img:only-of-type:hover {
+  background-color: #072434;
+  -webkit-transition: background-color 0.1s linear;
+  transition: background-color 0.1s linear;
 }
 
 /* Colorbox background overlay */
@@ -298,6 +308,7 @@ article.media ul:last-of-type a::before {
   left:                0;
   background-repeat:   no-repeat;
   background-position: center center;
+  -webkit-background-size:     28px 28px;
   background-size:     28px 28px;
   width:               28px;
   height:              100%;
