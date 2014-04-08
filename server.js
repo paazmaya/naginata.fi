@@ -196,6 +196,12 @@ app.get(pageRegex, function (req, res) {
     if (item[lang]) {
       if (item[lang].url === req.path) {
         current = item[lang];
+        // Save the current page other languages
+        for (var key in langMeta) {
+          if (langMeta.hasOwnProperty(key) && item[key]) {
+            langMeta[key].url = item[key].url;
+          }
+        }
       }
       pages.push(item[lang]);
     }
