@@ -177,8 +177,11 @@ header p {
 }
 
 .desc-transform {
+  -webkit-backface-visibility: visible;
   backface-visibility: visible;
+  -webkit-transform-origin:    25% 25%;
   transform-origin:    25% 25%;
+  -webkit-transform:           perspective(500px) rotateY(-15deg);
   transform:           perspective(500px) rotateY(-15deg);
 }
 
