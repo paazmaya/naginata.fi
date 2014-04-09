@@ -264,6 +264,12 @@ app.get(pageRegex, function (req, res) {
   });
 });
 
+// sitemap.org
+app.get('/sitemap', function (req, res) {
+  var sitemap = require(__dirname + '/libs/sitemap.js');
+  
+});
+
 // Softer landing page
 app.get('/', function (req, res) {
   checkLang(req.acceptsLanguages());
