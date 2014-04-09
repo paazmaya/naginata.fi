@@ -51,7 +51,7 @@ var pageJson = JSON.parse(pageData);
 var app = express();
 
 app.use(compress());
-app.use(serveStatic(__dirname + '/public_html'));
+app.use(serveStatic(__dirname + '/public_html', { maxAge: 60*60*24*365 })); // one year
 app.use(morgan());
 app.use(bodyParser());
 app.use(responseTime());
