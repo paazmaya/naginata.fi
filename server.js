@@ -8,6 +8,9 @@
 
 'use strict';
 
+// New Relic 
+require('newrelic');
+
 // http://expressjs.com
 var express = require('express');
 var fs = require('fs');
@@ -193,11 +196,11 @@ app.get(pageRegex, function (req, res) {
       if (item[lang].url === req.path) {
         current = item[lang];
         // Save the current page other languages
-        for (var key in langMeta) {
-          if (langMeta.hasOwnProperty(key) && item[key]) {
+        Object.keys(langMeta).forEach(function (key) {
+          if (item[key]) {
             langMeta[key].url = item[key].url;
           }
-        }
+        });
       }
       pages.push(item[lang]);
     }
