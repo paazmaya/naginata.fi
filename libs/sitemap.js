@@ -8,20 +8,28 @@
 
 'use strict';
 
+var fs = require('fs');
+var contentPath = require('./content-path');
+
 /**
  * Format the page data to match the need for sitemap.jade
  */
-module.exports = function (pages) {
+module.exports = function (pageData) {
   var out = [];
-  pages.forEach(function (item) {
+  pageData.pages.forEach(function (item) {
     Object.keys(item).forEach(function (lang) {
-      if (item[lang].url) {
-        var file = 'content/' + item[lang].url + '.md';
-        out.push({
-          loc: item[lang].url,
-          lastmod: '2013-10-08',
-          changefreq: 'monthly'
-        });
+      if (pageData.languages[lang].enabled === true && item[lang].url) {
+        var url = item[lang].url;
+        var path = contentPath(lang, url);
+        var stats = fs.statSync(path);
+        if (stats.isFile()) {
+          var date = stats.mtime.toISOString().split('T').shift();
+          out.push({
+            loc: item[lang].url,
+            lastmod: date,
+            changefreq: 'monthly'
+          });
+        }
       }
     });
   });

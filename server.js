@@ -23,6 +23,9 @@ var morgan = require('morgan'); // logger
 var responseTime = require('response-time');
 var compress = require('compression');
 
+// Custom classes
+var contentPath = require('./libs/content-path');
+
 // Keen.IO analytics, used only if the evironment variables are in place.
 var keen = null;
 if (process && process.env && process.env.KEEN_IO_ID && process.env.KEEN_IO_WRITE) {
@@ -95,11 +98,7 @@ var keenSend = function (type, content) {
  */
 var getContent = function (lang, url) {
   var data = '# 404';
-  url = url.replace('/' + lang, '').replace('/', '');
-  if (url === '') {
-    url = 'index';
-  }
-  var path = 'content/' + lang + '/' + url + '.md';
+  var path = contentPath(lang, url);
   if (fs.existsSync(path)) {
     data = fs.readFileSync(path, fsOptions);
   }
@@ -269,7 +268,7 @@ app.get('/sitemap', function (req, res) {
   res.set({'Content-type': 'application/xml'});
   var sitemap = require(__dirname + '/libs/sitemap.js');
   res.render('sitemap', { 
-    pages: sitemap(pageJson.pages) 
+    pages: sitemap(pageJson) 
   }, function (error, html) {
     if (error) {
       keenSend('error', error);
