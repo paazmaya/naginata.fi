@@ -266,8 +266,16 @@ app.get(pageRegex, function (req, res) {
 
 // sitemap.org
 app.get('/sitemap', function (req, res) {
+  res.set({'Content-type': 'application/xml'});
   var sitemap = require(__dirname + '/libs/sitemap.js');
-  
+  res.render('sitemap', { 
+    pages: sitemap(pageJson.pages) 
+  }, function (error, html) {
+    if (error) {
+      keenSend('error', error);
+    }
+    res.send(html);
+  });
 });
 
 // Softer landing page

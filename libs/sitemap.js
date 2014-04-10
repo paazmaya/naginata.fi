@@ -8,12 +8,22 @@
 
 'use strict';
 
-module.exports = function (pageData) {
+/**
+ * Format the page data to match the need for sitemap.jade
+ */
+module.exports = function (pages) {
   var out = [];
-  /*
-    <loc>http://naginata.fi/fi</loc>
-    <lastmod>2013-10-08</lastmod>
-    <changefreq>monthly</changefreq>
-  */
+  pages.forEach(function (item) {
+    Object.keys(item).forEach(function (lang) {
+      if (item[lang].url) {
+        var file = 'content/' + item[lang].url + '.md';
+        out.push({
+          loc: item[lang].url,
+          lastmod: '2013-10-08',
+          changefreq: 'monthly'
+        });
+      }
+    });
+  });
   return out;
 };
