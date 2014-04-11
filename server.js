@@ -221,12 +221,20 @@ app.get(pageRegex, function (req, res) {
     current.facebook = facebookMeta(current, pageJson.facebook);
   }
   
-  // prev, next
+  // Flip ahead browsing: prev, next
   var index = pages.indexOf(current);
   var prev = index > 0 ? index - 1 : pages.length - 1;
   var next = index < pages.length - 1 ? index + 1 : 0;
-  pages[prev].rel = 'prev';
-  pages[next].rel = 'next';
+  var flips = [
+    {
+      rel: 'next',
+      url: pages[next].url
+    },
+    {
+      rel: 'prev',
+      url: pages[prev].url
+    }
+  ];
   
   // Every visit writes analytics
   keenSend('page view', {
@@ -250,6 +258,7 @@ app.get(pageRegex, function (req, res) {
   res.render('index', {
     content: getContent(lang, current.url),
     pages: pages,
+    flipahead: flips,
     footers: pageJson.footer[lang],
     meta: current,
     prefetch: flickrImageList(),
