@@ -339,7 +339,7 @@ var sendanmaki = window.sendanmaki = {
     var now = $.now();
     var earlier = window.localStorage.getItem('navTimeSent') || 0;
 
-    if (now - earlier > this.interval) {
+    if (now - earlier > sendanmaki.interval) {
       $.post('/navigation-timings', data, function () {
         window.localStorage.setItem('navTimeSent', now);
       });
@@ -368,7 +368,7 @@ var sendanmaki = window.sendanmaki = {
     var now = $.now();
     var earlier = window.localStorage.getItem('resTimeSent') || 0;
 
-    if (now - earlier > this.interval) {
+    if (now - earlier > sendanmaki.interval) {
       $.post('/resource-timings', data, function () {
         window.localStorage.setItem('resTimeSent', now);
       });
