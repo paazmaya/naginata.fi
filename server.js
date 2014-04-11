@@ -181,6 +181,12 @@ for (var key in pageJson.languages) {
   }
 }
 
+// Handle every GET request and pass thru if not using www.
+app.get('*', function (req, res, next) {
+  console.log('subdomains', req.subdomains);
+  next();
+});
+
 var pageRegex = new RegExp('^\/(' + langKeys.join('|') + ')(\/(\\w+))?$');
 // TODO: express 4 uses :lang/:page style and params will be an object
 app.get(pageRegex, function (req, res) {
