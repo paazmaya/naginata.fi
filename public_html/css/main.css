@@ -360,6 +360,7 @@ article.media ul:last-of-type a[href*="flickr.com"]::before {
   position: relative;
   height:              180px;
   background-image:    url(../img/logo.png);
+  -webkit-background-size: 132px 132px;
   background-size: 132px 132px;
   background-position: 2em center;
   background-repeat:   no-repeat;

@@ -31,21 +31,21 @@ html(lang=settings.lang)
             li
               a(title=language.name, href=(language.url ? language.url : "/" + key))
                 = language.name
-      p
+      p(role="banner")
         = meta.titlesuffix
     nav.full-width
-      ul.centered
+      ul.centered(role="navigation")
         - each page in pages
           li(class=page.url == meta.url ? "current" : "")
             a(rel=page.rel, title=page.header, href=page.url)
               = page.title
     div.centered
-      header
+      header(role="contentinfo")
         h1
           = meta.header
         p.desc-transform
           = meta.description
-      article(class=meta.title.toLowerCase())
+      article(class=meta.title.toLowerCase(), role="main")
         != content
     footer.full-width
       p.centered
