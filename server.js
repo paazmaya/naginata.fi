@@ -186,8 +186,9 @@ for (var key in pageJson.languages) {
 // Handle every GET request and pass thru if not using www.
 app.get('*', function (req, res, next) {
   console.log('subdomains', req.subdomains);
-  if (req.subdomains.length > 0) {
-    var url = req.protocol + '://' + req.host.split('.').slice(1).join('.') + req.originalUrl;
+  console.log('req.host', req.host);
+  if (req.host.match(/^www/) !== null ) {
+    var url = req.protocol + '://' + req.host.replace(/^www\./, '') + req.originalUrl;
     console.log('Should redirect to: ' + url);
     res.redirect(301, url);
   }
