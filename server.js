@@ -186,7 +186,14 @@ for (var key in pageJson.languages) {
 // Handle every GET request and pass thru if not using www.
 app.get('*', function (req, res, next) {
   console.log('subdomains', req.subdomains);
-  next();
+  if (req.subdomains.length > 0) {
+    var url = req.protocol + '://' + req.host + req.originalUrl;
+    console.log('Should redirect to: ' + url);
+    res.redirect(301, url);
+  }
+  else {
+    next();
+  }
 });
 
 var pageRegex = new RegExp('^\/(' + langKeys.join('|') + ')(\/(\\w+))?$');
