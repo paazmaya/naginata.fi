@@ -187,7 +187,7 @@ for (var key in pageJson.languages) {
 app.get('*', function (req, res, next) {
   console.log('subdomains', req.subdomains);
   if (req.subdomains.length > 0) {
-    var url = req.protocol + '://' + req.host + req.originalUrl;
+    var url = req.protocol + '://' + req.host.split('.').slice(1).join('.') + req.originalUrl;
     console.log('Should redirect to: ' + url);
     res.redirect(301, url);
   }
