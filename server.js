@@ -54,7 +54,7 @@ var pageJson = JSON.parse(pageData);
 var app = express();
 
 app.use(compress());
-app.use(serveStatic(__dirname + '/public_html', { maxAge: 60*60*24*365 })); // one year
+app.use(serveStatic(__dirname + '/public_html', { maxAge: 60 * 60 * 24 * 365 })); // one year
 app.use(morgan());
 app.use(bodyParser());
 app.use(responseTime());
@@ -74,6 +74,8 @@ var defaultLang = 'fi';
 /**
  * Send data to back end analytics, Keen.IO.
  * @see https://keen.io/docs/clients/javascript/reference/#data-collection
+ * @param {string} type
+ * @param {object} content
  */
 var keenSend = function (type, content) {
   console.log('keenSend. type: ' + type + ', content: ' + content);
