@@ -7,13 +7,13 @@
  */
 
 .full-width {
-  min-width: 100%;
+  min-width: 620px;
   width: 100%;
 }
 .centered {
   margin-left: auto;
   margin-right: auto;
-  min-width: 680px;
+  min-width: 620px;
   max-width: 1000px;
   padding-left: 2em;
   padding-right: 2em;
