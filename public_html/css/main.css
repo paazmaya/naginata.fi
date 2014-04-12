@@ -6,6 +6,21 @@
  *          http://creativecommons.org/licenses/by-sa/3.0/
  */
 
+.full-width {
+  min-width: 100%;
+  width: 100%;
+}
+.centered {
+  margin-left: auto;
+  margin-right: auto;
+  min-width: 680px;
+  max-width: 1000px;
+  padding-left: 2em;
+  padding-right: 2em;
+}
+
+
+
 * {
   margin:         0;
   padding:        0;
@@ -15,6 +30,9 @@
   vertical-align: baseline;
   background:     transparent;
   color:          #121212;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 address, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
@@ -23,11 +41,12 @@ address, article, aside, canvas, details, figcaption, figure, footer, header, hg
 
 html, body {
   width:            100%;
+  min-width: 100%;
   background-color: white;
 }
 
 header, article, section {
-  padding:     2em 1em;
+  padding:     2em 0;
   font-family: 'Lora', Verdana, sans-serif;
 }
 
@@ -44,46 +63,33 @@ a {
   text-decoration: none;
 }
 
-a:hover {
+a:hover, a:focus {
   color: #4b5535;
-}
-
-input, select {
-  vertical-align: middle;
-}
-
-input:focus, select:focus, textarea:focus {
-  outline: 1px solid #6e5728;
 }
 
 li {
   padding: 0.3em 0;
 }
 
-nav {
-  position: absolute;
-  top:      10em;
-  left:     0;
-  z-index:  101;
-}
 
-nav ul, footer > p {
-  width:       50em;
-  margin-left: -25em;
-  left:        50%;
-  position:    relative;
-}
 
 nav, footer {
   font-variant:  small-caps;
   font-family:   'Inder', Verdana, sans-serif;
-  width:         100%;
   border-top:    0.1em solid #072434;
   border-bottom: 0.1em solid #072434;
-  height:        1.5em;
+  height:        1.6em;
   color:         #072434;
   display:       block;
+  margin-bottom: 1em;
 }
+nav ul, footer p {
+  height:      100%;
+  margin:      0;
+}
+
+
+
 
 nav ul, footer p, #languages {
   list-style: none;
@@ -93,9 +99,9 @@ nav ul, footer p, #languages {
 }
 
 nav li {
-  width:   10em;
+  width:   20%;
   height:  1.5em;
-  float:   left;
+  display: inline-block;
   padding: 0;
 }
 
@@ -103,30 +109,12 @@ nav a, footer a, .current a:hover {
   background-color: transparent;
   color:            #072434;
   text-align:       center;
-  height:           100%;
-}
-
-footer {
-  float:         none;
-  clear:         both;
-  position:      relative;
-  z-index:       100;
-  margin-bottom: 1em;
+  height:           1.5em;
 }
 
 footer a {
-  padding: 0 1em;
+  padding: 0 2em;
   display: inline-block;
-}
-
-footer > p {
-  height:      1.5em;
-  margin:      0;
-  margin-left: -25em;
-}
-
-footer time {
-  color: #072434;
 }
 
 nav a {
@@ -140,6 +128,10 @@ nav a:hover, footer a:hover, footer a:focus, .current a {
   text-decoration:  none;
 }
 
+
+
+
+
 h1, h2, h3, h4, h5, h6 {
   color:       #072434;
   font-family: 'Inder', Verdana, sans-serif;
@@ -147,7 +139,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  font-size: 1.7em;
+  font-size: 2em;
   width:     60%;
 }
 
@@ -330,24 +322,10 @@ article.media ul:last-of-type a[href*="flickr.com"]::before {
   background-image: url('../img/flickr_28.png');
 }
 
-/* local image in an article */
-.medialocal {
-  float: left;
-}
-
-#wrapper {
-  min-height:       100%;
-  width:            50em;
-  margin-left:      -25em;
-  left:             50%;
-  position:         relative;
-  background-color: #fefefe;
-}
-
 #languages {
   position:      absolute;
   top:           0;
-  right:         0;
+  right:         2em;
   font-size:     90%;
   width:         auto;
   height:        auto;
@@ -380,13 +358,12 @@ article.media ul:last-of-type a[href*="flickr.com"]::before {
 }
 
 #logo {
-  width:               50em;
+  position: relative;
   height:              10em;
   margin-bottom:       1.5em;
   background-image:    url(../img/logo.png);
   background-position: 2em center;
   background-repeat:   no-repeat;
-  line-height:         0;
 }
 
 #logo > p {
@@ -394,8 +371,8 @@ article.media ul:last-of-type a[href*="flickr.com"]::before {
   width:       auto;
   text-align:  center;
   font-size:   350%;
-  line-height: 100%; /*font-variant: small-caps;*/;
-  padding:     1em 1em 1em 3em;
+  line-height: 100%; /*font-variant: small-caps;*/
+  padding:     1em 0em 0em 3em;
   color:       #072434;
   font-family: 'Inder', Verdana, sans-serif;
 }

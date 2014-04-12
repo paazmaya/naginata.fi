@@ -282,7 +282,7 @@ var sendanmaki = window.sendanmaki = {
    * @param {string} title
    */
   openIframe: function (url, title) {
-    var w = $('#wrapper').width() || 1000;
+    var w = $('div.centered').width() || 1000;
     var h = w * 0.75;
 
     // By using iframe, fullscreen becomes possible

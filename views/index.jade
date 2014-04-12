@@ -23,22 +23,22 @@ html(lang=settings.lang)
     - each flip in flipahead
         link(rel=flip.rel, href=flip.url)
   body
-    nav
-      ul
-        - each page in pages
-          li(class=page.url == meta.url ? "current" : "")
-            a(rel=page.rel, title=page.header, href=page.url)
-              = page.title
-    div#wrapper
+    div#logo.centered
       ul#languages
         - each language, key in languages
           - if (key !== settings.lang)
             li
               a(title=language.name, href=(language.url ? language.url : "/" + key))
                 = language.name
-      div#logo
-        p
-          = meta.titlesuffix
+      p
+        = meta.titlesuffix
+    nav.full-width
+      ul.centered
+        - each page in pages
+          li(class=page.url == meta.url ? "current" : "")
+            a(rel=page.rel, title=page.header, href=page.url)
+              = page.title
+    div.centered
       header
         h1
           = meta.header
@@ -46,8 +46,8 @@ html(lang=settings.lang)
           = meta.description
       article(class=meta.title.toLowerCase())
         != content
-    footer
-      p
+    footer.full-width
+      p.centered
         - each footer in footers
           a(title=footer.alt, href=footer.url)
             != footer.text
