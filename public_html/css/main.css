@@ -46,8 +46,9 @@ html, body {
 }
 
 header, article, section {
-  padding:     2em 0;
+  padding:     1em 0;
   font-family: 'Lora', Verdana, sans-serif;
+  line-height: 1.5;
 }
 
 html[lang="ja"] {
@@ -161,11 +162,11 @@ h4 {
 }
 
 header p {
+  font-family: 'Inder', Verdana, sans-serif;
   text-align: right;
-  margin-top: -2.5em;
+  margin-top: -2em;
   float:      right;
   width:      40%;
-  font-size:  0.9em;
 }
 
 .desc-transform {
@@ -175,9 +176,9 @@ header p {
   -webkit-transform-origin:    25% 25%;
   -ms-transform-origin:    25% 25%;
   transform-origin:    25% 25%;
-  -webkit-transform:  perspective(600px) rotateY(-10deg) rotateX(-10deg);
-  -ms-transform:      perspective(600px) rotateY(-10deg) rotateX(-10deg);
-  transform:          perspective(600px) rotateY(-10deg) rotateX(-10deg);
+  -webkit-transform:  perspective(600px) rotateY(-8deg) rotateX(-8deg);
+  -ms-transform:      perspective(600px) rotateY(-8deg) rotateX(-8deg);
+  transform:          perspective(600px) rotateY(-8deg) rotateX(-8deg);
 }
 
 article ul, article ol {
@@ -327,8 +328,6 @@ article.media ul:last-of-type a[href*="flickr.com"]::before {
   top:           0;
   right:         2em;
   font-size:     90%;
-  width:         auto;
-  height:        auto;
   border:        1px solid #072434;
   border-top:    0px;
   border-radius: 0 0 14px 14px;
@@ -359,9 +358,9 @@ article.media ul:last-of-type a[href*="flickr.com"]::before {
 
 #logo {
   position: relative;
-  height:              10em;
-  margin-bottom:       1.5em;
+  height:              180px;
   background-image:    url(../img/logo.png);
+  background-size: 132px 132px;
   background-position: 2em center;
   background-repeat:   no-repeat;
 }
@@ -372,7 +371,7 @@ article.media ul:last-of-type a[href*="flickr.com"]::before {
   text-align:  center;
   font-size:   350%;
   line-height: 100%; /*font-variant: small-caps;*/
-  padding:     1em 0em 0em 3em;
+  padding:     1em 0em 0em 132px;
   color:       #072434;
   font-family: 'Inder', Verdana, sans-serif;
 }
@@ -397,7 +396,7 @@ article.media ul:last-of-type a[href*="flickr.com"]::before {
   opacity:          0.3;
   border:           1px solid #6e5728;
   border-radius:    0.6em;
-  background-color: rgba(255, 255, 255, 0.1); /* transparent would work in all other except IE */;
+  background-color: rgba(255, 255, 255, 0.1); /* transparent would work in all other except IE */
   display:          block;
 }
 
