@@ -96,8 +96,8 @@ var sendanmaki = window.sendanmaki = {
 
   /**
    * Add notes to a chudan kamae bogu image, if available.
-   * @param {string} key
-   * @param {Array} items
+   * @param {string} key    Key which should be the img elements src
+   * @param {Array}  items  Items to be created for the given key image
    */
   buildImageNotes: function (key, items) {
     $('img[src="' + key + '"]').each(function () {
@@ -118,7 +118,7 @@ var sendanmaki = window.sendanmaki = {
   /**
    * Create a note element on a image that has src == data.url
    * @param {object} data {x, y, width, height, note}
-   * @param {string} url
+   * @param {string} url  Src property of the img element for which the note is created
    */
   createImgNote: function (data, url) {
     var parent = $('img[src="' + url + '"]').parent().css('position', 'relative');
@@ -150,7 +150,7 @@ var sendanmaki = window.sendanmaki = {
    * http://vimeo.com/[id]
    * http://player.vimeo.com/video/[id]
    *
-   * @param {jQuery.Event} event
+   * @param {jQuery.Event} event Click event via jQuery
    */
   onVideoClick: function (event) {
     event.preventDefault();
@@ -164,7 +164,7 @@ var sendanmaki = window.sendanmaki = {
   },
 
   /**
-   * @param {jQuery.Event} event
+   * @param {jQuery.Event} event Click event via jQuery
    */
   onFigureClick: function (event) {
     event.preventDefault();
@@ -278,8 +278,8 @@ var sendanmaki = window.sendanmaki = {
 
   /**
    * Open the given url in a Colorbox iFrame.
-   * @param {string} url
-   * @param {string} title
+   * @param {string} url   Url which should be opened
+   * @param {string} title Title for the Colorbox
    */
   openIframe: function (url, title) {
     var w = $('div.centered').width() || 1000;
