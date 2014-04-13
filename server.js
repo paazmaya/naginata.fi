@@ -15,6 +15,7 @@ require('newrelic');
 var express = require('express');
 var fs = require('fs');
 var spdy = require('spdy');
+var path = require('path');
 
 // Dependencies for express
 var serveStatic = require('serve-static');
@@ -54,7 +55,7 @@ var pageJson = JSON.parse(pageData);
 var app = express();
 
 app.use(compress());
-app.use(serveStatic(__dirname + '/public_html', { maxAge: 60 * 60 * 24 * 365 })); // one year
+app.use(serveStatic(path.join(__dirname, '/public_html'), { maxAge: 60 * 60 * 24 * 365 })); // one year
 app.use(morgan());
 app.use(bodyParser());
 app.use(responseTime());
@@ -66,7 +67,7 @@ app.on('uncaughtException', function (err) {
 
 app.engine('jade', require('jade').__express);
 
-app.set('views', __dirname + '/views');
+app.set('views', path.join(__dirname, '/views'));
 app.set('view engine', 'jade');
 
 var defaultLang = 'fi';
@@ -74,8 +75,8 @@ var defaultLang = 'fi';
 /**
  * Send data to back end analytics, Keen.IO.
  * @see https://keen.io/docs/clients/javascript/reference/#data-collection
- * @param {string} type
- * @param {object} content
+ * @param {string} type  Type of the content for grouping
+ * @param {object} content Whatever could be related
  */
 var keenSend = function (type, content) {
   console.log('keenSend. type: ' + type + ', content: ' + content);
@@ -159,7 +160,7 @@ var flickrImageList = function () {
 /**
  * Checks if the current language should be changed according to the
  * current users language preferences and thus changes if needed.
- * @param {Array} acceptsLanguages
+ * @param {Array} acceptsLanguages The languages accepted by the current user agent
  * @see http://expressjs.com/api.html#req.acceptsLanguages
  */
 var checkLang = function (acceptsLanguages) {
@@ -235,7 +236,7 @@ app.get(pageRegex, function (req, res) {
 
   var userAgent = req.header('user-agent');
   if (userAgent && userAgent.indexOf('facebookexternalhit') !== -1) {
-    var facebookMeta = require('./libs/facebookMeta.js');
+    var facebookMeta = require(path.join(__dirname, '/libs/facebookMeta.js'));
     current.facebook = facebookMeta(current, pageJson.facebook);
   }
   
@@ -293,7 +294,7 @@ app.get(pageRegex, function (req, res) {
 // sitemap.org
 app.get('/sitemap', function (req, res) {
   res.set({'Content-type': 'application/xml'});
-  var sitemap = require(__dirname + '/libs/sitemap.js');
+  var sitemap = require(path.join(__dirname, '/libs/sitemap.js'));
   res.render('sitemap', { 
     pages: sitemap(pageJson) 
   }, function (error, html) {

@@ -63,7 +63,7 @@ module.exports = function(grunt) {
         'public_html/js/sendanmaki.js'
       ]
     },
-    
+
     jasmine: {
       public: {
         src: [
@@ -71,7 +71,7 @@ module.exports = function(grunt) {
         ],
         options: {
           vendor: [
-            'bower_components/jquery/dist/jquery.js',
+            'bower_components/jquery/dist/jquery.js'
             //'bower_components/colorbox/jquery.colorbox.js'
           ],
           specs: 'tests/js/sendanmaki_spec.js',
