@@ -40,7 +40,7 @@ describe('Image Notes', function() {
   
   it('created image notes', function() {
     spyOn(sendanmaki, 'createImgNote');
-    sendanmaki.buildImageNotes(url);
+    sendanmaki.buildImageNotes(url, sendanmaki.notes[url]);
 
     expect(sendanmaki.createImgNote).toHaveBeenCalled();
     
