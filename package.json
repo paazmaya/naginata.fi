@@ -38,7 +38,8 @@
     "karma": "^0.12",
     "karma-coverage": "^0.2",
     "karma-jasmine": "^0.2",
-    "karma-phantomjs-launcher": "^0.1.4"
+    "karma-phantomjs-launcher": "^0.1.4",
+    "grunt-contrib-watch": "~0.6.1"
   },
   "engines": {
     "node": "0.10.x",

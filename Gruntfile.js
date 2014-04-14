@@ -78,12 +78,27 @@ module.exports = function(grunt) {
           display: 'full'
         }
       }
+    },
+    
+    watch: {
+      scripts: {
+        files: ['public_html/js/sendanmaki.js', '*.js'],
+        tasks: ['eslint'],
+        options: {
+          interrupt: true,
+        },
+      },
+      jasmine: {
+        files: 'tests/js/*.js',
+        tasks: ['jasmine'],
+      } 
     }
   });
 
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-jasmine');
+  grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-eslint');
 
   grunt.registerTask('minify', ['uglify', 'cssmin']);
