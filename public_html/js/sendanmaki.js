@@ -104,15 +104,17 @@ var sendanmaki = window.sendanmaki = {
       items.forEach(function (data) {
         sendanmaki.createImgNote(data, key);
       });
-    }).on('mouseover mouseout', function (event) {
-        var cont = $(this).parent().children('span:contains("' + items.note + '")');
-        if (event.type === 'mouseover') {
-          cont.addClass('notehover');
-        }
-        else {
-          cont.removeClass('notehover');
-        }
-      });
+    });
+    
+    $(document).on('mouseover mouseout', '.note[rel]', function (event) {
+      var cont = $(event.currentTarget);
+      if (event.type === 'mouseover') {
+        cont.addClass('notehover');
+      }
+      else {
+        cont.removeClass('notehover');
+      }
+    });
   },
 
   /**
@@ -154,7 +156,13 @@ var sendanmaki = window.sendanmaki = {
    */
   onVideoClick: function (event) {
     event.preventDefault();
-    var $self = $(this);
+    sendanmaki.openVideoLink($(this));
+  },
+  
+  /**
+   * @param {jQuery} $self The link that was clicked, which should have video page url
+   */
+  openVideoLink: function ($self) {
     var href = $self.attr('href');
     href = href.replace(/vimeo.com\/(\w+)/, 'player.vimeo.com/video/$1');
     href = href.replace(/youtube.com\/watch\?v=(\w+)/,
@@ -168,7 +176,13 @@ var sendanmaki = window.sendanmaki = {
    */
   onFigureClick: function (event) {
     event.preventDefault();
-    var $self = $(this);
+    sendanmaki.openFlickrImage($(this));
+  },
+  
+  /**
+   * @param {jQuery} $self The link that was clicked, which should have Flickr image url
+   */
+  openFlickrImage: function ($self) {
     var href = $self.find('img').attr('src');
 
     // Find the domain
