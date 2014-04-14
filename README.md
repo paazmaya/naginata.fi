@@ -95,6 +95,13 @@ npm run coveralls
 ucss
 ```
 
+Also [nodemon](https://github.com/remy/nodemon/ "Monitor for any changes in your node.js application and automatically restart the server"):
+
+```sh
+npm install -g nodemon
+nodemon server.js
+```
+
 [paazmaya.github.io/naginata.fi/photobox](http://paazmaya.github.io/naginata.fi/photobox)
 
 [paazmaya.github.io/naginata.fi/phantomas](http://paazmaya.github.io/naginata.fi/phantomas)
