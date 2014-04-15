@@ -7,7 +7,7 @@
  */
 'use strict';
 
-module.exports = function(config) {
+module.exports = function karmaConf(config) {
   config.set({
     autoWatch: false,
     files: [

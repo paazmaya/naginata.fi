@@ -8,7 +8,7 @@
 
 'use strict';
 
-module.exports = function(grunt) {
+module.exports = function gruntFile(grunt) {
 
   // Project configuration.
   grunt.initConfig({
@@ -53,7 +53,8 @@ module.exports = function(grunt) {
 
     eslint: {
       options: {
-        config: 'eslint.json'
+        config: 'eslint.json',
+        format: 'compact'
       },
       target: [
         'Gruntfile.js',

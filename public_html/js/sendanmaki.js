@@ -100,13 +100,13 @@ var sendanmaki = window.sendanmaki = {
    * @param {Array}  items  Items to be created for the given key image
    */
   buildImageNotes: function (key, items) {
-    $('img[src="' + key + '"]').each(function () {
-      items.forEach(function (data) {
+    $('img[src="' + key + '"]').each(function eachImage() {
+      items.forEach(function forItems(data) {
         sendanmaki.createImgNote(data, key);
       });
     });
     
-    $(document).on('mouseover mouseout', '.note[rel]', function (event) {
+    $(document).on('mouseover mouseout', '.note[rel]', function noteHover(event) {
       var cont = $(event.currentTarget);
       if (event.type === 'mouseover') {
         cont.addClass('notehover');
@@ -119,7 +119,7 @@ var sendanmaki = window.sendanmaki = {
 
   /**
    * Create a note element on a image that has src == data.url
-   * @param {object} data {x, y, width, height, note}
+   * @param {{x: number, y: number, width: number, height: number, note: string}} data Data for the note, such as position, size and text
    * @param {string} url  Src property of the img element for which the note is created
    */
   createImgNote: function (data, url) {
@@ -216,7 +216,7 @@ var sendanmaki = window.sendanmaki = {
     var $external = $('a[href^="http://"], a[href^="https://"]').not($media);
 
     // external urls shall open in a new window
-    $external.on('click', function (event) {
+    $external.on('click', function externalClick(event) {
       event.preventDefault();
       var href = $(this).attr('href');
       window.open(href, $.now());
@@ -235,7 +235,7 @@ var sendanmaki = window.sendanmaki = {
     });
 
     // Track ColorBox usage with Google Analytics
-    $(document).on('cbox_complete', function () {
+    $(document).on('cbox_complete', function cboxComplete() {
       var href = $.colorbox.element().attr('href');
       if (href) {
         ga('send', 'pageview', href);
@@ -243,7 +243,7 @@ var sendanmaki = window.sendanmaki = {
     });
 
     // Close colorbox if opened as modal
-    $(document).on('click', '#colorbox input[type="button"][name="close"]', function () {
+    $(document).on('click', '#colorbox input[type="button"][name="close"]', function closeClick() {
       $.colorbox.close();
     });
   },
@@ -315,6 +315,7 @@ var sendanmaki = window.sendanmaki = {
    *
    * @see http://www.w3.org/TR/navigation-timing/
    * @see http://caniuse.com/nav-timing
+   * @returns {?} Nothing
    */
   sendNavigationTimings: function () {
     if (typeof window.performance !== 'object' ||
@@ -328,7 +329,7 @@ var sendanmaki = window.sendanmaki = {
     // navigationStart is the first event taking place in the PerformanceTiming sequence
     var navigationStart = window.performance.timing.navigationStart;
     // All the keys will be set to the relative time as it gives more value than the time.
-    $.each(window.performance.timing, function (key, value) {
+    $.each(window.performance.timing, function eachTiming(key, value) {
       if (typeof value === 'number') {
         // Value should be the time when the given event took place, 
         // but might be 0 if the event was not fired or was not completed.
@@ -356,7 +357,7 @@ var sendanmaki = window.sendanmaki = {
     var earlier = window.localStorage.getItem('navTimeSent') || 0;
 
     if (now - earlier > sendanmaki.interval) {
-      $.post('/navigation-timings', data, function () {
+      $.post('/navigation-timings', data, function navTimSent() {
         window.localStorage.setItem('navTimeSent', now);
       });
     }
@@ -369,6 +370,7 @@ var sendanmaki = window.sendanmaki = {
    *
    * @see http://www.w3.org/TR/resource-timing
    * @see https://bugzilla.mozilla.org/show_bug.cgi?id=822480
+   * @returns {?} Nothing
    */
   sendResourceTimings: function () {
     if (typeof window.performance !== 'object' ||
@@ -385,7 +387,7 @@ var sendanmaki = window.sendanmaki = {
     var earlier = window.localStorage.getItem('resTimeSent') || 0;
 
     if (now - earlier > sendanmaki.interval) {
-      $.post('/resource-timings', data, function () {
+      $.post('/resource-timings', data, function resTimSent() {
         window.localStorage.setItem('resTimeSent', now);
       });
     }
@@ -393,10 +395,10 @@ var sendanmaki = window.sendanmaki = {
 
 };
 
-(function () {
+(function jsLoaded() {
   sendanmaki.domReady();
 
-  window.onload = function () {
+  window.onload = function windowLoad() {
     window.setTimeout(sendanmaki.sendNavigationTimings, 500);
     window.setTimeout(sendanmaki.sendResourceTimings, 1000);
   };

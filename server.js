@@ -60,7 +60,7 @@ app.use(morgan());
 app.use(bodyParser());
 app.use(responseTime());
 
-app.on('uncaughtException', function (err) {
+app.on('uncaughtException', function uncaughtException(err) {
   console.error(err.stack);
   console.log('Node NOT Exiting...');
 });
@@ -77,13 +77,14 @@ var defaultLang = 'fi';
  * @see https://keen.io/docs/clients/javascript/reference/#data-collection
  * @param {string} type  Type of the content for grouping
  * @param {object} content Whatever could be related
+ * @returns {?} Nothing
  */
 var keenSend = function (type, content) {
   console.log('keenSend. type: ' + type + ', content: ' + content);
   if (!keen) {
     return;
   }
-  keen.addEvent(type, content, function(err, res) {
+  keen.addEvent(type, content, function keenEvent(err, res) {
     if (err) {
       console.log('Keen.IO error: ' + err);
     }
@@ -116,6 +117,7 @@ var getContent = function (lang, url) {
 /**
  * Iterate all pages for the current language and get a list of unique Flick images.
  * TODO: Cache results...
+ * @returns {array.<string>} List of images
  */
 var flickrImageList = function () {
   // If any of the files in 'content/*/*.md' has changed, update the whole cache.
@@ -124,7 +126,7 @@ var flickrImageList = function () {
   // Loop all Markdown files under content/*/
   var dir = 'content/';
   var directories = fs.readdirSync(dir);
-  directories = directories.filter(function (item) {
+  directories = directories.filter(function dirFilter(item) {
     var stats = fs.statSync(dir + item);
     return stats.isDirectory();
   });
@@ -132,9 +134,9 @@ var flickrImageList = function () {
   var images = []; // thumbnails of Flickr images
 
   // Read their contents
-  directories.forEach(function (directory) {
+  directories.forEach(function forDirs(directory) {
     var files = fs.readdirSync(dir + directory);
-    files.forEach(function (file) {
+    files.forEach(function forFiles(file) {
       if (file.split('.').pop() === 'md') {
         var path = dir + directory + '/' + file;
         var content = fs.readFileSync(path, fsOptions);
@@ -148,7 +150,7 @@ var flickrImageList = function () {
   });
 
   // Only unique
-  images = images.filter(function (e, i, arr) {
+  images = images.filter(function imageFilter(e, i, arr) {
     return arr.lastIndexOf(e) === i;
   });
 
@@ -162,9 +164,10 @@ var flickrImageList = function () {
  * current users language preferences and thus changes if needed.
  * @param {Array} acceptsLanguages The languages accepted by the current user agent
  * @see http://expressjs.com/api.html#req.acceptsLanguages
+ * @returns {?} Nothing
  */
 var checkLang = function (acceptsLanguages) {
-  acceptsLanguages.forEach(function (item) {
+  acceptsLanguages.forEach(function forLangs(item) {
     var key = item.substr(0, 2);
     if (pageJson.languages.hasOwnProperty(key) &&
         pageJson.languages[key].enabled === true) {
@@ -176,17 +179,16 @@ var checkLang = function (acceptsLanguages) {
 
 var langKeys = []; // Enabled language ISO codes: en, fi, ...
 var langMeta = {}; // Enabled language meta data, needed for language navigation
-for (var key in pageJson.languages) {
-  if (pageJson.languages.hasOwnProperty(key) &&
-      pageJson.languages[key].enabled === true) {
+Object.keys(pageJson.languages).forEach(function forMetaLangs(key) {
+  if (pageJson.languages[key].enabled === true) {
     langKeys.push(key);
     langMeta[key] = pageJson.languages[key];
   }
-}
+});
 
 // Handle every GET request and pass thru if not using www.
 /*
-app.get('*', function (req, res, next) {
+app.get('*', function appGetAll(req, res, next) {
   console.log('subdomains', req.subdomains);
   console.log('req.host', req.host);
   if (req.host.match(/^www/) !== null ) {
@@ -202,19 +204,19 @@ app.get('*', function (req, res, next) {
 
 var pageRegex = new RegExp('^\/(' + langKeys.join('|') + ')(\/(\\w+))?$');
 // TODO: express 4 uses :lang/:page style and params will be an object
-app.get(pageRegex, function (req, res) {
+app.get(pageRegex, function appGetRegex(req, res) {
   var lang = req.params[0];
   app.set('lang', lang);
 
   var current = null;
   var pages = [];
   // Get the pages for the given language, in order to create navigation
-  pageJson.pages.forEach(function (item) {
+  pageJson.pages.forEach(function eachPage(item) {
     if (item[lang]) {
       if (item[lang].url === req.path) {
         current = item[lang];
         // Save the current page other languages
-        Object.keys(langMeta).forEach(function (key) {
+        Object.keys(langMeta).forEach(function eachMetaLang(key) {
           if (item[key]) {
             langMeta[key].url = item[key].url;
           }
@@ -283,7 +285,7 @@ app.get(pageRegex, function (req, res) {
     prefetch: flickrImageList(),
     languages: langMeta,
     lang: lang
-  }, function (error, html) {
+  }, function rendered(error, html) {
     if (error) {
       keenSend('error', error);
     }
@@ -292,12 +294,12 @@ app.get(pageRegex, function (req, res) {
 });
 
 // sitemap.org
-app.get('/sitemap', function (req, res) {
+app.get('/sitemap', function appGetSitemap(req, res) {
   res.set({'Content-type': 'application/xml'});
   var sitemap = require(path.join(__dirname, '/libs/sitemap.js'));
   res.render('sitemap', { 
     pages: sitemap(pageJson) 
-  }, function (error, html) {
+  }, function renderSitemap(error, html) {
     if (error) {
       keenSend('error', error);
     }
@@ -306,13 +308,13 @@ app.get('/sitemap', function (req, res) {
 });
 
 // Softer landing page
-app.get('/', function (req, res) {
+app.get('/', function appGetRoot(req, res) {
   checkLang(req.acceptsLanguages());
   res.redirect(301, '/' + defaultLang);
 });
 
 // Catch anything that does not match the previous rules.
-app.get('*', function (req, res) {
+app.get('*', function appGetRest(req, res) {
   keenSend('redirection', {
     url: req.originalUrl,
     responce: '/' + defaultLang
@@ -321,14 +323,14 @@ app.get('*', function (req, res) {
 });
 
 // Navigation Timing API statistics to Keen.IO
-app.post('/navigation-timings', function (req, res) {
+app.post('/navigation-timings', function navTiming(req, res) {
   res.set({'Content-type': 'application/json'});
   res.send('Keen.IO - ' + req.body.url);
   keenSend('navigation timing', req.body);
 });
 
 // Resource Timing API statistics to Keen.IO
-app.post('/resource-timings', function (req, res) {
+app.post('/resource-timings', function resTiming(req, res) {
   res.set({'Content-type': 'application/json'});
   res.send('Keen.IO - ' + req.body.url);
 
@@ -360,6 +362,6 @@ var spdyOptions = {
 var server = spdy.createServer(spdyOptions, app);
 */
 
-app.listen(port, ipaddr, function () {
+app.listen(port, ipaddr, function appListen() {
   console.log('Express.js running at http://' + ipaddr + ':' + port + '/');
 });
