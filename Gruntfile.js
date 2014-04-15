@@ -79,19 +79,23 @@ module.exports = function(grunt) {
         }
       }
     },
-    
+
     watch: {
       scripts: {
         files: ['public_html/js/sendanmaki.js', '*.js'],
-        tasks: ['eslint'],
+        tasks: ['eslint', 'uglify'],
         options: {
-          interrupt: true,
-        },
+          interrupt: true
+        }
+      },
+      styles: {
+        files: ['public_html/css/main.css', 'public_html/css/colorbox.css'],
+        tasks: ['cssmin']
       },
       jasmine: {
-        files: 'tests/js/*.js',
-        tasks: ['jasmine'],
-      } 
+        files: ['tests/js/*.js'],
+        tasks: ['jasmine']
+      }
     }
   });
 
