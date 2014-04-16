@@ -54,7 +54,7 @@ module.exports = function gruntFile(grunt) {
     eslint: {
       options: {
         config: 'eslint.json',
-        format: 'compact'
+        format: 'stylish'
       },
       target: [
         'Gruntfile.js',

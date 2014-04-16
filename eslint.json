@@ -2,7 +2,7 @@
   "rules": {
     "block-scoped-var": 0,
     "brace-style": ["2", "stroustrup"],
-    "camelcase": 1,
+    "camelcase": 0,
     "complexity": [1, 12],
     "consistent-return": 2,
     "consistent-this": [2, "self"],
@@ -94,7 +94,6 @@
     "one-var": 0,
     "quote-props": 0,
     "quotes": [2, "single"],
-    "quote-props": 2,
     "radix": 2,
     "semi": 2,
     "sort-vars": 0,
