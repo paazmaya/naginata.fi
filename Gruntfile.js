@@ -100,11 +100,7 @@ module.exports = function gruntFile(grunt) {
     }
   });
 
-  grunt.loadNpmTasks('grunt-contrib-uglify');
-  grunt.loadNpmTasks('grunt-contrib-cssmin');
-  grunt.loadNpmTasks('grunt-contrib-jasmine');
-  grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-eslint');
+  require('jit-grunt')(grunt);
 
   grunt.registerTask('minify', ['uglify', 'cssmin']);
   grunt.registerTask('test', ['eslint', 'jasmine']);
