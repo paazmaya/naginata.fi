@@ -269,6 +269,7 @@ app.get(pageRegex, function appGetRegex(req, res) {
     'Content-Type': 'text/html; charset=utf-8',
     'Content-Security-Policy': 'default-src \'self\' ' +
       '*.vimeo.com *.youtube.com ' +
+      'https://*.vimeo.com https://*.youtube.com ' +
       '*.flickr.com *.staticflickr.com ' +
       '*.googleapis.com *.googleusercontent.com ' +
       '*.google-analytics.com',
