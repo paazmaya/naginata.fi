@@ -55,7 +55,7 @@ var pageJson = JSON.parse(pageData);
 var app = express();
 
 app.use(compress());
-app.use(serveStatic(path.join(__dirname, '/public_html'), { maxAge: 60 * 60 * 24 * 365 })); // one year
+app.use(serveStatic(path.join(__dirname, '/public_html'), {maxAge: 60 * 60 * 24 * 365})); // one year
 app.use(morgan());
 app.use(bodyParser());
 app.use(responseTime());
@@ -116,7 +116,6 @@ var getContent = function (lang, url) {
 
 /**
  * Iterate all pages for the current language and get a list of unique Flick images.
- * TODO: Cache results...
  * @returns {array.<string>} List of images
  */
 var flickrImageList = function () {
@@ -203,14 +202,13 @@ app.get('*', function appGetAll(req, res, next) {
 */
 
 var pageRegex = new RegExp('^\/(' + langKeys.join('|') + ')(\/(\\w+))?$');
-// TODO: express 4 uses :lang/:page style and params will be an object
 app.get(pageRegex, function appGetRegex(req, res) {
   var lang = req.params[0];
   app.set('lang', lang);
 
   var current = null;
   var pages = [];
-  // Get the pages for the given language, in order to create navigation
+  // Get the pages for the given language, in order to create navigation.
   pageJson.pages.forEach(function eachPage(item) {
     if (item[lang]) {
       if (item[lang].url === req.path) {
