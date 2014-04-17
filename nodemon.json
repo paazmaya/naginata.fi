@@ -1,0 +1,18 @@
+{
+  "verbose": true,
+  "execMap": {
+    "js": "node --debug"
+  },
+  "watch": [
+    "views/",
+    "public_html/"
+  ],
+  "ignore": [
+    ".git",
+    "*.log",
+    "node_modules/"
+  ],
+  "env": {
+    "NODE_ENV": "development"
+  }
+}
