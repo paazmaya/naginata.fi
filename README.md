@@ -55,7 +55,7 @@ Contributors are welcome.
  * Local Storage replacing browser cookies (http://www.w3.org/TR/webstorage/)
  * Google Web Fonts (http://www.google.com/fonts)
  * Google Analytics
- * Deployment to Heroku, Nodejitsu and Openshift. Final decision of which to use based on perceived speed vs price
+ * Deployed to Heroku (http://heroku.com/)
 
 List of software used for making `naginata.fi` possible:
 
