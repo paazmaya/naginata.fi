@@ -8,7 +8,7 @@
 
 'use strict';
 
-// New Relic 
+// New Relic
 require('newrelic');
 
 // http://expressjs.com
@@ -18,7 +18,7 @@ var spdy = require('spdy');
 var path = require('path');
 
 // Dependencies for express
-var serveStatic = require('serve-static');
+var st = require('st');
 var bodyParser = require('body-parser');
 var morgan = require('morgan'); // logger
 var responseTime = require('response-time');
@@ -55,7 +55,29 @@ var pageJson = JSON.parse(pageData);
 var app = express();
 
 app.use(compress());
-app.use(serveStatic(path.join(__dirname, '/public_html'), {maxAge: 60 * 60 * 24 * 365})); // one year
+app.use(st({
+  path: path.join(__dirname, '/public_html'),
+  url: '/',
+  index: false, // return 404's for directories
+  passthrough: true, // calls next/returns instead of returning a 404 error
+  gzip: false,
+  cache: { // specify cache:false to turn off caching entirely
+    fd: {
+      max: 1000, // number of fd's to hang on to
+      maxAge: 1000 * 60 * 60 // amount of ms before fd's expire
+    },
+
+    stat: {
+      max: 5000, // number of stat objects to hang on to
+      maxAge: 1000 * 60 // number of ms that stats are good for
+    },
+
+    content: {
+      max: 1024 * 1024 * 64, // how much memory to use on caching contents
+      maxAge: 1000 * 60 * 10 // how long to cache contents for
+    }
+  }
+}));
 app.use(morgan());
 app.use(bodyParser());
 app.use(responseTime());
@@ -239,7 +261,7 @@ app.get(pageRegex, function appGetRegex(req, res) {
     var facebookMeta = require(path.join(__dirname, '/libs/facebookMeta.js'));
     current.facebook = facebookMeta(current, pageJson.facebook);
   }
-  
+
   // Flip ahead browsing: prev, next
   var index = pages.indexOf(current);
   var prev = index > 0 ? index - 1 : pages.length - 1;
@@ -254,7 +276,7 @@ app.get(pageRegex, function appGetRegex(req, res) {
       url: pages[prev].url
     }
   ];
-  
+
   // Every visit writes analytics
   keenSend('page view', {
     url: req.originalUrl,
@@ -296,8 +318,8 @@ app.get(pageRegex, function appGetRegex(req, res) {
 app.get('/sitemap', function appGetSitemap(req, res) {
   res.set({'Content-type': 'application/xml'});
   var sitemap = require(path.join(__dirname, '/libs/sitemap.js'));
-  res.render('sitemap', { 
-    pages: sitemap(pageJson) 
+  res.render('sitemap', {
+    pages: sitemap(pageJson)
   }, function renderSitemap(error, html) {
     if (error) {
       keenSend('error', error);
@@ -355,7 +377,7 @@ var spdyOptions = {
 
   // **optional** if true - server will send 3.1 frames on 3.0 *plain* spdy
   autoSpdy31: false
-  
+
   //plain: false
 };
 var server = spdy.createServer(spdyOptions, app);
