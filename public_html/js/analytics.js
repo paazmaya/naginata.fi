@@ -21,4 +21,5 @@
 })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 
 ga('create', 'UA-2643697-14', 'naginata.fi');
+ga('require', 'displayfeatures');
 ga('send', 'pageview');
