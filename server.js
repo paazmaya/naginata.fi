@@ -292,7 +292,7 @@ app.get(pageRegex, function appGetRegex(req, res) {
       'https://*.vimeo.com https://*.youtube.com ' +
       '*.flickr.com *.staticflickr.com ' +
       '*.googleapis.com *.googleusercontent.com ' +
-      '*.google-analytics.com',
+      '*.google-analytics.com *.doubleclick.net',
     'Content-Language': lang,
     'Accept-Ranges': 'bytes',
     'Timing-Allow-Origin': '*'
