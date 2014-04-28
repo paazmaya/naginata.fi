@@ -100,9 +100,10 @@ var sendanmaki = window.sendanmaki = {
    * @param {Array}  items  Items to be created for the given key image
    */
   buildImageNotes: function (key, items) {
+    var parent = $('img[src="' + key + '"]').parent().addClass('relative');
     $('img[src="' + key + '"]').each(function eachImage() {
       items.forEach(function forItems(data) {
-        sendanmaki.createImgNote(data, key);
+        sendanmaki.createImgNote(data, key, parent);
       });
     });
     
@@ -122,9 +123,7 @@ var sendanmaki = window.sendanmaki = {
    * @param {{x: number, y: number, width: number, height: number, note: string}} data Data for the note, such as position, size and text
    * @param {string} url  Src property of the img element for which the note is created
    */
-  createImgNote: function (data, url) {
-    var parent = $('img[src="' + url + '"]').parent().css('position', 'relative');
-
+  createImgNote: function (data, url, parent) {
     if (parent.length > 0 && $('span.note[rel="' + data.note + '"]').length === 0) {
       var cont = $('<span class="note" rel="' + data.note + '"></span>');
       cont.css('left', data.x).css('top', data.y);
@@ -253,6 +252,7 @@ var sendanmaki = window.sendanmaki = {
    */
   localiseColorbox: function () {
 
+  console.log('this.lang: ' + this.lang);
     // Colorbox translations
     if (this.lang === 'fi') {
       /*
@@ -366,7 +366,7 @@ var sendanmaki = window.sendanmaki = {
   /**
    * Send Resource Timing API results to Keen.IO.
    *
-   * Available perhaps in EI10 and Chrome 26...
+   * Available perhaps in IE10 and Chrome 26...
    *
    * @see http://www.w3.org/TR/resource-timing
    * @see https://bugzilla.mozilla.org/show_bug.cgi?id=822480
@@ -399,7 +399,7 @@ var sendanmaki = window.sendanmaki = {
   sendanmaki.domReady();
 
   window.onload = function windowLoad() {
-    window.setTimeout(sendanmaki.sendNavigationTimings, 500);
-    window.setTimeout(sendanmaki.sendResourceTimings, 1000);
+    window.setTimeout(sendanmaki.sendNavigationTimings, 200);
+    window.setTimeout(sendanmaki.sendResourceTimings, 300);
   };
 })();

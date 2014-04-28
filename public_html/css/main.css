@@ -19,6 +19,9 @@
   padding-right: 2em;
 }
 
+.relative {
+  position: relative;
+}
 
 
 * {
@@ -370,30 +373,30 @@ article.media ul:last-of-type a[href*="flickr.com"]::before {
   text-align:       center;
 }
 
-.note:hover .notetext, .notehover .notetext {
+.note:hover .notetext, .note:focus .notetext, .notehover .notetext {
   display: inline;
 }
 
-.note:hover .notearea, .notehover .notearea {
+.note:hover .notearea, .note:focus .notearea, .notehover .notearea {
   opacity: 1.0;
-  border:  2px solid #6e5728;
+  border:  2px solid #072434;
+  background-color: rgba(0,0,0,0.3);
 }
 
 .notearea {
   opacity:          0.3;
-  border:           1px solid #6e5728;
+  border:           1px solid #072434;
   border-radius:    0.6em;
   background-color: rgba(255, 255, 255, 0.1); /* transparent would work in all other except IE */
   display:          block;
 }
 
 .notetext {
-  color:            #6e5728;
+  color:            #072434;
   border-radius:    0.4em;
-  border:           1px solid #6e5728;
+  border:           2px solid #072434;
   background-color: #fefefe;
   display:          none;
-  padding:          0.2em 0.4em;
-  margin-top:       -0.5em;
+  padding:          0.3em 0.5em;
   text-align:       center;
 }
