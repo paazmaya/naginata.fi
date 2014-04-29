@@ -1,6 +1,6 @@
 # naginata.fi
 
-A web site in Finland for an ancient martial art from Japan.
+> A web site in Finland for an ancient martial art from Japan.
 
 All the code is under Creative Commons License - Attribution & Share Alike (http://creativecommons.org/licenses/by-sa/3.0/).
 Full legal text available in `LICENSE.md`.
