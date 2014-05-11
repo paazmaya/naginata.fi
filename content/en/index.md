@@ -7,10 +7,11 @@
 -   06/09/2014 - [Finnish Open Competition,
     Hämeenlinna](https://www.facebook.com/events/147521468779208/ "Naginata Finnish Open 2014")
 -   22-24/08/2014 - [International Naginata Federation Seminar, Amstelveen, The Netherlands](http://international-naginata.org/drupal/node/17 "2014 INF seminar Announcement")
--   18/04/2014 - [Atarashii Naginata Easter Seminar in Helsinki](https://www.facebook.com/events/254398958076220/ "Atarashii Naginata Pääsiäisleiri"), organised by Tapanilan Erä Kendo Division
+-   24-25/05/2014 - [Kyu-seminar for practitioners of Kendo, Iaido, Jodo and Naginata in Helsinki, Finland](https://www.facebook.com/events/1410312342550257/ "FKA - Kyu-seminar in Helsinki")
 
 ## In the Past
 
+-   18/04/2014 - [Atarashii Naginata Easter Seminar in Helsinki](https://www.facebook.com/events/254398958076220/ "Atarashii Naginata Pääsiäisleiri"), organised by Tapanilan Erä Kendo Division
 -   07-09/03/2014 - [Annual Seminar in the UK](http://www.naginata.org.uk/2014-annual-british-naginata-seminar-details/ "2014 Annual British Naginata Seminar Details")
 -   14-16/02/2014 - [First Atarashii Naginata seminar in St. Petersburg, 
     Russia](https://www.facebook.com/events/1398129980435747/ "Открытый семинар по нагинате")
