@@ -93,6 +93,7 @@ grunt test
 npm run coveralls
 ../2.5.4/bin/sitespeed.io -u http://naginata.fi -k true -d 2
 ucss
+stylestats -t html public_html/css/main.css > stylestats.html
 ```
 
 Also [nodemon](https://github.com/remy/nodemon/ "Monitor for any changes in your node.js application and automatically restart the server"):
@@ -108,6 +109,9 @@ nodemon server.js
 
 [paazmaya.github.io/naginata.fi/sitespeed](http://paazmaya.github.io/naginata.fi/sitespeed)
 
+[paazmaya.github.io/naginata.fi/stylestats.html)](http://paazmaya.github.io/naginata.fi/stylestats.html)
+
+[paazmaya.github.io/naginata.fi/wbench.md](http://paazmaya.github.io/naginata.fi/wbench.md)
 
 ## Editing content
 
