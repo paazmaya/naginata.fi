@@ -159,4 +159,4 @@ kyu-graduointivaatimukset Suomessa. Ne pohjautuvat Euroopan (ENF) ja
 Kansainvälisen (INF) Naginataliittojen vastaaviin vaatimuksiin.
 
 [Vaatimukset ovat saatavilla täällä
-](https://github.com/paazmaya/naginata.fi/blob/master/content/fi/Graduointisäännöt.md "Graduointisäännöt").
+](https://github.com/paazmaya/naginata.fi/blob/master/content/fi/graduointisaannot.md "Graduointisäännöt").
