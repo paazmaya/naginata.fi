@@ -34,7 +34,6 @@
   background:     transparent;
   color:          #121212;
   -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
 
@@ -290,7 +289,6 @@ article.media ul:last-of-type a::before {
   left:                0;
   background-repeat:   no-repeat;
   background-position: center center;
-  -webkit-background-size: 28px 28px;
   background-size:     28px 28px;
   width:               28px;
   height:              100%;
@@ -349,7 +347,6 @@ article.media ul:last-of-type a[href*="flickr.com"]::before {
   position: relative;
   height:              180px;
   background-image:    url(../img/logo.png);
-  -webkit-background-size: 132px 132px;
   background-size: 132px 132px;
   background-position: 2em center;
   background-repeat:   no-repeat;
