@@ -112,10 +112,15 @@ kunhan kuva linkitetään alkuperäiseen sivuunsa Flickr:issä ja/tai kuvaajan n
 
 ## Videoita näytöksistä ja kilpailuista
 
+Alla on kokoelma naginata-aiheisista videoista, joita on koottu eri videon jakelupalveluista, kuten Vimeo ja Youtube.
+Videot sisältävät tekniikoita näytöksistä, kilpailuista ja muista tapahtumista, joissa näiden asetaitojen moninaisuutta
+voi tarkastella.
+
 Videot avautuvat sivuilla toimivaan soittimeen, jonka voi laittaa täyttämään koko ikkunan soittimen oikeasta alareunasta.
 
 Videoiden tiedot kuten nimi ja otsikko ovat videoiden alkuperäisten julkaisijoiden tuottamia.
 
+-   [熊本県仕の方3回戦 - Kumamoto Shi side 3rd round 第55回都道府県なぎなた大会 - 55th Naginata Todōfuken](https://www.youtube.com/watch?v=lsZYk1dmffI "熊本県仕の方3回戦 - Kumamoto Shi side 3rd round 第55回都道府県なぎなた大会 - 55th Naginata Todōfuken")
 -   [Shimada Teruko, Jikishinkageryū Jikishinkageryū](http://www.youtube.com/watch?v=G9T2FAJ3kzQ "Shimada Teruko, Jikishinkageryū Jikishinkageryū")
 -   [Sonobe Hideo 1930 in saineikan 園部秀雄](http://www.youtube.com/watch?v=NtJlD11pj5k "Sonobe Hideo 1930 in saineikan 園部秀雄")
 -   [リズムなぎなた](http://www.youtube.com/watch?v=vRB8Fkevcc8 "リズムなぎなた")
