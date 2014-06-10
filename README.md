@@ -122,11 +122,10 @@ The existing Markdown files can be exported as PDF, for example with [_pandoc_](
 ```sh
 pandoc -V geometry:margin=0.5in -o grading-rules-english.md grading-rules-english.pdf
 ```
- 
+
 ## Other notes
 
  * Speed study (http://blog.chromium.org/2010/07/do-you-know-how-slow-your-web-page-is.html)
- * Keen.IO for data analytics
  * https://github.com/ktsashes/fruitjs
  * `heroku config:set npm_config_registry=http://registry.npmjs.eu`
 

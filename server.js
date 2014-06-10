@@ -27,15 +27,6 @@ var compress = require('compression');
 // Custom classes
 var contentPath = require('./libs/content-path');
 
-// Keen.IO analytics, used only if the evironment variables are in place.
-var keen = null;
-if (process && process.env && process.env.KEEN_IO_ID && process.env.KEEN_IO_WRITE) {
-  keen = require('keen.io').configure({
-    projectId: process.env.KEEN_IO_ID,
-    writeKey: process.env.KEEN_IO_WRITE
-  });
-}
-
 // https://github.com/chjj/marked
 var marked = require('marked');
 var md = marked.parse;
@@ -95,28 +86,6 @@ app.set('view engine', 'jade');
 var defaultLang = 'fi';
 
 /**
- * Send data to back end analytics, Keen.IO.
- * @see https://keen.io/docs/clients/javascript/reference/#data-collection
- * @param {string} type  Type of the content for grouping
- * @param {object} content Whatever could be related
- * @returns {?} Nothing
- */
-var keenSend = function (type, content) {
-  console.log('keenSend. type: ' + type + ', content: ' + content);
-  if (!keen) {
-    return;
-  }
-  keen.addEvent(type, content, function keenEvent(err, res) {
-    if (err) {
-      console.log('Keen.IO error: ' + err);
-    }
-    else {
-      console.log('Keen.IO responce: ' + res);
-    }
-  });
-};
-
-/**
  * Get the contents of the current page in HTML format.
  * @param {string} lang ISO 2 char language code
  * @param {string} url Page URL, including the language
@@ -129,9 +98,7 @@ var getContent = function (lang, url) {
     data = fs.readFileSync(path, fsOptions);
   }
   else {
-    keenSend('not found content', {
-      path: path
-    });
+    // Newrelic could handle error reporting?
   }
   return md(data);
 };
@@ -247,10 +214,6 @@ app.get(pageRegex, function appGetRegex(req, res) {
   });
 
   if (current === null) {
-    keenSend('redirection', {
-      request: req.url,
-      responce: '/' + lang
-    });
     res.redirect(404, '/' + lang);
     return;
   }
@@ -277,13 +240,6 @@ app.get(pageRegex, function appGetRegex(req, res) {
     }
   ];
 
-  // Every visit writes analytics
-  keenSend('page view', {
-    url: req.originalUrl,
-    acceptedLanguages: req.acceptsLanguages(),
-    acceptedCharsets: req.acceptsCharsets()
-  });
-
   // https://developer.mozilla.org/en-US/docs/Security/CSP/Using_Content_Security_Policy
   res.set({
     'Content-Type': 'text/html; charset=utf-8',
@@ -308,7 +264,7 @@ app.get(pageRegex, function appGetRegex(req, res) {
     lang: lang
   }, function rendered(error, html) {
     if (error) {
-      keenSend('error', error);
+      // Newrelic?
     }
     res.send(html);
   });
@@ -322,7 +278,7 @@ app.get('/sitemap', function appGetSitemap(req, res) {
     pages: sitemap(pageJson)
   }, function renderSitemap(error, html) {
     if (error) {
-      keenSend('error', error);
+      // Newrelic?
     }
     res.send(html);
   });
@@ -336,29 +292,22 @@ app.get('/', function appGetRoot(req, res) {
 
 // Catch anything that does not match the previous rules.
 app.get('*', function appGetRest(req, res) {
-  keenSend('redirection', {
-    url: req.originalUrl,
-    responce: '/' + defaultLang
-  });
   res.redirect(404, '/' + defaultLang);
 });
 
-// Navigation Timing API statistics to Keen.IO
+// Navigation Timing API statistics
 app.post('/navigation-timings', function navTiming(req, res) {
   res.set({'Content-type': 'application/json'});
-  res.send('Keen.IO - ' + req.body.url);
-  keenSend('navigation timing', req.body);
+  res.send('url:' + req.body.url);
 });
 
-// Resource Timing API statistics to Keen.IO
+// Resource Timing API statistics
 app.post('/resource-timings', function resTiming(req, res) {
   res.set({'Content-type': 'application/json'});
-  res.send('Keen.IO - ' + req.body.url);
+  res.send('url:' + req.body.url);
 
   // Entries are sent as string due to post data form
   req.body.entries = JSON.parse(req.body.entries);
-
-  keenSend('resource timing', req.body);
 });
 
 // https://devcenter.heroku.com/articles/config-vars
