@@ -9,7 +9,7 @@
 'use strict';
 
 // New Relic
-require('newrelic');
+var newrelic = require('newrelic');
 
 // http://expressjs.com
 var express = require('express');
@@ -82,6 +82,9 @@ app.engine('jade', require('jade').__express);
 
 app.set('views', path.join(__dirname, '/views'));
 app.set('view engine', 'jade');
+
+// in express, this lets you call newrelic from within a template
+app.locals.newrelic = newrelic;
 
 var defaultLang = 'fi';
 
