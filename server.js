@@ -101,7 +101,7 @@ var getContent = function (lang, url) {
     data = fs.readFileSync(path, fsOptions);
   }
   else {
-    // Newrelic could handle error reporting?
+    newrelic.noticeError('Given path does not exist: ' + path);
   }
   return md(data);
 };
@@ -267,7 +267,7 @@ app.get(pageRegex, function appGetRegex(req, res) {
     lang: lang
   }, function rendered(error, html) {
     if (error) {
-      // Newrelic?
+      newrelic.noticeError(error);
     }
     res.send(html);
   });
@@ -281,7 +281,7 @@ app.get('/sitemap', function appGetSitemap(req, res) {
     pages: sitemap(pageJson)
   }, function renderSitemap(error, html) {
     if (error) {
-      // Newrelic?
+      newrelic.noticeError(error);
     }
     res.send(html);
   });
