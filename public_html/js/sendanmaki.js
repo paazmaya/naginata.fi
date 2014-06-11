@@ -311,59 +311,6 @@ var sendanmaki = window.sendanmaki = {
   },
 
   /**
-   * Send Navigation Timing API results to Keen.IO.
-   *
-   * @see http://www.w3.org/TR/navigation-timing/
-   * @see http://caniuse.com/nav-timing
-   * @returns {?} Nothing
-   */
-  sendNavigationTimings: function () {
-    if (typeof window.performance !== 'object' ||
-        typeof window.performance.timing !== 'object') {
-      return;
-    }
-    var data = {
-      url: window.location.pathname,
-      userAgent: window.navigator.userAgent
-    };
-    // navigationStart is the first event taking place in the PerformanceTiming sequence
-    var navigationStart = window.performance.timing.navigationStart;
-    // All the keys will be set to the relative time as it gives more value than the time.
-    $.each(window.performance.timing, function eachTiming(key, value) {
-      if (typeof value === 'number') {
-        // Value should be the time when the given event took place, 
-        // but might be 0 if the event was not fired or was not completed.
-        data[key] = value === 0 ? 0 : value - navigationStart;
-      }
-    });
-    
-    /*
-    interface PerformanceNavigation {
-      const unsigned short TYPE_NAVIGATE = 0;
-      const unsigned short TYPE_RELOAD = 1;
-      const unsigned short TYPE_BACK_FORWARD = 2;
-      const unsigned short TYPE_RESERVED = 255;
-      readonly attribute unsigned short type;
-      readonly attribute unsigned short redirectCount;
-    };
-    */
-    if (typeof window.performance.navigation === 'object') {
-      var nav = window.performance.navigation;
-      data.redirectCount = nav.redirectCount;
-      data.navigationType = nav.type < 3 ? ['NAVIGATE', 'RELOAD', 'BACK_FORWARD'][nav.type] : nav.type;
-    }
-    
-    var now = $.now();
-    var earlier = window.localStorage.getItem('navTimeSent') || 0;
-
-    if (now - earlier > sendanmaki.interval) {
-      $.post('/navigation-timings', data, function navTimSent() {
-        window.localStorage.setItem('navTimeSent', now);
-      });
-    }
-  },
-
-  /**
    * Send Resource Timing API results to Keen.IO.
    *
    * Available perhaps in IE10 and Chrome 26...
@@ -399,7 +346,6 @@ var sendanmaki = window.sendanmaki = {
   sendanmaki.domReady();
 
   window.onload = function windowLoad() {
-    window.setTimeout(sendanmaki.sendNavigationTimings, 200);
     window.setTimeout(sendanmaki.sendResourceTimings, 300);
   };
 })();

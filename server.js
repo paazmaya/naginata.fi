@@ -298,12 +298,6 @@ app.get('*', function appGetRest(req, res) {
   res.redirect(404, '/' + defaultLang);
 });
 
-// Navigation Timing API statistics
-app.post('/navigation-timings', function navTiming(req, res) {
-  res.set({'Content-type': 'application/json'});
-  res.send('url:' + req.body.url);
-});
-
 // Resource Timing API statistics
 app.post('/resource-timings', function resTiming(req, res) {
   res.set({'Content-type': 'application/json'});
