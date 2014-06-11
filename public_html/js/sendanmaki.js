@@ -308,44 +308,9 @@ var sendanmaki = window.sendanmaki = {
       iframe: true,
       scrolling: false
     });
-  },
-
-  /**
-   * Send Resource Timing API results to Keen.IO.
-   *
-   * Available perhaps in IE10 and Chrome 26...
-   *
-   * @see http://www.w3.org/TR/resource-timing
-   * @see https://bugzilla.mozilla.org/show_bug.cgi?id=822480
-   * @returns {?} Nothing
-   */
-  sendResourceTimings: function () {
-    if (typeof window.performance !== 'object' ||
-        typeof window.performance.getEntriesByType !== 'function') {
-      return;
-    }
-    var data = {
-      url: window.location.pathname,
-      userAgent: window.navigator.userAgent,
-      entries: JSON.stringify(window.performance.getEntriesByType('resource'))
-    };
-
-    var now = $.now();
-    var earlier = window.localStorage.getItem('resTimeSent') || 0;
-
-    if (now - earlier > sendanmaki.interval) {
-      $.post('/resource-timings', data, function resTimSent() {
-        window.localStorage.setItem('resTimeSent', now);
-      });
-    }
   }
-
 };
 
 (function jsLoaded() {
   sendanmaki.domReady();
-
-  window.onload = function windowLoad() {
-    window.setTimeout(sendanmaki.sendResourceTimings, 300);
-  };
 })();

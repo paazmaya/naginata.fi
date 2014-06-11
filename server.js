@@ -298,15 +298,6 @@ app.get('*', function appGetRest(req, res) {
   res.redirect(404, '/' + defaultLang);
 });
 
-// Resource Timing API statistics
-app.post('/resource-timings', function resTiming(req, res) {
-  res.set({'Content-type': 'application/json'});
-  res.send('url:' + req.body.url);
-
-  // Entries are sent as string due to post data form
-  req.body.entries = JSON.parse(req.body.entries);
-});
-
 // https://devcenter.heroku.com/articles/config-vars
 var ipaddr = process.env.OPENSHIFT_NODEJS_IP || null; // Heroku fails with non null address
 var port = process.env.OPENSHIFT_NODEJS_PORT || process.env.PORT || 5000;
