@@ -16,13 +16,6 @@ var sendanmaki = window.sendanmaki = {
   lang: 'fi',
 
   /**
-   * Time between when Navigation and Resource Timing API data is being send
-   * by the current user.
-   * TODO: separate to per page and increase interval.
-   */
-  interval: 60 * 60 * 1000,
-
-  /**
    * Image notes for the given key image.
    */
   notes: {
@@ -252,7 +245,6 @@ var sendanmaki = window.sendanmaki = {
    */
   localiseColorbox: function () {
 
-  console.log('this.lang: ' + this.lang);
     // Colorbox translations
     if (this.lang === 'fi') {
       /*
