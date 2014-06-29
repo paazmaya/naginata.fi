@@ -5,6 +5,7 @@
 -   06-07/09/2014 - [Naginata Friendship Seminar,
     Viikki Teacher Training School, Helsinki](https://www.facebook.com/events/501891759879564/ "Finnish Naginata Friendship Seminar 2014")
 -   22-24/08/2014 - [International Naginata Federation Seminar, Amstelveen, The Netherlands](http://international-naginata.org/drupal/node/17 "2014 INF seminar Announcement")
+-   08-10/08/2014 - [Atarashii Naginata seminar with Sumi Kaoru hanshi in St. Petersburg, Russia](https://www.facebook.com/events/1445263222387953 "Seminar on atarashii naginata with Sumi Kaoru sensei in St. Petersburg")
 
 ## In the Past
 

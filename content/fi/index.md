@@ -6,6 +6,7 @@
 -   6.-7.9.2014 - [Naginataystävyysleiri,
     Viikin Normaalikoulu, Helsinki](https://www.facebook.com/events/501891759879564/ "Finnish Naginata Friendship Seminar 2014")
 -   22.-24.8.2014 - [Kansainvälisen Naginataliiton leiri, Amstelveen, Alankomaat](http://international-naginata.org/drupal/node/17 "2014 INF seminar Announcement")
+-   8.-10.8.2014 - [Atarashii Naginata-leiri, opettajana Sumi Kaoru hanshi, Pietari, Venäjä](https://www.facebook.com/events/1445263222387953 "Seminar on atarashii naginata with Sumi Kaoru sensei in St. Petersburg")
 
 ## Menneitä tapahtumia
 
