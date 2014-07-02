@@ -89,10 +89,12 @@ var sendanmaki = window.sendanmaki = {
 
   /**
    * Add notes to a chudan kamae bogu image, if available.
+   *
    * @param {string} key    Key which should be the img elements src
    * @param {Array}  items  Items to be created for the given key image
+   * @returns {void}
    */
-  buildImageNotes: function (key, items) {
+  buildImageNotes: function buildImageNotes(key, items) {
     var parent = $('img[src="' + key + '"]').parent().addClass('relative');
     $('img[src="' + key + '"]').each(function eachImage() {
       items.forEach(function forItems(data) {
@@ -113,10 +115,14 @@ var sendanmaki = window.sendanmaki = {
 
   /**
    * Create a note element on a image that has src == data.url
-   * @param {{x: number, y: number, width: number, height: number, note: string}} data Data for the note, such as position, size and text
-   * @param {string} url  Src property of the img element for which the note is created
+   *
+   * @param {{x: number, y: number, width: number, height: number, note: string}} data Data 
+   *        for the note, such as position, size and text
+   * @param {string} url  Src property of the image element for which the note is created
+   * @param {jQuery} parent jQuery wrapped parent element of the image element
+   * @returns {void}
    */
-  createImgNote: function (data, url, parent) {
+  createImgNote: function createImgNote(data, url, parent) {
     if (parent.length > 0 && $('span.note[rel="' + data.note + '"]').length === 0) {
       var cont = $('<span class="note" rel="' + data.note + '"></span>');
       cont.css('left', data.x).css('top', data.y);
@@ -145,16 +151,20 @@ var sendanmaki = window.sendanmaki = {
    * http://player.vimeo.com/video/[id]
    *
    * @param {jQuery.Event} event Click event via jQuery
+   * @returns {void}
    */
-  onVideoClick: function (event) {
+  onVideoClick: function onVideoClick(event) {
     event.preventDefault();
     sendanmaki.openVideoLink($(this));
   },
   
   /**
+   * Open the given video player in a Colorbox.
+   *
    * @param {jQuery} $self The link that was clicked, which should have video page url
+   * @returns {void}
    */
-  openVideoLink: function ($self) {
+  openVideoLink: function openVideoLink($self) {
     var href = $self.attr('href');
     href = href.replace(/vimeo.com\/(\w+)/, 'player.vimeo.com/video/$1');
     href = href.replace(/youtube.com\/watch\?v=(\w+)/,
@@ -164,17 +174,23 @@ var sendanmaki = window.sendanmaki = {
   },
 
   /**
+   * Handler for figures, which are assumed to contain Flickr image.
+   *
    * @param {jQuery.Event} event Click event via jQuery
+   * @returns {void}
    */
-  onFigureClick: function (event) {
+  onFigureClick: function onFigureClick(event) {
     event.preventDefault();
     sendanmaki.openFlickrImage($(this));
   },
   
   /**
+   * Opens a Flickr image in a Colorbox.
+   *
    * @param {jQuery} $self The link that was clicked, which should have Flickr image url
+   * @returns {void}
    */
-  openFlickrImage: function ($self) {
+  openFlickrImage: function openFlickrImage($self) {
     var href = $self.find('img').attr('src');
 
     // Find the domain
@@ -196,8 +212,10 @@ var sendanmaki = window.sendanmaki = {
   /**
    * This shall be run on domReady in order to initiate
    * all the handlers needed.
+   *
+   * @returns {void}
    */
-  domReady: function () {
+  domReady: function domReady() {
     this.lang = $('html').attr('lang') || this.lang;
     sendanmaki.localiseColorbox();
 
@@ -234,16 +252,18 @@ var sendanmaki = window.sendanmaki = {
       }
     });
 
-    // Close colorbox if opened as modal
+    // Close Colorbox if opened as modal
     $(document).on('click', '#colorbox input[type="button"][name="close"]', function closeClick() {
       $.colorbox.close();
     });
   },
 
   /**
-   * Set translation strings on Colorbox based on the current lang.
+   * Set translation strings on Colorbox based on the current language.
+   *
+   * @returns {void}
    */
-  localiseColorbox: function () {
+  localiseColorbox: function localiseColorbox() {
 
     // Colorbox translations
     if (this.lang === 'fi') {
@@ -284,10 +304,12 @@ var sendanmaki = window.sendanmaki = {
 
   /**
    * Open the given url in a Colorbox iFrame.
+   *
    * @param {string} url   Url which should be opened
    * @param {string} title Title for the Colorbox
+   * @returns {void}
    */
-  openIframe: function (url, title) {
+  openIframe: function openIframe(url, title) {
     var w = $('div.centered').width() || 1000;
     var h = w * 0.75;
 

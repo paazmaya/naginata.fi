@@ -4,14 +4,13 @@
 -   11.2014 - [Atarashii Naginata- ja Jikishinkageryu Naginatajutsu-leiri Potsdamissa,
     Saksassa](https://www.facebook.com/events/497656113676309/ "Atarashii Naginata & Jikishinkageryu Naginatajutsu Seminar")
 -   6.-7.9.2014 - [Naginataystävyysleiri,
-    Hämeenlinna](https://www.facebook.com/events/501891759879564/ "Finnish Naginata Friendship Seminar 2014")
--   6.9.2014 - [Suomen Avoin Kilpailu,
-    Hämeenlinna](https://www.facebook.com/events/147521468779208/ "Naginata Finnish Open 2014")
+    Viikin Normaalikoulu, Helsinki](https://www.facebook.com/events/501891759879564/ "Finnish Naginata Friendship Seminar 2014")
 -   22.-24.8.2014 - [Kansainvälisen Naginataliiton leiri, Amstelveen, Alankomaat](http://international-naginata.org/drupal/node/17 "2014 INF seminar Announcement")
--   24.-25.5.2014 - [Kyu-leiri Kendon, Iaidon, Jodon ja Naginatan harrastajille Helsingissä](https://www.facebook.com/events/1410312342550257/ "FKA - Kyu-leiri Helsingissä")
+-   8.-10.8.2014 - [Atarashii Naginata-leiri, opettajana Sumi Kaoru hanshi, Pietari, Venäjä](https://www.facebook.com/events/1445263222387953 "Seminar on atarashii naginata with Sumi Kaoru sensei in St. Petersburg")
 
 ## Menneitä tapahtumia
 
+-   24.-25.5.2014 - [Kyu-leiri Kendon, Iaidon, Jodon ja Naginatan harrastajille Helsingissä](https://www.facebook.com/events/1410312342550257/ "FKA - Kyu-leiri Helsingissä")
 -   18.4.2014 - [Atarashii Naginata pääsiäisleiri Helsingissä](https://www.facebook.com/events/254398958076220/ "Atarashii Naginata Pääsiäisleiri"), Tapanilan Erän Kendo-jaoksen järjestämänä
 -   7.-9.3.2014 - [Vuosittainen leiri Iso-Britanniassa](http://www.naginata.org.uk/2014-annual-british-naginata-seminar-details/ "2014 Annual British Naginata Seminar Details")
 -   14.-16.2.2014 - [Ensimmäinen Atarashii Naginata-leiri Pietarissa, 
