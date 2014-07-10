@@ -101,7 +101,7 @@ var sendanmaki = window.sendanmaki = {
         sendanmaki.createImgNote(data, key, parent);
       });
     });
-    
+
     $(document).on('mouseover mouseout', '.note[rel]', function noteHover(event) {
       var cont = $(event.currentTarget);
       if (event.type === 'mouseover') {
@@ -116,7 +116,7 @@ var sendanmaki = window.sendanmaki = {
   /**
    * Create a note element on a image that has src == data.url
    *
-   * @param {{x: number, y: number, width: number, height: number, note: string}} data Data 
+   * @param {{x: number, y: number, width: number, height: number, note: string}} data Data
    *        for the note, such as position, size and text
    * @param {string} url  Src property of the image element for which the note is created
    * @param {jQuery} parent jQuery wrapped parent element of the image element
@@ -157,7 +157,7 @@ var sendanmaki = window.sendanmaki = {
     event.preventDefault();
     sendanmaki.openVideoLink($(this));
   },
-  
+
   /**
    * Open the given video player in a Colorbox.
    *
@@ -183,7 +183,7 @@ var sendanmaki = window.sendanmaki = {
     event.preventDefault();
     sendanmaki.openFlickrImage($(this));
   },
-  
+
   /**
    * Opens a Flickr image in a Colorbox.
    *
