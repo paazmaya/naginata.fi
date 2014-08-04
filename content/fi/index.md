@@ -10,12 +10,14 @@
 
 ## Menneitä tapahtumia
 
+Lista tapahtumista, joilla on ollut merkitystä naginatan harrastamiselle Suomessa.
+
 -   24.-25.5.2014 - [Kyu-leiri Kendon, Iaidon, Jodon ja Naginatan harrastajille Helsingissä](https://www.facebook.com/events/1410312342550257/ "FKA - Kyu-leiri Helsingissä")
--   18.4.2014 - [Atarashii Naginata pääsiäisleiri Helsingissä](https://www.facebook.com/events/254398958076220/ "Atarashii Naginata Pääsiäisleiri"), Tapanilan Erän Kendo-jaoksen järjestämänä
--   7.-9.3.2014 - [Vuosittainen leiri Iso-Britanniassa](http://www.naginata.org.uk/2014-annual-british-naginata-seminar-details/ "2014 Annual British Naginata Seminar Details")
--   14.-16.2.2014 - [Ensimmäinen Atarashii Naginata-leiri Pietarissa, 
+-   18.4.2014 - [Atarashii Naginata pääsiäisleiri Helsingissä](https://www.facebook.com/events/254398958076220/ "Atarashii Naginata Pääsiäisleiri"),
+    Tapanilan Erän Kendo-jaoksen järjestämänä
+-   14.-16.2.2014 - [Ensimmäinen Atarashii Naginata-leiri Pietarissa,
     Venäjällä](https://www.facebook.com/events/1398129980435747/ "Открытый семинар по нагинате")
--   15.-17.11.2013 - [Onshukai, Jikishinkageryu Naginatajutsu:n vuotuinen pääleiri, Chiba, 
+-   15.-17.11.2013 - [Onshukai, Jikishinkageryu Naginatajutsu:n vuotuinen pääleiri, Chiba,
     Japani](http://www.flickr.com/photos/paazio/11474557086/in/set-72157638410929463 "2013-11-17 Japan, Chiba - Onshukai training program")
 -   9.-11.11.2013 - [Euroopan Naginataliiton leiri Brysselissä,
     Belgiassa, jonka jälkeen Isabelle D'Hose-

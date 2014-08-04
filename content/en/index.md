@@ -9,12 +9,14 @@
 
 ## In the Past
 
+List of events in Finland, in which Finnish members have joined, or are somehow related to Naginata in Finland.
+
 -   24-25/05/2014 - [Kyu-seminar for practitioners of Kendo, Iaido, Jodo and Naginata in Helsinki, Finland](https://www.facebook.com/events/1410312342550257/ "FKA - Kyu-seminar in Helsinki")
--   18/04/2014 - [Atarashii Naginata Easter Seminar in Helsinki](https://www.facebook.com/events/254398958076220/ "Atarashii Naginata Pääsiäisleiri"), organised by Tapanilan Erä Kendo Division
--   07-09/03/2014 - [Annual Seminar in the UK](http://www.naginata.org.uk/2014-annual-british-naginata-seminar-details/ "2014 Annual British Naginata Seminar Details")
--   14-16/02/2014 - [First Atarashii Naginata seminar in St. Petersburg, 
+-   18/04/2014 - [Atarashii Naginata Easter Seminar in Helsinki](https://www.facebook.com/events/254398958076220/ "Atarashii Naginata Pääsiäisleiri"),
+    organised by Tapanilan Erä Kendo Division
+-   14-16/02/2014 - [First Atarashii Naginata seminar in St. Petersburg,
     Russia](https://www.facebook.com/events/1398129980435747/ "Открытый семинар по нагинате")
--   15-17/11/2013 - [Onshukai, the annual main seminar of Jikishinkageryu Naginatajutsu in Chiba, 
+-   15-17/11/2013 - [Onshukai, the annual main seminar of Jikishinkageryu Naginatajutsu in Chiba,
     Japan](http://www.flickr.com/photos/paazio/11474557086/in/set-72157638410929463 "2013-11-17 Japan, Chiba - Onshukai training program")
 -   09-11/11/2013 - [European Naginata Federation the seminar in Brussels,
     Belgium. followed by Isabelle D'Hose
@@ -72,7 +74,7 @@
 -   07/02/2010 - [Mini Camp in Helsinki, directed by Mrs. Kirsi Högglund from Uppsala,
     Sweden](http://www.flickr.com/photos/paazio/sets/72157623374097714/ "Naginata - Helsinki(FI) - 2010/02/07")
 -   15/02/2009 - Atarashii Naginata training began in Finland at the Helsinki
-    Kendo Club Ki-Ken-Tai-Icchi, with the guidance of Jukka Paasonen who is also responsible about
+    Kendo Club Ki-Ken-Tai-Icchi, with the guidance of Jukka Paasonen who is also responsible for
     these web sites.
 
 ## Naginata in brief
