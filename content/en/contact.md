@@ -18,7 +18,7 @@ related to Atarashii Naginata.
 There are also other styles and organizations in which is possible to
 practise with the weapon naginata. However those are not necessarily in a
 direct contact with the Finnish Kendo Association. These styles are such as
-Jikishinkageryū, Tenshin Shoden Katori Shintoryū and Suiōryū .
+Jikishinkageryū, Tenshin Shoden Katori Shintoryū and Suiōryū.
 
 
 ## Clubs
@@ -54,7 +54,7 @@ which the practitioner is a member, usually when new classes begin.
 The site owner also has a few "Shiai naginata" training weapons for sale,
 price ranging from 80 to 90 EUR, depending on the timing and size of the given order.
 
-Below are links to some of the sensible martial shops from where it is possibe
+Below are links to some of the sensible martial shops from where it is possible
 to obtain training equipments:
 
 -   [Bokkenshop (Tozando), Japan](http://www.bokkenshop.com/ "Bokkenshop")
