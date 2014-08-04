@@ -26,6 +26,7 @@ var compress = require('compression');
 
 // Custom classes
 var contentPath = require('./libs/content-path');
+var flickrImageList = require('./libs/flickr-image-list');
 
 // https://github.com/chjj/marked
 var marked = require('marked');
@@ -109,57 +110,13 @@ var getContent = function (lang, url) {
 };
 
 /**
- * Iterate all pages for the current language and get a list of unique Flick images.
- * @returns {array.<string>} List of images
- */
-var flickrImageList = function () {
-  // If any of the files in 'content/*/*.md' has changed, update the whole cache.
-  var regex = new RegExp('\\((http:\\/\\/farm\\d+\\.static\\.?flickr\\.com\\S+\\_m.jpg)\\)', 'g');
-
-  // Loop all Markdown files under content/*/
-  var dir = 'content/';
-  var directories = fs.readdirSync(dir);
-  directories = directories.filter(function dirFilter(item) {
-    var stats = fs.statSync(dir + item);
-    return stats.isDirectory();
-  });
-
-  var images = []; // thumbnails of Flickr images
-
-  // Read their contents
-  directories.forEach(function forDirs(directory) {
-    var files = fs.readdirSync(dir + directory);
-    files.forEach(function forFiles(file) {
-      if (file.split('.').pop() === 'md') {
-        var path = dir + directory + '/' + file;
-        var content = fs.readFileSync(path, fsOptions);
-
-        var matches;
-        while ((matches = regex.exec(content)) !== null) {
-          images.push(matches[1]);
-        }
-      }
-    });
-  });
-
-  // Only unique
-  images = images.filter(function imageFilter(e, i, arr) {
-    return arr.lastIndexOf(e) === i;
-  });
-
-  //var json = JSON.stringify(images);
-
-  return images;
-};
-
-/**
  * Checks if the current language should be changed according to the
  * current users language preferences and thus changes if needed.
  * @param {Array} acceptsLanguages The languages accepted by the current user agent
  * @see http://expressjs.com/api.html#req.acceptsLanguages
  * @returns {?} Nothing
  */
-var checkLang = function (acceptsLanguages) {
+var checkLang = function checkLang(acceptsLanguages) {
   acceptsLanguages.forEach(function forLangs(item) {
     var key = item.substr(0, 2);
     if (pageJson.languages.hasOwnProperty(key) &&

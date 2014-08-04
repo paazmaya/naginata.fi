@@ -12,9 +12,9 @@
  * Facebook Open Graph Meta data.
  * @param {Object} page Current page meta data
  * @param {Object} fb Facebook application meta
- * @returns {Array}
+ * @returns {Array} List of meta data objects to be inserted in head element
  */
-var facebookMeta = function (page, fb) {
+module.exports = function facebookMeta(page, fb) {
   // property, name
   var meta = [
     // http://ogp.me/
@@ -73,5 +73,3 @@ var facebookMeta = function (page, fb) {
 
   return meta;
 };
-
-module.exports = facebookMeta;

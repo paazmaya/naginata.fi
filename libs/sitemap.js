@@ -13,11 +13,13 @@ var contentPath = require('./content-path');
 
 /**
  * Format the page data to match the need for sitemap.jade
+ * @param {object} pageData JSON data from content folder
+ * @returns {object} Data used with sitemap Jade template
  */
-module.exports = function (pageData) {
+module.exports = function siteMap(pageData) {
   var out = [];
-  pageData.pages.forEach(function (item) {
-    Object.keys(item).forEach(function (lang) {
+  pageData.pages.forEach(function eachPage(item) {
+    Object.keys(item).forEach(function eachKey(lang) {
       if (pageData.languages[lang].enabled === true && item[lang].url) {
         var url = item[lang].url;
         var path = contentPath(lang, url);

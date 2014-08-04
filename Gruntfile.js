@@ -60,9 +60,18 @@ module.exports = function gruntConf(grunt) {
         'Gruntfile.js',
         'karma.conf.js',
         'server.js',
+        'libs/*.js',
         'public_html/js/analytics.js',
         'public_html/js/sendanmaki.js'
       ]
+    },
+
+    trimtrailingspaces: {
+      javascript: {
+        src: [
+          '<%= eslint.target %>'
+        ]
+      }
     },
 
     jasmine: {

@@ -8,11 +8,13 @@
 
 'use strict';
 
-
 /**
  * Build the path for accessing content Markdown file.
+ * @param {string} lang Two character ISO language code, such as 'fi' or 'en'
+ * @param {string} url Url string that should match the content file
+ * @returns {string} Path to the given content file
  */
-module.exports = function (lang, url) {
+module.exports = function contentPath(lang, url) {
   url = url.replace('/' + lang, '').replace('/', '');
   if (url === '') {
     url = 'index';
