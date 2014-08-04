@@ -39,7 +39,7 @@ var contentPath = function contentPath(lang, url) {
  * @returns {string} HTML content
  */
 module.exports = function getContent(lang, url) {
-  var data = '# 404';
+  var data = '## 404';
   var path = contentPath(lang, url);
   if (fs.existsSync(path)) {
     data = fs.readFileSync(path, {
