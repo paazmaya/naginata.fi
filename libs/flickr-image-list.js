@@ -8,14 +8,14 @@
 
 'use strict';
 
+var fs = require('fs');
+var path = require('path');
+
 /**
  * Iterate all pages for the current language and get a list of unique Flick images.
  * @returns {array.<string>} List of images
  */
 module.exports = function flickrImageList() {
-  var fs = require('fs');
-  var path = require('path');
-
   // If any of the files in 'content/*/*.md' has changed, update the whole cache.
   var regex = new RegExp('\\((http:\\/\\/farm\\d+\\.static\\.?flickr\\.com\\S+\\_m.jpg)\\)', 'g');
 

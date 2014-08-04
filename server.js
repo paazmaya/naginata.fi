@@ -25,17 +25,8 @@ var responseTime = require('response-time');
 var compress = require('compression');
 
 // Custom classes
-var contentPath = require('./libs/content-path');
+var getContent = require('./libs/get-content');
 var flickrImageList = require('./libs/flickr-image-list');
-
-// https://github.com/chjj/marked
-var marked = require('marked');
-var md = marked.parse;
-
-marked.setOptions({
-  gfm: true,
-  breaks: false
-});
 
 var fsOptions = {
   encoding: 'utf8'
@@ -90,24 +81,6 @@ app.set('view engine', 'jade');
 app.locals.newrelic = newrelic;
 
 var defaultLang = 'fi';
-
-/**
- * Get the contents of the current page in HTML format.
- * @param {string} lang ISO 2 char language code
- * @param {string} url Page URL, including the language
- * @returns {string} HTML content
- */
-var getContent = function (lang, url) {
-  var data = '# 404';
-  var path = contentPath(lang, url);
-  if (fs.existsSync(path)) {
-    data = fs.readFileSync(path, fsOptions);
-  }
-  else {
-    newrelic.noticeError('Given path does not exist: ' + path);
-  }
-  return md(data);
-};
 
 /**
  * Checks if the current language should be changed according to the
