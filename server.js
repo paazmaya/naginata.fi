@@ -21,9 +21,7 @@ var path = require('path');
 
 // Dependencies for express
 var st = require('st');
-var bodyParser = require('body-parser');
 var morgan = require('morgan'); // logger
-var responseTime = require('response-time');
 var compress = require('compression');
 
 // Custom classes
@@ -63,9 +61,7 @@ app.use(st({
     }
   }
 }));
-app.use(morgan());
-app.use(bodyParser());
-app.use(responseTime());
+app.use(morgan('tiny'));
 
 app.on('uncaughtException', function uncaughtException(err) {
   console.error(err.stack);
