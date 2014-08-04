@@ -9,7 +9,7 @@
 'use strict';
 
 (function analytics(i, s, o, g, r, a, m) {
-  i['GoogleAnalyticsObject'] = r;
+  i.GoogleAnalyticsObject = r;
   i[r] = i[r] || function ir() {
     (i[r].q = i[r].q || []).push(arguments);
   };

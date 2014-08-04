@@ -10,6 +10,8 @@
 
 // New Relic
 var newrelic = require('newrelic');
+// Make it directly available from other modules
+global.newrelic = newrelic;
 
 // http://expressjs.com
 var express = require('express');
@@ -28,11 +30,9 @@ var compress = require('compression');
 var getContent = require('./libs/get-content');
 var flickrImageList = require('./libs/flickr-image-list');
 
-var fsOptions = {
+var pageData = fs.readFileSync('content/page-data.json', {
   encoding: 'utf8'
-};
-
-var pageData = fs.readFileSync('content/page-data.json', fsOptions);
+});
 var pageJson = JSON.parse(pageData);
 
 var app = express();
@@ -160,20 +160,7 @@ app.get(pageRegex, function appGetRegex(req, res) {
     current.facebook = facebookMeta(current, pageJson.facebook);
   }
 
-  // Flip ahead browsing: prev, next
-  var index = pages.indexOf(current);
-  var prev = index > 0 ? index - 1 : pages.length - 1;
-  var next = index < pages.length - 1 ? index + 1 : 0;
-  var flips = [
-    {
-      rel: 'next',
-      url: pages[next].url
-    },
-    {
-      rel: 'prev',
-      url: pages[prev].url
-    }
-  ];
+  var flipAheadLinks = require('./libs/flip-ahead-links');
 
   // https://developer.mozilla.org/en-US/docs/Security/CSP/Using_Content_Security_Policy
   res.set({
@@ -191,7 +178,7 @@ app.get(pageRegex, function appGetRegex(req, res) {
   res.render('index', {
     content: getContent(lang, current.url),
     pages: pages,
-    flipahead: flips,
+    flipahead: flipAheadLinks(pages, current),
     footers: pageJson.footer[lang],
     meta: current,
     prefetch: flickrImageList(),

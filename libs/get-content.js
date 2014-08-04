@@ -47,7 +47,7 @@ module.exports = function getContent(lang, url) {
     });
   }
   else {
-    newrelic.noticeError('Given path does not exist: ' + path);
+    global.newrelic.noticeError('Given path does not exist: ' + path);
   }
   return md(data);
 };
