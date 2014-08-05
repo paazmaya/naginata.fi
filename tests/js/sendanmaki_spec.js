@@ -56,6 +56,10 @@ describe('Image Notes', function() {
     $('.note').first().trigger('mouseover');
 
     expect($('.note').first().hasClass('notehover')).toBe(true);
+    
+    $('.note').first().trigger('mouseout');
+    
+    expect($('.note').first().hasClass('notehover')).toBe(false);
   });
 });
 
@@ -64,23 +68,26 @@ describe('Colorbox interactions', function() {
   var vimeoLink = '<a title="Ishujiai: Taisho - 5th Naginata World Championships / Vimeo - Juga Paazmaya" href="http://vimeo.com/50068282">Ishujiai: Taisho - 5th Naginata World Championships</a>';
 
   var mediaGridLink = '<a title="2012-12-06 Himeji - Naginata taiso in Jukendo book" href="http://farm9.static.flickr.com/8362/8450641664_fea2b93757_z.jpg"><img alt="2012-12-06 Himeji - Naginata taiso in Jukendo&#10;book" src="http://farm9.static.flickr.com/8362/8450641664_fea2b93757_s.jpg"></a>';
+  var flickrImage = 'http://farm9.static.flickr.com/8362/8450641664_fea2b93757_z.jpg';
 
   beforeEach(function(){
     window.ga = function (){};
   });
+  
   /*
   it('video list item click opens iframe', function() {
     spyOn(sendanmaki, 'openIframe');
     sendanmaki.openVideoLink($(vimeoLink));
     expect(sendanmaki.openIframe).toHaveBeenCalled();
   });
+  */
 
-  it('opening Flick image calls Google Analytics', function() {
+  it('opening Flick m size image calls Google Analytics', function() {
     spyOn(window, 'ga');
     sendanmaki.openFlickrImage($(mediaGridLink));
-    expect(window.ga).toHaveBeenCalled();
+    expect(window.ga).toHaveBeenCalledWith('send', 'pageview', flickrImage);
   });
-  */
+  
 
 // TODO: cbox_complete sends Google Analytics
 
@@ -92,4 +99,19 @@ describe('Colorbox interactions', function() {
 
 });
 
-// TODO: external links open new window
+/*
+// Needs to setup so that body is appended before sendanmaki.js is loaded
+describe('Other interactions', function() {
+  
+  it('open an external link in a new window', function() {
+    var href = 'http://jikishin-naginata.jp';
+    var link = '<a href="' + href + '" class="external test-case-1"></a>';
+    $('body').append(link);
+    
+    spyOn(window, 'open');
+    $('a.external.test-case-1').click();
+    expect(window.open)toHaveBeenCalledWith(href);
+  });
+
+});
+*/

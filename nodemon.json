@@ -5,7 +5,8 @@
   },
   "watch": [
     "views/",
-    "public_html/"
+    "public_html/",
+    "libs/"
   ],
   "ignore": [
     ".git",

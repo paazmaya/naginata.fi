@@ -195,8 +195,8 @@ var sendanmaki = window.sendanmaki = {
 
     // Find the domain
     if (href.search(/flickr\.com\//) !== -1) {
-      // Flickr, replace _m.jpg --> _z.jpg
-      href = href.replace('_m.jpg', '_z.jpg');
+      // Flickr, replace sizes _s and _m --> _z
+      href = href.replace('_s.jpg', '_z.jpg').replace('_m.jpg', '_z.jpg');
     }
 
     // Tell Analytics

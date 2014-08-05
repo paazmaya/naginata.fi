@@ -23,7 +23,7 @@ module.exports = function karmaConf(config) {
     frameworks: [
       'jasmine'
     ],
-    logLevel: config.LOG_DEBUG,
+    logLevel: config.LOG_INFO,
     loggers: [
       {type: 'console'}
     ],
@@ -37,7 +37,7 @@ module.exports = function karmaConf(config) {
       'karma-*'
     ],
     coverageReporter: {
-      type: 'lcovonly',
+      type: 'lcov',
       dir: 'coverage/'
     },
     singleRun: true
