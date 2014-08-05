@@ -9,6 +9,7 @@
 
 module.exports = function gruntConf(grunt) {
   require('time-grunt')(grunt); // Must be first item
+  require('jit-grunt')(grunt);
 
   // Project configuration.
   grunt.initConfig({
@@ -108,8 +109,6 @@ module.exports = function gruntConf(grunt) {
       }
     }
   });
-
-  require('jit-grunt')(grunt);
 
   grunt.registerTask('minify', ['uglify', 'cssmin']);
   grunt.registerTask('test', ['eslint', 'jasmine']);

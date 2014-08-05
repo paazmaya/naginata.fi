@@ -33,6 +33,7 @@
     "grunt-contrib-watch": "^0.6",
     "grunt-eslint": "^0.6",
     "grunt-trimtrailingspaces": "^0.4",
+    "jasmine-node": "^1.14",
     "jit-grunt": "^0.7",
     "karma": "^0.12",
     "karma-coverage": "^0.2",
