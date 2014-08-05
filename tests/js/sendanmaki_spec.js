@@ -14,7 +14,7 @@ describe('Naginata is in Finland', function() {
     expect(true).toBe(true);
   });
 
-  it('thus language should be Finnish', function() {
+  it('thus language should be Finnish by default', function() {
     expect(sendanmaki.lang).toBe('fi');
   });
 
@@ -66,6 +66,7 @@ describe('Image Notes', function() {
 
 describe('Colorbox interactions', function() {
   var vimeoLink = '<a title="Ishujiai: Taisho - 5th Naginata World Championships / Vimeo - Juga Paazmaya" href="http://vimeo.com/50068282">Ishujiai: Taisho - 5th Naginata World Championships</a>';
+  var vimeoPlayer = 'http://player.vimeo.com/video/50068282';
 
   var mediaGridLink = '<a title="2012-12-06 Himeji - Naginata taiso in Jukendo book" href="http://farm9.static.flickr.com/8362/8450641664_fea2b93757_z.jpg"><img alt="2012-12-06 Himeji - Naginata taiso in Jukendo&#10;book" src="http://farm9.static.flickr.com/8362/8450641664_fea2b93757_s.jpg"></a>';
   var flickrImage = 'http://farm9.static.flickr.com/8362/8450641664_fea2b93757_z.jpg';
@@ -74,13 +75,14 @@ describe('Colorbox interactions', function() {
     window.ga = function (){};
   });
   
-  /*
-  it('video list item click opens iframe', function() {
-    spyOn(sendanmaki, 'openIframe');
+  it('video link opens iframe with Vimeo player URL', function() {
+    spyOn(sendanmaki, 'openIframe').and.callThrough();
     sendanmaki.openVideoLink($(vimeoLink));
-    expect(sendanmaki.openIframe).toHaveBeenCalled();
+    expect(sendanmaki.openIframe).toHaveBeenCalledWith(vimeoPlayer, 
+      'Ishujiai: Taisho - 5th Naginata World Championships / Vimeo - Juga Paazmaya');
   });
-  */
+  
+  // TODO: check youtube URL
 
   it('opening Flick m size image calls Google Analytics', function() {
     spyOn(window, 'ga');
@@ -94,6 +96,9 @@ describe('Colorbox interactions', function() {
 // TODO: modal Colorbox is closed
 
 // TODO: Colorbox is localised in Finnish and Japanese
+  // sendanmaki.lang = 'ja';
+  // open colorbox
+  // check close button text
 
 // TODO: When iframe is opened, its size is based on current screen size
 
