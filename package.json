@@ -34,13 +34,13 @@
     "grunt-eslint": "^1.0",
     "grunt-trimtrailingspaces": "^0.4",
     "jasmine-node": "^1.14",
-    "jit-grunt": "^0.7",
+    "jit-grunt": "^0.8",
     "karma": "^0.12",
     "karma-coverage": "^0.2",
     "karma-jasmine": "^0.2",
     "karma-phantomjs-launcher": "^0.1",
     "phantomjs": "^1.9",
-    "time-grunt": "^0.4"
+    "time-grunt": "^1.0"
   },
   "engines": {
     "node": "0.10.x",
