@@ -14,7 +14,7 @@ var contentPath = require('./content-path');
 /**
  * Format the page data to match the need for sitemap.jade
  * @param {object} pageData JSON data from content folder
- * @returns {object} Data used with sitemap Jade template
+ * @returns {array} Data used with sitemap Jade template
  */
 module.exports = function siteMap(pageData) {
   var out = [];

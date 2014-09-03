@@ -11,6 +11,7 @@
 var fs = require('fs');
 var path = require('path');
 
+
 /**
  * Iterate all pages for the current language and get a list of unique Flick images.
  * @returns {array.<string>} List of images
@@ -22,6 +23,12 @@ module.exports = function flickrImageList() {
   // Loop all Markdown files under content/*/
   var dir = path.join(__dirname, '../content/');
   var directories = fs.readdirSync(dir);
+  
+  /**
+   * Check if the given file is a directory.
+   * @param {string} item File name
+   * @returns {bool} File is directory
+   */
   directories = directories.filter(function dirFilter(item) {
     var stats = fs.statSync(dir + item);
     return stats.isDirectory();
@@ -31,10 +38,11 @@ module.exports = function flickrImageList() {
 
   // Read their contents
   directories.forEach(function eachDir(directory) {
-    var files = fs.readdirSync(dir + directory);
+    var parentDir = dir + directory;
+    var files = fs.readdirSync(parentDir);
     files.forEach(function eachFile(file) {
       if (file.split('.').pop() === 'md') {
-        var path = dir + directory + '/' + file;
+        var path = parentDir + '/' + file;
         var content = fs.readFileSync(path, {
           encoding: 'utf8'
         });

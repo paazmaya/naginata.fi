@@ -9,6 +9,7 @@
 'use strict';
 
 var fs = require('fs');
+var contentPath = require('./content-path');
 
 // https://github.com/chjj/marked
 var marked = require('marked');
@@ -17,20 +18,6 @@ marked.setOptions({
   gfm: true,
   breaks: false
 });
-
-/**
- * Build the path for accessing content Markdown file.
- * @param {string} lang Two character ISO language code, such as 'fi' or 'en'
- * @param {string} url Url string that should match the content file
- * @returns {string} Path to the given content file
- */
-var contentPath = function contentPath(lang, url) {
-  url = url.replace('/' + lang, '').replace('/', '');
-  if (url === '') {
-    url = 'index';
-  }
-  return 'content/' + lang + '/' + url + '.md';
-};
 
 /**
  * Get the contents of the current page in HTML format.
