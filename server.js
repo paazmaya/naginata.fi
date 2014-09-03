@@ -18,6 +18,7 @@ var express = require('express');
 var fs = require('fs');
 var spdy = require('spdy');
 var path = require('path');
+var bodyParser = require('body-parser');
 
 // Dependencies for express
 var st = require('st');
@@ -36,6 +37,9 @@ var pageJson = JSON.parse(pageData);
 var app = express();
 
 app.use(compress());
+app.use(bodyParser.json({
+  type: 'application/csp-report'
+}));
 
 var oneMinute = 1000 * 60;
 app.use(st({
@@ -72,6 +76,7 @@ app.engine('jade', require('jade').__express);
 
 app.set('views', path.join(__dirname, '/views'));
 app.set('view engine', 'jade');
+app.set('x-powered-by', null); // Disable extra header
 
 // in express, this lets you call newrelic from within a template
 app.locals.newrelic = newrelic;
@@ -165,8 +170,10 @@ app.get(pageRegex, function appGetRegex(req, res) {
       '*.vimeo.com *.youtube.com ' +
       'https://*.vimeo.com https://*.youtube.com ' +
       '*.flickr.com *.staticflickr.com ' +
+      '*.gstatic.com ' +
       '*.googleapis.com *.googleusercontent.com ' +
-      '*.google-analytics.com *.doubleclick.net',
+      '*.google-analytics.com *.doubleclick.net' +
+      '; report-uri /violation-report',
     'Content-Language': lang,
     'Accept-Ranges': 'bytes',
     'Timing-Allow-Origin': '*'
@@ -200,6 +207,21 @@ app.get('/sitemap', function appGetSitemap(req, res) {
     }
     res.send(html);
   });
+});
+
+// https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Using_CSP_violation_reports
+app.post('/violation-report', function appGetViolation(req, res) {
+  res.set({'Content-type': 'application/json'});
+  if (typeof req.body === 'object') {
+    var violation = require(path.join(__dirname, '/libs/violation-report-receiver.js'));
+    violation(req.body, function violationCallback(report, outgoing) {
+      newrelic.noticeError('CSP-policy-violation', report);
+      res.json(outgoing);
+    });
+  }
+  else {
+    res.json('{"hups":"0"}');
+  }
 });
 
 // Softer landing page
