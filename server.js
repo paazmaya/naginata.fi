@@ -82,7 +82,6 @@ app.set('x-powered-by', null); // Disable extra header
 // in express, this lets you call newrelic from within a template
 app.locals.newrelic = newrelic;
 
-var defaultLang = 'fi';
 
 
 var langKeys = []; // Enabled language ISO codes: en, fi, ...
@@ -93,6 +92,7 @@ Object.keys(pageJson.languages).forEach(function forMetaLangs(key) {
     langMeta[key] = pageJson.languages[key];
   }
 });
+var defaultLang = langKeys[0];
 
 // Handle every GET request and pass thru if not using www.
 /*
