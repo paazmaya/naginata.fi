@@ -19,11 +19,10 @@
 module.exports = function checkLang(acceptsLanguages, siteLanguages) {
   var defaultLang = 'fi';
   for (var i = 0; i < acceptsLanguages.length; ++i) {
-    var item = acceptsLanguages[i];
-    var key = item.substr(0, 2);
+    var key = acceptsLanguages[i].substr(0, 2);
     if (siteLanguages.hasOwnProperty(key) &&
         siteLanguages[key].enabled === true) {
-      return item.substr(0, 2);
+      return key;
     }
   }
   return defaultLang;
