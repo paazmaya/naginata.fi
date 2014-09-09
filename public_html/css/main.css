@@ -7,16 +7,16 @@
  */
 
 .full-width {
-    min-width: 620px;
+    min-width: 390px;
     width: 100%;
 }
 .centered {
     margin-left: auto;
     margin-right: auto;
-    min-width: 620px;
+    min-width: 390px;
     max-width: 1000px;
-    padding-left: 2em;
-    padding-right: 2em;
+    padding-left: 1em;
+    padding-right: 1em;
 }
 .relative {
     position: relative;
@@ -82,23 +82,33 @@ footer {
     display: block;
     margin-bottom: 1em;
 }
+
+footer p,
+#languages {
+    display: block;
+}
+
 nav ul,
 footer p {
     height: 100%;
+}
+nav ul {
+  display: table;
+  width: 100%;
 }
 nav ul,
 footer p,
 #languages {
     margin: 0;
     list-style: none;
-    display: block;
     text-align: center;
     color: #072434;
 }
 nav li {
     width: 20%;
     height: 1.5em;
-    display: inline-block;
+    display: table-cell;
+    vertical-align: middle;
     padding: 0;
 }
 nav a,
@@ -110,7 +120,7 @@ footer a,
     height: 1.5em;
 }
 footer a {
-    padding: 0 2em;
+    padding: 0 1.5em;
     display: inline-block;
 }
 nav a {
@@ -268,7 +278,7 @@ article.media ul:last-of-type li {
 }
 article.media ul:last-of-type a {
     padding: 0.4em;
-    padding-left: 60px;
+    padding-left: 50px;
     display: block;
     position: relative;
 }
@@ -325,21 +335,26 @@ article.media ul:last-of-type a[href*="flickr.com"]::before {
     border-radius: 0 0 10px 10px;
 }
 #logo {
+    display: table;
     position: relative;
     height: 180px;
+    width: 100%;
     background-image: url(../img/logo.png);
     background-size: 132px 132px;
-    background-position: 2em center;
+    background-position: 1em center;
     background-repeat: no-repeat;
 }
 #logo > p {
+    display: table-cell;
+    vertical-align: middle;
     margin: 0;
     width: auto;
     text-align: center;
     font-size: 350%;
     line-height: 100%;
     /*font-variant: small-caps;*/
-    padding: 1em 0em 0em 132px;
+    padding: 0;
+    padding-left: 132px;
     color: #072434;
     font-family: 'Inder', Verdana, sans-serif;
 }
