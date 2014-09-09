@@ -27,20 +27,22 @@ Jikishinkageryū, Tenshin Shoden Katori Shintoryū and Suiōryū.
 
 At [Helsinki Kendo Club, Ki-Ken-Tai-Icchi (KKTI) it is possible to join the classes
 of Atarashii Naginata and Jikishinkageryū
-Naginatajutsu](http://kendohelsinki.org "Ki-Ken-Tai-Icchi, Helsinki Kendo Club, Olympic Stadium")
+Naginatajutsu](http://www.kkti.fi/ "Helsinki Kendo Club - Ki-Ken-Tai-Icchi, Olympic Stadium, Helsinki")
 
-The trainings are held on every Thursday at 18:00 - 19:30 and Sunday at
-16:00 - 18:00. All of the trainings are in the "keskisali" training area.
+The trainings are held at the Helsinki Olympic Stadium D-wing, on Tuesdays at 20:30 - 22:00 
+in "tanssihali" training hall, and on Sundays at 15:30 - 17:00 in "keskisali" training hall.
+Protective gears (bogu) are only needed on Sundays, but their use is not mandatory.
 
 Please contact Mr. Jarno Yliluoma ([firstname.lastname]@gmail.com) for any
-inquiris related to Naginata in KKTI.
+inquiris related to Atarashii Naginata in KKTI and to Mr. Jukka Paasonen 
+([firstname]@naginata.fi) regarding Jikishinkageryu Naginatajutsu.
 
 ### Tapanilan Erä - Kendo Division
 
 [Tapanilan Erä Kendo Division has started weekly trainings in Atarashii Naginata,
 from beginning of Autumn 2013.](http://www.tapanila-kendo.org/ "Tapanilan Erä - Kendo Division")
 
-Trainings are held in every Wednesday at the "Studio", from 19:00 to 21:00.
+Trainings are on hold for the time being, due to small number of participants.
 
 The responsible contact person for Naginata at Tapanila is Mr. Janne
 Sojantola ([firstname.lastname]@gmail.com), who is also leading the trainings.
@@ -53,6 +55,7 @@ which the practitioner is a member, usually when new classes begin.
 
 The site owner also has a few "Shiai naginata" training weapons for sale,
 price ranging from 80 to 90 EUR, depending on the timing and size of the given order.
+Also Zen Nihon Kata naginata and Jikishinkageryu set (naginata, bokken, tanto) are available.
 
 Below are links to some of the sensible martial shops from where it is possible
 to obtain training equipments:

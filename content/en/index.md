@@ -2,15 +2,16 @@
 
 -   11/2014 - [Atarashii Naginata and Jikishinkageryu Naginatajutsu Seminar in Potsdam,
     Germany](https://www.facebook.com/events/497656113676309/ "Atarashii Naginata & Jikishinkageryu Naginatajutsu Seminar")
--   06-07/09/2014 - [Naginata Friendship Seminar,
-    Viikki Teacher Training School, Helsinki](https://www.facebook.com/events/501891759879564/ "Finnish Naginata Friendship Seminar 2014")
--   22-24/08/2014 - [International Naginata Federation Seminar, Amstelveen, The Netherlands](http://international-naginata.org/drupal/node/17 "2014 INF seminar Announcement")
--   08-10/08/2014 - [Atarashii Naginata seminar with Sumi Kaoru hanshi in St. Petersburg, Russia](https://www.facebook.com/events/1445263222387953 "Seminar on atarashii naginata with Sumi Kaoru sensei in St. Petersburg")
 
 ## In the Past
 
 List of events in Finland, in which Finnish members have joined, or are somehow related to Naginata in Finland.
 
+-   05 and 08/09/2014 - Jikishinkageryu Naginatajutsu Japan-Finland Friendship trainings
+-   06-07/09/2014 - [Naginata Friendship Seminar,
+    Viikki Teacher Training School, Helsinki](https://www.facebook.com/events/501891759879564/ "Finnish Naginata Friendship Seminar 2014")
+-   22-24/08/2014 - [International Naginata Federation Seminar, Amstelveen, The Netherlands](http://international-naginata.org/drupal/node/17 "2014 INF seminar Announcement")
+-   08-10/08/2014 - [Atarashii Naginata seminar with Sumi Kaoru hanshi in St. Petersburg, Russia](https://www.facebook.com/events/1445263222387953 "Seminar on atarashii naginata with Sumi Kaoru sensei in St. Petersburg")
 -   24-25/05/2014 - [Kyu-seminar for practitioners of Kendo, Iaido, Jodo and Naginata in Helsinki, Finland](https://www.facebook.com/events/1410312342550257/ "FKA - Kyu-seminar in Helsinki")
 -   18/04/2014 - [Atarashii Naginata Easter Seminar in Helsinki](https://www.facebook.com/events/254398958076220/ "Atarashii Naginata Pääsiäisleiri"),
     organised by Tapanilan Erä Kendo Division
@@ -31,10 +32,6 @@ List of events in Finland, in which Finnish members have joined, or are somehow 
 -   19/08/2013 - Atarashii Naginata demonstartion (19:00), [Tapanilan Erä, Tapanila
     Sports Center](http://www.tapanila-kendo.org/ "Tapanilan Erä - Kendo Division"),
     Helsinki
--   19-21/08/2013 - Seminar and the "Canadian National Championship", Montreal,
-    Canada
--   26-28/06/2013 - [International Naginata Federation (INF) Seminar, Seattle,
-    United States of America](http://international-naginata.org/drupal/node/14 "2013 INF Seminar Information")
 -   15-16/06/2013 - ["Stage internazionale di Naginata con la Helen M °
     M. Nakano - Kyoshi"](http://www.kendo.it/calendario/calendario.cfm "Elenco Eventi CIK e di altre federazioni europee");
     Italy

@@ -27,10 +27,11 @@ muun muassa Jikishinkageryū, Tenshin Shoden Katori Shintoryū ja Suiōryū.
 
 [Helsingin Kendoseurassa, Ki-Ken-Tai-Icchi ry:ssä voi harjoitella
 Atarashii Naginata:a ja Jikishinkageryū
-Naginatajutsu:a.](http://kendohelsinki.org "Ki-Ken-Tai-Icchi, Helsingin kendoseura, Olympiastadionilla")
+Naginatajutsu:a.](http://www.kkti.fi/ "Helsingin kendoseura - Ki-Ken-Tai-Icchi, Olympiastadion, Helsinki")
 
-Harjoitukset ovat torstaisin kello 18:00 - 19:30 ja sunnuntaisin kello
-16:00 - 18:00. Kumpikin harjoituksista pidetään "keskisalissa".
+Harjoitukset Olympiastadionin D-siivessä ovat tiistaisin kello 20:30 - 22:00 "tanssisalissa" ja
+sunnuntaisin kello 15:30 - 17:00 "keskisalissa".
+Suojavarusteita (bogu) tarvitaan vain sunnuntain harjoituksessa, mutta niiden käyttö ei ole pakollista.
 
 Helsingin Kendoseuran naginatavastaava Jarno Yliluoma
 ([etunimi.sukunimi]@gmail.com) vastaa lajiin liittyviin
@@ -40,10 +41,9 @@ tiedusteluihin.
 
 [Tapanilan Erän Kendo-jaos on aloittanut Atarashii Naginatan
 säännöllisen harjoittelun syyskauden 2013
-alusta.](http://www.tapanila-kendo.org/ "Tapanilan Erä - Kendo")
+alusta.](http://www.tapanila-kendo.org/ "Tapanilan Erä - Kendo, Tapanila, Helsinki")
 
-Harjoitukset ovat kerran viikossa keskiviikkoisin kello 19:00 - 21:00
-"Studiossa".
+Harjoituksia ei toistaiseksi ole viikottain, vähäisen osallistujamäärän vuoksi.
 
 Naginataan liittyviin tiedusteluihin vastaa Tapanilassa naginataa
 ohjaava Janne Sojantola ([etunimi.sukunimi]@gmail.com).
@@ -51,12 +51,13 @@ ohjaava Janne Sojantola ([etunimi.sukunimi]@gmail.com).
 
 ## Varustehankintaa
 
-Lajin harrastamista tarjoavat seurat tekevät välillä yhteistilauksia
+Lajin harrastamista tarjoavat seurat tekevät toisinaan yhteistilauksia
 joihin voi erityisesti juuri lajin aloittanut osallistua mukaan.
 
 Tämän sivuston ylläpitäjällä on myös muutamia "shiai
 naginata"-harjoitusaseita myytävänä, hinnan vaihdellessa 80-90 EUR
 riippuen tilauksen ajankohdasta ja suuruudesta.
+Myös Zen Nihon Kata naginataa ja Jikishinkageryu:n settiä (naginata, bokken, tanto) on saatavilla.
 
 Alla linkkejä muutamiin asiallisiin budo-tarvikeliikkeisiin joista voi
 lajiin liittyvä varusteita hankkia:

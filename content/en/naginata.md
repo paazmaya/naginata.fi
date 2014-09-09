@@ -126,7 +126,7 @@ Bamboo bladed practising weapon (shiai - Naginata), consists of the following co
 - Habu, blade section
 - Ebu, handle section
 - Kissaki, the blade tip
-- Ishizuka, end of the shaft
+- Ishizuki, end of the shaft
 - Sendanmaki, the connecting part for blade and handle
 - Monouchi, the point of the blade that is used for cutting.
 

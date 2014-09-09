@@ -3,14 +3,15 @@
 
 - 2014分の11 - ポツダムの[あたらしい薙刀とJikishinkageryu Naginatajutsuセミナー、
     ドイツ]（https://www.facebook.com/events/497656113676309/「あたらしい薙刀＆Jikishinkageryu Naginatajutsuセミナー」）
+## 過去に
+
+フィンランドのメンバーが参加している、または何らかの形でフィンランド薙刀に関係されているフィンランドの事象のリスト。
+
+-   05 and 08/09/2014 - Jikishinkageryu Naginatajutsu Japan-Finland Friendship trainings
 - /09/201406-07 - [なぎなた友好セミナー、
     Viikki教員養成学校、ヘルシンキ]（https://www.facebook.com/events/501891759879564/「フィンランドの薙刀友好セミナー2014」）
 - /08/201422-24 - [国際なぎなた連盟セミナー、アムステルフェーン、オランダ]（http://international-naginata.org/drupal/node/17「2014 INFセミナーのお知らせ」）
 - /08/201408-10 - セントスミ薫先生とあたらしいなぎなた上（https://www.facebook.com/events/1445263222387953」セミナー[サンクトペテルブルク、ロシアのスミ薫hanshiとあたらしい薙刀セミナー]ピーターズバーグ"）
-
-## 過去に
-
-フィンランドのメンバーが参加している、または何らかの形でフィンランド薙刀に関係されているフィンランドの事象のリスト。
 
 - / 05/201424-25 - （https://www.facebook.com/events/1410312342550257/「FKA[ヘルシンキでの剣道、居合道、浄土宗やなぎなた、フィンランドの実務家のためのキュッセミナー] - キュッ·セミナーヘルシンキ"）
 - 18/04/2014 - [ヘルシンキあたらしい薙刀イースターセミナー]（https://www.facebook.com/events/254398958076220/「あたらしい薙刀Pääsiäisleiri」）、
@@ -32,10 +33,6 @@
 - 19/08/2013 - あたらしい薙刀の実演（19:00）、[Tapanilan時代、Tapanila
     （http://www.tapanila-kendo.org/"Tapanilan ERA - 剣道部門」）スポーツセンター]、
     ヘルシンキ
-- 19-21/08/2013 - セミナー「カナダのナショナル·チャンピオンシップ」、モントリオール、
-    カナダ
-- /06/201326-28 - [国際なぎなた連盟（INF）セミナー、シアトル、
-    アメリカ合衆国]（http://international-naginata.org/drupal/node/14」2013 INFセミナー情報」）
 - /06/201315-16 - ["ステージインテル·ディ·薙刀コン·ラ·ヘレンM°
     M.中野 - 虚子"]（http://www.kendo.it/calendario/calendario.cfm" ElencoタイムズCIK電子ディ·ウェア他のfederazioni europee"）;
     イタリア

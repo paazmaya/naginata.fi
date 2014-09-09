@@ -3,15 +3,16 @@
 
 -   11.2014 - [Atarashii Naginata- ja Jikishinkageryu Naginatajutsu-leiri Potsdamissa,
     Saksassa](https://www.facebook.com/events/497656113676309/ "Atarashii Naginata & Jikishinkageryu Naginatajutsu Seminar")
--   6.-7.9.2014 - [Naginataystävyysleiri,
-    Viikin Normaalikoulu, Helsinki](https://www.facebook.com/events/501891759879564/ "Finnish Naginata Friendship Seminar 2014")
--   22.-24.8.2014 - [Kansainvälisen Naginataliiton leiri, Amstelveen, Alankomaat](http://international-naginata.org/drupal/node/17 "2014 INF seminar Announcement")
--   8.-10.8.2014 - [Atarashii Naginata-leiri, opettajana Sumi Kaoru hanshi, Pietari, Venäjä](https://www.facebook.com/events/1445263222387953 "Seminar on atarashii naginata with Sumi Kaoru sensei in St. Petersburg")
 
 ## Menneitä tapahtumia
 
 Lista tapahtumista, joilla on ollut merkitystä naginatan harrastamiselle Suomessa.
 
+-   5. ja 8.9.2014 - Jikishinkageryu Naginatajutsu Japani-Suomi ystävyysharjoitukset
+-   6.-7.9.2014 - [Naginataystävyysleiri,
+    Viikin Normaalikoulu, Helsinki](https://www.facebook.com/events/501891759879564/ "Finnish Naginata Friendship Seminar 2014")
+-   22.-24.8.2014 - [Kansainvälisen Naginataliiton leiri, Amstelveen, Alankomaat](http://international-naginata.org/drupal/node/17 "2014 INF seminar Announcement")
+-   8.-10.8.2014 - [Atarashii Naginata-leiri, opettajana Sumi Kaoru hanshi, Pietari, Venäjä](https://www.facebook.com/events/1445263222387953 "Seminar on atarashii naginata with Sumi Kaoru sensei in St. Petersburg")
 -   24.-25.5.2014 - [Kyu-leiri Kendon, Iaidon, Jodon ja Naginatan harrastajille Helsingissä](https://www.facebook.com/events/1410312342550257/ "FKA - Kyu-leiri Helsingissä")
 -   18.4.2014 - [Atarashii Naginata pääsiäisleiri Helsingissä](https://www.facebook.com/events/254398958076220/ "Atarashii Naginata Pääsiäisleiri"),
     Tapanilan Erän Kendo-jaoksen järjestämänä
@@ -34,10 +35,6 @@ Lista tapahtumista, joilla on ollut merkitystä naginatan harrastamiselle Suomes
     Tapanilan
     urheilukeskus](http://www.tapanila-kendo.org/ "Tapanilan Erä - Kendojaos"),
     Helsinki
--   19.-21.8.2013 - Leiri ja "Canadian National Championship", Montreal,
-    Kanada
--   26.-28.6.2013 - [Kansainvälisen Naginataliiton (INF) leiri, Seattle,
-    Yhdysvallat](http://international-naginata.org/drupal/node/14 "2013 INF Seminar Information")
 -   15.-16.6.2013 - ["Stage internazionale di Naginata con la M° Helen
     M. NAKANO -
     Kyoshi"](http://www.kendo.it/calendario/calendario.cfm "Elenco Eventi CIK e di altre federazioni europee"),
