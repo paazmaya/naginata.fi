@@ -23,7 +23,7 @@ module.exports = function flickrImageList() {
   // Loop all Markdown files under content/*/
   var dir = path.join(__dirname, '../content/');
   var directories = fs.readdirSync(dir);
-  
+
   /**
    * Check if the given file is a directory.
    * @param {string} item File name

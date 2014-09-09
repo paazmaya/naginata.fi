@@ -28,6 +28,7 @@ var compress = require('compression');
 // Custom classes
 var getContent = require('./libs/get-content');
 var flickrImageList = require('./libs/flickr-image-list');
+var checkLang = require('./libs/check-lang');
 
 var pageData = fs.readFileSync('content/page-data.json', {
   encoding: 'utf8'
@@ -83,23 +84,6 @@ app.locals.newrelic = newrelic;
 
 var defaultLang = 'fi';
 
-/**
- * Checks if the current language should be changed according to the
- * current users language preferences and thus changes if needed.
- * @param {Array} acceptsLanguages The languages accepted by the current user agent
- * @see http://expressjs.com/api.html#req.acceptsLanguages
- * @returns {?} Nothing
- */
-var checkLang = function checkLang(acceptsLanguages) {
-  acceptsLanguages.forEach(function forLangs(item) {
-    var key = item.substr(0, 2);
-    if (pageJson.languages.hasOwnProperty(key) &&
-        pageJson.languages[key].enabled === true) {
-      defaultLang = item.substr(0, 2);
-      return;
-    }
-  });
-};
 
 var langKeys = []; // Enabled language ISO codes: en, fi, ...
 var langMeta = {}; // Enabled language meta data, needed for language navigation
@@ -226,7 +210,7 @@ app.post('/violation-report', function appGetViolation(req, res) {
 
 // Softer landing page
 app.get('/', function appGetRoot(req, res) {
-  checkLang(req.acceptsLanguages());
+  defaultLang = checkLang(req.acceptsLanguages(), pageJson.languages);
   res.redirect(301, '/' + defaultLang);
 });
 
