@@ -8,7 +8,7 @@
   "main": "server.js",
   "subdomain": "naginata-finland",
   "scripts": {
-    "test": "grunt test",
+    "test": "grunt test && ./node_modules/.bin/jasmine-node tests/node --verbose",
     "start": "node server.js",
     "coveralls": "./node_modules/karma/bin/karma start karma.conf.js && cat coverage/*/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
   },
