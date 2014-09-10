@@ -125,7 +125,7 @@
     "use-isnan": 2,
     "valid-jsdoc": 1,
     "valid-typeof": 2,
-    "vars-on-top": 1,
+    "vars-on-top": 0,
     "wrap-iife": [2, "inside"],
     "wrap-regex": 0,
     "yoda": "never"

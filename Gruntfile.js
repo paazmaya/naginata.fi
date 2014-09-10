@@ -76,7 +76,7 @@ module.exports = function gruntConf(grunt) {
     },
 
     jasmine: {
-      public: {
+      frontend: {
         src: [
           'public_html/js/sendanmaki.js'
         ],
@@ -105,7 +105,7 @@ module.exports = function gruntConf(grunt) {
       },
       jasmine: {
         files: ['tests/js/*.js'],
-        tasks: ['jasmine']
+        tasks: ['jasmine:frontend']
       }
     }
   });
