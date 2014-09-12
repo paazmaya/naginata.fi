@@ -10,8 +10,8 @@
 
 describe('Check initial page language', function() {
   var checkLang = require('../../libs/check-lang');
-  
-  var languages = {
+
+  var langConf = {
     "fi": {
       "enabled": false,
       "name": "Suomi"
@@ -28,7 +28,7 @@ describe('Check initial page language', function() {
   var acceptedLanguages = ['ja', 'en-GB;q=0.8', 'en;q=0.6', 'fi;q=0.4'];
 
   it('accepted languages has first matching the last enabled', function() {
-    var output = checkLang(acceptedLanguages, languages);
+    var output = checkLang(acceptedLanguages, langConf);
     expect(output).toBe('ja');
   });
 

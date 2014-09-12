@@ -141,7 +141,7 @@ app.get(pageRegex, function appGetRegex(req, res) {
 
   var userAgent = req.header('user-agent');
   if (userAgent && userAgent.indexOf('facebookexternalhit') !== -1) {
-    var facebookMeta = require(path.join(__dirname, '/libs/facebookMeta.js'));
+    var facebookMeta = require('./libs/facebook-meta.js');
     current.facebook = facebookMeta(current, pageJson.facebook);
   }
 
@@ -182,7 +182,7 @@ app.get(pageRegex, function appGetRegex(req, res) {
 // sitemap.org
 app.get('/sitemap', function appGetSitemap(req, res) {
   res.set({'Content-type': 'application/xml'});
-  var sitemap = require(path.join(__dirname, '/libs/sitemap.js'));
+  var sitemap = require('./libs/sitemap.js');
   res.render('sitemap', {
     pages: sitemap(pageJson)
   }, function renderSitemap(error, html) {
@@ -197,7 +197,7 @@ app.get('/sitemap', function appGetSitemap(req, res) {
 app.post('/violation-report', function appGetViolation(req, res) {
   res.set({'Content-type': 'application/json'});
   if (typeof req.body === 'object') {
-    var violation = require(path.join(__dirname, '/libs/violation-report-receiver.js'));
+    var violation = require('./libs/violation-report-receiver.js');
     violation(req.body, function violationCallback(report, outgoing) {
       newrelic.noticeError('CSP-policy-violation', report);
       res.json(outgoing);
