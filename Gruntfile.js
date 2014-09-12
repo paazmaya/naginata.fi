@@ -9,7 +9,9 @@
 
 module.exports = function gruntConf(grunt) {
   require('time-grunt')(grunt); // Must be first item
-  require('jit-grunt')(grunt);
+  require('jit-grunt')(grunt, {
+    'jasmine_node': 'grunt-jasmine-node-coverage'
+  });
 
   // Project configuration.
   grunt.initConfig({
@@ -87,6 +89,26 @@ module.exports = function gruntConf(grunt) {
           ],
           specs: 'tests/js/sendanmaki_spec.js',
           display: 'full'
+        }
+      }
+    },
+
+    jasmine_node: {
+      coverage: {
+
+      },
+      options: {
+        forceExit: true,
+        match: '.',
+        matchall: false,
+        extensions: 'js',
+        specNameMatcher: '_spec',
+        captureExceptions: true,
+        junitreport: {
+          report: false,
+          savePath : "./build/reports/jasmine/",
+          useDotNotation: true,
+          consolidate: true
         }
       }
     },
