@@ -32,6 +32,6 @@ describe('Content Markdown file mapping to page URL addresses', function() {
   it('Finnish language, but English naginata page URL', function() {
     var output = contentPath('fi', '/en/naginata');
     var expected = 'content/en/naginata.md';
-    expect(output).toBe(expected);
+    expect(output).not.toBe(expected);
   });
 });

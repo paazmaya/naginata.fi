@@ -12,7 +12,8 @@ describe('Get page content', function() {
   var getContent = require('../../libs/get-content');
 
   it('build path to content file', function() {
-    expect(true).toBe(true);
+    var output = getContent('fi', '/fi');
+    expect(output.substr(0, 4)).toBe('<h1>');
   });
 
 

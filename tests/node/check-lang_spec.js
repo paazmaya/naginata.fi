@@ -25,11 +25,31 @@ describe('Check initial page language', function() {
       "name": "日本語"
     }
   };
-  var acceptedLanguages = ['ja', 'en-GB;q=0.8', 'en;q=0.6', 'fi;q=0.4'];
 
-  it('accepted languages has first matching the last enabled', function() {
-    var output = checkLang(acceptedLanguages, langConf);
+  it('Accepted languages has first matching item the last enabled', function() {
+    var output = checkLang(['ja', 'en-GB;q=0.8', 'en;q=0.6', 'fi;q=0.4'], langConf);
     expect(output).toBe('ja');
   });
 
+  it('accepted languages has first matching the last enabled', function() {
+    langConf.fi.enabled = true;
+    var output = checkLang(['en-GB', 'en', 'fi'], langConf);
+    expect(output).toBe('en');
+  });
+
+  it('Finnish is found as the first item', function() {
+    langConf.fi.enabled = true;
+    var output = checkLang(['fi', 'en'], langConf);
+    expect(output).toBe('fi');
+
+    langConf.fi.enabled = false;
+    var output = checkLang(['fi', 'en'], langConf);
+    expect(output).toBe('en');
+  });
+
+  it('accepted languages do not contain enabled language', function() {
+    langConf.fi.enabled = true;
+    var output = checkLang(['zn', 'ch'], langConf);
+    expect(output).toBe('fi');
+  });
 });
