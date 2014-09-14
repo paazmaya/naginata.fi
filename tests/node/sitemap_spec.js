@@ -11,23 +11,8 @@ var fs = require('fs');
 
 describe('Sitemap XML creation', function() {
   var sitemap = require('../../libs/sitemap');
-  var pageData = {
-  "languages": {
-    "fi": {
-      "enabled": true,
-      "name": "Suomi"
-    },
-    "en": {
-      "enabled": true,
-      "name": "English"
-    }
-  },
-  "title": {
-    "fi": "Naginata Suomessa",
-    "en": "Naginata Finland",
-    "ja": "\u306a\u304e\u306a\u305f \u30d5\u30a3\u30f3\u30e9\u30f3\u30c9"
-  },
-  "pages": [
+
+  var pages = [
     {
       "fi": {
         "url": "/fi",
@@ -55,29 +40,22 @@ describe('Sitemap XML creation', function() {
         "title": "Naginata",
         "description": "The modern Japanese martial art Atarashii Naginata is about using a long weapon"
       }
-    },
-    {
-      "fi": {
-        "url": "/fi/koryu",
-        "header": "Jikishinkageryu Naginatajutsu",
-        "title": "Koryu",
-        "description": "Kirjaimellisesti käännettynä koryu tarkoittaa vanhaa koulua. Naginatan osalta koryu viittaa niihin vanhoihin kouluihin ja tyyleihin, joissa aseella harjoiteltiin."
-      },
-      "en": {
-        "url": "/en/koryu",
-        "header": "Jikishinkageryu Naginatajutsu",
-        "title": "Koryu",
-        "description": "Literally koryu means old school. While related to naginata, it stands for the classical old schools which were using the weapon in their system."
-      }
     }
-  ]
-};
+  ];
+  var enabledLanguages = null;
 
+  it('Two languages with two pages counts for four', function() {
+    enabledLanguages = ["fi", "en"];
 
+    var output = sitemap(pages, enabledLanguages);
+    expect(output.length).toBe(4);
+  });
 
-  it('at least few pages are listed', function() {
-    var output = sitemap(pageData);
-    expect(output.length).toBeGreaterThan(4);
+  it('Only English', function() {
+    enabledLanguages = ["en"];
+
+    var output = sitemap(pages, enabledLanguages);
+    expect(output.length).toBe(2);
   });
 
 });

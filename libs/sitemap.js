@@ -14,13 +14,14 @@ var contentPath = require('./content-path');
 /**
  * Format the page data to match the need for sitemap.jade
  * @param {object} pageData JSON data from content folder
+ * @param {array} enabledLanguages List of two char language codes of the enabled languages
  * @returns {array} Data used with sitemap Jade template
  */
-module.exports = function siteMap(pageData) {
+module.exports = function siteMap(pages, enabledLanguages) {
   var out = [];
-  pageData.pages.forEach(function eachPage(item) {
+  pages.forEach(function eachPage(item) {
     Object.keys(item).forEach(function eachKey(lang) {
-      if (pageData.languages[lang].enabled === true && item[lang].url) {
+      if (enabledLanguages.indexOf(lang) !==-1 && item[lang].url) {
         var url = item[lang].url;
         var path = contentPath(lang, url);
         var stats = fs.statSync(path);

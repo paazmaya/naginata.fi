@@ -29,6 +29,7 @@ var compress = require('compression');
 var getContent = require('./libs/get-content');
 var flickrImageList = require('./libs/flickr-image-list');
 var checkLang = require('./libs/check-lang');
+var getEnabledLanguages = require('./libs/get-enabled-languages');
 
 var pageData = fs.readFileSync('content/page-data.json', {
   encoding: 'utf8'
@@ -83,15 +84,8 @@ app.set('x-powered-by', null); // Disable extra header
 app.locals.newrelic = newrelic;
 
 
-
-var langKeys = []; // Enabled language ISO codes: en, fi, ...
-var langMeta = {}; // Enabled language meta data, needed for language navigation
-Object.keys(pageJson.languages).forEach(function forMetaLangs(key) {
-  if (pageJson.languages[key].enabled === true) {
-    langKeys.push(key);
-    langMeta[key] = pageJson.languages[key];
-  }
-});
+var langMeta = getEnabledLanguages(pageJson.languages); // Enabled language meta data, needed for language navigation
+var langKeys = Object.keys(langMeta); // Enabled language ISO codes: en, fi, ...
 var defaultLang = langKeys[0];
 
 // Handle every GET request and pass thru if not using www.
@@ -123,7 +117,7 @@ app.get(pageRegex, function appGetRegex(req, res) {
       if (item[lang].url === req.path) {
         current = item[lang];
         // Save the current page other languages
-        Object.keys(langMeta).forEach(function eachMetaLang(key) {
+        langKeys.forEach(function eachMetaLang(key) {
           if (item[key]) {
             langMeta[key].url = item[key].url;
           }
@@ -184,7 +178,7 @@ app.get('/sitemap', function appGetSitemap(req, res) {
   res.set({'Content-type': 'application/xml'});
   var sitemap = require('./libs/sitemap.js');
   res.render('sitemap', {
-    pages: sitemap(pageJson)
+    pages: sitemap(pageJson.pages, langKeys)
   }, function renderSitemap(error, html) {
     if (error) {
       newrelic.noticeError(error);
