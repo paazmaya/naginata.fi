@@ -94,22 +94,28 @@ module.exports = function gruntConf(grunt) {
     },
 
     jasmine_node: {
-      coverage: {
-
-      },
+      coverage: true,
       options: {
+        //specFolders: 'tests/node/',
+        isVerbose: true,
+        showColors: true,
+
         forceExit: true,
-        match: '.',
+        match: '',
         matchall: false,
-        extensions: 'js',
         specNameMatcher: '_spec',
-        captureExceptions: true,
-        junitreport: {
+        extensions: 'js',
+        //captureExceptions: true,
+        jUnit: {
           report: false,
-          savePath : "./build/reports/jasmine/",
+          savePath: './reports/',
           useDotNotation: true,
           consolidate: true
-        }
+        },
+
+        print: 'detail', // none, detail, both
+        //excludes: [],
+        collect: null, // array of covPattern for finding files
       }
     },
 
@@ -133,6 +139,6 @@ module.exports = function gruntConf(grunt) {
   });
 
   grunt.registerTask('minify', ['uglify', 'cssmin']);
-  grunt.registerTask('test', ['eslint', 'jasmine']);
+  grunt.registerTask('test', ['eslint', 'jasmine', 'jasmine_node']);
   grunt.registerTask('default', ['test', 'minify']);
 };
