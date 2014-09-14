@@ -10,7 +10,9 @@
 
 /**
  * Simply just pass the possible violation report to the callback.
- * @param {{
+ *
+ * The report is usually something like this
+ * {
  *   "csp-report": {
  *     "document-uri": "http://naginata.fi/en/",
  *     "referrer": "",
@@ -18,7 +20,9 @@
  *     "violated-directive": "style-src cdn.example.com",
  *     "original-policy": "default-src 'none'; style-src cdn.example.com; report-uri /_/csp-reports",
  *   }
- * }} postData JSON data from browser
+ * }
+ *
+ * @param {object} postData JSON data from browser
  * @param {function} callBack Function to be called with two parameters, report and output
  * @returns {void} Nothing
  * @see https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Using_CSP_violation_reports

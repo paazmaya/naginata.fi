@@ -11,6 +11,7 @@
 /**
  * Get only the enabled languages from the page data language object.
  * @param {object} languages List of languages from the page-data.json file
+ * @returns {object} Only those languages that are enabled
  */
 module.exports = function getEnabledLanguages(languages) {
   var list = {}; //

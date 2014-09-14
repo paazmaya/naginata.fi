@@ -88,6 +88,21 @@ var sendanmaki = window.sendanmaki = {
   },
 
   /**
+   * Toggle note class on an element
+   * @param {jQuery.Event} event Mouse over/out event via jQuery
+   * @returns {void}
+   */
+  onNoteHover: function onNoteHover(event) {
+    var cont = $(event.currentTarget);
+    if (event.type === 'mouseover') {
+      cont.addClass('notehover');
+    }
+    else {
+      cont.removeClass('notehover');
+    }
+  },
+
+  /**
    * Add notes to a chudan kamae bogu image, if available.
    *
    * @param {string} key    Key which should be the img elements src
@@ -102,15 +117,7 @@ var sendanmaki = window.sendanmaki = {
       });
     });
 
-    $(document).on('mouseover mouseout', '.note[rel]', function noteHover(event) {
-      var cont = $(event.currentTarget);
-      if (event.type === 'mouseover') {
-        cont.addClass('notehover');
-      }
-      else {
-        cont.removeClass('notehover');
-      }
-    });
+    $(document).on('mouseover mouseout', '.note[rel]', sendanmaki.onNoteHover);
   },
 
   /**
