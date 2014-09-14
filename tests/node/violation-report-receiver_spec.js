@@ -8,13 +8,30 @@
 
 'use strict';
 
-describe('Check initial page language', function() {
+describe('CSP Violation report', function() {
   var violation = require('../../libs/violation-report-receiver');
 
+  var postData = {
+    "csp-report": {
+      "document-uri": "http://naginata.fi/en/",
+      "referrer": "",
+      "blocked-uri": "http://example.com/css/style.css",
+      "violated-directive": "style-src cdn.example.com",
+      "original-policy": "default-src 'none'; style-src cdn.example.com; report-uri /_/csp-reports",
+    }
+  };
 
-  it('accepted languages has first matching the last enabled', function() {
-    var output = checkLang(acceptedLanguages, languages);
-    expect(output).toBe('ja');
+  it('Calls callback with proper part of the given argument', function() {
+    var listener = {
+      callBack: function (stuff) {}
+    };
+    spyOn(listener, 'callBack');
+
+    var output = violation(postData, listener.callBack);
+
+    expect(listener.callBack).toHaveBeenCalled();
+    expect(listener.callBack.mostRecentCall.args[0]).toEqual(postData['csp-report']);
+
   });
 
 });

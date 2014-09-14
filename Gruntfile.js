@@ -95,8 +95,8 @@ module.exports = function gruntConf(grunt) {
 
     jasmine_node: {
       coverage: true,
+      specFolders: ['tests/node'],
       options: {
-        //specFolders: 'tests/node/',
         isVerbose: true,
         showColors: true,
 
