@@ -31,7 +31,7 @@ describe('Check initial page language', function() {
     expect(output).toBe('ja');
   });
 
-  it('accepted languages has first matching the last enabled', function() {
+  it('Accepted languages has first matching English', function() {
     langConf.fi.enabled = true;
     var output = checkLang(['en-GB', 'en', 'fi'], langConf);
     expect(output).toBe('en');
@@ -47,7 +47,7 @@ describe('Check initial page language', function() {
     expect(output).toBe('en');
   });
 
-  it('accepted languages do not contain enabled language', function() {
+  it('Accepted languages do not containany of the enabled languages', function() {
     langConf.fi.enabled = true;
     var output = checkLang(['zn', 'ch'], langConf);
     expect(output).toBe('fi');

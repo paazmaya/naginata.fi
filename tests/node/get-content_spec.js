@@ -11,10 +11,20 @@
 describe('Get page content', function() {
   var getContent = require('../../libs/get-content');
 
-  it('build path to content file', function() {
+  it('Build path to content file', function() {
     var output = getContent('fi', '/fi');
-    expect(output.substr(0, 4)).toBe('<h1>');
+    expect(output.substr(0, 3)).toBe('<h2');
   });
 
+  it('Non existant file is reported to Newrelic', function() {
+    global.newrelic = {
+      noticeError: function () {}
+    };
+    spyOn(global.newrelic, 'noticeError');
+
+    var output = getContent('fi', '/fi/ciao');
+    expect(output).toContain('404');
+    expect(global.newrelic.noticeError).toHaveBeenCalled();
+  });
 
 });

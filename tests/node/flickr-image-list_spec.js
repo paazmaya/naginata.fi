@@ -8,13 +8,12 @@
 
 'use strict';
 
-describe('Check initial page language', function() {
-  var flickrImage = require('../../libs/flickr-image-list');
+describe('List of Flickr images for prefetch meta elements', function() {
+  var flickrImageList = require('../../libs/flickr-image-list');
 
-
-  it('accepted languages has first matching the last enabled', function() {
-    var output = checkLang(acceptedLanguages, languages);
-    expect(output).toBe('ja');
+  it('at least few Flickr images are found', function() {
+    var output = flickrImageList();
+    expect(output.length).toBeGreaterThan(2);
   });
 
 });
