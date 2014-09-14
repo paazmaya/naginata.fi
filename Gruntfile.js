@@ -115,7 +115,7 @@ module.exports = function gruntConf(grunt) {
 
         print: 'detail', // none, detail, both
         //excludes: [],
-        collect: null, // array of covPattern for finding files
+        collect: null // array of covPattern for finding files
       }
     },
 
