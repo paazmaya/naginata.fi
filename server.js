@@ -113,7 +113,7 @@ app.get(pageRegex, function appGetRegex(req, res) {
   var pages = [];
   // Get the pages for the given language, in order to create navigation.
   pageJson.pages.forEach(function eachPage(item) {
-    if (item[lang]) {
+    if (typeof item[lang] === 'object') {
       if (item[lang].url === req.path) {
         current = item[lang];
         // Save the current page other languages
@@ -127,7 +127,7 @@ app.get(pageRegex, function appGetRegex(req, res) {
     }
   });
 
-  if (current === null) {
+  if (typeof current !== 'object') {
     res.redirect(404, '/' + lang);
     return;
   }
@@ -204,7 +204,7 @@ app.post('/violation-report', function appGetViolation(req, res) {
 
 // Softer landing page
 app.get('/', function appGetRoot(req, res) {
-  defaultLang = checkLang(req.acceptsLanguages(), pageJson.languages);
+  defaultLang = checkLang(req.acceptsLanguages(), langKeys);
   res.redirect(301, '/' + defaultLang);
 });
 

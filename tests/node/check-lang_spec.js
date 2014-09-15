@@ -11,45 +11,39 @@
 describe('Check initial page language', function() {
   var checkLang = require('../../libs/check-lang');
 
-  var langConf = {
-    "fi": {
-      "enabled": false,
-      "name": "Suomi"
-    },
-    "en": {
-      "enabled": true,
-      "name": "English"
-    },
-    "ja": {
-      "enabled": true,
-      "name": "日本語"
-    }
-  };
+  var acceptsLanguages;
+  var enabledLanguages;
 
   it('Accepted languages has first matching item the last enabled', function() {
-    var output = checkLang(['ja', 'en-GB;q=0.8', 'en;q=0.6', 'fi;q=0.4'], langConf);
+    acceptsLanguages = ['ja', 'en-GB;q=0.8', 'en;q=0.6', 'fi;q=0.4'];
+    enabledLanguages = ['fi', 'en', 'ja'];
+    var output = checkLang(acceptsLanguages, enabledLanguages);
     expect(output).toBe('ja');
   });
 
   it('Accepted languages has first matching English', function() {
-    langConf.fi.enabled = true;
-    var output = checkLang(['en-GB', 'en', 'fi'], langConf);
+    acceptsLanguages = ['en-GB', 'en', 'fi'];
+    enabledLanguages = ['fi', 'en', 'ja'];
+    var output = checkLang(acceptsLanguages, enabledLanguages);
     expect(output).toBe('en');
   });
 
   it('Finnish is found as the first item', function() {
-    langConf.fi.enabled = true;
-    var output = checkLang(['fi', 'en'], langConf);
+    acceptsLanguages = ['fi', 'en'];
+    enabledLanguages = ['fi', 'en', 'ja'];
+    var output = checkLang(acceptsLanguages, enabledLanguages);
     expect(output).toBe('fi');
 
-    langConf.fi.enabled = false;
-    var output = checkLang(['fi', 'en'], langConf);
+    acceptsLanguages = ['fi', 'en'];
+    enabledLanguages = ['en', 'ja'];
+    var output = checkLang(acceptsLanguages, enabledLanguages);
     expect(output).toBe('en');
   });
 
-  it('Accepted languages do not containany of the enabled languages', function() {
-    langConf.fi.enabled = true;
-    var output = checkLang(['zn', 'ch'], langConf);
-    expect(output).toBe('fi');
+  it('Accepted languages do not contain any of the enabled languages', function() {
+    acceptsLanguages = ['zn', 'ch'];
+    enabledLanguages = ['fi', 'en', 'ja'];
+    var output = checkLang(acceptsLanguages, enabledLanguages);
+    expect(output).toBe('fi'); // Should be first in the enabled list
   });
 });

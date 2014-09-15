@@ -14,12 +14,10 @@
  * @param {string} url Url string that should match the content file
  * @returns {string} Path to the given content file
  */
-var contentPath = function contentPath(lang, url) {
+module.exports = function contentPath(lang, url) {
   url = url.replace('/' + lang, '').replace('/', '');
   if (url === '') {
     url = 'index';
   }
   return 'content/' + lang + '/' + url + '.md';
 };
-
-module.exports = contentPath;
