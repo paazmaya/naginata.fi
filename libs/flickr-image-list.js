@@ -13,6 +13,17 @@ var path = require('path');
 
 
 /**
+ * Filter an array so it has no duplicates
+ * @param {string} value Current value that is being iterated
+ * @param {number} index Current value index
+ * @param {array} list The array that is being filtered
+ * @returns {bool} The given item is the last found
+ */
+var filterDuplicate = function filterDuplicate(value, index, list) {
+  return list.lastIndexOf(value) === index;
+};
+
+/**
  * Iterate all pages for the current language and get a list of unique Flick images.
  * @returns {array.<string>} List of images
  */
@@ -29,7 +40,7 @@ module.exports = function flickrImageList() {
    * @param {string} item File name
    * @returns {bool} File is directory
    */
-  directories = directories.filter(function dirFilter(item) {
+  directories = directories.filter(function filterDirectory(item) {
     var stats = fs.statSync(dir + item);
     return stats.isDirectory();
   });
@@ -55,12 +66,7 @@ module.exports = function flickrImageList() {
     });
   });
 
-  // Only unique
-  images = images.filter(function imageFilter(e, i, arr) {
-    return arr.lastIndexOf(e) === i;
-  });
-
-  //var json = JSON.stringify(images);
+  images = images.filter(filterDuplicate);
 
   return images;
 };
