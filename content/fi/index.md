@@ -8,7 +8,7 @@
 
 Lista tapahtumista, joilla on ollut merkitystä naginatan harrastamiselle Suomessa.
 
--   5. ja 8.9.2014 - Jikishinkageryu Naginatajutsu Japani-Suomi ystävyysharjoitukset
+-   5\. ja 8.9.2014 - Jikishinkageryu Naginatajutsu Japani-Suomi ystävyysharjoitukset
 -   6.-7.9.2014 - [Naginataystävyysleiri,
     Viikin Normaalikoulu, Helsinki](https://www.facebook.com/events/501891759879564/ "Finnish Naginata Friendship Seminar 2014")
 -   22.-24.8.2014 - [Kansainvälisen Naginataliiton leiri, Amstelveen, Alankomaat](http://international-naginata.org/drupal/node/17 "2014 INF seminar Announcement")

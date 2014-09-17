@@ -4,6 +4,7 @@
     "js": "node --debug"
   },
   "watch": [
+    "content/",
     "views/",
     "public_html/",
     "libs/"

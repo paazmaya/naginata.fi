@@ -28,7 +28,7 @@ aside using just a naginata. In any case in these styles naginata is used agains
 
 This website will focus on the following two:
 
- * Atarashii Naginatado (http://naginata.jp/)
+ * Atarashii Naginata (http://naginata.jp/)
  * Jikishinkageryu Naginatajutsu (http://www.jikishin-naginata.jp/)
 
 ## About this software project
@@ -91,9 +91,10 @@ grunt
 ```sh
 grunt test
 npm run coveralls
-../2.5.4/bin/sitespeed.io -u http://naginata.fi -k true -d 2
+sitespeed.io -u http://naginata.fi -k true -d 2
 ucss
 stylestats -t html public_html/css/main.css > stylestats.html
+wbench -n http://naginata.fi > wbench.md
 ```
 
 Also [nodemon](https://github.com/remy/nodemon/ "Monitor for any changes in your node.js application and automatically restart the server"):
@@ -109,7 +110,7 @@ nodemon server.js
 
 [paazmaya.github.io/naginata.fi/sitespeed](http://paazmaya.github.io/naginata.fi/sitespeed)
 
-[paazmaya.github.io/naginata.fi/stylestats.html)](http://paazmaya.github.io/naginata.fi/stylestats.html)
+[paazmaya.github.io/naginata.fi/stylestats.html](http://paazmaya.github.io/naginata.fi/stylestats.html)
 
 [paazmaya.github.io/naginata.fi/wbench.md](http://paazmaya.github.io/naginata.fi/wbench.md)
 
