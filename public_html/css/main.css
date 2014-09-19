@@ -161,20 +161,8 @@ h3 {
     margin-top: 1.2em;
     font-size: 1.2em;
 }
-header h1 {
-  width: 60%;
-}
-header p {
-    font-family: 'Inder', Verdana, sans-serif;
-    text-align: right;
-    margin-top: -2em;
-    float: right;
-    width: 40%;
-}
-/*
-@media
-smaller than ...
 
+/* Heading area for the given page */
 header h1 {
   width: 100%;
 }
@@ -184,8 +172,18 @@ header p {
   width: 100%;
   margin-top: 0;
 }
-*/
-.desc-transform {
+@media screen and (min-width: 20em) {
+  header h1 {
+    width: 60%;
+  }
+  header p {
+    font-family: 'Inder', Verdana, sans-serif;
+    text-align: right;
+    margin-top: -2em;
+    float: right;
+    width: 40%;
+  }
+  .desc-transform {
     -webkit-backface-visibility: visible;
     -ms-backface-visibility: visible;
     backface-visibility: visible;
@@ -195,7 +193,9 @@ header p {
     -webkit-transform: perspective(600px) rotateY(-8deg) rotateX(-8deg);
     -ms-transform: perspective(600px) rotateY(-8deg) rotateX(-8deg);
     transform: perspective(600px) rotateY(-8deg) rotateX(-8deg);
+  }
 }
+
 article ul,
 article ol {
     list-style-position: outside;
