@@ -14,6 +14,7 @@ module.exports = {
   },
   target: [
     'Gruntfile.js',
+    'tasks/*.js',
     'karma.conf.js',
     'server.js',
     'libs/*.js',

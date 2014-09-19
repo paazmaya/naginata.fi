@@ -8,11 +8,12 @@
 'use strict';
 
 module.exports = {
-  coverage: true,
-  specFolders: ['tests/node'],
   options: {
-    isVerbose: true,
-    showColors: true,
+    coverage: true,
+    specFolders: ['tests/node'],
+
+    verbose: true,
+    colors: true,
 
     forceExit: true,
     match: '',
