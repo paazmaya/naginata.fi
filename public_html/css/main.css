@@ -44,10 +44,10 @@ body {
     width: 100%;
     min-width: 100%;
     background-color: white;
+    font-size: 100%;
 }
 header,
 article {
-    padding: 1em 0;
     font-family: 'Lora', Verdana, sans-serif;
     line-height: 1.5;
 }
@@ -55,7 +55,7 @@ html[lang="ja"] {
     font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", Osaka, "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
 }
 p {
-    margin: 1em 0.5em;
+    margin: 1em 0;
 }
 a {
     color: #1a1a18;
@@ -150,11 +150,13 @@ h3 {
 }
 h1 {
     font-size: 2em;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
 }
 h2 {
     font-size: 1.5em;
-    margin-top: 1.4em;
-    margin-bottom: 0.7em;
+    margin-top: 1em;
+    margin-bottom: 0.5em;
     clear: both;
 }
 h3 {
@@ -172,16 +174,17 @@ header p {
   width: 100%;
   margin-top: 0;
 }
-@media screen and (min-width: 20em) {
+@media screen and (min-width: 40em) {
   header h1 {
-    width: 60%;
+    width: 50%;
   }
   header p {
     font-family: 'Inder', Verdana, sans-serif;
     text-align: right;
-    margin-top: -2em;
+    margin-top: -3.5em;
+    padding: 0.5em;
     float: right;
-    width: 40%;
+    width: 50%;
   }
   .desc-transform {
     -webkit-backface-visibility: visible;
