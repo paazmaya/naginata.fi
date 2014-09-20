@@ -233,17 +233,6 @@ p > a:only-child > img:only-of-type:hover {
     -webkit-transition: background-color 0.1s linear;
     transition: background-color 0.1s linear;
 }
-/* Colorbox background overlay */
-
-#cboxOverlay {
-    background: #072434;
-    opacity: 0.3;
-}
-#cboxTitle {
-    font-family: 'Inder', Verdana, sans-serif;
-    top: -25px;
-    left: 4px;
-}
 /* first list in media page is Flickr grid */
 
 article.media ul:first-of-type {
