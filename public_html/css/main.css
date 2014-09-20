@@ -66,7 +66,7 @@ a:hover {
 }
 a:active,
 a:focus {
-    color: #072491;
+    color: #0f4e70;
 }
 li {
     padding: 0.3em 0;
@@ -119,6 +119,13 @@ footer a,
     text-align: center;
     height: 1.5em;
 }
+.current a:hover {
+  background-color: #0f4e70;
+  color: #dfe0e4;
+}
+footer {
+  margin-top: 1em;
+}
 footer a {
     padding: 0 1.5em;
     display: inline-block;
@@ -138,7 +145,7 @@ nav a:focus,
 footer a:focus,
 nav a:active,
 footer a:active {
-    background-color: #072491;
+    background-color: #0f4e70;
     color: #dfe0e4;
 }
 h1,
@@ -174,31 +181,6 @@ header p {
   width: 100%;
   margin-top: 0;
 }
-@media screen and (min-width: 40em) {
-  header h1 {
-    width: 50%;
-  }
-  header p {
-    font-family: 'Inder', Verdana, sans-serif;
-    text-align: right;
-    margin-top: -3.5em;
-    padding: 0.5em;
-    float: right;
-    width: 50%;
-  }
-  .desc-transform {
-    -webkit-backface-visibility: visible;
-    -ms-backface-visibility: visible;
-    backface-visibility: visible;
-    -webkit-transform-origin: 25% 25%;
-    -ms-transform-origin: 25% 25%;
-    transform-origin: 25% 25%;
-    -webkit-transform: perspective(600px) rotateY(-8deg) rotateX(-8deg);
-    -ms-transform: perspective(600px) rotateY(-8deg) rotateX(-8deg);
-    transform: perspective(600px) rotateY(-8deg) rotateX(-8deg);
-  }
-}
-
 article ul,
 article ol {
     list-style-position: outside;
@@ -224,7 +206,7 @@ article a:focus {
     transition: background-color 0.1s linear;
 }
 blockquote {
-    padding: 0.3em;
+    padding: 0.3em 1em;
     color: white;
     background-color: #072434;
 }
@@ -238,6 +220,7 @@ p > a:only-child > img:only-of-type {
     border: 0.2em solid #072434;
     padding: 0.6em;
     margin: 2em;
+    margin-left: 0;
     text-align: center;
     float: left;
     font-size: 0.8em;
@@ -290,6 +273,7 @@ article.media ul:last-of-type {
     display: block;
     width: 100%;
     list-style-type: none;
+    padding-left: 1em;
 }
 article.media ul:last-of-type li {
     display: block;
@@ -369,7 +353,7 @@ article.media ul:last-of-type a[href*="flickr.com"]::before {
     line-height: 100%;
     /*font-variant: small-caps;*/
     padding: 0;
-    padding-left: 132px;
+    padding-left: 140px; /* 132px + 0.5em */
     color: #072434;
     font-family: 'Inder', Verdana, sans-serif;
 }
