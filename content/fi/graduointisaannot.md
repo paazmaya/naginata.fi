@@ -23,12 +23,12 @@ Graduointiin ilmoittautumiseen tarvitaan kokelaan osalta seuraavat tiedot:
 * Nimi
 * Syntymäaika
 * Seura
-* Viimeksi suoritettu arvo, ajankohta
+* Viimeksi suoritettu arvo ja sen ajankohta
 * Suosittelija.
 
 Kokeen jälkeen kerätään graduointimaksut sillä hetkellä voimassaolevan
 graduointihinnaston mukaisesti.
-Vuonna 2013: 20 EUR per suoritettava arvo.
+Vuonna 2014: 20 EUR per suoritettava arvo.
 
 Ulkomailla graduointia varten tarvitaan Suomen Kendoseurojen Keskusliitto ry:n lupa.
 

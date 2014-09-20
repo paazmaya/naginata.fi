@@ -4,20 +4,20 @@
 
 > Jukka Paasonen - 1st Sep 2013
 
-Atarashii Naginata grading rules are consistent with the rules of the 
+Atarashii Naginata grading rules are consistent with the rules of the
 European Naginata Federation and the International Naginata Federation.
- Among the other martial arts in the Finnish Kendo Association, 
- the requirements regarding the grading panel are slightly different, 
+ Among the other martial arts in the Finnish Kendo Association,
+ the requirements regarding the grading panel are slightly different,
  while less demanding for lower grades, more demanding for the first kyu grade.
 
-For those parts that are not mentioned in this document, 
+For those parts that are not mentioned in this document,
 the general grading rules of FKA will be followed.
 
-The grading panel will consist of three or five judges. 
-The majority will be in favour of a candidate's throughput. 
-In the provision of values 6-2 kyu, 
-at least one member of the panel must be at least _shodan_. 
-In the case of promoting to first kyu grade, 
+The grading panel will consist of three or five judges.
+The majority will be in favour of a candidate's throughput.
+In the provision of values 6-2 kyu,
+at least one member of the panel must be at least _shodan_.
+In the case of promoting to first kyu grade,
 at least three of the panel members must be at least _sandan_.
 
 The candidate's enrollment is required with the following information:
@@ -25,18 +25,18 @@ The candidate's enrollment is required with the following information:
 * Name
 * Date of birth
 * Club
-* Last carried out the grade, date
+* Current grade and date when passed
 * Referrer.
 
-The grading fee are collected after the grading, in accordance wth the FKA grading fees. 
+The grading fee are collected after the grading, in accordance wth the FKA grading fees.
 In year 2013: EUR 20 per each passed grade.
 
 For grading abroad, a signed permission from the Finnish Kendo Association is required.
 
 ## Technical requirements for kyu grades
 
-For each grade it is required to know the previous techniques. 
-These are asked usually only in the case where the candidate has 
+For each grade it is required to know the previous techniques.
+These are asked usually only in the case where the candidate has
 some weaknesses in the current techniques.
 
 ### 6 kyu
