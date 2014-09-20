@@ -9,6 +9,29 @@
 'use strict';
 
 /**
+ * Validates the report, thus checks certain properties and their valuaes.
+ * @param {object} report Violation report posted by user agent
+ * @returns {boolean} False is not what expected
+ */
+var validateReport = function validateReport(report) {
+  if (typeof report !== 'object') {
+    return false;
+  }
+  if (typeof report.blocked_uri !== 'string' || report.blocked_uri.indexOf('http://') !== 0) {
+    return false;
+  }
+  if (typeof report.source_file !== 'string' || report.source_file.indexOf('http://') !== 0) {
+    return false;
+  }
+  /*
+  if (typeof report.document_uri !== 'string' || report.document_uri.indexOf('naginata.fi') !== -1) {
+    return false;
+  }
+  */
+  return true;
+};
+
+/**
  * Simply just pass the possible violation report to the callback.
  *
  * The report is usually something like this
@@ -18,25 +41,22 @@
  *     "referrer": "",
  *     "blocked-uri": "http://example.com/css/style.css",
  *     "violated-directive": "style-src cdn.example.com",
- *     "original-policy": "default-src 'none'; style-src cdn.example.com; report-uri /_/csp-reports",
+ *     "original-policy": "default-src 'none'; style-src cdn.example.com; report-uri /violation-report",
  *   }
  * }
  *
  * @param {object} postData JSON data from browser
- * @param {function} callBack Function to be called with two parameters, report and output
- * @returns {void} Nothing
+ * @param {object} request Stuff
+ * @returns {boolean|object} Report or false
  * @see https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Using_CSP_violation_reports
  * @see http://www.w3.org/TR/CSP/#violation-reports
  */
-module.exports = function violation(postData, callBack) {
-  var output = {
-    violated: 'Thanks!'
-  };
+module.exports = function violation(postData, request) {
   var report = {};
-  if (postData.hasOwnProperty('csp-report') && typeof postData['csp-report'] === 'object') {
+  var valid = validateReport(postData['csp-report']);
+  if (valid) {
     report = postData['csp-report'];
+    report['user-agent'] = request.headers['user-agent'];
   }
-  if (typeof callBack === 'function') {
-    callBack.call(this, report, output);
-  }
+  return valid ? report : false;
 };

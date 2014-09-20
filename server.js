@@ -145,13 +145,17 @@ app.get(pageRegex, function appGetRegex(req, res) {
   res.set({
     'Content-Type': 'text/html; charset=utf-8',
     'Content-Security-Policy': 'default-src \'self\' ' +
+      'unsafe-inline ' +
       '*.vimeo.com *.youtube.com ' +
       'https://*.vimeo.com https://*.youtube.com ' +
       '*.flickr.com *.staticflickr.com ' +
-      '*.gstatic.com ' +
-      '*.googleapis.com *.googleusercontent.com ' +
       '*.google-analytics.com *.doubleclick.net' +
-      '; report-uri /violation-report',
+      '; report-uri /violation-report ' +
+      '; style-src  \'self\' ' +
+      '*.googleapis.com *.googleusercontent.com ' +
+      'unsafe-inline *.gstatic.com ' +
+      '; font-src *.gstatic.com ' +
+      '*.googleapis.com *.googleusercontent.com ',
     'Content-Language': lang,
     'Accept-Ranges': 'bytes',
     'Timing-Allow-Origin': '*'
@@ -167,7 +171,7 @@ app.get(pageRegex, function appGetRegex(req, res) {
     lang: lang
   }, function rendered(error, html) {
     if (error) {
-      newrelic.noticeError(error);
+      newrelic.noticeError('index', error);
     }
     res.send(html);
   });
@@ -181,7 +185,7 @@ app.get('/sitemap', function appGetSitemap(req, res) {
     pages: sitemap(pageJson.pages, langKeys)
   }, function renderSitemap(error, html) {
     if (error) {
-      newrelic.noticeError(error);
+      newrelic.noticeError('sitemap', error);
     }
     res.send(html);
   });
@@ -192,13 +196,14 @@ app.post('/violation-report', function appGetViolation(req, res) {
   res.set({'Content-type': 'application/json'});
   if (typeof req.body === 'object') {
     var violation = require('./libs/violation-report-receiver.js');
-    violation(req.body, function violationCallback(report, outgoing) {
+    var report = violation(req.body);
+    if (report !== false) {
       newrelic.noticeError('CSP-policy-violation', report);
-      res.json(outgoing);
-    });
+    }
+    res.json({report: 'prosessed'});
   }
   else {
-    res.json('{"hups":"0"}');
+    res.json({report: 'failed'});
   }
 });
 
