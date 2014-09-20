@@ -3,7 +3,6 @@
 .idea
 bower_components
 coverage
-libs/keen-keys.php
 node_modules
 /.project
 source/favicons.jade
