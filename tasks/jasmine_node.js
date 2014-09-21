@@ -8,28 +8,37 @@
 'use strict';
 
 module.exports = {
-  options: {
-    coverage: true,
-    specFolders: ['tests/node'],
+  node: {
+    options: {
+      coverage: {
+        thresholds: {
+          lines: 98
+        },
+        print: 'detail' // none, detail, both
+      },
+      specFolders: ['tests/node'],
 
-    verbose: true,
-    colors: true,
+      verbose: true,
+      colors: true,
 
-    forceExit: true,
-    match: '',
-    matchall: false,
-    specNameMatcher: '_spec',
-    extensions: 'js',
-    //captureExceptions: true,
-    jUnit: {
-      report: false,
-      savePath: './reports/',
-      useDotNotation: true,
-      consolidate: true
+      forceExit: true,
+      match: '',
+      matchall: false,
+      specNameMatcher: '_spec',
+      extensions: 'js',
+      //captureExceptions: true,
+      jUnit: {
+        report: false,
+        savePath: './reports/',
+        useDotNotation: true,
+        consolidate: true
+      },
+
+      collect: false // array of covPattern for finding files
     },
-
-    print: 'detail', // none, detail, both
-    //excludes: [],
-    collect: null // array of covPattern for finding files
+    src: [
+      'server.js',
+      'libs/*.js'
+    ]
   }
 };

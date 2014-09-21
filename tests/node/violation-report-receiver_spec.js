@@ -13,7 +13,7 @@ describe('CSP Violation report', function() {
 
   var postData = {
     "csp-report": {
-      "document-uri": "http://naginata.fi/en/",
+      "document-uri": "://naginata.fi/en/",
       "referrer": "",
       "blocked-uri": "http://example.com/css/style.css",
       "violated-directive": "style-src cdn.example.com",
@@ -21,16 +21,12 @@ describe('CSP Violation report', function() {
     }
   };
 
-  it('Calls callback with proper part of the given argument', function() {
-    var listener = {
-      callBack: function (stuff) {}
-    };
-    spyOn(listener, 'callBack');
+  it('Returns false on non http document URI', function() {
 
-    var output = violation(postData, listener.callBack);
 
-    expect(listener.callBack).toHaveBeenCalled();
-    expect(listener.callBack.mostRecentCall.args[0]).toEqual(postData['csp-report']);
+    var output = violation(postData);
+
+    expect(output).toBe(false);
 
   });
 

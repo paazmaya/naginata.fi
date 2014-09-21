@@ -30,7 +30,7 @@ module.exports = function gruntConf(grunt) {
     banner: '/*! <%= pkg.name %> - v<%= pkg.version %> - ' +
       '<%= grunt.template.today("yyyy-mm-dd") %>\n' +
       '* Copyright (c) <%= grunt.template.today("yyyy") %> ' +
-      '<% pkg.author.name %>; Licensed Attribution-ShareAlike 3.0 Unported */\n'
+      '<% pkg.author.name %>; <% pkg.license.type %> */\n'
   };
 
   grunt.config.init(config);
