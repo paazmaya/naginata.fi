@@ -20,7 +20,6 @@
     "marked": "~0.3",
     "morgan": "~1.3",
     "newrelic": "~1.10",
-    "spdy": "~1.28",
     "st": "~0.5"
   },
   "devDependencies": {

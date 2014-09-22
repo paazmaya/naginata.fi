@@ -222,24 +222,6 @@ app.get('*', function appGetRest(req, res) {
 var ipaddr = process.env.OPENSHIFT_NODEJS_IP || null; // Heroku fails with non null address
 var port = process.env.OPENSHIFT_NODEJS_PORT || process.env.PORT || 5000;
 
-// https://github.com/indutny/node-spdy
-/*
-var spdyOptions = {
-  key: fs.readFileSync(__dirname + '/keys/server.key'),
-  cert: fs.readFileSync(__dirname + '/keys/server.crt'),
-  ca: fs.readFileSync(__dirname + '/keys/server.csr'),
-
-  // **optional** SPDY-specific options
-  windowSize: 1024 * 1024, // Server's window size
-
-  // **optional** if true - server will send 3.1 frames on 3.0 *plain* spdy
-  autoSpdy31: false
-
-  //plain: false
-};
-var server = spdy.createServer(spdyOptions, app);
-*/
-
 app.listen(port, ipaddr, function appListen() {
   console.log('Express.js running at http://' + ipaddr + ':' + port + '/');
 });
