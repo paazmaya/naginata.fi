@@ -36,18 +36,18 @@ html(lang=settings.lang)
     link(href="http://creativecommons.org/licenses/by-sa/3.0/", rel="license")
     link(href="http://paazmaya.com", rel="author")
     link(media="all", type="text/css", href="/css/naginata.min.css", rel="stylesheet")
-    - each image in prefetch
+    each image in prefetch
       link(rel="prefetch", href=image)
-    - if (meta.facebook)
-      - each fb in meta.facebook
+    if (meta.facebook)
+      each fb in meta.facebook
         meta(property=fb.property, content=fb.content)
-    - each flip in flipahead
+    each flip in flipahead
         link(rel=flip.rel, href=flip.url)
   body
     div#logo.centered
       ul#languages
-        - each language, key in languages
-          - if (key !== settings.lang)
+        each language, key in languages
+          if (key !== settings.lang)
             li
               a(title=language.name, href=(language.url ? language.url : "/" + key))
                 = language.name
@@ -55,7 +55,7 @@ html(lang=settings.lang)
         = meta.titlesuffix
     nav.full-width
       ul.centered(role="navigation")
-        - each page in pages
+        each page in pages
           li(class=page.url == meta.url ? "current" : "")
             a(rel=page.rel, title=page.header, href=page.url)
               = page.title
@@ -69,7 +69,7 @@ html(lang=settings.lang)
         != content
     footer.full-width
       p.centered
-        - each footer in footers
+        each footer in footers
           a(title=footer.alt, href=footer.url)
             != footer.text
     script(src="/js/naginata.min.js")

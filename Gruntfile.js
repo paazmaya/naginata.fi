@@ -7,7 +7,6 @@
  */
 'use strict';
 
-
 module.exports = function gruntConf(grunt) {
   require('time-grunt')(grunt); // Must be first item
   require('jit-grunt')(grunt, {
