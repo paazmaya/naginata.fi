@@ -88,13 +88,30 @@ grunt
 
 ## Testing
 
+Unit tests for both front end and back end are using Jasmine and for code coverage Istanbul.
+
 ```sh
 grunt test
 npm run coveralls
+```
+
+Web performance tests are done with...
+
+```sh
 sitespeed.io -u http://naginata.fi -k true -d 2
-ucss
-stylestats -t html public_html/css/main.css > stylestats.html
+
+gem install wbench
 wbench -n http://naginata.fi > wbench.md
+```
+
+Style coverage is measured...
+
+```sh
+npm install -g ucss
+ucss
+
+npm install -g stylestats
+stylestats -t html public_html/css/main.css > stylestats.html
 ```
 
 Also [nodemon](https://github.com/remy/nodemon/ "Monitor for any changes in your node.js application and automatically restart the server"):
@@ -104,15 +121,13 @@ npm install -g nodemon
 nodemon server.js
 ```
 
-[paazmaya.github.io/naginata.fi/photobox](http://paazmaya.github.io/naginata.fi/photobox)
+### Tests statistics are available
 
-[paazmaya.github.io/naginata.fi/phantomas](http://paazmaya.github.io/naginata.fi/phantomas)
-
-[paazmaya.github.io/naginata.fi/sitespeed](http://paazmaya.github.io/naginata.fi/sitespeed)
-
-[paazmaya.github.io/naginata.fi/stylestats.html](http://paazmaya.github.io/naginata.fi/stylestats.html)
-
-[paazmaya.github.io/naginata.fi/wbench.md](http://paazmaya.github.io/naginata.fi/wbench.md)
+* [paazmaya.github.io/naginata.fi/photobox](http://paazmaya.github.io/naginata.fi/photobox)
+* [paazmaya.github.io/naginata.fi/phantomas](http://paazmaya.github.io/naginata.fi/phantomas)
+* [paazmaya.github.io/naginata.fi/sitespeed](http://paazmaya.github.io/naginata.fi/sitespeed)
+* [paazmaya.github.io/naginata.fi/stylestats.html](http://paazmaya.github.io/naginata.fi/stylestats.html)
+* [paazmaya.github.io/naginata.fi/wbench.md](http://paazmaya.github.io/naginata.fi/wbench.md)
 
 ## Editing content
 
@@ -121,7 +136,7 @@ Please create a pull request, which only touches the Markdown files under `conte
 The existing Markdown files can be exported as PDF, for example with [_pandoc_](http://johnmacfarlane.net/pandoc/):
 
 ```sh
-pandoc -V geometry:margin=0.5in -o grading-rules-english.md grading-rules-english.pdf
+pandoc -V geometry:margin=0.5in -o content/en/grading-rules.md grading-rules-english.pdf
 ```
 
 ## Other notes
@@ -132,7 +147,6 @@ pandoc -V geometry:margin=0.5in -o grading-rules-english.md grading-rules-englis
 
 ## [TODO](https://github.com/paazmaya/naginata.fi/issues "issues")
 
- * Jasmine unit tests, for what ever little testable things there are, issue #3 and #4 for coverage
  * Facebook liking and related, https://developers.facebook.com/tools/debug/og/object?q=naginata.fi
 
 ## History
