@@ -104,7 +104,9 @@ gem install wbench
 wbench -n http://naginata.fi > wbench.md
 ```
 
-Style coverage is measured...
+Style coverage is measured with several tools:
+
+* https://github.com/katiefenn/parker
 
 ```sh
 npm install -g ucss
@@ -112,6 +114,9 @@ ucss
 
 npm install -g stylestats
 stylestats -t html public_html/css/main.css > stylestats.html
+
+npm install -g parker
+parker public_html/css/main.css > parker.md
 ```
 
 Also [nodemon](https://github.com/remy/nodemon/ "Monitor for any changes in your node.js application and automatically restart the server"):
@@ -128,6 +133,7 @@ nodemon server.js
 * [paazmaya.github.io/naginata.fi/sitespeed](http://paazmaya.github.io/naginata.fi/sitespeed)
 * [paazmaya.github.io/naginata.fi/stylestats.html](http://paazmaya.github.io/naginata.fi/stylestats.html)
 * [paazmaya.github.io/naginata.fi/wbench.md](http://paazmaya.github.io/naginata.fi/wbench.md)
+* [paazmaya.github.io/naginata.fi/parker.md](http://paazmaya.github.io/naginata.fi/parker.md)
 
 ## Editing content
 
@@ -148,6 +154,7 @@ pandoc -V geometry:margin=0.5in -o content/en/grading-rules.md grading-rules-eng
 ## [TODO](https://github.com/paazmaya/naginata.fi/issues "issues")
 
  * Facebook liking and related, https://developers.facebook.com/tools/debug/og/object?q=naginata.fi
+ * Further CSP tuning, https://www.owasp.org/index.php/Content_Security_Policy
 
 ## History
 
