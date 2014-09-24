@@ -18,8 +18,8 @@ module.exports = {
       },
       specFolders: ['tests/node'],
 
-      verbose: true,
-      colors: true,
+      isVerbose: true,
+      showColors: true,
 
       forceExit: true,
       match: '',
