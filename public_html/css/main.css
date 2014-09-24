@@ -58,7 +58,7 @@ p {
     margin: 1em 0;
 }
 a {
-    color: #1a1a18;
+    color: #121212;
     text-decoration: none;
 }
 a:hover {
@@ -318,7 +318,7 @@ article.media ul:last-of-type a[href*="flickr.com"]::before {
 }
 #languages a:hover,
 #languages a:focus {
-    background: snow;
+    background: white;
     color: #072434;
     border-radius: 0 0 10px 10px;
 }
@@ -378,7 +378,7 @@ article.media ul:last-of-type a[href*="flickr.com"]::before {
     color: #072434;
     border-radius: 0.4em;
     border: 2px solid #072434;
-    background-color: #fefefe;
+    background-color: white;
     display: none;
     padding: 0.3em 0.5em;
     text-align: center;
