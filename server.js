@@ -143,22 +143,11 @@ app.get(pageRegex, function appGetRegex(req, res) {
   }
 
   var flipAheadLinks = require('./libs/flip-ahead-links');
+  var contentPolicy = require('./libs/content-policy-directives');
 
-  // https://developer.mozilla.org/en-US/docs/Security/CSP/Using_Content_Security_Policy
   res.set({
     'Content-Type': 'text/html; charset=utf-8',
-    'Content-Security-Policy': 'default-src \'self\' ' +
-      '*.vimeo.com *.youtube.com ' +
-      'https://*.vimeo.com https://*.youtube.com ' +
-      '*.flickr.com *.staticflickr.com ' +
-      '*.google-analytics.com *.doubleclick.net' +
-      '; report-uri /violation-report ' +
-      '; style-src \'self\' ' +
-      '*.googleapis.com *.googleusercontent.com ' +
-      '\'unsafe-inline\' *.gstatic.com ' +
-      '; font-src *.gstatic.com ' +
-      '*.googleapis.com *.googleusercontent.com ' +
-      '; script-src \'self\' \'unsafe-inline\'',
+    'Content-Security-Policy': contentPolicy(),
     'Content-Language': lang,
     'Accept-Ranges': 'bytes',
     'Timing-Allow-Origin': '*'
