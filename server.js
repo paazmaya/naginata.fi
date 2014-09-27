@@ -16,7 +16,6 @@ global.newrelic = newrelic;
 // http://expressjs.com
 var express = require('express');
 var fs = require('fs');
-var spdy = require('spdy');
 var path = require('path');
 var bodyParser = require('body-parser');
 

@@ -2,7 +2,6 @@ doctype html
 html(lang=settings.lang)
   head
     title= meta.title + " | " + meta.titlesuffix
-    != newrelic.getBrowserTimingHeader()
     meta(charset="utf-8")
     meta(name="viewport", content="width=device-width, initial-scale=1")
     meta(content=meta.description, name="description")
@@ -36,13 +35,14 @@ html(lang=settings.lang)
     link(href="http://creativecommons.org/licenses/by-sa/3.0/", rel="license")
     link(href="http://paazmaya.com", rel="author")
     link(media="all", type="text/css", href="/css/naginata.min.css", rel="stylesheet")
+    != newrelic.getBrowserTimingHeader()
     each image in prefetch
       link(rel="prefetch", href=image)
     if (meta.facebook)
       each fb in meta.facebook
         meta(property=fb.property, content=fb.content)
     each flip in flipahead
-        link(rel=flip.rel, href=flip.url)
+      link(rel=flip.rel, href=flip.url)
   body
     div#logo.centered
       ul#languages

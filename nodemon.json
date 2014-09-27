@@ -7,7 +7,8 @@
     "content/",
     "views/",
     "public_html/",
-    "libs/"
+    "libs/",
+    "server.js"
   ],
   "ignore": [
     ".git",

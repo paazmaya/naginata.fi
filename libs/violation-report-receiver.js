@@ -17,10 +17,10 @@ var validateReport = function validateReport(report) {
   if (typeof report !== 'object') {
     return false;
   }
-  if (typeof report.blocked_uri !== 'string' || report.blocked_uri.indexOf('http://') !== 0) {
+  if (typeof report['blocked-uri'] !== 'string' || report['blocked-uri'].indexOf('http://') !== 0) {
     return false;
   }
-  if (typeof report.source_file !== 'string' || report.source_file.indexOf('http://') !== 0) {
+  if (typeof report['source-uri'] !== 'string' || report['source-uri'].indexOf('http://') !== 0) {
     return false;
   }
   /*
