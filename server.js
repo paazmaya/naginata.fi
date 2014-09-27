@@ -25,8 +25,6 @@ var morgan = require('morgan'); // logger
 var compress = require('compression');
 
 // Custom classes
-var getContent = require('./libs/get-content');
-var flickrImageList = require('./libs/flickr-image-list');
 var checkLang = require('./libs/check-lang');
 var getEnabledLanguages = require('./libs/get-enabled-languages');
 var secondaryRoutes = require('./libs/secondary-routes');
@@ -108,6 +106,20 @@ app.get('*', function appGetAll(req, res, next) {
 });
 */
 
+/**
+ * Insert a link to the other language page for the same content
+ * @param {object} item Page item
+ * @returns {void}
+ */
+var linkPageLanguages = function linkPageLanguages(item) {
+  // Save the current page other languages
+  langKeys.forEach(function eachMetaLang(key) {
+    if (item[key]) {
+      langMeta[key].url = item[key].url;
+    }
+  });
+};
+
 var pageRegex = new RegExp('^\/(' + langKeys.join('|') + ')(\/(\\w+))?$');
 app.get(pageRegex, function appGetRegex(req, res) {
   var lang = req.params[0];
@@ -120,12 +132,7 @@ app.get(pageRegex, function appGetRegex(req, res) {
     if (typeof item[lang] === 'object') {
       if (item[lang].url === req.path) {
         current = item[lang];
-        // Save the current page other languages
-        langKeys.forEach(function eachMetaLang(key) {
-          if (item[key]) {
-            langMeta[key].url = item[key].url;
-          }
-        });
+        linkPageLanguages(item);
       }
       pages.push(item[lang]);
     }
@@ -135,15 +142,32 @@ app.get(pageRegex, function appGetRegex(req, res) {
     res.redirect(404, '/' + lang);
     return;
   }
+
   current.titlesuffix = pageJson.title[lang];
 
-  var userAgent = req.header('user-agent');
-  if (userAgent && userAgent.indexOf('facebookexternalhit') !== -1) {
-    var facebookMeta = require('./libs/facebook-meta.js');
-    current.facebook = facebookMeta(current, pageJson.facebook);
-  }
+  var indexData = function indexData() {
+    var getContent = require('./libs/get-content');
+    var flipAheadLinks = require('./libs/flip-ahead-links');
+    var flickrImageList = require('./libs/flickr-image-list');
 
-  var flipAheadLinks = require('./libs/flip-ahead-links');
+    var userAgent = req.header('user-agent');
+    if (userAgent && userAgent.indexOf('facebookexternalhit') !== -1) {
+      var facebookMeta = require('./libs/facebook-meta.js');
+      current.facebook = facebookMeta(current, pageJson.facebook);
+    }
+
+    return {
+      content: getContent(lang, current.url),
+      pages: pages,
+      flipahead: flipAheadLinks(pages, current),
+      footers: pageJson.footer[lang],
+      meta: current,
+      prefetch: flickrImageList(),
+      languages: langMeta,
+      lang: lang
+    };
+  };
+
   var contentPolicy = require('./libs/content-policy-directives');
 
   res.set({
@@ -153,16 +177,7 @@ app.get(pageRegex, function appGetRegex(req, res) {
     'Accept-Ranges': 'bytes',
     'Timing-Allow-Origin': '*'
   });
-  res.render('index', {
-    content: getContent(lang, current.url),
-    pages: pages,
-    flipahead: flipAheadLinks(pages, current),
-    footers: pageJson.footer[lang],
-    meta: current,
-    prefetch: flickrImageList(),
-    languages: langMeta,
-    lang: lang
-  }, function rendered(error, html) {
+  res.render('index', indexData(), function rendered(error, html) {
     if (error) {
       newrelic.noticeError('index', error);
     }

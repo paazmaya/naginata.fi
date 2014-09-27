@@ -22,8 +22,9 @@ var langKeys = Object.keys(langMeta); // Enabled language ISO codes: en, fi, ...
 
 /**
  * sitemap.org
- * @param req
- * @param res
+ * @param {object} req Request
+ * @param {object} res Response
+ * @returns {void}
  */
 var appGetSitemap = function appGetSitemap(req, res) {
   res.set({'Content-type': 'application/xml'});
@@ -39,9 +40,10 @@ var appGetSitemap = function appGetSitemap(req, res) {
 };
 
 /**
- *
- * @param req
- * @param res
+ * Receive CSP violation report via POST Ajax submission
+ * @param {object} req Request
+ * @param {object} res Response
+ * @returns {void}
  * @see https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Using_CSP_violation_reports
  */
 var appPostViolation = function appPostViolation(req, res) {
