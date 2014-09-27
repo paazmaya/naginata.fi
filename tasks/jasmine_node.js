@@ -22,8 +22,8 @@ module.exports = {
       showColors: true,
 
       forceExit: true,
-      match: '',
-      matchall: false,
+      match: '.',
+      matchAll: false,
       specNameMatcher: '_spec',
       extensions: 'js',
       //captureExceptions: true,
