@@ -12,17 +12,17 @@ describe('Get enabled languages', function() {
   var getEnabledLanguages = require('../../libs/get-enabled-languages');
 
   var langConf = {
-    "fi": {
-      "enabled": true,
-      "name": "Suomi"
+    'fi': {
+      'enabled': true,
+      'name': 'Suomi'
     },
-    "en": {
-      "enabled": true,
-      "name": "English"
+    'en': {
+      'enabled': true,
+      'name': 'English'
     },
-    "ja": {
-      "enabled": true,
-      "name": "日本語"
+    'ja': {
+      'enabled': true,
+      'name': '日本語'
     }
   };
 

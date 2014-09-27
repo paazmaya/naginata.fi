@@ -29,6 +29,7 @@ var getContent = require('./libs/get-content');
 var flickrImageList = require('./libs/flickr-image-list');
 var checkLang = require('./libs/check-lang');
 var getEnabledLanguages = require('./libs/get-enabled-languages');
+var secondaryRoutes = require('./libs/secondary-routes');
 
 var pageData = fs.readFileSync('content/page-data.json', {
   encoding: 'utf8'
@@ -169,35 +170,10 @@ app.get(pageRegex, function appGetRegex(req, res) {
   });
 });
 
-// sitemap.org
-app.get('/sitemap', function appGetSitemap(req, res) {
-  res.set({'Content-type': 'application/xml'});
-  var sitemap = require('./libs/sitemap.js');
-  res.render('sitemap', {
-    pages: sitemap(pageJson.pages, langKeys)
-  }, function renderSitemap(error, html) {
-    if (error) {
-      newrelic.noticeError('sitemap', error);
-    }
-    res.send(html);
-  });
-});
+// Handle URLs such as sitemap and violation-report
+var secondaryRegex = new RegExp('^\/([\\w-]+)$');
+app.get(secondaryRegex, secondaryRoutes);
 
-// https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Using_CSP_violation_reports
-app.post('/violation-report', function appGetViolation(req, res) {
-  res.set({'Content-type': 'application/json'});
-  if (typeof req.body === 'object') {
-    var violation = require('./libs/violation-report-receiver.js');
-    var report = violation(req.body);
-    if (report !== false) {
-      newrelic.noticeError('CSP-policy-violation', report);
-    }
-    res.json({report: 'prosessed'});
-  }
-  else {
-    res.json({report: 'failed'});
-  }
-});
 
 // Softer landing page
 app.get('/', function appGetRoot(req, res) {
