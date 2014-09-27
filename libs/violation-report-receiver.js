@@ -46,17 +46,19 @@ var validateReport = function validateReport(report) {
  * }
  *
  * @param {object} postData JSON data from browser
- * @param {object} request Stuff
+ * @param {object} headers Stuff
  * @returns {boolean|object} Report or false
  * @see https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Using_CSP_violation_reports
  * @see http://www.w3.org/TR/CSP/#violation-reports
  */
-module.exports = function violation(postData, request) {
+module.exports = function violation(postData, headers) {
   var report = {};
   var valid = validateReport(postData['csp-report']);
   if (valid) {
     report = postData['csp-report'];
-    report['user-agent'] = request.headers['user-agent'];
+    if (typeof headers === 'object' && headers['user-agent']) {
+      report['user-agent'] = headers['user-agent'];
+    }
   }
   return valid ? report : false;
 };

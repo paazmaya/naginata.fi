@@ -12,7 +12,7 @@ module.exports = {
     options: {
       coverage: {
         thresholds: {
-          lines: 98
+          lines: 90
         },
         print: 'detail' // none, detail, both
       },

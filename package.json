@@ -41,6 +41,7 @@
     "karma-jasmine": "~0.2",
     "karma-phantomjs-launcher": "~0.1",
     "phantomjs": "~1.9",
+    "supertest": "^0.13.0",
     "time-grunt": "~1.0"
   },
   "engines": {

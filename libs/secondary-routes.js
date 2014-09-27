@@ -9,8 +9,6 @@
 'use strict';
 
 var fs = require('fs');
-var express = require('express');
-var router = express.Router();
 
 var getEnabledLanguages = require('./get-enabled-languages');
 
@@ -22,9 +20,12 @@ var pageJson = JSON.parse(pageData);
 var langMeta = getEnabledLanguages(pageJson.languages); // Enabled language meta data, needed for language navigation
 var langKeys = Object.keys(langMeta); // Enabled language ISO codes: en, fi, ...
 
-
-// sitemap.org
-router.get('/sitemap', function appGetSitemap(req, res) {
+/**
+ * sitemap.org
+ * @param req
+ * @param res
+ */
+var appGetSitemap = function appGetSitemap(req, res) {
   res.set({'Content-type': 'application/xml'});
   var sitemap = require('./sitemap.js');
   res.render('sitemap', {
@@ -35,15 +36,19 @@ router.get('/sitemap', function appGetSitemap(req, res) {
     }
     res.send(html);
   });
-});
+};
 
-
-// https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Using_CSP_violation_reports
-router.post('/violation-report', function appPostViolation(req, res) {
+/**
+ *
+ * @param req
+ * @param res
+ * @see https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Using_CSP_violation_reports
+ */
+var appPostViolation = function appPostViolation(req, res) {
   res.set({'Content-type': 'application/json'});
   if (typeof req.body === 'object') {
     var violation = require('./violation-report-receiver.js');
-    var report = violation(req.body);
+    var report = violation(req.body, req.headers);
     if (report !== false) {
       global.newrelic.noticeError('CSP-policy-violation', report);
     }
@@ -52,6 +57,9 @@ router.post('/violation-report', function appPostViolation(req, res) {
   else {
     res.json({report: 'failed'});
   }
-});
+};
 
-module.exports = router;
+module.exports = {
+  getSitemap: appGetSitemap,
+  postViolation: appPostViolation
+};

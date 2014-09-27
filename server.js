@@ -170,10 +170,8 @@ app.get(pageRegex, function appGetRegex(req, res) {
   });
 });
 
-// Handle URLs such as sitemap and violation-report
-var secondaryRegex = new RegExp('^\/([\\w-]+)$');
-app.get(secondaryRegex, secondaryRoutes);
-
+app.get('/sitemap', secondaryRoutes.getSitemap);
+app.post('/violation-report', secondaryRoutes.postViolation);
 
 // Softer landing page
 app.get('/', function appGetRoot(req, res) {

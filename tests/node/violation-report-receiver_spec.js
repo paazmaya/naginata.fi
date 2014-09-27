@@ -13,10 +13,8 @@ describe('CSP Violation report', function() {
 
   var postData;
 
-  var request = {
-    headers: {
-      'user-agent': 'Testing Agent'
-    }
+  var headers = {
+    'user-agent': 'Testing Agent'
   };
 
   beforeEach(function() {
@@ -33,23 +31,28 @@ describe('CSP Violation report', function() {
   });
 
   it('Returns false on non existing report', function() {
-    var output = violation({}, request);
+    var output = violation({}, headers);
     expect(output).toBe(false);
   });
   it('Returns false on non http blocked URI', function() {
     postData['csp-report']['blocked-uri'] = '';
-    var output = violation(postData, request);
+    var output = violation(postData, headers);
     expect(output).toBe(false);
   });
   it('Returns false on non http source URI', function() {
     postData['csp-report']['source-uri'] = '';
-    var output = violation(postData, request);
+    var output = violation(postData, headers);
     expect(output).toBe(false);
   });
   it('Returns expected user agent', function() {
-    var output = violation(postData, request);
+    var output = violation(postData, headers);
     expect(output).not.toBe(false);
     expect(output['user-agent']).toBe('Testing Agent');
+  });
+  it('Returns no user agent if it not defined', function() {
+    var output = violation(postData, {});
+    expect(output).not.toBe(false);
+    expect(output['user-agent']).toBeUndefined();
   });
 
 });
