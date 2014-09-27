@@ -25,7 +25,7 @@ var filterDuplicate = function filterDuplicate(value, index, list) {
 
 /**
  * Iterate all pages for the current language and get a list of unique Flick images.
- * @returns {array.<string>} List of images
+ * @returns {Array.<string>} List of images
  */
 module.exports = function flickrImageList() {
   // If any of the files in 'content/*/*.md' has changed, update the whole cache.

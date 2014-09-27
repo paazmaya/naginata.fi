@@ -75,6 +75,10 @@ app.on('uncaughtException', function uncaughtException(err) {
 
 app.engine('jade', require('jade').__express);
 
+if (app.get('env') === 'development') {
+  app.locals.pretty = true;
+}
+
 app.set('views', path.join(__dirname, '/views'));
 app.set('view engine', 'jade');
 app.set('x-powered-by', null); // Disable extra header
@@ -144,17 +148,17 @@ app.get(pageRegex, function appGetRegex(req, res) {
   res.set({
     'Content-Type': 'text/html; charset=utf-8',
     'Content-Security-Policy': 'default-src \'self\' ' +
-      'unsafe-inline ' +
       '*.vimeo.com *.youtube.com ' +
       'https://*.vimeo.com https://*.youtube.com ' +
       '*.flickr.com *.staticflickr.com ' +
       '*.google-analytics.com *.doubleclick.net' +
       '; report-uri /violation-report ' +
-      '; style-src  \'self\' ' +
+      '; style-src \'self\' ' +
       '*.googleapis.com *.googleusercontent.com ' +
-      'unsafe-inline *.gstatic.com ' +
+      '\'unsafe-inline\' *.gstatic.com ' +
       '; font-src *.gstatic.com ' +
-      '*.googleapis.com *.googleusercontent.com ',
+      '*.googleapis.com *.googleusercontent.com ' +
+      '; script-src \'self\' \'unsafe-inline\'',
     'Content-Language': lang,
     'Accept-Ranges': 'bytes',
     'Timing-Allow-Origin': '*'
