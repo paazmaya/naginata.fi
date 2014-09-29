@@ -46,4 +46,18 @@ describe('Check initial page language', function() {
     var output = checkLang(acceptsLanguages, enabledLanguages);
     expect(output).toBe('fi'); // Should be first in the enabled list
   });
+
+  it('Accepted languages are not defined', function() {
+    acceptsLanguages = undefined;
+    enabledLanguages = ['ja', 'en', 'fi'];
+    var output = checkLang(acceptsLanguages, enabledLanguages);
+    expect(output).toBe('ja'); // Should be first in the enabled list
+  });
+
+  it('Accepted languages is a string', function() {
+    acceptsLanguages = 'hi there sir';
+    enabledLanguages = ['en', 'fi'];
+    var output = checkLang(acceptsLanguages, enabledLanguages);
+    expect(output).toBe('en'); // Should be first in the enabled list
+  });
 });
