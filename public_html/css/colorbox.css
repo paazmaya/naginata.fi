@@ -116,6 +116,7 @@
   font-family: 'Inder', Verdana, sans-serif;
   top: -30px;
   padding: 0 4px;
+  height: auto;
 }
 
 #cboxCurrent {

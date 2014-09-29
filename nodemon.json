@@ -12,6 +12,7 @@
   ],
   "ignore": [
     ".git",
+    ".idea",
     "*.log",
     "node_modules/"
   ],

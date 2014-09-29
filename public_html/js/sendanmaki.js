@@ -225,6 +225,7 @@ var sendanmaki = window.sendanmaki = {
   domReady: function domReady() {
     this.lang = $('html').attr('lang') || this.lang;
     sendanmaki.localiseColorbox();
+    $.colorbox.settings.speed = 100;
 
     $.each(this.notes, this.buildImageNotes);
 
@@ -251,12 +252,19 @@ var sendanmaki = window.sendanmaki = {
       photo: true
     });
 
-    // Track ColorBox usage with Google Analytics
+    // Track ColorBox usage with Google Analytics and fix position on high title
     $(document).on('cbox_complete', function cboxComplete() {
       var href = $.colorbox.element().attr('href');
       if (href) {
         ga('send', 'pageview', href);
       }
+
+      var $title = $('#cboxTitle');
+      var h = $title.height() * 1.2 + 4;
+      $title.css('top', -h);
+
+      var $content = $('#cboxContent');
+      $content.css('margin-top', h + 6);
     });
 
     // Close Colorbox if opened as modal
