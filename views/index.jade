@@ -43,6 +43,9 @@ html(lang=settings.lang)
         meta(property=fb.property, content=fb.content)
     each flip in flipahead
       link(rel=flip.rel, href=flip.url)
+    each language, key in languages
+      if (key !== settings.lang)
+        link(rel="alternate", hreflang=key, href="http://naginata.fi/" + key)
   body
     div#logo.centered
       ul#languages
