@@ -58,4 +58,19 @@ describe('Sitemap XML creation', function() {
     expect(output.length).toBe(2);
   });
 
+  it('Has three keys', function() {
+    enabledLanguages = ["en"];
+
+    var output = sitemap(pages, enabledLanguages);
+    expect(output.length).toBe(2);
+    var first = output.shift();
+    var keys = Object.keys(first);
+
+    expect(keys[0]).toBe('loc');
+    expect(keys[1]).toBe('lastmod');
+    expect(keys[2]).toBe('changefreq');
+
+    expect(first.changefreq).toBe('monthly');
+  });
+
 });

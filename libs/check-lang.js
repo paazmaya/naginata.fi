@@ -17,7 +17,7 @@
  * @returns {string} Two character language code, such as "fi", "en", or "ja"
  */
 module.exports = function checkLang(acceptsLanguages, enabledLanguages) {
-  if (!acceptsLanguages) {
+  if (typeof acceptsLanguages !== 'object' || !acceptsLanguages) {
     return enabledLanguages.shift();
   }
   for (var i = 0; i < acceptsLanguages.length; ++i) {
