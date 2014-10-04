@@ -1,14 +1,13 @@
-## Flickrの展覧会の絵
+## Flickrの写真について
 
-ここに示されているすべての写真はユッカPaasonenによって撮影され、それらは自由に使用することができます
-なぎなたのマーケティングの目的は、限り、画像は元のウェブサイトにリンクされているよう
-Flickrので、および/または写真家の名前が挙げられている。
+ここで使用されている写真は全てユッカ・パーソネンによって撮影され、なぎなたを調査する目的に限り、自由に使用することができます。
+元画像はflickrのウェブサイトにリンクしています。
 
 
--   [![2012-12-06 Himeji - Naginata taiso in Jukendo
-    book](http://farm9.static.flickr.com/8362/8450641664_fea2b93757_s.jpg)](http://farm9.static.flickr.com/8362/8450641664_fea2b93757_z.jpg "2012-12-06 Himeji - Naginata taiso in Jukendo book")
+-   [![2012-12-06 姫路 - なぎなた体操〜銃剣道の本より
+    book](http://farm9.static.flickr.com/8362/8450641664_fea2b93757_s.jpg)](http://farm9.static.flickr.com/8362/8450641664_fea2b93757_z.jpg "2012-12-06 姫路 - なぎなた体操〜銃剣道の本より")
 -   [![2012-12-22 Himeji - Last Naginata training of the
-    year](http://farm9.static.flickr.com/8084/8310222005_f8fd5e3497_s.jpg)](http://farm9.static.flickr.com/8084/8310222005_f8fd5e3497_z.jpg "2012-12-22 Himeji - Last Naginata training of the year")
+    year](http://farm9.static.flickr.com/8084/8310222005_f8fd5e3497_s.jpg)](http://farm9.static.flickr.com/8084/8310222005_f8fd5e3497_z.jpg "2012-12-22 姫路 - 今年最後のなぎなたの稽古")
 -   [![2012-12-02 Yokosuka -Naginata bent by the
     friction](http://farm9.static.flickr.com/8364/8310167633_49559323f3_s.jpg)](http://farm9.static.flickr.com/8364/8310167633_49559323f3_z.jpg "2012-12-02 Yokosuka -Naginata bent by the friction")
 -   [![2012-11-30 Hamamatsu - Kamon on Saya of Naginata in Hamamatsu
@@ -111,11 +110,11 @@ Flickrので、および/または写真家の名前が挙げられている。
     2010-04-15](http://farm5.static.flickr.com/4070/4632520539_aaba8e61fa_s.jpg)](http://farm5.static.flickr.com/4070/4632520539_aaba8e61fa_z.jpg "Himeji, Japan 2010-04-15")
 
 
-## 競技会やデモビデオを見る
+## 競技会や演武ビデオ
 
-以下に、さまざまな映像配信ソースから収集薙刀関連動画の集合である、
-主にVimeoのとYouTubeから。ビデオデモンストレーション、競技会からの技術が含まれている
-芸術のさまざまな側面が表示されている他のイベント、。
+以下の画像は、さまざまな映像配信ソース（主にVimeoのとYouTube）から収集した薙刀関連の動画です。
+動画には、競技会，演武及びその他のイベントからの技が含まれています。
+
 
 プレーヤーからフルスクリーンにすることができ、ここで、インラインプレーヤーウィンドウで開いてリストされているビデオクリップ
 右下隅。
@@ -123,7 +122,7 @@ Flickrので、および/または写真家の名前が挙げられている。
 動画の名前とタイトルは、元の作者によるものである。
 
 
--   [熊本県仕の方3回戦 - Kumamoto Shi side 3rd round 第55回都道府県なぎなた大会 - 55th Naginata Todōfuken](https://www.youtube.com/watch?v=lsZYk1dmffI "熊本県仕の方3回戦 - Kumamoto Shi side 3rd round 第55回都道府県なぎなた大会 - 55th Naginata Todōfuken")
+-   [熊本県全日本の形3回戦 - Kumamoto Shi side 3rd round 第55回都道府県なぎなた大会 - 55th Naginata Todōfuken](https://www.youtube.com/watch?v=lsZYk1dmffI "熊本県仕の方3回戦 - Kumamoto Shi side 3rd round 第55回都道府県なぎなた大会 - 55th Naginata Todōfuken")
 -   [Shimada Teruko, Jikishinkageryū Jikishinkageryū](http://www.youtube.com/watch?v=G9T2FAJ3kzQ "Shimada Teruko, Jikishinkageryū Jikishinkageryū")
 -   [Sonobe Hideo 1930 in saineikan 園部秀雄](http://www.youtube.com/watch?v=NtJlD11pj5k "Sonobe Hideo 1930 in saineikan 園部秀雄")
 -   [リズムなぎなた](http://www.youtube.com/watch?v=vRB8Fkevcc8 "リズムなぎなた")
