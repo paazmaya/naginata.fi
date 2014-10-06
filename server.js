@@ -20,6 +20,7 @@ var fs = require('fs');
 var app = require('./libs/express-app');
 var checkLang = require('./libs/check-lang');
 var getEnabledLanguages = require('./libs/get-enabled-languages');
+var helpers = require('./libs/express-helpers');
 
 
 
@@ -49,19 +50,6 @@ app.get('*', function appGetAll(req, res, next) {
 });
 */
 
-/**
- * Insert a link to the other language page for the same content
- * @param {object} item Page item
- * @returns {void}
- */
-var linkPageLanguages = function linkPageLanguages(item) {
-  // Save the current page other languages
-  langKeys.forEach(function eachMetaLang(key) {
-    if (item[key]) {
-      langMeta[key].url = item[key].url;
-    }
-  });
-};
 
 var pageRegex = new RegExp('^\/(' + langKeys.join('|') + ')(\/(\\w+))?$');
 app.get(pageRegex, function appGetRegex(req, res) {
@@ -75,7 +63,7 @@ app.get(pageRegex, function appGetRegex(req, res) {
     if (typeof item[lang] === 'object') {
       if (item[lang].url === req.path) {
         current = item[lang];
-        linkPageLanguages(item);
+        langMeta = helpers.linkPageLanguages(langMeta, item);
       }
       pages.push(item[lang]);
     }
@@ -111,15 +99,8 @@ app.get(pageRegex, function appGetRegex(req, res) {
     };
   };
 
-  var contentPolicy = require('./libs/content-policy-directives');
 
-  res.set({
-    'Content-Type': 'text/html; charset=utf-8',
-    'Content-Security-Policy': contentPolicy(),
-    'Content-Language': lang,
-    'Accept-Ranges': 'bytes',
-    'Timing-Allow-Origin': '*'
-  });
+  res.set(helpers.indexHeaders(lang));
   res.render('index', indexData(), function rendered(error, html) {
     if (error) {
       newrelic.noticeError('index', error);
