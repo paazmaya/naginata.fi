@@ -13,77 +13,20 @@ var newrelic = require('newrelic');
 // Make it directly available from other modules
 global.newrelic = newrelic;
 
-// http://expressjs.com
-var express = require('express');
 var fs = require('fs');
-var path = require('path');
-var bodyParser = require('body-parser');
 
-// Dependencies for express
-var st = require('st');
-var morgan = require('morgan'); // logger
-var compress = require('compression');
 
 // Custom classes
+var app = require('./libs/express-app');
 var checkLang = require('./libs/check-lang');
 var getEnabledLanguages = require('./libs/get-enabled-languages');
-var secondaryRoutes = require('./libs/secondary-routes');
 
-var pageData = fs.readFileSync('content/page-data.json', {
+
+
+var pageData = fs.readFileSync('./content/page-data.json', {
   encoding: 'utf8'
 });
 var pageJson = JSON.parse(pageData);
-
-var app = express();
-
-app.use(compress());
-app.use(bodyParser.json({
-  type: 'application/csp-report'
-}));
-
-var oneMinute = 1000 * 60;
-app.use(st({
-  path: path.join(__dirname, '/public_html'),
-  url: '/',
-  index: false, // return 404's for directories
-  passthrough: true, // calls next/returns instead of returning a 404 error
-  gzip: false,
-  cache: { // specify cache:false to turn off caching entirely
-    fd: {
-      max: 1000, // number of fd's to hang on to
-      maxAge: oneMinute * 60 // amount of ms before fd's expire
-    },
-
-    stat: {
-      max: 5000, // number of stat objects to hang on to
-      maxAge: oneMinute // number of ms that stats are good for
-    },
-
-    content: {
-      max: 1024 * 1024 * 64, // how much memory to use on caching contents
-      maxAge: oneMinute * 10 // how long to cache contents for
-    }
-  }
-}));
-app.use(morgan('tiny'));
-
-app.on('uncaughtException', function uncaughtException(err) {
-  console.error(err.stack);
-  console.log('Node NOT Exiting...');
-});
-
-app.engine('jade', require('jade').__express);
-
-if (app.get('env') === 'development') {
-  app.locals.pretty = true;
-}
-
-app.set('views', path.join(__dirname, '/views'));
-app.set('view engine', 'jade');
-app.set('x-powered-by', null); // Disable extra header
-
-// in express, this lets you call newrelic from within a template
-app.locals.newrelic = newrelic;
 
 
 var langMeta = getEnabledLanguages(pageJson.languages); // Enabled language meta data, needed for language navigation
@@ -185,8 +128,6 @@ app.get(pageRegex, function appGetRegex(req, res) {
   });
 });
 
-app.get('/sitemap', secondaryRoutes.getSitemap);
-app.post('/violation-report', secondaryRoutes.postViolation);
 
 // Softer landing page
 app.get('/', function appGetRoot(req, res) {
@@ -200,9 +141,8 @@ app.get('*', function appGetRest(req, res) {
 });
 
 // https://devcenter.heroku.com/articles/config-vars
-var ipaddr = process.env.OPENSHIFT_NODEJS_IP || null; // Heroku fails with non null address
-var port = process.env.OPENSHIFT_NODEJS_PORT || process.env.PORT || 5000;
+var port = process.env.PORT || 5000;
 
-app.listen(port, ipaddr, function appListen() {
-  console.log('Express.js running at http://' + ipaddr + ':' + port + '/');
+app.listen(port, function appListen() {
+  console.log('server.js running at port: ' + port);
 });
