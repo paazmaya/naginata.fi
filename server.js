@@ -82,7 +82,7 @@ app.get(pageRegex, function appGetRegex(req, res) {
   });
 
   if (typeof current !== 'object') {
-    res.redirect(404, '/' + lang);
+    res.redirect('/' + lang);
     return;
   }
 
@@ -132,13 +132,13 @@ app.get(pageRegex, function appGetRegex(req, res) {
 // Softer landing page
 app.get('/', function appGetRoot(req, res) {
   defaultLang = checkLang(req.acceptsLanguages(), langKeys);
-  res.redirect(301, '/' + defaultLang);
+  res.redirect('/' + defaultLang);
 });
 
 // Catch anything that does not match the previous rules.
 app.get('*', function appGetRest(req, res) {
   defaultLang = checkLang(req.acceptsLanguages(), langKeys);
-  res.redirect(404, '/' + defaultLang);
+  res.redirect('/' + defaultLang);
 });
 
 // https://devcenter.heroku.com/articles/config-vars
