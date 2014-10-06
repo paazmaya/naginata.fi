@@ -47,7 +47,7 @@ describe('Check initial page language', function() {
     expect(output).toBe('fi'); // Should be first in the enabled list
   });
 
-  it('Accepted languages are not defined', function() {
+  it('Accepted languages is undefined', function() {
     acceptsLanguages = undefined;
     enabledLanguages = ['ja', 'en', 'fi'];
     var output = checkLang(acceptsLanguages, enabledLanguages);
@@ -73,5 +73,40 @@ describe('Check initial page language', function() {
     enabledLanguages = ['it', 'fi'];
     var output = checkLang(acceptsLanguages, enabledLanguages);
     expect(output).toBe('it'); // Should be first in the enabled list
+  });
+
+  it('Enabled languages is boolean true', function() {
+    acceptsLanguages = ['it', 'fi'];
+    enabledLanguages = true;
+    var output = checkLang(acceptsLanguages, enabledLanguages);
+    expect(output).toBe('no');
+  });
+
+  it('Enabled languages is boolean false', function() {
+    acceptsLanguages = ['it', 'fi'];
+    enabledLanguages = false;
+    var output = checkLang(acceptsLanguages, enabledLanguages);
+    expect(output).toBe('no');
+  });
+
+  it('Enabled languages is a string', function() {
+    acceptsLanguages = ['it', 'fi'];
+    enabledLanguages = 'hello there';
+    var output = checkLang(acceptsLanguages, enabledLanguages);
+    expect(output).toBe('no');
+  });
+
+  it('Enabled languages is an empty object', function() {
+    acceptsLanguages = ['it', 'fi'];
+    enabledLanguages = {};
+    var output = checkLang(acceptsLanguages, enabledLanguages);
+    expect(output).toBe('no');
+  });
+
+  it('Enabled languages is undefined', function() {
+    acceptsLanguages = ['it', 'fi'];
+    enabledLanguages = undefined;
+    var output = checkLang(acceptsLanguages, enabledLanguages);
+    expect(output).toBe('no');
   });
 });
