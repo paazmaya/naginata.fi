@@ -137,6 +137,7 @@ app.get('/', function appGetRoot(req, res) {
 
 // Catch anything that does not match the previous rules.
 app.get('*', function appGetRest(req, res) {
+  defaultLang = checkLang(req.acceptsLanguages(), langKeys);
   res.redirect(404, '/' + defaultLang);
 });
 
