@@ -109,6 +109,17 @@ app.get(pageRegex, function appGetRegex(req, res) {
   });
 });
 
+// Try to find the cause
+app.get('/undefined', function appGetRoot(req, res) {
+  var error = {
+    checkLang: checkLang(req.acceptsLanguages(), langKeys),
+    acceptsLanguages: req.acceptsLanguages(),
+    langKeys: langKeys,
+    defaultLang: defaultLang
+  };
+  newrelic.noticeError('slash-undefined', error);
+  res.redirect('/en');
+});
 
 // Softer landing page
 app.get('/', function appGetRoot(req, res) {
