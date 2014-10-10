@@ -75,6 +75,13 @@ describe('Check initial page language', function() {
     expect(output).toBe('it'); // Should be first in the enabled list
   });
 
+  it('Accepted languages contain non a-z characters', function() {
+    acceptsLanguages = [/(abc)/, '^', '*', '%', '$$$$$$$$$$$', '###'];
+    enabledLanguages = ['si', 'hr'];
+    var output = checkLang(acceptsLanguages, enabledLanguages);
+    expect(output).toBe('si'); // Should be first in the enabled list
+  });
+
   it('Enabled languages is boolean true', function() {
     acceptsLanguages = ['it', 'fi'];
     enabledLanguages = true;

@@ -27,7 +27,12 @@ module.exports = function checkLang(acceptsLanguages, enabledLanguages) {
     return enabledLanguages.shift();
   }
   for (var i = 0; i < acceptsLanguages.length; ++i) {
-    var key = acceptsLanguages[i].substr(0, 2);
+    var key = acceptsLanguages[i];
+    if (typeof key !== 'string' || key.length < 2) {
+      // Pass on to the next item
+      continue;
+    }
+    key = key.substr(0, 2).toLowerCase();
     if (enabledLanguages.indexOf(key) !== -1) {
       return key;
     }
