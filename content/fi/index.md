@@ -1,8 +1,7 @@
 
 ## Tulevia tapahtumia
 
--   11.2014 - [Atarashii Naginata- ja Jikishinkageryu Naginatajutsu-leiri Potsdamissa,
-    Saksassa](https://www.facebook.com/events/497656113676309/ "Atarashii Naginata & Jikishinkageryu Naginatajutsu Seminar")
+Toistaiseksi ei suunniteltuja tapahtumis.
 
 ## Menneitä tapahtumia
 

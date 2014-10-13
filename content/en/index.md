@@ -1,7 +1,6 @@
 ## Upcoming events
 
--   11/2014 - [Atarashii Naginata and Jikishinkageryu Naginatajutsu Seminar in Potsdam,
-    Germany](https://www.facebook.com/events/497656113676309/ "Atarashii Naginata & Jikishinkageryu Naginatajutsu Seminar")
+For the time being there are no planned events.
 
 ## In the Past
 
