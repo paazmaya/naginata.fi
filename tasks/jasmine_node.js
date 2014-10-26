@@ -26,7 +26,7 @@ module.exports = {
       matchAll: false,
       specNameMatcher: '_spec',
       extensions: 'js',
-      //captureExceptions: true,
+      // captureExceptions: true,
       jUnit: {
         report: false,
         savePath: './reports/',

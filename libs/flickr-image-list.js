@@ -11,7 +11,6 @@
 var fs = require('fs');
 var path = require('path');
 
-
 /**
  * Filter an array so it has no duplicates
  * @param {string} value Current value that is being iterated

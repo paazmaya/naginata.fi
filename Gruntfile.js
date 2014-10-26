@@ -25,7 +25,6 @@ module.exports = function gruntConf(grunt) {
 
   var config = {
     pkg: grunt.file.readJSON('package.json'),
-    env: process.env,
     banner: '/*! <%= pkg.name %> - v<%= pkg.version %> - ' +
       '<%= grunt.template.today("yyyy-mm-dd") %>\n' +
       '* Copyright (c) <%= grunt.template.today("yyyy") %> ' +

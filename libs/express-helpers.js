@@ -8,7 +8,6 @@
 
 'use strict';
 
-
 /**
  * Insert a link to the other language page for the same content
  *
@@ -45,7 +44,6 @@ var indexHeaders = function indexHeaders(lang) {
     'Timing-Allow-Origin': '*'
   };
 };
-
 
 module.exports = {
   linkPageLanguages: linkPageLanguages,

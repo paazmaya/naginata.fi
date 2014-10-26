@@ -15,20 +15,16 @@ global.newrelic = newrelic;
 
 var fs = require('fs');
 
-
 // Custom classes
 var app = require('./libs/express-app');
 var checkLang = require('./libs/check-lang');
 var getEnabledLanguages = require('./libs/get-enabled-languages');
 var helpers = require('./libs/express-helpers');
 
-
-
 var pageData = fs.readFileSync('./content/page-data.json', {
   encoding: 'utf8'
 });
 var pageJson = JSON.parse(pageData);
-
 
 var langMeta = getEnabledLanguages(pageJson.languages); // Enabled language meta data, needed for language navigation
 var langKeys = Object.keys(langMeta); // Enabled language ISO codes: en, fi, ...
@@ -49,7 +45,6 @@ app.get('*', function appGetAll(req, res, next) {
   }
 });
 */
-
 
 var pageRegex = new RegExp('^\/(' + langKeys.join('|') + ')(\/(\\w+))?$');
 app.get(pageRegex, function appGetRegex(req, res) {
@@ -98,7 +93,6 @@ app.get(pageRegex, function appGetRegex(req, res) {
       lang: lang
     };
   };
-
 
   res.set(helpers.indexHeaders(lang));
   res.render('index', indexData(), function rendered(error, html) {

@@ -72,10 +72,7 @@ app.set('views', path.join(__dirname, '/../views'));
 app.set('view engine', 'jade');
 app.set('x-powered-by', null); // Disable extra header
 
-
-
 app.get('/sitemap', secondaryRoutes.getSitemap);
 app.post('/violation-report', secondaryRoutes.postViolation);
-
 
 module.exports = app;
