@@ -14,6 +14,7 @@ var newrelic = require('newrelic');
 global.newrelic = newrelic;
 
 var fs = require('fs');
+var util = require('util');
 
 // Custom classes
 var app = require('./libs/express-app');
@@ -111,6 +112,7 @@ app.get('/undefined', function appGetRoot(req, res) {
     langKeys: langKeys,
     defaultLang: defaultLang
   };
+  util.log('slash-undefined. error: ' + JSON.stringify(error));
   newrelic.noticeError('slash-undefined', error);
   res.redirect('/en');
 });
