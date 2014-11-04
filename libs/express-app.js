@@ -49,7 +49,7 @@ app.use(st({
 
     content: {
       max: 1024 * 1024 * 64, // how much memory to use on caching contents
-      maxAge: oneMinute * 10 // how long to cache contents for
+      maxAge: oneMinute * 120 // how long to cache contents for
     }
   }
 }));
