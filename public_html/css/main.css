@@ -312,10 +312,11 @@ article.media ul:last-of-type a[href*="flickr.com"]::before {
   float: left;
 }
 #languages a {
-    display: block;
-    padding: 0.3em 0.5em;
-    color: #dfe0e4;
-    text-decoration: none;
+  display: block;
+  padding: 0.3em 0.5em;
+  color: #dfe0e4;
+  text-decoration: none;
+  line-height: 1.4;
 }
 #languages a:hover,
 #languages a:focus {
