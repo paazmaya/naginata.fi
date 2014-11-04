@@ -76,8 +76,8 @@ nav,
 footer {
     font-variant: small-caps;
     font-family: 'Inder', Verdana, sans-serif;
-    border-top: 0.1em solid #072434;
-    border-bottom: 0.1em solid #072434;
+    border-top: 1px solid #072434;
+    border-bottom: 1px solid #072434;
     height: 1.6em;
     color: #072434;
     display: block;
