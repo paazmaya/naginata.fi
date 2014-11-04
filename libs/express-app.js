@@ -12,12 +12,12 @@ var path = require('path');
 
 // http://expressjs.com
 var express = require('express');
-var bodyParser = require('body-parser');
 
 // Dependencies for express
+var compress = require('compression');
+var bodyParser = require('body-parser');
 var st = require('st');
 var morgan = require('morgan'); // logger
-var compress = require('compression');
 
 // Custom modules
 var secondaryRoutes = require('./secondary-routes');
