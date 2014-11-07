@@ -16,6 +16,7 @@ var directives = {
     '*.youtube.com',
     'https://*.vimeo.com',
     'https://*.youtube.com',
+    '*.google-analytics.com',
     '*.flickr.com',
     '*.staticflickr.com',
     '*.doubleclick.net'
