@@ -31,21 +31,6 @@ var langMeta = getEnabledLanguages(pageJson.languages); // Enabled language meta
 var langKeys = Object.keys(langMeta); // Enabled language ISO codes: en, fi, ...
 var defaultLang = langKeys[0];
 
-// Handle every GET request and pass thru if not using www.
-/*
-app.get('*', function appGetAll(req, res, next) {
-  console.log('subdomains', req.subdomains);
-  console.log('req.host', req.host);
-  if (req.host.match(/^www/) !== null ) {
-    var url = req.protocol + '://' + req.host.replace(/^www\./, '') + req.originalUrl;
-    console.log('Should redirect to: ' + url);
-    res.redirect(301, url);
-  }
-  else {
-    next();
-  }
-});
-*/
 
 var pageRegex = new RegExp('^\/(' + langKeys.join('|') + ')(\/(\\w+))?$');
 app.get(pageRegex, function appGetRegex(req, res) {
