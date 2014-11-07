@@ -18,7 +18,6 @@ var directives = {
     'https://*.youtube.com',
     '*.flickr.com',
     '*.staticflickr.com',
-    '*.google-analytics.com',
     '*.doubleclick.net'
   ],
   'report-uri': [
@@ -33,6 +32,8 @@ var directives = {
   ],
   'script-src': [
     '\'self\'',
+    '*.google-analytics.com',
+    '*.newrelic.com',
     '\'unsafe-inline\''
   ],
   'font-src': [
