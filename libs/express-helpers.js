@@ -41,7 +41,8 @@ var indexHeaders = function indexHeaders(lang) {
     'Content-Security-Policy': contentPolicy(),
     'Content-Language': lang,
     'Accept-Ranges': 'bytes',
-    'Timing-Allow-Origin': '*'
+    'Timing-Allow-Origin': '*',
+    'Server': 'Naginata Finland'
   };
 };
 
