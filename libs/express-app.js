@@ -72,17 +72,7 @@ app.set('views', path.join(__dirname, '/../views'));
 app.set('view engine', 'jade');
 app.set('x-powered-by', null); // Disable extra header
 
-// Handle every GET request and pass through if not using www.
-app.get('*', function appGetAll(req, res, next) {
-  if (req.host.match(/^www/) !== null) {
-    var url = req.protocol + '://' + req.host.replace(/^www\./, '') + req.originalUrl;
-    res.redirect(url);
-  }
-  else {
-    next();
-  }
-});
-
+app.get('*', secondaryRoutes.appGetAll);
 app.get('/sitemap', secondaryRoutes.getSitemap);
 app.post('/violation-report', secondaryRoutes.postViolation);
 

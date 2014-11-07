@@ -11,11 +11,13 @@
 describe('Secondary routes', function() {
   var secondaryRoutes = require('../../libs/secondary-routes');
 
-
-  it('Sitemap is called', function(){
+  beforeEach(function() {
     global.newrelic = {
       noticeError: function () {}
     };
+  });
+
+  it('Sitemap is called', function(){
     spyOn(global.newrelic, 'noticeError');
 
     var req = {};
@@ -41,9 +43,6 @@ describe('Secondary routes', function() {
   });
 
   it('Sitemap should get error', function(){
-    global.newrelic = {
-      noticeError: function () {}
-    };
     spyOn(global.newrelic, 'noticeError');
 
     var req = {};
@@ -69,9 +68,6 @@ describe('Secondary routes', function() {
   });
 
   it('CSP violation report is called with empty object', function(){
-    global.newrelic = {
-      noticeError: function () {}
-    };
     spyOn(global.newrelic, 'noticeError');
 
     var req = {
@@ -93,9 +89,6 @@ describe('Secondary routes', function() {
   });
 
   it('CSP violation report is called with string', function(){
-    global.newrelic = {
-      noticeError: function () {}
-    };
     spyOn(global.newrelic, 'noticeError');
 
     var req = {
@@ -117,9 +110,6 @@ describe('Secondary routes', function() {
   });
 
   it('CSP violation report is called with correct report', function(){
-    global.newrelic = {
-      noticeError: function () {}
-    };
     spyOn(global.newrelic, 'noticeError');
 
     var req = {
@@ -148,5 +138,58 @@ describe('Secondary routes', function() {
 
     expect(res.set).toHaveBeenCalledWith({'Content-type': 'application/json'});
     expect(res.json).toHaveBeenCalledWith({report: 'prosessed'});
+  });
+
+
+  it('Get all post addresses for removing www', function(){
+    spyOn(global.newrelic, 'noticeError');
+
+    var req = {
+      host: 'www.naginata.fi',
+      protocol: 'http',
+      originalUrl: '/hoplaa'
+    };
+    var res = {
+      redirect: function () {}
+    };
+    var walking = {
+      next: function () {}
+    };
+    spyOn(res, 'redirect');
+    spyOn(walking, 'next');
+
+    var url = req.protocol + '://' + req.host.replace(/^www\./, '') + req.originalUrl;
+
+    secondaryRoutes.appGetAll(req, res, walking.next);
+
+    expect(global.newrelic.noticeError).not.toHaveBeenCalled();
+
+    expect(walking.next).not.toHaveBeenCalled();
+    expect(res.redirect).toHaveBeenCalledWith(url);
+  });
+
+  it('Get all post addresses when there is no www', function(){
+    spyOn(global.newrelic, 'noticeError');
+
+    var req = {
+      host: 'naginata.fi',
+      protocol: 'http',
+      originalUrl: '/hoplaa'
+    };
+    var res = {
+      redirect: function () {}
+    };
+    var walking = {
+      next: function () {}
+    };
+    spyOn(res, 'redirect');
+    spyOn(walking, 'next');
+
+    secondaryRoutes.appGetAll(req, res, walking.next);
+
+    expect(global.newrelic.noticeError).not.toHaveBeenCalled();
+
+    expect(walking.next).toHaveBeenCalled();
+    expect(res.redirect).not.toHaveBeenCalled();
   });
 });
