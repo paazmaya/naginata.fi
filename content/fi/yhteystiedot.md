@@ -21,6 +21,15 @@ suoraa yhteyttä Kendoseurojen Keskusliittoon. Tällaisia tyylejä ovat
 muun muassa Jikishinkageryū, Tenshin Shoden Katori Shintoryū ja Suiōryū.
 
 
+## Palautteen antaminen
+
+[Tässä on palautelomake, jolla voi jättää palautteen anonyymisti Googlen dokumentti-palveluun](
+https://docs.google.com/forms/d/1ElXfjdK3U819S_qPh5u648DRMC_xRFBBeCI2CJi5zcU/viewform "Naginata palaute")
+Tiedot lähetetään ilman mitään tunnisteita, ainoastaan palautteen teksti ja kellon aika tallentuvat.
+Olkaa hyvät ja jättäkää palautetta näistä sivuista, harjoituksista, Atarashii Naginatasta,
+Jikishinkageryū Naginatajutsusta, tai jostakin muusta aiheeseen liittyvästä.
+
+
 ## Seurat
 
 ### Helsingin Kendoseura Ki-Ken-Tai-Icchi
