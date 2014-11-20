@@ -69,8 +69,8 @@ var appPostViolation = function appPostViolation(req, res) {
  * @returns {void}
  */
 var appGetAll = function appGetAll(req, res, next) {
-  if (req.host.match(/^www/) !== null) {
-    var url = req.protocol + '://' + req.host.replace(/^www\./, '') + req.originalUrl;
+  if (req.hostname.match(/^www/) !== null) {
+    var url = req.protocol + '://' + req.hostname.replace(/^www\./, '') + req.originalUrl;
     res.redirect(url);
   }
   else {
