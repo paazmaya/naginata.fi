@@ -15,11 +15,11 @@
   "dependencies": {
     "body-parser": "~1.9.0",
     "compression": "~1.2.0",
-    "express": "~4.10.1",
+    "express": "~4.10.2",
     "jade": "~1.7.0",
     "marked": "~0.3.2",
     "morgan": "~1.5.0",
-    "newrelic": "~1.13.0",
+    "newrelic": "~1.13.2",
     "st": "~0.5.2"
   },
   "devDependencies": {
@@ -32,7 +32,7 @@
     "grunt-contrib-uglify": "~0.6",
     "grunt-contrib-watch": "~0.6",
     "grunt-eslint": "~2.0",
-    "grunt-jasmine-node-coverage": "https://github.com/paazmaya/grunt-jasmine-node-coverage/tarball/multi-grunting",
+    "grunt-jasmine-node-coverage": "~0.3",
     "grunt-trimtrailingspaces": "~0.4",
     "jasmine-node": "~1.14",
     "jit-grunt": "~0.9",
@@ -41,7 +41,7 @@
     "karma-jasmine": "~0.2",
     "karma-phantomjs-launcher": "~0.1",
     "phantomjs": "~1.9",
-    "supertest": "~0.14",
+    "supertest": "~0.15",
     "time-grunt": "~1.0"
   },
   "engines": {
