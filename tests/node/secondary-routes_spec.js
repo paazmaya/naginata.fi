@@ -145,7 +145,7 @@ describe('Secondary routes', function() {
     spyOn(global.newrelic, 'noticeError');
 
     var req = {
-      host: 'www.naginata.fi',
+      hostname: 'www.naginata.fi',
       protocol: 'http',
       originalUrl: '/hoplaa'
     };
@@ -158,7 +158,7 @@ describe('Secondary routes', function() {
     spyOn(res, 'redirect');
     spyOn(walking, 'next');
 
-    var url = req.protocol + '://' + req.host.replace(/^www\./, '') + req.originalUrl;
+    var url = req.protocol + '://' + req.hostname.replace(/^www\./, '') + req.originalUrl;
 
     secondaryRoutes.appGetAll(req, res, walking.next);
 
@@ -172,7 +172,7 @@ describe('Secondary routes', function() {
     spyOn(global.newrelic, 'noticeError');
 
     var req = {
-      host: 'naginata.fi',
+      hostname: 'naginata.fi',
       protocol: 'http',
       originalUrl: '/hoplaa'
     };
