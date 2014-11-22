@@ -91,13 +91,14 @@ app.get(pageRegex, function appGetRegex(req, res) {
 
 // Try to find the cause
 app.get('/undefined', function appGetRoot(req, res) {
-  var acceptLangs = req.acceptsLanguages();
-  var check = checkLang(acceptLangs, langKeys);
+  var acceptLangs = req.acceptsLanguages() || '';
+  var check = checkLang(acceptLangs, langKeys) || '';
+  var def = defaultLang || '';
   var error = {
     checkLang: check,
     acceptsLanguages: acceptLangs,
     langKeys: langKeys,
-    defaultLang: defaultLang
+    defaultLang: def
   };
   util.puts('slash-undefined. error: ' + JSON.stringify(error));
   newrelic.noticeError('slash-undefined', error);
