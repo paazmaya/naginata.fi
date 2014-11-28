@@ -5,12 +5,12 @@
 All the code is under Creative Commons License - Attribution & Share Alike (http://creativecommons.org/licenses/by-sa/3.0/).
 Full legal text available in `LICENSE.md`.
 
-[![Dependency Status](https://gemnasium.com/paazmaya/naginata.fi.png)](https://gemnasium.com/paazmaya/naginata.fi)
-[![Build Status](https://travis-ci.org/paazmaya/naginata.fi.png)](https://travis-ci.org/paazmaya/naginata.fi)
-[![Coverage Status](https://coveralls.io/repos/paazmaya/naginata.fi/badge.png)](https://coveralls.io/r/paazmaya/naginata.fi)
-[![Code Climate](https://codeclimate.com/github/paazmaya/naginata.fi.png)](https://codeclimate.com/github/paazmaya/naginata.fi)
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/paazmaya/naginata.fi/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
-[![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
+[![Dependency Status](https://img.shields.io/gemnasium/paazmaya/naginata.fi.svg?style=flat-square)](https://gemnasium.com/paazmaya/naginata.fi)
+[![Build Status](https://img.shields.io/travis/paazmaya/naginata.fi.svg?style=flat-square)](https://travis-ci.org/paazmaya/naginata.fi)
+[![Coverage Status](https://img.shields.io/coveralls/paazmaya/naginata.fi/badge.svg?style=flat-square)](https://coveralls.io/r/paazmaya/naginata.fi)
+[![Code Climate](https://img.shields.io/codeclimate/github/paazmaya/naginata.fi.svg?style=flat-square)](https://codeclimate.com/github/paazmaya/naginata.fi)
+[![Built with Grunt](http://img.shields.io/badge/Grunt-0.4-blue.svg?style=flat-square)](http://gruntjs.com/)
+[![Analytics](https://ga-beacon.appspot.com/UA-2643697-15/naginata.fi/index)](https://github.com/igrigorik/ga-beacon)
 
 ## About the martial art
 
