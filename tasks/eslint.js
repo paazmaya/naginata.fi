@@ -9,7 +9,7 @@
 
 module.exports = {
   options: {
-    config: 'eslint.json',
+    config: '.eslintrc',
     format: 'stylish'
   },
   target: [
