@@ -94,11 +94,13 @@ app.get('/undefined', function appGetRoot(req, res) {
   var acceptLangs = req.acceptsLanguages() || '';
   var check = checkLang(acceptLangs, langKeys) || '';
   var def = defaultLang || '';
+  var useragent = req.header('user-agent') || '';
   var error = {
     checkLang: check,
     acceptsLanguages: acceptLangs,
     langKeys: langKeys,
-    defaultLang: def
+    defaultLang: def,
+    useragent: useragent
   };
   util.puts('slash-undefined. error: ' + JSON.stringify(error));
   newrelic.noticeError('slash-undefined', error);
