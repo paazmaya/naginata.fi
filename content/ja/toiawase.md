@@ -1,8 +1,7 @@
-フィンランドのあたらしいなぎなたは、ヨーロッパなぎなた連盟のメンバーであるフィンランドの剣道協会（FKA）の下で編成されている。
-ヘッドインストラクター氏ユッカPaasonen（2段、[姓] @のnaginata.fi）です。
+フィンランドの新しいなぎなたは、ヨーロッパなぎなた連盟のメンバーであるフィンランド剣道協会（FKA）の下、ヘッドインストラクターはユッカ・パーソネン（二段、[姓] @naginata.fi）、サブインストラクターは真理・パーソネン（四段）で構成されている。
 
-Jikishinkageryu Naginatajutsuはすべてのメンバーが日本のShutokukai組織に属しているのShutokukai（登録協会）、
-下に編成されている。フィンランド教頭氏ユッカPaasonen（naginata.fi@の巻、[姓]をreikenなし）である。
+直心影流薙刀術はすべてのメンバーが日本の秀徳会に属している（登録協会）。
+フィンランドのヘッドインストラクターはユッカ・パーソネン（霊剣ノ巻　[姓]@naginata.fi）である。
 
 [![Kirsikankukkajuhla Roihuvuoressa](http://farm6.static.flickr.com/5231/7188222444_8b8d2512c1_m.jpg)
 ](http://flickr.com/photos/naakkalinna/7188222444 "Kirsikankukkajuhla Roihuvuoressa / Naakka")
@@ -19,15 +18,16 @@ FKAはあたらしい薙刀に関連するセミナー、
 
 ### ヘルシンキ剣道協会・気剣体一致
 
-[ヘルシンキ剣道クラブ、基文ケン太-Icchi（KKTI）で、それがクラスに参加することが可能である
-あたらしい薙刀とJikishinkageryūの
-Naginatajutsu]（http://kendohelsinki.org「基文ケン太-Icchi、ヘルシンキ剣道クラブ、オリンピックスタジアム」）
+[ヘルシンキ剣道協会の気剣体一致（KKTI）クラブで、新しいなぎなたと直心影流薙刀術のクラスに参加することができます。
+]（http://kendohelsinki.org「気剣体一致（KKTI）、ヘルシンキ剣道クラブ、オリンピックスタジアム」）
 
-19時30と日曜日で - 研修は18時、毎週木曜日に開催されている
-16:00 - 18：00。トレーニングのすべてが「keskisali「トレーニング領域にある。
+稽古の日時及び場所は次の通りである。
+木曜日の午後８時半から１０時，ヘルシンキオリンピックスタジアム内（tanssihali）、
+日曜日の午後３時半から５時、ヘルシンキオリンピックスタジアム内（keskisali）。尚、防具を用いた稽古は日曜日に行われます。
 
-氏はヤルノYliluoma（[Firstname.Lastnameで] @ gmail.com）いずれについてもご連絡ください
-inquiris KKTIに薙刀に関連する。
+
+詳細は、新しいなぎなたについてはヤルノ・ウリルオマ氏（[jarno.yliluoma] @ gmail.com）へ、
+直心影流薙刀術についてはユッカ・パーソネン（[jukka] @ naginata.fi）にご連絡ください。
 
 ### Tapanilan Erä - Kendojaos
 
