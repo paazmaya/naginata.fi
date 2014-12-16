@@ -20,6 +20,15 @@ practise with the weapon naginata. However those are not necessarily in a
 direct contact with the Finnish Kendo Association. These styles are such as
 Jikishinkageryū, Tenshin Shoden Katori Shintoryū and Suiōryū.
 
+## Feedback
+
+[Here is a anonymous feedback form which collects feedback data to a Google Documents.](
+https://docs.google.com/forms/d/1ElXfjdK3U819S_qPh5u648DRMC_xRFBBeCI2CJi5zcU/viewform "Naginata feedback")
+It is completely anonymous and nothing else, except the feedback content and the time
+when is was sent, are saved. Feel free to leave feedback about this web site,
+training sessions or anything else regarding Atarashii Naginata or Jikishinkageryū
+Naginatajutsu in Finland.
+
 
 ## Clubs
 
@@ -29,12 +38,12 @@ At [Helsinki Kendo Club, Ki-Ken-Tai-Icchi (KKTI) it is possible to join the clas
 of Atarashii Naginata and Jikishinkageryū
 Naginatajutsu](http://www.kkti.fi/ "Helsinki Kendo Club - Ki-Ken-Tai-Icchi, Olympic Stadium, Helsinki")
 
-The trainings are held at the Helsinki Olympic Stadium D-wing, on Tuesdays at 20:30 - 22:00 
+The trainings are held at the Helsinki Olympic Stadium D-wing, on Tuesdays at 20:30 - 22:00
 in "tanssihali" training hall, and on Sundays at 15:30 - 17:00 in "keskisali" training hall.
 Protective gears (bogu) are only needed on Sundays, but their use is not mandatory.
 
 Please contact Mr. Jarno Yliluoma ([firstname.lastname]@gmail.com) for any
-inquiris related to Atarashii Naginata in KKTI and to Mr. Jukka Paasonen 
+inquiris related to Atarashii Naginata in KKTI and to Mr. Jukka Paasonen
 ([firstname]@naginata.fi) regarding Jikishinkageryu Naginatajutsu.
 
 ### Tapanilan Erä - Kendo Division

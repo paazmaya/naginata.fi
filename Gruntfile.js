@@ -15,7 +15,7 @@ module.exports = function gruntConf(grunt) {
 
   var loadConfig = function loadConfig(path) {
     var list = {};
-    var files = grunt.file.expand({cwd: path}, '*');
+    var files = grunt.file.expand({cwd: path, filter: 'isFile'}, '*.js');
     files.forEach(function eachFile(option) {
       var key = option.replace(/\.js$/, '');
       list[key] = require(path + option);
@@ -25,7 +25,6 @@ module.exports = function gruntConf(grunt) {
 
   var config = {
     pkg: grunt.file.readJSON('package.json'),
-    env: process.env,
     banner: '/*! <%= pkg.name %> - v<%= pkg.version %> - ' +
       '<%= grunt.template.today("yyyy-mm-dd") %>\n' +
       '* Copyright (c) <%= grunt.template.today("yyyy") %> ' +

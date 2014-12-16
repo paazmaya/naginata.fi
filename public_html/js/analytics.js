@@ -8,18 +8,17 @@
 
 'use strict';
 
-(function analytics(i, s, o, g, r, a, m) {
-  i.GoogleAnalyticsObject = r;
-  i[r] = i[r] || function ir() {
-    (i[r].q = i[r].q || []).push(arguments);
-  };
-  i[r].l = 1 * new Date();
-  a = s.createElement(o);
-  m = s.getElementsByTagName(o)[0];
-  a.async = 1;
-  a.src = g;
-  m.parentNode.insertBefore(a, m);
-})(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+(function analytics(T, a, n, t, o, u) {
+  T.GoogleAnalyticsObject = t;
+  T[t] || (T[t] = function inliner() {
+    (T[t].q = T[t].q || []).push(arguments);
+  });
+  T[t].l = +new Date();
+  o = a.createElement(n);
+  u = a.getElementsByTagName(n)[0];
+  o.src = '//www.google-analytics.com/analytics.js';
+  u.parentNode.insertBefore(o, u);
+})(this, document, 'script', 'ga');
 
 ga('create', 'UA-2643697-14', 'naginata.fi');
 ga('require', 'displayfeatures');

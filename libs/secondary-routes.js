@@ -61,7 +61,25 @@ var appPostViolation = function appPostViolation(req, res) {
   }
 };
 
+/**
+ * Handle every GET request and pass through if not using www.
+ * @param {object} req Request
+ * @param {object} res Response
+ * @param {function} next Call next route handler
+ * @returns {void}
+ */
+var appGetAll = function appGetAll(req, res, next) {
+  if (req.hostname.match(/^www/) !== null) {
+    var url = req.protocol + '://' + req.hostname.replace(/^www\./, '') + req.originalUrl;
+    res.redirect(url);
+  }
+  else {
+    next();
+  }
+};
+
 module.exports = {
   getSitemap: appGetSitemap,
-  postViolation: appPostViolation
+  postViolation: appPostViolation,
+  appGetAll: appGetAll
 };

@@ -7,6 +7,7 @@
 exports.config = {
   app_name : ['Naginata Finland'],
   license_key : 'b0808427e37387d757273fdd740d5a90b9ed2074',
+  capture_params: true,
   logging : {
     /**
      * Level at which to log. 'trace' is most useful to New Relic when diagnosing
