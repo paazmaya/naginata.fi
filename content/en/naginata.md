@@ -102,8 +102,7 @@ Also it is required in the grading for sandan (third level) and higher.
 The more advanced practitioners acts as a "hikitate" who is opening targets for the other practitioner
 in which correct attacks should be done in a fast tempo.
 
-[![Fighting
-Spirit](http://farm8.staticflickr.com/7036/7040969153_c884abd640_m.jpg)
+[![Fighting Spirit](http://farm8.staticflickr.com/7036/7040969153_c884abd640_m.jpg)
 ](http://flickr.com/photos/31676563@N05/7040969153 "Fighting Spirit / Teruhide Tomori")
 
 ### Gokaku Geiko

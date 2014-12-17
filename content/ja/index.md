@@ -1,77 +1,68 @@
 
 ## 今後のイベント
 
-- 2014分の11 - ポツダムの[あたらしい薙刀とJikishinkageryu Naginatajutsuセミナー、
-    ドイツ]（https://www.facebook.com/events/497656113676309/「あたらしい薙刀＆Jikishinkageryu Naginatajutsuセミナー」）
 ## 過去に
 
 フィンランドのメンバーが参加している、または何らかの形でフィンランド薙刀に関係されているフィンランドの事象のリスト。
 
--   05 and 08/09/2014 - Jikishinkageryu Naginatajutsu Japan-Finland Friendship trainings
-- /09/201406-07 - [なぎなた友好セミナー、
-    Viikki教員養成学校、ヘルシンキ]（https://www.facebook.com/events/501891759879564/「フィンランドの薙刀友好セミナー2014」）
-- /08/201422-24 - [国際なぎなた連盟セミナー、アムステルフェーン、オランダ]（http://international-naginata.org/drupal/node/17「2014 INFセミナーのお知らせ」）
-- /08/201408-10 - セントスミ薫先生とあたらしいなぎなた上（https://www.facebook.com/events/1445263222387953」セミナー[サンクトペテルブルク、ロシアのスミ薫hanshiとあたらしい薙刀セミナー]ピーターズバーグ"）
-
-- / 05/201424-25 - （https://www.facebook.com/events/1410312342550257/「FKA[ヘルシンキでの剣道、居合道、浄土宗やなぎなた、フィンランドの実務家のためのキュッセミナー] - キュッ·セミナーヘルシンキ"）
-- 18/04/2014 - [ヘルシンキあたらしい薙刀イースターセミナー]（https://www.facebook.com/events/254398958076220/「あたらしい薙刀Pääsiäisleiri」）、
+- 2014年09月05~08日 - Jikishinkageryu Naginatajutsu Japan-Finland Friendship trainings
+- 2014年09月06~07日 - [なぎなた友好セミナー、Viikki教員養成学校、ヘルシンキ](https://www.facebook.com/events/501891759879564/ "フィンランドの薙刀友好セミナー2014"）
+- 2014年08月22~24日 - [国際なぎなた連盟セミナー、アムステルフェーン、オランダ](http://international-naginata.org/drupal/node/17 "2014 INFセミナーのお知らせ"）
+- 2014年08月08~10日 - セントスミ薫先生とあたらしいなぎなた上（https://www.facebook.com/events/1445263222387953"セミナー[サンクトペテルブルク、ロシアのスミ薫hanshiとあたらしい薙刀セミナー]ピーターズバーグ"）
+- 2014年05月24~25日 - （https://www.facebook.com/events/1410312342550257/ "FKA[ヘルシンキでの剣道、居合道、浄土宗やなぎなた、フィンランドの実務家のためのキュッセミナー] - キュッ·セミナーヘルシンキ"）
+- 2014年04月18日 - [ヘルシンキあたらしい薙刀イースターセミナー](https://www.facebook.com/events/254398958076220/ "あたらしい薙刀Pääsiäisleiri"）、
     Tapanilan時代剣道部が主催
-- /02/201414-16 - サンクトペテルブルク[第あたらしい薙刀セミナー、
-    ロシア]（https://www.facebook.com/events/1398129980435747/「Открытыйнагинатеをпосеминар」）
-- /2013分の1115-17 - [Onshukai、千葉のJikishinkageryu Naginatajutsuの年間の主なセミナー、
-    日本]（http://www.flickr.com/photos/paazio/11474557086/in/set-72157638410929463」2013年11月17日日本、千葉 - Onshukai研修プログラム」）
-- /2013分の1109-11 - [欧州なぎなた連盟ブリュッセルでのセミナー、
-    ベルギー。イザベルD'ホースが続く
-    競争]（https://www.facebook.com/events/541531802573585/「ステージENF+ラ·クーペイザベルD'ホースル11ノヴェンブレ」）
-- 18-20/2013分の10 - 一休ための最大木村先生監督プラハ、チェコ、セミナー
+- 2014年02月14~16日 - サンクトペテルブルク[第あたらしい薙刀セミナー、
+    ロシア](https://www.facebook.com/events/1398129980435747/ "Открытыйнагинатеをпосеминар"）
+- 2013年11月15~17日 - [Onshukai、千葉のJikishinkageryu Naginatajutsuの年間の主なセミナー、
+    日本](http://www.flickr.com/photos/paazio/11474557086/in/set-72157638410929463"2013年11月17日日本、千葉 - Onshukai研修プログラム"）
+- 2013年10月18~20日 分の10 - 一休ための最大木村先生監督プラハ、チェコ、セミナー
 - 2013年6月10日 - [6-2級（午後4時30分）がキュッグレーディング、KKTI道場、オリンピックスタジアム、
-    ヘルシンキ]（https://www.facebook.com/events/157924271076783/「6-2級の値についてキュッ格付」）
+    ヘルシンキ](https://www.facebook.com/events/157924271076783/ "6-2級の値についてキュッ格付"）
 - 2013年4月9日 - あたらしい薙刀のコース開始[Tapanilan時代、
     水曜日19:00 - 21:00、Tapanila
-    （http://www.tapanila-kendo.org/"Tapanilan ERA - 剣道部門」）スポーツセンター]、
+    （http://www.tapanila-kendo.org/"Tapanilan ERA - 剣道部門"）スポーツセンター]、
     ヘルシンキ
-- 19/08/2013 - あたらしい薙刀の実演（19:00）、[Tapanilan時代、Tapanila
-    （http://www.tapanila-kendo.org/"Tapanilan ERA - 剣道部門」）スポーツセンター]、
+- 2013年08月19日 - あたらしい薙刀の実演（19:00）、[Tapanilan時代、Tapanila
+    （http://www.tapanila-kendo.org/"Tapanilan ERA - 剣道部門"）スポーツセンター]、
     ヘルシンキ
-- /06/201315-16 - ["ステージインテル·ディ·薙刀コン·ラ·ヘレンM°
-    M.中野 - 虚子"]（http://www.kendo.it/calendario/calendario.cfm" ElencoタイムズCIK電子ディ·ウェア他のfederazioni europee"）;
+- 2013年06月15~16日 - ["ステージインテル·ディ·薙刀コン·ラ·ヘレンM°
+    M.中野 - 虚子"](http://www.kendo.it/calendario/calendario.cfm" ElencoタイムズCIK電子ディ·ウェア他のfederazioni europee"）;
     イタリア
-- 15〜16/06/2013 - フィンランド·スウェーデン国デュエル：競争とセミナー、
+- 2013年06月15~16日 - フィンランド·スウェーデン国デュエル：競争とセミナー、
     Eriksdalshallen、ストックホルム、スウェーデン
-- 2013年7月6日 - 薙刀[中ハメーンリンナ剣道クラブ]（http://www.jookenkai.net/「ハメーンリンナ - ケンはええ、私は推測する」）
+- 2013年7月6日 - 薙刀[中ハメーンリンナ剣道クラブ](http://www.jookenkai.net/ "ハメーンリンナ - ケンはええ、私は推測する"）
     20周年記念セミナー、ハメーンリンナ
-- 19/05/2013 - Roihuvuoriにおける花見まつり[における薙刀のデモンストレーション、
-    ヘルシンキ]（http://www.roihuvuori.fi/hanami/「次 - お花見パーティーRoihuvuori桜公園2013年5月」）
-- 23/03/2013 - トゥルク、フィンランド（11:00中[なぎなた紹介セミナー -
-    16時00分）]（https://www.facebook.com/events/136689943169944/「あたらしい薙刀セミナー」）は、主催する
-    [剣道クラブRendaino]（http://www.rendaino.fi/「トゥルク剣道クラブRendaino協会」）
-- / 03/201322-24 - [英国の年次キャンプ、教師中野ヘレン
-    先生]（http://www.naginata.org.uk/2013-年次英·なぎなた·セミナー·details/「2013年度ブリティッシュ·薙刀セミナー詳細」）
+- 2013年05月19日 - Roihuvuoriにおける花見まつり[における薙刀のデモンストレーション、
+    ヘルシンキ](http://www.roihuvuori.fi/hanami/ "次 - お花見パーティーRoihuvuori桜公園2013年5月"）
+- 2013年03月23日 - トゥルク、フィンランド（11:00中[なぎなた紹介セミナー -
+    16時00分）](https://www.facebook.com/events/136689943169944/ "あたらしい薙刀セミナー"）は、主催する
+    [剣道クラブRendaino](http://www.rendaino.fi/ "トゥルク剣道クラブRendaino協会"）
+- 2013年03月22~24日 - [英国の年次キャンプ、教師中野ヘレン
+    先生](http://www.naginata.org.uk/2013-年次英·なぎなた·セミナー·details/ "2013年度ブリティッシュ·薙刀セミナー詳細"）
 - 2012年11月11日 - Kyu-卒業（16時半）[KKTI道場、オリンピックスタジアム、
-    ヘルシンキ]（http://www.kendohelsinki.org/?sivu=kartta「オリンピック·スタジアムの地図」）
+    ヘルシンキ](http://www.kendohelsinki.org/?sivu=kartta "オリンピック·スタジアムの地図"）
 - 2012年10月11日 - [ヨーロッパ選手権で8番目、プラハ、
-    チェコ共和国]（http://www.enc2012.cz/「薙刀欧州選手権2012 "）
+    チェコ共和国](http://www.enc2012.cz/ "薙刀欧州選手権2012 "）
 - 2012年7月10日 - [特別演習と非公式
     地区大会（14:00 - 18:00）、KKTI道場、オリンピックスタジアム、
-    ヘルシンキ]（https://www.facebook.com/events/530673156947346/「薙刀ヘルシンキ、特別な訓練」）
-- 2012年3月9日 - [ヘルシンキ剣道クラブKKTI秋
+    ヘルシンキ](https://www.facebook.com/events/530673156947346/ "薙刀ヘルシンキ、特別な訓練"）
+- 2012年03月09日 - [ヘルシンキ剣道クラブKKTI秋
     オリンピックスタジアムで新しい初心者のデモンストレーション
-    午前18時30分]（https://www.facebook.com/events/187144878084491/「KKTI新しい初心者デモ」）
-- / 08/201224-26 - [国際なぎなた連盟（INF）セミナー、ウプサラ、
-    スウェーデン]（https://www.facebook.com/events/124522334303072/「ウプサラINFセミナー、スウェーデン"）
-- 12/06/2012 - フィンランドで第一級の等級、オリンピックスタジアム、ヘルシンキ
-- 17/5/2012 - [なぎなた入門セミナー（17:00 - 20時00分）、Saaripirtti
-    Mussalo、
-    コトカ]（https://www.facebook.com/events/180686655386832/「薙刀入門セミナー - コトカ」）
-- 13/05/2012 - [なぎなたミニセミナー（14:00 - 18:00）、オリンピックスタジアム、
-    ヘルシンキ]（https://www.facebook.com/events/385015054876105/「薙刀ミニセミナー - ヘルシンキ"）
-- 13/05/2012 - 花見祭り - 薙刀のデモンストレーション（12時50分）、Roihuvuori、
-    ヘルシンキ
-- 06/05/2012 - [なぎなた入門セミナー（13:00 - 17時00分）、Tapanila、
-    ヘルシンキ]（https://www.facebook.com/events/296023357146874/「薙刀入門セミナー - Tapanila」）
-- 07/02/2010 - ウプサラから夫人KirsiHögglund監督ヘルシンキで[ミニキャンプ、、
-    スウェーデン]（http://www.flickr.com/photos/paazio/sets/72157623374097714/「薙刀 - ヘルシンキ（FI） - 2010/02/07」）
-- 15/02/2009 - あたらしいなぎなたの訓練はヘルシンキでフィンランドで始まった
+    午前18時30分](https://www.facebook.com/events/187144878084491/ "KKTI新しい初心者デモ"）
+- 2012年08月24日 24-26 - [国際なぎなた連盟（INF）セミナー、ウプサラ、
+    スウェーデン](https://www.facebook.com/events/124522334303072/ "ウプサラINFセミナー、スウェーデン"）
+- 2012年06月12日 - フィンランドで第一級の等級、オリンピックスタジアム、ヘルシンキ
+- 2012年05月17日 - [なぎなた入門セミナー（17:00 - 20時00分）、Saaripirtti Mussalo、
+    コトカ](https://www.facebook.com/events/180686655386832/ "薙刀入門セミナー - コトカ"）
+- 2012年05月13日 - [なぎなたミニセミナー（14:00 - 18:00）、オリンピックスタジアム、
+    ヘルシンキ](https://www.facebook.com/events/385015054876105/ "薙刀ミニセミナー - ヘルシンキ"）
+- 2012年05月13日 - 花見祭り - 薙刀のデモンストレーション（12時50分）、Roihuvuori、ヘルシンキ
+- 2012年05月06日 - [なぎなた入門セミナー（13:00 - 17時00分）、Tapanila、
+    ヘルシンキ](https://www.facebook.com/events/296023357146874/ "薙刀入門セミナー - Tapanila"）
+- 2010年02月07日 - ウプサラから夫人KirsiHögglund監督ヘルシンキで[ミニキャンプ、、
+    スウェーデン](http://www.flickr.com/photos/paazio/sets/72157623374097714/ "薙刀 - ヘルシンキ（FI） - 2010/02/07"）
+- 2009年02月15日 - あたらしいなぎなたの訓練はヘルシンキでフィンランドで始まった
     また担当するユッカPaasonenの指導で剣道部のKi-ケン太-Icchi、
     これらのWebサイト。
 

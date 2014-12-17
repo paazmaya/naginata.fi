@@ -4,12 +4,12 @@ JikishinkageryūNaginatajutsuはまだされている最大のスタイルのい
 場所の多くの剣の戦いの学校が開始されている。
 
 [！[姫路2011-05-26 Jikishinkageryu
-Naginatajutsu]（http://farm3.staticflickr.com/2514/5763043905_5a542834cf_m.jpg）
-（http://flickr.com/photos/14224905@N08/5763043905「姫路2011-05-26 Jikishinkageryu Naginatajutsu/ paazio」）
+Naginatajutsu](http://farm3.staticflickr.com/2514/5763043905_5a542834cf_m.jpg）
+（http://flickr.com/photos/14224905@N08/5763043905 "姫路2011-05-26 Jikishinkageryu Naginatajutsu/ paazio"）
 
 現時点ではスタイルはハワイ、ベルギー、フィンランドで、日本と一緒にpractistedされています。
 すべての実務家は、呼び出された[日本の主組織のメンバーである
-Shūtokukai（秀徳会）]（http://www.jikishin-naginata.jp/「Jikishinkageryu Naginatajutsu」）、
+Shūtokukai（秀徳会）](http://www.jikishin-naginata.jp/ "Jikishinkageryu Naginatajutsu"）、
 その保全とJikishinkageryūNaginatajutsuの遺産を尊重することを目的としている。
 
 スタイル固有の特性は、指定された円形の切断技術である
@@ -19,7 +19,7 @@ Shūtokukai（秀徳会）]（http://www.jikishin-naginata.jp/「Jikishinkageryu
 bokken（木刀）とkusarigama（鎌に添付チェーン）。
 
 Jikishinkageryūは、古典的なスタイルの[日本の組織に属している、
-日本古武道協会]（http://www.nihonkobudokyoukai.org/martialarts/059/「Jikishinkageryu Naginatajutsu - 日本古武道協会」）、
+日本古武道協会](http://www.nihonkobudokyoukai.org/martialarts/059/ "Jikishinkageryu Naginatajutsu - 日本古武道協会"）、
 これは、認証のために、日本政府が認識し社会である
 歴史的な武道のスタイル。
 

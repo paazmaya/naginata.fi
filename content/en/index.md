@@ -18,9 +18,6 @@ List of events in Finland, in which Finnish members have joined, or are somehow 
     Russia](https://www.facebook.com/events/1398129980435747/ "Открытый семинар по нагинате")
 -   15-17/11/2013 - [Onshukai, the annual main seminar of Jikishinkageryu Naginatajutsu in Chiba,
     Japan](http://www.flickr.com/photos/paazio/11474557086/in/set-72157638410929463 "2013-11-17 Japan, Chiba - Onshukai training program")
--   09-11/11/2013 - [European Naginata Federation the seminar in Brussels,
-    Belgium. followed by Isabelle D'Hose
-    competition](https://www.facebook.com/events/541531802573585/ "Stage ENF + la coupe Isabelle D'Hose le 11 novembre")
 -   18-20/10/2013 - Seminar for ikkyu and up in Prague, Czech, Directed by Kimura sensei
 -   06/10/2013 - [Kyu Grading for 6-2 kyu (16:30), KKTI Dojo, Olympic Stadium,
     Helsinki](https://www.facebook.com/events/157924271076783/ "Kyu Grading for values of 6-2 kyu")
@@ -28,7 +25,7 @@ List of events in Finland, in which Finnish members have joined, or are somehow 
     Wednesdays, 19:00 - 21:00, Tapanila
     Sports Center](http://www.tapanila-kendo.org/ "Tapanilan Erä - Kendo Division"),
     Helsinki
--   19/08/2013 - Atarashii Naginata demonstartion (19:00), [Tapanilan Erä, Tapanila
+-   19/08/2013 - Atarashii Naginata demonstration (19:00), [Tapanilan Erä, Tapanila
     Sports Center](http://www.tapanila-kendo.org/ "Tapanilan Erä - Kendo Division"),
     Helsinki
 -   15-16/06/2013 - ["Stage internazionale di Naginata con la Helen M °

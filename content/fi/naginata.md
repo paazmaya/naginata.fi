@@ -107,8 +107,7 @@ osaamista vaaditaan kolmannesta dan-arvosta ylöspäin.
 Yleensä kokeneempi osapuoli, jota tässä harjoituksessa kutsutaan nimellä "hikitate",
 avaa kohteita toiselle harjoittelijalle, jonka tulee lyödä suorituksia nopealla tahdilla.
 
-[![Fighting
-Spirit](http://farm8.staticflickr.com/7036/7040969153_c884abd640_m.jpg)
+[![Fighting Spirit](http://farm8.staticflickr.com/7036/7040969153_c884abd640_m.jpg)
 ](http://flickr.com/photos/31676563@N05/7040969153 "Fighting Spirit / Teruhide Tomori")
 
 ### Gokaku geiko

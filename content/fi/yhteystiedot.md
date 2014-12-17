@@ -54,10 +54,6 @@ alusta.](http://www.tapanila-kendo.org/ "Tapanilan Erä - Kendo, Tapanila, Helsi
 
 Harjoituksia ei toistaiseksi ole viikottain, vähäisen osallistujamäärän vuoksi.
 
-Naginataan liittyviin tiedusteluihin vastaa Tapanilassa naginataa
-ohjaava Janne Sojantola ([etunimi.sukunimi]@gmail.com).
-
-
 ## Varustehankintaa
 
 Lajin harrastamista tarjoavat seurat tekevät toisinaan yhteistilauksia

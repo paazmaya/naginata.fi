@@ -19,9 +19,6 @@ Lista tapahtumista, joilla on ollut merkitystä naginatan harrastamiselle Suomes
     Venäjällä](https://www.facebook.com/events/1398129980435747/ "Открытый семинар по нагинате")
 -   15.-17.11.2013 - [Onshukai, Jikishinkageryu Naginatajutsu:n vuotuinen pääleiri, Chiba,
     Japani](http://www.flickr.com/photos/paazio/11474557086/in/set-72157638410929463 "2013-11-17 Japan, Chiba - Onshukai training program")
--   9.-11.11.2013 - [Euroopan Naginataliiton leiri Brysselissä,
-    Belgiassa, jonka jälkeen Isabelle D'Hose-
-    kilpailut.](https://www.facebook.com/events/541531802573585/ "Stage ENF + la coupe Isabelle D'Hose le 11 novembre")
 -   18.-20.10.2013 - Leiri ikkyu ja ylemmille arvoille, Praha, Tsekki, opettajana Kimura sensei
 -   6.10.2013 - [Kyu-graduointi arvoille 6-2 kyu (16:30), KKTI Dojo,
     Olympiastadion,

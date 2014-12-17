@@ -1,6 +1,6 @@
 あたらしいなぎなたは、大きく2つの最大の古い古典に基づいています
-なぎなたスタイル、すなわち[天道流]（http://shingetsukai.com/「天道流薙刀術眞月会」）と
-[Jikishinkageryū]（http://www.jikishin-naginata.jp/「直心影流薙刀術秀徳会」）、まだある
+なぎなたスタイル、すなわち[天道流](http://shingetsukai.com/ "天道流薙刀術眞月会"）と
+[Jikishinkageryū](http://www.jikishin-naginata.jp/ "直心影流薙刀術秀徳会"）、まだある
 最大のスタイルはその中でなぎなたを主な武器として使用されます。
 
 最初は、この新技術は、理由が、学校なぎなた（薙刀学校）と呼ばれたその
@@ -11,7 +11,7 @@
 Competition](http://farm7.staticflickr.com/6231/6282661367_12b51920c4_m.jpg)
 ](http://flickr.com/photos/96248369@N00/6282661367 "Naginata Competition / ethics_gradient")
 
-その後、名前がなったあたらしい薙刀、文字通り「新しいなぎなた」に変更されました
+その後、名前がなったあたらしい薙刀、文字通り "新しいなぎなた"に変更されました
 それは剣道、柔道と居合道の発展とあったのと同様の方法で、バージョンをstandarsised。
 
 武道の現在のフォームは、全日本カタの完成で1970年代に達しました。
@@ -70,9 +70,9 @@ Competition](http://farm7.staticflickr.com/6231/6282661367_12b51920c4_m.jpg)
 
 ##ペアトレーニング
 
-[[Toshidamaギャラリー：豊原Chikanobu（1838 - 1912）千代田宮殿のガードレディース、
-1892]（http://farm9.staticflickr.com/8107/8453641906_8f54ca9720_m.jpg）
-（http://www.flickr.com/photos/toshidama-gallery/8453641906」Toshidamaギャラリー：豊原Chikanobu（1838から1912）千代田宮殿、1892年のガードレディース/アレックス·フォークナー」）
+[![Toshidama Gallery: Toyohara Chikanobu (1838 - 1912) Guard Ladies of the Chiyoda Palace,
+1892](http://farm9.staticflickr.com/8107/8453641906_8f54ca9720_m.jpg)
+](http://www.flickr.com/photos/toshidama-gallery/8453641906 "Toshidama Gallery: Toyohara Chikanobu (1838 - 1912) Guard Ladies of the Chiyoda Palace, 1892 / Alex Faulkner")
 
 薙刀の一対のドリルでは、両方の専門家は竹の刃なぎなたを使用しています。
 
@@ -102,12 +102,11 @@ Competition](http://farm7.staticflickr.com/6231/6282661367_12b51920c4_m.jpg)
 
 ###掛り稽古
 
-より高度な実践者は、他の開業医のためのターゲットを開いている「ひきたて」として機能
+より高度な実践者は、他の開業医のためのターゲットを開いている "ひきたて"として機能
 これで正しいの攻撃は速いテンポで行う必要があります。
 
-[！[ファイティング
-スピリット]（http://farm8.staticflickr.com/7036/7040969153_c884abd640_m.jpg）
-（http://flickr.com/photos/31676563@N05/7040969153「闘魂/輝英土盛」）
+[![Fighting Spirit](http://farm8.staticflickr.com/7036/7040969153_c884abd640_m.jpg)
+](http://flickr.com/photos/31676563@N05/7040969153 "Fighting Spirit / Teruhide Tomori")
 
 ### 互角稽古
 
@@ -133,8 +132,8 @@ Competition](http://farm7.staticflickr.com/6231/6282661367_12b51920c4_m.jpg)
 - Sendanmaki、ブレードとハンドルのための接続部
 - Monouchi、切断するために使用されるブレードの先端部。
 
-！[薙刀防具中段アートワーク
-Lecklin]（/ IMG/なぎなた-防具·中段·アートワーク - lecklin.png）
+![Naginata Bogu Chudan Artwork
+Lecklin](/img/naginata-bogu-chudan-artwork-lecklin.png)
 
 ###防具
 
@@ -153,4 +152,4 @@ Lecklin]（/ IMG/なぎなた-防具·中段·アートワーク - lecklin.png�
 これらはヨーロッパ（ENF）および国際（INF）なぎなた連盟の基準に基づいています。
 
 [詳細は、ここから入手できます。
-（https://github.com/paazmaya/naginata.fi/blob/master/content/ja/shinsakijun.md「グレーディング·ルール」）。
+（https://github.com/paazmaya/naginata.fi/blob/master/content/ja/shinsakijun.md "グレーディング·ルール"）。

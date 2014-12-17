@@ -53,10 +53,6 @@ from beginning of Autumn 2013.](http://www.tapanila-kendo.org/ "Tapanilan Erä -
 
 Trainings are on hold for the time being, due to small number of participants.
 
-The responsible contact person for Naginata at Tapanila is Mr. Janne
-Sojantola ([firstname.lastname]@gmail.com), who is also leading the trainings.
-
-
 ## Training equipments
 
 It is sometimes possible to order training equipments via the club that in
