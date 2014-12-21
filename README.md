@@ -126,6 +126,16 @@ npm install -g nodemon
 nodemon server.js
 ```
 
+Automated screenshot of the front page on every [deployment with GhostInspector](https://ghostinspector.com/docs/integration/#heroku).
+
+```sh
+heroku addons:add deployhooks:http --url=https://api.ghostinspector.com/v1/suites/[suite-id]/execute/?apiKey=[api-key]
+```
+
+The free plan of GhostInspector limits running the tests only up to 100 timer per month, hence it is much more efficient
+to execute them only on deployment, instead of once a day.
+
+
 ### Tests statistics are available
 
 * [paazmaya.github.io/naginata.fi/photobox](http://paazmaya.github.io/naginata.fi/photobox)
