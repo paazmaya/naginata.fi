@@ -16,10 +16,10 @@
     "body-parser": "~1.10.0",
     "compression": "~1.2.2",
     "express": "~4.10.6",
-    "jade": "~1.8.1",
+    "jade": "~1.8.2",
     "marked": "~0.3.2",
     "morgan": "~1.5.0",
-    "newrelic": "~1.14.0",
+    "newrelic": "~1.14.4",
     "st": "~0.5.2"
   },
   "devDependencies": {
