@@ -26,18 +26,36 @@ describe('Get enabled languages', function() {
     }
   };
 
-  it('All enabled', function() {
+  it('All enabled as an object', function() {
     var output = getEnabledLanguages(langConf);
     var keys = Object.keys(output);
     expect(keys.length).toBe(3);
   });
 
-  it('Only Finnish', function() {
+  it('Only Finnish in an object', function() {
     langConf.en.enabled = false;
     langConf.ja.enabled = false;
     var output = getEnabledLanguages(langConf);
     var keys = Object.keys(output);
     expect(keys.length).toBe(1);
+  });
+
+  it('Nothing', function() {
+    var output = getEnabledLanguages();
+    var keys = Object.keys(output);
+    expect(keys.length).toBe(0);
+  });
+
+  it('String instead of object', function() {
+    var output = getEnabledLanguages('wrong thing');
+    var keys = Object.keys(output);
+    expect(keys.length).toBe(0);
+  });
+
+  it('Array instead of object', function() {
+    var output = getEnabledLanguages(['wrong', 'thing']);
+    var keys = Object.keys(output);
+    expect(keys.length).toBe(0);
   });
 
 });

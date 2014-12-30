@@ -24,7 +24,7 @@ module.exports = function checkLang(acceptsLanguages, enabledLanguages) {
     return 'no';
   }
   if (typeof acceptsLanguages !== 'object' || !acceptsLanguages) {
-    return enabledLanguages.shift();
+    return enabledLanguages[0];
   }
   for (var i = 0; i < acceptsLanguages.length; ++i) {
     var key = acceptsLanguages[i];
@@ -37,5 +37,5 @@ module.exports = function checkLang(acceptsLanguages, enabledLanguages) {
       return key;
     }
   }
-  return enabledLanguages.shift();
+  return enabledLanguages[0];
 };

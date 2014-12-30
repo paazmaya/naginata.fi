@@ -14,9 +14,12 @@
  * @returns {object} Only those languages that are enabled
  */
 module.exports = function getEnabledLanguages(languages) {
+  if (typeof languages !== 'object' || languages instanceof Array) {
+    return {};
+  }
   var list = {};
   Object.keys(languages).forEach(function forMetaLangs(key) {
-    if (languages[key].enabled === true) {
+    if (key.length === 2 && languages[key].enabled === true) {
       list[key] = languages[key];
     }
   });
