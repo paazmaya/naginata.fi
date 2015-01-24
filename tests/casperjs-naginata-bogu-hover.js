@@ -8,6 +8,12 @@
 
 'use strict';
 
+/**
+ * Take a screen capture of each hover state and create a video of them
+ *
+ * ffmpeg -framerate 2 -i bogu-%02d.png -pix_fmt yuv420p -c:v libx264 bogu-hover.mp4
+ */
+
 var casper = require('casper').create({
   verbose: true,
   logLevel: 'info',
@@ -55,5 +61,3 @@ casper.start('http://naginata.fi/en/naginata', function() {
 });
 
 casper.run();
-
-
