@@ -11,7 +11,7 @@
 /**
  * Take a screen capture of each hover state and create a video of them
  *
- * ffmpeg -framerate 2 -i bogu-%02d.png -pix_fmt yuv420p -c:v libx264 bogu-hover.mp4
+ * ffmpeg -framerate 2 -i bogu-%02d.png -pix_fmt yuv420p -c:v libx264 -r 30 -g 1 bogu-hover.mp4
  */
 
 var casper = require('casper').create({
@@ -29,12 +29,13 @@ casper.start('http://naginata.fi/en/naginata', function() {
     return __utils__.getElementBounds('img[src="' + image + '"]');
   }, image);
   bounds.width += 50;
-  this.capture('bogu-01.png', bounds);
+  this.capture('bogu-00.png', bounds);
   
   var spans = this.evaluate(function(image) {
     var parent = document.querySelector('img[src="' + image + '"]').parentNode;
     return parent.querySelectorAll('.note');
   }, image);
+  this.capture('bogu-01.png', bounds);
   
   var ns = [];
   var len = spans.length;
@@ -57,7 +58,6 @@ casper.start('http://naginata.fi/en/naginata', function() {
       __utils__.mouseEvent('mouseout', '.note:nth-child(' + n + ')');
     }, n);
   });
-  phantom.exit();
 });
 
 casper.run();
