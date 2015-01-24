@@ -47,6 +47,10 @@ Contributors are welcome.
 [PhpStorm IDE](http://www.jetbrains.com/phpstorm/).
 ![Developed with JetBrains PhpStorm](http://www.jetbrains.com/phpstorm/documentation/phpstorm_banners/phpstorm1/phpstorm125x37_white.gif)
 
+## Contributing
+
+[Please refer to a GitHub blog post on how to create somewhat perfect pull request.](https://github.com/blog/1943-how-to-write-the-perfect-pull-request "How to write the perfect pull request")
+
 ## Technologies
 
  * JavaScript for the front and the back ends, more about it below
