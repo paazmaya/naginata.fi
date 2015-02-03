@@ -7,7 +7,7 @@ Full legal text available in `LICENSE.md`.
 
 [![Dependency Status](https://img.shields.io/gemnasium/paazmaya/naginata.fi.svg?style=flat-square)](https://gemnasium.com/paazmaya/naginata.fi)
 [![Build Status](https://img.shields.io/travis/paazmaya/naginata.fi.svg?style=flat-square)](https://travis-ci.org/paazmaya/naginata.fi)
-[![Coverage Status](https://img.shields.io/coveralls/paazmaya/naginata.fi/badge.svg?style=flat-square)](https://coveralls.io/r/paazmaya/naginata.fi)
+[![Coverage Status](https://img.shields.io/coveralls/paazmaya/naginata.fi.svg?style=flat-square)](https://coveralls.io/r/paazmaya/naginata.fi)
 [![Code Climate](https://img.shields.io/codeclimate/github/paazmaya/naginata.fi.svg?style=flat-square)](https://codeclimate.com/github/paazmaya/naginata.fi)
 [![Built with Grunt](http://img.shields.io/badge/Grunt-0.4-blue.svg?style=flat-square)](http://gruntjs.com/)
 [![Analytics](https://ga-beacon.appspot.com/UA-2643697-15/naginata.fi/index?flat)](https://github.com/igrigorik/ga-beacon)
