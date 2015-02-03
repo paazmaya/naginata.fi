@@ -10,7 +10,7 @@ Full legal text available in `LICENSE.md`.
 [![Coverage Status](https://img.shields.io/coveralls/paazmaya/naginata.fi/badge.svg?style=flat-square)](https://coveralls.io/r/paazmaya/naginata.fi)
 [![Code Climate](https://img.shields.io/codeclimate/github/paazmaya/naginata.fi.svg?style=flat-square)](https://codeclimate.com/github/paazmaya/naginata.fi)
 [![Built with Grunt](http://img.shields.io/badge/Grunt-0.4-blue.svg?style=flat-square)](http://gruntjs.com/)
-[![Analytics](https://ga-beacon.appspot.com/UA-2643697-15/naginata.fi/index)](https://github.com/igrigorik/ga-beacon)
+[![Analytics](https://ga-beacon.appspot.com/UA-2643697-15/naginata.fi/index?flat)](https://github.com/igrigorik/ga-beacon)
 
 ## About the martial art
 
