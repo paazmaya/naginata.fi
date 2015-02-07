@@ -2,13 +2,18 @@ sudo: false
 language: node_js
 node_js:
   - "0.10"
-  - "0.11"
+  - "0.12"
+  - "iojs"
+cache:
+  directories:
+    - node_modules
+matrix:
+  fast_finish: true
+  allow_failures:
+    - node_js: "0.12"
+    - node_js: "iojs"
 before_script:
   - npm install -g bower
   - bower install
 after_success:
   - npm run coveralls
-matrix:
-  fast_finish: true
-  allow_failures:
-    - node_js: "0.11"
