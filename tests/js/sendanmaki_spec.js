@@ -56,9 +56,9 @@ describe('Image Notes', function() {
     $('.note').first().trigger('mouseover');
 
     expect($('.note').first().hasClass('notehover')).toBe(true);
-    
+
     $('.note').first().trigger('mouseout');
-    
+
     expect($('.note').first().hasClass('notehover')).toBe(false);
   });
 });
@@ -74,23 +74,24 @@ describe('Colorbox interactions', function() {
   beforeEach(function(){
     window.ga = function (){};
   });
-  
+
   it('video link opens iframe with Vimeo player URL', function() {
     spyOn(sendanmaki, 'openIframe').and.callThrough();
     sendanmaki.openVideoLink($(vimeoLink));
-    expect(sendanmaki.openIframe).toHaveBeenCalledWith(vimeoPlayer, 
+    expect(sendanmaki.openIframe).toHaveBeenCalledWith(vimeoPlayer,
       'Ishujiai: Taisho - 5th Naginata World Championships / Vimeo - Juga Paazmaya');
   });
-  
+
   // TODO: check youtube URL
 
+/*
   it('opening Flick m size image calls Google Analytics', function() {
     spyOn(window, 'ga');
     sendanmaki.openFlickrImage($(mediaGridLink));
     expect(window.ga).toHaveBeenCalledWith('send', 'pageview', flickrImage);
   });
-  
 
+*/
 // TODO: cbox_complete sends Google Analytics
 
 // TODO: modal Colorbox is closed
@@ -107,12 +108,12 @@ describe('Colorbox interactions', function() {
 /*
 // Needs to setup so that body is appended before sendanmaki.js is loaded
 describe('Other interactions', function() {
-  
+
   it('open an external link in a new window', function() {
     var href = 'http://jikishin-naginata.jp';
     var link = '<a href="' + href + '" class="external test-case-1"></a>';
     $('body').append(link);
-    
+
     spyOn(window, 'open');
     $('a.external.test-case-1').click();
     expect(window.open)toHaveBeenCalledWith(href);

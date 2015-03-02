@@ -33,7 +33,7 @@ This website will focus on the following two:
 
 ## About this software project
 
-The main reason for this website and this Github project is to learn to use the given
+The main reason for this website and this GitHub project is to learn to use the given
 technologies and to promote the martial art.
 
 The domain, `naginata.fi` is privately registered to Jukka Paasonen.
@@ -42,6 +42,9 @@ Leena Lecklin was kind enough to draw the `naginata-bogu-chudan-artwork-lecklin.
 _Atarashii Naginata_ page.
 
 Contributors are welcome.
+
+Any changes made to this GitHub repository, [are automatically deployed to Heroku](https://blog.heroku.com/archives/2015/2/6/heroku_github_integration),
+hence any content updates are visible via the web site almost immediately.
 
 [JetBrains](http://www.jetbrains.com/) has kindly provided this project with an open source license for
 [PhpStorm IDE](http://www.jetbrains.com/phpstorm/).
@@ -75,7 +78,6 @@ List of software used for making `naginata.fi` possible:
  * [Markdown](http://daringfireball.net/projects/markdown/ "Markdown is a text-to-HTML conversion tool for web writers")
  * [Node.js](http://nodejs.org "Node.js is a platform built on Chrome's JavaScript runtime for easily building fast, scalable network applications")
  * [Phantomas](http://macbre.github.io/phantomas/ "PhantomJS-based web performance metrics collector and monitoring tool")
- * [SPDY](https://github.com/indutny/node-spdy "SPDY Server for node.js")
  * [Sitespeed.io](http://sitespeed.io "Analyze your website speed and performance")
  * [jQuery](http://jquery.com/ "New wave JavaScript")
  * [photobox](https://github.com/stefanjudis/photobox "Module to create screenshots of your site and check if the layout has changed")

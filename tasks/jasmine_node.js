@@ -14,6 +14,7 @@ module.exports = {
         thresholds: {
           lines: 90
         },
+        reportDir: 'istanbul/stuff/',
         print: 'detail' // none, detail, both
       },
       specFolders: ['tests/node'],
