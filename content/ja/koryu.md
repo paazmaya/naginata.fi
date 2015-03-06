@@ -3,14 +3,12 @@
 日本の関東に位置する鹿島の地で創始したのに始まる。
 またこの鹿島からは、他の多くの流派が誕生している。
 
-[！[姫路2011-05-26 Jikishinkageryu
-Naginatajutsu](http://farm3.staticflickr.com/2514/5763043905_5a542834cf_m.jpg）
+[！[直心影流薙刀術　姫路2011年5月26日](http://farm3.staticflickr.com/2514/5763043905_5a542834cf_m.jpg）
 （http://flickr.com/photos/14224905@N08/5763043905 "姫路2011-05-26 Jikishinkageryu Naginatajutsu/ paazio"）
 
-現時点ではスタイルはハワイ、ベルギー、フィンランドで、日本と一緒にpractistedされています。
-すべての実務家は、呼び出された[日本の主組織のメンバーである
-Shūtokukai（秀徳会）](http://www.jikishin-naginata.jp/ "Jikishinkageryu Naginatajutsu"）、
-その保全とJikishinkageryūNaginatajutsuの遺産を尊重することを目的としている。
+現在のところ、直心影流薙刀術は、日本、ハワイ、ベルギー、フィンランドで継承されている。
+直心影流薙刀術愛好家は全員、日本の組織「秀徳会」に所属している。（日本古武道協会　直心影流薙刀術）(http://www.jikishin-naginata.jp/ "Jikishinkageryu Naginatajutsu"）
+「秀徳会」は、直心影流薙刀術の保存と継承を目的として創立した。
 
 スタイル固有の特性は、指定された円形の切断技術である
 巻線と水車の後、ここで薙刀は動いているすべての時間がかかる場合があります。
