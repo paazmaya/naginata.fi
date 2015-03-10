@@ -24,7 +24,7 @@
 -   2013年6月15日及び16日 フィンランド·スウェーデン交流合同稽古会 Eriksdalshallen、ストックホルム、スウェーデン
 -   2013年6月7日         [20周年記念セミナー ハメーンリンナ剣道クラブにて](http://www.jookenkai.net/)
 -   2013年5月19日       [リズムなぎなた演武 ロイフブオリ花見会場にて](http://www.roihuvuori.fi/hanami/ "次 - お花見パーティーRoihuvuori桜公園2013年5月")
--   2013年3月23日       [なぎなた紹介講習会 フィンランド、トゥルクにて](https://www.facebook.com/events/136689943169944/)[剣道クラブ Rendaino](http://www.rendaino.fi/ "トゥルク剣道クラブRendaino協会")
+-   2013年3月23日       [なぎなた紹介講習会 フィンランド、トゥルクにて](https://www.facebook.com/events/136689943169944/) [剣道クラブ Rendaino](http://www.rendaino.fi/ "トゥルク剣道クラブRendaino協会")
 -   2013年3月22日〜24日  [英国なぎなた講習会 教士中野ヘレン先生](http://www.naginata.org.uk/2013年英·なぎなたセミナー·details/ "2013年度英国なぎなたセミナー詳細")
 -   2012年11月11日    進級試験  [ヘルシンキオリンピックスタジアムにて-](http://www.kendohelsinki.org/?sivu=kartta "オリンピック·スタジアムの地図")
 -   2012年10月11日       [ヨーロッパ選手権 チェコ共和国プラハにて](http://www.enc2012.cz/ "薙刀欧州選手権2012 ")

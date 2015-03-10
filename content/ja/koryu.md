@@ -37,7 +37,6 @@
 知るよう促され、同様に、新しいなぎなたで稽古及び経験を積んだ者が
 古流について知るよう奨励されることもある。
 
-
 [![Kyoto 2011-05-04 Shimogamo Jinja, Jikishinkageryu
 Naginatajutsu](http://farm6.staticflickr.com/5185/5763043699_fcda29747e_m.jpg)
 ](http://flickr.com/photos/14224905@N08/5763043699 "Kyoto 2011-05-04 Shimogamo Jinja, Jikishinkageryu Naginatajutsu / paazio")

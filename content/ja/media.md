@@ -4,7 +4,6 @@
 なぎなたを調査する目的に限り、自由に使用することができます。
 元画像はflickrのウェブサイトにリンクしています。
 
-
 -   [![2012-12-06 姫路 - なぎなた体操〜銃剣道の本より
     book](http://farm9.static.flickr.com/8362/8450641664_fea2b93757_s.jpg)](http://farm9.static.flickr.com/8362/8450641664_fea2b93757_z.jpg "2012-12-06 姫路 - なぎなた体操〜銃剣道の本より")
 -   [![2012-12-22 Himeji - Last Naginata training of the
@@ -116,11 +115,9 @@
 以下の画像は、さまざまな映像配信ソース(主にVimeoのとYouTube)から収集した薙刀関連の動画です。
 動画には、競技会，演武及びその他のイベントが含まれています。
 
-
 インラインプレーヤーウィンドウで開くビデオクリップは、右下のフルスクリーンのアイコンをクリックすることで、フルスクリーンにすることができます。
 
 動画の名前とタイトルは、元の作者によるものである。
-
 
 -   [熊本県全日本の形3回戦 - Kumamoto Shi side 3rd round 第55回都道府県なぎなた大会 - 55th Naginata Todōfuken](https://www.youtube.com/watch?v=lsZYk1dmffI "熊本県仕の方3回戦 - Kumamoto Shi side 3rd round 第55回都道府県なぎなた大会 - 55th Naginata Todōfuken")
 -   [Shimada Teruko, Jikishinkageryū Jikishinkageryū](http://www.youtube.com/watch?v=G9T2FAJ3kzQ "Shimada Teruko, Jikishinkageryū Jikishinkageryū")
