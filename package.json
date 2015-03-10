@@ -1,6 +1,6 @@
 {
   "name": "naginata.fi",
-  "version": "0.7.1",
+  "version": "0.8.0",
   "title": "Naginata in Finland",
   "homepage": "https://github.com/paazmaya/naginata.fi",
   "description": "A web site in Finland for an ancient martial art from Japan",
@@ -10,16 +10,16 @@
   "scripts": {
     "test": "grunt test",
     "start": "node server.js",
-    "coveralls": "./node_modules/karma/bin/karma start karma.conf.js && cat coverage/*/lcov.info coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
+    "coveralls": "karma start karma.conf.js && cat coverage/*/lcov.info coverage/lcov.info | coveralls"
   },
   "dependencies": {
     "body-parser": "~1.12.0",
     "compression": "~1.4.1",
-    "express": "~4.12.1",
+    "express": "~4.12.2",
     "jade": "~1.9.2",
     "marked": "~0.3.3",
     "morgan": "~1.5.1",
-    "newrelic": "~1.17.0",
+    "newrelic": "~1.17.1",
     "st": "~0.5.3"
   },
   "devDependencies": {
