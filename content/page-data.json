@@ -129,8 +129,8 @@
       },
       {
         "url": "http://github.com/paazmaya/naginata.fi",
-        "alt": "Muokkaa sivuja Githubissa",
-        "text": "Muokkaa Githubissa"
+        "alt": "Muokkaa sivuja GitHubissa",
+        "text": "Muokkaa GitHubissa"
       }
     ],
     "en": [
@@ -141,8 +141,8 @@
       },
       {
         "url": "http://github.com/paazmaya/naginata.fi",
-        "alt": "Contribute to the content and the code at Github",
-        "text": "Contribute at Github"
+        "alt": "Contribute to the content and the code at GitHub",
+        "text": "Contribute at GitHub"
       }
     ],
     "ja": [
@@ -153,8 +153,8 @@
       },
       {
         "url": "http://github.com/paazmaya/naginata.fi",
-        "alt": "Githubで貢献する",
-        "text": "Githubで貢献する"
+        "alt": "GitHubで貢献する",
+        "text": "GitHubで貢献する"
       }
     ]
   },
