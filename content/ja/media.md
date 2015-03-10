@@ -1,6 +1,7 @@
 ## Flickrの写真について
 
-ここで使用されている写真は全てユッカ・パーソネンにより撮影され、なぎなたを調査する目的に限り、自由に使用することができます。
+ここで使用されている写真は全てユッカ・パーソネンにより撮影され、
+なぎなたを調査する目的に限り、自由に使用することができます。
 元画像はflickrのウェブサイトにリンクしています。
 
 
@@ -112,7 +113,7 @@
 
 ## 競技会及び演武ビデオ
 
-以下の画像は、さまざまな映像配信ソース(主にVimeoのとYouTube）から収集した薙刀関連の動画です。
+以下の画像は、さまざまな映像配信ソース(主にVimeoのとYouTube)から収集した薙刀関連の動画です。
 動画には、競技会，演武及びその他のイベントが含まれています。
 
 
@@ -125,7 +126,7 @@
 -   [Shimada Teruko, Jikishinkageryū Jikishinkageryū](http://www.youtube.com/watch?v=G9T2FAJ3kzQ "Shimada Teruko, Jikishinkageryū Jikishinkageryū")
 -   [Sonobe Hideo 1930 in saineikan 園部秀雄](http://www.youtube.com/watch?v=NtJlD11pj5k "Sonobe Hideo 1930 in saineikan 園部秀雄")
 -   [リズムなぎなた](http://www.youtube.com/watch?v=vRB8Fkevcc8 "リズムなぎなた")
--   [下鴨神社　奉納演武　直心影流薙刀術](http://www.youtube.com/watch?v=DiCwRBds458 "下鴨神社　奉納演武　直心影流薙刀術 / Youtube - kuniedasagami2008")
+-   [下鴨神社 奉納演武 直心影流薙刀術](http://www.youtube.com/watch?v=DiCwRBds458 "下鴨神社 奉納演武 直心影流薙刀術 / Youtube - kuniedasagami2008")
 -   [北海道日記- 自由學校20週年紀念 傳統武術表演2](http://www.youtube.com/watch?v=0TOaYDdhqlk "北海道日記- 自由學校20週年紀念 傳統武術表演2 / Youtube - kanedino")
 -   [北海道日記- 自由學校20週年紀念 傳統武術表演3](http://www.youtube.com/watch?v=3horKHbL7I8 "北海道日記- 自由學校20週年紀念 傳統武術表演3 / Youtube - kanedino")
 -   [結成40周年記念調布市なぎなた大会](http://www.youtube.com/watch?v=v696WandAw8 "結成40周年記念調布市なぎなた大会 / Youtube - osuga01")

@@ -3,26 +3,25 @@
 日本の関東に位置する鹿島の地で創始したのに始まる。
 またこの鹿島からは、他の多くの流派が誕生している。
 
-[！[直心影流薙刀術　姫路2011年5月26日](http://farm3.staticflickr.com/2514/5763043905_5a542834cf_m.jpg）
-(http://flickr.com/photos/14224905@N08/5763043905 "姫路2011-05-26 Jikishinkageryu Naginatajutsu/ paazio"）
+[![直心影流薙刀術 姫路2011年5月26日](http://farm3.staticflickr.com/2514/5763043905_5a542834cf_m.jpg)
+(http://flickr.com/photos/14224905@N08/5763043905 "姫路2011-05-26 Jikishinkageryu Naginatajutsu/ paazio")
 
 現在のところ、直心影流薙刀術は、日本、ハワイ、ベルギー、フィンランドで継承されている。
-直心影流薙刀術愛好家は全員、日本の組織 "秀徳会"に所属している。(日本古武道協会　直心影流薙刀術）(http://www.jikishin-naginata.jp/ "Jikishinkageryu Naginatajutsu"）
+直心影流薙刀術愛好家は全員、日本の組織 "秀徳会"に所属している。(日本古武道協会 直心影流薙刀術)(http://www.jikishin-naginata.jp/ "Jikishinkageryu Naginatajutsu")
  "秀徳会"は、直心影流薙刀術の保存と振興を目的として創立した。
 
 当流派の特徴は、自然現象の中に流れる力の動きを技の中に取り入れた
 水車、風車といった車返しの技など、最小の力で相手を制するという華麗にして勇壮な操法である。
 
-また、薙刀に加えて、短刀や木剣、そして鎖がま(カマに鎖が施されたもの）なども
+また、薙刀に加えて、短刀や木剣、そして鎖がま(カマに鎖が施されたもの)なども
 継承されている。
 
-直心影流薙刀術は、古武道の保存と振興を目的として、財団法人日本武道館が中心となり、古武道各流派の代表者や有識者の協議を経て設立された日本古武道協会に属している。
-(http://www.nihonkobudokyoukai.org/martialarts/059/ "Jikishinkageryu Naginatajutsu - 日本古武道協会"）、
+[直心影流薙刀術は、古武道の保存と振興を目的として、財団法人日本武道館が中心となり、古武道各流派の代表者や有識者の協議を経て設立された日本古武道協会に属している。](http://www.nihonkobudokyoukai.org/martialarts/059/ "Jikishinkageryu Naginatajutsu - 日本古武道協会")、
 日本古武道協会は、日本古武道振興会と並んで、
 最も権威ある古武道団体である。
 
 
-##古流と新しいなぎなた
+## 古流と新しいなぎなた
 
 明治時代後半の日本では、江戸時代に存在した四百もの流派のうち、およそ十流派程が残った。
 その中で最も大きな二流派が、天道流と直心影流であり、
@@ -47,21 +46,12 @@ Naginatajutsu](http://farm6.staticflickr.com/5185/5763043699_fcda29747e_m.jpg)
 Naginatajutsu](http://farm3.staticflickr.com/2514/5763043905_5a542834cf_m.jpg)
 ](http://flickr.com/photos/14224905@N08/5763043905 "Himeji 2011-05-26 Jikishinkageryu Naginatajutsu / paazio")
 
-##　流派継承者(宗家）
+## 流派継承者(宗家)
 
 流派の継承者は、安定した高い技術、深い知識を持ち合わせているだけでなく、
 秀でた社交性をも有した人物であることが非常に重要である。
 
 前世紀からの継承者系譜は、以下の通りである。
-
-- 第1回松本Bisen無神(松本大炊助政元） - 備前守紀
-- 第14回佐竹義則(佐竹鑑柳斎源義文）
-- 第15回園部秀雄(園部秀雄）
-- 第16回園部Shigehachi(園部繁八）
-- 第17回洞爺明子(戸谷明子）
-- 第18回園部正美(園部正美）
-
-
 
 ## 系譜
 

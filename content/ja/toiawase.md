@@ -1,7 +1,7 @@
-フィンランドの新しいなぎなたは、ヨーロッパなぎなた連盟のメンバーであるフィンランド剣道連盟(FKA）の下、ヘッドインストラクターはユッカ・パーソネン(二段、jukka@naginata.fi）、サブインストラクターは真理・パーソネン(四段）で構成されている。
+フィンランドの新しいなぎなたは、ヨーロッパなぎなた連盟のメンバーであるフィンランド剣道連盟(FKA)の下、ヘッドインストラクターはユッカ・パーソネン(二段、jukka@naginata.fi)、サブインストラクターは真理・パーソネン(四段)で構成されている。
 
-直心影流薙刀術では、すべてのメンバーが日本の秀徳会に属している(登録協会）。
-フィンランドのヘッドインストラクターはユッカ・パーソネン(霊剣ノ巻 jukka@naginata.fi）である。
+直心影流薙刀術では、すべてのメンバーが日本の秀徳会に属している(登録協会)。
+フィンランドのヘッドインストラクターはユッカ・パーソネン(霊剣ノ巻 jukka@naginata.fi)である。
 
 [![Kirsikankukkajuhla Roihuvuoressa](http://farm6.static.flickr.com/5231/7188222444_8b8d2512c1_m.jpg)
 ](http://flickr.com/photos/naakkalinna/7188222444 "Kirsikankukkajuhla Roihuvuoressa / Naakka")
@@ -15,18 +15,18 @@
 
 ### ヘルシンキ剣道連盟・気剣体一致
 
-[ヘルシンキ剣道連盟の気剣体一致(KKTI）クラブで、新しいなぎなたと直心影流薙刀術のクラスに参加することができます。
-](http://kendohelsinki.org "気剣体一致(KKTI）、ヘルシンキ剣道クラブ、オリンピックスタジアム"）
+[ヘルシンキ剣道連盟の気剣体一致(KKTI)クラブで、新しいなぎなたと直心影流薙刀術のクラスに参加することができます。
+](http://kendohelsinki.org "気剣体一致(KKTI)、ヘルシンキ剣道クラブ、オリンピックスタジアム")
 
 稽古の日時及び場所は次の通りである。
-木曜日の午後８時半から１０時，ヘルシンキオリンピックスタジアム内(tanssihali）、
-日曜日の午後３時半から５時、ヘルシンキオリンピックスタジアム内(keskisali）。尚、防具を用いた稽古は日曜日に行われます。
+木曜日の午後８時半から１０時，ヘルシンキオリンピックスタジアム内(tanssihali)、
+日曜日の午後３時半から５時、ヘルシンキオリンピックスタジアム内(keskisali)。尚、防具を用いた稽古は日曜日に行われます。
 尚、日曜日の稽古は日本語で受けることもできる。
 
 
-詳細は、新しいなぎなたについてはヤルノ・ウリルオマ氏(jarno.yliluoma@gmail.com）へ、
-直心影流薙刀術についてはユッカ・パーソネン(jukka@naginata.fi）にご連絡ください。
-また日本語での対応が必要な方は真理・パーソネン(mari@naginata.fi）までご連絡ください。
+詳細は、新しいなぎなたについてはヤルノ・ウリルオマ氏(jarno.yliluoma@gmail.com)へ、
+直心影流薙刀術についてはユッカ・パーソネン(jukka@naginata.fi)にご連絡ください。
+また日本語での対応が必要な方は真理・パーソネン(mari@naginata.fi)までご連絡ください。
 
 
 ## 稽古に必要な武器等
@@ -35,11 +35,11 @@
 
 また、当サイト所有者は、試合用なぎなたを販売のために数本保持しているが、
 その値段は注文時期やサイズによって８０〜９０ユーロ内で変動する。
-その他、全日本の形用なぎなた、直心影流薙刀セット(薙刀、木剣、短刀）も購入することが可能である。
+その他、全日本の形用なぎなた、直心影流薙刀セット(薙刀、木剣、短刀)も購入することが可能である。
 
 またそれ以外にも、以下のサイトから稽古に必要な武器類を購入することができる。
 
--   [Bokkenshop (Tozando), Japan](http://www.bokkenshop.com/ "Bokkenshop")
--   [Tozando, Japan](http://www.tozandoshop.com/ "Tozando")　東山堂
--   [E - Bogu, Japan](http://www.e-bogu.jp/ "E- Bogu Japan")
+-   [Bokkenshop (東山堂), Japan](http://www.bokkenshop.com/ "Bokkenshop")
+-   [東山堂, Japan](http://www.tozandoshop.com/ "Tozando")
+-   [E-Bogu, Japan](http://www.e-bogu.jp/ "E-Bogu Japan")
 -   [Nine Circles, Great Britain](http://www.ninecircles.co.uk/ "Nine Circles")
