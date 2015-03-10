@@ -1,6 +1,6 @@
 ## Flickrの写真について
 
-ここで使用されている写真は全てユッカ・パーソネンによって撮影され、なぎなたを調査する目的に限り、自由に使用することができます。
+ここで使用されている写真は全てユッカ・パーソネンにより撮影され、なぎなたを調査する目的に限り、自由に使用することができます。
 元画像はflickrのウェブサイトにリンクしています。
 
 
@@ -110,14 +110,13 @@
     2010-04-15](http://farm5.static.flickr.com/4070/4632520539_aaba8e61fa_s.jpg)](http://farm5.static.flickr.com/4070/4632520539_aaba8e61fa_z.jpg "Himeji, Japan 2010-04-15")
 
 
-## 競技会や演武ビデオ
+## 競技会及び演武ビデオ
 
 以下の画像は、さまざまな映像配信ソース（主にVimeoのとYouTube）から収集した薙刀関連の動画です。
-動画には、競技会，演武及びその他のイベントからの技が含まれています。
+動画には、競技会，演武及びその他のイベントが含まれています。
 
 
-プレーヤーからフルスクリーンにすることができ、ここで、インラインプレーヤーウィンドウで開いてリストされているビデオクリップ
-右下隅。
+インラインプレーヤーウィンドウで開くビデオクリップは、右下のフルスクリーンのアイコンをクリックすることで、フルスクリーンにすることができます。
 
 動画の名前とタイトルは、元の作者によるものである。
 
@@ -125,7 +124,7 @@
 -   [熊本県全日本の形3回戦 - Kumamoto Shi side 3rd round 第55回都道府県なぎなた大会 - 55th Naginata Todōfuken](https://www.youtube.com/watch?v=lsZYk1dmffI "熊本県仕の方3回戦 - Kumamoto Shi side 3rd round 第55回都道府県なぎなた大会 - 55th Naginata Todōfuken")
 -   [Shimada Teruko, Jikishinkageryū Jikishinkageryū](http://www.youtube.com/watch?v=G9T2FAJ3kzQ "Shimada Teruko, Jikishinkageryū Jikishinkageryū")
 -   [Sonobe Hideo 1930 in saineikan 園部秀雄](http://www.youtube.com/watch?v=NtJlD11pj5k "Sonobe Hideo 1930 in saineikan 園部秀雄")
--   [リズムなぎなた](http://www.youtube.com/watch?v=vRB8Fkevcc8 "リズムなぎなた")
+-   [リズムなぎなた](http://www.youtube.com/watch?v=vRB8Fkevcc8 "リズムなぎなた")
 -   [下鴨神社　奉納演武　直心影流薙刀術](http://www.youtube.com/watch?v=DiCwRBds458 "下鴨神社　奉納演武　直心影流薙刀術 / Youtube - kuniedasagami2008")
 -   [北海道日記- 自由學校20週年紀念 傳統武術表演2](http://www.youtube.com/watch?v=0TOaYDdhqlk "北海道日記- 自由學校20週年紀念 傳統武術表演2 / Youtube - kanedino")
 -   [北海道日記- 自由學校20週年紀念 傳統武術表演3](http://www.youtube.com/watch?v=3horKHbL7I8 "北海道日記- 自由學校20週年紀念 傳統武術表演3 / Youtube - kanedino")
