@@ -37,6 +37,7 @@
     "jasmine-node": "~1.14",
     "jit-grunt": "~0.9",
     "karma": "~0.12",
+    "karma-cli": "0.0.4",
     "karma-coverage": "~0.2",
     "karma-jasmine": "~0.3",
     "karma-phantomjs-launcher": "~0.1",
