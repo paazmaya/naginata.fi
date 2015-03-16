@@ -9,8 +9,8 @@ Euroopan Naginataliiton ja Kansainvälisen Naginataliiton kanssa.
 Kendoseurojen Keskusliiton muiden lajien kohdalla raadin jäsenten
 vaatimukset ovat hieman erilaiset, olen vaativammat alempien kyu arvojen kohdalla.
 
-Niiltä osin kun tässä dokumentissa ei mainita, noudatetaan liiton
-yleisiä graduointisääntöjä.
+Niiltä osin kun tässä dokumentissa ei mainita, noudatetaan Suomen Kendoseurojen
+keskusliiton yleisiä graduointisääntöjä.
 
 Graduointiraadissa tulee olla kolme tai viisi jäsentä. Enemmistön
 tulee puoltaa kokelaan läpäisyä. Myönnettäessä arvoja 6 - 2 kyu,
@@ -84,7 +84,7 @@ Vastaa INF shodan vaatimuksia
 * Datotsu: men, sune, sokumen, furiage sune, dou, kote, furikaeshi men
 * Uchikaeshi
 * Shikake Oji 1-5
-* Bogu: kakarigeiko, gokakugeiko   tai   Bogullista vastaan kakarigeiko ja Shikake Oji 6
+* Bogu: kakarigeiko, gokakugeiko **tai** Bogullista vastaan kakarigeiko ja Shikake Oji 6
 * Kirjallinen osuus, kaksi raadin valitsemaa kysymystä alla esitetystä listasta.
 
 
@@ -101,9 +101,9 @@ Kysymykset koottu useista INF ja AJNF koekysymyksistä.
 1. Listaa chudan no kamaen pääpiirteet ja tärkeimmät kohdat
 1. Selitä kuinka kumarrus suoritetaan seisten ja istuen
 1. Selitä kolme erilaista suburia
-1. Mitä tarkoittaa ma-ai ga chikai ja mitä huomioita siitä tulisi ottaa
-1. Mitä tarkoittaa zanshin ja miten se tulisi huomioida harjoittelussa
-1. Selitä bogun pukemisjärjestys ja huomioitavat kohdat
+1. Mitä tarkoittaa "ma-ai ga chikai" ja mitä huomioita siitä tulisi ottaa
+1. Mitä tarkoittaa "zanshin" ja miten se tulisi huomioida harjoittelussa
+1. Selitä bogun pukemisjärjestys ja siinä huomioitavat kohdat
 1. Millä eri tavoin naginatassa voi kilpailla
 1. Mikä on kilpailukentällä sijaitsevien aloitusviivojen etäisyys toisistaan eri kilpailumuodoissa
 1. Miten kakari-geiko ja gokaku-geiko eroavat toisistaan

@@ -60,7 +60,7 @@ which the practitioner is a member, usually when new classes begin.
 
 The site owner also has a few "Shiai naginata" training weapons for sale,
 price ranging from 80 to 90 EUR, depending on the timing and size of the given order.
-Also Zen Nihon Kata naginata and Jikishinkageryu set (naginata, bokken, tanto) are available.
+Also Zen Nihon Kata naginata and Jikishinkageryū set (naginata, bokken, tanto) are available.
 
 Below are links to some of the sensible martial shops from where it is possible
 to obtain training equipments:

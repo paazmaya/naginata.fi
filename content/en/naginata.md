@@ -24,7 +24,7 @@ The current form of the martial art was reached in the 1970s with the finalisati
 ### Strikes
 
 Originally the weapon naginata was heavier due to the long shaft and the steel blade, thus
-the techniques are desinged in such a way. Minimal power is needed while the weapon moves
+the techniques are designed in such a way. Minimal power is needed while the weapon moves
 together with the body and is used in circular swings.
 Below is the list of the strikes and thrusts used in Naginata.
 
@@ -51,6 +51,18 @@ for example when filling in the paper exam for gradings.
 -   Waki kamae
 -   Jōdan no kamae
 -   Mugamae.
+
+### Moving
+
+Different steps enable swift movements within different techniques such as the strikes
+listed above. With the given set of different feet movements, it is possible to have
+certain rules and characteristics for techniques, but also to guide practitioners.
+
+- Okuriashi
+- Ayumiashi
+- Hirakiashi
+- Tsugiashi
+- Fumikaeashi.
 
 ### Happōburi
 

@@ -13,14 +13,14 @@ Competition](http://farm7.staticflickr.com/6231/6282661367_12b51920c4_m.jpg)
 ](http://flickr.com/photos/96248369@N00/6282661367 "Naginata Competition / ethics_gradient")
 
 Myöhemmin lajin nimi muutettiin Atarashii Naginata:ksi, kirjaimellisesti "uudeksi naginataksi",
-josta tuli standarsoitu versio vanhoista kamppailutaidoista samaan tapaan kuten muun muassa kendō, judō ja
-iaidō muodostettiin.
+josta tuli nykyaikaistettu versio vanhoista kamppailutaidoista samaan tapaan kuten muun
+muassa kendō, judō ja iaidō muodostettiin.
 
 Nykyisen muodon  laji saavutti 1970-luvulla kun Zen Nihon Kata-sarja saatiin valmiiksi.
 
 ## Naginatan tarkoitus (Naginata Rinen, なぎなた理念)
 
-> Naginatan tarkoituksena on kehittää tomintakykyistä mieltä Naginatan harjoittelun avulla.
+> Naginatan tarkoituksena on kehittää toimintakykyistä mieltä Naginatan harjoittelun avulla.
 
 ## Perustekniikat - Kihon
 
@@ -55,6 +55,18 @@ tietämistä tarvitaan graduoinnin paperiosuutta suorittaessa.
 -   Waki kamae
 -   Jōdan no kamae
 -   Mugamae.
+
+### Liikkuminen
+
+Erilaiset askeleet mahdollistavat säännönmukaisen harjoittelun, luovat pohjan muulle
+lajin tekniikoille kuten edellä esitetyille lyönneille ja ovat apuna esimerkiksi
+ryhmiä ohjattaessa.
+
+- Okuriashi
+- Ayumiashi
+- Hirakiashi
+- Tsugiashi
+- Fumikaeashi.
 
 ### Happōburi
 

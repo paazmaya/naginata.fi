@@ -1,5 +1,5 @@
 Jikishinkageryū Naginatajutsu is one of the biggest styles that are still being
-practisted,in which the naginata is the main weapon. The style was founded in Japan
+practised,in which the naginata is the main weapon. The style was founded in Japan
 about 500 years ago, in the Kanto area, in a place called Kashima. From the same
 place many sword fighting schools have been initiated.
 
@@ -7,7 +7,7 @@ place many sword fighting schools have been initiated.
 Naginatajutsu](http://farm3.staticflickr.com/2514/5763043905_5a542834cf_m.jpg)
 ](http://flickr.com/photos/14224905@N08/5763043905 "Himeji 2011-05-26 Jikishinkageryu Naginatajutsu / paazio")
 
-At the moment the style is being practisted along with Japan, at Hawaii, Belgium and Finland.
+At the moment the style is being practised along with Japan, at Hawaii (USA), Belgium and Finland.
 All practitioners are members of the [Japanese main organisation called
 Shūtokukai (秀徳会)](http://www.jikishin-naginata.jp/ "Jikishinkageryu Naginatajutsu"),
 which has the purpose of preserving and respecting the legacy of Jikishinkageryū Naginatajutsu.
@@ -34,7 +34,7 @@ initiated the work for what we now know as Atarashii Naginata.
 The training outfits are somewhat identical with the one exception being the
 tightening band in the sleeves, which is not present in the Jikishinkageryū
 version. During the demonstrations, usually a black jacket is worn and its
-sleeves are tied so they would not interfer with the action.
+sleeves are tied so they would not interfere with the action.
 
 The practitioners of koryu are suggested to study Atarashii Naginata due to their
 historical relations. Equally the students of Atarashii Naginata are encouraged to
@@ -52,7 +52,7 @@ Naginatajutsu](http://farm6.staticflickr.com/5185/5763043699_fcda29747e_m.jpg)
 
 ## Chief instructor of the style (soke, 宗家)
 
-The chief instructor of the style is selected with a certain high technical requiments,
+The chief instructor of the style is selected with a certain high technical requirements,
 deep knowledge, but also good social skills are very important.
 
 Below is a list of the founder and few recent chief instructors from the last century.

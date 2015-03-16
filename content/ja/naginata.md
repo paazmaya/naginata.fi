@@ -61,6 +61,14 @@ Competition](http://farm7.staticflickr.com/6231/6282661367_12b51920c4_m.jpg)
 - 上段の構え
 - 無構え
 
+### 足捌き
+
+- Okuriashi
+- Ayumiashi
+- Hirakiashi
+- Tsugiashi
+- Fumikaeashi.
+
 ### 振り方
 
 振り方は、なぎなたを上下、横、斜めに振る動作である。

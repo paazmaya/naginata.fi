@@ -6,9 +6,9 @@
 
 Atarashii Naginata grading rules are consistent with the rules of the
 European Naginata Federation and the International Naginata Federation.
- Among the other martial arts in the Finnish Kendo Association,
- the requirements regarding the grading panel are slightly different,
- while less demanding for lower grades, more demanding for the first kyu grade.
+Among the other martial arts in the Finnish Kendo Association,
+the requirements regarding the grading panel are slightly different,
+while less demanding for lower grades, more demanding for the first kyu grade.
 
 For those parts that are not mentioned in this document,
 the general grading rules of FKA will be followed.
@@ -20,7 +20,7 @@ at least one member of the panel must be at least _shodan_.
 In the case of promoting to first kyu grade,
 at least three of the panel members must be at least _sandan_.
 
-The candidate's enrollment is required with the following information:
+The candidate's enrolment is required with the following information:
 
 * Name
 * Date of birth
@@ -28,7 +28,7 @@ The candidate's enrollment is required with the following information:
 * Current grade and date when passed
 * Referrer.
 
-The grading fee are collected after the grading, in accordance wth the FKA grading fees.
+The grading fee are collected after the grading, in accordance with the FKA grading fees.
 In year 2013: EUR 20 per each passed grade.
 
 For grading abroad, a signed permission from the Finnish Kendo Association is required.
@@ -85,7 +85,7 @@ Equal with INF shodan requirements
 * Datotsu: men, sune, sokumen, furiage sune, dou, kote, furikaeshi men
 * Uchikaeshi
 * Shikaki Oji 1-5
-* Bogu: kakarigeiko, gokakugeiko   or   Kakarigeiko against person wearing bogu and Shikaki Oji 6
+* Bogu: kakarigeiko, gokakugeiko **or** Kakarigeiko against person wearing bogu and Shikake Oji 6
 * Written test, two questions selected by the judges from the list below
 
 
@@ -102,9 +102,9 @@ The questions have been gathered from INF and AJNF grading questions.
 1. List chudan no kamae the main features and key points
 1. Explain how the bow is performed while standing and sitting
 1. Explain the three different types of suburi
-1. What is a ma-ai ga Chikai and what considerations it would be
-1. What is the meaning zanshin and how it should be taken into account in training
-1. Explain Bogun pukemisjärjestys and aspects about
+1. What is a "ma-ai ga chikai" and what considerations it would be
+1. What is the meaning "zanshin" and how it should be taken into account in training
+1. Explain the order in which bogu is being put on and the most significant points in doing so
 1. Which different ways Naginata can compete in
 1. What is the distance between starting lines the various competition formats
 1. What is the difference between Kakarigeiko and Gokakugeiko

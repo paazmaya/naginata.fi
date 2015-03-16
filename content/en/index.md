@@ -47,7 +47,7 @@ List of events in Finland, in which Finnish members have joined, or are somehow 
 -   10/11/2012 - [eighth in the European Championships, Prague,
     Czech Republic](http://www.enc2012.cz/ "Naginata European Championships 2012" )
 -   07/10/2012 - [Special exercises and informal
-    District Championships(14:00 - 18:00), KKTI Dojo, Olympic Stadium,
+    District Championships (14:00 - 18:00), KKTI Dojo, Olympic Stadium,
     Helsinki](https://www.facebook.com/events/530673156947346/ "Naginata Helsinki, special training")
 -   03/09/2012 - [Helsinki Kendo Club KKTI the autumn season
     new beginner demonstration at the Olympic Stadium
