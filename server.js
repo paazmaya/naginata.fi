@@ -102,21 +102,21 @@ app.get('/undefined', function appGetRoot(req, res) {
     defaultLang: def,
     useragent: useragent
   };
-  util.puts('slash-undefined. error: ' + JSON.stringify(error));
+  console.log('slash-undefined. error: ' + JSON.stringify(error));
   newrelic.noticeError('slash-undefined', error);
   res.redirect('/en');
 });
 
 // Softer landing page
 app.get('/', function appGetRoot(req, res) {
-  util.puts('just-slash. langKeys: ' + JSON.stringify(langKeys));
+  console.log('just-slash. langKeys: ' + JSON.stringify(langKeys));
   defaultLang = checkLang(req.acceptsLanguages(), langKeys);
   res.redirect('/' + defaultLang);
 });
 
 // Catch anything that does not match the previous rules.
 app.get('*', function appGetRest(req, res) {
-  util.puts('anything. langKeys: ' + JSON.stringify(langKeys));
+  console.log('anything. langKeys: ' + JSON.stringify(langKeys));
   defaultLang = checkLang(req.acceptsLanguages(), langKeys);
   res.redirect('/' + defaultLang);
 });
@@ -125,5 +125,5 @@ app.get('*', function appGetRest(req, res) {
 var port = process.env.PORT || 5000;
 
 app.listen(port, function appListen() {
-  util.puts('server.js running at port: ' + port);
+  console.log('server.js running at port: ' + port);
 });
