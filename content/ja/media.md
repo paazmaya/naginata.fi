@@ -4,6 +4,7 @@
 なぎなたを調査する目的に限り、自由に使用することができます。
 元画像はflickrのウェブサイトにリンクしています。
 
+
 -   [![2012-12-06 姫路 - なぎなた体操〜銃剣道の本より
     book](http://farm9.static.flickr.com/8362/8450641664_fea2b93757_s.jpg)](http://farm9.static.flickr.com/8362/8450641664_fea2b93757_z.jpg "2012-12-06 姫路 - なぎなた体操〜銃剣道の本より")
 -   [![2012-12-22 Himeji - Last Naginata training of the

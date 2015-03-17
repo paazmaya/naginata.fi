@@ -1,13 +1,13 @@
 直心影流薙刀術は、現在まで継承されている日本の伝統的文化遺産である古流薙刀の一流派である。
-当流派は今からおよそ五百年前、
-日本の関東に位置する鹿島の地で創始したのに始まる。
+
+当流派は今からおよそ五百年前、日本の関東に位置する鹿島の地で創始したのに始まる。
 またこの鹿島からは、他の多くの流派が誕生している。
 
-[![直心影流薙刀術 姫路2011年5月26日](http://farm3.staticflickr.com/2514/5763043905_5a542834cf_m.jpg)
-(http://flickr.com/photos/14224905@N08/5763043905 "姫路2011-05-26 Jikishinkageryu Naginatajutsu/ paazio")
+
+[![直心影流薙刀術 姫路2011年5月26日](http://farm3.staticflickr.com/2514/5763043905_5a542834cf_m.jpg)](http://flickr.com/photos/14224905@N08/5763043905 "姫路2011-05-26 Jikishinkageryu Naginatajutsu/ paazio")
 
 現在のところ、直心影流薙刀術は、日本、ハワイ、ベルギー、フィンランドで継承されている。
-直心影流薙刀術愛好家は全員、日本の組織 "秀徳会"に所属している。(日本古武道協会 直心影流薙刀術)(http://www.jikishin-naginata.jp/ "Jikishinkageryu Naginatajutsu")
+直心影流薙刀術愛好家は全員、日本の組織 "秀徳会"に所属している。[日本古武道協会 直心影流薙刀術](http://www.jikishin-naginata.jp/ "Jikishinkageryu Naginatajutsu")
  "秀徳会"は、直心影流薙刀術の保存と振興を目的として創立した。
 
 当流派の特徴は、自然現象の中に流れる力の動きを技の中に取り入れた
@@ -16,9 +16,8 @@
 また、薙刀に加えて、短刀や木剣、そして鎖がま(カマに鎖が施されたもの)なども
 継承されている。
 
-[直心影流薙刀術は、古武道の保存と振興を目的として、財団法人日本武道館が中心となり、古武道各流派の代表者や有識者の協議を経て設立された日本古武道協会に属している。](http://www.nihonkobudokyoukai.org/martialarts/059/ "Jikishinkageryu Naginatajutsu - 日本古武道協会")、
-日本古武道協会は、日本古武道振興会と並んで、
-最も権威ある古武道団体である。
+直心影流薙刀術は、古武道の保存と振興を目的として、財団法人日本武道館が中心となり、古武道各流派の代表者や有識者の協議を経て設立された[日本古武道協会に属している。](http://www.nihonkobudokyoukai.org/martialarts/059/ "直心影流薙刀術 - 日本古武道協会")
+日本古武道協会は、日本古武道振興会と並んで、最も権威ある古武道団体である。
 
 
 ## 古流と新しいなぎなた
@@ -37,13 +36,13 @@
 知るよう促され、同様に、新しいなぎなたで稽古及び経験を積んだ者が
 古流について知るよう奨励されることもある。
 
+[![Kyoto 2011-05-02 107th Embu Taikai, Jikishinkageryu
+Naginatajutsu](http://farm3.staticflickr.com/2291/5763589730_ae7116f625_m.jpg)
+](http://flickr.com/photos/14224905@N08/5763589730 "Kyoto 2011-05-02 107th Embu Taikai, Jikishinkageryu Naginatajutsu / paazio")
+
 [![Kyoto 2011-05-04 Shimogamo Jinja, Jikishinkageryu
 Naginatajutsu](http://farm6.staticflickr.com/5185/5763043699_fcda29747e_m.jpg)
 ](http://flickr.com/photos/14224905@N08/5763043699 "Kyoto 2011-05-04 Shimogamo Jinja, Jikishinkageryu Naginatajutsu / paazio")
-
-[![Himeji 2011-05-26 Jikishinkageryu
-Naginatajutsu](http://farm3.staticflickr.com/2514/5763043905_5a542834cf_m.jpg)
-](http://flickr.com/photos/14224905@N08/5763043905 "Himeji 2011-05-26 Jikishinkageryu Naginatajutsu / paazio")
 
 ## 流派継承者(宗家)
 
@@ -51,8 +50,6 @@ Naginatajutsu](http://farm3.staticflickr.com/2514/5763043905_5a542834cf_m.jpg)
 秀でた社交性をも有した人物であることが非常に重要である。
 
 前世紀からの継承者系譜は、以下の通りである。
-
-## 系譜
 
 -   1代 松本 大炊助政元 - 備前守紀
 -   14代 佐竹 鑑柳斎源義文 十同茂雄女 - 佐竹 鑑柳斎源義文 ・同茂雄女
