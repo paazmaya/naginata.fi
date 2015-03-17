@@ -54,12 +54,6 @@
     {% for flip in flipahead %}
       <link rel="{{ flip.rel }}" href="{{ flip.url }}">
     {% endfor %}
-
-    {% for language in languages %}
-      {% if loop.key !== settings.lang %}
-        <link rel="alternate" hreflang="{{ loop.key }}" href="http://naginata.fi/{{ loop.key }}">
-      {% endif %}
-    {% endfor %}
   </head>
   <body>
     <div id="logo" class="centered">
@@ -67,7 +61,8 @@
         {% for language in languages %}
           {% if loop.key !== settings.lang %}
             <li>
-              <a title="{{ language.name }}" href="{% if language.url %}{{ language.url }}{% else %}/{{ loop.key }}{% endif %}">{{ language.name }}</a>
+              <a title="{{ language.name }}" hreflang="{{ loop.key }}"
+                href="{% if language.url %}{{ language.url }}{% else %}/{{ loop.key }}{% endif %}">{{ language.name }}</a>
             </li>
           {% endif %}
         {% endfor %}

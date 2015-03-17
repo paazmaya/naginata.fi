@@ -2,11 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
 {% for page in pages %}
   <url>
-    <loc>http://naginata.fi/{{ page.loc }}</loc>
+    <loc>http://naginata.fi{{ page.loc }}</loc>
     <lastmod>{{ page.lastmod }}</lastmod>
     <changefreq>{{ page.changefreq }}</changefreq>
-  {% for alternate in page.alternates %}
-    <xhtml:link rel="alternate" hreflang="{{ altenate.lang }}" href="http://naginata.fi{{ altenate.href }}" />
+  {% for alter in page.alternates %}
+    <xhtml:link rel="alternate" hreflang="{{ alter.lang }}" href="http://naginata.fi{{ alter.href }}" />
   {% endfor %}
   </url>
 {% endfor %}

@@ -84,8 +84,12 @@ describe('Sitemap XML creation', function() {
     expect(first.alternates[0].lang).toBe('fi');
     expect(first.alternates[1].lang).toBe('en');
 
-    var last = output[1];
+    var last = output.pop();
+
     expect(last.alternates.length).toBe(2);
     expect(last.alternates[0].lang).toBe('fi');
+    expect(last.alternates[0].href).toBe('/fi/naginata');
+    expect(last.alternates[1].lang).toBe('en');
+    expect(last.alternates[1].href).toBe('/en/naginata');
   });
 });
