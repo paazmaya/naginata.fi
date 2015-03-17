@@ -73,4 +73,18 @@ describe('Sitemap XML creation', function() {
     expect(first.changefreq).toBe('monthly');
   });
 
+  it('Contains alternative language', function() {
+    enabledLanguages = ["en", "fi"];
+
+    var output = sitemap(pages, enabledLanguages);
+    expect(output.length).toBe(4);
+
+    var first = output[0];
+    expect(first.alternates.length).toBe(1);
+    expect(first.alternates[0].lang).toBe('en');
+
+    var last = output[1];
+    expect(last.alternates.length).toBe(1);
+    expect(last.alternates[0].lang).toBe('fi');
+  });
 });

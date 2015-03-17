@@ -20,6 +20,7 @@ var contentPath = require('./content-path');
 module.exports = function siteMap(pages, enabledLanguages) {
   var out = [];
   pages.forEach(function eachPage(item) {
+    // Item should have three properties, indexed with language code
     Object.keys(item).forEach(function eachKey(lang) {
       if (enabledLanguages.indexOf(lang) !== -1 && item[lang].url) {
         var url = item[lang].url;
@@ -27,11 +28,24 @@ module.exports = function siteMap(pages, enabledLanguages) {
         var stats = fs.statSync(path);
         if (stats.isFile()) {
           var date = stats.mtime.toISOString().split('T').shift();
-          out.push({
-            loc: item[lang].url,
+          var data = {
+            loc: url,
             lastmod: date,
             changefreq: 'monthly'
-          });
+          };
+          data.alternates = (function (list, current) {
+            var alternatives = [];
+            Object.keys(item).forEach(function eachKey(lang) {
+              if (lang !== current && enabledLanguages.indexOf(lang) !== -1 && item[lang].url) {
+                alternatives.push({
+                  lang: lang,
+                  href: item[lang].url
+                });
+              }
+            });
+            return alternatives;
+          }(item, lang));
+          out.push(data);
         }
       }
     });
