@@ -20,7 +20,7 @@
     "tests"
   ],
   "dependencies": {
-    "jquery": "~2.1.x",
-    "colorbox": "~1.5.x"
+    "jquery": "~2.1",
+    "colorbox": "~1.6"
   }
 }
