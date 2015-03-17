@@ -14,7 +14,6 @@ var newrelic = require('newrelic');
 global.newrelic = newrelic;
 
 var fs = require('fs');
-var util = require('util');
 
 // Custom classes
 var app = require('./libs/express-app');

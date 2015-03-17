@@ -52,8 +52,8 @@ module.exports = function flickrImageList() {
     var files = fs.readdirSync(parentDir);
     files.forEach(function eachFile(file) {
       if (file.split('.').pop() === 'md') {
-        var path = parentDir + '/' + file;
-        var content = fs.readFileSync(path, {
+        var filepath = parentDir + '/' + file;
+        var content = fs.readFileSync(filepath, {
           encoding: 'utf8'
         });
 
