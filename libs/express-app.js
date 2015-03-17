@@ -15,9 +15,10 @@ var express = require('express');
 
 // Dependencies for express
 var compress = require('compression');
-var bodyParser = require('body-parser');
-var st = require('st');
+var bodyParser = require('body-parser'); // incoming data parser
+var st = require('st'); // static content
 var morgan = require('morgan'); // logger
+var swig = require('swig'); // templates
 
 // Custom modules
 var secondaryRoutes = require('./secondary-routes');
@@ -60,16 +61,18 @@ app.on('uncaughtException', function uncaughtException(error) {
   console.log('Node NOT Exiting...');
 });
 
-app.engine('jade', require('jade').__express);
+// Disable Swig cache, since the one provided by Express will be used
+swig.setDefaults({cache: false});
+
+// Render HTML files via Swig
+app.engine('html', swig.renderFile);
 
 if (app.get('env') === 'development') {
   app.locals.pretty = true;
 }
-// in express, this lets you call newrelic from within a template
-app.locals.newrelic = global.newrelic;
 
 app.set('views', path.join(__dirname, '/../views'));
-app.set('view engine', 'jade');
+app.set('view engine', 'html');
 app.set('x-powered-by', null); // Disable extra header
 
 app.get('*', secondaryRoutes.appGetAll);

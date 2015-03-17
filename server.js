@@ -75,7 +75,8 @@ app.get(pageRegex, function appGetRegex(req, res) {
       meta: current,
       prefetch: flickrImageList(),
       languages: langMeta,
-      lang: lang
+      lang: lang,
+      nrheader: newrelic.getBrowserTimingHeader()
     };
   };
 
@@ -90,13 +91,13 @@ app.get(pageRegex, function appGetRegex(req, res) {
 
 // Try to find the cause
 app.get('/undefined', function appGetRoot(req, res) {
-  var acceptLangs = req.acceptsLanguages() || '';
-  var check = checkLang(acceptLangs, langKeys) || '';
+  var accepts = req.acceptsLanguages() || '';
+  var check = checkLang(accepts, langKeys) || '';
   var def = defaultLang || '';
   var useragent = req.header('user-agent') || '';
   var error = {
     checkLang: check,
-    acceptsLanguages: acceptLangs,
+    acceptsLanguages: accepts,
     langKeys: langKeys,
     defaultLang: def,
     useragent: useragent
@@ -108,15 +109,17 @@ app.get('/undefined', function appGetRoot(req, res) {
 
 // Softer landing page
 app.get('/', function appGetRoot(req, res) {
-  console.log('just-slash. langKeys: ' + JSON.stringify(langKeys));
-  defaultLang = checkLang(req.acceptsLanguages(), langKeys);
+  var accepts = req.acceptsLanguages();
+  console.log('just-slash. langKeys: ' + JSON.stringify(langKeys) + ', req.acceptsLanguages(): ' + accepts);
+  defaultLang = checkLang(accepts, langKeys);
   res.redirect('/' + defaultLang);
 });
 
 // Catch anything that does not match the previous rules.
 app.get('*', function appGetRest(req, res) {
-  console.log('anything. langKeys: ' + JSON.stringify(langKeys));
-  defaultLang = checkLang(req.acceptsLanguages(), langKeys);
+  var accepts = req.acceptsLanguages();
+  console.log('anything. langKeys: ' + JSON.stringify(langKeys) + ', req.acceptsLanguages(): ' + accepts);
+  defaultLang = checkLang(accepts, langKeys);
   res.redirect('/' + defaultLang);
 });
 
