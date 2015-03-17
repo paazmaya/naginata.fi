@@ -43,6 +43,7 @@ app.get(pageRegex, function appGetRegex(req, res) {
     if (typeof item[lang] === 'object') {
       if (item[lang].url === req.path) {
         current = item[lang];
+        current.view = item.en.title.toLowerCase();
         langMeta = helpers.linkPageLanguages(langMeta, item);
       }
       pages.push(item[lang]);
