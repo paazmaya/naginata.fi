@@ -47,6 +47,13 @@ describe('Check initial page language', function() {
     expect(output).toBe('fi'); // Should be first in the enabled list
   });
 
+  it('Accepted languages is an array containing a star', function() {
+    acceptsLanguages = ['*'];
+    enabledLanguages = ['ja', 'en', 'fi'];
+    var output = checkLang(acceptsLanguages, enabledLanguages);
+    expect(output).toBe('ja'); // Should be first in the enabled list
+  });
+
   it('Accepted languages is undefined', function() {
     acceptsLanguages = undefined;
     enabledLanguages = ['ja', 'en', 'fi'];
