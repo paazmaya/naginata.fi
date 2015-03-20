@@ -111,7 +111,8 @@ app.get('/undefined', function appGetRoot(req, res) {
 // Softer landing page
 app.get('/', function appGetRoot(req, res) {
   var accepts = req.acceptsLanguages();
-  console.log('just-slash. langKeys: ' + JSON.stringify(langKeys) + ', req.acceptsLanguages(): ' + accepts);
+  console.log('just-slash. langKeys: ' + JSON.stringify(langKeys) +
+    ', req.acceptsLanguages(): ' + JSON.stringify(accepts));
   defaultLang = checkLang(accepts, langKeys);
   res.redirect('/' + defaultLang);
 });
@@ -119,7 +120,8 @@ app.get('/', function appGetRoot(req, res) {
 // Catch anything that does not match the previous rules.
 app.get('*', function appGetRest(req, res) {
   var accepts = req.acceptsLanguages();
-  console.log('anything. langKeys: ' + JSON.stringify(langKeys) + ', req.acceptsLanguages(): ' + accepts);
+  console.log('anything. langKeys: ' + JSON.stringify(langKeys) +
+    ', req.acceptsLanguages(): ' + JSON.stringify(accepts));
   defaultLang = checkLang(accepts, langKeys);
   res.redirect('/' + defaultLang);
 });
