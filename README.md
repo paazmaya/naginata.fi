@@ -171,6 +171,8 @@ pandoc -V geometry:margin=0.5in -o content/en/grading-rules.md grading-rules-eng
  * Facebook liking and related, https://developers.facebook.com/tools/debug/og/object?q=naginata.fi
  * Further CSP tuning, https://www.owasp.org/index.php/Content_Security_Policy
 
+Newrelic troubleshooting https://docs.newrelic.com/docs/agents/nodejs-agent/troubleshooting/troubleshooting-page-load-timing-nodejs
+
 ## History
 
 Versions before 0.4.0 were using PHP as the backend and content editing was done at the site, after
