@@ -17,7 +17,7 @@ module.exports = {
   },
   styles: {
     files: ['public_html/css/main.css', 'public_html/css/colorbox.css'],
-    tasks: ['cssmin']
+    tasks: ['concat', 'postcss']
   },
   jasmine: {
     files: ['tests/js/*.js'],

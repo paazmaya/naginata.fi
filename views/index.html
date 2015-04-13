@@ -67,7 +67,6 @@
       </ul>
       <p role="banner">{{ meta.titlesuffix }}</p>
     </div>
-
     <nav class="full-width">
       <ul role="navigation" class="centered">
         {% for page in pages %}
@@ -79,8 +78,7 @@
     </nav>
     <div class="centered">
       <header role="contentinfo">
-        <h1>{{ meta.header }}</h1>
-        <p class="desc-transform">{{ meta.description }}</p>
+        <h1 title="{{ meta.description }}">{{ meta.header }}</h1>
       </header>
       <article role="main" class="{{ meta.view|lower }}">
 
@@ -88,7 +86,6 @@
 
       </article>
     </div>
-
     <footer class="full-width">
       <p class="centered">
         {% for footer in footers %}
