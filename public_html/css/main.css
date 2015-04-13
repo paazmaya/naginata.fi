@@ -52,7 +52,9 @@ article {
     font-family: 'Lora', Verdana, sans-serif;
     line-height: 1.5;
 }
-html[lang="ja"] {
+html[lang="ja"],
+html[lang="ja"] nav,
+html[lang="ja"] footer {
     font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", Osaka, "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
 }
 p {
@@ -290,13 +292,13 @@ article.media ul:last-of-type a:hover::before {
     opacity: 0.5;
 }
 article.media ul:last-of-type a[href*="youtube.com"]::before {
-    background-image: url('../img/youtube_28.png');
+    background-image: url('/img/youtube_28.png');
 }
 article.media ul:last-of-type a[href*="vimeo.com"]::before {
-    background-image: url('../img/vimeo_28.png');
+    background-image: url('/img/vimeo_28.png');
 }
 article.media ul:last-of-type a[href*="flickr.com"]::before {
-    background-image: url('../img/flickr_28.png');
+    background-image: url('/img/flickr_28.png');
 }
 #languages {
     position: absolute;
@@ -329,7 +331,7 @@ article.media ul:last-of-type a[href*="flickr.com"]::before {
     position: relative;
     height: 180px;
     width: 100%;
-    background-image: url(../img/logo.png);
+    background-image: url('/img/logo.png');
     background-size: 132px 132px;
     background-position: 1em center;
     background-repeat: no-repeat;
