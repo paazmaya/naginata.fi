@@ -9,7 +9,7 @@
 
 module.exports = {
   options: {
-    banner: '<%= banner %>',
+    banner: '<%= banner %>'
   },
   css: {
     src: [

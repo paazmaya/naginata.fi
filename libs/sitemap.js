@@ -20,7 +20,7 @@ var contentPath = require('./content-path');
  * @param {array} enabledLanguages List of two char language codes of the enabled languages
  * @returns {array} List of objects, each having 'lang' and 'href' properties
  */
-var listAlternates = function (list, enabledLanguages) {
+var listAlternates = function listAlternates(list, enabledLanguages) {
   var alternates = [];
   Object.keys(list).forEach(function eachKey(lang) {
     if (enabledLanguages.indexOf(lang) !== -1 && list[lang].url) {
