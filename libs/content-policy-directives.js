@@ -35,6 +35,7 @@ var directives = {
     '\'self\'',
     '*.google-analytics.com',
     '*.newrelic.com',
+    '*.nr-data.net',
     '\'unsafe-inline\''
   ],
   'font-src': [
