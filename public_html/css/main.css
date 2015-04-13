@@ -30,8 +30,6 @@
     vertical-align: baseline;
     background: transparent;
     color: #121212;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
     box-sizing: border-box;
 }
 article,
@@ -205,7 +203,6 @@ article a:focus {
     color: white;
     background-color: #072434;
     text-decoration: none;
-    -webkit-transition: background-color 0.1s linear;
     transition: background-color 0.1s linear;
 }
 blockquote {
@@ -233,7 +230,6 @@ p > a:only-child > img:only-of-type {
 }
 p > a:only-child > img:only-of-type:hover {
     background-color: #072434;
-    -webkit-transition: background-color 0.1s linear;
     transition: background-color 0.1s linear;
 }
 /* first list in media page is Flickr grid */

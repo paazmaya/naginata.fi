@@ -8,15 +8,14 @@
 'use strict';
 
 module.exports = {
+  options: {
+    banner: '<%= banner %>',
+  },
   css: {
-    options: {
-      banner: '<%= banner %>'
-    },
-    files: {
-      'public_html/css/naginata.min.css': [
-        'public_html/css/colorbox.css', // Use custom styles, modified from example 2.
-        'public_html/css/main.css'
-      ]
-    }
+    src: [
+      'public_html/css/colorbox.css', // Use custom styles, modified from example 2.
+      'public_html/css/main.css'
+    ],
+    dest: 'public_html/css/naginata.css'
   }
 };

@@ -9,7 +9,6 @@
 
 module.exports = {
   options: {
-    map: true,
     processors: [
       require('autoprefixer-core')({
         browsers: 'last 3 versions, ie 8, ie 9'
@@ -18,9 +17,7 @@ module.exports = {
     ]
   },
   css: {
-    src: [
-      'public_html/css/colorbox.css', // Use custom styles, modified from example 2.
-      'public_html/css/main.css'
-    ]
+    src: 'public_html/css/naginata.css',
+    dest: 'public_html/css/naginata.min.css'
   }
 };

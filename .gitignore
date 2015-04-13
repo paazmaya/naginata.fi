@@ -6,3 +6,4 @@ coverage
 node_modules
 /.project
 source/favicons.jade
+public_html/css/naginata.css
