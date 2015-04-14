@@ -1,7 +1,7 @@
 
 ## Tulevia tapahtumia
 
-Toistaiseksi ei suunniteltuja tapahtumis.
+-  3.5.2015  - Atarahii naginatan kyu-graduointi Helsingin Olympiastadionilla
 
 ## Menneitä tapahtumia
 
@@ -11,12 +11,9 @@ Lista tapahtumista, joilla on ollut merkitystä naginatan harrastamiselle Suomes
 -   6.-7.9.2014 - [Naginataystävyysleiri,
     Viikin Normaalikoulu, Helsinki](https://www.facebook.com/events/501891759879564/ "Finnish Naginata Friendship Seminar 2014")
 -   22.-24.8.2014 - [Kansainvälisen Naginataliiton leiri, Amstelveen, Alankomaat](http://international-naginata.org/drupal/node/17 "2014 INF seminar Announcement")
--   8.-10.8.2014 - [Atarashii Naginata-leiri, opettajana Sumi Kaoru hanshi, Pietari, Venäjä](https://www.facebook.com/events/1445263222387953 "Seminar on atarashii naginata with Sumi Kaoru sensei in St. Petersburg")
 -   24.-25.5.2014 - [Kyu-leiri Kendon, Iaidon, Jodon ja Naginatan harrastajille Helsingissä](https://www.facebook.com/events/1410312342550257/ "FKA - Kyu-leiri Helsingissä")
 -   18.4.2014 - [Atarashii Naginata pääsiäisleiri Helsingissä](https://www.facebook.com/events/254398958076220/ "Atarashii Naginata Pääsiäisleiri"),
     Tapanilan Erän Kendo-jaoksen järjestämänä
--   14.-16.2.2014 - [Ensimmäinen Atarashii Naginata-leiri Pietarissa,
-    Venäjällä](https://www.facebook.com/events/1398129980435747/ "Открытый семинар по нагинате")
 -   15.-17.11.2013 - [Onshukai, Jikishinkageryu Naginatajutsu:n vuotuinen pääleiri, Chiba,
     Japani](http://www.flickr.com/photos/paazio/11474557086/in/set-72157638410929463 "2013-11-17 Japan, Chiba - Onshukai training program")
 -   18.-20.10.2013 - Leiri ikkyu ja ylemmille arvoille, Praha, Tsekki, opettajana Kimura sensei
@@ -28,13 +25,8 @@ Lista tapahtumista, joilla on ollut merkitystä naginatan harrastamiselle Suomes
     urheilukeskus](http://www.tapanila-kendo.org/ "Tapanilan Erä - Kendojaos"),
     Helsinki
 -   19.8.2013 - Atarashii Naginata näytös (19:00) [Tapanilan Erässä,
-    Tapanilan
-    urheilukeskus](http://www.tapanila-kendo.org/ "Tapanilan Erä - Kendojaos"),
+    Tapanilan urheilukeskus](http://www.tapanila-kendo.org/ "Tapanilan Erä - Kendojaos"),
     Helsinki
--   15.-16.6.2013 - ["Stage internazionale di Naginata con la M° Helen
-    M. NAKANO -
-    Kyoshi"](http://www.kendo.it/calendario/calendario.cfm "Elenco Eventi CIK e di altre federazioni europee"),
-    Italia
 -   15.-16.6.2013 - Suomi-Ruotsi maaottelu: kilpailu ja leiri,
     Eriksdalshallen, Tukholma, Ruotsi
 -   7.6.2013 - Naginata esiintyy [Hämeenlinnan
@@ -46,13 +38,10 @@ Lista tapahtumista, joilla on ollut merkitystä naginatan harrastamiselle Suomes
     16:00)](https://www.facebook.com/events/136689943169944/ "Atarashii naginata leiri"),
     [Kendoseura Rendaino:n
     järjestämänä](http://www.rendaino.fi/ "Turun kendoseura rendaino ry")
--   22.-24.3.2013 - [Britannian vuosittainen leiri, opettajana Nakano
-    Helen
+-   22.-24.3.2013 - [Britannian vuosittainen leiri, opettajana Nakano Helen
     sensei](http://www.naginata.org.uk/2013-annual-british-naginata-seminar-details/ "2013 Annual British Naginata Seminar Details")
 -   11.11.2012 - Kyu-graduointi (16:30), [KKTI Dojo, Olympiastadion,
     Helsinki](http://www.kendohelsinki.org/?sivu=kartta "Kartta Olympiastadionille")
--   10.11.2012 - [Kahdeksannet Euroopanmestaruuskilpailut, Praha,
-    Tsekki](http://www.enc2012.cz/ "Naginatan Euroopanmestaruuskilpailut 2012")
 -   7.10.2012 - [Erikoisharjoitukset ja epäviralliset
     piirimestaruuskilpailut (14:00 - 18:00), KKTI Dojo, Olympiastadion,
     Helsinki](https://www.facebook.com/events/530673156947346/ "Naginata Helsinki special training")

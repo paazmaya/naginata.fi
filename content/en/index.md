@@ -1,6 +1,6 @@
 ## Upcoming events
 
-For the time being there are no planned events.
+-  03/05/2015 - Atarashii Naginata Kyu grading at Helsinki Olympic Stadium
 
 ## In the Past
 
@@ -10,12 +10,9 @@ List of events in Finland, in which Finnish members have joined, or are somehow 
 -   06-07/09/2014 - [Naginata Friendship Seminar,
     Viikki Teacher Training School, Helsinki](https://www.facebook.com/events/501891759879564/ "Finnish Naginata Friendship Seminar 2014")
 -   22-24/08/2014 - [International Naginata Federation Seminar, Amstelveen, The Netherlands](http://international-naginata.org/drupal/node/17 "2014 INF seminar Announcement")
--   08-10/08/2014 - [Atarashii Naginata seminar with Sumi Kaoru hanshi in St. Petersburg, Russia](https://www.facebook.com/events/1445263222387953 "Seminar on atarashii naginata with Sumi Kaoru sensei in St. Petersburg")
 -   24-25/05/2014 - [Kyu-seminar for practitioners of Kendo, Iaido, Jodo and Naginata in Helsinki, Finland](https://www.facebook.com/events/1410312342550257/ "FKA - Kyu-seminar in Helsinki")
 -   18/04/2014 - [Atarashii Naginata Easter Seminar in Helsinki](https://www.facebook.com/events/254398958076220/ "Atarashii Naginata Pääsiäisleiri"),
     organised by Tapanilan Erä Kendo Division
--   14-16/02/2014 - [First Atarashii Naginata seminar in St. Petersburg,
-    Russia](https://www.facebook.com/events/1398129980435747/ "Открытый семинар по нагинате")
 -   15-17/11/2013 - [Onshukai, the annual main seminar of Jikishinkageryu Naginatajutsu in Chiba,
     Japan](http://www.flickr.com/photos/paazio/11474557086/in/set-72157638410929463 "2013-11-17 Japan, Chiba - Onshukai training program")
 -   18-20/10/2013 - Seminar for ikkyu and up in Prague, Czech, Directed by Kimura sensei
@@ -28,9 +25,6 @@ List of events in Finland, in which Finnish members have joined, or are somehow 
 -   19/08/2013 - Atarashii Naginata demonstration (19:00), [Tapanilan Erä, Tapanila
     Sports Center](http://www.tapanila-kendo.org/ "Tapanilan Erä - Kendo Division"),
     Helsinki
--   15-16/06/2013 - ["Stage internazionale di Naginata con la Helen M °
-    M. Nakano - Kyoshi"](http://www.kendo.it/calendario/calendario.cfm "Elenco Eventi CIK e di altre federazioni europee");
-    Italy
 -   15-16/06/2013 - Finland-Sweden Country Duel: competition and seminar,
     Eriksdalshallen, Stockholm, Sweden
 -   07/06/2013 - Naginata [in Hämeenlinna Kendo Club](http://www.jookenkai.net/ "Hämeenlinna - Ken Yeah I guess")
@@ -44,8 +38,6 @@ List of events in Finland, in which Finnish members have joined, or are somehow 
     Sensei](http://www.naginata.org.uk/2013-annual-british-naginata-seminar-details/ "2013 Annual British Naginata Seminar Details")
 -   11/11/2012 - Kyu- Graduation(16:30)[KKTI Dojo, Olympic Stadium,
     Helsinki](http://www.kendohelsinki.org/?sivu=kartta "Map of the Olympic Stadium")
--   10/11/2012 - [eighth in the European Championships, Prague,
-    Czech Republic](http://www.enc2012.cz/ "Naginata European Championships 2012" )
 -   07/10/2012 - [Special exercises and informal
     District Championships (14:00 - 18:00), KKTI Dojo, Olympic Stadium,
     Helsinki](https://www.facebook.com/events/530673156947346/ "Naginata Helsinki, special training")
