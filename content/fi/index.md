@@ -1,13 +1,17 @@
 
 ## Tulevia tapahtumia
 
--  3.5.2015  - Atarahii naginatan kyu-graduointi Helsingin Olympiastadionilla
+Tällä hetkellä ei ole suunniteltuja tapahtumia Suomessa, liittyen Atarashii Naginataan.
 
 ## Menneitä tapahtumia
 
 Lista tapahtumista, joilla on ollut merkitystä naginatan harrastamiselle Suomessa.
 
--   5\. ja 8.9.2014 - Jikishinkageryu Naginatajutsu Japani-Suomi ystävyysharjoitukset
+-   14.5.2015 - Naginatanäytös jossa nähtiin Zen Nihon Naginata Kataa ensimmäistä kertaa Suomessa,
+    [Hanami kirsikankukkajuhla - Roihuvuori,
+    Helsinki](http://www.roihuvuori.fi/hanami/ "Hanami-juhla Roihuvuoressa")
+-   3.5.2015  - Atarahii naginatan kyu-graduointi Helsingin Olympiastadionilla
+-   5. ja 8.9.2014 - Jikishinkageryu Naginatajutsu Japani-Suomi ystävyysharjoitukset
 -   6.-7.9.2014 - [Naginataystävyysleiri,
     Viikin Normaalikoulu, Helsinki](https://www.facebook.com/events/501891759879564/ "Finnish Naginata Friendship Seminar 2014")
 -   22.-24.8.2014 - [Kansainvälisen Naginataliiton leiri, Amstelveen, Alankomaat](http://international-naginata.org/drupal/node/17 "2014 INF seminar Announcement")

@@ -1,11 +1,15 @@
 ## Upcoming events
 
--  03/05/2015 - Atarashii Naginata Kyu grading at Helsinki Olympic Stadium
+Currently there are no upcoming events in Finland related to Atarashii Naginata.
 
 ## In the Past
 
 List of events in Finland, in which Finnish members have joined, or are somehow related to Naginata in Finland.
 
+-   14/05/2015 - Naginata demonstration with Zen Nihon Naginata Kata for the first time in
+    Finland, at [Hanami Festival in Roihuvuori,
+    Helsinki](http://www.roihuvuori.fi/hanami/ "Hanami party Roihuvuori cherry park")
+-   03/05/2015 - Atarashii Naginata Kyu grading at Helsinki Olympic Stadium
 -   05 and 08/09/2014 - Jikishinkageryu Naginatajutsu Japan-Finland Friendship trainings
 -   06-07/09/2014 - [Naginata Friendship Seminar,
     Viikki Teacher Training School, Helsinki](https://www.facebook.com/events/501891759879564/ "Finnish Naginata Friendship Seminar 2014")
