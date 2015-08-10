@@ -38,9 +38,12 @@ At [Helsinki Kendo Club, Ki-Ken-Tai-Icchi (KKTI) it is possible to join the clas
 of Atarashii Naginata and Jikishinkageryū
 Naginatajutsu](http://www.kkti.fi/ "Helsinki Kendo Club - Ki-Ken-Tai-Icchi, Olympic Stadium, Helsinki")
 
-The trainings are held at the Helsinki Olympic Stadium D-wing, on Tuesdays at 20:30 - 22:00
+The trainings are held at the Helsinki Olympic Stadium D-wing, during Autumn and Spring
+seasons on Tuesdays at 20:30 - 22:00
 in "tanssihali" training hall, and on Sundays at 15:30 - 17:00 in "keskisali" training hall.
 Protective gears (bogu) are only needed on Sundays, but their use is not mandatory.
+
+For information about the Summer time trainings, please contact the clubs representative.
 
 Please contact Mr. Jarno Yliluoma ([firstname.lastname]@gmail.com) for any
 inquiris related to Atarashii Naginata in KKTI and to Mr. Jukka Paasonen

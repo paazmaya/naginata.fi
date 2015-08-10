@@ -38,9 +38,12 @@ Jikishinkageryū Naginatajutsusta, tai jostakin muusta aiheeseen liittyvästä.
 Atarashii Naginata:a ja Jikishinkageryū
 Naginatajutsu:a.](http://www.kkti.fi/ "Helsingin kendoseura - Ki-Ken-Tai-Icchi, Olympiastadion, Helsinki")
 
-Harjoitukset Olympiastadionin D-siivessä ovat tiistaisin kello 20:30 - 22:00 "tanssisalissa" ja
+Harjoitukset Olympiastadionin D-siivessä ovat syys- ja kevätkausina
+tiistaisin kello 20:30 - 22:00 "tanssisalissa" ja
 sunnuntaisin kello 15:30 - 17:00 "keskisalissa".
 Suojavarusteita (bogu) tarvitaan vain sunnuntain harjoituksessa, mutta niiden käyttö ei ole pakollista.
+
+Kesäkauden harjoituksista tarkempaa tietoa saa seuran naginatavastaavalta.
 
 Helsingin Kendoseuran naginatavastaava Jarno Yliluoma
 ([etunimi.sukunimi]@gmail.com) vastaa lajiin liittyviin
