@@ -36,10 +36,12 @@ This website will focus on the following two:
 The main reason for this website and this GitHub project is to learn to use the given
 technologies and to promote the martial art.
 
-The domain, `naginata.fi` is privately registered to Jukka Paasonen.
+The domain `naginata.fi` is privately registered to Jukka Paasonen.
 
-Leena Lecklin was kind enough to draw the `naginata-bogu-chudan-artwork-lecklin.png` picture used in
-_Atarashii Naginata_ page.
+Mari Paasonen has been kind enough to provide the Japanese translations for the content.
+
+Leena Lecklin was kind enough to draw the `naginata-bogu-chudan-artwork-lecklin.png` picture
+used in the _Atarashii Naginata_ page.
 
 Contributors are welcome.
 

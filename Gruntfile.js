@@ -10,7 +10,7 @@
 module.exports = function gruntConf(grunt) {
   require('time-grunt')(grunt); // Must be first item
   require('jit-grunt')(grunt, {
-    'jasmine_node': 'grunt-jasmine-node-coverage'
+    jasmine_node: 'grunt-jasmine-node-coverage'
   });
 
   var loadConfig = function loadConfig(path) {
