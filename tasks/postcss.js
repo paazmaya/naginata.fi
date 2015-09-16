@@ -10,10 +10,10 @@
 module.exports = {
   options: {
     processors: [
-      require('autoprefixer-core')({
+      require('autoprefixer')({
         browsers: 'last 3 versions, ie 8, ie 9'
-      }).postcss,
-      require('csswring').postcss
+      }),
+      require('csswring')
     ]
   },
   css: {
