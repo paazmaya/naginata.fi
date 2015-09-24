@@ -36,7 +36,8 @@ var directives = {
     '*.google-analytics.com',
     '*.newrelic.com',
     '*.nr-data.net',
-    '\'unsafe-inline\''
+    '\'unsafe-inline\'',
+    '\'unsafe-eval\'' // needed for Ghostinspector New Relic code test
   ],
   'font-src': [
     '*.gstatic.com',
