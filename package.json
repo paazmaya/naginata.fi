@@ -49,8 +49,7 @@
     "time-grunt": "~1.2"
   },
   "engines": {
-    "node": "4.x",
-    "npm": ">=2.14"
+    "node": "4.x"
   },
   "repository": {
     "type": "git",
