@@ -1,7 +1,7 @@
 /***************
  * NAGINATA.fi *
  ***************
- * Juga Paazmaya <olavic@gmail.com>
+ * Juga Paazmaya <paazmaya@yahoo.com>
  * License: Attribution-ShareAlike 3.0 Unported
  *          http://creativecommons.org/licenses/by-sa/3.0/
  */
@@ -30,13 +30,13 @@ casper.start('http://naginata.fi/en/naginata', function() {
   }, image);
   bounds.width += 50;
   this.capture('bogu-00.png', bounds);
-  
+
   var spans = this.evaluate(function(image) {
     var parent = document.querySelector('img[src="' + image + '"]').parentNode;
     return parent.querySelectorAll('.note');
   }, image);
   this.capture('bogu-01.png', bounds);
-  
+
   var ns = [];
   var len = spans.length;
   for (var i = 0; i < len; ++i) {
@@ -44,16 +44,16 @@ casper.start('http://naginata.fi/en/naginata', function() {
     if (n.length < 2) {
       n = '0' + n; // zero fill needed for FFmpeg
     }
-    ns.push(n); 
+    ns.push(n);
   }
   this.eachThen(ns, function (response) {
     var n = response.data;
     this.evaluate(function(n) {
       __utils__.mouseEvent('mouseover', '.note:nth-child(' + n + ')');
     }, n);
-    
+
     this.capture('bogu-' + n + '.png', bounds);
-    
+
     this.evaluate(function(n) {
       __utils__.mouseEvent('mouseout', '.note:nth-child(' + n + ')');
     }, n);

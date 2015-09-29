@@ -1,7 +1,7 @@
 /***************
  * NAGINATA.fi *
  ***************
- * Juga Paazmaya <olavic@gmail.com>
+ * Juga Paazmaya <"email": ">
  * License: Attribution-ShareAlike 3.0 Unported
  *          http://creativecommons.org/licenses/by-sa/3.0/
  */

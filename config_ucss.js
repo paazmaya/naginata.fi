@@ -1,7 +1,7 @@
 /***************
  * NAGINATA.fi *
  ***************
- * Juga Paazmaya <olavic@gmail.com>
+ * Juga Paazmaya <paazmaya@yahoo.com>
  * License: Attribution-ShareAlike 3.0 Unported
  *          http://creativecommons.org/licenses/by-sa/3.0/
  */
@@ -27,7 +27,7 @@ module.exports = {
     '.notehover .notearea',
     '.notearea',
     '.notetext',
-    
+
     // jQuery.colorbox
     '#cboxOverlay',
     '#cboxWrapper',

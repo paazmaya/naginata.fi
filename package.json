@@ -13,12 +13,12 @@
     "coveralls": "karma start karma.conf.js && cat coverage/*/lcov.info coverage/lcov.info | coveralls"
   },
   "dependencies": {
-    "body-parser": "~1.13.3",
+    "body-parser": "~1.14.1",
     "compression": "~1.5.2",
     "express": "~4.13.3",
     "marked": "~0.3.5",
     "morgan": "~1.6.1",
-    "newrelic": "~1.22.0",
+    "newrelic": "~1.22.1",
     "st": "~0.5.5",
     "swig": "~1.4.2"
   },
@@ -33,14 +33,14 @@
     "grunt-contrib-jasmine": "~0.9",
     "grunt-contrib-uglify": "~0.9",
     "grunt-contrib-watch": "~0.6",
-    "grunt-eslint": "~17.1",
+    "grunt-eslint": "~17.2",
     "grunt-jasmine-node-coverage": "~0.4",
     "grunt-postcss": "~0.6",
     "grunt-trimtrailingspaces": "~1.1",
     "jasmine-node": "~1.14",
     "jit-grunt": "~0.9",
     "karma": "~0.13",
-    "karma-cli": "0.1.0",
+    "karma-cli": "0.1.1",
     "karma-coverage": "~0.5",
     "karma-jasmine": "~0.3",
     "karma-phantomjs-launcher": "~0.2",
@@ -71,7 +71,7 @@
   ],
   "author": {
     "name": "Juga Paazmaya",
-    "url": "http://paazmaya.com"
+    "url": "http://paazmaya.divshot.io"
   },
   "contributors": [
     {
