@@ -80,8 +80,5 @@
       "name": "Mari Paasonen"
     }
   ],
-  "license": {
-    "type": "Attribution-ShareAlike 3.0 Unported",
-    "url": "http://creativecommons.org/licenses/by-sa/3.0/"
-  }
+  "license": "CC-BY-SA-4.0"
 }
