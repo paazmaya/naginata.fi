@@ -8,20 +8,20 @@
 
 'use strict';
 
-var path = require('path');
+const path = require('path');
 
 // http://expressjs.com
-var express = require('express');
+const express = require('express');
 
 // Dependencies for express
-var compress = require('compression');
-var bodyParser = require('body-parser'); // incoming data parser
-var st = require('st'); // static content
-var morgan = require('morgan'); // logger
-var swig = require('swig'); // templates
+const compress = require('compression');
+const bodyParser = require('body-parser'); // incoming data parser
+const st = require('st'); // static content
+const morgan = require('morgan'); // logger
+const swig = require('swig'); // templates
 
 // Custom modules
-var secondaryRoutes = require('./secondary-routes');
+const secondaryRoutes = require('./secondary-routes');
 
 var app = express();
 

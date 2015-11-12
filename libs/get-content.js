@@ -8,11 +8,12 @@
 
 'use strict';
 
-var fs = require('fs');
-var contentPath = require('./content-path');
+const fs = require('fs');
+const contentPath = require('./content-path');
 
 // https://github.com/chjj/marked
-var marked = require('marked');
+const marked = require('marked');
+
 var md = marked.parse;
 marked.setOptions({
   gfm: true,

@@ -9,7 +9,7 @@
 'use strict';
 
 // https://developer.mozilla.org/en-US/docs/Web/Security/CSP/CSP_policy_directives
-var directives = {
+const directives = {
   'default-src': [
     '\'self\'',
     '*.vimeo.com',

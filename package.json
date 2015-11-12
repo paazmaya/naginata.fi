@@ -9,6 +9,7 @@
   "subdomain": "naginata-finland",
   "scripts": {
     "test": "grunt test",
+    "lint": "grunt eslint",
     "start": "node server.js",
     "coveralls": "karma start karma.conf.js && cat coverage/*/lcov.info coverage/lcov.info | coveralls"
   },

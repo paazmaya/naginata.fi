@@ -8,9 +8,9 @@
 
 'use strict';
 
-var fs = require('fs');
+const fs = require('fs');
 
-var getEnabledLanguages = require('./get-enabled-languages');
+const getEnabledLanguages = require('./get-enabled-languages');
 
 var pageData = fs.readFileSync('content/page-data.json', {
   encoding: 'utf8'

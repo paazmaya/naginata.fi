@@ -8,8 +8,8 @@
 
 'use strict';
 
-var fs = require('fs');
-var path = require('path');
+const fs = require('fs'),
+  path = require('path');
 
 
 // If any of the files in 'content/*/*.md' has changed, update the whole cache.
