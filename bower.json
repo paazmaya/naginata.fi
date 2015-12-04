@@ -8,8 +8,8 @@
   "description": "Naginata in Finland",
   "main": "server.js",
   "license": {
-    "type": "Attribution-ShareAlike 3.0 Unported",
-    "url": "http://creativecommons.org/licenses/by-sa/3.0/"
+    "type": "Attribution-ShareAlike 4.0 Unported",
+    "url": "http://creativecommons.org/licenses/by-sa/4.0/"
   },
   "private": "true",
   "ignore": [

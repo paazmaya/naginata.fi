@@ -11,7 +11,8 @@
     "test": "grunt test",
     "lint": "grunt eslint",
     "start": "node server.js",
-    "coveralls": "karma start karma.conf.js && cat coverage/*/lcov.info coverage/lcov.info | coveralls"
+    "build": "grunt minify",
+    "coverage": "karma start karma.conf.js && cat coverage/*/lcov.info coverage/lcov.info | coveralls"
   },
   "dependencies": {
     "body-parser": "~1.14.1",
@@ -19,12 +20,12 @@
     "express": "~4.13.3",
     "marked": "~0.3.5",
     "morgan": "~1.6.1",
-    "newrelic": "~1.22.2",
+    "newrelic": "~1.24.0",
     "st": "~1.0.0",
     "swig": "~1.4.2"
   },
   "devDependencies": {
-    "autoprefixer": "~6.0",
+    "autoprefixer": "~6.1",
     "bower": "~1.6",
     "coveralls": "~2.11",
     "csswring": "~4.0",
@@ -32,12 +33,12 @@
     "grunt-cli": "~0.1",
     "grunt-contrib-concat": "~0.5",
     "grunt-contrib-jasmine": "~0.9",
-    "grunt-contrib-uglify": "~0.9",
+    "grunt-contrib-uglify": "~0.11",
     "grunt-contrib-watch": "~0.6",
     "grunt-eslint": "~17.3",
     "grunt-jasmine-node-coverage": "~0.4",
-    "grunt-postcss": "~0.6",
-    "grunt-trimtrailingspaces": "~1.1",
+    "grunt-postcss": "~0.7",
+    "grunt-trimtrailingspaces": "~2.0",
     "jasmine-node": "~1.14",
     "jit-grunt": "~0.9",
     "karma": "~0.13",

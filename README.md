@@ -100,7 +100,7 @@ Unit tests for both front end and back end are using Jasmine and for code covera
 
 ```sh
 grunt test
-npm run coveralls
+npm run coverage
 ```
 
 Web performance tests are done with...
