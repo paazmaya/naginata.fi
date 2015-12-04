@@ -68,7 +68,6 @@ hence any content updates are visible via the web site almost immediately.
 
 List of software used for making `naginata.fi` possible:
 
- * [Bower](http://bower.io/ "Bower is a package manager for the web")
  * [Colorbox](http://jacklmoore.com/colorbox/ "A lightweight customizable lightbox plugin for jQuery")
  * [ESLint](http://eslint.org/ "The pluggable linting utility for JavaScript")
  * [Express.js](http://expressjs.com/ "web application framework for node")
@@ -90,7 +89,6 @@ List of software used for making `naginata.fi` possible:
 
 ```sh
 npm install
-bower install
 grunt
 ```
 
