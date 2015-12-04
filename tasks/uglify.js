@@ -16,8 +16,8 @@ module.exports = {
     },
     files: {
       'public_html/js/naginata.min.js': [
-        'bower_components/jquery/dist/jquery.js',
-        'bower_components/colorbox/jquery.colorbox.js',
+        'node_modules/jquery/dist/jquery.js',
+        'node_modules/jquery-colorbox/jquery.colorbox.js',
         'public_html/js/analytics.js',
         'public_html/js/sendanmaki.js'
       ]

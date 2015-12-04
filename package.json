@@ -1,6 +1,6 @@
 {
   "name": "naginata.fi",
-  "version": "0.8.0",
+  "version": "0.8.1",
   "title": "Naginata in Finland",
   "homepage": "https://github.com/paazmaya/naginata.fi",
   "description": "A web site in Finland for an ancient martial art from Japan",
@@ -18,6 +18,8 @@
     "body-parser": "~1.14.1",
     "compression": "~1.6.0",
     "express": "~4.13.3",
+    "jquery": "~2.1.4",
+    "jquery-colorbox": "~1.6.3",
     "marked": "~0.3.5",
     "morgan": "~1.6.1",
     "newrelic": "~1.24.0",
@@ -26,7 +28,6 @@
   },
   "devDependencies": {
     "autoprefixer": "~6.1",
-    "bower": "~1.6",
     "coveralls": "~2.11",
     "csswring": "~4.0",
     "grunt": "~0.4",
