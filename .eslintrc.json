@@ -123,6 +123,10 @@
     "radix": 2,
     "semi": 2,
     "semi-spacing": [2, {"before": false, "after": true}],
+    "smells/no-complex-switch-case": 1,
+    "smells/no-setinterval": 1,
+    "smells/no-switch": 1,
+    "smells/no-this-assign": 1,
     "sort-vars": 0,
     "space-after-keywords": 1,
     "space-in-parens": [2, "never"],
@@ -145,6 +149,9 @@
     "es6": true,
     "jasmine": true
   },
+  "plugins": [
+    "smells"
+  ],
   "globals": {
     "jQuery": false,
     "$": false,
