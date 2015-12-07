@@ -14,8 +14,8 @@ module.exports = {
     ],
     options: {
       vendor: [
-        'bower_components/jquery/dist/jquery.js',
-        'bower_components/colorbox/jquery.colorbox.js'
+        'node_modules/jquery/dist/jquery.js',
+        'node_modules/jquery-colorbox/jquery.colorbox.js'
       ],
       specs: 'tests/js/sendanmaki_spec.js',
       display: 'full'

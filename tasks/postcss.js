@@ -11,7 +11,7 @@ module.exports = {
   options: {
     processors: [
       require('autoprefixer')({
-        browsers: 'last 3 versions, ie 8, ie 9'
+        browsers: 'last 3 versions'
       }),
       require('csswring')
     ]
