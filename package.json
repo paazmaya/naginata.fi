@@ -40,7 +40,7 @@
     "grunt-eslint": "~18.0",
     "grunt-jasmine-node-coverage": "~0.4",
     "grunt-postcss": "~0.7",
-    "grunt-trimtrailingspaces": "~2.0",
+    "grunt-trimtrailingspaces": "~2.1",
     "jasmine-node": "~1.14",
     "jit-grunt": "~0.9",
     "karma": "~0.13",
