@@ -23,7 +23,7 @@
     "marked": "~0.3.5",
     "morgan": "~1.7.0",
     "newrelic": "~1.26.2",
-    "opbeat": "^3.6.6",
+    "opbeat": "^3.6.7",
     "st": "~1.1.0",
     "swig": "~1.4.2"
   },
@@ -37,7 +37,7 @@
     "grunt-contrib-jasmine": "~1.0",
     "grunt-contrib-uglify": "~1.0",
     "grunt-contrib-watch": "~1.0",
-    "grunt-eslint": "~18.0",
+    "grunt-eslint": "~18.1",
     "grunt-jasmine-node-coverage": "~0.4",
     "grunt-postcss": "~0.8",
     "grunt-trimtrailingspaces": "~2.3",
