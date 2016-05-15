@@ -9,35 +9,35 @@
 'use strict';
 
 // New Relic
-var newrelic = require('newrelic');
+const newrelic = require('newrelic');
 // Make it directly available from other modules
 global.newrelic = newrelic;
 
-var fs = require('fs');
+const fs = require('fs');
 
 // Custom classes
-var app = require('./libs/express-app');
-var checkLang = require('./libs/check-lang');
-var getEnabledLanguages = require('./libs/get-enabled-languages');
-var helpers = require('./libs/express-helpers');
+const app = require('./libs/express-app');
+const checkLang = require('./libs/check-lang');
+const getEnabledLanguages = require('./libs/get-enabled-languages');
+const helpers = require('./libs/express-helpers');
 
-var pageData = fs.readFileSync('./content/page-data.json', {
+const pageData = fs.readFileSync('./content/page-data.json', {
   encoding: 'utf8'
 });
-var pageJson = JSON.parse(pageData);
+const pageJson = JSON.parse(pageData);
 
-var langMeta = getEnabledLanguages(pageJson.languages); // Enabled language meta data, needed for language navigation
-var langKeys = Object.keys(langMeta); // Enabled language ISO codes: en, fi, ...
-var defaultLang = langKeys[0];
+const langMeta = getEnabledLanguages(pageJson.languages); // Enabled language meta data, needed for language navigation
+const langKeys = Object.keys(langMeta); // Enabled language ISO codes: en, fi, ...
+const defaultLang = langKeys[0];
 
 
-var pageRegex = new RegExp('^\/(' + langKeys.join('|') + ')(\/(\\w+))?$');
+const pageRegex = new RegExp('^\/(' + langKeys.join('|') + ')(\/(\\w+))?$');
 app.get(pageRegex, function appGetRegex(req, res) {
-  var lang = req.params[0];
+  const lang = req.params[0];
   app.set('lang', lang);
 
-  var current = null;
-  var pages = [];
+  let current = null;
+  const pages = [];
   // Get the pages for the given language, in order to create navigation.
   pageJson.pages.forEach(function eachPage(item) {
     if (typeof item[lang] === 'object') {
@@ -57,14 +57,14 @@ app.get(pageRegex, function appGetRegex(req, res) {
 
   current.titlesuffix = pageJson.title[lang];
 
-  var indexData = function indexData() {
-    var getContent = require('./libs/get-content');
-    var flipAheadLinks = require('./libs/flip-ahead-links');
-    var flickrImageList = require('./libs/flickr-image-list');
+  const indexData = function indexData() {
+    const getContent = require('./libs/get-content');
+    const flipAheadLinks = require('./libs/flip-ahead-links');
+    const flickrImageList = require('./libs/flickr-image-list');
 
-    var userAgent = req.header('user-agent');
+    const userAgent = req.header('user-agent');
     if (userAgent && userAgent.indexOf('facebookexternalhit') !== -1) {
-      var facebookMeta = require('./libs/facebook-meta.js');
+      const facebookMeta = require('./libs/facebook-meta.js');
       current.facebook = facebookMeta(current, pageJson.facebook);
     }
 
@@ -92,11 +92,11 @@ app.get(pageRegex, function appGetRegex(req, res) {
 
 // Try to find the cause
 app.get('/undefined', function appGetRoot(req, res) {
-  var accepts = req.acceptsLanguages() || '';
-  var check = checkLang(accepts, langKeys) || '';
-  var def = defaultLang || '';
-  var useragent = req.header('user-agent') || '';
-  var error = {
+  const accepts = req.acceptsLanguages() || '';
+  const check = checkLang(accepts, langKeys) || '';
+  const def = defaultLang || '';
+  const useragent = req.header('user-agent') || '';
+  const error = {
     checkLang: check,
     acceptsLanguages: accepts,
     langKeys: langKeys,
@@ -110,7 +110,7 @@ app.get('/undefined', function appGetRoot(req, res) {
 
 // Softer landing page
 app.get('/', function appGetRoot(req, res) {
-  var accepts = req.acceptsLanguages();
+  const accepts = req.acceptsLanguages();
   console.log('just-slash. langKeys: ' + JSON.stringify(langKeys) +
     ', req.acceptsLanguages(): ' + JSON.stringify(accepts));
   defaultLang = checkLang(accepts, langKeys);
@@ -119,7 +119,7 @@ app.get('/', function appGetRoot(req, res) {
 
 // Catch anything that does not match the previous rules.
 app.get('*', function appGetRest(req, res) {
-  var accepts = req.acceptsLanguages();
+  const accepts = req.acceptsLanguages();
   console.log('anything. langKeys: ' + JSON.stringify(langKeys) +
     ', req.acceptsLanguages(): ' + JSON.stringify(accepts));
   defaultLang = checkLang(accepts, langKeys);
@@ -127,7 +127,7 @@ app.get('*', function appGetRest(req, res) {
 });
 
 // https://devcenter.heroku.com/articles/config-vars
-var port = process.env.PORT || 5000;
+const port = process.env.PORT || 5000;
 
 app.listen(port, function appListen() {
   console.log('server.js running at port: ' + port);
