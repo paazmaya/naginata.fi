@@ -74,9 +74,7 @@ is attached to a half meter long blade.
 Atarashii Naginata is often referred briefly as Naginata, and the weapon is
 called naginata.
 
-[![Naginata
-Competition](http://farm7.staticflickr.com/6059/6283180930_4405e8e6f1_m.jpg)
-](http://flickr.com/photos/96248369@N00/6283180930 "Naginata Competition / ethics_gradient")
+[![#naginata](http://c5.staticflickr.com/9/8488/8282854020_fd8cda286b_m.jpg)](https://www.flickr.com/photos/58096593@N04/8282854020/ "#naginata / youraku")
 
 While the weapon currently used in the training is made of a wooden
 handle and the blade is made of bamboo, it is most likely true

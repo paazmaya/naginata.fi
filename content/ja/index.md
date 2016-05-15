@@ -45,9 +45,7 @@
 "新しいなぎなた"という呼称は、ただ単に "なぎなた"と呼ばれることが一般的であるが、
 武器としては "薙刀(なぎなた)"を使用する。
 
-[![Naginata
-Competition](http://farm7.staticflickr.com/6059/6283180930_4405e8e6f1_m.jpg)
-](http://flickr.com/photos/96248369@N00/6283180930 "Naginata Competition / ethics_gradient")
+[![#naginata](http://c5.staticflickr.com/9/8488/8282854020_fd8cda286b_m.jpg)](https://www.flickr.com/photos/58096593@N04/8282854020/ "#naginata / youraku")
 
 新しいなぎなたの稽古時に使用する薙刀は、すでに述べたように樫の柄に竹でできた刃をつけたものであるが
 本物の薙刀は、博物館などでみることができる金属製の武器である。

@@ -26,9 +26,9 @@ const pageData = fs.readFileSync('./content/page-data.json', {
 });
 const pageJson = JSON.parse(pageData);
 
-const langMeta = getEnabledLanguages(pageJson.languages); // Enabled language meta data, needed for language navigation
+let langMeta = getEnabledLanguages(pageJson.languages); // Enabled language meta data, needed for language navigation
 const langKeys = Object.keys(langMeta); // Enabled language ISO codes: en, fi, ...
-const defaultLang = langKeys[0];
+let defaultLang = langKeys[0];
 
 
 const pageRegex = new RegExp('^\/(' + langKeys.join('|') + ')(\/(\\w+))?$');
