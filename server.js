@@ -14,6 +14,7 @@ const newrelic = require('newrelic');
 global.newrelic = newrelic;
 
 const fs = require('fs');
+const path = require('path');
 
 // Custom classes
 const app = require('./libs/express-app');
@@ -30,6 +31,18 @@ let langMeta = getEnabledLanguages(pageJson.languages); // Enabled language meta
 const langKeys = Object.keys(langMeta); // Enabled language ISO codes: en, fi, ...
 let defaultLang = langKeys[0];
 
+const saveStaticFile = (url, lang, html) => {
+  let filename = url.replace('/' + lang, '').replace('/', '');
+  if (filename === '') {
+    filename = 'index';
+  }
+  const targetfile = `public_html/${lang}/${filename}.html`;
+  const targetdir = path.dirname(targetfile);
+  if (!fs.existsSync(targetdir)) {
+    fs.mkdirSync(targetdir);
+  }
+  fs.writeFileSync(targetfile, html, 'utf8');
+};
 
 const pageRegex = new RegExp('^\/(' + langKeys.join('|') + ')(\/(\\w+))?$');
 app.get(pageRegex, function appGetRegex(req, res) {
@@ -81,12 +94,14 @@ app.get(pageRegex, function appGetRegex(req, res) {
     };
   };
 
+  const inputData = indexData();
   res.set(helpers.indexHeaders(lang));
-  res.render('index', indexData(), function rendered(error, html) {
+  res.render('index', inputData, function rendered(error, html) {
     if (error) {
       newrelic.noticeError('index', error);
     }
     res.send(html);
+    // saveStaticFile(current.url, lang, html);
   });
 });
 
