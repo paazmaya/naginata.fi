@@ -22,7 +22,7 @@
     "jquery-colorbox": "~1.6.4",
     "marked": "~0.3.5",
     "morgan": "~1.7.0",
-    "newrelic": "~1.27.2",
+    "newrelic": "~1.28.0",
     "opbeat": "^3.6.7",
     "st": "~1.1.0",
     "swig": "~1.4.2"
@@ -31,7 +31,7 @@
     "autoprefixer": "~6.3",
     "coveralls": "~2.11",
     "csswring": "~5.0",
-    "eslint-config-paazmaya": "~2.0",
+    "eslint-config-paazmaya": "~2.1",
     "eslint-plugin-smells": "~1.0",
     "grunt": "~1.0",
     "grunt-contrib-concat": "~1.0",
