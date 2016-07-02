@@ -31,6 +31,7 @@ let langMeta = getEnabledLanguages(pageJson.languages); // Enabled language meta
 const langKeys = Object.keys(langMeta); // Enabled language ISO codes: en, fi, ...
 let defaultLang = langKeys[0];
 
+/*
 const saveStaticFile = (url, lang, html) => {
   let filename = url.replace('/' + lang, '').replace('/', '');
   if (filename === '') {
@@ -43,6 +44,7 @@ const saveStaticFile = (url, lang, html) => {
   }
   fs.writeFileSync(targetfile, html, 'utf8');
 };
+*/
 
 const pageRegex = new RegExp('^\/(' + langKeys.join('|') + ')(\/(\\w+))?$');
 app.get(pageRegex, function appGetRegex(req, res) {

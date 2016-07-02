@@ -15,7 +15,10 @@ module.exports = function gruntConf(grunt) {
 
   var loadConfig = function loadConfig(path) {
     var list = {};
-    var files = grunt.file.expand({cwd: path, filter: 'isFile'}, '*.js');
+    var files = grunt.file.expand({
+      cwd: path,
+      filter: 'isFile'
+    }, '*.js');
     files.forEach(function eachFile(option) {
       var key = option.replace(/\.js$/, '');
       list[key] = require(path + option);
