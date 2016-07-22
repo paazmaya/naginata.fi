@@ -14,7 +14,6 @@ const newrelic = require('newrelic');
 global.newrelic = newrelic;
 
 const fs = require('fs');
-const path = require('path');
 
 // Custom classes
 const app = require('./libs/express-app');

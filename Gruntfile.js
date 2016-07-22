@@ -8,7 +8,6 @@
 'use strict';
 
 module.exports = function gruntConf(grunt) {
-  require('time-grunt')(grunt); // Must be first item
   require('jit-grunt')(grunt, {
     jasmine_node: 'grunt-jasmine-node-coverage'
   });
@@ -38,6 +37,6 @@ module.exports = function gruntConf(grunt) {
   grunt.config.merge(loadConfig('./tasks/'));
 
   grunt.registerTask('minify', ['uglify', 'concat', 'postcss']);
-  grunt.registerTask('test', ['eslint', 'jasmine', 'jasmine_node']);
+  grunt.registerTask('test', ['jasmine', 'jasmine_node']);
   grunt.registerTask('default', ['test', 'minify']);
 };
