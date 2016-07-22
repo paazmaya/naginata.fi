@@ -73,15 +73,6 @@ const appEnv = app.get('env');
 if (appEnv === 'development') {
   app.locals.pretty = true;
 }
-else if (appEnv === 'production') {
-  const opbeat = require('opbeat')({
-    appId: '<APP-ID>',
-    organizationId: '<ORGANIZATION-ID>',
-    secretToken: '<SECRET-TOKEN>'
-  });
-  app.use(opbeat.middleware.express());
-}
-
 
 app.set('views', path.join(__dirname, '/../views'));
 app.set('view engine', 'html');
