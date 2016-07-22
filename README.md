@@ -84,7 +84,6 @@ List of software used for making `naginata.fi` possible:
  * [photobox](https://github.com/stefanjudis/photobox "Module to create screenshots of your site and check if the layout has changed")
  * [uCSS](https://github.com/operasoftware/ucss "uCSS is made for crawling (large) websites to find unused CSS selectors")
 
-
 ## Installation
 
 ```sh
@@ -140,16 +139,6 @@ heroku addons:add deployhooks:http --url=https://api.ghostinspector.com/v1/suite
 
 The free plan of GhostInspector limits running the tests only up to 100 timer per month, hence it is much more efficient
 to execute them only on deployment, instead of once a day.
-
-
-### Tests statistics are available
-
-* [paazmaya.github.io/naginata.fi/photobox](http://paazmaya.github.io/naginata.fi/photobox)
-* [paazmaya.github.io/naginata.fi/phantomas](http://paazmaya.github.io/naginata.fi/phantomas)
-* [paazmaya.github.io/naginata.fi/sitespeed](http://paazmaya.github.io/naginata.fi/sitespeed)
-* [paazmaya.github.io/naginata.fi/stylestats.html](http://paazmaya.github.io/naginata.fi/stylestats.html)
-* [paazmaya.github.io/naginata.fi/wbench.md](http://paazmaya.github.io/naginata.fi/wbench.md)
-* [paazmaya.github.io/naginata.fi/parker.md](http://paazmaya.github.io/naginata.fi/parker.md)
 
 ## Editing content
 
