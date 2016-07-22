@@ -16,7 +16,7 @@
  */
 module.exports = function facebookMeta(page, fb) {
   // property, name
-  var meta = [
+  const meta = [
     // http://ogp.me/
     {
       property: 'og:title',

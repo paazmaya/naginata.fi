@@ -14,7 +14,7 @@ const contentPath = require('./content-path');
 // https://github.com/chjj/marked
 const marked = require('marked');
 
-var md = marked.parse;
+const md = marked.parse;
 marked.setOptions({
   gfm: true,
   breaks: false
@@ -27,8 +27,8 @@ marked.setOptions({
  * @returns {string} HTML content
  */
 module.exports = function getContent(lang, url) {
-  var data = '## 404';
-  var path = contentPath(lang, url);
+  let data = '## 404';
+  const path = contentPath(lang, url);
   if (fs.existsSync(path)) {
     data = fs.readFileSync(path, {
       encoding: 'utf8'

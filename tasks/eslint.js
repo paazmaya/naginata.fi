@@ -8,16 +8,7 @@
 'use strict';
 
 module.exports = {
-  options: {
-    config: '.eslintrc.json',
-    format: 'stylish'
-  },
   target: [
-    'Gruntfile.js',
-    'tasks/*.js',
-    'karma.conf.js',
-    'server.js',
-    'libs/*.js',
     'public_html/js/analytics.js',
     'public_html/js/sendanmaki.js'
   ]

@@ -13,7 +13,7 @@ const fs = require('fs'),
 
 
 // If any of the files in 'content/*/*.md' has changed, update the whole cache.
-var regex = new RegExp('\\((http:\\/\\/farm\\d+\\.static\\.?flickr\\.com\\S+\\_m.jpg)\\)', 'g');
+const regex = new RegExp('\\((http:\\/\\/farm\\d+\\.static\\.?flickr\\.com\\S+\\_m.jpg)\\)', 'g');
 
 /**
  * Filter an array so it has no duplicates
@@ -22,7 +22,7 @@ var regex = new RegExp('\\((http:\\/\\/farm\\d+\\.static\\.?flickr\\.com\\S+\\_m
  * @param {array} list The array that is being filtered
  * @returns {bool} The given item is the last found
  */
-var filterDuplicate = function filterDuplicate(value, index, list) {
+const filterDuplicate = function filterDuplicate(value, index, list) {
   return list.lastIndexOf(value) === index;
 };
 
@@ -31,9 +31,9 @@ var filterDuplicate = function filterDuplicate(value, index, list) {
  * @param {string} dirpath Directory path to be searched
  * @returns {array} List of images found
  */
-var findImages = function findImages(dirpath) {
-  var list = [];
-  var files = fs.readdirSync(dirpath);
+const findImages = function findImages(dirpath) {
+  const list = [];
+  let files = fs.readdirSync(dirpath);
 
   // Read only Markdown files
   files = files.filter(function filterMd(file) {
@@ -41,12 +41,12 @@ var findImages = function findImages(dirpath) {
   });
 
   files.forEach(function eachFile(file) {
-    var filepath = path.join(dirpath, file);
-    var content = fs.readFileSync(filepath, {
+    const filepath = path.join(dirpath, file);
+    const content = fs.readFileSync(filepath, {
       encoding: 'utf8'
     });
 
-    var matches;
+    let matches;
     while ((matches = regex.exec(content)) !== null) {
       list.push(matches[1]);
     }
@@ -61,8 +61,8 @@ var findImages = function findImages(dirpath) {
 module.exports = function flickrImageList() {
 
   // Loop all Markdown files under content/*/
-  var dir = path.join(__dirname, '../content/');
-  var directories = fs.readdirSync(dir);
+  const dir = path.join(__dirname, '../content/');
+  let directories = fs.readdirSync(dir);
 
   /**
    * Check if the given file is a directory.
@@ -70,15 +70,15 @@ module.exports = function flickrImageList() {
    * @returns {bool} File is directory
    */
   directories = directories.filter(function filterDirectory(item) {
-    var stats = fs.statSync(dir + item);
+    const stats = fs.statSync(dir + item);
     return stats.isDirectory();
   });
 
-  var images = []; // thumbnails of Flickr images
+  let images = []; // thumbnails of Flickr images
 
   // Read their contents
   directories.forEach(function eachDir(directory) {
-    var parentDir = path.join(dir, directory);
+    const parentDir = path.join(dir, directory);
     images = images.concat(findImages(parentDir));
   });
 

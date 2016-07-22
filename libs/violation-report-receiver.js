@@ -13,7 +13,7 @@
  * @param {object} report Violation report posted by user agent
  * @returns {boolean} False is not what expected
  */
-var validateReport = function validateReport(report) {
+const validateReport = function validateReport(report) {
   if (typeof report !== 'object') {
     return false;
   }
@@ -52,8 +52,8 @@ var validateReport = function validateReport(report) {
  * @see http://www.w3.org/TR/CSP/#violation-reports
  */
 module.exports = function violation(postData, headers) {
-  var report = {};
-  var valid = validateReport(postData['csp-report']);
+  let report = {};
+  const valid = validateReport(postData['csp-report']);
   if (valid) {
     report = postData['csp-report'];
     if (typeof headers === 'object' && headers['user-agent']) {

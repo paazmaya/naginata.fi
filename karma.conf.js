@@ -25,7 +25,9 @@ module.exports = function karmaConf(config) {
     ],
     logLevel: config.LOG_INFO,
     loggers: [
-      {type: 'console'}
+      {
+        type: 'console'
+      }
     ],
     reporters: [
       'coverage'

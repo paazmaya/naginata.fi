@@ -26,8 +26,8 @@ module.exports = function checkLang(acceptsLanguages, enabledLanguages) {
   if (typeof acceptsLanguages !== 'object' || !acceptsLanguages) {
     return enabledLanguages[0];
   }
-  for (var i = 0; i < acceptsLanguages.length; ++i) {
-    var key = acceptsLanguages[i];
+  for (let i = 0; i < acceptsLanguages.length; ++i) {
+    let key = acceptsLanguages[i];
     if (typeof key !== 'string' || key.length < 2) {
       // Pass on to the next item
       continue;

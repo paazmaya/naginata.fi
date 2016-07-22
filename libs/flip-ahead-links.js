@@ -15,9 +15,9 @@
  * @returns {array} List of two objects to be used as meta element data
  */
 module.exports = function flipAheadLinks(pages, current) {
-  var index = pages.indexOf(current);
-  var prev = index > 0 ? index - 1 : pages.length - 1;
-  var next = index < pages.length - 1 ? index + 1 : 0;
+  const index = pages.indexOf(current);
+  const prev = index > 0 ? index - 1 : pages.length - 1;
+  const next = index < pages.length - 1 ? index + 1 : 0;
   return [
     {
       rel: 'next',

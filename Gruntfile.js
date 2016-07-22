@@ -13,20 +13,20 @@ module.exports = function gruntConf(grunt) {
     jasmine_node: 'grunt-jasmine-node-coverage'
   });
 
-  var loadConfig = function loadConfig(path) {
-    var list = {};
-    var files = grunt.file.expand({
+  const loadConfig = function loadConfig(path) {
+    const list = {};
+    const files = grunt.file.expand({
       cwd: path,
       filter: 'isFile'
     }, '*.js');
     files.forEach(function eachFile(option) {
-      var key = option.replace(/\.js$/, '');
+      const key = option.replace(/\.js$/, '');
       list[key] = require(path + option);
     });
     return list;
   };
 
-  var config = {
+  const config = {
     pkg: grunt.file.readJSON('package.json'),
     banner: '/*! <%= pkg.name %> - v<%= pkg.version %> - ' +
       '<%= grunt.template.today("yyyy-mm-dd") %>\n' +

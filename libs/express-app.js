@@ -23,14 +23,14 @@ const swig = require('swig'); // templates
 // Custom modules
 const secondaryRoutes = require('./secondary-routes');
 
-var app = express();
+const app = express();
 
 app.use(compress());
 app.use(bodyParser.json({
   type: 'application/csp-report'
 }));
 
-var oneMinute = 1000 * 60;
+const oneMinute = 1000 * 60;
 app.use(st({
   path: path.join(__dirname, '/../public_html'),
   url: '/',
@@ -62,7 +62,9 @@ app.on('uncaughtException', function uncaughtException(error) {
 });
 
 // Disable Swig cache, since the one provided by Express will be used
-swig.setDefaults({cache: false});
+swig.setDefaults({
+  cache: false
+});
 
 // Render HTML files via Swig
 app.engine('html', swig.renderFile);

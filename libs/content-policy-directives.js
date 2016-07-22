@@ -52,9 +52,9 @@ const directives = {
  * @see https://developer.mozilla.org/en-US/docs/Security/CSP/Using_Content_Security_Policy
  */
 module.exports = function contentPolicy() {
-  var policy = '';
+  let policy = '';
   Object.keys(directives).forEach(function eachDirective(key) {
-    var rules = directives[key];
+    const rules = directives[key];
     policy += key + ' ' + rules.join(' ') + '; ';
   });
   return policy;
