@@ -34,8 +34,5 @@ module.exports = function getContent(lang, url) {
       encoding: 'utf8'
     });
   }
-  else {
-    global.newrelic.noticeError('Given path does not exist: ' + path);
-  }
   return md(data);
 };

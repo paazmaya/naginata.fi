@@ -34,9 +34,6 @@ const appGetSitemap = function appGetSitemap(req, res) {
   res.render('sitemap', {
     pages: sitemap(pageJson.pages, langKeys)
   }, function renderSitemap(error, html) {
-    if (error) {
-      global.newrelic.noticeError('sitemap', error);
-    }
     res.send(html);
   });
 };
@@ -55,9 +52,6 @@ const appPostViolation = function appPostViolation(req, res) {
   if (typeof req.body === 'object') {
     const violation = require('./violation-report-receiver.js');
     const report = violation(req.body, req.headers);
-    if (report !== false) {
-      global.newrelic.noticeError('CSP-policy-violation', report);
-    }
     res.json({
       report: 'prosessed'
     });

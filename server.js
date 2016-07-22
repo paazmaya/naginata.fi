@@ -8,11 +8,6 @@
 
 'use strict';
 
-// New Relic
-const newrelic = require('newrelic');
-// Make it directly available from other modules
-global.newrelic = newrelic;
-
 const fs = require('fs');
 
 // Custom classes

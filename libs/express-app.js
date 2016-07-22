@@ -57,7 +57,6 @@ app.use(st({
 app.use(morgan('tiny'));
 
 app.on('uncaughtException', function uncaughtException(error) {
-  global.newrelic.noticeError('uncaughtException', error);
   console.log('Node NOT Exiting...');
 });
 

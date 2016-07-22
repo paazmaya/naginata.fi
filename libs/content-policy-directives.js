@@ -34,8 +34,6 @@ const directives = {
   'script-src': [
     '\'self\'',
     '*.google-analytics.com',
-    '*.newrelic.com',
-    '*.nr-data.net',
     '\'unsafe-inline\'',
     '\'unsafe-eval\'' // needed for Ghostinspector New Relic code test
   ],
