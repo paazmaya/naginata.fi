@@ -85,17 +85,13 @@ app.get(pageRegex, function appGetRegex(req, res) {
       meta: current,
       prefetch: flickrImageList(),
       languages: langMeta,
-      lang: lang,
-      nrheader: newrelic.getBrowserTimingHeader()
+      lang: lang
     };
   };
 
   const inputData = indexData();
   res.set(helpers.indexHeaders(lang));
   res.render('index', inputData, function rendered(error, html) {
-    if (error) {
-      newrelic.noticeError('index', error);
-    }
     res.send(html);
     // saveStaticFile(current.url, lang, html);
   });
@@ -115,7 +111,6 @@ app.get('/undefined', function appGetRoot(req, res) {
     useragent: useragent
   };
   console.log('slash-undefined. error: ' + JSON.stringify(error));
-  newrelic.noticeError('slash-undefined', error);
   res.redirect('/en');
 });
 
