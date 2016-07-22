@@ -16,15 +16,4 @@ describe('Get page content', function() {
     expect(output.substr(0, 3)).toBe('<h2');
   });
 
-  it('Non existant file is reported to Newrelic', function() {
-    global.newrelic = {
-      noticeError: function () {}
-    };
-    spyOn(global.newrelic, 'noticeError');
-
-    var output = getContent('fi', '/fi/ciao');
-    expect(output).toContain('404');
-    expect(global.newrelic.noticeError).toHaveBeenCalled();
-  });
-
 });
