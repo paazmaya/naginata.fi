@@ -51,6 +51,7 @@ const findImages = function findImages(dirpath) {
       list.push(matches[1]);
     }
   });
+
   return list;
 };
 
@@ -71,6 +72,7 @@ module.exports = function flickrImageList() {
    */
   directories = directories.filter(function filterDirectory(item) {
     const stats = fs.statSync(dir + item);
+
     return stats.isDirectory();
   });
 

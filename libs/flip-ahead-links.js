@@ -16,8 +16,13 @@
  */
 module.exports = function flipAheadLinks(pages, current) {
   const index = pages.indexOf(current);
-  const prev = index > 0 ? index - 1 : pages.length - 1;
-  const next = index < pages.length - 1 ? index + 1 : 0;
+  const prev = index > 0 ?
+    index - 1 :
+    pages.length - 1;
+  const next = index < pages.length - 1 ?
+    index + 1 :
+    0;
+
   return [
     {
       rel: 'next',

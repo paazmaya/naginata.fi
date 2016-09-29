@@ -23,5 +23,6 @@ module.exports = function getEnabledLanguages(languages) {
       list[key] = languages[key];
     }
   });
+
   return list;
 };

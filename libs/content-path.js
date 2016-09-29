@@ -19,5 +19,6 @@ module.exports = function contentPath(lang, url) {
   if (url === '') {
     url = 'index';
   }
+
   return 'content/' + lang + '/' + url + '.md';
 };

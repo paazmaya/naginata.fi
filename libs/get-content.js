@@ -34,5 +34,6 @@ module.exports = function getContent(lang, url) {
       encoding: 'utf8'
     });
   }
+
   return md(data);
 };

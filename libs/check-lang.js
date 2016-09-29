@@ -37,5 +37,6 @@ module.exports = function checkLang(acceptsLanguages, enabledLanguages) {
       return key;
     }
   }
+
   return enabledLanguages[0];
 };

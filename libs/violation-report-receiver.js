@@ -60,5 +60,6 @@ module.exports = function violation(postData, headers) {
       report['user-agent'] = headers['user-agent'];
     }
   }
+
   return valid ? report : false;
 };

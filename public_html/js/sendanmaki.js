@@ -8,7 +8,7 @@
 
 'use strict';
 
-var sendanmaki = window.sendanmaki = {
+const sendanmaki = window.sendanmaki = {
   /**
    * Current page language.
    * Fetched from html lang attribute.
@@ -93,7 +93,7 @@ var sendanmaki = window.sendanmaki = {
    * @returns {void}
    */
   onNoteHover: function onNoteHover(event) {
-    var cont = $(event.currentTarget);
+    const cont = $(event.currentTarget);
     if (event.type === 'mouseover') {
       cont.addClass('notehover');
     }
@@ -110,7 +110,7 @@ var sendanmaki = window.sendanmaki = {
    * @returns {void}
    */
   buildImageNotes: function buildImageNotes(key, items) {
-    var parent = $('img[src="' + key + '"]').parent().addClass('relative');
+    const parent = $('img[src="' + key + '"]').parent().addClass('relative');
     $('img[src="' + key + '"]').each(function eachImage() {
       items.forEach(function forItems(data) {
         sendanmaki.createImgNote(data, key, parent);
@@ -131,13 +131,13 @@ var sendanmaki = window.sendanmaki = {
    */
   createImgNote: function createImgNote(data, url, parent) {
     if (parent.length > 0 && $('span.note[rel="' + data.note + '"]').length === 0) {
-      var cont = $('<span class="note" rel="' + data.note + '"></span>');
+      const cont = $('<span class="note" rel="' + data.note + '"></span>');
       cont.css('left', data.x).css('top', data.y);
 
-      var area = $('<span class="notearea"></span>');
+      const area = $('<span class="notearea"></span>');
       area.css('width', data.width).css('height', data.height);
 
-      var note = $('<span class="notetext">' + data.note + '</span>');
+      const note = $('<span class="notetext">' + data.note + '</span>');
       cont.append(area, note);
 
       parent.append(cont).show();
@@ -172,7 +172,7 @@ var sendanmaki = window.sendanmaki = {
    * @returns {void}
    */
   openVideoLink: function openVideoLink($self) {
-    var href = $self.attr('href');
+    let href = $self.attr('href');
     href = href.replace(/vimeo.com\/(\w+)/, 'player.vimeo.com/video/$1');
     href = href.replace(/youtube.com\/watch\?v=(\w+)/,
                       'youtube.com/embed/$1?version=3&f=videos&app=youtube_gdata');
@@ -198,7 +198,7 @@ var sendanmaki = window.sendanmaki = {
    * @returns {void}
    */
   openFlickrImage: function openFlickrImage($self) {
-    var href = $self.find('img').attr('src');
+    let href = $self.find('img').attr('src');
 
     // Find the domain
     if (href.search(/flickr\.com\//) !== -1) {
@@ -230,13 +230,13 @@ var sendanmaki = window.sendanmaki = {
     $.each(this.notes, this.buildImageNotes);
 
     // Re-usage
-    var $media = $('article p > a:has(img:only-child), article.media ul a');
-    var $external = $('a[href^="http://"], a[href^="https://"]').not($media);
+    const $media = $('article p > a:has(img:only-child), article.media ul a');
+    const $external = $('a[href^="http://"], a[href^="https://"]').not($media);
 
     // external urls shall open in a new window
     $external.on('click', function externalClick(event) {
       event.preventDefault();
-      var href = $(this).attr('href');
+      const href = $(this).attr('href');
       window.open(href, $.now());
     });
 
@@ -254,16 +254,16 @@ var sendanmaki = window.sendanmaki = {
 
     // Track ColorBox usage with Google Analytics and fix position on high title
     $(document).on('cbox_complete', function cboxComplete() {
-      var href = $.colorbox.element().attr('href');
+      const href = $.colorbox.element().attr('href');
       if (href) {
         ga('send', 'pageview', href);
       }
 
-      var $title = $('#cboxTitle');
-      var h = $title.height() * 1.2 + 4;
+      const $title = $('#cboxTitle');
+      const h = $title.height() * 1.2 + 4;
       $title.css('top', -h);
 
-      var $content = $('#cboxContent');
+      const $content = $('#cboxContent');
       $content.css('margin-top', h + 6);
     });
 
@@ -325,8 +325,8 @@ var sendanmaki = window.sendanmaki = {
    * @returns {void}
    */
   openIframe: function openIframe(url, title) {
-    var w = $('div.centered').width() || 1000;
-    var h = w * 0.75;
+    const w = $('div.centered').width() || 1000;
+    const h = w * 0.75;
 
     // By using iframe, fullscreen becomes possible
     $.colorbox({

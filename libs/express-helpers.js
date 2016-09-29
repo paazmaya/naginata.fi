@@ -36,13 +36,14 @@ const linkPageLanguages = function linkPageLanguages(langMeta, item) {
  */
 const indexHeaders = function indexHeaders(lang) {
   const contentPolicy = require('./content-policy-directives');
+
   return {
     'Content-Type': 'text/html; charset=utf-8',
     'Content-Security-Policy': contentPolicy(),
     'Content-Language': lang,
     'Accept-Ranges': 'bytes',
     'Timing-Allow-Origin': '*',
-    'Server': 'Naginata Finland'
+    Server: 'Naginata Finland'
   };
 };
 

@@ -9,16 +9,16 @@
 'use strict';
 
 module.exports = {
-  'pages': {
-    'crawl': 'http://localhost:5000/fi'
+  pages: {
+    crawl: 'http://localhost:5000/fi'
   },
-  'headers': {
+  headers: {
     'Accept-Language': 'ja-JP'
   },
-  'css': [
+  css: [
     'public_html/css/naginata.min.css'
   ],
-  'whitelist': [
+  whitelist: [
     // Image notes
     '.note',
     '.note:hover .notetext',

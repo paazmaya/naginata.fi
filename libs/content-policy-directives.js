@@ -55,5 +55,6 @@ module.exports = function contentPolicy() {
     const rules = directives[key];
     policy += key + ' ' + rules.join(' ') + '; ';
   });
+
   return policy;
 };

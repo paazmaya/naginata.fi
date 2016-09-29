@@ -5,6 +5,7 @@
  * License: Attribution-ShareAlike 4.0 Unported
  *          http://creativecommons.org/licenses/by-sa/4.0/
  */
+
 'use strict';
 
 module.exports = function karmaConf(config) {

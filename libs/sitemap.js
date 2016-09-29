@@ -30,6 +30,7 @@ const listAlternates = function listAlternates(list, enabledLanguages) {
       });
     }
   });
+
   return alternates;
 };
 
@@ -62,5 +63,6 @@ module.exports = function siteMap(pages, enabledLanguages) {
       }
     });
   });
+
   return out;
 };

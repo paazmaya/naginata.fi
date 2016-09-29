@@ -40,7 +40,7 @@ const saveStaticFile = (url, lang, html) => {
 };
 */
 
-const pageRegex = new RegExp('^\/(' + langKeys.join('|') + ')(\/(\\w+))?$');
+const pageRegex = new RegExp('^/(' + langKeys.join('|') + ')(/(\\w+))?$');
 app.get(pageRegex, function appGetRegex(req, res) {
   const lang = req.params[0];
   app.set('lang', lang);
@@ -61,6 +61,7 @@ app.get(pageRegex, function appGetRegex(req, res) {
 
   if (typeof current !== 'object') {
     res.redirect('/' + lang);
+
     return;
   }
 

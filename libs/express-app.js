@@ -58,6 +58,7 @@ app.use(morgan('tiny'));
 
 app.on('uncaughtException', function uncaughtException(error) {
   console.log('Node NOT Exiting...');
+  console.log(error);
 });
 
 // Disable Swig cache, since the one provided by Express will be used
