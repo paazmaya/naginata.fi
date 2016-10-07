@@ -51,7 +51,7 @@ const appPostViolation = function appPostViolation(req, res) {
   });
   if (typeof req.body === 'object') {
     const violation = require('./violation-report-receiver.js');
-    const report = violation(req.body, req.headers);
+    violation(req.body, req.headers);
     res.json({
       report: 'prosessed'
     });
