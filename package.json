@@ -36,7 +36,7 @@
     "grunt-contrib-jasmine": "~1.0",
     "grunt-contrib-uglify": "~2.0",
     "grunt-contrib-watch": "~1.0",
-    "eslint": "~3.6",
+    "eslint": "~3.9",
     "grunt-jasmine-node-coverage": "~1.1",
     "grunt-postcss": "~0.8",
     "grunt-trimtrailingspaces": "~2.3",
