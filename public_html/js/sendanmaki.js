@@ -5,10 +5,11 @@
  * License: Attribution-ShareAlike 4.0 Unported
  *          http://creativecommons.org/licenses/by-sa/4.0/
  */
+/* eslint-disable no-var */
 
 'use strict';
 
-const sendanmaki = window.sendanmaki = {
+var sendanmaki = window.sendanmaki = {
   /**
    * Current page language.
    * Fetched from html lang attribute.
@@ -93,7 +94,7 @@ const sendanmaki = window.sendanmaki = {
    * @returns {void}
    */
   onNoteHover: function onNoteHover(event) {
-    const cont = $(event.currentTarget);
+    var cont = $(event.currentTarget);
     if (event.type === 'mouseover') {
       cont.addClass('notehover');
     }
@@ -110,7 +111,7 @@ const sendanmaki = window.sendanmaki = {
    * @returns {void}
    */
   buildImageNotes: function buildImageNotes(key, items) {
-    const parent = $('img[src="' + key + '"]').parent().addClass('relative');
+    var parent = $('img[src="' + key + '"]').parent().addClass('relative');
     $('img[src="' + key + '"]').each(function eachImage() {
       items.forEach(function forItems(data) {
         sendanmaki.createImgNote(data, key, parent);
@@ -131,13 +132,13 @@ const sendanmaki = window.sendanmaki = {
    */
   createImgNote: function createImgNote(data, url, parent) {
     if (parent.length > 0 && $('span.note[rel="' + data.note + '"]').length === 0) {
-      const cont = $('<span class="note" rel="' + data.note + '"></span>');
+      var cont = $('<span class="note" rel="' + data.note + '"></span>');
       cont.css('left', data.x).css('top', data.y);
 
-      const area = $('<span class="notearea"></span>');
+      var area = $('<span class="notearea"></span>');
       area.css('width', data.width).css('height', data.height);
 
-      const note = $('<span class="notetext">' + data.note + '</span>');
+      var note = $('<span class="notetext">' + data.note + '</span>');
       cont.append(area, note);
 
       parent.append(cont).show();
@@ -172,7 +173,7 @@ const sendanmaki = window.sendanmaki = {
    * @returns {void}
    */
   openVideoLink: function openVideoLink($self) {
-    let href = $self.attr('href');
+    var href = $self.attr('href');
     href = href.replace(/vimeo.com\/(\w+)/, 'player.vimeo.com/video/$1');
     href = href.replace(/youtube.com\/watch\?v=(\w+)/,
                       'youtube.com/embed/$1?version=3&f=videos&app=youtube_gdata');
@@ -198,7 +199,7 @@ const sendanmaki = window.sendanmaki = {
    * @returns {void}
    */
   openFlickrImage: function openFlickrImage($self) {
-    let href = $self.find('img').attr('src');
+    var href = $self.find('img').attr('src');
 
     // Find the domain
     if (href.search(/flickr\.com\//) !== -1) {
@@ -230,13 +231,13 @@ const sendanmaki = window.sendanmaki = {
     $.each(this.notes, this.buildImageNotes);
 
     // Re-usage
-    const $media = $('article p > a:has(img:only-child), article.media ul a');
-    const $external = $('a[href^="http://"], a[href^="https://"]').not($media);
+    var $media = $('article p > a:has(img:only-child), article.media ul a');
+    var $external = $('a[href^="http://"], a[href^="https://"]').not($media);
 
     // external urls shall open in a new window
     $external.on('click', function externalClick(event) {
       event.preventDefault();
-      const href = $(this).attr('href');
+      var href = $(this).attr('href');
       window.open(href, $.now());
     });
 
@@ -254,16 +255,16 @@ const sendanmaki = window.sendanmaki = {
 
     // Track ColorBox usage with Google Analytics and fix position on high title
     $(document).on('cbox_complete', function cboxComplete() {
-      const href = $.colorbox.element().attr('href');
+      var href = $.colorbox.element().attr('href');
       if (href) {
         ga('send', 'pageview', href);
       }
 
-      const $title = $('#cboxTitle');
-      const h = $title.height() * 1.2 + 4;
+      var $title = $('#cboxTitle');
+      var h = $title.height() * 1.2 + 4;
       $title.css('top', -h);
 
-      const $content = $('#cboxContent');
+      var $content = $('#cboxContent');
       $content.css('margin-top', h + 6);
     });
 
@@ -325,8 +326,8 @@ const sendanmaki = window.sendanmaki = {
    * @returns {void}
    */
   openIframe: function openIframe(url, title) {
-    const w = $('div.centered').width() || 1000;
-    const h = w * 0.75;
+    var w = $('div.centered').width() || 1000;
+    var h = w * 0.75;
 
     // By using iframe, fullscreen becomes possible
     $.colorbox({
