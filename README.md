@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/paazmaya/naginata.fi.png?label=ready)](https://waffle.io/paazmaya/naginata.fi)  
 # naginata.fi
 
 > A web site in Finland for an ancient martial art from Japan.
