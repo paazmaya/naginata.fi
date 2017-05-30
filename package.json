@@ -54,7 +54,8 @@
     "supertest": "~3.0"
   },
   "engines": {
-    "node": ">=6.9.5"
+    "node": ">=7.10.0",
+    "npm": ">=4.5.0"
   },
   "repository": {
     "type": "git",
