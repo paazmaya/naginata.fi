@@ -35,11 +35,9 @@ const linkPageLanguages = function linkPageLanguages(langMeta, item) {
  * @returns {object} Header data to be passed to 'res.set()' method
  */
 const indexHeaders = function indexHeaders(lang) {
-  const contentPolicy = require('./content-policy-directives');
 
   return {
     'Content-Type': 'text/html; charset=utf-8',
-    'Content-Security-Policy': contentPolicy(),
     'Content-Language': lang,
     'Accept-Ranges': 'bytes',
     'Timing-Allow-Origin': '*',
