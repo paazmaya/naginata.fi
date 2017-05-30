@@ -38,30 +38,6 @@ const appGetSitemap = function appGetSitemap(req, res) {
   });
 };
 
-/**
- * Receive CSP violation report via POST Ajax submission
- * @param {object} req Request
- * @param {object} res Response
- * @returns {void}
- * @see https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Using_CSP_violation_reports
- */
-const appPostViolation = function appPostViolation(req, res) {
-  res.set({
-    'Content-type': 'application/json'
-  });
-  if (typeof req.body === 'object') {
-    const violation = require('./violation-report-receiver.js');
-    violation(req.body, req.headers);
-    res.json({
-      report: 'prosessed'
-    });
-  }
-  else {
-    res.json({
-      report: 'failed'
-    });
-  }
-};
 
 /**
  * Handle every GET request and pass through if not using www.
@@ -82,6 +58,5 @@ const appGetAll = function appGetAll(req, res, next) {
 
 module.exports = {
   getSitemap: appGetSitemap,
-  postViolation: appPostViolation,
   appGetAll: appGetAll
 };

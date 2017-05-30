@@ -80,6 +80,5 @@ app.set('x-powered-by', null); // Disable extra header
 
 app.get('*', secondaryRoutes.appGetAll);
 app.get('/sitemap', secondaryRoutes.getSitemap);
-app.post('/violation-report', secondaryRoutes.postViolation);
 
 module.exports = app;

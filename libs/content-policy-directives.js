@@ -21,9 +21,6 @@ const directives = {
     '*.staticflickr.com',
     '*.doubleclick.net'
   ],
-  'report-uri': [
-    '/violation-report'
-  ],
   'style-src': [
     '\'self\'',
     '\'unsafe-inline\'',
