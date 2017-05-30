@@ -29,31 +29,29 @@ const langMeta = getEnabledLanguages(pageData.languages);
 // Enabled language ISO codes: en, fi, ...
 const langKeys = Object.keys(langMeta);
 
-// langMeta = helpers.linkPageLanguages(langMeta, page);
-const bonus = Object.assign({}, langMeta);
-langKeys.forEach(function eachMetaLang(key) {
-  bonus[key].url = current.url;
-});
-langKeys.forEach(function eachMetaLang(key) {
-  pages.forEach(page => {
-    if (page[key] && key === lang) {
-      currentLangPages.push(page[key]);
-    }
-  });
-});
-
-
 const indexData = (current, pages, lang) => {
   current.facebook = facebookMeta(current, pageData.facebook);
 
+  // Get the pages for the current language, used for navigation
   const currentLangPages = [];
 
-  langKeys.forEach(function eachMetaLang(key) {
+  langKeys.forEach(key => {
     pages.forEach(page => {
       if (page[key] && key === lang) {
         currentLangPages.push(page[key]);
       }
     });
+  });
+
+  // Get the same URL in other languages, used for changing the language
+  const otherLangUrls = Object.assign({}, langMeta);
+  pages.forEach(page => {
+    if (page[lang] && page[lang].url === current.url) {
+      // This is the correct page object
+      langKeys.forEach(key => {
+        otherLangUrls[key].url = page[key].url;
+      });
+    }
   });
 
   return {
@@ -63,7 +61,7 @@ const indexData = (current, pages, lang) => {
     footers: pageData.footer[lang],
     meta: current,
     prefetch: flickrImageList(),
-    languages: Object.assign({}, langMeta, bonus),
+    languages: Object.assign({}, langMeta, otherLangUrls),
     lang: lang
   };
 };
