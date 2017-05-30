@@ -4,9 +4,6 @@
     "browser": true,
     "jasmine": true
   },
-  "plugins": [
-    "smells"
-  ],
   "globals": {
     "jQuery": false,
     "$": false,

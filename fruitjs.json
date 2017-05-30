@@ -1,6 +1,0 @@
-{
-    "name"       : "Grading Stuff",
-    "pages"      : ["content/en/grading-rules.md"],
-    "singlePage" : true,
-    "tocLevel"   : 4
-}
