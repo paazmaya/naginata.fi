@@ -26,21 +26,11 @@ const pageData = require('./content/page-data.json');
 // Enabled language meta data, needed for language navigation
 const langMeta = getEnabledLanguages(pageData.languages);
 
-// Enabled language ISO codes: en, fi, ...
-const langKeys = Object.keys(langMeta);
-
-const indexData = (current, pages, lang) => {
+const indexData = (current, pages, enabledLanguages, lang) => {
   current.facebook = facebookMeta(current, pageData.facebook);
 
-  // Get the pages for the current language, used for navigation
-  const currentLangPages = [];
-
-  langKeys.forEach(key => {
-    pages.forEach(page => {
-      if (page[key] && key === lang) {
-        currentLangPages.push(page[key]);
-      }
-    });
+  const currentLangPages = pages.map(page => {
+    return page[lang];
   });
 
   // Get the same URL in other languages, used for changing the language
@@ -48,7 +38,7 @@ const indexData = (current, pages, lang) => {
   pages.forEach(page => {
     if (page[lang] && page[lang].url === current.url) {
       // This is the correct page object
-      langKeys.forEach(key => {
+      enabledLanguages.forEach(key => {
         otherLangUrls[key].url = page[key].url;
       });
     }
@@ -66,45 +56,49 @@ const indexData = (current, pages, lang) => {
   };
 };
 
-const saveStaticFile = (url, lang, html) => {
-  let filename = url.replace('/' + lang, '').replace('/', '').trim();
-  if (filename === '') {
-    filename = 'index';
-  }
-  const filepath = path.join('public_html', lang, `${filename}.html`);
+const saveStaticFile = (filepath, content) => {
   const targetdir = path.dirname(filepath);
-  if (!fs.existsSync(targetdir)) {
+  try {
+    fs.accessSync(targetdir);
+  }
+  catch (error) {
     fs.mkdirSync(targetdir);
   }
-  fs.writeFileSync(filepath, html, 'utf8');
+  fs.writeFileSync(filepath, content, 'utf8');
 };
 
-const renderPage = (current, pages, lang) => {
-
-  const inputData = indexData(current, pages, lang);
+const renderPage = (current, inputData, lang) => {
 
   const template = swig.compileFile('views/index.html');
   const html = template(inputData);
 
-  saveStaticFile(current.url, lang, html);
+  let filename = current.url.replace('/' + lang, '').replace('/', '').trim();
+  if (filename === '') {
+    filename = 'index';
+  }
+  const filepath = path.join(__dirname, 'public_html', lang, `${filename}.html`);
+
+  saveStaticFile(filepath, html);
 };
 
-/**
- * @param {object} pages
- * @param {array} enabledLanguages
- */
-const iteratePages = (pages, enabledLanguages) => {
+const iteratePages = (pages) => {
+
+  // Enabled language ISO codes: en, fi, ...
+  const enabledLanguages = Object.keys(langMeta);
 
   pages.forEach(page => {
     Object.keys(page)
       .filter(lang => enabledLanguages.indexOf(lang) !== -1)
       .forEach(lang => {
+        // Pages only with enabled languages get here
         const langPage = page[lang];
         langPage.view = page.en.title.toLowerCase();
         langPage.titlesuffix = pageData.title[lang];
 
-        renderPage(langPage, pages, lang);
+        const inputData = indexData(langPage, pages, enabledLanguages, lang);
+        renderPage(langPage, inputData, lang);
       });
   });
 };
-iteratePages(pageData.pages, langKeys);
+
+iteratePages(pageData.pages);
