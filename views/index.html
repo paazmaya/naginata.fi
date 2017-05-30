@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ settings.lang }}">
+<html lang="{{ lang }}">
   <head>
     <title>{{ meta.title }} | {{ meta.titlesuffix }}</title>
     <meta charset="utf-8">
@@ -55,7 +55,7 @@
     <div id="logo" class="centered">
       <ul id="languages">
         {% for language in languages %}
-          {% if loop.key !== settings.lang %}
+          {% if loop.key !== lang %}
             <li>
               <a title="{{ language.name }}" hreflang="{{ loop.key }}"
                 href="{% if language.url %}{{ language.url }}{% else %}/{{ loop.key }}{% endif %}">{{ language.name }}</a>
@@ -69,7 +69,7 @@
       <ul role="navigation" class="centered">
         {% for page in pages %}
         <li{% if page.url == meta.url %} class="current"{% endif %}>
-          <a rel="{{ page.rel }}" title="{{ page.header }}" href="{{ page.url }}">{{ page.title }}</a>
+          <a title="{{ page.header }}" href="{{ page.url }}">{{ page.title }}</a>
         </li>
         {% endfor %}
       </ul>

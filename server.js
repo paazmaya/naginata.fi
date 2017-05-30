@@ -46,7 +46,7 @@ app.get(pageRegex, function appGetRegex(req, res) {
   app.set('lang', lang);
 
   let current = null;
-  const pages = [];
+  const currentLangPages = [];
   // Get the pages for the given language, in order to create navigation.
   pageJson.pages.forEach(function eachPage(item) {
     if (typeof item[lang] === 'object') {
@@ -55,7 +55,7 @@ app.get(pageRegex, function appGetRegex(req, res) {
         current.view = item.en.title.toLowerCase();
         langMeta = helpers.linkPageLanguages(langMeta, item);
       }
-      pages.push(item[lang]);
+      currentLangPages.push(item[lang]);
     }
   });
 
@@ -80,8 +80,8 @@ app.get(pageRegex, function appGetRegex(req, res) {
 
     return {
       content: getContent(lang, current.url),
-      pages: pages,
-      flipahead: flipAheadLinks(pages, current),
+      pages: currentLangPages,
+      flipahead: flipAheadLinks(currentLangPages, current),
       footers: pageJson.footer[lang],
       meta: current,
       prefetch: flickrImageList(),

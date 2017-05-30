@@ -14,9 +14,7 @@ const path = require('path');
 const swig = require('swig');
 
 // Custom classes
-const app = require('./libs/express-app');
 const getEnabledLanguages = require('./libs/get-enabled-languages');
-const helpers = require('./libs/express-helpers');
 const getContent = require('./libs/get-content');
 const flipAheadLinks = require('./libs/flip-ahead-links');
 const flickrImageList = require('./libs/flickr-image-list');
@@ -25,17 +23,47 @@ const facebookMeta = require('./libs/facebook-meta.js');
 // Page meta data
 const pageData = require('./content/page-data.json');
 
+// Enabled language meta data, needed for language navigation
+const langMeta = getEnabledLanguages(pageData.languages);
+
+// Enabled language ISO codes: en, fi, ...
+const langKeys = Object.keys(langMeta);
+
+// langMeta = helpers.linkPageLanguages(langMeta, page);
+const bonus = Object.assign({}, langMeta);
+langKeys.forEach(function eachMetaLang(key) {
+  bonus[key].url = current.url;
+});
+langKeys.forEach(function eachMetaLang(key) {
+  pages.forEach(page => {
+    if (page[key] && key === lang) {
+      currentLangPages.push(page[key]);
+    }
+  });
+});
+
+
 const indexData = (current, pages, lang) => {
   current.facebook = facebookMeta(current, pageData.facebook);
 
+  const currentLangPages = [];
+
+  langKeys.forEach(function eachMetaLang(key) {
+    pages.forEach(page => {
+      if (page[key] && key === lang) {
+        currentLangPages.push(page[key]);
+      }
+    });
+  });
+
   return {
     content: getContent(lang, current.url),
-    pages: pages,
-    flipahead: flipAheadLinks(pages, current),
+    pages: currentLangPages,
+    flipahead: flipAheadLinks(currentLangPages, current),
     footers: pageData.footer[lang],
     meta: current,
     prefetch: flickrImageList(),
-    languages: langMeta,
+    languages: Object.assign({}, langMeta, bonus),
     lang: lang
   };
 };
@@ -45,18 +73,17 @@ const saveStaticFile = (url, lang, html) => {
   if (filename === '') {
     filename = 'index';
   }
-  const targetfile = path.join('public_html', lang, `${filename}.html`);
-  const targetdir = path.dirname(targetfile);
+  const filepath = path.join('public_html', lang, `${filename}.html`);
+  const targetdir = path.dirname(filepath);
   if (!fs.existsSync(targetdir)) {
     fs.mkdirSync(targetdir);
   }
-  fs.writeFileSync(targetfile, html, 'utf8');
+  fs.writeFileSync(filepath, html, 'utf8');
 };
 
 const renderPage = (current, pages, lang) => {
 
   const inputData = indexData(current, pages, lang);
-  res.set(helpers.indexHeaders(lang));
 
   const template = swig.compileFile('views/index.html');
   const html = template(inputData);
@@ -74,17 +101,12 @@ const iteratePages = (pages, enabledLanguages) => {
     Object.keys(page)
       .filter(lang => enabledLanguages.indexOf(lang) !== -1)
       .forEach(lang => {
-        app.set('lang', lang);
         const langPage = page[lang];
         langPage.view = page.en.title.toLowerCase();
         langPage.titlesuffix = pageData.title[lang];
-        langMeta = helpers.linkPageLanguages(langMeta, page);
 
         renderPage(langPage, pages, lang);
       });
   });
 };
-
-const langMeta = getEnabledLanguages(pageData.languages); // Enabled language meta data, needed for language navigation
-const langKeys = Object.keys(langMeta); // Enabled language ISO codes: en, fi, ...
 iteratePages(pageData.pages, langKeys);
