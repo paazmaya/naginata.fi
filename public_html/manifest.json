@@ -1,0 +1,9 @@
+{
+  "name": "Naginata Finland",
+  "description": "A web site in Finland for an ancient martial art from Japan",
+  "icons": [
+    { "sizes": "96x96", "src": "/icons/favicon-96x96.png" },
+    { "sizes": "196x196", "src": "/icons/favicon-196x196.png" },
+    { "sizes": "144x144", "src": "/icons/apple-touch-icon-144x144.png" }
+  ]
+}
