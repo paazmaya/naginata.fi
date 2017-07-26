@@ -48,9 +48,7 @@ Contributors are welcome.
 Any changes made to this GitHub repository, [are automatically deployed to Heroku](https://blog.heroku.com/archives/2015/2/6/heroku_github_integration),
 hence any content updates are visible via the web site almost immediately.
 
-[JetBrains](http://www.jetbrains.com/) has kindly provided this project with an open source license for
-[PhpStorm IDE](http://www.jetbrains.com/phpstorm/).
-![Developed with JetBrains PhpStorm](http://www.jetbrains.com/phpstorm/documentation/phpstorm_banners/phpstorm1/phpstorm125x37_white.gif)
+[![JetBrains WebStorm](./webstorm-logo.png) WebStorm developer IDE kindly provided by Jetbrains.](https://www.jetbrains.com/webstorm/)
 
 [![BrowserStack](./browserstack-logo.png) Cross browser testing kindly provided by BrowserStack.](https://www.browserstack.com/)
 
