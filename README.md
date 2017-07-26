@@ -52,6 +52,8 @@ hence any content updates are visible via the web site almost immediately.
 [PhpStorm IDE](http://www.jetbrains.com/phpstorm/).
 ![Developed with JetBrains PhpStorm](http://www.jetbrains.com/phpstorm/documentation/phpstorm_banners/phpstorm1/phpstorm125x37_white.gif)
 
+[![BrowserStack](./browserstack-logo.png) Cross browser testing kindly provided by BrowserStack.](https://www.browserstack.com/)
+
 ## Contributing
 
 ["A Beginner's Guide to Open Source: The Best Advice for Making your First Contribution"](http://hf.heidilabs.com/blog/a-beginners-guide-to-open-source-making-your-first-contribution).
