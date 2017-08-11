@@ -176,7 +176,7 @@ var sendanmaki = window.sendanmaki = {
     var href = $self.attr('href');
     href = href.replace(/vimeo.com\/(\w+)/, 'player.vimeo.com/video/$1');
     href = href.replace(/youtube.com\/watch\?v=(\w+)/,
-                      'youtube.com/embed/$1?version=3&f=videos&app=youtube_gdata');
+      'youtube.com/embed/$1?version=3&f=videos&app=youtube_gdata');
 
     sendanmaki.openIframe(href, $self.attr('title'));
   },
