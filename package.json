@@ -27,13 +27,13 @@
     "morgan": "~1.8.2",
     "st": "~1.2.0",
     "swig": "~1.4.2",
-    "snyk": "^1.38.1"
+    "snyk": "^1.40.0"
   },
   "devDependencies": {
     "autoprefixer": "~7.1",
     "coveralls": "~2.13",
     "csswring": "~6.0",
-    "eslint": "~4.4",
+    "eslint": "~4.5",
     "eslint-config-paazmaya": "~4.1",
     "grunt": "~1.0",
     "grunt-contrib-concat": "~1.0",
