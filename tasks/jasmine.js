@@ -10,9 +10,7 @@
 
 module.exports = {
   frontend: {
-    src: [
-      'public_html/js/sendanmaki.js'
-    ],
+    src: ['public_html/js/sendanmaki.js'],
     options: {
       vendor: [
         'node_modules/jquery/dist/jquery.js',

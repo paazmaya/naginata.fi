@@ -10,8 +10,6 @@
 
 module.exports = {
   javascript: {
-    src: [
-      '<%= eslint.target %>'
-    ]
+    src: ['<%= eslint.target %>']
   }
 };

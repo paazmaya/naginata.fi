@@ -18,27 +18,19 @@ module.exports = function karmaConf(config) {
       'tests/js/*.js'
     ],
     basePath: './',
-    browsers: [
-      'PhantomJS'
-    ],
-    frameworks: [
-      'jasmine'
-    ],
+    browsers: ['PhantomJS'],
+    frameworks: ['jasmine'],
     logLevel: config.LOG_INFO,
     loggers: [
       {
         type: 'console'
       }
     ],
-    reporters: [
-      'coverage'
-    ],
+    reporters: ['coverage'],
     preprocessors: {
       'public_html/js/sendanmaki.js': ['coverage']
     },
-    plugins: [
-      'karma-*'
-    ],
+    plugins: ['karma-*'],
     coverageReporter: {
       type: 'lcov',
       dir: 'coverage/'
