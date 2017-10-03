@@ -18,13 +18,13 @@
     "prepublish": "npm run snyk-protect"
   },
   "dependencies": {
-    "body-parser": "~1.17.2",
+    "body-parser": "~1.18.2",
     "compression": "~1.7.0",
-    "express": "~4.15.4",
+    "express": "~4.16.0",
     "jquery": "~3.2.1",
     "jquery-colorbox": "~1.6.4",
     "marked": "~0.3.6",
-    "morgan": "~1.8.2",
+    "morgan": "~1.9.0",
     "st": "~1.2.0",
     "swig": "~1.4.2",
     "snyk": "^1.40.0"
