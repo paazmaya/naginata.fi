@@ -19,21 +19,21 @@
   },
   "dependencies": {
     "body-parser": "~1.18.2",
-    "compression": "~1.7.1",
-    "express": "~4.16.2",
-    "jquery": "~3.2.1",
+    "compression": "~1.7.2",
+    "express": "~4.16.3",
+    "jquery": "~3.3.1",
     "jquery-colorbox": "~1.6.4",
-    "marked": "~0.3.12",
+    "marked": "~0.3.17",
     "morgan": "~1.9.0",
     "st": "~1.2.2",
     "swig": "~1.4.2",
-    "snyk": "^1.68.0"
+    "snyk": "^1.70.2"
   },
   "devDependencies": {
-    "autoprefixer": "~7.2",
+    "autoprefixer": "~8.1",
     "coveralls": "~3.0",
     "csswring": "~6.0",
-    "eslint": "~4.15",
+    "eslint": "~4.19",
     "eslint-config-paazmaya": "~4.3",
     "grunt": "~1.0",
     "grunt-contrib-concat": "~1.0",
