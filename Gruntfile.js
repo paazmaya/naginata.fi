@@ -39,6 +39,6 @@ module.exports = function gruntConf(grunt) {
   grunt.config.merge(loadConfig('./tasks/'));
 
   grunt.registerTask('minify', ['uglify', 'concat', 'postcss']);
-  grunt.registerTask('test', ['jasmine', 'jasmine_node']);
+  grunt.registerTask('test', ['jasmine_node']);
   grunt.registerTask('default', ['test', 'minify']);
 };

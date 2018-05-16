@@ -13,7 +13,6 @@
     "start": "node server.js",
     "start-server": "http-server -p 5000 public_html",
     "build": "grunt minify",
-    "coverage": "karma start karma.conf.js && cat coverage/*/lcov.info coverage/lcov.info | coveralls",
     "snyk-protect": "snyk protect",
     "prepublish": "npm run snyk-protect"
   },
@@ -37,7 +36,6 @@
     "eslint-config-paazmaya": "~4.3",
     "grunt": "~1.0",
     "grunt-contrib-concat": "~1.0",
-    "grunt-contrib-jasmine": "~1.2",
     "grunt-contrib-uglify": "~3.3",
     "grunt-contrib-watch": "~1.1",
     "grunt-jasmine-node-coverage": "~2.0",
@@ -46,12 +44,6 @@
     "http-server": "~0.11.1",
     "jasmine-node": "~1.14",
     "jit-grunt": "~0.10",
-    "karma": "~2.0",
-    "karma-cli": "1.0.1",
-    "karma-coverage": "~1.1",
-    "karma-jasmine": "~1.1",
-    "karma-phantomjs-launcher": "~1.0",
-    "phantomjs-prebuilt": "~2.1",
     "supertest": "~3.1"
   },
   "engines": {
