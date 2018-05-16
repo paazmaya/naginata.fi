@@ -146,42 +146,6 @@ var sendanmaki = window.sendanmaki = {
   },
 
   /**
-   * Click handler for Media page video list.
-   *
-   * Converts the href value for iframe player version, as described below.
-   *
-   * Youtube
-   * http://www.youtube.com/watch?v=[id]
-   * http://www.youtube.com/embed/[id]?version=3&f=videos&app=youtube_gdata
-   *
-   * Vimeo
-   * http://vimeo.com/[id]
-   * http://player.vimeo.com/video/[id]
-   *
-   * @param {jQuery.Event} event Click event via jQuery
-   * @returns {void}
-   */
-  onVideoClick: function onVideoClick(event) {
-    event.preventDefault();
-    sendanmaki.openVideoLink($(this));
-  },
-
-  /**
-   * Open the given video player in a Colorbox.
-   *
-   * @param {jQuery} $self The link that was clicked, which should have video page url
-   * @returns {void}
-   */
-  openVideoLink: function openVideoLink($self) {
-    var href = $self.attr('href');
-    href = href.replace(/vimeo.com\/(\w+)/, 'player.vimeo.com/video/$1');
-    href = href.replace(/youtube.com\/watch\?v=(\w+)/,
-      'youtube.com/embed/$1?version=3&f=videos&app=youtube_gdata');
-
-    sendanmaki.openIframe(href, $self.attr('title'));
-  },
-
-  /**
    * Handler for figures, which are assumed to contain Flickr image.
    *
    * @param {jQuery.Event} event Click event via jQuery
@@ -243,9 +207,6 @@ var sendanmaki = window.sendanmaki = {
 
     // Thumbnail on all pages except media
     $('article p > a:has(img:only-child)').on('click', sendanmaki.onFigureClick);
-
-    // Video links
-    $('article.media ul:last-of-type a').on('click', sendanmaki.onVideoClick);
 
     // data-photo-page ...
     $('article.media ul:first-of-type > li > a').colorbox({
