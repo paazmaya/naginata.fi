@@ -18,28 +18,28 @@
     "prepublish": "npm run snyk-protect"
   },
   "dependencies": {
-    "body-parser": "~1.18.2",
+    "body-parser": "~1.18.3",
     "compression": "~1.7.2",
     "express": "~4.16.3",
     "jquery": "~3.3.1",
     "jquery-colorbox": "~1.6.4",
-    "marked": "~0.3.17",
+    "marked": "~0.3.19",
     "morgan": "~1.9.0",
+    "snyk": "~1.80.0",
     "st": "~1.2.2",
-    "swig": "~1.4.2",
-    "snyk": "^1.70.2"
+    "swig": "~1.4.2"
   },
   "devDependencies": {
-    "autoprefixer": "~8.1",
+    "autoprefixer": "~8.5",
     "coveralls": "~3.0",
     "csswring": "~6.0",
     "eslint": "~4.19",
     "eslint-config-paazmaya": "~4.3",
     "grunt": "~1.0",
     "grunt-contrib-concat": "~1.0",
-    "grunt-contrib-jasmine": "~1.1",
+    "grunt-contrib-jasmine": "~1.2",
     "grunt-contrib-uglify": "~3.3",
-    "grunt-contrib-watch": "~1.0",
+    "grunt-contrib-watch": "~1.1",
     "grunt-jasmine-node-coverage": "~2.0",
     "grunt-postcss": "~0.9",
     "grunt-trimtrailingspaces": "~3.0",
@@ -52,7 +52,7 @@
     "karma-jasmine": "~1.1",
     "karma-phantomjs-launcher": "~1.0",
     "phantomjs-prebuilt": "~2.1",
-    "supertest": "~3.0"
+    "supertest": "~3.1"
   },
   "engines": {
     "node": ">=8.11.1"
