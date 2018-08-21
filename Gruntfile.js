@@ -20,7 +20,7 @@ module.exports = function gruntConf(grunt) {
       filter: 'isFile'
     }, '*.js');
     files.forEach(function eachFile(option) {
-      const key = option.replace(/\.js$/, '');
+      const key = option.replace(/\.js$/u, '');
       list[key] = require(path + option);
     });
 

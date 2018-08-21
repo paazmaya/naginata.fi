@@ -47,8 +47,8 @@ const appGetSitemap = function appGetSitemap(req, res) {
  * @returns {void}
  */
 const appGetAll = function appGetAll(req, res, next) {
-  if (req.hostname.match(/^www/) !== null) {
-    const url = req.protocol + '://' + req.hostname.replace(/^www\./, '') + req.originalUrl;
+  if (req.hostname.match(/^www/u) !== null) {
+    const url = req.protocol + '://' + req.hostname.replace(/^www\./u, '') + req.originalUrl;
     res.redirect(url);
   }
   else {

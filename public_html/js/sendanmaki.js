@@ -166,7 +166,7 @@ var sendanmaki = window.sendanmaki = {
     var href = $self.find('img').attr('src');
 
     // Find the domain
-    if (href.search(/flickr\.com\//) !== -1) {
+    if (href.search(/flickr\.com\//u) !== -1) {
       // Flickr, replace sizes _s and _m --> _z
       href = href.replace('_s.jpg', '_z.jpg').replace('_m.jpg', '_z.jpg');
     }
