@@ -13,7 +13,7 @@ const fs = require('fs'),
 
 
 // If any of the files in 'content/*/*.md' has changed, update the whole cache.
-const regex = new RegExp('(http://farm\\d+.static.?flickr.com\\S+_m.jpg)', 'gu');
+const regex = new RegExp('(https://farm\\d+.static.?flickr.com\\S+_m.jpg)', 'gu');
 
 /**
  * Filter an array so it has no duplicates
