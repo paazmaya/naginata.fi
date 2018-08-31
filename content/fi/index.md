@@ -81,7 +81,7 @@ kuten siinä käytettyävää asetta, joka aiheuttaa usein sekaannuksia.
 Englannin kielisissä teksteissä lajin nimi on usein kirjoitettu isolla
 alkukirjaimella ja aseen nimi pienellä.
 
-[![#naginata](http://c5.staticflickr.com/9/8488/8282854020_fd8cda286b_m.jpg)](https://www.flickr.com/photos/58096593@N04/8282854020/ "#naginata / youraku")
+[![#naginata](https://c5.staticflickr.com/9/8488/8282854020_fd8cda286b_m.jpg)](https://www.flickr.com/photos/58096593@N04/8282854020/ "#naginata / youraku")
 
 Nykyisessä muodossa tuo terä on valmistettu bambusta ja teräksistä
 naginataa tapaa enää vain museoissa tai asekeräilijöiden kokoelmista.

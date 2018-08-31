@@ -4,7 +4,7 @@ about 500 years ago, in the Kanto area, in a place called Kashima. From the same
 place many sword fighting schools have been initiated.
 
 [![Himeji 2011-05-26 Jikishinkageryu
-Naginatajutsu](http://farm3.staticflickr.com/2514/5763043905_5a542834cf_m.jpg)
+Naginatajutsu](https://farm3.staticflickr.com/2514/5763043905_5a542834cf_m.jpg)
 ](http://flickr.com/photos/14224905@N08/5763043905 "Himeji 2011-05-26 Jikishinkageryu Naginatajutsu / paazio")
 
 At the moment the style is being practised along with Japan, at Hawaii (USA), Belgium and Finland.
@@ -42,11 +42,11 @@ study koryu after a minimum of a year of active experience in Atarashii Naginata
 
 
 [![Kyoto 2011-05-02 107th Embu Taikai, Jikishinkageryu
-Naginatajutsu](http://farm3.staticflickr.com/2291/5763589730_ae7116f625_m.jpg)
+Naginatajutsu](https://farm3.staticflickr.com/2291/5763589730_ae7116f625_m.jpg)
 ](http://flickr.com/photos/14224905@N08/5763589730 "Kyoto 2011-05-02 107th Embu Taikai, Jikishinkageryu Naginatajutsu / paazio")
 
 [![Kyoto 2011-05-04 Shimogamo Jinja, Jikishinkageryu
-Naginatajutsu](http://farm6.staticflickr.com/5185/5763043699_fcda29747e_m.jpg)
+Naginatajutsu](https://farm6.staticflickr.com/5185/5763043699_fcda29747e_m.jpg)
 ](http://flickr.com/photos/14224905@N08/5763043699 "Kyoto 2011-05-04 Shimogamo Jinja, Jikishinkageryu Naginatajutsu / paazio")
 
 

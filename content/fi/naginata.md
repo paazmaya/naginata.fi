@@ -9,7 +9,7 @@ tarkoituksena oli toimia kouluissa liikunnan opetuksena tytöille, jossa
 se toimi ~1910 alkaen toiseen maailmansotaan saakka.
 
 [![Naginata
-Competition](http://farm7.staticflickr.com/6231/6282661367_12b51920c4_m.jpg)
+Competition](https://farm7.staticflickr.com/6231/6282661367_12b51920c4_m.jpg)
 ](http://flickr.com/photos/96248369@N00/6282661367 "Naginata Competition / ethics_gradient")
 
 Myöhemmin lajin nimi muutettiin Atarashii Naginata:ksi, kirjaimellisesti "uudeksi naginataksi",
@@ -85,7 +85,7 @@ viidestä osasta.
 ## Pariharjoittelu
 
 [![Toshidama Gallery: Toyohara Chikanobu (1838 - 1912) Guard Ladies of the Chiyoda Palace,
-1892](http://farm9.staticflickr.com/8107/8453641906_8f54ca9720_m.jpg)
+1892](https://farm9.staticflickr.com/8107/8453641906_8f54ca9720_m.jpg)
 ](http://www.flickr.com/photos/toshidama-gallery/8453641906 "Toshidama Gallery: Toyohara Chikanobu (1838 - 1912) Guard Ladies of the Chiyoda Palace, 1892 / Alex Faulkner")
 
 Naginatan pariharjoittelussa kummallakin harjoittelijalla on bambu-teräinen naginata.
@@ -119,7 +119,7 @@ osaamista vaaditaan kolmannesta dan-arvosta ylöspäin.
 Yleensä kokeneempi osapuoli, jota tässä harjoituksessa kutsutaan nimellä "hikitate",
 avaa kohteita toiselle harjoittelijalle, jonka tulee lyödä suorituksia nopealla tahdilla.
 
-[![Fighting Spirit](http://farm8.staticflickr.com/7036/7040969153_c884abd640_m.jpg)
+[![Fighting Spirit](https://farm8.staticflickr.com/7036/7040969153_c884abd640_m.jpg)
 ](http://flickr.com/photos/31676563@N05/7040969153 "Fighting Spirit / Teruhide Tomori")
 
 ### Gokaku geiko

@@ -7,7 +7,7 @@ Jikishinkageryu Naginatajutsu is organised under the Shutokukai (registered
 association), of which all members belong to the Japanese Shutokukai organisation.
 The head teacher in Finland is Mr. Jukka Paasonen (reiken no maki, [first name]@naginata.fi).
 
-[![Kirsikankukkajuhla Roihuvuoressa](http://farm6.static.flickr.com/5231/7188222444_8b8d2512c1_m.jpg)
+[![Kirsikankukkajuhla Roihuvuoressa](https://farm6.static.flickr.com/5231/7188222444_8b8d2512c1_m.jpg)
 ](http://flickr.com/photos/naakkalinna/7188222444 "Kirsikankukkajuhla Roihuvuoressa / Naakka")
 
 The FKA maintains a [mailing list in which can be subscribed for being

@@ -7,7 +7,7 @@ Jikishinkageryu Naginatajutsun harjoittelua organisoi Suomessa Shutokukai ry,
 jonka kaikki jäsenet kuuluvat Japanilaiseen Shūtokukai organisaatioon.
 Suomessa tyylin pääopettajana toimii Jukka Paasonen (reiken no maki, [etunimi]@naginata.fi).
 
-[![Kirsikankukkajuhla Roihuvuoressa](http://farm6.static.flickr.com/5231/7188222444_8b8d2512c1_m.jpg)
+[![Kirsikankukkajuhla Roihuvuoressa](https://farm6.static.flickr.com/5231/7188222444_8b8d2512c1_m.jpg)
 ](http://flickr.com/photos/naakkalinna/7188222444 "Kirsikankukkajuhla Roihuvuoressa / Naakka")
 
 Liitto ylläpitää [sähköpostilistaa jolla tiedotetaan leireistä,

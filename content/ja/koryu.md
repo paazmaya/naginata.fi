@@ -4,7 +4,7 @@
 またこの鹿島からは、他の多くの流派が誕生している。
 
 
-[![直心影流薙刀術 姫路2011年5月26日](http://farm3.staticflickr.com/2514/5763043905_5a542834cf_m.jpg)](http://flickr.com/photos/14224905@N08/5763043905 "姫路2011-05-26 Jikishinkageryu Naginatajutsu/ paazio")
+[![直心影流薙刀術 姫路2011年5月26日](https://farm3.staticflickr.com/2514/5763043905_5a542834cf_m.jpg)](http://flickr.com/photos/14224905@N08/5763043905 "姫路2011-05-26 Jikishinkageryu Naginatajutsu/ paazio")
 
 現在のところ、直心影流薙刀術は、日本、ハワイ、ベルギー、フィンランドで継承されている。
 直心影流薙刀術愛好家は全員、日本の組織 "秀徳会"に所属している。[日本古武道協会 直心影流薙刀術](http://www.jikishin-naginata.jp/ "Jikishinkageryu Naginatajutsu")
@@ -37,11 +37,11 @@
 古流について知るよう奨励されることもある。
 
 [![Kyoto 2011-05-02 107th Embu Taikai, Jikishinkageryu
-Naginatajutsu](http://farm3.staticflickr.com/2291/5763589730_ae7116f625_m.jpg)
+Naginatajutsu](https://farm3.staticflickr.com/2291/5763589730_ae7116f625_m.jpg)
 ](http://flickr.com/photos/14224905@N08/5763589730 "Kyoto 2011-05-02 107th Embu Taikai, Jikishinkageryu Naginatajutsu / paazio")
 
 [![Kyoto 2011-05-04 Shimogamo Jinja, Jikishinkageryu
-Naginatajutsu](http://farm6.staticflickr.com/5185/5763043699_fcda29747e_m.jpg)
+Naginatajutsu](https://farm6.staticflickr.com/5185/5763043699_fcda29747e_m.jpg)
 ](http://flickr.com/photos/14224905@N08/5763043699 "Kyoto 2011-05-04 Shimogamo Jinja, Jikishinkageryu Naginatajutsu / paazio")
 
 ## 流派継承者(宗家)

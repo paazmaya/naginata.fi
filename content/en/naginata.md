@@ -7,7 +7,7 @@ Initially, this new art was called as Gakko Naginata (school Naginata), because 
 initial purpose to serve as a school physical education for girls, in which it was used
 from ~1910 until the beginning of the Second World War.
 
-[![Naginata Competition](http://farm7.staticflickr.com/6231/6282661367_12b51920c4_m.jpg)
+[![Naginata Competition](https://farm7.staticflickr.com/6231/6282661367_12b51920c4_m.jpg)
 ](http://flickr.com/photos/96248369@N00/6282661367 "Naginata Competition / ethics_gradient")
 
 Later, the name was changed to Atarashii Naginata, literally "New Naginata", which became the
@@ -80,7 +80,7 @@ The exercise includes the following five cutting techniques.
 ## Paired training
 
 [![Toshidama Gallery: Toyohara Chikanobu (1838 - 1912) Guard Ladies of the Chiyoda Palace,
-1892](http://farm9.staticflickr.com/8107/8453641906_8f54ca9720_m.jpg)
+1892](https://farm9.staticflickr.com/8107/8453641906_8f54ca9720_m.jpg)
 ](http://www.flickr.com/photos/toshidama-gallery/8453641906 "Toshidama Gallery: Toyohara Chikanobu (1838 - 1912) Guard Ladies of the Chiyoda Palace, 1892 / Alex Faulkner")
 
 In the paired drills of Naginata, both practitioners are using the bamboo bladed naginata.
@@ -114,7 +114,7 @@ Also it is required in the grading for sandan (third level) and higher.
 The more advanced practitioners acts as a "hikitate" who is opening targets for the other practitioner
 in which correct attacks should be done in a fast tempo.
 
-[![Fighting Spirit](http://farm8.staticflickr.com/7036/7040969153_c884abd640_m.jpg)
+[![Fighting Spirit](https://farm8.staticflickr.com/7036/7040969153_c884abd640_m.jpg)
 ](http://flickr.com/photos/31676563@N05/7040969153 "Fighting Spirit / Teruhide Tomori")
 
 ### Gokaku Geiko

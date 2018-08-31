@@ -3,7 +3,7 @@
 直心影流薙刀術では、すべてのメンバーが日本の秀徳会に属している(登録協会)。
 フィンランドのヘッドインストラクターはユッカ・パーソネン(霊剣ノ巻 jukka@naginata.fi)である。
 
-[![Kirsikankukkajuhla Roihuvuoressa](http://farm6.static.flickr.com/5231/7188222444_8b8d2512c1_m.jpg)
+[![Kirsikankukkajuhla Roihuvuoressa](https://farm6.static.flickr.com/5231/7188222444_8b8d2512c1_m.jpg)
 ](http://flickr.com/photos/naakkalinna/7188222444 "Kirsikankukkajuhla Roihuvuoressa / Naakka")
 
 フィンランド剣道連盟は、メーリングリストによって管理されており、講習会、進級試験およびその他の積極的な取り組みの情報が規約同意者に知らされることになる。

@@ -8,7 +8,7 @@
 太平洋戦争後、日本に武道禁止令がしかれるまでは、 "学校なぎなた"と呼ばれていました。
 
 [![Naginata
-Competition](http://farm7.staticflickr.com/6231/6282661367_12b51920c4_m.jpg)
+Competition](https://farm7.staticflickr.com/6231/6282661367_12b51920c4_m.jpg)
 ](http://flickr.com/photos/96248369@N00/6282661367 "Naginata Competition / ethics_gradient")
 
 その後、 "新しいなぎなた"と改名し、剣道や居合道、柔道とともに今日まで発展してきました。
@@ -86,7 +86,7 @@ Competition](http://farm7.staticflickr.com/6231/6282661367_12b51920c4_m.jpg)
 ## 相対
 
 [![Toshidama Gallery: Toyohara Chikanobu (1838 - 1912) Guard Ladies of the Chiyoda Palace,
-1892](http://farm9.staticflickr.com/8107/8453641906_8f54ca9720_m.jpg)
+1892](https://farm9.staticflickr.com/8107/8453641906_8f54ca9720_m.jpg)
 ](http://www.flickr.com/photos/toshidama-gallery/8453641906 "Toshidama Gallery: Toyohara Chikanobu (1838 - 1912) Guard Ladies of the Chiyoda Palace, 1892 / Alex Faulkner")
 
 薙刀で相対する場合、竹でできた刃部がついた試合用なぎなたを使用する。
@@ -119,7 +119,7 @@ Competition](http://farm7.staticflickr.com/6231/6282661367_12b51920c4_m.jpg)
 短時間に気力・体力の続く限り、自分が習得したわざのすべてを出すことが大切である。
 打突するときの正しい姿勢、間合、手の内などを学ぶことができる重要な稽古方法である。
 
-[![Fighting Spirit](http://farm8.staticflickr.com/7036/7040969153_c884abd640_m.jpg)
+[![Fighting Spirit](https://farm8.staticflickr.com/7036/7040969153_c884abd640_m.jpg)
 ](http://flickr.com/photos/31676563@N05/7040969153 "Fighting Spirit / Teruhide Tomori")
 
 ### 互角稽古
