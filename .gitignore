@@ -8,4 +8,4 @@ npm-debug.log
 public_html/**/*.html
 public_html/css/naginata.css
 source/favicons.jade
-package-lock.json
+
