@@ -42,7 +42,7 @@
     "grunt-postcss": "~0.9",
     "grunt-trimtrailingspaces": "~3.0",
     "http-server": "~0.11.1",
-    "jasmine-node": "~1.16",
+    "jasmine-node": "~2.0.1",
     "jit-grunt": "~0.10"
   },
   "engines": {
