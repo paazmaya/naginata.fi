@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+<urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="https://www.w3.org/1999/xhtml">
 {% for page in pages %}
   <url>
-    <loc>http://naginata.fi{{ page.loc }}</loc>
+    <loc>https://naginata.fi{{ page.loc }}</loc>
     <lastmod>{{ page.lastmod }}</lastmod>
     <changefreq>{{ page.changefreq }}</changefreq>
   {% for alter in page.alternates %}
-    <xhtml:link rel="alternate" hreflang="{{ alter.lang }}" href="http://naginata.fi{{ alter.href }}" />
+    <xhtml:link rel="alternate" hreflang="{{ alter.lang }}" href="https://naginata.fi{{ alter.href }}" />
   {% endfor %}
   </url>
 {% endfor %}

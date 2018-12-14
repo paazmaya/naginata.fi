@@ -2,7 +2,7 @@
 
 > A web site in Finland for an ancient martial art from Japan.
 
-All the code is under the [Creative Commons Attribution-ShareAlike 4.0 International Public License](http://creativecommons.org/licenses/by-sa/4.0/).
+All the code is under the [Creative Commons Attribution-ShareAlike 4.0 International Public License](https://creativecommons.org/licenses/by-sa/4.0/).
 Full legal text also available in [`LICENSE` file](LICENSE).
 
 [![dependencies Status](https://david-dm.org/paazmaya/naginata.fi/status.svg)](https://david-dm.org/paazmaya/naginata.fi)

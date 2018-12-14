@@ -37,7 +37,7 @@ module.exports = function facebookMeta(page, fb) {
     },
     {
       property: 'og:url',
-      content: 'http://naginata.fi' + page.url
+      content: 'https://naginata.fi' + page.url
     },
     {
       property: 'og:site_name',
