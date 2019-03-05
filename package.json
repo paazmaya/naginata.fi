@@ -30,7 +30,7 @@
   },
   "devDependencies": {
     "autoprefixer": "9.4.2",
-    "coveralls": "3.0.2",
+    "coveralls": "3.0.3",
     "csswring": "7.0.0",
     "eslint": "5.10.0",
     "eslint-config-paazmaya": "5.1.0",
