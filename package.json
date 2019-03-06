@@ -29,7 +29,7 @@
     "swig": "~1.4.2"
   },
   "devDependencies": {
-    "autoprefixer": "9.4.2",
+    "autoprefixer": "9.4.10",
     "coveralls": "3.0.3",
     "csswring": "7.0.0",
     "eslint": "5.15.1",
