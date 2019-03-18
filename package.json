@@ -32,7 +32,7 @@
     "autoprefixer": "9.5.0",
     "coveralls": "3.0.3",
     "csswring": "7.0.0",
-    "eslint": "5.15.2",
+    "eslint": "5.15.3",
     "eslint-config-paazmaya": "5.2.0",
     "grunt": "1.0.3",
     "grunt-contrib-concat": "1.0.1",
