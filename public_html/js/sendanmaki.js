@@ -19,74 +19,72 @@ var sendanmaki = window.sendanmaki = {
   /**
    * Image notes for the given key image.
    */
-  notes: {
-    '/img/naginata-bogu-chudan-artwork-lecklin.png': [
-      {
-        width: 104,
-        height: 126,
-        x: 45,
-        y: 0,
-        note: 'Men'
-      },
-      {
-        width: 58,
-        height: 82,
-        x: 147,
-        y: 235,
-        note: 'Kote'
-      },
-      {
-        width: 83,
-        height: 118,
-        x: 55,
-        y: 138,
-        note: 'Do'
-      },
-      {
-        width: 137,
-        height: 87,
-        x: 30,
-        y: 246,
-        note: 'Tare'
-      },
-      {
-        width: 52,
-        height: 133,
-        x: 112,
-        y: 435,
-        note: 'Sune ate'
-      },
-      {
-        width: 31,
-        height: 39,
-        x: 369,
-        y: 236,
-        note: 'Kissaki'
-      },
-      {
-        width: 23,
-        height: 25,
-        x: 13,
-        y: 252,
-        note: 'Ishizuki'
-      },
-      {
-        width: 48,
-        height: 26,
-        x: 251,
-        y: 307,
-        note: 'Sendanmaki'
-      },
+  boguNotes: [
+    {
+      width: 104,
+      height: 126,
+      x: 45,
+      y: 0,
+      note: 'Men'
+    },
+    {
+      width: 58,
+      height: 82,
+      x: 147,
+      y: 235,
+      note: 'Kote'
+    },
+    {
+      width: 83,
+      height: 118,
+      x: 55,
+      y: 138,
+      note: 'Do'
+    },
+    {
+      width: 137,
+      height: 87,
+      x: 30,
+      y: 246,
+      note: 'Tare'
+    },
+    {
+      width: 52,
+      height: 133,
+      x: 112,
+      y: 435,
+      note: 'Sune ate'
+    },
+    {
+      width: 31,
+      height: 39,
+      x: 369,
+      y: 236,
+      note: 'Kissaki'
+    },
+    {
+      width: 23,
+      height: 25,
+      x: 13,
+      y: 252,
+      note: 'Ishizuki'
+    },
+    {
+      width: 48,
+      height: 26,
+      x: 251,
+      y: 307,
+      note: 'Sendanmaki'
+    },
 
-      {
-        width: 39,
-        height: 27,
-        x: 352,
-        y: 279,
-        note: 'Monouchi'
-      }
-    ]
-  },
+    {
+      width: 39,
+      height: 27,
+      x: 352,
+      y: 279,
+      note: 'Monouchi'
+    }
+  ],
 
   /**
    * Toggle note class on an element
@@ -106,18 +104,26 @@ var sendanmaki = window.sendanmaki = {
   /**
    * Add notes to a chudan kamae bogu image, if available.
    *
-   * @param {string} key    Key which should be the img elements src
    * @param {Array}  items  Items to be created for the given key image
    * @returns {void}
    */
-  buildImageNotes: function buildImageNotes(key, items) {
+  buildImageNotes: function buildImageNotes(items) {
+    var key = '/img/naginata-bogu-chudan-artwork-lecklin.png';
+
+    var image = document.querySelectorAll('img[src="' + key + '"]')[0];
+    var parent = image.parentNode;
+    parent.classList.add('relative');
+    items.forEach(function forItems(data) {
+      sendanmaki.createImgNote(data, image);
+    });
+/*
     var parent = $('img[src="' + key + '"]').parent().addClass('relative');
     $('img[src="' + key + '"]').each(function eachImage() {
       items.forEach(function forItems(data) {
         sendanmaki.createImgNote(data, key, parent);
       });
     });
-
+*/
     $(document).on('mouseover mouseout', '.note[rel]', sendanmaki.onNoteHover);
   },
 
@@ -126,22 +132,19 @@ var sendanmaki = window.sendanmaki = {
    *
    * @param {{x: number, y: number, width: number, height: number, note: string}} data Data
    *        for the note, such as position, size and text
-   * @param {string} url  Src property of the image element for which the note is created
-   * @param {jQuery} parent jQuery wrapped parent element of the image element
+   * @param {Element} image  Img element
    * @returns {void}
    */
-  createImgNote: function createImgNote(data, url, parent) {
-    if (parent.length > 0 && $('span.note[rel="' + data.note + '"]').length === 0) {
-      var cont = $('<span class="note" rel="' + data.note + '"></span>');
-      cont.css('left', data.x).css('top', data.y);
+  createImgNote: function createImgNote(data, image) {
+    var elements = document.querySelectorAll('span.note[rel="' + data.note + '"]');
 
-      var area = $('<span class="notearea"></span>');
-      area.css('width', data.width).css('height', data.height);
+    if (image && elements.length === 0) {
+      var cont = '<span class="note" rel="' + data.note + '" style="left:' + data.x + 'px; top: ' + data.y + 'px">' +
+        '<span class="notearea" style="width:' + data.width + 'px; height: ' + data.height + 'px"></span>' +
+        '<span class="notetext">' + data.note + '</span>' +
+        '</span>';
 
-      var note = $('<span class="notetext">' + data.note + '</span>');
-      cont.append(area, note);
-
-      parent.append(cont).show();
+      image.insertAdjacentHTML('beforebegin', cont);
     }
   },
 
@@ -192,7 +195,7 @@ var sendanmaki = window.sendanmaki = {
     sendanmaki.localiseColorbox();
     $.colorbox.settings.speed = 100;
 
-    $.each(this.notes, this.buildImageNotes);
+    this.buildImageNotes(this.boguNotes);
 
     // Re-usage
     var $media = $('article p > a:has(img:only-child), article.media ul a');
@@ -207,6 +210,8 @@ var sendanmaki = window.sendanmaki = {
 
     // Thumbnail on all pages except media
     $('article p > a:has(img:only-child)').on('click', sendanmaki.onFigureClick);
+    //document.querySelectorAll('article p > a:has(img:only-child)');
+    //el.addEventListener('click', sendanmaki.onFigureClick);
 
     // Track ColorBox usage with Google Analytics and fix position on high title
     $(document).on('cbox_complete', function cboxComplete() {
@@ -271,29 +276,8 @@ var sendanmaki = window.sendanmaki = {
         slideshowStop: 'スライドショー終了'
       });
     }
-  },
-
-  /**
-   * Open the given url in a Colorbox iFrame.
-   *
-   * @param {string} url   Url which should be opened
-   * @param {string} title Title for the Colorbox
-   * @returns {void}
-   */
-  openIframe: function openIframe(url, title) {
-    var w = $('div.centered').width() || 1000;
-    var h = w * 0.75;
-
-    // By using iframe, fullscreen becomes possible
-    $.colorbox({
-      title: title,
-      innerHeight: h,
-      innerWidth: w,
-      href: url,
-      iframe: true,
-      scrolling: false
-    });
   }
+
 };
 
 (function jsLoaded() {
