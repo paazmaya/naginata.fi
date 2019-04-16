@@ -208,12 +208,6 @@ var sendanmaki = window.sendanmaki = {
     // Thumbnail on all pages except media
     $('article p > a:has(img:only-child)').on('click', sendanmaki.onFigureClick);
 
-    // data-photo-page ...
-    $('article.media ul:first-of-type > li > a').colorbox({
-      rel: 'several',
-      photo: true
-    });
-
     // Track ColorBox usage with Google Analytics and fix position on high title
     $(document).on('cbox_complete', function cboxComplete() {
       var href = $.colorbox.element().attr('href');
