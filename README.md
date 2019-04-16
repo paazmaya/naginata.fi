@@ -49,8 +49,6 @@ Contributors are welcome.
 Any changes made to this GitHub repository, [are automatically deployed to Heroku](https://blog.heroku.com/archives/2015/2/6/heroku_github_integration),
 hence any content updates are visible via the web site almost immediately.
 
-[![JetBrains WebStorm](./webstorm-logo.png) WebStorm developer IDE kindly provided by Jetbrains.](https://www.jetbrains.com/webstorm/)
-
 [![BrowserStack](./browserstack-logo.png) Cross browser testing kindly provided by BrowserStack.](https://www.browserstack.com/)
 
 ## Contributing
