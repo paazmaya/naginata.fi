@@ -76,15 +76,12 @@ List of software used for making `naginata.fi` possible:
  * [ESLint](http://eslint.org/ "The pluggable linting utility for JavaScript")
  * [Express.js](http://expressjs.com/ "web application framework for node")
  * [Grunt](http://gruntjs.com/ "The JavaScript Task Runner")
- * [JSON](http://www.json.org/ "JSON (JavaScript Object Notation) is a lightweight data-interchange format")
- * [Jade](http://jade-lang.com/ "node templating language")
  * [Markdown](http://daringfireball.net/projects/markdown/ "Markdown is a text-to-HTML conversion tool for web writers")
  * [Node.js](http://nodejs.org "Node.js is a platform built on Chrome's JavaScript runtime for easily building fast, scalable network applications")
  * [Phantomas](http://macbre.github.io/phantomas/ "PhantomJS-based web performance metrics collector and monitoring tool")
  * [Sitespeed.io](http://sitespeed.io "Analyze your website speed and performance")
  * [jQuery](http://jquery.com/ "New wave JavaScript")
- * [photobox](https://github.com/stefanjudis/photobox "Module to create screenshots of your site and check if the layout has changed")
- * [uCSS](https://github.com/operasoftware/ucss "uCSS is made for crawling (large) websites to find unused CSS selectors")
+
 
 ## Installation
 

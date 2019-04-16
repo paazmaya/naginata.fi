@@ -6,6 +6,6 @@ coverage
 node_modules
 npm-debug.log
 public_html/**/*.html
+public_html/*.xml
 public_html/css/naginata.css
 source/favicons.jade
-

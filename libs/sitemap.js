@@ -37,7 +37,7 @@ const listAlternates = function listAlternates(list, enabledLanguages) {
 /**
  * Format the page data to match the need for sitemap.
  *
- * @param {object} pages JSON data from content folder
+ * @param {array} pages JSON data from content folder
  * @param {array} enabledLanguages List of two char language codes of the enabled languages
  * @returns {array} Data to be used with the sitemap template
  */

@@ -20,6 +20,8 @@ const flipAheadLinks = require('./libs/flip-ahead-links');
 const flickrImageList = require('./libs/flickr-image-list');
 const facebookMeta = require('./libs/facebook-meta.js');
 
+const sitemap = require('./libs/sitemap');
+
 // Page meta data
 const pageData = require('./content/page-data.json');
 
@@ -29,16 +31,16 @@ const langMeta = getEnabledLanguages(pageData.languages);
 const indexData = (current, pages, enabledLanguages, lang) => {
   current.facebook = facebookMeta(current, pageData.facebook);
 
-  const currentLangPages = pages.map(page => {
+  const currentLangPages = pages.map((page) => {
     return page[lang];
   });
 
   // Get the same URL in other languages, used for changing the language
   const otherLangUrls = Object.assign({}, langMeta);
-  pages.forEach(page => {
+  pages.forEach((page) => {
     if (page[lang] && page[lang].url === current.url) {
       // This is the correct page object
-      enabledLanguages.forEach(key => {
+      enabledLanguages.forEach((key) => {
         otherLangUrls[key].url = page[key].url;
       });
     }
@@ -67,6 +69,16 @@ const saveStaticFile = (filepath, content) => {
   fs.writeFileSync(filepath, content, 'utf8');
 };
 
+const renderSitemap = (enabledLanguages) => {
+  const data = sitemap(pageData.pages, enabledLanguages);
+  const template = swig.compileFile('views/sitemap.html');
+  const content = template({
+    pages: data
+  });
+  const filepath = path.join(__dirname, 'public_html', 'sitemap.xml');
+  saveStaticFile(filepath, content);
+};
+
 const renderPage = (current, inputData, lang) => {
 
   const template = swig.compileFile('views/index.html');
@@ -86,10 +98,12 @@ const iteratePages = (pages) => {
   // Enabled language ISO codes: en, fi, ...
   const enabledLanguages = Object.keys(langMeta);
 
-  pages.forEach(page => {
+  renderSitemap(enabledLanguages);
+
+  pages.forEach((page) => {
     Object.keys(page)
-      .filter(lang => enabledLanguages.indexOf(lang) !== -1)
-      .forEach(lang => {
+      .filter((lang) => enabledLanguages.indexOf(lang) !== -1)
+      .forEach((lang) => {
         // Pages only with enabled languages get here
         const langPage = page[lang];
         langPage.view = page.en.title.toLowerCase();
