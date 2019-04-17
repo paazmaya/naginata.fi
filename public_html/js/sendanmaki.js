@@ -88,16 +88,18 @@ var sendanmaki = window.sendanmaki = {
 
   /**
    * Toggle note class on an element
-   * @param {jQuery.Event} event Mouse over/out event via jQuery
+   * @param {Event} event Mouse over/out event
    * @returns {void}
    */
   onNoteHover: function onNoteHover(event) {
-    var cont = $(event.currentTarget);
+    if (!event.target.matches('.note[rel]')) {
+      return;
+    }
     if (event.type === 'mouseover') {
-      cont.addClass('notehover');
+      event.target.classList.add('notehover');
     }
     else {
-      cont.removeClass('notehover');
+      event.target.classList.remove('notehover');
     }
   },
 
@@ -110,21 +112,18 @@ var sendanmaki = window.sendanmaki = {
   buildImageNotes: function buildImageNotes(items) {
     var key = '/img/naginata-bogu-chudan-artwork-lecklin.png';
 
-    var image = document.querySelectorAll('img[src="' + key + '"]')[0];
-    var parent = image.parentNode;
+    var images = document.querySelectorAll('img[src="' + key + '"]');
+    if (images.length === 0) {
+      return;
+    }
+    var parent = images[0].parentNode;
     parent.classList.add('relative');
     items.forEach(function forItems(data) {
-      sendanmaki.createImgNote(data, image);
+      sendanmaki.createImgNote(data, images[0]);
     });
-/*
-    var parent = $('img[src="' + key + '"]').parent().addClass('relative');
-    $('img[src="' + key + '"]').each(function eachImage() {
-      items.forEach(function forItems(data) {
-        sendanmaki.createImgNote(data, key, parent);
-      });
-    });
-*/
-    $(document).on('mouseover mouseout', '.note[rel]', sendanmaki.onNoteHover);
+
+    document.addEventListener('mouseover', sendanmaki.onNoteHover);
+    document.addEventListener('mouseout', sendanmaki.onNoteHover);
   },
 
   /**
@@ -150,22 +149,14 @@ var sendanmaki = window.sendanmaki = {
 
   /**
    * Handler for figures, which are assumed to contain Flickr image.
+  * Opens a Flickr image in a Colorbox.
    *
-   * @param {jQuery.Event} event Click event via jQuery
+   * @param {Event} event Click event
    * @returns {void}
    */
   onFigureClick: function onFigureClick(event) {
     event.preventDefault();
-    sendanmaki.openFlickrImage($(this));
-  },
-
-  /**
-   * Opens a Flickr image in a Colorbox.
-   *
-   * @param {jQuery} $self The link that was clicked, which should have Flickr image url
-   * @returns {void}
-   */
-  openFlickrImage: function openFlickrImage($self) {
+    var $self = $(event.currentTarget);
     var href = $self.find('img').attr('src');
 
     // Find the domain
@@ -184,6 +175,17 @@ var sendanmaki = window.sendanmaki = {
     });
   },
 
+  externalClick: function externalClick(event) {
+    event.preventDefault();
+    var href = event.currentTarget.getAttribute('href');
+    if (/flickr\.com\/photos\//.test(href)) {
+      sendanmaki.onFigureClick(event);
+    }
+    else {
+      window.open(href, Date.now());
+    }
+  },
+
   /**
    * This shall be run on domReady in order to initiate
    * all the handlers needed.
@@ -191,27 +193,19 @@ var sendanmaki = window.sendanmaki = {
    * @returns {void}
    */
   domReady: function domReady() {
-    this.lang = $('html').attr('lang') || this.lang;
+    this.lang = document.querySelector('html').getAttribute('lang') || this.lang;
     sendanmaki.localiseColorbox();
     $.colorbox.settings.speed = 100;
 
     this.buildImageNotes(this.boguNotes);
 
-    // Re-usage
-    var $media = $('article p > a:has(img:only-child), article.media ul a');
-    var $external = $('a[href^="http://"], a[href^="https://"]').not($media);
+    var external = document.querySelectorAll('a[href^="http://"], a[href^="https://"]');
+    var result;
+		for (var i = 0; i < external.length; ++i) {
+	    result = external[i];
+      result.addEventListener('click', sendanmaki.externalClick);
+    }
 
-    // external urls shall open in a new window
-    $external.on('click', function externalClick(event) {
-      event.preventDefault();
-      var href = $(this).attr('href');
-      window.open(href, $.now());
-    });
-
-    // Thumbnail on all pages except media
-    $('article p > a:has(img:only-child)').on('click', sendanmaki.onFigureClick);
-    //document.querySelectorAll('article p > a:has(img:only-child)');
-    //el.addEventListener('click', sendanmaki.onFigureClick);
 
     // Track ColorBox usage with Google Analytics and fix position on high title
     $(document).on('cbox_complete', function cboxComplete() {

@@ -11,7 +11,7 @@
 module.exports = {
   scripts: {
     files: ['public_html/js/sendanmaki.js', '*.js'],
-    tasks: ['eslint', 'uglify'],
+    tasks: ['uglify'],
     options: {
       interrupt: true
     }
@@ -19,9 +19,5 @@ module.exports = {
   styles: {
     files: ['public_html/css/main.css', 'public_html/css/colorbox.css'],
     tasks: ['concat', 'postcss']
-  },
-  jasmine: {
-    files: ['tests/js/*.js'],
-    tasks: ['jasmine:frontend']
   }
 };
