@@ -1,6 +1,6 @@
 {
   "name": "naginata.fi",
-  "version": "0.8.2",
+  "version": "0.9.0",
   "title": "Naginata in Finland",
   "homepage": "https://github.com/paazmaya/naginata.fi",
   "description": "A web site in Finland for an ancient martial art from Japan",
@@ -32,7 +32,7 @@
     "csswring": "7.0.0",
     "eslint": "5.15.3",
     "eslint-config-paazmaya": "5.2.0",
-    "grunt": "1.0.3",
+    "grunt": "^1.0.4",
     "grunt-contrib-concat": "1.0.1",
     "grunt-contrib-uglify": "4.0.0",
     "grunt-contrib-watch": "1.1.0",
