@@ -17,7 +17,7 @@ module.exports = {
     }
   },
   styles: {
-    files: ['public_html/css/main.css', 'public_html/css/colorbox.css'],
+    files: ['public_html/css/main.css'],
     tasks: ['concat', 'postcss']
   }
 };

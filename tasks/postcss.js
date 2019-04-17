@@ -18,7 +18,7 @@ module.exports = {
     ]
   },
   css: {
-    src: 'public_html/css/naginata.css',
+    src: 'public_html/css/main.css',
     dest: 'public_html/css/naginata.min.css'
   }
 };

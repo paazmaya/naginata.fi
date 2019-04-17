@@ -20,8 +20,6 @@
     "body-parser": "~1.18.3",
     "compression": "~1.7.3",
     "express": "~4.16.4",
-    "jquery": "~3.4.0",
-    "jquery-colorbox": "~1.6.4",
     "marked": "~0.6.2",
     "morgan": "~1.9.1",
     "snyk": "~1.137.0",
