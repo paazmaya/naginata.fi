@@ -28,12 +28,10 @@
   },
   "devDependencies": {
     "autoprefixer": "9.5.0",
-    "coveralls": "3.0.3",
     "csswring": "7.0.0",
     "eslint": "5.15.3",
     "eslint-config-paazmaya": "5.2.0",
     "grunt": "^1.0.4",
-    "grunt-contrib-concat": "1.0.1",
     "grunt-contrib-uglify": "4.0.0",
     "grunt-contrib-watch": "1.1.0",
     "grunt-jasmine-node-coverage": "2.0.1",

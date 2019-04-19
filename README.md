@@ -6,12 +6,10 @@ All the code is under the [Creative Commons Attribution-ShareAlike 4.0 Internati
 Full legal text also available in [`LICENSE` file](LICENSE).
 
 [![dependencies Status](https://david-dm.org/paazmaya/naginata.fi/status.svg)](https://david-dm.org/paazmaya/naginata.fi)
-[![Build Status](https://img.shields.io/travis/paazmaya/naginata.fi.svg?style=flat-square)](https://travis-ci.org/paazmaya/naginata.fi)
-[![Coverage Status](https://img.shields.io/coveralls/paazmaya/naginata.fi.svg?style=flat-square)](https://coveralls.io/r/paazmaya/naginata.fi)
-[![Code Climate Maintainability](https://api.codeclimate.com/v1/badges/366ab7862da3044294ac/maintainability)](https://codeclimate.com/github/paazmaya/naginata.fi/maintainability)
+[![Build Status](https://travis-ci.org/paazmaya/naginata.fi.svg?branch=master)](https://travis-ci.org/paazmaya/naginata.fi)
 [![Built with Grunt](http://img.shields.io/badge/Grunt-1.0-blue.svg?style=flat-square)](http://gruntjs.com/)
-[![Analytics](https://ga-beacon.appspot.com/UA-2643697-15/naginata.fi/index?flat-gif)](https://github.com/igrigorik/ga-beacon)
 ![Visual Regression Status](https://api.ghostinspector.com/v1/suites/5408c0312f4dd6df5ae50101/status-badge)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/1c6a708d-5ee5-4cd2-8e66-8cbdbfaa454d/deploy-status)](https://app.netlify.com/sites/naginata-finland/deploys)
 
 ## About the martial art
 
@@ -46,7 +44,7 @@ used in the _Atarashii Naginata_ page.
 
 Contributors are welcome.
 
-Any changes made to this GitHub repository, [are automatically deployed to Heroku](https://blog.heroku.com/archives/2015/2/6/heroku_github_integration),
+Any changes made to this GitHub repository, are automatically deployed to Netlify,
 hence any content updates are visible via the web site almost immediately.
 
 [![BrowserStack](./browserstack-logo.png) Cross browser testing kindly provided by BrowserStack.](https://www.browserstack.com/)
@@ -87,16 +85,16 @@ List of software used for making `naginata.fi` possible:
 
 ```sh
 npm install
-grunt
+npx grunt
+node build.js
 ```
 
 ## Testing
 
-Unit tests for both front end and back end are using Jasmine and for code coverage Istanbul.
+Unit tests for back end are using Jasmine and for code coverage Istanbul.
 
 ```sh
 grunt test
-npm run coverage
 ```
 
 Web performance tests are done with...
@@ -123,22 +121,6 @@ npm install -g parker
 parker public_html/css/main.css > parker.md
 ```
 
-Also [nodemon](https://github.com/remy/nodemon/ "Monitor for any changes in your node.js application and automatically restart the server"):
-
-```sh
-npm install -g nodemon
-nodemon server.js
-```
-
-Automated screenshot of the front page on every [deployment with GhostInspector](https://ghostinspector.com/docs/integration/#heroku).
-
-```sh
-heroku addons:add deployhooks:http --url=https://api.ghostinspector.com/v1/suites/[suite-id]/execute/?apiKey=[api-key]
-```
-
-The free plan of GhostInspector limits running the tests only up to 100 timer per month, hence it is much more efficient
-to execute them only on deployment, instead of once a day.
-
 ## Editing content
 
 Please create a pull request, which only touches the Markdown files under `content/` and/or `page-data.json` file.
@@ -159,7 +141,6 @@ pandoc -V geometry:margin=0.5in -o content/en/grading-rules.md grading-rules-eng
  * Facebook liking and related, https://developers.facebook.com/tools/debug/og/object?q=naginata.fi
  * Further CSP tuning, https://www.owasp.org/index.php/Content_Security_Policy
 
-Newrelic troubleshooting https://docs.newrelic.com/docs/agents/nodejs-agent/troubleshooting/troubleshooting-page-load-timing-nodejs
 
 ## History
 
@@ -172,3 +153,5 @@ Content is at the source code repository in text files in Markdown format.
 PHP version was made to match the same simplified functionality as the Node.js counterpart in 0.4.1.
 
 Around the release of 0.6.0, the actual `naginata.fi` domain was moved to Heroku and served from there with Node.js.
+
+In late April 2019, deployment of the site was moved to happen in Netlify, instead of Heroku, which also meant that the site is now build as a static web site.
