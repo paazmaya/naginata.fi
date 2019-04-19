@@ -1,5 +1,5 @@
 
-var VERSION = '20190420a';
+var VERSION = '20190420b';
 
 var cacheFilesFirst = [
   '/css/naginata.min.css',
@@ -31,14 +31,10 @@ this.addEventListener('install', function(event) {
 this.addEventListener('fetch', function(event) {
   event.respondWith(
     caches.match(event.request).then(function(resp) {
-      console.log('event.request', event.request);
-      console.log('resp', resp);
       return resp || fetch(event.request).then(function(response) {
         if (/farm\d+\.static\.*flickr\.com/.test(event.request.url)) {
           return caches.open(VERSION).then(function(cache) {
-
             cache.put(event.request, response.clone());
-
             return response;
           });
         }

@@ -7,4 +7,3 @@ cache:
     - node_modules
 matrix:
   fast_finish: true
-after_success: "npm run coverage"
