@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta content="{{ meta.description }}" name="description">
     <meta content="{{ meta.titlesuffix }}" name="application-name">
-    <link rel="manifest" href="/manifest.json">
+    <link rel="manifest" href="/manifest.webmanifest">
     <link rel="shortcut icon" href="/img/favicon.png">
     <meta name="mobile-web-app-capable" value="yes">
     <link rel="apple-touch-icon" href="/icons/icon-180x180.png">
@@ -58,7 +58,7 @@
       <p role="banner">{{ meta.titlesuffix }}</p>
     </div>
     <nav class="full-width">
-      <ul role="navigation" class="centered">
+      <ul class="centered">
         {% for page in pages %}
         <li{% if page.url == meta.url %} class="current"{% endif %}>
           <a title="{{ page.header }}" href="{{ page.url }}">{{ page.title }}</a>

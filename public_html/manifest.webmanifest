@@ -1,5 +1,10 @@
 {
   "name": "naginata.fi",
+  "short_name": "naginata",
+  "background_color": "white",
+  "theme_color": "white",
+  "display": "minimal-ui",
+  "description": "Naginata Finland",
   "icons": [
     {
       "src": "/icons/icon-36x36.png",
