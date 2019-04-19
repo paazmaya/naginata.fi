@@ -10,11 +10,6 @@
 'use strict';
 
 var sendanmaki = window.sendanmaki = {
-  /**
-   * Current page language.
-   * Fetched from html lang attribute.
-   */
-  lang: 'fi',
 
   /**
    * Image notes for the given key image.
@@ -160,14 +155,12 @@ var sendanmaki = window.sendanmaki = {
    * @returns {void}
    */
   domReady: function domReady() {
-    this.lang = document.querySelector('html').getAttribute('lang') || this.lang;
-
     this.buildImageNotes(this.boguNotes);
 
     var external = document.querySelectorAll('a[href^="http://"], a[href^="https://"]');
     var result;
-		for (var i = 0; i < external.length; ++i) {
-	    result = external[i];
+    for (var i = 0; i < external.length; ++i) {
+      result = external[i];
       result.addEventListener('click', sendanmaki.externalClick);
     }
   }
