@@ -3,6 +3,7 @@
   Timing-Allow-Origin: *
   Server: Naginata Finland
   Cache-Control: max-age=180
+  X-Content-Type-Options: nosniff
 
 /en*
   Content-Language: en
