@@ -17,7 +17,7 @@
   force = false
 
 [context.production]
-  publish = "public"
+  publish = "public_html"
 
 [[headers]]
   for = "/*"
