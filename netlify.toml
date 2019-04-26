@@ -10,6 +10,12 @@
   force = false
   conditions = {Language = ["fi"]}
 
+[[redirects]]
+  from = "/"
+  to = "/en/"
+  status = 302
+  force = false
+
 [context.production]
   publish = "public"
 
