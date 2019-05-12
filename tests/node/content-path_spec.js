@@ -9,29 +9,29 @@
 'use strict';
 
 describe('Content Markdown file mapping to page URL addresses', function() {
-  var contentPath = require('../../libs/content-path');
+  const contentPath = require('../../libs/content-path');
 
   it('Finnish media page', function() {
-    var output = contentPath('fi', '/fi/media');
-    var expected = 'content/fi/media.md';
+    const output = contentPath('fi', '/fi/media');
+    const expected = 'content/fi/media.md';
     expect(output).toBe(expected);
   });
 
   it('English front page', function() {
-    var output = contentPath('en', '/en');
-    var expected = 'content/en/index.md';
+    const output = contentPath('en', '/en');
+    const expected = 'content/en/index.md';
     expect(output).toBe(expected);
   });
 
   it('Japanese front page with trailing slash', function() {
-    var output = contentPath('ja', '/ja/');
-    var expected = 'content/ja/index.md';
+    const output = contentPath('ja', '/ja/');
+    const expected = 'content/ja/index.md';
     expect(output).toBe(expected);
   });
 
   it('Finnish language, but English naginata page URL', function() {
-    var output = contentPath('fi', '/en/naginata');
-    var expected = 'content/en/naginata.md';
+    const output = contentPath('fi', '/en/naginata');
+    const expected = 'content/en/naginata.md';
     expect(output).not.toBe(expected);
   });
 });

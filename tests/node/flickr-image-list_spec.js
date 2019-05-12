@@ -9,10 +9,10 @@
 'use strict';
 
 describe('List of Flickr images for prefetch meta elements', function() {
-  var flickrImageList = require('../../libs/flickr-image-list');
+  const flickrImageList = require('../../libs/flickr-image-list');
 
   it('at least few Flickr images are found', function() {
-    var output = flickrImageList();
+    const output = flickrImageList();
     expect(output.length).toBeGreaterThan(2);
   });
 

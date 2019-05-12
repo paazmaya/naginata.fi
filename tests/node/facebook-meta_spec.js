@@ -9,21 +9,21 @@
 'use strict';
 
 describe('Facebook OpenGraph crawler specific meta data', function() {
-  var facebookMeta = require('../../libs/facebook-meta');
+  const facebookMeta = require('../../libs/facebook-meta');
 
-  var page = {
-    "url": "/en/koryu",
-    "header": "Jikishinkageryu Naginatajutsu",
-    "title": "Koryu",
-    "description": "Literally koryu means old school. While related to naginata, it stands for the classical old schools which were using the weapon in their system."
+  const page = {
+    url: '/en/koryu',
+    header: 'Jikishinkageryu Naginatajutsu',
+    title: 'Koryu',
+    description: 'Literally koryu means old school. While related to naginata, it stands for the classical old schools which were using the weapon in their system.'
   };
-  var fb = {
-    "app_id": "8060948243",
-    "admins": "paazmaya"
+  const fb = {
+    app_id: '8060948243',
+    admins: 'paazmaya'
   };
 
   it('Facebook specific metadata is returned', function() {
-    var output = facebookMeta(page, fb);
+    const output = facebookMeta(page, fb);
 
     output.forEach(function (item) {
       if (item.property === 'fb:app_id') {

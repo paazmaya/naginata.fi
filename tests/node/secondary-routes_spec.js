@@ -9,12 +9,12 @@
 'use strict';
 
 describe('Secondary routes', function() {
-  var secondaryRoutes = require('../../libs/secondary-routes');
+  const secondaryRoutes = require('../../libs/secondary-routes');
 
   it('Sitemap is called', function(){
 
-    var req = {};
-    var res = {
+    const req = {};
+    const res = {
       set: function () {},
       render: function (name, data, func) {
         func.call(null, null, 'hello');
@@ -27,7 +27,9 @@ describe('Secondary routes', function() {
 
     secondaryRoutes.getSitemap(req, res);
 
-    expect(res.set).toHaveBeenCalledWith({'Content-type': 'application/xml'});
+    expect(res.set).toHaveBeenCalledWith({
+      'Content-type': 'application/xml'
+    });
     expect(res.render).toHaveBeenCalled();
     expect(res.render.mostRecentCall.args[0]).toEqual('sitemap');
     expect(typeof res.render.mostRecentCall.args[2]).toEqual('function');
@@ -36,8 +38,8 @@ describe('Secondary routes', function() {
 
   it('Sitemap should get error', function(){
 
-    var req = {};
-    var res = {
+    const req = {};
+    const res = {
       set: function () {},
       render: function (name, data, func) {
         func.call(null, 'this is error', 'failure');
@@ -50,7 +52,9 @@ describe('Secondary routes', function() {
 
     secondaryRoutes.getSitemap(req, res);
 
-    expect(res.set).toHaveBeenCalledWith({'Content-type': 'application/xml'});
+    expect(res.set).toHaveBeenCalledWith({
+      'Content-type': 'application/xml'
+    });
     expect(res.render).toHaveBeenCalled();
     expect(res.render.mostRecentCall.args[0]).toEqual('sitemap');
     expect(typeof res.render.mostRecentCall.args[2]).toEqual('function');
@@ -58,21 +62,21 @@ describe('Secondary routes', function() {
   });
 
   it('Get all post addresses for removing www', function(){
-    var req = {
+    const req = {
       hostname: 'www.naginata.fi',
       protocol: 'http',
       originalUrl: '/hoplaa'
     };
-    var res = {
+    const res = {
       redirect: function () {}
     };
-    var walking = {
+    const walking = {
       next: function () {}
     };
     spyOn(res, 'redirect');
     spyOn(walking, 'next');
 
-    var url = req.protocol + '://' + req.hostname.replace(/^www\./, '') + req.originalUrl;
+    const url = req.protocol + '://' + req.hostname.replace(/^www\./, '') + req.originalUrl;
 
     secondaryRoutes.appGetAll(req, res, walking.next);
 
@@ -81,15 +85,15 @@ describe('Secondary routes', function() {
   });
 
   it('Get all post addresses when there is no www', function(){
-    var req = {
+    const req = {
       hostname: 'naginata.fi',
       protocol: 'http',
       originalUrl: '/hoplaa'
     };
-    var res = {
+    const res = {
       redirect: function () {}
     };
-    var walking = {
+    const walking = {
       next: function () {}
     };
     spyOn(res, 'redirect');

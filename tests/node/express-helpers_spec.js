@@ -9,15 +9,19 @@
 'use strict';
 
 describe('ExpressJS content helpers', function() {
-  var helpers = require('../../libs/express-helpers');
+  const helpers = require('../../libs/express-helpers');
 
   it('Link to same content in other languages', function() {
-    var output = helpers.linkPageLanguages({'fi': {}}, {'fi': {}});
+    const output = helpers.linkPageLanguages({
+      fi: {}
+    }, {
+      fi: {}
+    });
     expect(output).not.toBe(undefined);
   });
 
   it('Additional headers', function() {
-    var output = helpers.indexHeaders('fi');
+    const output = helpers.indexHeaders('fi');
     expect(output).not.toBe(undefined);
   });
 

@@ -9,10 +9,10 @@
 'use strict';
 
 describe('Get page content', function() {
-  var getContent = require('../../libs/get-content');
+  const getContent = require('../../libs/get-content');
 
   it('Build path to content file', function() {
-    var output = getContent('fi', '/fi');
+    const output = getContent('fi', '/fi');
     expect(output.substr(0, 3)).toBe('<h2');
   });
 
