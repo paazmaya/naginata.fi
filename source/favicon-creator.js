@@ -30,7 +30,9 @@ const minifyPng = function () {
   const child = childProcess.execFile(
     'optipng',
     ['-o7', '../public_html/icons/*.png'],
-    {cwd: '.'},
+    {
+      cwd: '.'
+    },
     function (error, stdout, stderr) {
       console.log(stdout);
       console.log(stderr);

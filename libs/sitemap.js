@@ -47,7 +47,9 @@ module.exports = function siteMap(pages, enabledLanguages) {
     // Item should have three properties, indexed with language code
     Object.keys(item).forEach(function eachKey(lang) {
       if (enabledLanguages.indexOf(lang) !== -1 && item[lang].url) {
-        const url = item[lang].url;
+        const {
+          url
+        } = item[lang];
         const path = contentPath(lang, url);
         const stats = fs.statSync(path);
         if (stats.isFile()) {
