@@ -20,18 +20,18 @@
   "dependencies": {
     "body-parser": "~1.19.0",
     "compression": "~1.7.4",
-    "express": "~4.16.4",
+    "express": "~4.17.1",
     "marked": "~0.7.0",
     "morgan": "~1.9.1",
-    "snyk": "^1.192.4",
+    "snyk": "^1.221.0",
     "st": "~1.2.2",
     "swig": "~1.4.2"
   },
   "devDependencies": {
-    "autoprefixer": "9.5.1",
+    "autoprefixer": "9.6.1",
     "csswring": "7.0.0",
-    "eslint": "5.16.0",
-    "eslint-config-paazmaya": "5.3.0",
+    "eslint": "6.2.2",
+    "eslint-config-paazmaya": "6.0.0",
     "grunt": "^1.0.4",
     "grunt-contrib-uglify": "4.0.1",
     "grunt-contrib-watch": "1.1.0",
@@ -61,10 +61,10 @@
     "budo",
     "martial-art"
   ],
-  "author": {
-    "name": "Juga Paazmaya",
-    "url": "https://paazmaya.fi"
-  },
+  "browserslist": [
+    "last 3 versions"
+  ],
+  "author": "Juga Paazmaya <paazmaya@yahoo.com> (https://paazmaya.fi)",
   "contributors": [
     {
       "name": "Leena Lecklin"
