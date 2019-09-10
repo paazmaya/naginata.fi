@@ -1,17 +1,11 @@
 
-var VERSION = '20190420b';
+var VERSION = '20190910a';
 
 var cacheFilesFirst = [
   '/css/naginata.min.css',
   '/favicon.ico',
-  '/img/flickr_28.png',
-  '/img/flickr_48.png',
   '/img/logo.png',
   '/img/naginata-bogu-chudan-artwork-lecklin.png',
-  '/img/vimeo_28.png',
-  '/img/vimeo_48.png',
-  '/img/youtube_28.png',
-  '/img/youtube_48.png',
   '/js/naginata.min.js',
   '/manifest.webmanifest'
 ];
