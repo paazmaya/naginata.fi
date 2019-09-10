@@ -261,45 +261,6 @@ p > a:only-child > img:only-of-type:hover {
 @media (min-width: 480px) {
 }
 
-article.media ul {
-  display: block;
-  width: 100%;
-  list-style-type: none;
-  padding-left: 0;
-}
-article.media ul li {
-  display: block;
-  width: 100%;
-}
-article.media ul a {
-  padding: 0.4em;
-  padding-left: 50px;
-  display: block;
-  position: relative;
-}
-article.media ul a::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: 28px 28px;
-  width: 28px;
-  height: 100%;
-}
-article.media ul a:hover::before {
-  opacity: 0.5;
-}
-article.media ul a[href*="youtube.com"]::before {
-  background-image: url('/img/youtube_28.png');
-}
-article.media ul a[href*="vimeo.com"]::before {
-  background-image: url('/img/vimeo_28.png');
-}
-article.media ul a[href*="flickr.com"]::before {
-  background-image: url('/img/flickr_28.png');
-}
 #languages {
   position: absolute;
   top: 0;

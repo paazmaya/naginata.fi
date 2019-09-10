@@ -37,7 +37,7 @@ app.use(st({
   index: false, // return 404's for directories
   passthrough: true, // calls next/returns instead of returning a 404 error
   gzip: false,
-  cache: { // specify cache:false to turn off caching entirely
+  cache: {// specify cache:false to turn off caching entirely
     fd: {
       max: 1000, // number of fd's to hang on to
       maxAge: oneMinute * 60 // amount of ms before fd's expire

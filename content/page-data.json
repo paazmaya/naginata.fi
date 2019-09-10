@@ -81,26 +81,6 @@
     },
     {
       "fi": {
-        "url": "/fi/media",
-        "header": "Kuvat, Videot ja muu Media",
-        "title": "Media",
-        "description": "Kuvia ja videoita naginatan harjoittelusta ympäri maailmaa"
-      },
-      "en": {
-        "url": "/en/media",
-        "header": "Pictures and videos",
-        "title": "Media",
-        "description": "Pictures and video clips from the trainings and demonstrations of Naginata around the World"
-      },
-      "ja": {
-        "url": "/ja/media",
-        "header": "写真やビデオ",
-        "title": "メディア",
-        "description": "世界のなぎなたの稽古風景や演武の写真及びビデオクリップ"
-      }
-    },
-    {
-      "fi": {
         "url": "/fi/yhteystiedot",
         "header": "Yhteystiedot",
         "title": "Yhteystiedot",
