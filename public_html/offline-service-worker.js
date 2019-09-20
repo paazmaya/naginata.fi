@@ -1,5 +1,5 @@
 
-var VERSION = '20190910a';
+var VERSION = '20190920a';
 
 var cacheFilesFirst = [
   '/css/naginata.min.css',
