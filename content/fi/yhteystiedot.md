@@ -1,7 +1,7 @@
 Suomessa Atarashii Naginataa hallinnoi [Suomen Kendoseurojen Keskusliitto
 ry](http://fka.fi/ "FKA - Suomen Kendoseurojen Keskusliitto ry"), joka on
 jäsenenä Euroopan Naginataliitossa. Lajin pääohjaajana toimii
-Jukka Paasonen (2 dan, [etunimi]@naginata.fi).
+Mari Paasonen (4 dan, [etunimi piste sukunimi]@fka.fi).
 
 Jikishinkageryu Naginatajutsun harjoittelua organisoi Suomessa Shutokukai ry,
 jonka kaikki jäsenet kuuluvat Japanilaiseen Shūtokukai organisaatioon.
@@ -38,24 +38,9 @@ Jikishinkageryū Naginatajutsusta, tai jostakin muusta aiheeseen liittyvästä.
 Atarashii Naginata:a ja Jikishinkageryū
 Naginatajutsu:a.](http://www.kkti.fi/ "Helsingin kendoseura - Ki-Ken-Tai-Icchi, Olympiastadion, Helsinki")
 
-Harjoitukset Olympiastadionin D-siivessä ovat syys- ja kevätkausina
-tiistaisin kello 20:30 - 22:00 "tanssisalissa" ja
-sunnuntaisin kello 15:30 - 17:00 "keskisalissa".
-Suojavarusteita (bogu) tarvitaan vain sunnuntain harjoituksessa, mutta niiden käyttö ei ole pakollista.
-
-Kesäkauden harjoituksista tarkempaa tietoa saa seuran naginatavastaavalta.
-
-Helsingin Kendoseuran naginatavastaava Jarno Yliluoma
+Helsingin Kendoseuran naginatavastaava Teemu Ranne
 ([etunimi.sukunimi]@gmail.com) vastaa lajiin liittyviin
 tiedusteluihin.
-
-### Tapanilan Erä - Kendojaos
-
-[Tapanilan Erän Kendo-jaos on aloittanut Atarashii Naginatan
-säännöllisen harjoittelun syyskauden 2013
-alusta.](http://www.tapanila-kendo.org/ "Tapanilan Erä - Kendo, Tapanila, Helsinki")
-
-Harjoituksia ei toistaiseksi ole viikottain, vähäisen osallistujamäärän vuoksi.
 
 ## Varustehankintaa
 
