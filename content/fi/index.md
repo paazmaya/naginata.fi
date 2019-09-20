@@ -10,7 +10,6 @@ Lista tapahtumista, joilla on ollut merkitystä naginatan harrastamiselle Suomes
 -   14.5.2015 - Naginatanäytös jossa nähtiin Zen Nihon Naginata Kataa ensimmäistä kertaa Suomessa,
     [Hanami kirsikankukkajuhla - Roihuvuori,
     Helsinki](http://www.roihuvuori.fi/hanami/ "Hanami-juhla Roihuvuoressa")
--   3.5.2015  - Atarahii naginatan kyu-graduointi Helsingin Olympiastadionilla
 -   5. ja 8.9.2014 - Jikishinkageryu Naginatajutsu Japani-Suomi ystävyysharjoitukset
 -   6.-7.9.2014 - [Naginataystävyysleiri,
     Viikin Normaalikoulu, Helsinki](https://www.facebook.com/events/501891759879564/ "Finnish Naginata Friendship Seminar 2014")
@@ -21,9 +20,6 @@ Lista tapahtumista, joilla on ollut merkitystä naginatan harrastamiselle Suomes
 -   15.-17.11.2013 - [Onshukai, Jikishinkageryu Naginatajutsu:n vuotuinen pääleiri, Chiba,
     Japani](http://www.flickr.com/photos/paazio/11474557086/in/set-72157638410929463 "2013-11-17 Japan, Chiba - Onshukai training program")
 -   18.-20.10.2013 - Leiri ikkyu ja ylemmille arvoille, Praha, Tsekki, opettajana Kimura sensei
--   6.10.2013 - [Kyu-graduointi arvoille 6-2 kyu (16:30), KKTI Dojo,
-    Olympiastadion,
-    Helsinki](https://www.facebook.com/events/157924271076783/ "Kyu-graduointi arvoille 6-2 kyu")
 -   4.9.2013 - Atarashii Naginata alkeiskurssi alkaa [Tapanilan Erässä,
     keskiviikkoisin 19:00 - 21:00, Tapanilan
     urheilukeskus](http://www.tapanila-kendo.org/ "Tapanilan Erä - Kendojaos"),
@@ -44,8 +40,6 @@ Lista tapahtumista, joilla on ollut merkitystä naginatan harrastamiselle Suomes
     järjestämänä](http://www.rendaino.fi/ "Turun kendoseura rendaino ry")
 -   22.-24.3.2013 - [Britannian vuosittainen leiri, opettajana Nakano Helen
     sensei](http://www.naginata.org.uk/2013-annual-british-naginata-seminar-details/ "2013 Annual British Naginata Seminar Details")
--   11.11.2012 - Kyu-graduointi (16:30), [KKTI Dojo, Olympiastadion,
-    Helsinki](http://www.kendohelsinki.org/?sivu=kartta "Kartta Olympiastadionille")
 -   7.10.2012 - [Erikoisharjoitukset ja epäviralliset
     piirimestaruuskilpailut (14:00 - 18:00), KKTI Dojo, Olympiastadion,
     Helsinki](https://www.facebook.com/events/530673156947346/ "Naginata Helsinki special training")
