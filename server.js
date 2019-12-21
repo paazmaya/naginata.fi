@@ -11,10 +11,10 @@
 const fs = require('fs');
 
 // Custom classes
-const app = require('./libs/express-app');
-const checkLang = require('./libs/check-lang');
-const getEnabledLanguages = require('./libs/get-enabled-languages');
-const helpers = require('./libs/express-helpers');
+const app = require('./lib/express-app');
+const checkLang = require('./lib/check-lang');
+const getEnabledLanguages = require('./lib/get-enabled-languages');
+const helpers = require('./lib/express-helpers');
 
 const pageData = fs.readFileSync('./content/page-data.json', {
   encoding: 'utf8'
@@ -68,13 +68,13 @@ app.get(pageRegex, function appGetRegex(req, res) {
   current.titlesuffix = pageJson.title[lang];
 
   const indexData = function indexData() {
-    const getContent = require('./libs/get-content');
-    const flipAheadLinks = require('./libs/flip-ahead-links');
-    const flickrImageList = require('./libs/flickr-image-list');
+    const getContent = require('./lib/get-content');
+    const flipAheadLinks = require('./lib/flip-ahead-links');
+    const flickrImageList = require('./lib/flickr-image-list');
 
     const userAgent = req.header('user-agent');
     if (userAgent && userAgent.indexOf('facebookexternalhit') !== -1) {
-      const facebookMeta = require('./libs/facebook-meta.js');
+      const facebookMeta = require('./lib/facebook-meta.js');
       current.facebook = facebookMeta(current, pageJson.facebook);
     }
 

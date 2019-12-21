@@ -9,7 +9,7 @@
 'use strict';
 
 describe('Secondary routes', function() {
-  const secondaryRoutes = require('../../libs/secondary-routes');
+  const secondaryRoutes = require('../../lib/secondary-routes');
 
   it('Sitemap is called', function(){
 

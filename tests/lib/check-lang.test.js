@@ -9,7 +9,7 @@
 'use strict';
 
 describe('Check initial page language', function() {
-  const checkLang = require('../../libs/check-lang');
+  const checkLang = require('../../lib/check-lang');
 
   let acceptsLanguages;
   let enabledLanguages;

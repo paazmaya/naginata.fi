@@ -9,7 +9,7 @@
 'use strict';
 
 describe('Facebook OpenGraph crawler specific meta data', function() {
-  const facebookMeta = require('../../libs/facebook-meta');
+  const facebookMeta = require('../../lib/facebook-meta');
 
   const page = {
     url: '/en/koryu',
@@ -39,7 +39,7 @@ describe('Facebook OpenGraph crawler specific meta data', function() {
         expect(item.content).toBe(page.title);
       }
       else if (item.property === 'og:url') {
-        expect(item.content).toBe('http://naginata.fi' + page.url);
+        expect(item.content).toBe('https://naginata.fi' + page.url);
       }
     });
   });

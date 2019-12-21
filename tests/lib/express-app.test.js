@@ -9,7 +9,7 @@
 'use strict';
 
 describe('ExpressJS application setup', function() {
-  const app = require('../../libs/express-app');
+  const app = require('../../lib/express-app');
 
   it('While in development, pretty print is true', function() {
     const output = app.locals.pretty;

@@ -8,8 +8,8 @@
   "main": "server.js",
   "subdomain": "naginata-finland",
   "scripts": {
-    "test": "grunt test",
-    "lint": "eslint *.js libs tasks public_html/js/analytics.js public_html/js/sendanmaki.js",
+    "test": "jest",
+    "lint": "eslint *.js lib tasks public_html/js/analytics.js public_html/js/sendanmaki.js",
     "start": "node server.js",
     "start-server": "http-server -p 5000 public_html",
     "build": "grunt minify",
@@ -35,10 +35,9 @@
     "grunt": "^1.0.4",
     "grunt-contrib-uglify": "4.0.1",
     "grunt-contrib-watch": "1.1.0",
-    "grunt-jasmine-node-coverage": "2.0.1",
     "grunt-postcss": "0.9.0",
     "http-server": "0.11.1",
-    "jasmine-node": "2.0.1",
+    "jest": "^24.9.0",
     "jit-grunt": "0.10.0"
   },
   "engines": {

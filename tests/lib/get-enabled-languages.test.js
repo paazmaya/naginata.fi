@@ -9,7 +9,7 @@
 'use strict';
 
 describe('Get enabled languages', function() {
-  const getEnabledLanguages = require('../../libs/get-enabled-languages');
+  const getEnabledLanguages = require('../../lib/get-enabled-languages');
 
   const langConf = {
     fi: {

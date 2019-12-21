@@ -14,13 +14,13 @@ const path = require('path');
 const swig = require('swig');
 
 // Custom classes
-const getEnabledLanguages = require('./libs/get-enabled-languages');
-const getContent = require('./libs/get-content');
-const flipAheadLinks = require('./libs/flip-ahead-links');
-const flickrImageList = require('./libs/flickr-image-list');
-const facebookMeta = require('./libs/facebook-meta.js');
+const getEnabledLanguages = require('./lib/get-enabled-languages');
+const getContent = require('./lib/get-content');
+const flipAheadLinks = require('./lib/flip-ahead-links');
+const flickrImageList = require('./lib/flickr-image-list');
+const facebookMeta = require('./lib/facebook-meta.js');
 
-const sitemap = require('./libs/sitemap');
+const sitemap = require('./lib/sitemap');
 
 // Page meta data
 const pageData = require('./content/page-data.json');

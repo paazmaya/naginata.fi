@@ -9,9 +9,7 @@
 'use strict';
 
 module.exports = function gruntConf(grunt) {
-  require('jit-grunt')(grunt, {
-    jasmine_node: 'grunt-jasmine-node-coverage'
-  });
+  require('jit-grunt')(grunt);
 
   const loadConfig = function loadConfig(path) {
     const list = {};
@@ -39,6 +37,5 @@ module.exports = function gruntConf(grunt) {
   grunt.config.merge(loadConfig('./tasks/'));
 
   grunt.registerTask('minify', ['uglify', 'postcss']);
-  grunt.registerTask('test', ['jasmine_node']);
-  grunt.registerTask('default', ['test', 'minify']);
+  grunt.registerTask('default', ['minify']);
 };

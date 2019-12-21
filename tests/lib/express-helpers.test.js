@@ -9,7 +9,7 @@
 'use strict';
 
 describe('ExpressJS content helpers', function() {
-  const helpers = require('../../libs/express-helpers');
+  const helpers = require('../../lib/express-helpers');
 
   it('Link to same content in other languages', function() {
     const output = helpers.linkPageLanguages({

@@ -9,7 +9,7 @@
 'use strict';
 
 describe('Flip ahead meta links', function() {
-  const flipAheadLinks = require('../../libs/flip-ahead-links');
+  const flipAheadLinks = require('../../lib/flip-ahead-links');
 
   const pages = [
     {
@@ -29,12 +29,6 @@ describe('Flip ahead meta links', function() {
       header: 'Jikishinkageryu Naginatajutsu',
       title: 'Koryu',
       description: 'Literally koryu means old school. While related to naginata, it stands for the classical old schools which were using the weapon in their system.'
-    },
-    {
-      url: '/en/media',
-      header: 'Pictures and videos',
-      title: 'Media',
-      description: 'Pictures and video clips from the trainings and demonstrations of Naginata around the World'
     },
     {
       url: '/en/contact',

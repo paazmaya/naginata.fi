@@ -9,7 +9,7 @@
 'use strict';
 
 describe('Content Markdown file mapping to page URL addresses', function() {
-  const contentPath = require('../../libs/content-path');
+  const contentPath = require('../../lib/content-path');
 
   it('Finnish media page', function() {
     const output = contentPath('fi', '/fi/media');

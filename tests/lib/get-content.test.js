@@ -9,7 +9,7 @@
 'use strict';
 
 describe('Get page content', function() {
-  const getContent = require('../../libs/get-content');
+  const getContent = require('../../lib/get-content');
 
   it('Build path to content file', function() {
     const output = getContent('fi', '/fi');

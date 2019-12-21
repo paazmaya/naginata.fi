@@ -11,7 +11,7 @@
 const fs = require('fs');
 
 describe('Sitemap XML creation', function() {
-  const sitemap = require('../../libs/sitemap');
+  const sitemap = require('../../lib/sitemap');
 
   const pages = [
     {
