@@ -5,14 +5,13 @@
   "homepage": "https://github.com/paazmaya/naginata.fi",
   "description": "A web site in Finland for an ancient martial art from Japan",
   "private": "true",
-  "main": "server.js",
+  "main": "build.js",
   "subdomain": "naginata-finland",
   "scripts": {
     "test": "jest",
     "lint": "eslint *.js lib tasks public_html/js/analytics.js public_html/js/sendanmaki.js",
-    "start": "node server.js",
-    "start-server": "http-server -p 5000 public_html",
-    "build": "grunt minify",
+    "start": "http-server -p 5000 public_html",
+    "build": "node build.js && grunt minify",
     "snyk-protect": "snyk protect",
     "prepublish": "npm run snyk-protect",
     "prepare": "npm run snyk-protect"
