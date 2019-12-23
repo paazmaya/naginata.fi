@@ -115,16 +115,6 @@ npm install -g parker
 parker public_html/css/main.css > parker.md
 ```
 
-## Editing content
-
-Please create a pull request, which only touches the Markdown files under `content/` and/or `page-data.json` file.
-
-The existing Markdown files can be exported as PDF, for example with [_pandoc_](http://johnmacfarlane.net/pandoc/):
-
-```sh
-pandoc -V geometry:margin=0.5in -o content/en/grading-rules.md grading-rules-english.pdf
-```
-
 ## Other notes
 
  * Speed study (http://blog.chromium.org/2010/07/do-you-know-how-slow-your-web-page-is.html)
