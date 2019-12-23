@@ -30,8 +30,6 @@ List of events in Finland, in which Finnish members have joined, or are somehow 
     District Championships (14:00 - 18:00), KKTI Dojo, Olympic Stadium,
     Helsinki](https://www.facebook.com/events/530673156947346/ "Naginata Helsinki, special training")
     18:30](https://www.facebook.com/events/187144878084491/ "KKTI new beginner demonstration")
--   24-26/08/2012 - [International Naginata Federation (INF) seminar, Uppsala,
-    Sweden](https://www.facebook.com/events/124522334303072/ "INF Seminar in Uppsala, Sweden")
 -   12/06/2012 - The first kyu grading in Finland, Olympic Stadium, Helsinki
 -   17/5/2012 - [Naginata Introductory Seminar (17:00 - 20:00), Saaripirtti
     Mussalo,

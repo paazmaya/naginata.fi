@@ -46,8 +46,6 @@ Lista tapahtumista, joilla on ollut merkitystä naginatan harrastamiselle Suomes
 -   3.9.2012 - [Helsingin Kendoseura KKTI:n syyskauden
     alkeiskurssinäytös Olympiastadionilla kello
     18:30](https://www.facebook.com/events/187144878084491/ "KKTI Alkeiskurssinäytös")
--   24.-26.8.2012 - [Kansainvälisen Naginataliiton (INF) leiri, Uppsala,
-    Ruotsi](https://www.facebook.com/events/124522334303072/ "INF Seminar Uppsala, Sweden")
 -   12.6.2012 - Ensimmäinen kyu-graduointi Suomessa, Olympiastadion,
     Helsinki
 -   17.5.2012 - [Naginata tutustumisleiri (17:00 - 20:00), Saaripirtti

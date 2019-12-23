@@ -7,7 +7,7 @@
 Atarashii Naginatan graduointisäännöt ovat yhteneväiset
 Euroopan Naginataliiton ja Kansainvälisen Naginataliiton kanssa.
 Kendoseurojen Keskusliiton muiden lajien kohdalla raadin jäsenten
-vaatimukset ovat hieman erilaiset, olen vaativammat alempien kyu arvojen kohdalla.
+vaatimukset ovat hieman erilaiset, ollen vaativammat alempien kyu arvojen kohdalla.
 
 Niiltä osin kun tässä dokumentissa ei mainita, noudatetaan Suomen Kendoseurojen
 keskusliiton yleisiä graduointisääntöjä.
@@ -110,4 +110,3 @@ Kysymykset koottu useista INF ja AJNF koekysymyksistä.
 1. Mitä reigi tarkoittaa ja mitä siihen kuuluu
 1. Mitä hyötyä on kangeiko ja shochangeiko harjoituksista
 1. Mitä hyötyä tavoitellaan alkulämmittelyllä
-
