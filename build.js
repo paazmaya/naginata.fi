@@ -59,6 +59,7 @@ const indexData = (current, pages, enabledLanguages, lang) => {
 };
 
 const saveStaticFile = (filepath, content) => {
+  console.log(`Saving static file to "${filepath}"`);
   const targetdir = path.dirname(filepath);
   try {
     fs.accessSync(targetdir);
@@ -80,6 +81,7 @@ const renderSitemap = (enabledLanguages) => {
 };
 
 const renderPage = (current, inputData, lang) => {
+  console.log(`Rendering page with URL "${current.url}"`);
 
   const template = swig.compileFile('views/index.html');
   const html = template(inputData);
@@ -94,6 +96,7 @@ const renderPage = (current, inputData, lang) => {
 };
 
 const iteratePages = (pages) => {
+  console.log(`Going to iterate ${pages.length} pages`);
 
   // Enabled language ISO codes: en, fi, ...
   const enabledLanguages = Object.keys(langMeta);

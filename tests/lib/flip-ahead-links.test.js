@@ -52,23 +52,23 @@ describe('Flip ahead meta links', function() {
     const output = flipAheadLinks(pages, current);
 
     expect(output[0].url).toBe(pages[1].url);
-    expect(output[1].url).toBe(pages[4].url);
+    expect(output[1].url).toBe(pages[3].url);
   });
 
-  it('Media is current so next is Contact and previous is Koryu', function() {
-    current = pages[3];
+  it('Koryu is current so next is Contact and previous is Naginata', function() {
+    current = pages[2];
     const output = flipAheadLinks(pages, current);
 
-    expect(output[0].url).toBe(pages[4].url);
-    expect(output[1].url).toBe(pages[2].url);
+    expect(output[0].url).toBe(pages[3].url);
+    expect(output[1].url).toBe(pages[1].url);
   });
 
-  it('Contact is current so next is News and previous is Media', function() {
+  it('Contact is current so next is News and previous is Koryu', function() {
     current = pages[pages.length - 1];
     const output = flipAheadLinks(pages, current);
 
     expect(output[0].url).toBe(pages[0].url);
-    expect(output[1].url).toBe(pages[3].url);
+    expect(output[1].url).toBe(pages[2].url);
   });
 
 });
