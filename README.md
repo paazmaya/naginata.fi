@@ -63,22 +63,16 @@ There should be no errors appearing after any JavaScript file changes.
  * JavaScript for the front and the back ends, more about it below
  * HTML5 for markup (http://developers.whatwg.org/)
  * CSS3 for styling (http://www.css3.info/modules/)
- * Local Storage replacing browser cookies (http://www.w3.org/TR/webstorage/)
  * Google Web Fonts (http://www.google.com/fonts)
  * Google Analytics
- * Deployed to Heroku (http://heroku.com/)
 
 List of software used for making `naginata.fi` possible:
 
- * [Colorbox](http://jacklmoore.com/colorbox/ "A lightweight customizable lightbox plugin for jQuery")
  * [ESLint](http://eslint.org/ "The pluggable linting utility for JavaScript")
- * [Express.js](http://expressjs.com/ "web application framework for node")
  * [Grunt](http://gruntjs.com/ "The JavaScript Task Runner")
  * [Markdown](http://daringfireball.net/projects/markdown/ "Markdown is a text-to-HTML conversion tool for web writers")
  * [Node.js](http://nodejs.org "Node.js is a platform built on Chrome's JavaScript runtime for easily building fast, scalable network applications")
- * [Phantomas](http://macbre.github.io/phantomas/ "PhantomJS-based web performance metrics collector and monitoring tool")
  * [Sitespeed.io](http://sitespeed.io "Analyze your website speed and performance")
- * [jQuery](http://jquery.com/ "New wave JavaScript")
 
 
 ## Installation
