@@ -18,7 +18,7 @@
   },
   "dependencies": {
     "marked": "0.8.0",
-    "snyk": "1.265.0",
+    "snyk": "1.290.1",
     "swig": "1.4.2"
   },
   "devDependencies": {
