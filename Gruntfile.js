@@ -6,7 +6,6 @@
  *          https://creativecommons.org/licenses/by-sa/4.0/
  */
 
-'use strict';
 
 module.exports = function gruntConf(grunt) {
   require('jit-grunt')(grunt);

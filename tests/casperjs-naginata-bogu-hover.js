@@ -6,7 +6,7 @@
  *          http://creativecommons.org/licenses/by-sa/4.0/
  */
 
-'use strict';
+
 
 /**
  * Take a screen capture of each hover state and create a video of them

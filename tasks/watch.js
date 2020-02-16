@@ -6,7 +6,6 @@
  *          http://creativecommons.org/licenses/by-sa/4.0/
  */
 
-'use strict';
 
 module.exports = {
   scripts: {
