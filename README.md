@@ -10,6 +10,7 @@ Full legal text also available in [`LICENSE` file](LICENSE).
 [![Built with Grunt](http://img.shields.io/badge/Grunt-1.0-blue.svg?style=flat-square)](http://gruntjs.com/)
 ![Visual Regression Status](https://api.ghostinspector.com/v1/suites/5408c0312f4dd6df5ae50101/status-badge)
 [![Netlify Status](https://api.netlify.com/api/v1/badges/1c6a708d-5ee5-4cd2-8e66-8cbdbfaa454d/deploy-status)](https://app.netlify.com/sites/naginata-finland/deploys)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=paazmaya_naginata.fi&metric=code_smells)](https://sonarcloud.io/dashboard?id=paazmaya_naginata.fi)
 
 ## About the martial art
 
