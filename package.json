@@ -34,7 +34,7 @@
     "jit-grunt": "0.10.0"
   },
   "engines": {
-    "node": ">=10.13.0"
+    "node": ">=14.15.0"
   },
   "repository": {
     "type": "git",
