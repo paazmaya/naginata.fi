@@ -11,10 +11,7 @@
     "test": "jest",
     "lint": "eslint *.js lib tasks public_html/js/analytics.js public_html/js/sendanmaki.js",
     "start": "http-server -p 5000 public_html",
-    "build": "node build.js && grunt minify",
-    "snyk-protect": "snyk protect",
-    "prepublish": "npm run snyk-protect",
-    "prepare": "npm run snyk-protect"
+    "build": "node build.js && grunt minify"
   },
   "dependencies": {
     "marked": "2.0.0",
