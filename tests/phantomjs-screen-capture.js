@@ -7,8 +7,7 @@
  */
 
 
-
-var page = require('webpage').create();
+const page = require('webpage').create();
 
 page.open('http://localhost:5000', function() {
   page.render('localhost-index.png');

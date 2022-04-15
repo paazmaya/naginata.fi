@@ -7,7 +7,6 @@
  */
 
 
-
 const fs = require('fs');
 const childProcess = require('child_process');
 
@@ -23,7 +22,7 @@ const favicons = require('favicons');
  */
 const html2jade = require('html2jade');
 
-const startTime = (new Date()).getTime();
+const startTime = new Date().getTime();
 
 const minifyPng = function () {
   // Minify
@@ -77,7 +76,7 @@ favicons({
 
     convertJade();
 
-    const seconds = Math.round(((new Date()).getTime() - startTime) / 100) / 10;
+    const seconds = Math.round((new Date().getTime() - startTime) / 100) / 10;
     console.log('Completed in ' + seconds + ' seconds. Thanks!');
   }
 });

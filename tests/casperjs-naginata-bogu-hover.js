@@ -7,14 +7,13 @@
  */
 
 
-
 /**
  * Take a screen capture of each hover state and create a video of them
  *
  * ffmpeg -framerate 2 -i bogu-%02d.png -pix_fmt yuv420p -c:v libx264 -r 30 -g 1 bogu-hover.mp4
  */
 
-var casper = require('casper').create({
+const casper = require('casper').create({
   verbose: true,
   logLevel: 'info',
   viewportSize: {
@@ -22,32 +21,33 @@ var casper = require('casper').create({
     height: 800
   }
 });
-var image = '/img/naginata-bogu-chudan-artwork-lecklin.png';
+const image = '/img/naginata-bogu-chudan-artwork-lecklin.png';
 
 casper.start('http://naginata.fi/en/naginata', function() {
-  var bounds = this.evaluate(function(image) {
+  const bounds = this.evaluate(function(image) {
     return __utils__.getElementBounds('img[src="' + image + '"]');
   }, image);
   bounds.width += 50;
   this.capture('bogu-00.png', bounds);
 
-  var spans = this.evaluate(function(image) {
-    var parent = document.querySelector('img[src="' + image + '"]').parentNode;
+  const spans = this.evaluate(function(image) {
+    const parent = document.querySelector('img[src="' + image + '"]').parentNode;
+
     return parent.querySelectorAll('.note');
   }, image);
   this.capture('bogu-01.png', bounds);
 
-  var ns = [];
-  var len = spans.length;
-  for (var i = 0; i < len; ++i) {
-    var n = String(i + 2); // because img is the first
+  const ns = [];
+  const len = spans.length;
+  for (let i = 0; i < len; ++i) {
+    let n = String(i + 2); // because img is the first
     if (n.length < 2) {
       n = '0' + n; // zero fill needed for FFmpeg
     }
     ns.push(n);
   }
   this.eachThen(ns, function (response) {
-    var n = response.data;
+    const n = response.data;
     this.evaluate(function(n) {
       __utils__.mouseEvent('mouseover', '.note:nth-child(' + n + ')');
     }, n);

@@ -1,7 +1,7 @@
 
-var VERSION = '20190920a';
+const VERSION = '20190920a';
 
-var cacheFilesFirst = [
+const cacheFilesFirst = [
   '/css/naginata.min.css',
   '/favicon.ico',
   '/img/logo.png',
@@ -29,9 +29,11 @@ this.addEventListener('fetch', function(event) {
         if (/farm\d+\.static\.*flickr\.com/.test(event.request.url)) {
           return caches.open(VERSION).then(function(cache) {
             cache.put(event.request, response.clone());
+
             return response;
           });
         }
+
         return response;
       });
     }).catch(function(error) {
