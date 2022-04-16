@@ -6,7 +6,7 @@ All the code is under the [Creative Commons Attribution-ShareAlike 4.0 Internati
 Full legal text also available in [`LICENSE` file](LICENSE).
 
 [![dependencies Status](https://david-dm.org/paazmaya/naginata.fi/status.svg)](https://david-dm.org/paazmaya/naginata.fi)
-[![Build Status](https://travis-ci.com/paazmaya/naginata.fi.svg?branch=master)](https://travis-ci.com/paazmaya/naginata.fi)
+[![Build Status](https://app.travis-ci.com/paazmaya/naginata.fi.svg?branch=master)](https://app.travis-ci.com/paazmaya/naginata.fi)
 [![Built with Grunt](http://img.shields.io/badge/Grunt-1.0-blue.svg?style=flat-square)](http://gruntjs.com/)
 ![Visual Regression Status](https://api.ghostinspector.com/v1/suites/5408c0312f4dd6df5ae50101/status-badge)
 [![Netlify Status](https://api.netlify.com/api/v1/badges/1c6a708d-5ee5-4cd2-8e66-8cbdbfaa454d/deploy-status)](https://app.netlify.com/sites/naginata-finland/deploys)
