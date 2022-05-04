@@ -11,21 +11,21 @@
     "test": "jest",
     "css": "postcss public_html/css/main.css -o public_html/css/naginata.min.css",
     "js": "terser public_html/js/analytics.js public_html/js/sendanmaki.js --compress --mangle --output public_html/js/naginata.min.js",
-    "lint": "eslint *.js lib tasks public_html/js/analytics.js public_html/js/sendanmaki.js",
+    "lint": "eslint *.js lib public_html/js/analytics.js public_html/js/sendanmaki.js",
     "start": "http-server -p 5000 public_html",
     "build": "node build.js && npm run js && npm run css"
   },
   "dependencies": {
-    "marked": "4.0.14",
+    "marked": "4.0.15",
     "swig": "1.4.2"
   },
   "devDependencies": {
-    "autoprefixer": "9.8.8",
+    "autoprefixer": "10.4.7",
     "csswring": "7.0.0",
-    "eslint": "7.32.0",
-    "eslint-config-paazmaya": "7.2.0",
-    "http-server": "0.13.0",
-    "jest": "26.6.3",
+    "eslint": "8.14.0",
+    "eslint-config-paazmaya": "8.0.0",
+    "http-server": "14.1.0",
+    "jest": "28.0.3",
     "postcss": "8.4.13",
     "postcss-cli": "9.1.0",
     "terser": "5.13.1"
