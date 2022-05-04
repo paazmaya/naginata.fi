@@ -3,9 +3,7 @@ kouluista tai tyyleistä, jonka pääaseena on naginata. Tyyli perustettiin
 Japanissa noin 500 vuotta sitten, Kanto:n alueella Kashima:ssa, josta
 monet lukuisat miekkailutyylit ovat myös lähtöisin.
 
-[![Himeji 2011-05-26 Jikishinkageryu
-Naginatajutsu](https://farm3.staticflickr.com/2514/5763043905_5a542834cf_m.jpg)
-](http://flickr.com/photos/14224905@N08/5763043905 "Himeji 2011-05-26 Jikishinkageryu Naginatajutsu / paazio")
+[![直心影流Back Jikishinkage-ryu](https://live.staticflickr.com/2325/1506012722_3082ee8ed5.jpg)](https://www.flickr.com/photos/7762281@N08/1506012722/ "直心影流Back Jikishinkage-ryu / LMHarstad")
 
 Tyyliä harrastetaan tällä hetkellä Japanin lisäksi Hawai'illa, Belgiassa ja
 Suomessa. Kaikki harrastajat kuuluvat [Japanilaiseen pääorganisaation nimeltään
@@ -41,13 +39,9 @@ Koryun harrastajia suositellaan opiskelemaan myös Atarashii Naginataa niiden hi
 yhteyksien takia. Vastaavasti hieman edistyneemmät Atarashii Naginatan harrastajat voivat aloittaa
 koryun opiskelun, yleensä vähintään vuoden aktiivisen harjoittelun jälkeen.
 
-[![Kyoto 2011-05-02 107th Embu Taikai, Jikishinkageryu
-Naginatajutsu](https://farm3.staticflickr.com/2291/5763589730_ae7116f625_m.jpg)
-](http://flickr.com/photos/14224905@N08/5763589730 "Kyoto 2011-05-02 107th Embu Taikai, Jikishinkageryu Naginatajutsu / paazio")
+[![Jikishinkage-ryu Naginata / 直心影流薙刀](https://live.staticflickr.com/1322/4601612764_5d17fc7209.jpg)](https://www.flickr.com/photos/oroshi/4601612764/ "Jikishinkage-ryu Naginata / 直心影流薙刀 / Richard")
 
-[![Kyoto 2011-05-04 Shimogamo Jinja, Jikishinkageryu
-Naginatajutsu](https://farm6.staticflickr.com/5185/5763043699_fcda29747e_m.jpg)
-](http://flickr.com/photos/14224905@N08/5763043699 "Kyoto 2011-05-04 Shimogamo Jinja, Jikishinkageryu Naginatajutsu / paazio")
+[![Kyoto Taikai 直猶心流鎖鎌術4](https://live.staticflickr.com/2177/2460687895_0217871d1e.jpg)](https://flickr.com/photos/7762281@N08/2460687895 "Kyoto Taikai 直猶心流鎖鎌術4 / LMHarstad")
 
 ## Pääopettaja (soke, 宗家)
 

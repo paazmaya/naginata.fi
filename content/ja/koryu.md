@@ -3,8 +3,7 @@
 当流派は今からおよそ五百年前、日本の関東に位置する鹿島の地で創始したのに始まる。
 またこの鹿島からは、他の多くの流派が誕生している。
 
-
-[![直心影流薙刀術 姫路2011年5月26日](https://farm3.staticflickr.com/2514/5763043905_5a542834cf_m.jpg)](http://flickr.com/photos/14224905@N08/5763043905 "姫路2011-05-26 Jikishinkageryu Naginatajutsu/ paazio")
+[![直心影流Back Jikishinkage-ryu](https://live.staticflickr.com/2325/1506012722_3082ee8ed5.jpg)](https://www.flickr.com/photos/7762281@N08/1506012722/ "直心影流Back Jikishinkage-ryu / LMHarstad")
 
 現在のところ、直心影流薙刀術は、日本、ハワイ、ベルギー、フィンランドで継承されている。
 直心影流薙刀術愛好家は全員、日本の組織 "秀徳会"に所属している。[日本古武道協会 直心影流薙刀術](http://www.jikishin-naginata.jp/ "Jikishinkageryu Naginatajutsu")
@@ -36,13 +35,9 @@
 知るよう促され、同様に、新しいなぎなたで稽古及び経験を積んだ者が
 古流について知るよう奨励されることもある。
 
-[![Kyoto 2011-05-02 107th Embu Taikai, Jikishinkageryu
-Naginatajutsu](https://farm3.staticflickr.com/2291/5763589730_ae7116f625_m.jpg)
-](http://flickr.com/photos/14224905@N08/5763589730 "Kyoto 2011-05-02 107th Embu Taikai, Jikishinkageryu Naginatajutsu / paazio")
+[![Jikishinkage-ryu Naginata / 直心影流薙刀](https://live.staticflickr.com/1322/4601612764_5d17fc7209.jpg)](https://www.flickr.com/photos/oroshi/4601612764/ "Jikishinkage-ryu Naginata / 直心影流薙刀 / Richard")
 
-[![Kyoto 2011-05-04 Shimogamo Jinja, Jikishinkageryu
-Naginatajutsu](https://farm6.staticflickr.com/5185/5763043699_fcda29747e_m.jpg)
-](http://flickr.com/photos/14224905@N08/5763043699 "Kyoto 2011-05-04 Shimogamo Jinja, Jikishinkageryu Naginatajutsu / paazio")
+[![Kyoto Taikai 直猶心流鎖鎌術4](https://live.staticflickr.com/2177/2460687895_0217871d1e.jpg)](https://flickr.com/photos/7762281@N08/2460687895 "Kyoto Taikai 直猶心流鎖鎌術4 / LMHarstad")
 
 ## 流派継承者(宗家)
 

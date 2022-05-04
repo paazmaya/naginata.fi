@@ -3,9 +3,7 @@ practised,in which the naginata is the main weapon. The style was founded in Jap
 about 500 years ago, in the Kanto area, in a place called Kashima. From the same
 place many sword fighting schools have been initiated.
 
-[![Himeji 2011-05-26 Jikishinkageryu
-Naginatajutsu](https://farm3.staticflickr.com/2514/5763043905_5a542834cf_m.jpg)
-](http://flickr.com/photos/14224905@N08/5763043905 "Himeji 2011-05-26 Jikishinkageryu Naginatajutsu / paazio")
+[![直心影流Back Jikishinkage-ryu](https://live.staticflickr.com/2325/1506012722_3082ee8ed5.jpg)](https://www.flickr.com/photos/7762281@N08/1506012722/ "直心影流Back Jikishinkage-ryu / LMHarstad")
 
 At the moment the style is being practised along with Japan, at Hawaii (USA), Belgium and Finland.
 All practitioners are members of the [Japanese main organisation called
@@ -40,15 +38,9 @@ The practitioners of koryu are suggested to study Atarashii Naginata due to thei
 historical relations. Equally the students of Atarashii Naginata are encouraged to
 study koryu after a minimum of a year of active experience in Atarashii Naginata.
 
+[![Jikishinkage-ryu Naginata / 直心影流薙刀](https://live.staticflickr.com/1322/4601612764_5d17fc7209.jpg)](https://www.flickr.com/photos/oroshi/4601612764/ "Jikishinkage-ryu Naginata / 直心影流薙刀 / Richard")
 
-[![Kyoto 2011-05-02 107th Embu Taikai, Jikishinkageryu
-Naginatajutsu](https://farm3.staticflickr.com/2291/5763589730_ae7116f625_m.jpg)
-](http://flickr.com/photos/14224905@N08/5763589730 "Kyoto 2011-05-02 107th Embu Taikai, Jikishinkageryu Naginatajutsu / paazio")
-
-[![Kyoto 2011-05-04 Shimogamo Jinja, Jikishinkageryu
-Naginatajutsu](https://farm6.staticflickr.com/5185/5763043699_fcda29747e_m.jpg)
-](http://flickr.com/photos/14224905@N08/5763043699 "Kyoto 2011-05-04 Shimogamo Jinja, Jikishinkageryu Naginatajutsu / paazio")
-
+[![Kyoto Taikai 直猶心流鎖鎌術4](https://live.staticflickr.com/2177/2460687895_0217871d1e.jpg)](https://flickr.com/photos/7762281@N08/2460687895 "Kyoto Taikai 直猶心流鎖鎌術4 / LMHarstad")
 
 ## Chief instructor of the style (soke, 宗家)
 
