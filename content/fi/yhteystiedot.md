@@ -1,7 +1,7 @@
 Suomessa Atarashii Naginataa hallinnoi [Suomen Kendoseurojen Keskusliitto
 ry](http://fka.fi/ "FKA - Suomen Kendoseurojen Keskusliitto ry"), joka on
 jäsenenä Euroopan Naginataliitossa. Lajin pääohjaajana toimii
-Mari Paasonen (4 dan, [etunimi piste sukunimi]@fka.fi).
+Jukka Paasonen (2 dan, [etunimi]@fka.fi).
 
 Jikishinkageryu Naginatajutsun harjoittelua organisoi Suomessa Shutokukai ry,
 jonka kaikki jäsenet kuuluvat Japanilaiseen Shūtokukai organisaatioon.
@@ -16,7 +16,7 @@ keskustelua](http://fka.fi/mailman/listinfo/naginata_tiedotus_fka.fi "Naginata_t
 liittyen Atarashii Naginataan.
 
 Suomesta löytyy myös muitakin tyylejä ja järjestöjä joiden
-harjoittelemiin aseisiin kuuluu naginata. Näillä ei välttämättä ole
+harjoittelemiin aseisiin kuuluu naginata. Kaikilla näillä ei välttämättä ole
 suoraa yhteyttä Kendoseurojen Keskusliittoon. Tällaisia tyylejä ovat
 muun muassa Jikishinkageryū, Tenshin Shoden Katori Shintoryū ja Suiōryū.
 
@@ -48,14 +48,12 @@ Lajin harrastamista tarjoavat seurat tekevät toisinaan yhteistilauksia
 joihin voi erityisesti juuri lajin aloittanut osallistua mukaan.
 
 Tämän sivuston ylläpitäjällä on myös muutamia "shiai
-naginata"-harjoitusaseita myytävänä, hinnan vaihdellessa 80-90 EUR
-riippuen tilauksen ajankohdasta ja suuruudesta.
+naginata"-harjoitusaseita myytävänä, hinnan alkaessa noin 100 eurosta riippuen tilauksen ajankohdasta ja suuruudesta.
 Myös Zen Nihon Kata naginataa ja Jikishinkageryu:n settiä (naginata, bokken, tanto) on saatavilla.
 
 Alla linkkejä muutamiin asiallisiin budo-tarvikeliikkeisiin joista voi
 lajiin liittyvä varusteita hankkia:
 
--   [Bokkenshop (Tozando), Japani](http://www.bokkenshop.com/ "Bokkenshop")
 -   [Tozando, Japani](http://www.tozandoshop.com/ "Tozando")
 -   [E-Bogu, Japani](http://www.e-bogu.jp/ "E-Bogu Japan")
 -   [Nine Circles, Englanti](http://www.ninecircles.co.uk/ "Nine Circles")
