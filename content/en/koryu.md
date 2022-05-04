@@ -55,3 +55,4 @@ Below is a list of the founder and few recent chief instructors from the last ce
 -   16th Sonobe Shigehachi (園部 繁八)
 -   17th Toya Akiko (戸谷 明子)
 -   18th Sonobe Masami (園部 正美)
+-   19th Ogiwara Haruko (荻原 晴子)

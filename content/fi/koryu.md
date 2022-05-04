@@ -57,3 +57,4 @@ Alla lueteltuna tyylin perustaja ja pääopettajia parin viime vuosisadan ajalta
 -   16\. Sonobe Shigehachi (園部 繁八)
 -   17\. Toya Akiko (戸谷 明子)
 -   18\. Sonobe Masami (園部 正美)
+-   19\. Ogiwara Haruko (荻原 晴子)
