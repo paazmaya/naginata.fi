@@ -6,16 +6,9 @@
  *          http://creativecommons.org/licenses/by-sa/4.0/
  */
 
-
 module.exports = {
-  options: {
-    processors: [
-      require('autoprefixer'),
-      require('csswring')
-    ]
-  },
-  css: {
-    src: 'public_html/css/main.css',
-    dest: 'public_html/css/naginata.min.css'
-  }
+  plugins: [
+    require('autoprefixer'),
+    require('csswring')
+  ]
 };

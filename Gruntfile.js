@@ -35,6 +35,6 @@ module.exports = function gruntConf(grunt) {
   grunt.config.init(config);
   grunt.config.merge(loadConfig('./tasks/'));
 
-  grunt.registerTask('minify', ['uglify', 'postcss']);
+  grunt.registerTask('minify', ['uglify']);
   grunt.registerTask('default', ['minify']);
 };
