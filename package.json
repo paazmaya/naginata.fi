@@ -10,9 +10,10 @@
   "scripts": {
     "test": "jest",
     "css": "postcss public_html/css/main.css -o public_html/css/naginata.min.css",
+    "js": "terser public_html/js/analytics.js public_html/js/sendanmaki.js --compress --mangle --output public_html/js/naginata.min.js",
     "lint": "eslint *.js lib tasks public_html/js/analytics.js public_html/js/sendanmaki.js",
     "start": "http-server -p 5000 public_html",
-    "build": "node build.js && grunt minify"
+    "build": "node build.js && npm run js && npm run css"
   },
   "dependencies": {
     "marked": "4.0.14",
@@ -23,14 +24,11 @@
     "csswring": "7.0.0",
     "eslint": "7.32.0",
     "eslint-config-paazmaya": "7.2.0",
-    "grunt": "1.5.2",
-    "grunt-contrib-uglify": "4.0.1",
-    "grunt-contrib-watch": "1.1.0",
     "http-server": "0.13.0",
     "jest": "26.6.3",
-    "jit-grunt": "0.10.0",
     "postcss": "8.4.13",
-    "postcss-cli": "9.1.0"
+    "postcss-cli": "9.1.0",
+    "terser": "5.13.1"
   },
   "engines": {
     "node": ">=14.15.0"

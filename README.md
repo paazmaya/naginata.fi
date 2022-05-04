@@ -6,7 +6,6 @@ All the code is under the [Creative Commons Attribution-ShareAlike 4.0 Internati
 Full legal text also available in [`LICENSE` file](LICENSE).
 
 [![Build Status](https://app.travis-ci.com/paazmaya/naginata.fi.svg?branch=master)](https://app.travis-ci.com/paazmaya/naginata.fi)
-[![Built with Grunt](http://img.shields.io/badge/Grunt-1.0-blue.svg?style=flat-square)](http://gruntjs.com/)
 ![Visual Regression Status](https://api.ghostinspector.com/v1/suites/5408c0312f4dd6df5ae50101/status-badge)
 [![Netlify Status](https://api.netlify.com/api/v1/badges/1c6a708d-5ee5-4cd2-8e66-8cbdbfaa454d/deploy-status)](https://app.netlify.com/sites/naginata-finland/deploys)
 [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=paazmaya_naginata.fi&metric=code_smells)](https://sonarcloud.io/dashboard?id=paazmaya_naginata.fi)
@@ -57,23 +56,6 @@ hence any content updates are visible via the web site almost immediately.
 
 Linting is done with [ESLint](http://eslint.org) and can be executed with `npm run lint`.
 There should be no errors appearing after any JavaScript file changes.
-
-## Technologies
-
- * JavaScript for the front and the back ends, more about it below
- * HTML5 for markup (http://developers.whatwg.org/)
- * CSS3 for styling (http://www.css3.info/modules/)
- * Google Web Fonts (http://www.google.com/fonts)
- * Google Analytics
-
-List of software used for making `naginata.fi` possible:
-
- * [ESLint](http://eslint.org/ "The pluggable linting utility for JavaScript")
- * [Grunt](http://gruntjs.com/ "The JavaScript Task Runner")
- * [Markdown](http://daringfireball.net/projects/markdown/ "Markdown is a text-to-HTML conversion tool for web writers")
- * [Node.js](http://nodejs.org "Node.js is a platform built on Chrome's JavaScript runtime for easily building fast, scalable network applications")
- * [Sitespeed.io](http://sitespeed.io "Analyze your website speed and performance")
-
 
 ## Installation
 
