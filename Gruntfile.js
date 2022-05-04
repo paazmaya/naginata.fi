@@ -6,35 +6,31 @@
  *          https://creativecommons.org/licenses/by-sa/4.0/
  */
 
-
 module.exports = function gruntConf(grunt) {
   require('jit-grunt')(grunt);
 
-  const loadConfig = function loadConfig(path) {
-    const list = {};
-    const files = grunt.file.expand({
-      cwd: path,
-      filter: 'isFile'
-    }, '*.js');
-    files.forEach(function eachFile(option) {
-      const key = option.replace(/\.js$/u, '');
-      list[key] = require(path + option);
-    });
-
-    return list;
-  };
-
   const config = {
-    pkg: grunt.file.readJSON('package.json'),
-    banner: '/*! <%= pkg.name %> - v<%= pkg.version %> - ' +
-      '<%= grunt.template.today("yyyy-mm-dd") %>\n' +
-      '* Copyright (c) <%= grunt.template.today("yyyy") %> ' +
-      '<%= pkg.author.name %>; <%= pkg.license.type %> */\n'
+    pkg: grunt.file.readJSON('package.json')
   };
 
   grunt.config.init(config);
-  grunt.config.merge(loadConfig('./tasks/'));
+  grunt.config.merge({
+    uglify: {
+      javascript: {
+        options: {
+          banner: '/*! <%= pkg.name %> - v<%= pkg.version %> */\n',
+          preserveComments: 'some',
+          sourceMap: false
+        },
+        files: {
+          'public_html/js/naginata.min.js': [
+            'public_html/js/analytics.js',
+            'public_html/js/sendanmaki.js'
+          ]
+        }
+      }
+    }
+  });
 
-  grunt.registerTask('minify', ['uglify']);
-  grunt.registerTask('default', ['minify']);
+  grunt.registerTask('default', ['uglify']);
 };
