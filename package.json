@@ -12,6 +12,7 @@
     "css": "postcss src/css/*.css -o public_html/css/naginata.min.css --verbose",
     "js": "terser src/js/*.js --compress --mangle --output public_html/js/naginata.min.js",
     "lint": "eslint *.js lib src",
+    "hover": "URL=http://localhost:5000/en/naginata node tests/naginata-bogu-hover.js",
     "start": "http-server -p 5000 public_html",
     "build": "node build.js && npm run js && npm run css"
   },
@@ -26,6 +27,7 @@
     "eslint-config-paazmaya": "8.0.0",
     "http-server": "14.1.0",
     "jest": "28.0.3",
+    "playwright": "1.21.1",
     "postcss": "8.4.13",
     "postcss-cli": "9.1.0",
     "terser": "5.13.1"
