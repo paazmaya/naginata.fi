@@ -6,12 +6,13 @@
  *          http://creativecommons.org/licenses/by-sa/4.0/
  */
 
-
 /**
  * Take a screen capture of each hover state and create a video of them
  *
  * ffmpeg -framerate 2 -i bogu-%02d.png -pix_fmt yuv420p -c:v libx264 -r 30 -g 1 bogu-hover.mp4
  */
+const URL = 'https://naginata.fi/en/naginata';
+const IMG = '/img/naginata-bogu-chudan-artwork-lecklin.png';
 
 const casper = require('casper').create({
   verbose: true,
@@ -21,12 +22,11 @@ const casper = require('casper').create({
     height: 800
   }
 });
-const image = '/img/naginata-bogu-chudan-artwork-lecklin.png';
 
-casper.start('http://naginata.fi/en/naginata', function() {
+casper.start(URL, function() {
   const bounds = this.evaluate(function(image) {
     return __utils__.getElementBounds('img[src="' + image + '"]');
-  }, image);
+  }, IMG);
   bounds.width += 50;
   this.capture('bogu-00.png', bounds);
 
@@ -34,7 +34,7 @@ casper.start('http://naginata.fi/en/naginata', function() {
     const parent = document.querySelector('img[src="' + image + '"]').parentNode;
 
     return parent.querySelectorAll('.note');
-  }, image);
+  }, IMG);
   this.capture('bogu-01.png', bounds);
 
   const ns = [];

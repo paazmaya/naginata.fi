@@ -6,7 +6,6 @@
  *          https://creativecommons.org/licenses/by-sa/4.0/
  */
 
-
 const fs = require('fs');
 const path = require('path');
 

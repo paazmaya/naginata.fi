@@ -10,3 +10,5 @@ public_html/*.xml
 public_html/css/naginata.css
 source/favicons.jade
 .DS_store
+bogu-*.png
+videos/
