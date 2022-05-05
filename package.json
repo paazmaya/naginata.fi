@@ -8,7 +8,7 @@
   "main": "build.js",
   "subdomain": "naginata-finland",
   "scripts": {
-    "test": "jest",
+    "test": "jest --logHeapUsage",
     "css": "postcss src/css/*.css -o public_html/css/naginata.min.css --verbose",
     "js": "terser src/js/*.js --compress --mangle --output public_html/js/naginata.min.js",
     "lint": "eslint *.js lib public_html/js/analytics.js public_html/js/sendanmaki.js",
