@@ -9,8 +9,8 @@
   "subdomain": "naginata-finland",
   "scripts": {
     "test": "jest",
-    "css": "postcss public_html/css/main.css -o public_html/css/naginata.min.css",
-    "js": "terser public_html/js/analytics.js public_html/js/sendanmaki.js --compress --mangle --output public_html/js/naginata.min.js",
+    "css": "postcss src/css/*.css -o public_html/css/naginata.min.css --verbose",
+    "js": "terser src/js/*.js --compress --mangle --output public_html/js/naginata.min.js",
     "lint": "eslint *.js lib public_html/js/analytics.js public_html/js/sendanmaki.js",
     "start": "http-server -p 5000 public_html",
     "build": "node build.js && npm run js && npm run css"
