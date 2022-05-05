@@ -41,6 +41,7 @@ const size = {
   });
   const spans = await p.locator('.note');
 
+  /* eslint-disable no-await-in-loop -- Figure it out! */
   const len = await spans.count();
   for (let i = 0; i < len; ++i) {
     const span = await spans.nth(i);

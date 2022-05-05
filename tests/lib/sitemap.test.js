@@ -6,10 +6,6 @@
  *          http://creativecommons.org/licenses/by-sa/4.0/
  */
 
-'use strict';
-
-const fs = require('fs');
-
 describe('Sitemap XML creation', function() {
   const sitemap = require('../../lib/sitemap');
 

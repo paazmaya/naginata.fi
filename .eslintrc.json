@@ -10,5 +10,8 @@
     "location": false,
     "process": false,
     "ga": false
+  },
+  "parserOptions": {
+    "ecmaVersion": 2018
   }
 }

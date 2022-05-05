@@ -11,7 +11,7 @@
     "test": "jest --logHeapUsage --verbose",
     "css": "postcss src/css/*.css -o public_html/css/naginata.min.css --verbose",
     "js": "terser src/js/*.js --compress --mangle --output public_html/js/naginata.min.js",
-    "lint": "eslint *.js lib src",
+    "lint": "eslint *.js tests lib src",
     "hover": "URL=http://localhost:5000/en/naginata node tests/naginata-bogu-hover.js",
     "start": "http-server -p 5000 public_html",
     "build": "node build.js && npm run js && npm run css"

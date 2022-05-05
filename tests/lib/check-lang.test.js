@@ -31,12 +31,14 @@ describe('Check initial page language', function() {
   it('Finnish is found as the first item', function() {
     acceptsLanguages = ['fi', 'en'];
     enabledLanguages = ['fi', 'en', 'ja'];
-    var output = checkLang(acceptsLanguages, enabledLanguages);
+    const output = checkLang(acceptsLanguages, enabledLanguages);
     expect(output).toBe('fi');
+  });
 
+  it('English is use as the first enabled', function() {
     acceptsLanguages = ['fi', 'en'];
     enabledLanguages = ['en', 'ja'];
-    var output = checkLang(acceptsLanguages, enabledLanguages);
+    const output = checkLang(acceptsLanguages, enabledLanguages);
     expect(output).toBe('en');
   });
 
@@ -83,7 +85,7 @@ describe('Check initial page language', function() {
   });
 
   it('Accepted languages contain non a-z characters', function() {
-    acceptsLanguages = [/(abc)/, '^', '*', '%', '$$$$$$$$$$$', '###'];
+    acceptsLanguages = [/(abc)/u, '^', '*', '%', '$$$$$$$$$$$', '###'];
     enabledLanguages = ['si', 'hr'];
     const output = checkLang(acceptsLanguages, enabledLanguages);
     expect(output).toBe('si'); // Should be first in the enabled list
