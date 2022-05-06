@@ -1,6 +1,6 @@
 
-const VERSION = '20190920a';
-
+const VERSION = '20220506a';
+const FLICK_MATCH = /\.static\.*flickr\.com.*\.jpg/u;
 const cacheFilesFirst = [
   '/css/naginata.min.css',
   '/favicon.ico',
@@ -26,7 +26,7 @@ this.addEventListener('fetch', function(event) {
   event.respondWith(
     caches.match(event.request).then(function(resp) {
       return resp || fetch(event.request).then(function(response) {
-        if (/farm\d+\.static\.*flickr\.com/.test(event.request.url)) {
+        if (FLICK_MATCH.test(event.request.url)) {
           return caches.open(VERSION).then(function(cache) {
             cache.put(event.request, response.clone());
 

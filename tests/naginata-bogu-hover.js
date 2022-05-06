@@ -22,27 +22,15 @@ const size = {
   height: 800
 };
 
-(async () => {
-  const browser = await chromium.launch({
-    headless: false
+const hoverSpans = async (spans, img) => {
+  await img.screenshot({
+    path: 'bogu-00.png',
+    scale: 'css'
   });
-  const page = await browser.newPage({
-    viewport: size,
-    recordVideo: {
-      dir: './videos',
-      size: size
-    }
-  });
-  await page.goto(URL);
-
-  const p = await page.locator('p:has(img[src="' + IMG + '"])');
-  await p.screenshot({
-    path: 'bogu-00.png'
-  });
-  const spans = await p.locator('.note');
 
   /* eslint-disable no-await-in-loop -- Figure it out! */
   const len = await spans.count();
+  const shots = [];
   for (let i = 0; i < len; ++i) {
     const span = await spans.nth(i);
     await span.hover();
@@ -51,10 +39,28 @@ const size = {
     if (n.length < 2) {
       n = '0' + n; // zero fill needed for FFmpeg
     }
-    await p.screenshot({
-      path: `bogu-${n}.png`
-    });
+    shots.push(img.screenshot({
+      path: `bogu-${n}.png`,
+      scale: 'css'
+    }));
   }
+
+  return Promise.all(shots);
+};
+
+(async () => {
+  const browser = await chromium.launch({
+    headless: false
+  });
+  const page = await browser.newPage({
+    viewport: size
+  });
+  await page.goto(URL);
+
+  const p = await page.locator('p:has(img[src="' + IMG + '"])');
+  const spans = await p.locator('.note');
+  const img = await p.locator('img[src="' + IMG + '"]');
+  await hoverSpans(spans, img);
 
   await page.close();
 })();
