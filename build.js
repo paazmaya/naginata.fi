@@ -9,7 +9,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const swig = require('swig');
+const nunjucks = require('nunjucks');
 
 // Custom classes
 const getEnabledLanguages = require('./lib/get-enabled-languages');
@@ -70,8 +70,8 @@ const saveStaticFile = (filepath, content) => {
 
 const renderSitemap = (enabledLanguages) => {
   const data = sitemap(pageData.pages, enabledLanguages);
-  const template = swig.compileFile('views/sitemap.html');
-  const content = template({
+
+  const content = nunjucks.render('views/sitemap.html', {
     pages: data
   });
   const filepath = path.join(__dirname, 'public_html', 'sitemap.xml');
@@ -81,8 +81,7 @@ const renderSitemap = (enabledLanguages) => {
 const renderPage = (current, inputData, lang) => {
   console.log(`Rendering page with URL "${current.url}"`);
 
-  const template = swig.compileFile('views/index.html');
-  const html = template(inputData);
+  const html = nunjucks.render('views/index.html', inputData);
 
   let filename = current.url.replace('/' + lang, '').replace('/', '').trim();
   if (filename === '') {

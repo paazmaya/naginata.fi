@@ -45,11 +45,11 @@
   <body>
     <div id="logo" class="centered">
       <ul id="languages">
-        {% for language in languages %}
-          {% if loop.key !== lang %}
+        {% for key, language in languages %}
+          {% if key !== lang %}
             <li>
-              <a title="{{ language.name }}" hreflang="{{ loop.key }}"
-                href="{% if language.url %}{{ language.url }}{% else %}/{{ loop.key }}{% endif %}">{{ language.name }}</a>
+              <a title="{{ language.name }}" hreflang="{{ key }}"
+                href="{% if language.url %}{{ language.url }}{% else %}/{{ key }}{% endif %}">{{ language.name }}</a>
             </li>
           {% endif %}
         {% endfor %}
