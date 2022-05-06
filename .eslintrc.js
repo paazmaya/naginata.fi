@@ -12,7 +12,7 @@ module.exports = {
     ga: false
   },
   parserOptions: {
-    ecmaVersion: 2018
+    ecmaVersion: 'latest'
   },
   rules: {
     'func-names': 'off'
