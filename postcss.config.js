@@ -9,6 +9,9 @@
 module.exports = {
   plugins: [
     require('autoprefixer'),
-    require('csswring')
+    require('cssnano')({
+      // https://cssnano.co/docs/what-are-optimisations/
+      preset: 'default'
+    })
   ]
 };
