@@ -66,48 +66,21 @@ npm run build
 
 ## Testing
 
-Unit tests for back end are using Jasmine and for code coverage Istanbul.
+Unit tests for the build process are using Jest and executed with:
 
 ```sh
 npm test
 ```
 
-Web performance tests are done with...
+Web performance tests are done with [Sitespeed.io](https://www.sitespeed.io/):
 
 ```sh
-sitespeed.io -u http://naginata.fi -k true -d 2
-
-gem install wbench
-wbench -n http://naginata.fi > wbench.md
+npm install -g sitespeed.io
+npm start # In a different terminal window
+sitespeed.io http://localhost:5000/en
 ```
 
-Style coverage is measured with several tools:
-
-* https://github.com/katiefenn/parker
-
-```sh
-npm install -g ucss
-ucss
-
-npm install -g stylestats
-stylestats -t html public_html/css/main.css > stylestats.html
-
-npm install -g parker
-parker public_html/css/main.css > parker.md
-```
-
-## Other notes
-
- * Speed study (http://blog.chromium.org/2010/07/do-you-know-how-slow-your-web-page-is.html)
- * https://github.com/ktsashes/fruitjs
-
-## [TODO](https://github.com/paazmaya/naginata.fi/issues "issues")
-
- * Facebook liking and related, https://developers.facebook.com/tools/debug/og/object?q=naginata.fi
- * Further CSP tuning, https://www.owasp.org/index.php/Content_Security_Policy
-
-
-## History
+## Development history
 
 Versions before 0.4.0 were using PHP as the backend and content editing was done at the site, after
 OpenID based login. Content was stored as HTML5 in MySQL database.
