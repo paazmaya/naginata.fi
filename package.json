@@ -6,6 +6,7 @@
   "description": "A web site in Finland for an ancient martial art from Japan",
   "private": "true",
   "main": "build.js",
+  "type": "module",
   "subdomain": "naginata-finland",
   "scripts": {
     "test": "jest --logHeapUsage --verbose",
@@ -23,8 +24,8 @@
   "devDependencies": {
     "autoprefixer": "10.4.7",
     "cssnano": "5.1.7",
-    "eslint": "8.14.0",
-    "eslint-config-paazmaya": "8.0.0",
+    "eslint": "8.28.0",
+    "eslint-config-paazmaya": "9.0.0",
     "http-server": "14.1.0",
     "jest": "28.1.0",
     "playwright": "1.21.1",
