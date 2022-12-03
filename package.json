@@ -27,7 +27,7 @@
     "eslint-config-paazmaya": "9.0.1",
     "http-server": "14.1.0",
     "jest": "28.1.0",
-    "playwright": "1.21.1",
+    "playwright": "1.28.1",
     "postcss": "8.4.13",
     "postcss-cli": "9.1.0",
     "terser": "5.13.1"
