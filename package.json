@@ -18,7 +18,7 @@
   },
   "dependencies": {
     "marked": "4.0.15",
-    "nunjucks": "3.2.3"
+    "nunjucks": "3.2.4"
   },
   "devDependencies": {
     "autoprefixer": "10.4.7",
