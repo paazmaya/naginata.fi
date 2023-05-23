@@ -10,8 +10,6 @@ export default [
       globals: {
         ...globals.browser,
         ...globals.jasmine,
-        jQuery: false,
-        $: false,
         location: false,
         process: false,
         ga: false

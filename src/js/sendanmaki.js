@@ -5,11 +5,8 @@
  * License: Attribution-ShareAlike 4.0 Unported
  *          http://creativecommons.org/licenses/by-sa/4.0/
  */
-/* eslint-disable no-var */
 
-'use strict';
-
-var sendanmaki = window.sendanmaki = {
+const sendanmaki = {
 
   /**
    * Image notes for the given key image.
@@ -105,13 +102,13 @@ var sendanmaki = window.sendanmaki = {
    * @returns {void}
    */
   buildImageNotes: function buildImageNotes(items) {
-    var key = '/img/naginata-bogu-chudan-artwork-lecklin.png';
+    const key = '/img/naginata-bogu-chudan-artwork-lecklin.png';
 
-    var images = document.querySelectorAll('img[src="' + key + '"]');
+    const images = document.querySelectorAll('img[src="' + key + '"]');
     if (images.length === 0) {
       return;
     }
-    var parent = images[0].parentNode;
+    const parent = images[0].parentNode;
     parent.classList.add('relative');
     items.forEach(function forItems(data) {
       sendanmaki.createImgNote(data, images[0]);
@@ -132,10 +129,10 @@ var sendanmaki = window.sendanmaki = {
    * @returns {void}
    */
   createImgNote: function createImgNote(data, image) {
-    var elements = document.querySelectorAll('span.note[rel="' + data.note + '"]');
+    const elements = document.querySelectorAll('span.note[rel="' + data.note + '"]');
 
     if (image && elements.length === 0) {
-      var cont = '<span class="note" rel="' + data.note + '" style="left:' + data.x + 'px; top: ' + data.y + 'px">' +
+      const cont = '<span class="note" rel="' + data.note + '" style="left:' + data.x + 'px; top: ' + data.y + 'px">' +
         '<span class="notearea" style="width:' + data.width + 'px; height: ' + data.height + 'px"></span>' +
         '<span class="notetext">' + data.note + '</span>' +
         '</span>';
@@ -146,7 +143,7 @@ var sendanmaki = window.sendanmaki = {
 
   externalClick: function externalClick(event) {
     event.preventDefault();
-    var href = event.currentTarget.getAttribute('href');
+    const href = event.currentTarget.getAttribute('href');
     window.open(href, Date.now());
   },
 
@@ -159,15 +156,13 @@ var sendanmaki = window.sendanmaki = {
   domReady: function domReady() {
     this.buildImageNotes(this.boguNotes);
 
-    var external = document.querySelectorAll('a[href^="http://"], a[href^="https://"]');
-    var result;
-    for (var i = 0; i < external.length; ++i) {
+    const external = document.querySelectorAll('a[href^="http://"], a[href^="https://"]');
+    let result;
+    for (let i = 0; i < external.length; ++i) {
       result = external[i];
       result.addEventListener('click', sendanmaki.externalClick);
     }
   }
 };
 
-(function jsLoaded() {
-  sendanmaki.domReady();
-})();
+sendanmaki.domReady();
