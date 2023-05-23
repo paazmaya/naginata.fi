@@ -132,13 +132,13 @@ nav li {
 
 nav a,
 footer a,
-.current a:hover {
+[aria-current="page"] a:hover {
   background-color: transparent;
   color: #072434;
   text-align: center;
   height: 1.5em;
 }
-.current a:hover {
+[aria-current="page"] a:hover {
   background-color: #0f4e70;
   color: #dfe0e4;
 }
@@ -156,7 +156,7 @@ nav a {
 }
 nav a:hover,
 footer a:hover,
-.current a {
+[aria-current="page"] a {
   background-color: #072434;
   color: #dfe0e4;
   text-decoration: none;

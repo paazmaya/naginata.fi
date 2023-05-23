@@ -42,9 +42,14 @@
       {% endfor %}
     {% endif %}
 
-    {% for flip in flipahead %}
-      <link rel="{{ flip.rel }}" href="{{ flip.url }}">
-    {% endfor %}
+    {% set previousPost = collections[lang] | getPreviousCollectionItem %}
+    {% set nextPost = collections[lang] | getNextCollectionItem %}
+    {% if previousPost %}
+      <link rel="prev" href="{{ previousPost.page.url }}">
+    {% endif %}
+    {% if nextPost %}
+      <link rel="next" href="{{ nextPost.page.url }}">
+    {% endif %}
   </head>
   <body>
     <div id="logo" class="centered">
@@ -62,12 +67,10 @@
     </div>
     <nav class="full-width">
       <ul class="centered">
-        {% for item in collections.all %}
-          {% if item.url.indexOf('/' + lang) === 0 %}
-            <li{% if item.url == page.url %} class="current"{% endif %}>
-              <a title="{{ item.header }}" href="{{ item.url }}">{{ item.data.title }}</a>
-            </li>
-          {% endif %}
+        {% for item in collections[lang] %}
+          <li{% if item.url == page.url %} aria-current="page"{% endif %}>
+            <a title="{{ item.header }}" href="{{ item.url }}">{{ item.data.title }}</a>
+          </li>
         {% endfor %}
       </ul>
     </nav>

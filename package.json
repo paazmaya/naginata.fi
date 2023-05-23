@@ -11,7 +11,7 @@
     "css": "postcss src/css/*.css -o assets/naginata.min.css --verbose",
     "js": "terser src/js/*.js --compress --mangle --output assets/naginata.min.js",
     "lint": "eslint *.js tests lib src",
-    "hover": "URL=http://localhost:5000/en/naginata node tests/naginata-bogu-hover.js",
+    "hover": "URL=http://localhost:8080/en/naginata node tests/naginata-bogu-hover.js",
     "start": "npx @11ty/eleventy --serve",
     "build": "npm run js && npm run css && npx @11ty/eleventy"
   },
@@ -21,7 +21,6 @@
     "cssnano": "5.1.7",
     "eslint": "8.28.0",
     "eslint-config-paazmaya": "9.0.1",
-    "http-server": "14.1.0",
     "jest": "28.1.0",
     "nunjucks": "3.2.4",
     "playwright": "1.28.1",

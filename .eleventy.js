@@ -11,6 +11,17 @@ module.exports = function(eleventyConfig) {
   const flickrImageList = require("./lib/flickr-image-list");
   eleventyConfig.addGlobalData("prefetch", flickrImageList());
 
+  // Create language specific collections, to reduce complexity in templates
+  eleventyConfig.addCollection("en", function(api) {
+    return api.getFilteredByGlob('*/en/*.md');
+  });
+  eleventyConfig.addCollection("fi", function(api) {
+    return api.getFilteredByGlob('*/fi/*.md');
+  });
+  eleventyConfig.addCollection("ja", function(api) {
+    return api.getFilteredByGlob('*/ja/*.md');
+  });
+
   return {
     dir: {
 

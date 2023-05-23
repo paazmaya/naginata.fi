@@ -7,7 +7,7 @@ node_modules
 npm-debug.log
 dist
 assets/*.min.*
-source/favicons.jade
 .DS_store
 bogu-*.png
 videos/
+*.mp4

@@ -77,7 +77,7 @@ Web performance tests are done with [Sitespeed.io](https://www.sitespeed.io/):
 ```sh
 npm install -g sitespeed.io
 npm start # In a different terminal window
-sitespeed.io http://localhost:5000/en
+sitespeed.io http://localhost:8080/en
 ```
 
 ## Development history
@@ -93,3 +93,5 @@ PHP version was made to match the same simplified functionality as the Node.js c
 Around the release of 0.6.0, the actual `naginata.fi` domain was moved to Heroku and served from there with Node.js.
 
 In late April 2019, deployment of the site was moved to happen in Netlify, instead of Heroku, which also meant that the site is now build as a static web site.
+
+In May 2023, the custom build process, which was some 10 years ago converted from PHP to Node.js, was now migrated to use Eleventy.js which reduced its complexity and increased maintainability.

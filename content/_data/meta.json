@@ -1,15 +1,12 @@
 {
   "languages": {
     "fi": {
-      "enabled": true,
       "name": "Suomi"
     },
     "en": {
-      "enabled": true,
       "name": "English"
     },
     "ja": {
-      "enabled": true,
       "name": "日本語"
     }
   },

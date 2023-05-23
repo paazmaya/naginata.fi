@@ -90,7 +90,7 @@ var sendanmaki = window.sendanmaki = {
     if (!event.target.matches('.note[rel]')) {
       return;
     }
-    if (event.type === 'mouseover') {
+    if (event.type === 'mouseover' || event.type === 'focus') {
       event.target.classList.add('notehover');
     }
     else {
@@ -119,6 +119,8 @@ var sendanmaki = window.sendanmaki = {
 
     document.addEventListener('mouseover', sendanmaki.onNoteHover);
     document.addEventListener('mouseout', sendanmaki.onNoteHover);
+    document.addEventListener('focus', sendanmaki.onNoteHover);
+    document.addEventListener('blur', sendanmaki.onNoteHover);
   },
 
   /**

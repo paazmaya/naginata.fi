@@ -1,12 +1,12 @@
 
-const VERSION = '20220506a';
+const VERSION = '20230523a';
 const FLICK_MATCH = /\.static\.*flickr\.com.*\.jpg/u;
 const cacheFilesFirst = [
-  '/css/naginata.min.css',
+  '/naginata.min.css',
   '/favicon.ico',
   '/img/logo.png',
   '/img/naginata-bogu-chudan-artwork-lecklin.png',
-  '/js/naginata.min.js',
+  '/naginata.min.js',
   '/manifest.webmanifest'
 ];
 
