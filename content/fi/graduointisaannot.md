@@ -1,3 +1,8 @@
+---
+layout: index.njk
+eleventyExcludeFromCollections: true
+title: Graduointisäännöt
+---
 # Graduointisäännöt
 
 > Suomen Kendoseurojen Keskusliitto ry - Atarashii Naginata

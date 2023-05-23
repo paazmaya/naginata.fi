@@ -1,3 +1,11 @@
+---
+layout: index.njk
+date: '2000-01-03'
+url: "/fi/koryu"
+header: Jikishinkageryu Naginatajutsu
+title: Koryu
+description: Kirjaimellisesti käännettynä koryu tarkoittaa vanhaa koulua. Naginatan osalta koryu viittaa niihin vanhoihin kouluihin ja tyyleihin, joissa aseella harjoiteltiin.
+---
 Jikishinkageryū Naginatajutsu on yksi suurimmista edelleen harjoiteltavista
 kouluista tai tyyleistä, jonka pääaseena on naginata. Tyyli perustettiin
 Japanissa noin 500 vuotta sitten, Kanto:n alueella Kashima:ssa, josta

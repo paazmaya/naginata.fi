@@ -1,3 +1,9 @@
+---
+layout: index.njk
+eleventyExcludeFromCollections: true
+title: Grading Rules
+---
+
 # Grading Rules
 
 > Finnish Kendo Association - Atarashii Naginata

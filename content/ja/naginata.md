@@ -1,3 +1,11 @@
+---
+layout: index.njk
+date: '2000-01-02'
+url: "/ja/naginata"
+header: 新しいなぎなた
+title: なぎなた
+description: 現代日本武道である新しいなぎなたは長い武器を使用する
+---
 日本の伝統文化である "新しいなぎなた"は、二大流派である[天道流](http://shingetsukai.com/ "天道流薙刀術眞月会")
 と[直心影流](http://www.jikishin-naginata.jp/ "直心影流薙刀術秀徳会")の優れたところを集めて
 創出されました。

@@ -1,3 +1,12 @@
+---
+layout: index.njk
+date: '2000-01-03'
+url: "/en/koryu"
+header: Jikishinkageryu Naginatajutsu
+title: Koryu
+description: Literally koryu means old school. While related to naginata, it stands for the classical old schools which were using the weapon in their system.
+---
+
 Jikishinkageryū Naginatajutsu is one of the biggest styles that are still being
 practised,in which the naginata is the main weapon. The style was founded in Japan
 about 500 years ago, in the Kanto area, in a place called Kashima. From the same

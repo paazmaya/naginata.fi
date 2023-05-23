@@ -1,32 +1,29 @@
 {
   "name": "naginata.fi",
-  "version": "0.13.0",
+  "version": "0.14.0",
   "title": "Naginata in Finland",
   "homepage": "https://github.com/paazmaya/naginata.fi",
   "description": "A web site in Finland for an ancient martial art from Japan",
   "private": "true",
-  "main": "build.js",
   "subdomain": "naginata-finland",
   "scripts": {
     "test": "jest --logHeapUsage --verbose",
-    "css": "postcss src/css/*.css -o public_html/css/naginata.min.css --verbose",
-    "js": "terser src/js/*.js --compress --mangle --output public_html/js/naginata.min.js",
+    "css": "postcss src/css/*.css -o assets/naginata.min.css --verbose",
+    "js": "terser src/js/*.js --compress --mangle --output assets/naginata.min.js",
     "lint": "eslint *.js tests lib src",
     "hover": "URL=http://localhost:5000/en/naginata node tests/naginata-bogu-hover.js",
-    "start": "http-server -p 5000 public_html",
-    "build": "node build.js && npm run js && npm run css"
-  },
-  "dependencies": {
-    "marked": "4.0.15",
-    "nunjucks": "3.2.4"
+    "start": "npx @11ty/eleventy --serve",
+    "build": "npm run js && npm run css && npx @11ty/eleventy"
   },
   "devDependencies": {
+    "@11ty/eleventy": "2.0.1",
     "autoprefixer": "10.4.7",
     "cssnano": "5.1.7",
     "eslint": "8.28.0",
     "eslint-config-paazmaya": "9.0.1",
     "http-server": "14.1.0",
     "jest": "28.1.0",
+    "nunjucks": "3.2.4",
     "playwright": "1.28.1",
     "postcss": "8.4.13",
     "postcss-cli": "9.1.0",

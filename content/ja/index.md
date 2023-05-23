@@ -1,3 +1,11 @@
+---
+layout: index.njk
+date: '2000-01-01'
+url: "/ja"
+header: ニュ-ス
+title: ニュ-ス
+description: フィンランドにおけるなぎなたの最新イベント及びニュース
+---
 
 ## 今後のイベント
 

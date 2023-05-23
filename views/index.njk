@@ -2,10 +2,14 @@
 <html lang="{{ lang }}">
   <head>
     <meta charset="utf-8">
-    <title>{{ meta.title }} | {{ meta.titlesuffix }}</title>
+    <title>{{ title }} | {{ meta.titlesuffix[lang] }}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta content="{{ meta.description }}" name="description">
-    <meta content="{{ meta.titlesuffix }}" name="application-name">
+    <meta content="{{ description }}" name="description">
+    <meta content="{{ description }}" property="og:description">
+    <meta content="{{ title }}" property="og:title">
+    <meta content="{{ meta.titlesuffix[lang] }}" property="og:site_name">
+    <meta content="https://naginata.fi{{ url }}" property="og:url">
+    <meta content="{{ meta.titlesuffix[lang] }}" name="application-name">
     <link rel="manifest" href="/manifest.webmanifest">
     <link rel="shortcut icon" href="/img/favicon.png">
     <meta name="mobile-web-app-capable" value="yes">
@@ -26,15 +30,15 @@
     <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inder|Lora&amp;subset=latin-ext,latin">
     <link href="https://creativecommons.org/licenses/by-sa/4.0/" rel="license">
     <link href="https://paazmaya.fi" rel="author">
-    <link media="all" type="text/css" href="/css/naginata.min.css" rel="stylesheet">
+    <link media="all" type="text/css" href="/naginata.min.css" rel="stylesheet">
 
     {% for image in prefetch %}
       <link rel="prefetch" href="{{ image }}">
     {% endfor %}
 
-    {% if meta.facebook %}
-      {% for fb in meta.facebook %}
-        <meta property="{{ fb.property }}" content="{{ fb.content }}">
+    {% if facebook %}
+      {% for item in facebook %}
+        <meta property="{{ item.property }}" content="{{ item.content }}">
       {% endfor %}
     {% endif %}
 
@@ -45,7 +49,7 @@
   <body>
     <div id="logo" class="centered">
       <ul id="languages">
-        {% for key, language in languages %}
+        {% for key, language in meta.languages %}
           {% if key !== lang %}
             <li>
               <a title="{{ language.name }}" hreflang="{{ key }}"
@@ -54,22 +58,24 @@
           {% endif %}
         {% endfor %}
       </ul>
-      <p role="banner">{{ meta.titlesuffix }}</p>
+      <p role="banner">{{ meta.titlesuffix[lang] }}</p>
     </div>
     <nav class="full-width">
       <ul class="centered">
-        {% for page in pages %}
-        <li{% if page.url == meta.url %} class="current"{% endif %}>
-          <a title="{{ page.header }}" href="{{ page.url }}">{{ page.title }}</a>
-        </li>
+        {% for item in collections.all %}
+          {% if item.url.indexOf('/' + lang) === 0 %}
+            <li{% if item.url == page.url %} class="current"{% endif %}>
+              <a title="{{ item.header }}" href="{{ item.url }}">{{ item.data.title }}</a>
+            </li>
+          {% endif %}
         {% endfor %}
       </ul>
     </nav>
     <div class="centered">
       <header role="contentinfo">
-        <h1 title="{{ meta.description }}">{{ meta.header }}</h1>
+        <h1 title="{{ description }}">{{ header }}</h1>
       </header>
-      <article role="main" class="{{ meta.view|lower }}">
+      <article role="main" class="{{ view|lower }}">
 
         {{ content|safe }}
 
@@ -77,12 +83,12 @@
     </div>
     <footer class="full-width">
       <p class="centered">
-        {% for footer in footers %}
-        <a title="{{ footer.alt }}" href="{{ footer.url }}">{{ footer.text|safe }}</a>
+        {% for footer in meta.footer[lang] %}
+          <a title="{{ footer.alt }}" href="{{ footer.url }}">{{ footer.text|safe }}</a>
         {% endfor %}
       </p>
     </footer>
-    <script src="/js/naginata.min.js"></script>
+    <script src="/naginata.min.js"></script>
 
     <script>
       if ('serviceWorker' in navigator) {

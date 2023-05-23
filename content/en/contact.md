@@ -1,3 +1,11 @@
+---
+layout: index.njk
+date: '2000-01-04'
+url: "/en/contact"
+header: Contact Information
+title: Contact
+description: Get connected to the people who are in anyway related to the history and contents of this web site and to Naginata in Finland
+---
 Atarashii Naginata in Finland is organised under the [Finnish Kendo
 Association (FKA)](http://fka.fi/ "FKA - Finnish Kendo Association") which
 is a member of the European Naginata Federation. The head instructor is

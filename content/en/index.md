@@ -1,3 +1,11 @@
+---
+layout: index.njk
+date: '2000-01-01'
+url: "/en"
+header: News
+title: News
+description: Latest events and news in the area of Finnish Naginata, with International coverage
+---
 ## Upcoming events
 
 Currently there are no upcoming events in Finland related to Atarashii Naginata.

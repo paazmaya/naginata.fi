@@ -1,3 +1,8 @@
+---
+layout: index.njk
+eleventyExcludeFromCollections: true
+title: 審査基準
+---
 # 審査基準
 
 > 新しいなぎなた ・ フィンランド剣道連盟

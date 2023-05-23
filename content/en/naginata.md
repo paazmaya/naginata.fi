@@ -1,3 +1,12 @@
+---
+layout: index.njk
+date: '2000-01-02'
+url: "/en/naginata"
+header: Atarashii Naginata
+title: Naginata
+description: The modern Japanese martial art Atarashii Naginata is about using a long weapon
+---
+
 Atarashii Naginata is largely based on the two biggest old classical
 naginata styles, namely [Tendōryū](http://shingetsukai.com/ "天道流薙刀術 眞月会") and
 [Jikishinkageryū](http://www.jikishin-naginata.jp/ "直心影流薙刀術 秀徳会"), which are still

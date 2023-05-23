@@ -1,3 +1,11 @@
+---
+layout: index.njk
+date: '2000-01-04'
+url: "/fi/yhteystiedot"
+header: Yhteystiedot
+title: Yhteystiedot
+description: Yhteystiedot seuroihin ja ihmisiin jotka tämän sivuston luontiin ovat vaikuttaneet, jakamalla tietoaan, opetuksellaan tai muulla tapaa
+---
 Suomessa Atarashii Naginataa hallinnoi [Suomen Kendoseurojen Keskusliitto
 ry](http://fka.fi/ "FKA - Suomen Kendoseurojen Keskusliitto ry"), joka on
 jäsenenä Euroopan Naginataliitossa. Lajin pääohjaajana toimii

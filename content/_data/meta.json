@@ -1,0 +1,59 @@
+{
+  "languages": {
+    "fi": {
+      "enabled": true,
+      "name": "Suomi"
+    },
+    "en": {
+      "enabled": true,
+      "name": "English"
+    },
+    "ja": {
+      "enabled": true,
+      "name": "日本語"
+    }
+  },
+  "titlesuffix": {
+    "fi": "Naginata Suomessa",
+    "en": "Naginata Finland",
+    "ja": "なぎなた フィンランド"
+  },
+  "footer": {
+    "fi": [
+      {
+        "url": "https://paazmaya.fi",
+        "alt": "paazmaya.fi",
+        "text": "&copy; Jukka Paasonen"
+      },
+      {
+        "url": "https://github.com/paazmaya/naginata.fi",
+        "alt": "Muokkaa sivuja GitHubissa",
+        "text": "Muokkaa GitHubissa"
+      }
+    ],
+    "en": [
+      {
+        "url": "https://paazmaya.fi",
+        "alt": "paazmaya.fi",
+        "text": "&copy; Jukka Paasonen"
+      },
+      {
+        "url": "https://github.com/paazmaya/naginata.fi",
+        "alt": "Contribute to the content and the code at GitHub",
+        "text": "Contribute at GitHub"
+      }
+    ],
+    "ja": [
+      {
+        "url": "https://paazmaya.fi",
+        "alt": "paazmaya.fi",
+        "text": "&copy; パーソネン ユッカ"
+      },
+      {
+        "url": "https://github.com/paazmaya/naginata.fi",
+        "alt": "GitHubで貢献する",
+        "text": "GitHubで貢献する"
+      }
+    ]
+  }
+}

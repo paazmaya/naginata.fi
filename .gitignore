@@ -5,9 +5,8 @@
 coverage
 node_modules
 npm-debug.log
-public_html/**/*.html
-public_html/*.xml
-public_html/css/naginata.css
+dist
+assets/*.min.*
 source/favicons.jade
 .DS_store
 bogu-*.png

@@ -24,7 +24,7 @@
   force = false
 
 [context.production]
-  publish = "public_html"
+  publish = "dist"
 
 [[headers]]
   for = "/*"
@@ -50,7 +50,7 @@
     Content-Language = "ja"
     Content-Type = "text/html; charset=utf-8"
 [[headers]]
-  for = "/js/naginata.min.js"
+  for = "/naginata.min.js"
   [headers.values]
     Cache-Control = "max-age=31536000, immutable"
     Content-Type = "text/javascript; charset=utf-8"
@@ -67,7 +67,7 @@
   [headers.values]
     Cache-Control = "max-age=31536000, immutable"
 [[headers]]
-  for = "/css/naginata.min.css"
+  for = "/naginata.min.css"
   [headers.values]
     Cache-Control = "max-age=31536000, immutable"
     Content-Type = "text/css; charset=utf-8"

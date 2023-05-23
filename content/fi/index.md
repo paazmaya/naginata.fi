@@ -1,4 +1,11 @@
-
+---
+layout: index.njk
+date: '2000-01-01'
+url: "/fi"
+header: Ajankohtaista
+title: Ajankohtaista
+description: Ajankohtaista ja historiallista tietoa Naginata-aseella harjoitteluun liittyen
+---
 ## Tulevia tapahtumia
 
 Tällä hetkellä ei ole suunniteltuja tapahtumia Suomessa, liittyen Atarashii Naginataan.

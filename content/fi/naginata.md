@@ -1,3 +1,11 @@
+---
+layout: index.njk
+date: '2000-01-02'
+url: "/fi/naginata"
+header: Atarashii Naginata
+title: Naginata
+description: Uuden ja yhdenmukaisen naginatan harjoittelu perustuu kahden naginatan kohtaamiseen, joko suojavarusteiden kanssa tai ilman
+---
 Atarashii Naginata rakentuu pitkälti kahden vanhan Japanin suurimman
 naginatatyylin pohjalta. Nämä tyylit olivat [Tendōryū](http://shingetsukai.com/ "天道流薙刀術 眞月会")
 ja [Jikishinkageryū](http://www.jikishin-naginata.jp/ "直心影流薙刀術 秀徳会"),
