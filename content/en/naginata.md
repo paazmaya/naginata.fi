@@ -171,4 +171,4 @@ in Finland. They are based on the corresponding requirements by
 European (ENF) and International (INF) Naginata Federations.
 
 [The requirements are available here
-](https://github.com/paazmaya/naginata.fi/blob/master/content/en/grading-rules.md "Grading rules").
+](/en/grading-rules "Grading rules").

@@ -174,4 +174,4 @@ Lecklin](/img/naginata-bogu-chudan-artwork-lecklin.png)
 フィンランドの剣道連盟は新しいなぎなたの昇級及び昇段基準を定義している。
 それらはヨーロッパ(ENF)および国際(INF)なぎなた連盟の基準に基づいている。
 
-詳細は、[ここから入手することができる](https://github.com/paazmaya/naginata.fi/blob/master/content/ja/shinsakijun.md "グレーディング·ルール")。
+詳細は、[ここから入手することができる](/ja/shinsakijun "グレーディング·ルール")。
