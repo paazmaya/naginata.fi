@@ -5,8 +5,8 @@
  * License: Attribution-ShareAlike 4.0 Unported
  *          http://creativecommons.org/licenses/by-sa/4.0/
  */
-import facebook from './lib/facebook-meta';
-import flickrImageList from './lib/flickr-image-list';
+import facebook from './lib/facebook-meta.js';
+import flickrImageList from './lib/flickr-image-list.js';
 
 /** @param {import("@11ty/eleventy").UserConfig} eleventyConfig */
 export default function(eleventyConfig) {

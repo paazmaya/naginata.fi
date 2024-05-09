@@ -17,7 +17,7 @@
     "build": "npm run js && npm run css && npx @11ty/eleventy"
   },
   "devDependencies": {
-    "@11ty/eleventy": "2.0.1",
+    "@11ty/eleventy": "3.0.0-alpha.10",
     "@swc/core": "1.5.5",
     "@swc/jest": "0.2.36",
     "autoprefixer": "10.4.19",
