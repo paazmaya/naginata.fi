@@ -5,6 +5,7 @@
   "homepage": "https://github.com/paazmaya/naginata.fi",
   "description": "A web site in Finland for an ancient martial art from Japan",
   "private": "true",
+  "type": "module",
   "subdomain": "naginata-finland",
   "scripts": {
     "test": "jest --logHeapUsage --verbose",
@@ -17,6 +18,8 @@
   },
   "devDependencies": {
     "@11ty/eleventy": "2.0.1",
+    "@swc/core": "1.5.5",
+    "@swc/jest": "0.2.36",
     "autoprefixer": "10.4.19",
     "cssnano": "7.0.1",
     "eslint": "9.2.0",

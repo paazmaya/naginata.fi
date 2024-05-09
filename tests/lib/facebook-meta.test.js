@@ -5,11 +5,9 @@
  * License: Attribution-ShareAlike 4.0 Unported
  *          http://creativecommons.org/licenses/by-sa/4.0/
  */
-
-'use strict';
+import facebookMeta from '../../lib/facebook-meta';
 
 describe('Facebook OpenGraph crawler specific meta data', function() {
-  const facebookMeta = require('../../lib/facebook-meta');
 
   const page = {
     url: '/en/koryu',

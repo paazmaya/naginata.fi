@@ -5,11 +5,13 @@
  * License: Attribution-ShareAlike 4.0 Unported
  *          http://creativecommons.org/licenses/by-sa/4.0/
  */
+import autoprefixer from 'autoprefixer';
+import cssnano from 'cssnano';
 
-module.exports = {
+export default {
   plugins: [
-    require('autoprefixer'),
-    require('cssnano')({
+    autoprefixer,
+    cssnano({
       // https://cssnano.co/docs/what-are-optimisations/
       preset: 'default'
     })
