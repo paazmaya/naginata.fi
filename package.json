@@ -17,19 +17,19 @@
     "build": "npm run js && npm run css && npx @11ty/eleventy"
   },
   "devDependencies": {
-    "@11ty/eleventy": "3.0.0-alpha.10",
-    "@swc/core": "1.5.25",
+    "@11ty/eleventy": "3.0.0-alpha.14",
+    "@swc/core": "1.6.13",
     "@swc/jest": "0.2.36",
     "autoprefixer": "10.4.19",
-    "cssnano": "7.0.2",
-    "eslint": "9.4.0",
+    "cssnano": "7.0.4",
+    "eslint": "9.6.0",
     "eslint-config-paazmaya": "9.0.1",
     "jest": "29.7.0",
     "nunjucks": "3.2.4",
-    "playwright": "1.44.1",
-    "postcss": "8.4.38",
+    "playwright": "1.45.1",
+    "postcss": "8.4.39",
     "postcss-cli": "11.0.0",
-    "terser": "5.31.0"
+    "terser": "5.31.1"
   },
   "engines": {
     "node": ">=18.12.1",
