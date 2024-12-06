@@ -5,7 +5,7 @@
 All the code is under the [Creative Commons Attribution-ShareAlike 4.0 International Public License](https://creativecommons.org/licenses/by-sa/4.0/).
 Full legal text also available in [`LICENSE` file](LICENSE).
 
-[![Node.js v20 CI](https://github.com/paazmaya/naginata.fi/actions/workflows/linting-and-unit-testing.yml/badge.svg)](https://github.com/paazmaya/naginata.fi/actions/workflows/linting-and-unit-testing.yml)
+[![Node.js v22 CI](https://github.com/paazmaya/naginata.fi/actions/workflows/linting-and-unit-testing.yml/badge.svg)](https://github.com/paazmaya/naginata.fi/actions/workflows/linting-and-unit-testing.yml)
 ![Visual Regression Status](https://api.ghostinspector.com/v1/suites/5408c0312f4dd6df5ae50101/status-badge)
 [![Netlify Status](https://api.netlify.com/api/v1/badges/1c6a708d-5ee5-4cd2-8e66-8cbdbfaa454d/deploy-status)](https://app.netlify.com/sites/naginata-finland/deploys)
 [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=paazmaya_naginata.fi&metric=code_smells)](https://sonarcloud.io/dashboard?id=paazmaya_naginata.fi)
