@@ -26,8 +26,8 @@ aside using just a naginata. In any case in these styles naginata is used agains
 
 This website will focus on the following two:
 
- * Atarashii Naginata (http://naginata.jp/)
- * Jikishinkageryu Naginatajutsu (http://www.jikishin-naginata.jp/)
+- Atarashii Naginata (http://naginata.jp/)
+- Jikishinkageryu Naginatajutsu (http://www.jikishin-naginata.jp/)
 
 ## About this software project
 
