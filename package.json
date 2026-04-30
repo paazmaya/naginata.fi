@@ -11,7 +11,7 @@
     "test": "jest --logHeapUsage --verbose",
     "css": "postcss src/css/*.css -o assets/naginata.min.css --verbose",
     "js": "terser src/js/*.js --compress --mangle --output assets/naginata.min.js",
-    "lint": "eslint *.js tests lib src",
+    "lint": "oxlint",
     "hover": "URL=http://localhost:8080/en/naginata node tests/naginata-bogu-hover.js",
     "start": "npx @11ty/eleventy --serve",
     "build": "npm run js && npm run css && npx @11ty/eleventy"
@@ -22,14 +22,13 @@
     "@swc/jest": "0.2.39",
     "autoprefixer": "10.4.27",
     "cssnano": "7.1.3",
-    "eslint": "9.39.4",
-    "eslint-config-paazmaya": "9.0.1",
     "jest": "30.3.0",
     "nunjucks": "3.2.4",
     "playwright": "1.58.2",
     "postcss": "8.5.8",
     "postcss-cli": "11.0.1",
-    "terser": "5.46.0"
+    "terser": "5.46.0",
+    "oxlint": "0.7.2"
   },
   "engines": {
     "node": ">=24.12.0",
